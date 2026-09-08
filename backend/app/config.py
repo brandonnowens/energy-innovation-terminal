@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     db_ssl_mode: str = "prefer"  # disable, allow, prefer, require, verify-ca, verify-full
 
     # CORS configuration for cloud hosting
-    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,https://terminal.aixenergy.io"
+    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,https://terminal.aixenergy.io,https://aixenergy.io,https://energy-innovation-terminal.bowens-b7b.workers.dev,*"
 
     @property
     def cors_origin_list(self) -> list[str]:
