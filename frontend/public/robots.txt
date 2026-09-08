@@ -1,11 +1,10 @@
-﻿# https://www.robotstxt.org/robotstxt.html
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
 
-# Explicitly allow AI and search engine crawlers
 User-agent: Googlebot
 Allow: /
 
