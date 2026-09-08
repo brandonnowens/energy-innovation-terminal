@@ -21,18 +21,18 @@ class PolicyStandard(Base):
     """
     __tablename__ = "policy_standards"
 
-    id = Column(String(64), primary_key=True, index=True)  # e.g. "nfpa_855_2023", "ferc_order_2023"
-    code_identifier = Column(String(100), nullable=False, index=True)  # e.g. "NFPA 855", "FERC Order 2023"
+    id = Column(String(128), primary_key=True, index=True)  # e.g. "nfpa_855_2023", "ferc_order_2023"
+    code_identifier = Column(String(150), nullable=False, index=True)  # e.g. "NFPA 855", "FERC Order 2023"
     title = Column(String(500), nullable=False)
     short_title = Column(String(255), nullable=True)
-    category = Column(String(64), nullable=False, index=True)  # safety_code, interconnection_rule, tax_incentive, state_statute, emissions_standard
-    jurisdiction_level = Column(String(64), nullable=False, index=True)  # federal, state, rto_iso, municipal, international
-    jurisdiction_state = Column(String(32), nullable=True, index=True)  # NY, CA, MA, US, PJM, NYISO, etc.
+    category = Column(String(128), nullable=False, index=True)  # safety_code, interconnection_rule, tax_incentive, state_statute, emissions_standard
+    jurisdiction_level = Column(String(128), nullable=False, index=True)  # federal, state, rto_iso, municipal, international
+    jurisdiction_state = Column(String(64), nullable=True, index=True)  # NY, CA, MA, US, PJM, NYISO, etc.
     issuing_org_id = Column(Integer, ForeignKey("organizations.id", ondelete="SET NULL"), nullable=True, index=True)
-    status = Column(String(32), default="active", index=True)  # active, proposed, under_revision, superseded
+    status = Column(String(64), default="active", index=True)  # active, proposed, under_revision, superseded
     effective_year = Column(Integer, nullable=True)
     sunset_year = Column(Integer, nullable=True)
-    latest_revision = Column(String(64), nullable=True)  # e.g. "2023 Edition", "Rev 4"
+    latest_revision = Column(String(255), nullable=True)  # e.g. "2023 Edition", "Rev 4"
 
     # Plain English & Strategic Syntheses
     executive_summary = Column(Text, nullable=False)
@@ -61,10 +61,10 @@ class PolicyTechnologyLink(Base):
     __tablename__ = "policy_technology_links"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    policy_id = Column(String(64), ForeignKey("policy_standards.id", ondelete="CASCADE"), nullable=False, index=True)
-    technology_id = Column(String(64), ForeignKey("technologies.id", ondelete="CASCADE"), nullable=False, index=True)
-    relevance_type = Column(String(64), nullable=False)  # mandatory_testing, safety_siting, market_incentive, interconnection
-    compliance_impact = Column(String(32), default="critical_gate", index=True)  # critical_gate, cost_driver, accelerator_tailwind
+    policy_id = Column(String(128), ForeignKey("policy_standards.id", ondelete="CASCADE"), nullable=False, index=True)
+    technology_id = Column(String(128), ForeignKey("technologies.id", ondelete="CASCADE"), nullable=False, index=True)
+    relevance_type = Column(String(128), nullable=False)  # mandatory_testing, safety_siting, market_incentive, interconnection
+    compliance_impact = Column(String(64), default="critical_gate", index=True)  # critical_gate, cost_driver, accelerator_tailwind
     impact_summary = Column(Text, nullable=True)  # Explains why this rule specifically matters to this technology
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -82,8 +82,8 @@ class PolicyFuelLink(Base):
     __tablename__ = "policy_fuel_links"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    policy_id = Column(String(64), ForeignKey("policy_standards.id", ondelete="CASCADE"), nullable=False, index=True)
-    fuel_vector = Column(String(64), nullable=False, index=True)  # green_hydrogen, saf, rng, ammonia, clean_power
+    policy_id = Column(String(128), ForeignKey("policy_standards.id", ondelete="CASCADE"), nullable=False, index=True)
+    fuel_vector = Column(String(128), nullable=False, index=True)  # green_hydrogen, saf, rng, ammonia, clean_power
     lifecycle_ci_threshold = Column(String(128), nullable=True)  # e.g. "< 0.45 kg CO2e/kg H2"
     impact_summary = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -101,9 +101,9 @@ class PolicyOpportunityLink(Base):
     __tablename__ = "policy_opportunity_links"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    policy_id = Column(String(64), ForeignKey("policy_standards.id", ondelete="CASCADE"), nullable=False, index=True)
+    policy_id = Column(String(128), ForeignKey("policy_standards.id", ondelete="CASCADE"), nullable=False, index=True)
     opportunity_id = Column(Integer, ForeignKey("opportunities.id", ondelete="CASCADE"), nullable=False, index=True)
-    link_reason = Column(String(64), default="statutory_basis")  # statutory_basis, mandatory_standard, eligibility_criterion
+    link_reason = Column(String(128), default="statutory_basis")  # statutory_basis, mandatory_standard, eligibility_criterion
     notes = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -121,9 +121,9 @@ class PolicyOrganizationLink(Base):
     __tablename__ = "policy_organization_links"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    policy_id = Column(String(64), ForeignKey("policy_standards.id", ondelete="CASCADE"), nullable=False, index=True)
+    policy_id = Column(String(128), ForeignKey("policy_standards.id", ondelete="CASCADE"), nullable=False, index=True)
     organization_id = Column(Integer, ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True)
-    relation_type = Column(String(64), default="regulated_entity")  # issuing_regulator, compliant_developer, utility_operator
+    relation_type = Column(String(128), default="regulated_entity")  # issuing_regulator, compliant_developer, utility_operator
     created_at = Column(DateTime, default=datetime.utcnow)
 
     __table_args__ = (
@@ -142,15 +142,15 @@ class RegulatoryProceeding(Base):
     """
     __tablename__ = "regulatory_proceedings"
 
-    id = Column(String(64), primary_key=True, index=True)  # e.g. "ny_psc_24_e_0314_large_load"
-    docket_number = Column(String(100), nullable=False, index=True)  # e.g. "Case 24-E-0314", "Docket RM22-14"
-    commission = Column(String(64), nullable=False, index=True)  # e.g. "NYPSC", "CPUC", "PUCT", "FERC", "Mass DPU", "ICC"
-    jurisdiction_level = Column(String(32), default="state", index=True)  # state, federal, rto_iso
-    jurisdiction_state = Column(String(32), nullable=True, index=True)  # NY, CA, TX, US, MA, IL
+    id = Column(String(128), primary_key=True, index=True)  # e.g. "ny_psc_24_e_0314_large_load"
+    docket_number = Column(String(150), nullable=False, index=True)  # e.g. "Case 24-E-0314", "Docket RM22-14"
+    commission = Column(String(128), nullable=False, index=True)  # e.g. "NYPSC", "CPUC", "PUCT", "FERC", "Mass DPU", "ICC"
+    jurisdiction_level = Column(String(64), default="state", index=True)  # state, federal, rto_iso
+    jurisdiction_state = Column(String(64), nullable=True, index=True)  # NY, CA, TX, US, MA, IL
     title = Column(String(500), nullable=False)
     short_title = Column(String(255), nullable=True)
-    topic_category = Column(String(64), nullable=False, index=True)  # large_load_interconnection, storage_procurement, thermal_networks, interconnection_reform, vpp_rate_design, transmission_planning, clean_firm_procurement
-    status = Column(String(32), default="active", index=True)  # active, staff_whitepaper, public_comment, order_issued, implementation
+    topic_category = Column(String(128), nullable=False, index=True)  # large_load_interconnection, storage_procurement, thermal_networks, interconnection_reform, vpp_rate_design, transmission_planning, clean_firm_procurement
+    status = Column(String(64), default="active", index=True)  # active, staff_whitepaper, public_comment, order_issued, implementation
     
     open_date = Column(DateTime, nullable=True)
     comment_deadline = Column(DateTime, nullable=True)
@@ -181,10 +181,10 @@ class ProceedingTechnologyLink(Base):
     __tablename__ = "proceeding_technology_links"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    proceeding_id = Column(String(64), ForeignKey("regulatory_proceedings.id", ondelete="CASCADE"), nullable=False, index=True)
-    technology_id = Column(String(64), ForeignKey("technologies.id", ondelete="CASCADE"), nullable=False, index=True)
-    impact_level = Column(String(32), default="high_catalyst", index=True)  # high_catalyst, critical_gate, cost_driver, market_expansion
-    commercial_vector = Column(String(64), nullable=True)  # direct_procurement, interconnection_access, tariff_revenue, siting_clarity
+    proceeding_id = Column(String(128), ForeignKey("regulatory_proceedings.id", ondelete="CASCADE"), nullable=False, index=True)
+    technology_id = Column(String(128), ForeignKey("technologies.id", ondelete="CASCADE"), nullable=False, index=True)
+    impact_level = Column(String(64), default="high_catalyst", index=True)  # high_catalyst, critical_gate, cost_driver, market_expansion
+    commercial_vector = Column(String(128), nullable=True)  # direct_procurement, interconnection_access, tariff_revenue, siting_clarity
     impact_summary = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -202,9 +202,9 @@ class ProceedingOrganizationLink(Base):
     __tablename__ = "proceeding_organization_links"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    proceeding_id = Column(String(64), ForeignKey("regulatory_proceedings.id", ondelete="CASCADE"), nullable=False, index=True)
+    proceeding_id = Column(String(128), ForeignKey("regulatory_proceedings.id", ondelete="CASCADE"), nullable=False, index=True)
     organization_id = Column(Integer, ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True)
-    role = Column(String(64), default="affected_utility")  # lead_commission, affected_utility, intervenor, rto_operator
+    role = Column(String(128), default="affected_utility")  # lead_commission, affected_utility, intervenor, rto_operator
     created_at = Column(DateTime, default=datetime.utcnow)
 
     __table_args__ = (
@@ -221,9 +221,9 @@ class ProceedingOpportunityLink(Base):
     __tablename__ = "proceeding_opportunity_links"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    proceeding_id = Column(String(64), ForeignKey("regulatory_proceedings.id", ondelete="CASCADE"), nullable=False, index=True)
+    proceeding_id = Column(String(128), ForeignKey("regulatory_proceedings.id", ondelete="CASCADE"), nullable=False, index=True)
     opportunity_id = Column(Integer, ForeignKey("opportunities.id", ondelete="CASCADE"), nullable=False, index=True)
-    link_reason = Column(String(64), default="statutory_authorization")  # statutory_authorization, program_creation, tariff_pilot
+    link_reason = Column(String(128), default="statutory_authorization")  # statutory_authorization, program_creation, tariff_pilot
     notes = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
