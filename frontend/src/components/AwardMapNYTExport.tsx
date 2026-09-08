@@ -395,7 +395,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
     );
 
     ctx.textAlign = 'right';
-    ctx.fillText('U.S. Energy Innovation Database by Brandon N. Owens', contentRight, footerY);
+    ctx.fillText('Public Open Records (Not Affiliated with NYSERDA or US DOE)', contentRight, footerY);
     ctx.textAlign = 'left';
 
     return canvas;

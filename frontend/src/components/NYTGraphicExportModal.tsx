@@ -420,7 +420,7 @@ export const NYTGraphicExportModal: React.FC<NYTGraphicExportModalProps> = ({
     ctx.fillText(sourceAttribution, contentLeft, footerY);
 
     ctx.textAlign = 'right';
-    ctx.fillText('Energy Innovation Terminal · Sovereign Publication Edition (Cleared for Board & C-Suite Briefings)', contentRight, footerY);
+    ctx.fillText('Energy Innovation Terminal · Public Open Records (Not Affiliated with NYSERDA or US DOE)', contentRight, footerY);
     ctx.textAlign = 'left';
 
     return canvas;

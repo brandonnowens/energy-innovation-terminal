@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ShieldCheck, Award, Sparkles, Check, Copy, ExternalLink,
   Layers, Database, Zap, BookOpen, Activity, Compass,
@@ -204,6 +204,20 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
 
             <p className="text-[11px] font-mono p-2.5 rounded-lg bg-black/40 border border-white/5 text-slate-300 leading-relaxed break-words select-all">
               {citationApa}
+            </p>
+          </div>
+
+          {/* Legal Non-Affiliation & Public Records Notice */}
+          <div className={clsx(
+            "p-3.5 rounded-xl border text-[11px] leading-relaxed",
+            isDark ? "bg-amber-950/20 border-amber-500/30 text-amber-200/90" : "bg-amber-50 border-amber-200 text-amber-900"
+          )}>
+            <div className="font-bold mb-1 flex items-center gap-1.5 text-amber-400">
+              <ShieldCheck size={14} className="text-amber-400 shrink-0" />
+              <span className="uppercase tracking-wider text-[10px] font-mono">Independent Public Research Notice</span>
+            </div>
+            <p className="text-[11px]">
+              This terminal is an independent academic, computational, and decision-support project developed outside of any official government capacity. It is not affiliated with, sponsored by, or an official tool of NYSERDA, New York State, the US Department of Energy (DOE), or any government agency. All data is sourced exclusively from public open records, FOIL disclosures, and open government databases.
             </p>
           </div>
 

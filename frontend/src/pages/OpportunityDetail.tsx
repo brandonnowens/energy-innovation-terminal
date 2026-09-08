@@ -127,8 +127,8 @@ export default function OpportunityDetail() {
       `${d.description || d.summary || 'Public non-dilutive grant opportunity for energy transition innovation.'}`,
       ``,
       `---`,
-      `*Source: Energy Innovation Terminal · U.S. Energy Innovation Database by Brandon N. Owens*`,
-      `*Verified Public Record: ${d.official_url || d.portal_url || 'Authoritative Ingestion Feed'}*`
+      `*Source: Independent Research Compilation from Public Open Records (Energy Innovation Terminal · U.S. Energy Innovation Database by Brandon N. Owens). Not affiliated with or endorsed by NYSERDA, US DOE, or any government entity.*`,
+      `*Official Solicitation Record: ${d.official_url || d.portal_url || 'Authoritative Ingestion Feed'}*`
     ];
 
     navigator.clipboard.writeText(lines.join('\n'));

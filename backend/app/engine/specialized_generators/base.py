@@ -39,7 +39,7 @@ def format_currency(val: float) -> str:
         return f"${val / 1e3:.1f}K"
     return f"${val:,.0f}"
 
-SOURCE_ATTRIBUTION = "U.S. Energy Innovation Database by Brandon N. Owens"
+SOURCE_ATTRIBUTION = "U.S. Energy Innovation Database by Brandon N. Owens · Public Open Records · Not affiliated with NYSERDA or any government agency"
 
 # =============================================================================
 # BRAND DESIGN SYSTEM & COLOR PALETTE

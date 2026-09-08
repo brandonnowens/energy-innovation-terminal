@@ -108,7 +108,7 @@ export function ChartBuilder({
       ctx.fillText(sourceAttribution, padding, footerY);
 
       ctx.textAlign = 'right';
-      ctx.fillText('U.S. Energy Innovation Database by Brandon N. Owens · Cleared for Board & Investment Committee Briefings', width - padding, footerY);
+      ctx.fillText('U.S. Energy Innovation Database · Public Open Records (Not Affiliated with NYSERDA or US DOE)', width - padding, footerY);
       ctx.textAlign = 'left';
 
       compCanvas.toBlob((blob) => {

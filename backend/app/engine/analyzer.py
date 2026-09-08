@@ -669,11 +669,12 @@ def analyze_project(
         "funding_stacks": funding_stacks,
         "disclaimer": (
             "INDEPENDENT RESEARCH & PUBLIC INFORMATION NOTICE: This analysis was created entirely using publicly available information, "
-            "open government databases, published statutory codes, and public solicitation filings. This document does not represent the official "
-            "views, policies, endorsements, or determinations of any government agency, public institution, utility, or funding organization. "
-            "No organizational resources of any agency or institution were used in the creation or generation of this report. This report is an independent "
-            "analytical study for strategic planning purposes only; it does not constitute a promise, commitment, guarantee, or indicator of "
-            "any organizational activity, formal evaluation, award selection, or funding event."
+            "open government databases (NY Open Data, Grants.gov, USAspending, USPTO, and published agency portals), and public solicitation filings. "
+            "This document does not represent the official views, policies, endorsements, or determinations of NYSERDA, New York State, the US Department of Energy (DOE), "
+            "or any other government agency, utility, or funding organization. Zero non-public, draft, internal, or confidential agency data is utilized or contained herein. "
+            "No organizational resources, equipment, or official hours of any public agency were used in the creation or generation of this tool or report. "
+            "This analysis is an independent computational research study for informational and planning purposes only; it does not constitute an official proposal submission, "
+            "nor does it confer any guarantee, evaluation preference, or indicator of award selection."
         ),
     }
 

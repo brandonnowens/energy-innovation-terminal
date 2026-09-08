@@ -1058,8 +1058,8 @@ export default function Reports() {
 
             {/* Modal Footer */}
             <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
-              <span className="text-[11px] text-slate-400">
-                Source: <strong>U.S. Energy Innovation Database by Brandon N. Owens</strong>
+              <span className="text-[10.5px] text-slate-500">
+                Source: <strong>U.S. Energy Innovation Database by Brandon N. Owens</strong> · <em>Independent research compilation from public open records. Not affiliated with NYSERDA or any government agency.</em>
               </span>
               <div className="flex flex-wrap items-center gap-2">
                 <button

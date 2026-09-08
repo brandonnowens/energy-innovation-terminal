@@ -16,6 +16,7 @@ import { AccountModal } from './AccountModal';
 import { ThemeToggle } from './ThemeToggle';
 import { NyserdaToggle } from './NyserdaToggle';
 import { BrandonSignatureModal } from './BrandonSignatureModal';
+import { LegalComplianceModal } from './LegalComplianceModal';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNyserda } from '../context/NyserdaContext';
@@ -28,6 +29,7 @@ export default function Layout() {
   const isAdmin = Boolean(user && (user.role === 'admin' || user.email?.toLowerCase() === 'bowens@aixenergy.io'));
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [signatureModalOpen, setSignatureModalOpen] = useState(false);
+  const [legalModalOpen, setLegalModalOpen] = useState(false);
   const location = useLocation();
 
   // Collapsed state for navigation sections
@@ -378,11 +380,12 @@ export default function Layout() {
           </div>
         </header>
 
-        {/* Auth, Membership, Account & Brandon Signature Modals */}
+        {/* Auth, Membership, Account, Brandon Signature & Legal Compliance Modals */}
         <AuthModal />
         <MembershipModal />
         <AccountModal />
         <BrandonSignatureModal isOpen={signatureModalOpen} onClose={() => setSignatureModalOpen(false)} />
+        <LegalComplianceModal isOpen={legalModalOpen} onClose={() => setLegalModalOpen(false)} />
 
         {/* Page Content */}
         <main className="flex-1 overflow-auto px-6 py-6 min-w-0">
@@ -396,7 +399,7 @@ export default function Layout() {
             ? "bg-[#0b101c] border-white/[0.06] text-slate-400"
             : "bg-white border-slate-200 text-slate-600 shadow-2xs"
         )}>
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2.5 flex-wrap">
             <button
               type="button"
               onClick={() => setSignatureModalOpen(true)}
@@ -413,10 +416,25 @@ export default function Layout() {
               <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">VERIFIED</span>
             </button>
 
+            <button
+              type="button"
+              onClick={() => setLegalModalOpen(true)}
+              className={clsx(
+                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10.5px] font-medium transition-all border cursor-pointer",
+                isDark
+                  ? "bg-white/[0.02] hover:bg-cyan-950/30 text-slate-300 border-white/[0.08] hover:border-cyan-500/30"
+                  : "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200"
+              )}
+              title="Public Records Provenance, Ethics, and Non-Affiliation Notice"
+            >
+              <Scale size={11} className="text-cyan-400" />
+              <span>Legal &amp; Compliance Notice</span>
+            </button>
+
             <span className={clsx(isDark ? "text-white/10" : "text-slate-300", "hidden sm:inline")}>|</span>
 
-            <span className="hidden md:inline text-[10.5px] font-mono text-slate-400">
-              56,413 Awards · $104.16B Capital · 140+ Authorities
+            <span className="hidden lg:inline text-[10.5px] font-mono text-slate-400">
+              56,413 Awards · $104.16B Capital · 140+ Authorities · Public Open Records
             </span>
           </div>
 

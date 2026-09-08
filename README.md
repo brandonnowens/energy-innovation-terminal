@@ -4,7 +4,13 @@
 
 A high-performance intelligence and decision-support terminal indexing active funding opportunities, historical awards, patent linkages, venture capital rounds, and organizational networks across federal agencies, 16+ state energy offices, and electric utilities, backed by the **U.S. Energy Innovation Database by Brandon N. Owens**.
 
-> **Independent Decision-Support Platform.** Not affiliated with or endorsed by DOE, CEC, MassCEC, NYSERDA, or any other government agency. Program availability and statutory requirements change; verify official solicitation documents before contractual or proposal commitment.
+> **LEGAL, ETHICS & PUBLIC RECORDS COMPLIANCE NOTICE**
+> 
+> - **Independent Research Platform**: The *Energy Innovation Terminal* and *U.S. Energy Innovation Database* are independent computational research and decision-support tools created outside of any official government agency capacity. This platform is **NOT** an official tool, publication, or service of NYSERDA, the State of New York, the US Department of Energy (DOE), ARPA-E, CEC, MassCEC, NSF, or any other government entity. No endorsement, sponsorship, or official affiliation is stated or implied.
+> - **Exclusively Public Open Records**: All solicitations, awards, dockets, and patent linkages are compiled **strictly from publicly accessible open government records** (e.g., NY Open Data, Grants.gov, USAspending, official agency portals, USPTO). No non-public, internal, confidential, or deliberative agency data is used or contained herein.
+> - **Resource Separation**: No government equipment, official working hours, facilities, or public agency funds were used in the creation or hosting of this platform.
+> - **No Official Standing or Funding Guarantee**: Use of this platform does not constitute an official grant application, nor does it guarantee funding, evaluation preference, or scoring advantage with NYSERDA, US DOE, or any funding organization. Official applications must be submitted via each agency's designated portal.
+> - **Nominative Fair Use**: All agency names, acronyms, and logos are used solely for nominative identification and public-interest informational reference under 15 U.S.C. § 1125.
 
 ---
 

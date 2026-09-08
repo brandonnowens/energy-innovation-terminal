@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IngestionHubModal } from '../components/IngestionHubModal';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api/client';
-import { Loader2, Database, ShieldCheck, CheckCircle2, Layers, Cpu, Globe2, Activity, RefreshCw, Radio, Check, AlertCircle, ExternalLink } from 'lucide-react';
+import { Loader2, Database, ShieldCheck, CheckCircle2, Layers, Cpu, Globe2, Activity, RefreshCw, Radio, Check, AlertCircle, ExternalLink, Scale, FileText } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
 import { useNyserda } from '../context/NyserdaContext';
@@ -339,6 +339,50 @@ export default function System() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Public Records Provenance & Regulatory Compliance Card */}
+      <div className="bg-slate-900 text-white rounded-xl border border-cyan-500/30 p-6 shadow-sm space-y-4">
+        <div className="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-white/10">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-lg bg-cyan-950/80 border border-cyan-500/40 text-cyan-400">
+              <Scale size={18} />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-white tracking-wide">Public Open Data Provenance &amp; Regulatory Non-Affiliation</h3>
+              <p className="text-xs text-slate-400">Independent Academic &amp; Decision-Support Corpus</p>
+            </div>
+          </div>
+          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+            100% PUBLIC OPEN RECORDS
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-300 leading-relaxed">
+          <div className="space-y-2 p-3.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+            <div className="font-bold text-cyan-300 flex items-center gap-1.5">
+              <FileText size={13} />
+              <span>Independent Research Classification</span>
+            </div>
+            <p>
+              This terminal is an independent software tool developed outside of any official government capacity. It is not affiliated with, operated by, sponsored by, or an official tool of NYSERDA, New York State, the US Department of Energy (DOE), or any public agency.
+            </p>
+          </div>
+
+          <div className="space-y-2 p-3.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+            <div className="font-bold text-emerald-300 flex items-center gap-1.5">
+              <ShieldCheck size={13} />
+              <span>Zero Non-Public Information</span>
+            </div>
+            <p>
+              100% of indexed solicitations, award amounts, recipients, and dockets are gathered exclusively from publicly published portals (Grants.gov, NY Open Data, published agency websites, USPTO). No internal, draft, deliberative, or confidential agency data is utilized.
+            </p>
+          </div>
+        </div>
+
+        <div className="text-[11px] text-slate-400 font-mono pt-1">
+          Statutory Compliance: NY Public Officers Law §§ 73, 74 · NY FOIL (Public Officers Law art. 6) · Federal FOIA (5 U.S.C. § 552) · 15 U.S.C. § 1125 (Lanham Act Nominative Fair Use).
+        </div>
       </div>
 
       {/* Ingestion Hub Modal */}
