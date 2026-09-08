@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on atmospheric measurements using Uncrewed Aircraft Systems, which is unrelated to the proposed project's emphasis on Building Electrification, Energy Storage, and Solar technologies.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

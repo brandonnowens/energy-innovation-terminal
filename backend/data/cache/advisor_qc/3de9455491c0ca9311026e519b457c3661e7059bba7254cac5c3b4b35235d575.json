@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on communications, circuits, and sensing systems, which does not align with the proposed project's emphasis on building electrification, energy storage, and solar technologies. This indicates a clear domain mismatch.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

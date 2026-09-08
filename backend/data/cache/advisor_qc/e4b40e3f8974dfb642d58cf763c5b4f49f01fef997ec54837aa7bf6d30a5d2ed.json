@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Building Electrification, Energy Storage, and Solar technologies, while the matched opportunity is centered on sodium-sulfur battery technology, which is more aligned with energy storage systems for electric vehicles and grid-scale applications rather than building retrofits or electrification.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

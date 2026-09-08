@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on solar photovoltaic systems, which aligns with the project's emphasis on solar technology and building electrification. The project's activities related to demonstration and deployment are relevant to the objectives of acquiring and sharing performance data for solar systems.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on advanced computational methods for quantum dynamics and does not align with the proposed project's emphasis on building electrification, energy storage, and solar technologies. The domains of software for quantum simulations and building energy technologies are distinct and do not directly support each other.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

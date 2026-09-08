@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on industrial decarbonization and emissions reduction, which aligns well with the project's emphasis on sustainable materials, circular economy, and clean energy manufacturing. Both the project and the funding opportunity target the industrial sector and aim to reduce greenhouse gas emissions.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

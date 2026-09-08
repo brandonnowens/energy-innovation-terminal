@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on efficient and flexible building loads, which aligns well with the project's emphasis on building electrification and energy storage. Both the project and the opportunity aim to enhance building energy efficiency and integration with the grid.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

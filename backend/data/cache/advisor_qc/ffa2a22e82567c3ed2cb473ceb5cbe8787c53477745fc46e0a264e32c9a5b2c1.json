@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on workforce development for advanced manufacturing and the electric vehicle supply chain, which aligns with the project's emphasis on training and education in clean energy technologies, including building electrification and energy storage.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

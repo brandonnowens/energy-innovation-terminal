@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on AI and cybersecurity in energy infrastructure, which does not align with the proposed project's emphasis on building electrification, energy storage, and solar technologies. The domains of AI and cybersecurity do not directly support the specific clean energy technologies being developed in the project.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

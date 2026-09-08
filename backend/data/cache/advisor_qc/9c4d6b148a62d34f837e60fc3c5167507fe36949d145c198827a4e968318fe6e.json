@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on solar data accessibility and bankability, which aligns with the project's emphasis on solar technology and building electrification. Both the project and the funding opportunity aim to enhance the solar industry, making this a relevant match.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

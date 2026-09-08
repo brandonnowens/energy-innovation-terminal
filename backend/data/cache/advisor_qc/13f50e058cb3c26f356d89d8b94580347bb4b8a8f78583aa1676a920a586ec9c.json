@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The opportunity is focused on supporting student participation in a conference rather than funding a project related to Building Electrification, Energy Storage, or Solar technologies. This does not align with the project's objectives and activities.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

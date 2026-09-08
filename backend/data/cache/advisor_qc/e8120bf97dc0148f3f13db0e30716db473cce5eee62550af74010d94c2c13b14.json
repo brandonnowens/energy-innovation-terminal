@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on inverter-based resources, which are relevant to the project's emphasis on Building Electrification and Energy Storage. The project's activities align with the R&D and deployment objectives of the opportunity, making it a suitable match.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

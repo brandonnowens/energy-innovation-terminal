@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.8,
+  "reason": "The proposed project focuses on Sustainable Materials & Circular Economy and Clean Energy Manufacturing, while the matched opportunity emphasizes energy reliability and resilience for energy-intensive industries like chemicals and steel, which do not align with the project's specific technology areas.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

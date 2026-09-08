@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on energy improvements in public school facilities, which aligns with the project's emphasis on building electrification and energy efficiency. Both the project and the funding opportunity aim to enhance energy performance and sustainability in educational settings.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

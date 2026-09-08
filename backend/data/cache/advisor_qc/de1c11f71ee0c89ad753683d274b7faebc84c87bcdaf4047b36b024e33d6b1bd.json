@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on sustainable materials and industrial decarbonization, while the matched opportunity is centered on advanced robotic additive manufacturing for composite materials, which does not align with the project's primary objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

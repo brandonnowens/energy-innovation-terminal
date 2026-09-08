@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity is a request for information and does not constitute a funding opportunity, which does not align with the project's goal of securing funding for Building Electrification and Energy Storage. Additionally, the focus on solar grid integration does not directly support the project's activities related to retrofit and training.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

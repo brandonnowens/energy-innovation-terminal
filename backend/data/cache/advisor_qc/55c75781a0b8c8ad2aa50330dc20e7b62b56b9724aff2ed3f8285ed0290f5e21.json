@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on energy efficiency and conservation, which aligns with the project's emphasis on building electrification and energy storage. Both aim to reduce fossil fuel emissions and enhance energy use efficiency in commercial and industrial sectors.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

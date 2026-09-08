@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on reinforcement learning and algorithmic development, which does not align with the proposed project's emphasis on building electrification, energy storage, and solar technologies. The domains of clean energy application and AI research are distinct and do not directly support each other in this context.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

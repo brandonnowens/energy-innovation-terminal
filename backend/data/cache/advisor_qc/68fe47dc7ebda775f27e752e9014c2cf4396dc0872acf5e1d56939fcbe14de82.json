@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The SequestStar opportunity focuses on biomanufacturing processes that capture carbon and produce valuable materials, aligning well with the project's emphasis on sustainable materials and industrial decarbonization. Both projects aim to innovate within the clean energy manufacturing sector.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

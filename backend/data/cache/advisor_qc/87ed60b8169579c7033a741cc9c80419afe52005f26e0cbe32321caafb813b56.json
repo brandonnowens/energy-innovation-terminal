@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The proposed project focuses on building electrification, energy storage, and solar technologies, while the matched opportunity is centered on environmental research related to droughts in the Congo rainforest, which does not align with the project's technology areas or objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,15 @@
+{
+  "llm_match_score": 45.0,
+  "conviction_tier": "Low Fit",
+  "strategic_thesis": "The proposed project focuses on workforce development and clean energy manufacturing, which does not align directly with the funding opportunity's emphasis on retrofits for low-to-moderate-income multifamily buildings. Additionally, the funding opportunity targets upstate New York, while the proposed project is based in NYC, creating a geographical mismatch.",
+  "criteria_strengths": [
+    "The proposed project has a strong focus on training and workforce development, which could contribute to broader clean energy goals.",
+    "The project's emphasis on industrial decarbonization aligns with the overall clean energy objectives of the funding opportunity.",
+    "The technology readiness level of TRL 5 indicates that the project is at a stage where it could demonstrate feasibility, which is a requirement of the funding opportunity."
+  ],
+  "potential_risks_or_flags": [
+    "The project is based in NYC while the funding opportunity is focused on upstate New York, which may limit eligibility."
+  ],
+  "recommended_positioning": "Emphasize the project's potential to contribute to workforce development in clean energy, while addressing the need for industrial decarbonization in the context of building electrification.",
+  "eligibility_verdict": "Ineligible"
+}

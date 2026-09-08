@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The project focuses on Building Electrification, Energy Storage, and Solar, while the matched opportunity emphasizes smart manufacturing and recycling of batteries, which does not align with the primary objectives of the proposed project.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

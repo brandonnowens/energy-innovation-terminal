@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity is focused on gathering feedback for a prioritization tool rather than funding specific projects related to building electrification, energy storage, or solar technologies. This does not align with the project's objectives of retrofit and demonstration activities.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

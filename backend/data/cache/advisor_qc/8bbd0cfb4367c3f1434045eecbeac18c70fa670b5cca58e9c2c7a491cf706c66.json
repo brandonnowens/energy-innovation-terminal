@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on the adoption of building energy codes, which aligns with the project's emphasis on building electrification and energy efficiency. Both the project and the opportunity aim to enhance energy performance in buildings.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

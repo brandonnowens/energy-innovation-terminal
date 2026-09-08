@@ -1,0 +1,85 @@
+{
+  "opportunity_id": 1,
+  "solicitation_number": "PON 6088",
+  "opportunity_name": "Affordable Multifamily Program Upstate",
+  "agency": "NYSERDA",
+  "program_name": "Clean Energy Program",
+  "match_score_pct": 91,
+  "winning_hook": "Imagine a future where manufacturing facilities in New York not only meet their energy needs but also contribute to a sustainable and equitable energy landscape. Our high-temperature phase change material thermal storage system is designed to revolutionize energy efficiency in low-to-moderate-income multifamily buildings, paving the way for a cleaner, greener future.",
+  "strategic_framing": "Position the project as a critical solution for enhancing energy efficiency in LMI multifamily buildings, emphasizing its role in achieving NYSERDA's emission reduction milestones and aligning with the state's commitment to building electrification and energy equity.",
+  "hidden_rubric_breakdown": [
+    {
+      "criterion": "Technical Merit & Innovation Feasibility",
+      "weight_pct": 35,
+      "target_score": "33/35",
+      "scoring_focus": "Demonstration of advanced thermal storage technology that meets or exceeds TRL 6 benchmarks.",
+      "reviewer_bias": "Reviewers may favor projects with clear, quantifiable performance metrics and proven scalability."
+    },
+    {
+      "criterion": "Commercialization & Market Offtake Credibility",
+      "weight_pct": 25,
+      "target_score": "24/25",
+      "scoring_focus": "Evidence of strong market demand and commitment from potential customers, including signed letters of intent.",
+      "reviewer_bias": "Preference for projects with established partnerships and prior successful deployments."
+    },
+    {
+      "criterion": "Team Qualifications & Project Execution Plan",
+      "weight_pct": 20,
+      "target_score": "19/20",
+      "scoring_focus": "Experience of key personnel in similar projects and a detailed, realistic project timeline with clear milestones.",
+      "reviewer_bias": "Deductions for teams lacking dedicated personnel or with vague execution plans."
+    },
+    {
+      "criterion": "Community Benefits & Economic Impact",
+      "weight_pct": 20,
+      "target_score": "19/20",
+      "scoring_focus": "Demonstrated alignment with Justice40 initiatives, job creation metrics, and clear benefits to state ratepayers.",
+      "reviewer_bias": "Generic statements about community benefits will be viewed unfavorably; specificity is crucial."
+    }
+  ],
+  "mandatory_reviewer_keywords": [
+    "energy efficiency",
+    "thermal storage",
+    "low-income",
+    "decarbonization",
+    "community impact",
+    "job creation",
+    "market demand",
+    "scalability",
+    "partnership",
+    "emission reduction",
+    "building electrification",
+    "technical innovation"
+  ],
+  "optimal_teaming_strategy": [
+    {
+      "role": "Academic / National Laboratory Research Partner",
+      "recommended_profile": "Top Tier-1 Research University (e.g. SUNY Stony Brook, Cornell, Columbia, or Brookhaven National Lab BNL)",
+      "strategic_rationale": "Strengthens Technical Merit score by 15-20% and provides accredited third-party validation testing."
+    },
+    {
+      "role": "Commercial Offtaker / Utility Demonstration Host",
+      "recommended_profile": "Local electric utility, industrial facility owner, or corporate off-taker with signed demonstration site agreement",
+      "strategic_rationale": "Validates Market Impact criteria and eliminates site control / permitting timeline risks."
+    },
+    {
+      "role": "Community & Workforce Development Partner",
+      "recommended_profile": "Regional labor union, clean energy workforce incubator, or environmental justice community organization",
+      "strategic_rationale": "Satisfies mandatory Community Benefits Plan (CBP) and Justice40 evaluation scoring."
+    }
+  ],
+  "unwritten_evaluation_biases": [
+    "Reviewers may favor projects that demonstrate a clear understanding of state energy policies and goals.",
+    "Proposals that include detailed risk management strategies are likely to score higher.",
+    "Projects that engage with local communities early in the planning process may receive additional favor."
+  ],
+  "red_flag_landmines": [
+    "Failure to provide specific data or metrics to support claims of energy savings or community benefits.",
+    "Inadequate detail on the project timeline and milestones, leading to perceived lack of planning.",
+    "Generic language that does not clearly articulate the unique aspects of the technology or its benefits."
+  ],
+  "competitive_differentiation": "This project stands out by not only addressing energy storage needs but also directly contributing to social equity and economic development in LMI communities, making it a holistic solution that aligns with state priorities.",
+  "target_score_benchmark": "94/100 (Top Decile Fundable)",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on advancing photocatalytic systems for chemical manufacturing, which is unrelated to the proposed project's emphasis on building electrification, energy storage, and solar technologies. There is a clear domain mismatch between the two projects.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

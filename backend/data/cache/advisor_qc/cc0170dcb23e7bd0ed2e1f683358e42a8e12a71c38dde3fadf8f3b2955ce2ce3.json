@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on designing revolving loan funds for energy efficiency projects, which aligns with the proposed project's activities in building electrification and retrofitting. Both aim to enhance energy efficiency and support clean energy initiatives.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

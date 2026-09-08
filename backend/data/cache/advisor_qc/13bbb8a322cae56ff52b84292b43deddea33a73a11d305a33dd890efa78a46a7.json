@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on advanced rechargeable technologies, which does not align with the project's emphasis on building electrification, energy storage, and solar energy. This indicates a domain mismatch as the project is more related to building and energy systems rather than battery technology.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

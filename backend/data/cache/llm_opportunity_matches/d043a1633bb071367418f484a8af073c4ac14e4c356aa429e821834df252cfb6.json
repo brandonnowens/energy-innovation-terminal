@@ -1,0 +1,17 @@
+{
+  "llm_match_score": 10.0,
+  "conviction_tier": "Low Fit",
+  "strategic_thesis": "The proposed project focuses on building electrification and energy storage, which are not aligned with the specific focus on Tribal Lands outlined in the funding opportunity. Additionally, the budget and scale of the proposed project far exceed the maximum award amount available under this funding opportunity.",
+  "criteria_strengths": [
+    "The project involves advanced technologies in building electrification and energy storage, which are relevant to clean energy goals.",
+    "The applicant is a university, which may provide strong research capabilities and workforce development potential.",
+    "The project includes a comprehensive approach to clean energy deployment, encompassing multiple technology areas."
+  ],
+  "potential_risks_or_flags": [
+    "The proposed budget of $118,000,000 is significantly higher than the maximum award of $2,000,000, making it financially unviable for this opportunity."
+  ],
+  "recommended_positioning": "Focus on the innovative aspects of the project but acknowledge the misalignment with the funding opportunity's specific target audience and budget constraints.",
+  "eligibility_verdict": "Ineligible",
+  "is_llm_generated": true,
+  "model_used": "gpt-4o-mini"
+}

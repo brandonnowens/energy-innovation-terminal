@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The project focuses on Building Electrification, Energy Storage, and Solar at a university level, while the matched opportunity is specifically about reducing soft costs for utility-scale solar installations, which does not align with the project's scope of activities and objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

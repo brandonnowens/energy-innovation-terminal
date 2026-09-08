@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on utility-scale energy storage, which aligns with the project's emphasis on energy storage and clean transportation. Both the project and the opportunity are within the commercial and industrial sectors, making this a relevant match.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

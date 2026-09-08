@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on solar technologies, which aligns with the project's emphasis on Building Electrification, Energy Storage, and Solar. Additionally, the applicant entity type as a university fits well with the program's objective to support research in clean energy.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Building Electrification, Energy Storage, and Solar technologies, while the matched opportunity emphasizes circular economy principles and supply chain security, which do not directly align with the project's specific technology areas.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

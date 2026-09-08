@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The proposed project focuses on Building Electrification, Energy Storage, and Solar technologies, while the matched opportunity is centered around clean hydrogen hubs, which are unrelated to the project's technology areas and objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

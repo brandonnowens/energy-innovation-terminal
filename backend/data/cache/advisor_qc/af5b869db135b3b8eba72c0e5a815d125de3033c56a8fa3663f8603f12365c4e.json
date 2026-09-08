@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Building Electrification, Energy Storage, and Solar technologies, which align with the DOE's objectives for clean energy deployment on Tribal Lands. The opportunity supports installation and deployment of clean energy systems, making it a suitable match.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

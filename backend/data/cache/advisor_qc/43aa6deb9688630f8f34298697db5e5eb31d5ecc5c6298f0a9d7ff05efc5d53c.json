@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on software tools for advanced manufacturing, which does not directly align with the project's emphasis on sustainable materials and industrial decarbonization. Additionally, the RFI is not a funding opportunity, further indicating a mismatch.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

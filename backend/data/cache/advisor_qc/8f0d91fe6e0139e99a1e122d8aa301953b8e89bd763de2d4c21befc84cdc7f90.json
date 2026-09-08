@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on solar policy and analysis rather than direct funding for projects involving building electrification, energy storage, or solar deployment. This indicates a domain mismatch as the project requires funding for implementation rather than policy research.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

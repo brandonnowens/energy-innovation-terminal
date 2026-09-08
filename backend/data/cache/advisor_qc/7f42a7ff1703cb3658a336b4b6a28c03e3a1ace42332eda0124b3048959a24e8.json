@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on thermal and fluids engineering, which does not align with the project's emphasis on building electrification, energy storage, and solar technologies. The opportunity is more suited for research in thermal management rather than the proposed project's clean energy initiatives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on sustainable materials and industrial decarbonization, which aligns with the objectives of the Industrial Energy Efficiency Grand Challenge to improve energy efficiency in industrial processes. Both the project and the opportunity target the industrial sector and emphasize clean energy manufacturing.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

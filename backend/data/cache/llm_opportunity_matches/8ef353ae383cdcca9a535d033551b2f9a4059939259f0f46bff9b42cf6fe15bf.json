@@ -1,0 +1,15 @@
+{
+  "llm_match_score": 15.0,
+  "conviction_tier": "Low Fit",
+  "strategic_thesis": "The proposed project focuses on solar energy and industrial decarbonization, which does not align with the specific focus on bipolar membrane applications in extractive metallurgy outlined in the funding opportunity. Additionally, the funding opportunity is limited to a much smaller budget and a different technological focus than the proposed project.",
+  "criteria_strengths": [
+    "The proposed project has a high Technology Readiness Level (TRL 8), indicating advanced development and readiness for deployment.",
+    "The project addresses critical areas in clean energy manufacturing and industrial decarbonization, which are relevant to broader clean energy goals.",
+    "The estimated total budget of $15 million indicates a significant investment in clean energy technology."
+  ],
+  "potential_risks_or_flags": [
+    "The funding opportunity has a maximum award of $50,000, which is significantly lower than the proposed project's budget."
+  ],
+  "recommended_positioning": "Emphasize the advanced stage of the proposed project and its alignment with broader clean energy goals, while acknowledging the mismatch with the specific focus of the funding opportunity.",
+  "eligibility_verdict": "Ineligible"
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on developing energy efficient cooling technologies for buildings, which does not align with the broader scope of Building Electrification, Energy Storage, and Solar technologies proposed in the project. The specific focus on cooling systems represents a domain mismatch with the project's objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

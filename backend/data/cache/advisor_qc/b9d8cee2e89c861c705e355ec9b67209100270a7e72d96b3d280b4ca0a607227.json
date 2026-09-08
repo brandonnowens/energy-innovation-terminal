@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The proposed project focuses on Building Electrification, Energy Storage, and Solar technologies, while the matched opportunity is centered on molecular photoswitches and synthetic chemistry, which are unrelated to the clean energy technologies being pursued.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

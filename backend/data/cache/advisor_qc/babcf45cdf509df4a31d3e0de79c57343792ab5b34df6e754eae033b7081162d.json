@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on distributed energy resources, which aligns with the project's emphasis on building electrification and energy storage. Both projects aim to enhance grid resilience and efficiency through innovative technologies.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

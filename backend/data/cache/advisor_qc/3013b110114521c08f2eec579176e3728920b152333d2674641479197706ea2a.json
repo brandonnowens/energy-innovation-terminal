@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Building Electrification, Energy Storage, and Solar, which aligns with the funding opportunity's emphasis on deploying energy systems and efficiency measures for Tribal Buildings. Both the project and the opportunity aim to enhance energy security and resilience.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on the installation and performance monitoring of cold-climate packaged window heat pumps, which aligns with the project's emphasis on building electrification and retrofit activities. Both the project and the opportunity target clean energy solutions for commercial and multifamily buildings.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

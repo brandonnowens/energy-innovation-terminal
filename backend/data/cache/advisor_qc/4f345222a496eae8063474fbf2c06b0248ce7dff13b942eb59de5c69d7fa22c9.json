@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on energy conservation technologies, which aligns with the project's emphasis on building electrification, energy storage, and solar deployment. Both the project and the opportunity aim to enhance energy efficiency and renewable energy solutions.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

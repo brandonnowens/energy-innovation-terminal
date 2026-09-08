@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Building Electrification and energy efficiency, which aligns well with the objectives of the RECI initiative to support updated building energy codes. Both emphasize improving building performance and reducing greenhouse gas emissions.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

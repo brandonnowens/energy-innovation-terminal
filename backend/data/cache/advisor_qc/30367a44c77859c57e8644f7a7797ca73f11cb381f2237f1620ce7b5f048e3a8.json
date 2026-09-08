@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on scaling and piloting ARPA-E funded technologies, which may not directly align with the specific project details related to Building Electrification, Energy Storage, and Solar. The opportunity is more suited for advanced R&D rather than the applied retrofit and demonstration activities outlined in the project.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

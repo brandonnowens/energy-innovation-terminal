@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on defining zero emissions buildings, which aligns with the project's emphasis on building electrification and retrofitting for energy efficiency. Both aim to reduce emissions in the building sector, making this a relevant match.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

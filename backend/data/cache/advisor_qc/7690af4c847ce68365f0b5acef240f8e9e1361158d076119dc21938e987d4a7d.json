@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity is a Request for Information (RFI) focused on commercialization programming, which does not directly support the specific project activities related to Building Electrification, Energy Storage, and Solar. This opportunity does not provide funding or support for the proposed project's objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

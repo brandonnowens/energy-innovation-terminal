@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Sustainable Materials & Circular Economy and Clean Energy Manufacturing, while the matched opportunity is centered on carbon capture and mineralization, which does not align with the primary sectors and technology areas of the project.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

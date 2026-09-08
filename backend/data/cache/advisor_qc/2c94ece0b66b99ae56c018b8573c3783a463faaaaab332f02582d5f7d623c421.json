@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on industrial decarbonization and clean energy manufacturing, which aligns well with the opportunity's emphasis on electrification of industrial process heating. Both initiatives aim to reduce fossil fuel reliance in industrial operations.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

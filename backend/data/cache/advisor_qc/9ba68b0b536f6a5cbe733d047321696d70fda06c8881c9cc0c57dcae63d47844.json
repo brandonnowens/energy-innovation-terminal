@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on solar PV and battery storage installations, which align with the proposed project's technology areas of solar and energy storage. Additionally, the emphasis on community resilience and workforce development complements the project's objectives.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

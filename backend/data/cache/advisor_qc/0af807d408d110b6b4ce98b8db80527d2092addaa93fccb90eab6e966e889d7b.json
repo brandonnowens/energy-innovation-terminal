@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The project focuses on Building Electrification, Energy Storage, and Solar, while the matched opportunity emphasizes Smart Grid technology and energy assurance planning, which does not directly align with the project's core objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

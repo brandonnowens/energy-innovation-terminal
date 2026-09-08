@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.95,
+  "reason": "The matched opportunity focuses on astrophysical research related to free-floating planets, which is unrelated to the clean energy technologies and activities outlined in the proposed project. There is no alignment between the domains of planetary science and building electrification or energy storage.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

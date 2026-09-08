@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The proposed project focuses on Building Electrification, Energy Storage, and Solar, while the matched opportunity is centered on ion migration in halide perovskites, which is more relevant to semiconductor technology rather than building or energy applications.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

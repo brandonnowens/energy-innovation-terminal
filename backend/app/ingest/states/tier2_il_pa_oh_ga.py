@@ -1,0 +1,675 @@
+"""Tier 2 States (Ranks 5-8): Illinois, Pennsylvania, Ohio, Georgia."""
+
+TIER2_DATA = {
+    "IL": {
+        "state_code": "IL",
+        "state_name": "Illinois",
+        "gdp_billions": 1080,
+        "rank": 5,
+        "regulatory_body": "Illinois Commerce Commission (ICC)",
+        "utilities": [
+            {
+                "name": "Commonwealth Edison",
+                "short_name": "ComEd",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "Exelon",
+                "website": "https://www.comed.com",
+                "domain": "comed.com",
+                "city": "Chicago",
+                "state": "IL",
+                "zip_code": "60603",
+                "service_territory": "Northern Illinois (Chicago metropolitan area, Rockford, Joliet)",
+                "description": "The largest electric utility in Illinois, providing service to approximately 4 million customers (70% of the state's population).",
+                "logo_domain": "comed.com",
+                "founded_year": 1907,
+                "programs": [
+                    {
+                        "name": "ComEd Bronzeville Community Microgrid & Innovation",
+                        "program_type": "innovation",
+                        "description": "First utility-operated clustered microgrid in the country (interconnected with Illinois Tech), demonstrating advanced microgrid master controller and black-start capabilities.",
+                        "url": "https://www.comed.com/microgrid",
+                        "active": True,
+                        "target_stage": "demonstration",
+                    },
+                    {
+                        "name": "ComEd CEJA Beneficial Electrification & Clean Tech RFP",
+                        "program_type": "deployment",
+                        "description": "Climate and Equitable Jobs Act (CEJA) solicitations for fleet EV charging, smart inverters, and battery storage.",
+                        "url": "https://www.comed.com/cleanenergy",
+                        "active": True,
+                        "target_stage": "scale-up",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "COMED-CEJA-EV-2026",
+                        "name": "ComEd Beneficial Electrification & Fleet Charging Innovation RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "grant",
+                        "total_funding": 42000000.0,
+                        "max_per_award": 6000000.0,
+                        "short_description": "Competitive grants for commercial/transit EV charging infrastructure, depot charging management, and vehicle-to-grid demonstration projects.",
+                        "service_territory": "Northern Illinois / Chicago Metro",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "procurement_portal_url": "https://www.comed.com/business-services/doing-business-with-us",
+                        "year": 2026,
+                        "keywords": "CEJA, ComEd, EV charging, fleet electrification, V2G, Bronzeville microgrid",
+                        "technologies": ["EV Charging & Infrastructure", "Electric Vehicles & Clean Transit", "Microgrids & Resilience"],
+                        "sectors": ["Transportation", "Electric Grid & Utility", "Commercial"],
+                        "fuels": ["Electricity"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "COMED-AWD-2025-01",
+                        "recipient_name": "S&C Electric Company",
+                        "recipient_type": "company",
+                        "project_title": "IntelliTeam Microgrid Controller and PureWave Storage Integration for Bronzeville",
+                        "award_amount": 7500000.0,
+                        "year": 2025,
+                        "recipient_city": "Chicago",
+                        "recipient_state": "IL",
+                        "latitude": 41.8781,
+                        "longitude": -87.6298,
+                        "pi_name": "Anders Sjoelin",
+                        "opportunity_sol_num": "COMED-CEJA-EV-2026",
+                        "technologies": ["Microgrids & Resilience", "Power Electronics & Inverters"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            },
+            {
+                "name": "Ameren Illinois",
+                "short_name": "Ameren IL",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "Ameren",
+                "website": "https://www.ameren.com/illinois",
+                "domain": "ameren.com",
+                "city": "Peoria",
+                "state": "IL",
+                "zip_code": "61602",
+                "service_territory": "Central and Southern Illinois (Springfield, Peoria, Champaign, Metro East)",
+                "description": "Electric and natural gas delivery company serving 1.2 million electric and 816,000 natural gas customers across a 43,700-square-mile territory.",
+                "logo_domain": "ameren.com",
+                "founded_year": 1902,
+                "programs": [
+                    {
+                        "name": "Ameren Illinois Technology Applications Center (TAC) & Microgrid",
+                        "program_type": "innovation",
+                        "description": "University of Illinois Champaign-Urbana live grid microgrid testbed, testing high-penetration wind/solar, military-grade cyber, and storage.",
+                        "url": "https://www.ameren.com/illinois/company/reliability/microgrid",
+                        "active": True,
+                        "target_stage": "demonstration",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "AMEREN-TAC-MICRO-2026",
+                        "name": "Ameren IL Technology Applications Center Advanced Inverter & Storage RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 20000000.0,
+                        "max_per_award": 5000000.0,
+                        "short_description": "Field evaluation of grid-forming battery inverters, advanced cyber-secure sensors, and agricultural agrivoltaic integration.",
+                        "service_territory": "Central & Southern Illinois",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "procurement_portal_url": "https://www.ameren.com/supplier-diversity",
+                        "year": 2026,
+                        "keywords": "TAC, microgrid, grid-forming inverters, agrivoltaics, smart grid, Champaign",
+                        "technologies": ["Power Electronics & Inverters", "Energy Storage", "Solar PV", "AI, Computing & Energy Cyber"],
+                        "sectors": ["Electric Grid & Utility", "Agriculture & Forestry"],
+                        "fuels": ["Electricity", "Solar"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "AMEREN-AWD-2024-01",
+                        "recipient_name": "University of Illinois Urbana-Champaign",
+                        "recipient_type": "university",
+                        "project_title": "Agrivoltaics and Autonomous Microgrid Dynamic Stability Validation",
+                        "award_amount": 4200000.0,
+                        "year": 2024,
+                        "recipient_city": "Champaign",
+                        "recipient_state": "IL",
+                        "latitude": 40.1164,
+                        "longitude": -88.2434,
+                        "pi_name": "Dr. Kiruba Haran",
+                        "opportunity_sol_num": "AMEREN-TAC-MICRO-2026",
+                        "technologies": ["Power Electronics & Inverters", "Solar PV"],
+                        "sectors": ["Agriculture & Forestry", "Electric Grid & Utility"]
+                    }
+                ]
+            }
+        ]
+    },
+    "PA": {
+        "state_code": "PA",
+        "state_name": "Pennsylvania",
+        "gdp_billions": 965,
+        "rank": 6,
+        "regulatory_body": "Pennsylvania Public Utility Commission (PA PUC) / PJM Interconnection",
+        "utilities": [
+            {
+                "name": "PECO Energy",
+                "short_name": "PECO",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "Exelon",
+                "website": "https://www.peco.com",
+                "domain": "peco.com",
+                "city": "Philadelphia",
+                "state": "PA",
+                "zip_code": "19103",
+                "service_territory": "Southeastern Pennsylvania (Philadelphia, Bucks, Chester, Delaware, Montgomery counties)",
+                "description": "Pennsylvania's largest electric and natural gas utility, delivering energy to more than 1.7 million electric and 548,000 natural gas customers.",
+                "logo_domain": "peco.com",
+                "founded_year": 1881,
+                "programs": [
+                    {
+                        "name": "PECO Path to Clean & Smart Grid Innovation",
+                        "program_type": "innovation",
+                        "description": "Grid modernization, substation automated FLISR, EV charging infrastructure pilots, and distributed battery storage.",
+                        "url": "https://www.peco.com/cleanenergy",
+                        "active": True,
+                        "target_stage": "deployment",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "PECO-CLEAN-EV-2026",
+                        "name": "PECO Smart Energy & Clean Transit Charging Solicitations",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "grant",
+                        "total_funding": 28000000.0,
+                        "max_per_award": 4500000.0,
+                        "short_description": "Funding for high-power DC fast charging depots, commercial fleet electrification, and demand flexibility aggregation in SE PA.",
+                        "service_territory": "Greater Philadelphia Area",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "procurement_portal_url": "https://www.peco.com/suppliers",
+                        "year": 2026,
+                        "keywords": "PECO, EV charging, smart grid, SEPTA transit, fleet electrification, Philadelphia",
+                        "technologies": ["EV Charging & Infrastructure", "Electric Vehicles & Clean Transit", "Grid Modernization & Smart Grid"],
+                        "sectors": ["Transportation", "Electric Grid & Utility"],
+                        "fuels": ["Electricity"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "PECO-AWD-2025-01",
+                        "recipient_name": "Southeastern Pennsylvania Transportation Authority (SEPTA)",
+                        "recipient_type": "government",
+                        "project_title": "Wissahickon Transportation Center Smart Bus Depot Electrification and Megawatt Charging Hub",
+                        "award_amount": 5400000.0,
+                        "year": 2025,
+                        "recipient_city": "Philadelphia",
+                        "recipient_state": "PA",
+                        "latitude": 39.9526,
+                        "longitude": -75.1652,
+                        "pi_name": "Leslie Richards",
+                        "opportunity_sol_num": "PECO-CLEAN-EV-2026",
+                        "technologies": ["EV Charging & Infrastructure", "Electric Vehicles & Clean Transit"],
+                        "sectors": ["Transportation", "Government & Municipal"]
+                    }
+                ]
+            },
+            {
+                "name": "PPL Electric Utilities",
+                "short_name": "PPL Electric",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "PPL Corporation",
+                "website": "https://www.pplelectric.com",
+                "domain": "pplelectric.com",
+                "city": "Allentown",
+                "state": "PA",
+                "zip_code": "18101",
+                "service_territory": "Central and Eastern Pennsylvania (Allentown, Bethlehem, Harrisburg, Scranton, Lancaster)",
+                "description": "Transmission and distribution utility delivering electricity to 1.4 million customers in 29 counties of eastern and central Pennsylvania, recognized for dynamic DERMS innovation.",
+                "logo_domain": "pplelectric.com",
+                "founded_year": 1920,
+                "programs": [
+                    {
+                        "name": "PPL DERMS & Dynamic Grid Management Program",
+                        "program_type": "innovation",
+                        "description": "Pioneering distributed energy resource management system (DERMS) providing real-time autonomous grid optimization.",
+                        "url": "https://www.pplelectric.com/derms",
+                        "active": True,
+                        "target_stage": "deployment",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "PPL-DERMS-AUTO-2026",
+                        "name": "PPL Distributed Grid Optimization & Smart Inverter Coordination RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 22000000.0,
+                        "max_per_award": 5500000.0,
+                        "short_description": "Procurement of next-generation autonomous DERMS grid-edge software, smart inverters, and automated phase balancing systems.",
+                        "service_territory": "Central and Eastern Pennsylvania",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://www.pplelectric.com/suppliers",
+                        "year": 2026,
+                        "keywords": "DERMS, smart inverters, phase balancing, grid edge, PPL, distribution automation",
+                        "technologies": ["Grid Modernization & Smart Grid", "Power Electronics & Inverters", "AI, Computing & Energy Cyber"],
+                        "sectors": ["Electric Grid & Utility"],
+                        "fuels": ["Electricity"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "PPL-AWD-2024-01",
+                        "recipient_name": "GE Digital Energy (Grid Solutions)",
+                        "recipient_type": "company",
+                        "project_title": "Advanced Distribution Management System (ADMS) and Autonomous DERMS Orchestration",
+                        "award_amount": 6200000.0,
+                        "year": 2024,
+                        "recipient_city": "Wayne",
+                        "recipient_state": "PA",
+                        "latitude": 40.0437,
+                        "longitude": -75.3877,
+                        "pi_name": "Jim Walsh",
+                        "opportunity_sol_num": "PPL-DERMS-AUTO-2026",
+                        "technologies": ["Grid Modernization & Smart Grid", "AI, Computing & Energy Cyber"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            },
+            {
+                "name": "Duquesne Light Company",
+                "short_name": "Duquesne Light",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "DQE Holdings",
+                "website": "https://www.duquesnelight.com",
+                "domain": "duquesnelight.com",
+                "city": "Pittsburgh",
+                "state": "PA",
+                "zip_code": "15219",
+                "service_territory": "Southwestern Pennsylvania (Allegheny and Beaver counties, Pittsburgh metro)",
+                "description": "Electric utility serving nearly 600,000 direct customers in the Pittsburgh region, actively deploying urban microgrids and grid edge technology.",
+                "logo_domain": "duquesnelight.com",
+                "founded_year": 1880,
+                "programs": [
+                    {
+                        "name": "Duquesne Light Clean Energy Center & Microgrids",
+                        "program_type": "innovation",
+                        "description": "Woods Run microgrid demonstration, Pittsburgh Airport microgrid partnership, and urban EV charging.",
+                        "url": "https://www.duquesnelight.com/cleanenergy",
+                        "active": True,
+                        "target_stage": "demonstration",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "DLC-URBAN-MICRO-2026",
+                        "name": "Duquesne Light Urban District Microgrid & Battery Storage RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 18000000.0,
+                        "max_per_award": 6000000.0,
+                        "short_description": "Procurement of urban islandable microgrid assets, battery storage, and smart building energy management systems in Pittsburgh.",
+                        "service_territory": "Pittsburgh / Allegheny County",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "procurement_portal_url": "https://www.duquesnelight.com/suppliers",
+                        "year": 2026,
+                        "keywords": "urban microgrid, battery storage, Pittsburgh, Woods Run, district energy",
+                        "technologies": ["Microgrids & Resilience", "Energy Storage", "Building Envelope & Efficiency"],
+                        "sectors": ["Electric Grid & Utility", "Commercial"],
+                        "fuels": ["Electricity", "Storage & Chemical"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "DLC-AWD-2024-01",
+                        "recipient_name": "Eaton Corporation",
+                        "recipient_type": "company",
+                        "project_title": "EnergyAware Microgrid Controller and Power Distribution Center at Woods Run",
+                        "award_amount": 5100000.0,
+                        "year": 2024,
+                        "recipient_city": "Moon Township",
+                        "recipient_state": "PA",
+                        "latitude": 40.5167,
+                        "longitude": -80.2217,
+                        "pi_name": "Mike Longman",
+                        "opportunity_sol_num": "DLC-URBAN-MICRO-2026",
+                        "technologies": ["Microgrids & Resilience", "Power Electronics & Inverters"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            }
+        ]
+    },
+    "OH": {
+        "state_code": "OH",
+        "state_name": "Ohio",
+        "gdp_billions": 873,
+        "rank": 7,
+        "regulatory_body": "Public Utilities Commission of Ohio (PUCO) / PJM",
+        "utilities": [
+            {
+                "name": "AEP Ohio",
+                "short_name": "AEP Ohio",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "American Electric Power",
+                "website": "https://www.aepohio.com",
+                "domain": "aepohio.com",
+                "city": "Columbus",
+                "state": "OH",
+                "zip_code": "43215",
+                "service_territory": "Central, Southern, Northwestern, and Eastern Ohio (Columbus, Canton, Lima, Steubenville)",
+                "description": "Electric utility providing electricity to nearly 1.5 million customers in Ohio across 61 counties.",
+                "logo_domain": "aepohio.com",
+                "founded_year": 1906,
+                "programs": [
+                    {
+                        "name": "AEP Ohio GridSMART & Smart City Columbus",
+                        "program_type": "innovation",
+                        "description": "Smart grid modernizations, distribution automation, dynamic voltage regulation (Volt/VAR), and smart mobility infrastructure.",
+                        "url": "https://www.aepohio.com/gridsmart",
+                        "active": True,
+                        "target_stage": "deployment",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "AEPOH-GRIDSMART-2026",
+                        "name": "AEP Ohio Advanced Volt/VAR & Grid Modernization RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 35000000.0,
+                        "max_per_award": 8000000.0,
+                        "short_description": "Procurement of automated capacitor bank controllers, dynamic Volt/VAR optimization (VVO), and advanced line sensors.",
+                        "service_territory": "Central and Eastern Ohio",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://www.aep.com/suppliers",
+                        "year": 2026,
+                        "keywords": "GridSMART, Volt/VAR, VVO, distribution automation, AEP Ohio, Columbus",
+                        "technologies": ["Grid Modernization & Smart Grid", "Power Electronics & Inverters"],
+                        "sectors": ["Electric Grid & Utility"],
+                        "fuels": ["Electricity"],
+                        "stage": "Deployment & Infrastructure",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "AEPOH-AWD-2025-01",
+                        "recipient_name": "Schweitzer Engineering Laboratories (SEL)",
+                        "recipient_type": "company",
+                        "project_title": "Automated Fault Location, Isolation, and Service Restoration (FLISR) Relays for AEP Ohio",
+                        "award_amount": 7800000.0,
+                        "year": 2025,
+                        "recipient_city": "Columbus",
+                        "recipient_state": "OH",
+                        "latitude": 39.9612,
+                        "longitude": -82.9988,
+                        "pi_name": "Dave Whitehead",
+                        "opportunity_sol_num": "AEPOH-GRIDSMART-2026",
+                        "technologies": ["Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            },
+            {
+                "name": "AES Ohio",
+                "short_name": "AES Ohio",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "AES Corporation",
+                "website": "https://www.aes-ohio.com",
+                "domain": "aes-ohio.com",
+                "city": "Dayton",
+                "state": "OH",
+                "zip_code": "45402",
+                "service_territory": "West Central Ohio (Dayton metropolitan area)",
+                "description": "Electric utility providing service to over 527,000 customers in 24 counties in West Central Ohio.",
+                "logo_domain": "aes-ohio.com",
+                "founded_year": 1911,
+                "programs": [
+                    {
+                        "name": "AES Ohio Smart Grid Modernization Phase II",
+                        "program_type": "deployment",
+                        "description": "Comprehensive smart grid rollout, advanced metering infrastructure (AMI), self-healing grid automation, and DER integration.",
+                        "url": "https://www.aes-ohio.com/smartgrid",
+                        "active": True,
+                        "target_stage": "scale-up",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "AESOH-SMART-2026",
+                        "name": "AES Ohio Smart Grid Automation & Self-Healing Grid Solicitations",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 25000000.0,
+                        "max_per_award": 6000000.0,
+                        "short_description": "Procurement of automated mid-line reclosers, smart underground switches, and advanced distribution automation software.",
+                        "service_territory": "Dayton / West Central Ohio",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://www.aes-ohio.com/doing-business-us",
+                        "year": 2026,
+                        "keywords": "self-healing grid, FLISR, smart grid, AES Ohio, Dayton, automation",
+                        "technologies": ["Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility"],
+                        "fuels": ["Electricity"],
+                        "stage": "Deployment & Infrastructure",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "AESOH-AWD-2024-01",
+                        "recipient_name": "G&W Electric Company",
+                        "recipient_type": "company",
+                        "project_title": "VIPER-S Solid Dielectric Automated Reclosers for AES Ohio Smart Grid",
+                        "award_amount": 5600000.0,
+                        "year": 2024,
+                        "recipient_city": "Bolingbrook",
+                        "recipient_state": "IL",
+                        "latitude": 41.6986,
+                        "longitude": -88.0684,
+                        "pi_name": "John Mueller",
+                        "opportunity_sol_num": "AESOH-SMART-2026",
+                        "technologies": ["Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            }
+        ]
+    },
+    "GA": {
+        "state_code": "GA",
+        "state_name": "Georgia",
+        "gdp_billions": 827,
+        "rank": 8,
+        "regulatory_body": "Georgia Public Service Commission (GA PSC)",
+        "utilities": [
+            {
+                "name": "Georgia Power",
+                "short_name": "Georgia Power",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "Southern Company",
+                "website": "https://www.georgiapower.com",
+                "domain": "georgiapower.com",
+                "city": "Atlanta",
+                "state": "GA",
+                "zip_code": "30808",
+                "service_territory": "Statewide Georgia (Atlanta, Savannah, Augusta, Columbus, Macon)",
+                "description": "The largest electric subsidiary of Southern Company, serving 2.7 million customers in all but four of Georgia's 159 counties.",
+                "logo_domain": "georgiapower.com",
+                "founded_year": 1902,
+                "programs": [
+                    {
+                        "name": "Georgia Power Smart Neighborhood & Clean Hydrogen Demonstrations",
+                        "program_type": "innovation",
+                        "description": "Pioneering hydrogen blending (Plant McDonough / Plant Smith), microgrid testbeds, and the Atlanta Smart Neighborhood microgrid community.",
+                        "url": "https://www.georgiapower.com/cleanenergy",
+                        "active": True,
+                        "target_stage": "demonstration",
+                    },
+                    {
+                        "name": "Georgia Power Grid-Scale Battery & Clean Resource RFP",
+                        "program_type": "deployment",
+                        "description": "Competitive procurement of utility-scale battery storage (e.g. Mossy Branch 265MW BESS) and renewable resources under the 2023/2025 IRP.",
+                        "url": "https://www.georgiapower.com/irp",
+                        "active": True,
+                        "target_stage": "scale-up",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "GAPWR-BESS-IRP-2026",
+                        "name": "Georgia Power Utility-Scale BESS & Fast-Start Capacity RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 85000000.0,
+                        "max_per_award": 35000000.0,
+                        "short_description": "Procurement of 500MW of 4-hour utility-scale lithium-ion battery energy storage systems across Georgia to support data center load growth.",
+                        "service_territory": "Statewide Georgia",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://www.georgiapower.com/company/about-us/suppliers.html",
+                        "year": 2026,
+                        "keywords": "BESS, battery storage, IRP, Mossy Branch, data center load, Southern Company, Georgia Power",
+                        "technologies": ["Energy Storage", "Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility", "Commercial"],
+                        "fuels": ["Storage & Chemical", "Electricity"],
+                        "stage": "Deployment & Infrastructure",
+                    },
+                    {
+                        "solicitation_number": "GAPWR-H2-DEMO-2025",
+                        "name": "Georgia Power Clean Hydrogen Blending & Carbon Management Demonstration",
+                        "solicitation_type": "RFP",
+                        "status": "closed",
+                        "funding_type": "grant",
+                        "total_funding": 30000000.0,
+                        "max_per_award": 10000000.0,
+                        "short_description": "Demonstration of 20-30% green hydrogen co-firing in natural gas combined cycle turbines and industrial hydrogen transport.",
+                        "service_territory": "Georgia Power Generation Fleet",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "year": 2025,
+                        "keywords": "hydrogen blending, Plant McDonough, gas turbine, green hydrogen, EPRI",
+                        "technologies": ["Hydrogen & Clean Fuels", "Carbon Capture & Management (CCUS)"],
+                        "sectors": ["Electric Grid & Utility", "Industry & Manufacturing"],
+                        "fuels": ["Hydrogen", "Natural Gas"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "GAPWR-AWD-2025-01",
+                        "recipient_name": "Wärtsilä North America",
+                        "recipient_type": "company",
+                        "project_title": "Quantum High-Energy Density Battery Energy Storage System for Mossy Branch",
+                        "award_amount": 32000000.0,
+                        "year": 2025,
+                        "recipient_city": "Houston",
+                        "recipient_state": "TX",
+                        "latitude": 29.7604,
+                        "longitude": -95.3698,
+                        "pi_name": "Håkan Agnevall",
+                        "opportunity_sol_num": "GAPWR-BESS-IRP-2026",
+                        "technologies": ["Energy Storage"],
+                        "sectors": ["Electric Grid & Utility"]
+                    },
+                    {
+                        "external_award_id": "GAPWR-AWD-2024-02",
+                        "recipient_name": "Electric Power Research Institute (EPRI)",
+                        "recipient_type": "nonprofit",
+                        "project_title": "Hydrogen Blending Validation at Plant McDonough-Atkinson Generating Plant",
+                        "award_amount": 8900000.0,
+                        "year": 2024,
+                        "recipient_city": "Atlanta",
+                        "recipient_state": "GA",
+                        "latitude": 33.7490,
+                        "longitude": -84.3880,
+                        "pi_name": "Dr. Arshad Mansoor",
+                        "opportunity_sol_num": "GAPWR-H2-DEMO-2025",
+                        "technologies": ["Hydrogen & Clean Fuels"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            },
+            {
+                "name": "Cobb EMC",
+                "short_name": "Cobb EMC",
+                "org_type": "utility",
+                "sub_type": "Electric Cooperative",
+                "parent_holding_company": "Cobb EMC Member-Owners",
+                "website": "https://www.cobbemc.com",
+                "domain": "cobbemc.com",
+                "city": "Marietta",
+                "state": "GA",
+                "zip_code": "30066",
+                "service_territory": "North Metro Atlanta (Cobb, Bartow, Cherokee, Fulton, Paulding counties)",
+                "description": "One of the largest electric cooperatives in the United States, serving more than 200,000 residential and commercial members with a national reputation for co-op innovation.",
+                "logo_domain": "cobbemc.com",
+                "founded_year": 1938,
+                "programs": [
+                    {
+                        "name": "Cobb EMC Solar + Storage Co-op Innovation Lab",
+                        "program_type": "innovation",
+                        "description": "Campus solar microgrid, battery storage, and residential battery pilot aggregation.",
+                        "url": "https://www.cobbemc.com/solar",
+                        "active": True,
+                        "target_stage": "demonstration",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "COBB-MICRO-STORAGE-2026",
+                        "name": "Cobb EMC Campus Microgrid & Smart Substation Innovation RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 12000000.0,
+                        "max_per_award": 4000000.0,
+                        "short_description": "Expansion of headquarters microgrid, EV fast charging hub, and battery storage integration for co-op peak shaving.",
+                        "service_territory": "North Metro Atlanta",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "procurement_portal_url": "https://www.cobbemc.com/about-us",
+                        "year": 2026,
+                        "keywords": "cooperative, microgrid, battery storage, Cobb EMC, Marietta, solar",
+                        "technologies": ["Microgrids & Resilience", "Energy Storage", "Solar PV", "EV Charging & Infrastructure"],
+                        "sectors": ["Electric Grid & Utility", "Commercial"],
+                        "fuels": ["Electricity", "Solar"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "COBB-AWD-2024-01",
+                        "recipient_name": "PowerSecure, Inc.",
+                        "recipient_type": "company",
+                        "project_title": "Advanced Microgrid Controller and Distributed Battery Storage for Cobb EMC Campus",
+                        "award_amount": 3700000.0,
+                        "year": 2024,
+                        "recipient_city": "Durham",
+                        "recipient_state": "NC",
+                        "latitude": 35.9940,
+                        "longitude": -78.8986,
+                        "pi_name": "Eric Dupont",
+                        "opportunity_sol_num": "COBB-MICRO-STORAGE-2026",
+                        "technologies": ["Microgrids & Resilience", "Energy Storage"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            }
+        ]
+    }
+}

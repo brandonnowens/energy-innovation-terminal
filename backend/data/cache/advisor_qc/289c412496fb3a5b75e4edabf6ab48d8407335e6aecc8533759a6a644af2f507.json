@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on critical materials and their sustainable manufacturing, which aligns with the project's emphasis on sustainable materials, circular economy, and industrial decarbonization. Both the project and the opportunity aim to enhance clean energy manufacturing processes.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

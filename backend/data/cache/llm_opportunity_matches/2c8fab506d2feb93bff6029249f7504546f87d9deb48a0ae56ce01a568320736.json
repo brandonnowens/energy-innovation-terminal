@@ -1,0 +1,17 @@
+{
+  "llm_match_score": 85.0,
+  "conviction_tier": "Strong Alignment",
+  "strategic_thesis": "The proposed project aligns closely with the DOE's focus on industrial decarbonization and clean energy manufacturing, particularly in the context of sustainable materials and circular economy initiatives. With a Technology Readiness Level of 7, the project is well-positioned to meet the objectives of the funding opportunity, which emphasizes the acceleration of innovative energy technologies and their deployment in industrial settings.",
+  "criteria_strengths": [
+    "The project addresses key priority problem statements by focusing on the deployment of sustainable technologies that enhance industrial efficiency and reduce GHG emissions.",
+    "The alignment with the Industrial Decarbonization Roadmap positions the project as a critical contributor to the DOE's goals for deep decarbonization across the industrial sector.",
+    "The project\u2019s comprehensive approach, including manufacturing and software controls, enhances its potential market impact and technical merit."
+  ],
+  "potential_risks_or_flags": [
+    "The project must ensure compliance with any specific cost-share requirements or constraints related to the funding opportunity."
+  ],
+  "recommended_positioning": "Emphasize the project's innovative approach to integrating sustainable materials in industrial processes and its readiness for deployment at TRL 7. Highlight the potential for significant GHG emissions reductions and alignment with state clean energy standards.",
+  "eligibility_verdict": "Directly Eligible",
+  "is_llm_generated": true,
+  "model_used": "gpt-4o-mini"
+}

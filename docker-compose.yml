@@ -1,0 +1,56 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nyserda_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: nyserda_innovation
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d nyserda_innovation"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nyserda_app
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg2://postgres:postgres@postgres:5432/nyserda_innovation}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-energysignal-jwt-secret-key-2026-secure-token}
+      LLM_PROVIDER: ${LLM_PROVIDER:-none}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      TAVUS_API_KEY: ${TAVUS_API_KEY:-}
+      TAVUS_REPLICA_ID: ${TAVUS_REPLICA_ID:-}
+      TAVUS_PERSONA_ID: ${TAVUS_PERSONA_ID:-}
+      SOCRATA_APP_TOKEN: ${SOCRATA_APP_TOKEN:-}
+      ADMIN_PRIMARY_EMAIL: ${ADMIN_PRIMARY_EMAIL:-bowens@aixenergy.io}
+      ADMIN_PRIMARY_NAME: ${ADMIN_PRIMARY_NAME:-Brandon Owens}
+      ADMIN_GMAIL_USER: ${ADMIN_GMAIL_USER:-bowens@aixenergy.io}
+      ADMIN_GMAIL_PASSWORD: ${ADMIN_GMAIL_PASSWORD:-}
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  postgres_data:

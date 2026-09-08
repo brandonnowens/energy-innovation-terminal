@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on clean energy and education, which aligns with the project's emphasis on Building Electrification, Energy Storage, and training activities. The project's goals of demonstration and training fit well within the scope of the National Training and Education Resource initiative.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

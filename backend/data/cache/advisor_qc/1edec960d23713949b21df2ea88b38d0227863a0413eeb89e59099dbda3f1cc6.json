@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.95,
+  "reason": "The matched opportunity focuses on astrophysical research related to planet formation, which is unrelated to the proposed project's emphasis on building electrification, energy storage, and solar technologies. There is a clear domain mismatch between the fields of clean energy technology and astrophysics.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

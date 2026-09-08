@@ -1,0 +1,17 @@
+{
+  "llm_match_score": 65.0,
+  "conviction_tier": "Moderate Potential",
+  "strategic_thesis": "While the proposed project focuses on energy storage, clean transportation, and building electrification, which aligns with clean energy goals, the active funding opportunity specifically targets packaged terminal heat pumps in multifamily buildings. The project's broader scope may not directly address the specific objectives of the funding opportunity, which emphasizes demonstration of heat pump technology.",
+  "criteria_strengths": [
+    "The project has a strong focus on R&D and product development, which aligns with the funding opportunity's emphasis on demonstration and commercial deployment.",
+    "The proposed project's TRL of 7 indicates a high level of technological maturity, which can enhance its credibility in the application process.",
+    "The applicant type as a commercial entity fits within the eligible applicant categories outlined in the funding opportunity."
+  ],
+  "potential_risks_or_flags": [
+    "The funding opportunity is specifically focused on heat pumps, which may not align with the proposed project's emphasis on energy storage and clean transportation."
+  ],
+  "recommended_positioning": "Emphasize the project's innovative approach to integrating clean energy technologies and its potential to complement heat pump demonstrations, showcasing how it can contribute to broader clean energy goals in New York.",
+  "eligibility_verdict": "Likely Eligible",
+  "is_llm_generated": true,
+  "model_used": "gpt-4o-mini"
+}

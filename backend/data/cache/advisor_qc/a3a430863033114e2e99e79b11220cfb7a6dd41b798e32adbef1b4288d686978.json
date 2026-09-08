@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on thermal transport processes, which do not align with the project's emphasis on energy storage, clean transportation, and building electrification. The core objectives of the opportunity are more related to thermal phenomena rather than the proposed project's technology areas.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

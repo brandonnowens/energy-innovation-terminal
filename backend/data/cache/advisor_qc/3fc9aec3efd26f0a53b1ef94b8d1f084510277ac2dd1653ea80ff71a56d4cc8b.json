@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on clean energy technologies, which aligns with the project's emphasis on building electrification, energy storage, and solar. The objectives of reducing electricity consumption and improving energy efficiency are relevant to the proposed project's activities.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

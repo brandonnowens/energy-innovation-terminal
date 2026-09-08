@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The project focuses on Building Electrification, Energy Storage, and Solar, which aligns with the AFFECT 2020 FAC's objectives of enhancing energy efficiency and resilience at federal facilities. Both the project and the opportunity emphasize energy conservation technologies and deployment activities.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

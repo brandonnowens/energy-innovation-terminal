@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on advanced manufacturing and workforce training in areas relevant to clean energy and sustainable materials, which aligns with the project's emphasis on sustainable materials and industrial decarbonization.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

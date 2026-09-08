@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The project focuses on building electrification and clean energy deployment, which aligns with the funding opportunity's objective of transitioning campuses to clean energy. The eligible activities also support training and energy planning, relevant to the project's goals.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

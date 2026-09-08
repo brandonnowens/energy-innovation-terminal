@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on building energy efficiency technologies, which aligns well with the proposed project's emphasis on building electrification and retrofitting. Both the project and the opportunity target improvements in commercial buildings and energy efficiency.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

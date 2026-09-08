@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on advanced building technologies, which aligns well with the project's emphasis on building electrification, energy storage, and solar. Both the project and the funding opportunity target improvements in energy efficiency and deployment in commercial and industrial sectors.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

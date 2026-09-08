@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.95,
+  "reason": "The proposed project focuses on clean energy technologies such as building electrification and energy storage, while the matched opportunity is centered around a medical device for spinal cord stimulation, which is unrelated to clean energy.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

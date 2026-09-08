@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.7,
+  "reason": "The matched opportunity focuses on commercial building technologies, which does not directly align with the project's emphasis on sustainable materials and industrial decarbonization. The project's scope is more aligned with manufacturing and deployment rather than building technologies.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.8,
+  "reason": "The matched opportunity focuses on training for responding to failures in energy storage systems, which does not align with the project's emphasis on building electrification and solar deployment. The project's activities are more related to implementation and demonstration rather than emergency response training.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

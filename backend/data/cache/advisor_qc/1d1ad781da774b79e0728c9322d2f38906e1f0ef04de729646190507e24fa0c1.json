@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on extreme fast charging systems and batteries for electric vehicles, which does not align with the project's emphasis on building electrification, energy storage, and solar technologies. The primary sectors and activities of the project do not correspond with vehicle technologies.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

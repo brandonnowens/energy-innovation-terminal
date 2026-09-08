@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Building Electrification, Energy Storage, and Solar technologies, while the matched opportunity centers on high-current conversion technology for distributed energy resources, which does not align with the primary objectives of the project.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

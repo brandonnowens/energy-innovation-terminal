@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.8,
+  "reason": "The matched opportunity focuses on advanced manufacturing challenges without a direct alignment to sustainable materials or circular economy initiatives, which are the core of the proposed project. Additionally, the RFI does not accept applications, making it unsuitable for funding.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on electric vehicle charging infrastructure, which aligns with the project's clean transportation technology area. Both the project and the opportunity aim to enhance infrastructure related to energy and transportation.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

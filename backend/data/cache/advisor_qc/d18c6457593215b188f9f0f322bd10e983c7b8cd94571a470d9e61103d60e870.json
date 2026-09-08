@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity supports projects in building electrification and workforce development, which align with the proposed project's focus areas. Additionally, it emphasizes community benefits and local capacity building, relevant to the project's objectives.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

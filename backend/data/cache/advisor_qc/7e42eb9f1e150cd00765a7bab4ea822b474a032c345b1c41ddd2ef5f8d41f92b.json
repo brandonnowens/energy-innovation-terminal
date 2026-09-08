@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on theoretical analysis of quantum mechanics and disordered solids, which does not align with the practical applications of sustainable materials and industrial decarbonization outlined in the proposed project.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

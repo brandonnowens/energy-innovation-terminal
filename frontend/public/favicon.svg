@@ -1,0 +1,29 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cgSquircleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#00D2FF" />
+      <stop offset="50%" stopColor="#00F5D4" />
+      <stop offset="100%" stopColor="#0284C7" />
+    </linearGradient>
+    <linearGradient id="cgLeafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#00F5D4" />
+      <stop offset="100%" stopColor="#00D2FF" />
+    </linearGradient>
+    <linearGradient id="cgBarsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#00D2FF" />
+      <stop offset="100%" stopColor="#0369A1" />
+    </linearGradient>
+  </defs>
+  <!-- Squircle Base Frame -->
+  <rect x="8" y="8" width="84" height="84" rx="24" fill="#04070E" stroke="url(#cgSquircleGrad)" stroke-width="4.5" />
+  <!-- Satellite Node -->
+  <circle cx="88" cy="24" r="4.5" fill="#00D2FF" />
+  <circle cx="88" cy="24" r="2.2" fill="#FFFFFF" />
+  <!-- Top-Left Leaf -->
+  <path d="M26 48 C24 33 34 22 47 22 C48 27 46 36 39 42 C33 47 28 48 26 48 Z" fill="url(#cgLeafGrad)" />
+  <path d="M26 48 C28 55 35 58 43 56 C39 51 34 49 26 48 Z" fill="#00D2B4" />
+  <!-- 3 Ascending Bar Chart Columns -->
+  <rect x="42" y="53" width="6.5" height="18" rx="2" fill="url(#cgBarsGrad)" />
+  <rect x="52" y="45" width="6.5" height="26" rx="2" fill="url(#cgBarsGrad)" />
+  <rect x="62" y="37" width="6.5" height="34" rx="2" fill="url(#cgBarsGrad)" />
+</svg>

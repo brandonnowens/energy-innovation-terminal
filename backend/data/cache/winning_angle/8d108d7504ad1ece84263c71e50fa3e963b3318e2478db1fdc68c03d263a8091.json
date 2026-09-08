@@ -1,0 +1,85 @@
+{
+  "opportunity_id": 999999,
+  "solicitation_number": "PON 6141 (Previous Round)",
+  "opportunity_name": "Charge Ready NY - Large Public Sector Project Program - Next Round / Reissue",
+  "agency": "NYSERDA",
+  "program_name": "Clean Energy Program",
+  "match_score_pct": 92,
+  "winning_hook": "Imagine a New York where clean energy isn't just a vision, but a reality\u2014our project will transform the landscape of energy infrastructure, setting a benchmark for sustainable practices across the nation.",
+  "strategic_framing": "Position the project as a pivotal step towards New York's clean energy goals, emphasizing alignment with NYSERDA's priorities and showcasing how it addresses both technological innovation and community impact.",
+  "hidden_rubric_breakdown": [
+    {
+      "criterion": "Technical Merit & Innovation Feasibility",
+      "weight_pct": 35,
+      "target_score": "33/35",
+      "scoring_focus": "Demonstration of TRL 5 technology with clear pathways to TRL 6 and beyond, including specific metrics for success.",
+      "reviewer_bias": "Reviewers may favor projects that showcase unique technological advancements over incremental improvements."
+    },
+    {
+      "criterion": "Commercialization & Market Offtake Credibility",
+      "weight_pct": 25,
+      "target_score": "24/25",
+      "scoring_focus": "Evidence of strong market demand through letters of intent (LOIs) from potential customers and a clear commercialization strategy.",
+      "reviewer_bias": "Preference for projects with established partnerships and proven market traction."
+    },
+    {
+      "criterion": "Team Qualifications & Project Execution Plan",
+      "weight_pct": 20,
+      "target_score": "19/20",
+      "scoring_focus": "Highlighting the experience of key personnel and a detailed project timeline with defined milestones.",
+      "reviewer_bias": "Deductions for teams lacking dedicated personnel or those with insufficient experience in similar projects."
+    },
+    {
+      "criterion": "Community Benefits & Economic Impact",
+      "weight_pct": 20,
+      "target_score": "19/20",
+      "scoring_focus": "Demonstrating alignment with Justice40 initiatives, local job creation, and quantifiable benefits to state ratepayers.",
+      "reviewer_bias": "Generic statements about community benefits will be viewed unfavorably; specificity is crucial."
+    }
+  ],
+  "mandatory_reviewer_keywords": [
+    "clean energy",
+    "commercial demonstration",
+    "community impact",
+    "market demand",
+    "job creation",
+    "sustainability",
+    "innovation",
+    "partnership",
+    "scalability",
+    "economic benefits",
+    "NYSERDA priorities",
+    "technology readiness"
+  ],
+  "optimal_teaming_strategy": [
+    {
+      "role": "Academic / National Laboratory Research Partner",
+      "recommended_profile": "Top Tier-1 Research University (e.g. SUNY Stony Brook, Cornell, Columbia, or Brookhaven National Lab BNL)",
+      "strategic_rationale": "Strengthens Technical Merit score by 15-20% and provides accredited third-party validation testing."
+    },
+    {
+      "role": "Commercial Offtaker / Utility Demonstration Host",
+      "recommended_profile": "Local electric utility, industrial facility owner, or corporate off-taker with signed demonstration site agreement",
+      "strategic_rationale": "Validates Market Impact criteria and eliminates site control / permitting timeline risks."
+    },
+    {
+      "role": "Community & Workforce Development Partner",
+      "recommended_profile": "Regional labor union, clean energy workforce incubator, or environmental justice community organization",
+      "strategic_rationale": "Satisfies mandatory Community Benefits Plan (CBP) and Justice40 evaluation scoring."
+    }
+  ],
+  "unwritten_evaluation_biases": [
+    "Reviewers may favor projects that demonstrate a clear understanding of state energy policies and regulations.",
+    "Proposals that include testimonials or endorsements from influential stakeholders may receive higher scores.",
+    "Projects that can articulate a clear risk management strategy will be viewed more favorably."
+  ],
+  "red_flag_landmines": [
+    "Failure to provide specific, quantifiable community benefits.",
+    "Lack of a clear commercialization pathway or insufficient market analysis.",
+    "Inadequate detail on team qualifications or project execution timelines."
+  ],
+  "competitive_differentiation": "This project stands out by not only addressing technological innovation but also by committing to measurable community benefits and aligning closely with state energy goals, making it a model for future initiatives.",
+  "target_score_benchmark": "94/100 (Top Decile Fundable)",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

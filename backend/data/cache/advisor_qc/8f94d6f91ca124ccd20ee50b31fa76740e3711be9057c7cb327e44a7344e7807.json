@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.95,
+  "reason": "The matched opportunity focuses on ionospheric research and does not align with the clean energy technologies of building electrification, energy storage, or solar energy proposed in the project. This represents a clear domain mismatch.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

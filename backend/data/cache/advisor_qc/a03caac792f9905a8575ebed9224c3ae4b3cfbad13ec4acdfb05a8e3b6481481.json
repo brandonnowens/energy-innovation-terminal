@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.95,
+  "reason": "The matched opportunity focuses specifically on glovebox manufacturing for nuclear applications, which is unrelated to the proposed project's emphasis on sustainable materials, industrial decarbonization, and clean energy manufacturing.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

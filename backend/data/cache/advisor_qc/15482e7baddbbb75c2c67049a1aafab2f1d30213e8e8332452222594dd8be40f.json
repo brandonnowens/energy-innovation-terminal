@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on developing digital tools for optimizing building performance, which aligns with the project's emphasis on building electrification and energy efficiency. Both projects aim to enhance the sustainability of building infrastructure.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

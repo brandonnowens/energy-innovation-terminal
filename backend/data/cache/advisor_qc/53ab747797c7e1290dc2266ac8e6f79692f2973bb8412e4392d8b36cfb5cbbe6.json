@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on flow and transport in permeable media, which is unrelated to the project's emphasis on building electrification, energy storage, and solar technologies. The topics covered in the conference do not align with the project's objectives or activities.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

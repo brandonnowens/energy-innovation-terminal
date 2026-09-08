@@ -1,0 +1,343 @@
+@import "tailwindcss";
+
+/* ─── Energy Innovation Terminal Executive Cockpit Tokens ─── */
+:root {
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-pill: 9999px;
+  
+  --transition-fast: 120ms ease;
+  --transition-base: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  
+  --shadow-2xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-xs: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.07), 0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.09), 0 4px 12px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 20px 48px rgba(15, 23, 42, 0.12), 0 8px 24px rgba(15, 23, 42, 0.06);
+
+  /* Electric Cyan & Aqua Glowing Shadows */
+  --shadow-glow-cyan-sm: 0 0 10px rgba(0, 210, 255, 0.35);
+  --shadow-glow-cyan: 0 0 18px rgba(0, 210, 255, 0.45);
+  --shadow-glow-cyan-lg: 0 0 32px rgba(0, 210, 255, 0.6);
+  --shadow-glow-emerald: 0 0 16px rgba(0, 245, 212, 0.45);
+  --shadow-glow-green: 0 0 16px rgba(0, 245, 212, 0.45);
+}
+
+/* Base Body Styles */
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.012em;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+html.dark body, body.dark {
+  background-color: #090e17;
+  color: #f1f5f9;
+}
+
+html.light body, body.light {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Monospace & Tabular Numerals for metrics, currencies, and dates */
+.tabular-nums, .font-mono, td, th {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Executive Refined Scrollbar ─── */
+::-webkit-scrollbar { 
+  width: 5px; 
+  height: 5px; 
+}
+
+html.dark ::-webkit-scrollbar-track { 
+  background: rgba(9, 14, 23, 0.8); 
+}
+html.dark ::-webkit-scrollbar-thumb { 
+  background: rgba(148, 163, 184, 0.25); 
+  border-radius: 9999px; 
+}
+html.dark ::-webkit-scrollbar-thumb:hover { 
+  background: rgba(148, 163, 184, 0.45); 
+}
+
+html.light ::-webkit-scrollbar-track { 
+  background: #f1f5f9; 
+}
+html.light ::-webkit-scrollbar-thumb { 
+  background: #cbd5e1; 
+  border-radius: 9999px; 
+}
+html.light ::-webkit-scrollbar-thumb:hover { 
+  background: #94a3b8; 
+}
+
+/* Custom utility for hidden scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ─── Dual-Mode Surfaces & Cards ─── */
+html.dark .glass-panel,
+html.dark .cockpit-card,
+html.dark .luxury-card {
+  background: #0e1422;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+}
+
+html.dark .cockpit-card:hover,
+html.dark .luxury-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.5);
+}
+
+html.light .glass-panel,
+html.light .cockpit-card,
+html.light .luxury-card {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  border-radius: 12px;
+}
+
+html.light .cockpit-card:hover,
+html.light .luxury-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+/* ─── Universal High-Contrast Form System ─── */
+html.dark select,
+html.dark option,
+html.dark optgroup {
+  background-color: #090e18 !important;
+  color: #f8fafc !important;
+}
+
+html.light select,
+html.light option,
+html.light optgroup {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark .cockpit-input {
+  background-color: #0b111d;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1;
+}
+
+html.light input,
+html.light textarea,
+html.light .cockpit-input {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1;
+}
+
+html.dark label {
+  color: #94a3b8;
+}
+
+html.light label {
+  color: #475569;
+}
+
+.luxury-card-interactive {
+  background: #0e1422;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  color: #f1f5f9;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.luxury-card-interactive:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Vibrant Electric Energy Badges & Glows ─── */
+.glow-cyan-sm {
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+.glow-cyan {
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.55);
+}
+.glow-emerald {
+  box-shadow: 0 0 16px rgba(0, 245, 160, 0.5);
+}
+.shadow-glow-cyan {
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.45);
+}
+.shadow-glow-cyan-sm {
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+.shadow-glow-emerald {
+  box-shadow: 0 0 16px rgba(0, 245, 160, 0.45);
+}
+
+.cockpit-badge-emerald {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  background: rgba(0, 245, 160, 0.15);
+  color: #059669;
+  border: 1px solid rgba(0, 245, 160, 0.35);
+}
+
+html.dark .cockpit-badge-emerald {
+  color: #00F5A0;
+  background: rgba(0, 245, 160, 0.15);
+  border-color: rgba(0, 245, 160, 0.40);
+  box-shadow: 0 0 8px rgba(0, 245, 160, 0.2);
+}
+
+.cockpit-badge-cyan,
+.cockpit-badge-blue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  background: rgba(0, 229, 255, 0.12);
+  color: #0284c7;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+}
+
+html.dark .cockpit-badge-cyan,
+html.dark .cockpit-badge-blue {
+  color: #00E5FF;
+  background: rgba(0, 229, 255, 0.15);
+  border-color: rgba(0, 229, 255, 0.40);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+}
+
+.cockpit-badge-amber {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  background: rgba(217, 119, 6, 0.10);
+  color: #b45309;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+}
+
+html.dark .cockpit-badge-amber {
+  color: #fbbf24;
+  border-color: rgba(217, 119, 6, 0.30);
+}
+
+.cockpit-badge-slate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  background: rgba(241, 245, 249, 0.9);
+  color: #475569;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+}
+
+html.dark .cockpit-badge-slate {
+  background: rgba(30, 41, 59, 0.7);
+  color: #94a3b8;
+  border-color: rgba(51, 65, 85, 0.8);
+}
+
+/* Subtle dark background for panels */
+.aurora-mesh,
+.aurora-mesh-subtle {
+  background-color: #090e17;
+}
+
+/* ─── Range input styling for TRL slider ─── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #3b82f6;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 120ms ease;
+  margin-top: -4px;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9999px;
+}
+
+

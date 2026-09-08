@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on building scientific capacity in developing countries, which does not align with the specific clean energy technologies and activities outlined in the proposed project related to Building Electrification, Energy Storage, and Solar. Additionally, the opportunity is primarily aimed at researchers in developing countries, while the project is based in the U.S.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

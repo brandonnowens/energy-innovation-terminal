@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on infrastructure for mega-scale battery gigafactories and electrolyzer assembly plants, which does not align with the project's emphasis on sustainable materials, circular economy, and industrial decarbonization.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

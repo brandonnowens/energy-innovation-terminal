@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on sustainable materials and circular economy within industrial decarbonization, while the matched opportunity is centered on laser-based metal additive manufacturing, which does not align with the project's objectives related to sustainable materials or circular economy.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

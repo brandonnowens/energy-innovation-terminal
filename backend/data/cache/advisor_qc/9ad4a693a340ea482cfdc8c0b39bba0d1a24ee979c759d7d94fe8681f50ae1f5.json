@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity is a Request for Information (RFI) and does not provide funding for projects, which does not align with the project's need for financial support for Building Electrification, Energy Storage, and Solar activities. Additionally, the focus on stakeholder designation does not directly support the project's technological objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

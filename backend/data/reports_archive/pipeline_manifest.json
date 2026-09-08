@@ -1,0 +1,213 @@
+{
+  "started_at": "2026-09-03T16:47:34.273189",
+  "steps": {
+    "geocoding_and_enrichment": {
+      "status": "COMPLETED",
+      "duration_sec": 10.98,
+      "records_processed": 54305
+    },
+    "reports_generation": {
+      "status": "COMPLETED",
+      "duration_sec": 801.08,
+      "total_reports_generated": 24
+    }
+  },
+  "generated_reports": [
+    {
+      "preset_id": "future_research_pathways_flagship",
+      "title": "Future Research Pathways for Funding Institutions Across Technology & Fuel Domains",
+      "pdf_filename": "executive-report-future-research-pathways-flagship-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-future-research-pathways-flagship-2026-09-03.pdf",
+      "size_bytes": 591080,
+      "duration_sec": 36.06
+    },
+    {
+      "preset_id": "us_energy_innovation_landscape_flagship",
+      "title": "Navigating the U.S. Energy Innovation Landscape: Strategic Insights and Actionable Pathways",
+      "pdf_filename": "executive-report-us-energy-innovation-landscape-flagship-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-us-energy-innovation-landscape-flagship-2026-09-03.pdf",
+      "size_bytes": 583179,
+      "duration_sec": 36.31
+    },
+    {
+      "preset_id": "state_of_innovation",
+      "title": "Navigating the U.S. Energy Innovation Landscape: Insights and Strategies",
+      "pdf_filename": "executive-report-state-of-innovation-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-state-of-innovation-2026-09-03.pdf",
+      "size_bytes": 583157,
+      "duration_sec": 33.45
+    },
+    {
+      "preset_id": "federal_state_synergy",
+      "title": "Federal and State Energy Agency Synergies: A Co-Funding Analysis",
+      "pdf_filename": "executive-report-federal-state-synergy-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-federal-state-synergy-2026-09-03.pdf",
+      "size_bytes": 590293,
+      "duration_sec": 33.36
+    },
+    {
+      "preset_id": "state_innovation_evolution",
+      "title": "The Evolution of State Clean Energy Innovation: Strategic Insights for 2035",
+      "pdf_filename": "executive-report-state-innovation-evolution-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-state-innovation-evolution-2026-09-03.pdf",
+      "size_bytes": 590438,
+      "duration_sec": 33.78
+    },
+    {
+      "preset_id": "alt_fuels_dossier",
+      "title": "Strategic Insights on Alternative Fuels & Clean Molecules",
+      "pdf_filename": "executive-report-alt-fuels-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-alt-fuels-dossier-2026-09-03.pdf",
+      "size_bytes": 633377,
+      "duration_sec": 33.45
+    },
+    {
+      "preset_id": "clean_gen_dossier",
+      "title": "Strategic Insights on Clean Energy Generation & Offshore Systems",
+      "pdf_filename": "executive-report-clean-gen-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-clean-gen-dossier-2026-09-03.pdf",
+      "size_bytes": 592822,
+      "duration_sec": 31.15
+    },
+    {
+      "preset_id": "energy_storage_dossier",
+      "title": "Energy Storage & Advanced Battery Chemistries Strategic Dossier",
+      "pdf_filename": "executive-report-energy-storage-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-energy-storage-dossier-2026-09-03.pdf",
+      "size_bytes": 589154,
+      "duration_sec": 30.76
+    },
+    {
+      "preset_id": "grid_modernization_dossier",
+      "title": "Grid Modernization & Transmission Infrastructure Strategic Dossier",
+      "pdf_filename": "executive-report-grid-modernization-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-grid-modernization-dossier-2026-09-03.pdf",
+      "size_bytes": 614832,
+      "duration_sec": 33.12
+    },
+    {
+      "preset_id": "buildings_thermal_dossier",
+      "title": "Building Decarbonization & Thermal Energy Networks: Strategic Insights",
+      "pdf_filename": "executive-report-buildings-thermal-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-buildings-thermal-dossier-2026-09-03.pdf",
+      "size_bytes": 568562,
+      "duration_sec": 38.26
+    },
+    {
+      "preset_id": "ai_datacenter_dossier",
+      "title": "Strategic Insights on AI & Data Center Energy Innovation",
+      "pdf_filename": "executive-report-ai-datacenter-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-ai-datacenter-dossier-2026-09-03.pdf",
+      "size_bytes": 634401,
+      "duration_sec": 32.63
+    },
+    {
+      "preset_id": "ai_critical_minerals_supply_chain",
+      "title": "Critical Minerals Supply Chain: Strategic Insights and Action Framework",
+      "pdf_filename": "executive-report-ai-critical-minerals-supply-chain-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-ai-critical-minerals-supply-chain-2026-09-03.pdf",
+      "size_bytes": 604437,
+      "duration_sec": 30.08
+    },
+    {
+      "preset_id": "transportation_ev_dossier",
+      "title": "Transportation Electrification & Heavy-Duty Fleet Decarbonization Strategic Dossier",
+      "pdf_filename": "executive-report-transportation-ev-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-transportation-ev-dossier-2026-09-03.pdf",
+      "size_bytes": 612082,
+      "duration_sec": 33.11
+    },
+    {
+      "preset_id": "industrial_decarb_dossier",
+      "title": "Industrial Decarbonization & Clean Process Heat Strategic Dossier",
+      "pdf_filename": "executive-report-industrial-decarb-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-industrial-decarb-dossier-2026-09-03.pdf",
+      "size_bytes": 592362,
+      "duration_sec": 35.8
+    },
+    {
+      "preset_id": "critical_minerals_dossier",
+      "title": "Strategic Dossier on Critical Minerals and Supply Chain Security",
+      "pdf_filename": "executive-report-critical-minerals-dossier-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-critical-minerals-dossier-2026-09-03.pdf",
+      "size_bytes": 600668,
+      "duration_sec": 32.23
+    },
+    {
+      "preset_id": "advanced_nuclear_smr",
+      "title": "Strategic Insights on Advanced Nuclear Energy & Small Modular Reactors (SMRs)",
+      "pdf_filename": "executive-report-advanced-nuclear-smr-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-advanced-nuclear-smr-2026-09-03.pdf",
+      "size_bytes": 629633,
+      "duration_sec": 36.09
+    },
+    {
+      "preset_id": "knowledge_graph_atlas",
+      "title": "Strategic Insights on Clean Energy Funding Dynamics",
+      "pdf_filename": "executive-report-knowledge-graph-atlas-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-knowledge-graph-atlas-2026-09-03.pdf",
+      "size_bytes": 583209,
+      "duration_sec": 29.65
+    },
+    {
+      "preset_id": "regional_hubs_atlas",
+      "title": "Navigating the Landscape of Clean Energy Innovation Hubs",
+      "pdf_filename": "executive-report-regional-hubs-atlas-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-regional-hubs-atlas-2026-09-03.pdf",
+      "size_bytes": 491744,
+      "duration_sec": 33.76
+    },
+    {
+      "preset_id": "climate_justice_atlas",
+      "title": "The State of National Clean Energy Innovation & Capital Deployment",
+      "pdf_filename": "executive-report-climate-justice-atlas-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-climate-justice-atlas-2026-09-03.pdf",
+      "size_bytes": 582848,
+      "duration_sec": 33.38
+    },
+    {
+      "preset_id": "multistage_sankey_flow",
+      "title": "Multi-Stage Capital Flow & 'Valley of Death' Pipeline Intelligence",
+      "pdf_filename": "executive-report-multistage-sankey-flow-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-multistage-sankey-flow-2026-09-03.pdf",
+      "size_bytes": 589878,
+      "duration_sec": 30.24
+    },
+    {
+      "preset_id": "utility_modernization",
+      "title": "Utility Decarbonization & Grid Modernization Insights",
+      "pdf_filename": "executive-report-utility-modernization-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-utility-modernization-2026-09-03.pdf",
+      "size_bytes": 582642,
+      "duration_sec": 34.85
+    },
+    {
+      "preset_id": "awardee_due_diligence",
+      "title": "Clean Tech Awardee & Market Frontier Due Diligence Briefing",
+      "pdf_filename": "executive-report-awardee-due-diligence-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-awardee-due-diligence-2026-09-03.pdf",
+      "size_bytes": 587643,
+      "duration_sec": 33.11
+    },
+    {
+      "preset_id": "workforce_transition_report",
+      "title": "Clean Energy Workforce Transition & Economic Dynamics",
+      "pdf_filename": "executive-report-workforce-transition-report-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-workforce-transition-report-2026-09-03.pdf",
+      "size_bytes": 604547,
+      "duration_sec": 34.68
+    },
+    {
+      "preset_id": "winning_proposals_meta_strategy",
+      "title": "Winning Proposal Architectures & Scoring Criteria: Nationwide Meta-Analysis",
+      "pdf_filename": "executive-report-winning-proposals-meta-strategy-2026-09-03.pdf",
+      "pdf_path": "C:\\Users\\Brandon Owens\\Desktop\\nyserda-innovation-match\\backend\\data\\reports_archive\\executive-report-winning-proposals-meta-strategy-2026-09-03.pdf",
+      "size_bytes": 583918,
+      "duration_sec": 31.76
+    }
+  ],
+  "errors": [],
+  "completed_at": "2026-09-03T17:01:06.340142",
+  "total_duration_sec": 812.07,
+  "status": "SUCCESS"
+}

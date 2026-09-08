@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Sustainable Materials & Circular Economy and Industrial Decarbonization, while the matched opportunity is centered on Electric Machines, which does not align with the project's core technology areas.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

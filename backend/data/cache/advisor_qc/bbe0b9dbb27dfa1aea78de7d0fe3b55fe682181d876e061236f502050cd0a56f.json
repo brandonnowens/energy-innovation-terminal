@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on industrial decarbonization priorities but is a request for information rather than a funding opportunity. Additionally, it emphasizes specific sectors like chemicals and cement, which do not align directly with the project's focus on sustainable materials and circular economy.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

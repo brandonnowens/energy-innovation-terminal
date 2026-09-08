@@ -1,0 +1,17 @@
+{
+  "llm_match_score": 15.0,
+  "conviction_tier": "Low Fit",
+  "strategic_thesis": "The proposed project focuses on clean energy workforce development and industrial decarbonization, which does not align with the geological and geochemical research objectives of the active funding opportunity. The solicitation is centered on understanding volcanic processes and their implications for mineral deposits, rather than clean energy technologies or workforce training.",
+  "criteria_strengths": [
+    "The proposed project addresses workforce development in clean energy, which is a critical area for future job creation.",
+    "The project includes a diverse range of technology areas, which could be beneficial in a broader clean energy context.",
+    "The focus on industrial decarbonization aligns with general clean energy goals, although not specifically with the geological focus of the funding opportunity."
+  ],
+  "potential_risks_or_flags": [
+    "The TRL of the proposed project is 5, while the funding opportunity is focused on demonstration and commercial deployment, which may not align with the project's current stage."
+  ],
+  "recommended_positioning": "Emphasize the importance of workforce development in clean energy as a foundational element for future technological advancements, while acknowledging the distinct focus of the funding opportunity on geological research.",
+  "eligibility_verdict": "Ineligible",
+  "is_llm_generated": true,
+  "model_used": "gpt-4o-mini"
+}

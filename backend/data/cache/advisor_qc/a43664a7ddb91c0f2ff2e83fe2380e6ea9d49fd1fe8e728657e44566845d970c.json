@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The project focuses on solar technology, which aligns with the funding opportunity's emphasis on solar energy and agrivoltaics. Both the project and the opportunity aim to advance clean energy solutions, making this a relevant match.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

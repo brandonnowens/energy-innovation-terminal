@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on energy storage, which aligns with the project's emphasis on energy storage and building electrification. The activities proposed in the project, such as demonstration and deployment, are relevant to the objectives of the funding opportunity.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

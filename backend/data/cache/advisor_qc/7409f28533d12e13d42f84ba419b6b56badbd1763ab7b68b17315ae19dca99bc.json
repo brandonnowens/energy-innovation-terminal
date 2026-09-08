@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on clean energy deployment, which aligns with the project's emphasis on building electrification, energy storage, and solar technologies. The eligibility for commercial and industrial sectors supports the project's objectives in these areas.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

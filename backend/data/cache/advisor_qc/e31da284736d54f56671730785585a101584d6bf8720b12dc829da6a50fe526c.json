@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on lithium sustainability and energy storage, which does not align with the primary focus of the proposed project on building electrification and solar technologies. The emphasis on mining and recycling is unrelated to the project's objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

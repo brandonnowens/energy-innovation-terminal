@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The proposed project focuses on building electrification, energy storage, and solar technologies, while the matched opportunity is centered around amateur radio and space science, which are unrelated to clean energy technologies.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

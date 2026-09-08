@@ -1,0 +1,267 @@
+﻿import React, { useState, useEffect } from 'react';
+import {
+  ShieldCheck, Award, Sparkles, Check, Copy, ExternalLink,
+  Layers, Database, Zap, BookOpen, Activity, Compass,
+  Cpu, Lock, FileText, X, RefreshCw
+} from 'lucide-react';
+import clsx from 'clsx';
+import { EnergyInnovationTerminalLogo } from './EnergyInnovationTerminalLogo';
+import { useTheme } from '../context/ThemeContext';
+
+interface BrandonSignatureModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModalProps) {
+  const { isDark } = useTheme();
+  const [copiedFormat, setCopiedFormat] = useState<string | null>(null);
+  const [utcTime, setUtcTime] = useState<string>('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setUtcTime(now.toUTCString().replace('GMT', 'UTC'));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!isOpen) return null;
+
+  const citationApa = `Owens, B. N. (2026). U.S. Energy Innovation Database & Capital Intelligence Terminal (Version 3.5.0) [Software & Intelligence Corpus]. Clean Energy Research, LLC. https://energyinnovationterminal.com`;
+  
+  const citationBibtex = `@software{owens2026energyterminal,
+  author = {Brandon N. Owens},
+  title = {U.S. Energy Innovation Database & Capital Intelligence Terminal},
+  version = {3.5.0},
+  year = {2026},
+  publisher = {Clean Energy Research, LLC},
+  url = {https://energyinnovationterminal.com},
+  note = {Multi-agency cross-jurisdictional intelligence covering 56,413 awards, $104.16B capital, and 140+ federal & state utilities}
+}`;
+
+  const copyToClipboard = (text: string, format: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedFormat(format);
+    setTimeout(() => setCopiedFormat(null), 2500);
+  };
+
+  const triggerReplaySplash = () => {
+    onClose();
+    window.dispatchEvent(new CustomEvent('replay-splash-screen'));
+  };
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-in fade-in"
+        onClick={onClose}
+      />
+
+      {/* Modal Container */}
+      <div
+        className={clsx(
+          "relative w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden border transition-all duration-200 z-10 my-auto",
+          isDark
+            ? "bg-[#090e1a] border-cyan-500/30 text-slate-100 shadow-[0_0_50px_rgba(0,210,255,0.15)]"
+            : "bg-white border-slate-200 text-slate-900 shadow-2xl"
+        )}
+      >
+        {/* Holographic Header Banner */}
+        <div className="relative px-6 py-5 bg-gradient-to-r from-[#04101e] via-[#08182b] to-[#04101e] border-b border-cyan-500/30 overflow-hidden">
+          {/* Ambient Lighting */}
+          <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-cyan-400/20 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-emerald-400/20 blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 flex items-center justify-between">
+            <div className="flex items-center gap-3.5">
+              <div className="relative p-2 rounded-xl bg-cyan-950/60 border border-cyan-500/40 shadow-[0_0_20px_rgba(0,210,255,0.3)]">
+                <EnergyInnovationTerminalLogo size="sm" showText={false} />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase">
+                    Verified Executive Provenance
+                  </span>
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    VERIFIED SIGNATURE
+                  </span>
+                </div>
+                <h3 className="text-lg font-black tracking-tight text-white flex items-center gap-1.5 mt-0.5">
+                  <span>Curated &amp; Engineered by Brandon N. Owens</span>
+                </h3>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+            >
+              <X size={18} />
+            </button>
+          </div>
+        </div>
+
+        {/* Content Body */}
+        <div className="p-6 space-y-6 max-h-[75vh] overflow-y-auto no-scrollbar">
+          {/* Mission & Architectural Thesis */}
+          <div className={clsx(
+            "p-4 rounded-xl border",
+            isDark ? "bg-white/[0.02] border-white/[0.08]" : "bg-slate-50 border-slate-200"
+          )}>
+            <div className="flex items-start gap-3">
+              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0 mt-0.5 border border-cyan-500/20">
+                <Sparkles size={16} />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">
+                  The Clean Energy Innovation Corpus
+                </h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  The <strong>U.S. Energy Innovation Database &amp; Capital Intelligence Terminal</strong> unifies, cleanses, and structures upstream funding data across <strong>140+ federal, state, and utility authorities</strong>. Engineered with deep domain ontologies to provide capital allocators, founders, and policymakers with unprecedented visibility into the energy transition.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Verified Corpus Metrics Grid */}
+          <div>
+            <div className="text-[10.5px] font-mono uppercase tracking-wider text-slate-400 font-bold mb-2.5 flex items-center justify-between">
+              <span>Verified System Telemetry &amp; Coverage</span>
+              <span className="text-emerald-400 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Live Node
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <div className={clsx("p-3 rounded-xl border text-center", isDark ? "bg-white/[0.03] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
+                <div className="text-lg font-black text-cyan-400 font-mono">56,413</div>
+                <div className="text-[10px] text-slate-400 font-medium mt-0.5">Tracked Awards</div>
+              </div>
+
+              <div className={clsx("p-3 rounded-xl border text-center", isDark ? "bg-white/[0.03] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
+                <div className="text-lg font-black text-emerald-400 font-mono">$104.16B</div>
+                <div className="text-[10px] text-slate-400 font-medium mt-0.5">Capital Deployed</div>
+              </div>
+
+              <div className={clsx("p-3 rounded-xl border text-center", isDark ? "bg-white/[0.03] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
+                <div className="text-lg font-black text-blue-400 font-mono">10,250</div>
+                <div className="text-[10px] text-slate-400 font-medium mt-0.5">Grid Projects</div>
+              </div>
+
+              <div className={clsx("p-3 rounded-xl border text-center", isDark ? "bg-white/[0.03] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
+                <div className="text-lg font-black text-purple-400 font-mono">140+</div>
+                <div className="text-[10px] text-slate-400 font-medium mt-0.5">Funders Indexed</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Academic & Professional Citation */}
+          <div className={clsx(
+            "p-4 rounded-xl border",
+            isDark ? "bg-white/[0.02] border-white/[0.08]" : "bg-slate-50 border-slate-200"
+          )}>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <BookOpen size={14} className="text-cyan-400" />
+                <span className="text-xs font-bold text-slate-200">Academic &amp; Institutional Citation</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(citationApa, 'apa')}
+                  className={clsx(
+                    "px-2 py-1 rounded text-[10px] font-mono font-semibold transition-all border flex items-center gap-1 cursor-pointer",
+                    copiedFormat === 'apa'
+                      ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                      : isDark ? "bg-slate-800 text-slate-300 border-slate-700 hover:text-white" : "bg-white text-slate-700 border-slate-300"
+                  )}
+                >
+                  {copiedFormat === 'apa' ? <Check size={11} /> : <Copy size={11} />}
+                  <span>{copiedFormat === 'apa' ? 'Copied APA' : 'Copy APA'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(citationBibtex, 'bibtex')}
+                  className={clsx(
+                    "px-2 py-1 rounded text-[10px] font-mono font-semibold transition-all border flex items-center gap-1 cursor-pointer",
+                    copiedFormat === 'bibtex'
+                      ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                      : isDark ? "bg-slate-800 text-slate-300 border-slate-700 hover:text-white" : "bg-white text-slate-700 border-slate-300"
+                  )}
+                >
+                  {copiedFormat === 'bibtex' ? <Check size={11} /> : <Copy size={11} />}
+                  <span>{copiedFormat === 'bibtex' ? 'Copied BibTeX' : 'BibTeX'}</span>
+                </button>
+              </div>
+            </div>
+
+            <p className="text-[11px] font-mono p-2.5 rounded-lg bg-black/40 border border-white/5 text-slate-300 leading-relaxed break-words select-all">
+              {citationApa}
+            </p>
+          </div>
+
+          {/* Cryptographic & Architecture Seals */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-mono">
+            <div className={clsx("p-3 rounded-xl border flex items-center gap-3", isDark ? "bg-white/[0.02] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
+              <Cpu size={18} className="text-cyan-400 shrink-0" />
+              <div>
+                <div className="font-bold text-slate-200">Architecture Engine</div>
+                <div className="text-[10px] text-slate-400">PostgreSQL 17 · Vector / FTS · FastAPI · React 19</div>
+              </div>
+            </div>
+
+            <div className={clsx("p-3 rounded-xl border flex items-center gap-3", isDark ? "bg-white/[0.02] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
+              <Lock size={18} className="text-emerald-400 shrink-0" />
+              <div>
+                <div className="font-bold text-slate-200">Integrity &amp; Cryptography</div>
+                <div className="text-[10px] text-slate-400">Deterministic Matching · Immutable Audit Trail</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Modal Footer */}
+        <div className={clsx(
+          "px-6 py-3.5 border-t flex flex-col sm:flex-row items-center justify-between gap-3 text-xs",
+          isDark ? "bg-[#060a14] border-white/[0.08]" : "bg-slate-50 border-slate-200"
+        )}>
+          <div className="text-[10px] font-mono text-slate-400 flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span>Terminal Clock: <strong className="text-slate-300">{utcTime || 'UTC Live'}</strong></span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={triggerReplaySplash}
+              className={clsx(
+                "px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all border cursor-pointer",
+                isDark
+                  ? "bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border-cyan-500/30"
+                  : "bg-cyan-50 hover:bg-cyan-100 text-cyan-800 border-cyan-200"
+              )}
+            >
+              <RefreshCw size={12} />
+              <span>Replay Intro Splash</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-900 hover:bg-slate-200 transition-colors shadow-xs cursor-pointer"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

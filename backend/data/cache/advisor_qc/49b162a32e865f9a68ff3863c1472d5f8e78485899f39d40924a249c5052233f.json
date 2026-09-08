@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on improving energy efficiency in buildings, which aligns with the proposed project's emphasis on building electrification and retrofitting. Both projects aim to enhance energy performance and address issues related to energy consumption in residential settings.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

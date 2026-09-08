@@ -1,0 +1,350 @@
+{
+  "audit_version": "1.0.0",
+  "generated_at": "2026-09-04T05:15:16.705617+00:00",
+  "database_engine": "PostgreSQL 16+",
+  "summary": {
+    "total_database_entities": 77478,
+    "critical_active_opportunities": 312,
+    "active_opportunities_requiring_source_recovery": 89,
+    "active_opportunities_requiring_deadline_recovery": 0,
+    "awards_requiring_opportunity_linkage": 0,
+    "baseline_field_provenance_coverage_pct": 0.0
+  },
+  "entities": {
+    "opportunities": {
+      "total_records": 5741,
+      "status_breakdown": {
+        "active_open": 312,
+        "closed": 2677,
+        "awarded": 2752,
+        "other": 0
+      },
+      "fields": {
+        "solicitation_number": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "placeholders": 0
+        },
+        "name": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "placeholders": 0
+        },
+        "agency": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "placeholders": 0
+        },
+        "program_id": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "placeholders": 0
+        },
+        "organization_id": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "placeholders": 0
+        },
+        "open_date": {
+          "null_or_empty": 5429,
+          "null_pct": 94.57,
+          "placeholders": 0
+        },
+        "close_date": {
+          "null_or_empty": 5429,
+          "null_pct": 94.57,
+          "placeholders": 0
+        },
+        "total_funding": {
+          "null_or_empty": 4694,
+          "null_pct": 81.76,
+          "placeholders": 0
+        },
+        "max_per_award": {
+          "null_or_empty": 339,
+          "null_pct": 5.9,
+          "placeholders": 385
+        },
+        "cost_share_pct": {
+          "null_or_empty": 5705,
+          "null_pct": 99.37,
+          "placeholders": 22
+        },
+        "eligible_applicant_types": {
+          "null_or_empty": 5741,
+          "null_pct": 100.0,
+          "placeholders": 0
+        },
+        "eligible_technology_areas": {
+          "null_or_empty": 5741,
+          "null_pct": 100.0,
+          "placeholders": 0
+        },
+        "eligible_activity_types": {
+          "null_or_empty": 5741,
+          "null_pct": 100.0,
+          "placeholders": 0
+        },
+        "eligible_sectors": {
+          "null_or_empty": 5741,
+          "null_pct": 100.0,
+          "placeholders": 0
+        },
+        "statutory_mandates": {
+          "null_or_empty": 5741,
+          "null_pct": 100.0,
+          "placeholders": 0
+        },
+        "priority_problem_statements": {
+          "null_or_empty": 5741,
+          "null_pct": 100.0,
+          "placeholders": 0
+        },
+        "scoring_rubric_weights": {
+          "null_or_empty": 5741,
+          "null_pct": 100.0,
+          "placeholders": 0
+        },
+        "source_url": {
+          "null_or_empty": 115,
+          "null_pct": 2.0,
+          "placeholders": 0
+        },
+        "detail_page_url": {
+          "null_or_empty": 5548,
+          "null_pct": 96.64,
+          "placeholders": 0
+        },
+        "content_hash": {
+          "null_or_empty": 815,
+          "null_pct": 14.2,
+          "placeholders": 0
+        },
+        "last_verified_at": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "placeholders": 0
+        },
+        "geographic_scope": {
+          "null_or_empty": 5595,
+          "null_pct": 97.46,
+          "placeholders": 0
+        },
+        "target_trl_min": {
+          "null_or_empty": 5736,
+          "null_pct": 99.91,
+          "placeholders": 0
+        },
+        "target_trl_max": {
+          "null_or_empty": 5736,
+          "null_pct": 99.91,
+          "placeholders": 0
+        }
+      },
+      "quality_flags": {
+        "active_with_past_deadline": 12,
+        "active_missing_source_url": 89,
+        "active_missing_mandates": 312,
+        "duplicate_solicitation_numbers_count": 0,
+        "duplicate_solicitation_numbers_sample": []
+      }
+    },
+    "organizations": {
+      "total_records": 212,
+      "fields": {
+        "name": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "org_type": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "state": {
+          "null_or_empty": 17,
+          "null_pct": 8.02
+        },
+        "website": {
+          "null_or_empty": 26,
+          "null_pct": 12.26
+        },
+        "description": {
+          "null_or_empty": 17,
+          "null_pct": 8.02
+        },
+        "source_url": {
+          "null_or_empty": 212,
+          "null_pct": 100.0
+        },
+        "is_verified": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        }
+      },
+      "quality_flags": {
+        "duplicate_names_count": 0,
+        "unverified_count": 17
+      }
+    },
+    "programs": {
+      "total_records": 174,
+      "fields": {
+        "name": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "program_type": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "description": {
+          "null_or_empty": 24,
+          "null_pct": 13.79
+        },
+        "url": {
+          "null_or_empty": 38,
+          "null_pct": 21.84
+        },
+        "active": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "target_stage": {
+          "null_or_empty": 30,
+          "null_pct": 17.24
+        },
+        "target_applicant": {
+          "null_or_empty": 158,
+          "null_pct": 90.8
+        },
+        "source_url": {
+          "null_or_empty": 156,
+          "null_pct": 89.66
+        }
+      }
+    },
+    "awards": {
+      "total_records": 54313,
+      "fields": {
+        "opportunity_id": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "zero_values": 0
+        },
+        "recipient_name": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "zero_values": 0
+        },
+        "award_amount": {
+          "null_or_empty": 26,
+          "null_pct": 0.05,
+          "zero_values": 564
+        },
+        "award_date": {
+          "null_or_empty": 50399,
+          "null_pct": 92.79,
+          "zero_values": 0
+        },
+        "project_title": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "zero_values": 0
+        },
+        "agency": {
+          "null_or_empty": 0,
+          "null_pct": 0.0,
+          "zero_values": 0
+        },
+        "source_url": {
+          "null_or_empty": 98,
+          "null_pct": 0.18,
+          "zero_values": 0
+        },
+        "solicitation_number": {
+          "null_or_empty": 32235,
+          "null_pct": 59.35,
+          "zero_values": 0
+        }
+      },
+      "quality_flags": {
+        "missing_opportunity_link": 0,
+        "missing_opportunity_link_pct": 0.0
+      }
+    },
+    "recipients": {
+      "total_records": 13948,
+      "fields": {
+        "name": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "recipient_type": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "primary_technology": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "headquarters_state": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "total_funding_received": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "total_awards_count": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        }
+      }
+    },
+    "contacts": {
+      "total_records": 3090,
+      "fields": {
+        "name_display": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "title": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "email": {
+          "null_or_empty": 136,
+          "null_pct": 4.4
+        },
+        "organization_id": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        },
+        "source_url": {
+          "null_or_empty": 3090,
+          "null_pct": 100.0
+        },
+        "verification_status": {
+          "null_or_empty": 0,
+          "null_pct": 0.0
+        }
+      }
+    }
+  },
+  "relationship_integrity": {
+    "opportunities_missing_organization_id": 0,
+    "opportunities_missing_program_id": 0,
+    "awards_missing_opportunity_id": 0,
+    "total_category_mappings": 22971,
+    "total_entity_relationships": 3201
+  },
+  "data_quality_issues": [],
+  "prioritized_remediation": {
+    "tier_1_active_opportunities": 312,
+    "tier_2_connected_programs_and_orgs": 386,
+    "tier_3_recent_closed_precedents": 2677,
+    "tier_4_awards_and_awardees": 68261,
+    "tier_5_older_historical_records": 5415,
+    "tier_6_peripheral_records": 3090
+  }
+}

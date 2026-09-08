@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on the development of solar panel technology, which aligns with the proposed project's emphasis on solar energy and building electrification. Both projects aim to advance clean energy solutions within the commercial and industrial sectors.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

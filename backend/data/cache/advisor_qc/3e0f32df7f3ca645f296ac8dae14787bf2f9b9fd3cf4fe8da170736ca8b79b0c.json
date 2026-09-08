@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.8,
+  "reason": "The matched opportunity is a Request for Information and not a funding opportunity, which does not align with the project's need for funding. Additionally, while the project focuses on building electrification and energy storage, the RFI does not provide a clear pathway for funding or support for these specific technologies.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

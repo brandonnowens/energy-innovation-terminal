@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on manufacturability challenges in energy storage technologies, which does not align with the project's emphasis on building electrification and retrofit activities. The project is more oriented towards deployment and training rather than pre-production design implications.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

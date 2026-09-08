@@ -1,0 +1,563 @@
+"""Tier 4 States (Ranks 13-16): Virginia, New Jersey, Colorado, Tennessee."""
+
+TIER4_DATA = {
+    "VA": {
+        "state_code": "VA",
+        "state_name": "Virginia",
+        "gdp_billions": 707,
+        "rank": 13,
+        "regulatory_body": "Virginia State Corporation Commission (SCC) / PJM",
+        "utilities": [
+            {
+                "name": "Dominion Energy Virginia",
+                "short_name": "Dominion Energy VA",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "Dominion Energy",
+                "website": "https://www.dominionenergy.com",
+                "domain": "dominionenergy.com",
+                "city": "Richmond",
+                "state": "VA",
+                "zip_code": "23219",
+                "service_territory": "Northern Virginia (Data Center Alley), Central, and Eastern Virginia",
+                "description": "Electric utility providing service to over 2.7 million homes and businesses in Virginia and northeastern North Carolina, serving the largest data center market in the world.",
+                "logo_domain": "dominionenergy.com",
+                "founded_year": 1909,
+                "programs": [
+                    {
+                        "name": "Dominion Coastal Virginia Offshore Wind (CVOW) Innovation",
+                        "program_type": "innovation",
+                        "description": "Development of the nation's largest commercial offshore wind farm (2.6GW CVOW), turbine technology transfer, and subsea cable sensor innovation.",
+                        "url": "https://coastalvawind.com",
+                        "active": True,
+                        "target_stage": "deployment",
+                    },
+                    {
+                        "name": "Dominion Grid-Scale BESS & SMR Innovation RFP",
+                        "program_type": "deployment",
+                        "description": "Virginia Clean Economy Act (VCEA) solicitations for 2,700MW of storage, SMR advanced nuclear evaluation, and data center high-density power delivery.",
+                        "url": "https://www.dominionenergy.com/cleanenergy",
+                        "active": True,
+                        "target_stage": "scale-up",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "DOMVA-VCEA-BESS-2026",
+                        "name": "Dominion Energy Virginia Clean Economy Act Battery Storage RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 90000000.0,
+                        "max_per_award": 30000000.0,
+                        "short_description": "Competitive procurement of 500MW/2,000MWh utility-scale battery energy storage systems to support rapid artificial intelligence and data center load growth in Northern Virginia.",
+                        "service_territory": "Northern Virginia / Loudoun & Prince William Counties",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://www.dominionenergy.com/suppliers",
+                        "year": 2026,
+                        "keywords": "VCEA, BESS, data center load, Northern Virginia, Loudoun, Dominion Energy",
+                        "technologies": ["Energy Storage", "Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility", "Commercial"],
+                        "fuels": ["Storage & Chemical", "Electricity"],
+                        "stage": "Deployment & Infrastructure",
+                    },
+                    {
+                        "solicitation_number": "DOMVA-CVOW-INNOV-2025",
+                        "name": "Dominion Coastal Virginia Offshore Wind Subsea Tech & Sensing RFP",
+                        "solicitation_type": "RFP",
+                        "status": "closed",
+                        "funding_type": "contract",
+                        "total_funding": 45000000.0,
+                        "max_per_award": 15000000.0,
+                        "short_description": "Procurement of subsea dynamic cable monitoring, marine acoustic sensor systems, and offshore HVDC substation components.",
+                        "service_territory": "Coastal Virginia Offshore Lease Area",
+                        "utility_program_type": "Innovation RFP",
+                        "year": 2025,
+                        "keywords": "CVOW, offshore wind, subsea cable, HVDC, marine sensing, Dominion",
+                        "technologies": ["Offshore Wind", "Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility"],
+                        "fuels": ["Wind", "Electricity"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "DOMVA-AWD-2025-01",
+                        "recipient_name": "Siemens Energy Inc.",
+                        "recipient_type": "company",
+                        "project_title": "High-Voltage Direct Current (HVDC) Offshore Substation Converter Transformers for CVOW",
+                        "award_amount": 26000000.0,
+                        "year": 2025,
+                        "recipient_city": "Norfolk",
+                        "recipient_state": "VA",
+                        "latitude": 36.8508,
+                        "longitude": -76.2859,
+                        "pi_name": "Christian Bruch",
+                        "opportunity_sol_num": "DOMVA-CVOW-INNOV-2025",
+                        "technologies": ["Offshore Wind", "Power Electronics & Inverters"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            }
+        ]
+    },
+    "NJ": {
+        "state_code": "NJ",
+        "state_name": "New Jersey",
+        "gdp_billions": 782,
+        "rank": 14,
+        "regulatory_body": "New Jersey Board of Public Utilities (NJBPU) / PJM",
+        "utilities": [
+            {
+                "name": "Public Service Electric and Gas",
+                "short_name": "PSE&G",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "Public Service Enterprise Group (PSEG)",
+                "website": "https://www.pseg.com",
+                "domain": "pseg.com",
+                "city": "Newark",
+                "state": "NJ",
+                "zip_code": "07102",
+                "service_territory": "Corridor from Bergen County in northeast NJ to Gloucester County in southwest NJ (Newark, Jersey City, Trenton, Camden)",
+                "description": "New Jersey's oldest and largest publicly owned utility, serving nearly 2.3 million electric customers and 1.9 million gas customers (70% of NJ population).",
+                "logo_domain": "pseg.com",
+                "founded_year": 1903,
+                "programs": [
+                    {
+                        "name": "PSE&G Clean Energy Future (CEF) Innovation Program",
+                        "program_type": "innovation",
+                        "description": "$2.7B Clean Energy Future initiative funding energy efficiency, smart electric vehicle infrastructure, energy storage, and smart meters (AMI).",
+                        "url": "https://nj.pseg.com/cleanenergyfuture",
+                        "active": True,
+                        "target_stage": "deployment",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "PSEG-CEF-STORAGE-2026",
+                        "name": "PSE&G Clean Energy Future Storage & Microgrid Demonstrations",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "grant",
+                        "total_funding": 50000000.0,
+                        "max_per_award": 10000000.0,
+                        "short_description": "Competitive grants for 35MW of front-of-meter and behind-the-meter battery storage systems in critical health, transit, and water infrastructure.",
+                        "service_territory": "PSE&G Service Territory (Newark, Jersey City, Camden)",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "procurement_portal_url": "https://nj.pseg.com/suppliers",
+                        "year": 2026,
+                        "keywords": "Clean Energy Future, CEF, battery storage, microgrid, PSE&G, New Jersey, Newark",
+                        "technologies": ["Energy Storage", "Microgrids & Resilience", "EV Charging & Infrastructure"],
+                        "sectors": ["Electric Grid & Utility", "Government & Municipal"],
+                        "fuels": ["Electricity", "Storage & Chemical"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "PSEG-AWD-2024-01",
+                        "recipient_name": "Princeton Power Systems",
+                        "recipient_type": "company",
+                        "project_title": "Multi-Port Inverter and Microgrid Energy Storage Integration at Newark Transit Facility",
+                        "award_amount": 7800000.0,
+                        "year": 2024,
+                        "recipient_city": "Princeton",
+                        "recipient_state": "NJ",
+                        "latitude": 40.3573,
+                        "longitude": -74.6672,
+                        "pi_name": "Darren Hammell",
+                        "opportunity_sol_num": "PSEG-CEF-STORAGE-2026",
+                        "technologies": ["Power Electronics & Inverters", "Microgrids & Resilience", "Energy Storage"],
+                        "sectors": ["Transportation", "Electric Grid & Utility"]
+                    }
+                ]
+            },
+            {
+                "name": "Jersey Central Power & Light",
+                "short_name": "JCP&L",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "FirstEnergy",
+                "website": "https://www.firstenergycorp.com/jersey_central_power_light.html",
+                "domain": "firstenergycorp.com",
+                "city": "Morristown",
+                "state": "NJ",
+                "zip_code": "07960",
+                "service_territory": "Central and Northern New Jersey (Monmouth, Ocean, Morris, Sussex counties)",
+                "description": "FirstEnergy utility providing electric service to 1.1 million customers in central and northern New Jersey.",
+                "logo_domain": "firstenergycorp.com",
+                "founded_year": 1925,
+                "programs": [
+                    {
+                        "name": "JCP&L EnergizeNJ Grid Modernization Program",
+                        "program_type": "deployment",
+                        "description": "$935M grid reliability modernization, smart automated switches, and offshore wind transmission interconnection.",
+                        "url": "https://www.firstenergycorp.com/energizenj.html",
+                        "active": True,
+                        "target_stage": "scale-up",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "JCPL-ENERGIZE-2026",
+                        "name": "JCP&L Coastal Grid Hardening & Automation Solicitations",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 30000000.0,
+                        "max_per_award": 7500000.0,
+                        "short_description": "Procurement of submersible automated switches, flood-hardened sensors, and coastal distribution automation for the Jersey Shore.",
+                        "service_territory": "Monmouth and Ocean Counties / Jersey Shore",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://www.firstenergycorp.com/suppliers",
+                        "year": 2026,
+                        "keywords": "EnergizeNJ, coastal hardening, flood sensor, automation, Jersey Shore, JCP&L",
+                        "technologies": ["Grid Modernization & Smart Grid", "Resilience"],
+                        "sectors": ["Electric Grid & Utility"],
+                        "fuels": ["Electricity"],
+                        "stage": "Deployment & Infrastructure",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "JCPL-AWD-2024-01",
+                        "recipient_name": "Hubbell Power Systems",
+                        "recipient_type": "company",
+                        "project_title": "Submersible Solid-Dielectric Automated Distribution Reclosers for Coastal Shore Circuits",
+                        "award_amount": 6500000.0,
+                        "year": 2024,
+                        "recipient_city": "Morristown",
+                        "recipient_state": "NJ",
+                        "latitude": 40.7968,
+                        "longitude": -74.4815,
+                        "pi_name": "Allan Connolly",
+                        "opportunity_sol_num": "JCPL-ENERGIZE-2026",
+                        "technologies": ["Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            }
+        ]
+    },
+    "CO": {
+        "state_code": "CO",
+        "state_name": "Colorado",
+        "gdp_billions": 529,
+        "rank": 15,
+        "regulatory_body": "Colorado Public Utilities Commission (CO PUC)",
+        "utilities": [
+            {
+                "name": "Public Service Company of Colorado",
+                "short_name": "Xcel Energy CO",
+                "org_type": "utility",
+                "sub_type": "Investor-Owned Utility (IOU)",
+                "parent_holding_company": "Xcel Energy",
+                "website": "https://www.xcelenergy.com",
+                "domain": "xcelenergy.com",
+                "city": "Denver",
+                "state": "CO",
+                "zip_code": "80202",
+                "service_territory": "Front Range & Western Slope (Denver metro, Boulder, Fort Collins, Pueblo, Grand Junction)",
+                "description": "Colorado's largest utility, serving 1.5 million electric customers and 1.4 million natural gas customers, operating under an approved 85% carbon reduction Clean Energy Plan by 2030.",
+                "logo_domain": "xcelenergy.com",
+                "founded_year": 1869,
+                "programs": [
+                    {
+                        "name": "Xcel Energy Colorado Clean Energy Plan (CEP) & Clean Heat Plan",
+                        "program_type": "innovation",
+                        "description": "Historic clean energy transition deploying 400MW/1,600MWh storage, microgrids, thermal energy networks, and clean hydrogen blending.",
+                        "url": "https://www.xcelenergy.com/company/clean_energy_plan",
+                        "active": True,
+                        "target_stage": "deployment",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "XCELCO-CEP-STORAGE-2026",
+                        "name": "Xcel Energy Colorado Clean Energy Plan Battery Storage RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 80000000.0,
+                        "max_per_award": 30000000.0,
+                        "short_description": "Competitive procurement for 400MW of grid-scale battery storage and long-duration storage (LDES) to replace retired Comanche coal capacity.",
+                        "service_territory": "Front Range / Pueblo & Denver Metro",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://www.xcelenergy.com/suppliers",
+                        "year": 2026,
+                        "keywords": "Clean Energy Plan, Comanche coal conversion, BESS, LDES, Xcel Energy, Denver",
+                        "technologies": ["Energy Storage", "Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility"],
+                        "fuels": ["Storage & Chemical", "Electricity"],
+                        "stage": "Deployment & Infrastructure",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "XCELCO-AWD-2025-01",
+                        "recipient_name": "Form Energy, Inc.",
+                        "recipient_type": "company",
+                        "project_title": "100-Hour Multi-Day Iron-Air Storage Installation at Comanche Generating Station (Pueblo)",
+                        "award_amount": 25000000.0,
+                        "year": 2025,
+                        "recipient_city": "Pueblo",
+                        "recipient_state": "CO",
+                        "latitude": 38.2544,
+                        "longitude": -104.6091,
+                        "pi_name": "Mateo Jaramillo",
+                        "opportunity_sol_num": "XCELCO-CEP-STORAGE-2026",
+                        "technologies": ["Energy Storage"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            },
+            {
+                "name": "Tri-State Generation and Transmission",
+                "short_name": "Tri-State G&T",
+                "org_type": "utility",
+                "sub_type": "Generation & Transmission Cooperative",
+                "parent_holding_company": "Tri-State G&T Member Co-ops",
+                "website": "https://tristate.coop",
+                "domain": "tristate.coop",
+                "city": "Westminster",
+                "state": "CO",
+                "zip_code": "80021",
+                "service_territory": "Rural Colorado, Nebraska, New Mexico, and Wyoming (serving 41 distribution co-ops)",
+                "description": "Wholesale electric power supplier owned by 41 member distribution cooperatives across 4 states, advancing the Responsible Energy Plan.",
+                "logo_domain": "tristate.coop",
+                "founded_year": 1952,
+                "programs": [
+                    {
+                        "name": "Tri-State Responsible Energy Plan & Storage Innovation",
+                        "program_type": "innovation",
+                        "description": "70% clean energy by 2030, solar+storage procurement, and microgrid innovation for rural cooperative communities.",
+                        "url": "https://tristate.coop/responsible-energy-plan",
+                        "active": True,
+                        "target_stage": "scale-up",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "TRISTATE-REP-STORAGE-2026",
+                        "name": "Tri-State Clean Energy & Rural Resiliency Storage RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 35000000.0,
+                        "max_per_award": 12000000.0,
+                        "short_description": "Procurement of 100MW of cooperative-sited battery storage and solar integration in rural Western Colorado and Eastern Plains.",
+                        "service_territory": "Western Colorado and Eastern Plains",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://tristate.coop/rfp",
+                        "year": 2026,
+                        "keywords": "Responsible Energy Plan, cooperative, battery storage, rural resilience, Tri-State",
+                        "technologies": ["Energy Storage", "Solar PV", "Microgrids & Resilience"],
+                        "sectors": ["Electric Grid & Utility", "Agriculture & Forestry"],
+                        "fuels": ["Storage & Chemical", "Solar", "Electricity"],
+                        "stage": "Deployment & Infrastructure",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "TRISTATE-AWD-2024-01",
+                        "recipient_name": "Juwi Inc.",
+                        "recipient_type": "company",
+                        "project_title": "Axial Basin Solar and Storage Co-op Energy Facility",
+                        "award_amount": 10500000.0,
+                        "year": 2024,
+                        "recipient_city": "Boulder",
+                        "recipient_state": "CO",
+                        "latitude": 40.0150,
+                        "longitude": -105.2705,
+                        "pi_name": "Michael Martin",
+                        "opportunity_sol_num": "TRISTATE-REP-STORAGE-2026",
+                        "technologies": ["Solar PV", "Energy Storage"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            }
+        ]
+    },
+    "TN": {
+        "state_code": "TN",
+        "state_name": "Tennessee",
+        "gdp_billions": 523,
+        "rank": 16,
+        "regulatory_body": "Tennessee Valley Authority (TVA) Board of Directors / TRA",
+        "utilities": [
+            {
+                "name": "Tennessee Valley Authority",
+                "short_name": "TVA",
+                "org_type": "utility",
+                "sub_type": "Federal Public Power Corporation",
+                "parent_holding_company": "United States Government",
+                "website": "https://www.tva.com",
+                "domain": "tva.com",
+                "city": "Knoxville",
+                "state": "TN",
+                "zip_code": "37902",
+                "service_territory": "Tennessee Valley Region (Tennessee, parts of Alabama, Mississippi, Kentucky, Georgia, North Carolina, Virginia)",
+                "description": "The nation's largest public power provider, serving 10 million people across 7 states, operating world-leading research in advanced nuclear SMRs, hydrogen, and grid testbeds.",
+                "logo_domain": "tva.com",
+                "founded_year": 1933,
+                "programs": [
+                    {
+                        "name": "TVA Advanced Nuclear SMR Program (Clinch River)",
+                        "program_type": "innovation",
+                        "description": "Pioneering commercial Small Modular Reactor (SMR) licensing and construction at the Clinch River Nuclear Site (GE Hitachi BWRX-300).",
+                        "url": "https://www.tva.com/environment/technology-innovation/advanced-nuclear",
+                        "active": True,
+                        "target_stage": "demonstration",
+                    },
+                    {
+                        "name": "TVA Connected Communities & Carbon Free Innovation RFP",
+                        "program_type": "innovation",
+                        "description": "Community pilot funding for smart grid automation, EV charging corridors, and industrial hydrogen decarbonization.",
+                        "url": "https://www.tva.com/environment/technology-innovation",
+                        "active": True,
+                        "target_stage": "growth",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "TVA-CLINCH-SMR-2026",
+                        "name": "TVA Clinch River Advanced Nuclear SMR Engineering & Safety RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "contract",
+                        "total_funding": 150000000.0,
+                        "max_per_award": 50000000.0,
+                        "short_description": "Engineering, procurement, and design verification for the 300MWe GE Hitachi BWRX-300 Small Modular Reactor at the Clinch River site in Oak Ridge, TN.",
+                        "service_territory": "Oak Ridge / Tennessee Valley Region",
+                        "utility_program_type": "Innovation RFP",
+                        "procurement_portal_url": "https://www.tva.com/about-tva/doing-business-with-tva",
+                        "year": 2026,
+                        "keywords": "SMR, small modular reactor, advanced nuclear, Clinch River, Oak Ridge, BWRX-300, TVA",
+                        "technologies": ["Nuclear & Advanced SMRs", "Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility", "Industry & Manufacturing"],
+                        "fuels": ["Nuclear", "Electricity"],
+                        "stage": "Pilot & Demonstration",
+                    },
+                    {
+                        "solicitation_number": "TVA-CONNECT-COMM-2025",
+                        "name": "TVA Connected Communities Smart Grid & Microgrid Demonstration",
+                        "solicitation_type": "RFP",
+                        "status": "closed",
+                        "funding_type": "grant",
+                        "total_funding": 25000000.0,
+                        "max_per_award": 5000000.0,
+                        "short_description": "Grants for municipal and co-op partners deploying resilient solar microgrids, automated smart meters, and clean energy storage hubs.",
+                        "service_territory": "Tennessee Valley Municipalities",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "year": 2025,
+                        "keywords": "Connected Communities, microgrid, smart grid, public power, TVA",
+                        "technologies": ["Microgrids & Resilience", "Solar PV", "Energy Storage"],
+                        "sectors": ["Government & Municipal", "Electric Grid & Utility"],
+                        "fuels": ["Electricity", "Solar"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "TVA-AWD-2025-01",
+                        "recipient_name": "GE Hitachi Nuclear Energy",
+                        "recipient_type": "company",
+                        "project_title": "Standard Design and Construction Planning for BWRX-300 SMR at Clinch River",
+                        "award_amount": 48000000.0,
+                        "year": 2025,
+                        "recipient_city": "Wilmington",
+                        "recipient_state": "NC",
+                        "latitude": 34.2257,
+                        "longitude": -77.9447,
+                        "pi_name": "Jay Wileman",
+                        "opportunity_sol_num": "TVA-CLINCH-SMR-2026",
+                        "technologies": ["Nuclear & Advanced SMRs"],
+                        "sectors": ["Electric Grid & Utility"]
+                    },
+                    {
+                        "external_award_id": "TVA-AWD-2024-02",
+                        "recipient_name": "Oak Ridge National Laboratory (ORNL)",
+                        "recipient_type": "lab",
+                        "project_title": "Thermal-Hydraulic Validation and Digital Twin Safety Modeling for Advanced SMRs",
+                        "award_amount": 12500000.0,
+                        "year": 2024,
+                        "recipient_city": "Oak Ridge",
+                        "recipient_state": "TN",
+                        "latitude": 36.0104,
+                        "longitude": -84.2696,
+                        "pi_name": "Stephen Streiffer",
+                        "opportunity_sol_num": "TVA-CLINCH-SMR-2026",
+                        "technologies": ["Nuclear & Advanced SMRs", "AI, Computing & Energy Cyber"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            },
+            {
+                "name": "EPB Chattanooga",
+                "short_name": "EPB",
+                "org_type": "utility",
+                "sub_type": "Municipal Utility / Public Power",
+                "parent_holding_company": "City of Chattanooga",
+                "website": "https://epb.com",
+                "domain": "epb.com",
+                "city": "Chattanooga",
+                "state": "TN",
+                "zip_code": "37402",
+                "service_territory": "Greater Chattanooga and Hamilton County",
+                "description": "America's first 100% fiber-optic automated smart grid electric utility, operating the world's first commercial quantum communication network.",
+                "logo_domain": "epb.com",
+                "founded_year": 1935,
+                "programs": [
+                    {
+                        "name": "EPB Quantum Network & Advanced Smart Grid Testbed",
+                        "program_type": "innovation",
+                        "description": "Deploying commercial quantum key distribution (QKD), self-healing automated distribution switches, and microgrid testbeds.",
+                        "url": "https://epb.com/quantum",
+                        "active": True,
+                        "target_stage": "demonstration",
+                    }
+                ],
+                "opportunities": [
+                    {
+                        "solicitation_number": "EPB-QUANTUM-CYBER-2026",
+                        "name": "EPB Quantum Key Distribution & Grid Cybersecurity Innovation RFP",
+                        "solicitation_type": "RFP",
+                        "status": "open",
+                        "funding_type": "grant",
+                        "total_funding": 18000000.0,
+                        "max_per_award": 6000000.0,
+                        "short_description": "Testing quantum-encrypted control algorithms and high-speed fiber sensor communication for next-generation automated distribution grid control.",
+                        "service_territory": "Chattanooga / Hamilton County",
+                        "utility_program_type": "Pilot / Demonstration",
+                        "procurement_portal_url": "https://epb.com/about-us",
+                        "year": 2026,
+                        "keywords": "quantum network, QKD, grid cyber, smart grid, EPB, Chattanooga",
+                        "technologies": ["AI, Computing & Energy Cyber", "Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility"],
+                        "fuels": ["Electricity"],
+                        "stage": "Pilot & Demonstration",
+                    }
+                ],
+                "awards": [
+                    {
+                        "external_award_id": "EPB-AWD-2024-01",
+                        "recipient_name": "Qubitekk, Inc.",
+                        "recipient_type": "company",
+                        "project_title": "Quantum Entanglement-Based Cyber Defense Architecture for Electric Substation Automation",
+                        "award_amount": 5400000.0,
+                        "year": 2024,
+                        "recipient_city": "Vista",
+                        "recipient_state": "CA",
+                        "latitude": 33.2000,
+                        "longitude": -117.2425,
+                        "pi_name": "Duncan Earl",
+                        "opportunity_sol_num": "EPB-QUANTUM-CYBER-2026",
+                        "technologies": ["AI, Computing & Energy Cyber", "Grid Modernization & Smart Grid"],
+                        "sectors": ["Electric Grid & Utility"]
+                    }
+                ]
+            }
+        ]
+    }
+}

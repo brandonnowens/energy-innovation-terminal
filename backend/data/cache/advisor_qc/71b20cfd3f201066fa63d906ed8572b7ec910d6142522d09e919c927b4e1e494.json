@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on the integration of energy storage and solar technologies, which directly aligns with the proposed project's emphasis on Building Electrification, Energy Storage, and Solar. Both the project and the funding opportunity aim to enhance the deployment and demonstration of these clean energy technologies.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

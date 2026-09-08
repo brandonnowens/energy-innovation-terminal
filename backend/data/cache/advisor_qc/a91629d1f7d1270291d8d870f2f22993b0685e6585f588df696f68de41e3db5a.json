@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on advanced control of HVAC systems, which aligns with the project's emphasis on Building Electrification and energy efficiency. Both the project and the opportunity aim to reduce energy consumption in buildings, making this a relevant match.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

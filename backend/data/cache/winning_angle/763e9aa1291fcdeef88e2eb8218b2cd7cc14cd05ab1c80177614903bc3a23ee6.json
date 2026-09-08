@@ -1,0 +1,78 @@
+{
+  "opportunity_id": 8614,
+  "solicitation_number": "DE-FOA-0002453",
+  "opportunity_name": "Flow Battery Systems Manufacturing FOA",
+  "agency": "DOE",
+  "program_name": "Clean Energy Program",
+  "match_score_pct": 91,
+  "winning_hook": "Revolutionizing industrial energy efficiency through innovative thermal energy storage solutions that leverage high temperature phase change materials.",
+  "strategic_framing": "Position the project as a critical advancement in energy storage technology that not only enhances manufacturing efficiency but also aligns with national goals for energy resilience and sustainability.",
+  "hidden_rubric_breakdown": [
+    {
+      "criterion": "Technical Innovation and Feasibility",
+      "weight_pct": 35,
+      "target_score": "33/35",
+      "scoring_focus": "Reviewers will evaluate the novelty of the thermal storage technology, its scalability, and the feasibility of implementation in manufacturing settings.",
+      "reviewer_bias": "Preference for projects that demonstrate clear, quantifiable benefits over existing technologies."
+    },
+    {
+      "criterion": "Economic Impact and Market Potential",
+      "weight_pct": 25,
+      "target_score": "23/25",
+      "scoring_focus": "Assessment of the project's potential to reduce costs and improve competitiveness in the energy sector.",
+      "reviewer_bias": "Tendency to favor proposals with strong market analysis and clear pathways to commercialization."
+    },
+    {
+      "criterion": "Collaboration and Supply Chain Integration",
+      "weight_pct": 20,
+      "target_score": "18/20",
+      "scoring_focus": "Evaluation of partnerships and the ability to strengthen U.S. supply chains for energy storage.",
+      "reviewer_bias": "Favoring projects that involve multiple stakeholders and demonstrate a collaborative approach."
+    },
+    {
+      "criterion": "Project Management and Team Qualifications",
+      "weight_pct": 20,
+      "target_score": "18/20",
+      "scoring_focus": "Reviewers will look for a well-defined project management plan and the qualifications of the team members.",
+      "reviewer_bias": "Preference for teams with proven track records in energy technology development."
+    }
+  ],
+  "mandatory_reviewer_keywords": [
+    "energy storage",
+    "thermal energy",
+    "manufacturing efficiency",
+    "cost-effective",
+    "scalable",
+    "collaboration",
+    "supply chain",
+    "innovation",
+    "decarbonization",
+    "market potential"
+  ],
+  "optimal_teaming_strategy": [
+    {
+      "role": "Research Institution",
+      "recommended_profile": "Universities or national laboratories with expertise in energy materials and thermal systems.",
+      "strategic_rationale": "Bringing in academic partners can enhance the project's credibility and provide access to cutting-edge research and development capabilities."
+    },
+    {
+      "role": "Industry Partner",
+      "recommended_profile": "Manufacturers in the energy sector looking to adopt innovative storage solutions.",
+      "strategic_rationale": "Industry partners can provide practical insights into manufacturability and market needs, increasing the proposal's relevance."
+    }
+  ],
+  "unwritten_evaluation_biases": [
+    "Reviewers may favor projects that align closely with the DOE's strategic priorities for energy resilience and sustainability.",
+    "Proposals that include clear metrics for success and impact are likely to score higher.",
+    "Demonstrating a clear understanding of the competitive landscape can significantly enhance the proposal's credibility."
+  ],
+  "red_flag_landmines": [
+    "Failing to clearly articulate the innovation and uniqueness of the proposed technology.",
+    "Neglecting to include a comprehensive market analysis and commercialization strategy.",
+    "Lack of collaboration with relevant stakeholders, which may signal isolation in project development."
+  ],
+  "competitive_differentiation": "This project stands out by integrating advanced thermal energy storage with a focus on high temperature applications, addressing a critical gap in the market for industrial energy solutions, and leveraging unique materials that enhance efficiency and reduce costs.",
+  "target_score_benchmark": "94/100 (Top Decile Fundable)",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

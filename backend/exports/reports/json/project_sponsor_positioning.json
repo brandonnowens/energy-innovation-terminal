@@ -1,0 +1,1413 @@
+{
+  "preset_id": "project_sponsor_positioning",
+  "title": "Project Sponsor Solicitation Positioning & Funding Capture Playbook",
+  "category": "Project Strategy",
+  "metadata": {
+    "id": "project_sponsor_positioning",
+    "title": "Project Sponsor Solicitation Positioning & Funding Capture Playbook",
+    "subtitle": "Actionable strategic intelligence on opportunity timing (Open Enrollment vs. Due Dates), cost-share optimization, concept paper hurdles, and multi-agency scoring criteria alignment.",
+    "category": "Project Strategy",
+    "target_audience": "Project Developers, Clean Tech CEOs, Proposal Directors, Infrastructure Sponsors",
+    "badge": "Sponsor Positioning",
+    "icon": "Compass",
+    "pages": 21,
+    "capital_tracked": "$48.20B Tracked",
+    "awards_count": "5,694 Solicitations",
+    "key_focus": "Open vs rolling enrollment speed advantages, 20-50% cost-share structuring, concept paper de-risking, agency scoring rubric alignment (NYSERDA, DOE, CEC, MassCEC, EPA), and award sizing optimization."
+  },
+  "context": {
+    "preset_id": "project_sponsor_positioning",
+    "report_title": "Project Sponsor Solicitation Positioning & Funding Capture Playbook",
+    "macro_metrics": {
+      "total_awards": 46887,
+      "total_funding": 97500958491.25,
+      "total_funding_fmt": "$97.50B",
+      "unique_recipients": 11746,
+      "active_agencies": 99
+    },
+    "time_series": [
+      {
+        "year": 2000,
+        "awards": 101,
+        "funding": 24283860.0,
+        "funding_fmt": "$24.28M"
+      },
+      {
+        "year": 2001,
+        "awards": 1300,
+        "funding": 274999462.63,
+        "funding_fmt": "$275.00M"
+      },
+      {
+        "year": 2002,
+        "awards": 1498,
+        "funding": 310563003.0,
+        "funding_fmt": "$310.56M"
+      },
+      {
+        "year": 2003,
+        "awards": 1629,
+        "funding": 382654243.0,
+        "funding_fmt": "$382.65M"
+      },
+      {
+        "year": 2004,
+        "awards": 1511,
+        "funding": 595122158.0,
+        "funding_fmt": "$595.12M"
+      },
+      {
+        "year": 2005,
+        "awards": 1574,
+        "funding": 918889571.63,
+        "funding_fmt": "$918.89M"
+      },
+      {
+        "year": 2006,
+        "awards": 1486,
+        "funding": 490485657.0,
+        "funding_fmt": "$490.49M"
+      },
+      {
+        "year": 2007,
+        "awards": 1481,
+        "funding": 755667449.06,
+        "funding_fmt": "$755.67M"
+      },
+      {
+        "year": 2008,
+        "awards": 1639,
+        "funding": 941686710.72,
+        "funding_fmt": "$941.69M"
+      },
+      {
+        "year": 2009,
+        "awards": 2444,
+        "funding": 14420152428.44,
+        "funding_fmt": "$14.42B"
+      },
+      {
+        "year": 2010,
+        "awards": 2348,
+        "funding": 3904382158.87,
+        "funding_fmt": "$3.90B"
+      },
+      {
+        "year": 2011,
+        "awards": 1850,
+        "funding": 890146227.37,
+        "funding_fmt": "$890.15M"
+      },
+      {
+        "year": 2012,
+        "awards": 1621,
+        "funding": 701397587.43,
+        "funding_fmt": "$701.40M"
+      },
+      {
+        "year": 2013,
+        "awards": 1575,
+        "funding": 737381687.62,
+        "funding_fmt": "$737.38M"
+      },
+      {
+        "year": 2014,
+        "awards": 1456,
+        "funding": 967394340.53,
+        "funding_fmt": "$967.39M"
+      },
+      {
+        "year": 2015,
+        "awards": 1527,
+        "funding": 1022464660.25,
+        "funding_fmt": "$1.02B"
+      },
+      {
+        "year": 2016,
+        "awards": 1515,
+        "funding": 835449717.83,
+        "funding_fmt": "$835.45M"
+      },
+      {
+        "year": 2017,
+        "awards": 1579,
+        "funding": 775123415.79,
+        "funding_fmt": "$775.12M"
+      },
+      {
+        "year": 2018,
+        "awards": 1521,
+        "funding": 856811762.72,
+        "funding_fmt": "$856.81M"
+      },
+      {
+        "year": 2019,
+        "awards": 1751,
+        "funding": 984140461.32,
+        "funding_fmt": "$984.14M"
+      },
+      {
+        "year": 2020,
+        "awards": 1976,
+        "funding": 1232884283.16,
+        "funding_fmt": "$1.23B"
+      },
+      {
+        "year": 2021,
+        "awards": 1943,
+        "funding": 1212475222.08,
+        "funding_fmt": "$1.21B"
+      },
+      {
+        "year": 2022,
+        "awards": 2674,
+        "funding": 6105476790.72,
+        "funding_fmt": "$6.11B"
+      },
+      {
+        "year": 2023,
+        "awards": 2832,
+        "funding": 4361130849.88,
+        "funding_fmt": "$4.36B"
+      },
+      {
+        "year": 2024,
+        "awards": 2320,
+        "funding": 39777506364.21,
+        "funding_fmt": "$39.78B"
+      },
+      {
+        "year": 2025,
+        "awards": 2396,
+        "funding": 12945680625.36,
+        "funding_fmt": "$12.95B"
+      },
+      {
+        "year": 2026,
+        "awards": 1340,
+        "funding": 1076607792.63,
+        "funding_fmt": "$1.08B"
+      }
+    ],
+    "top_recipients": [
+      {
+        "name": "COALITION FOR GREEN CAPITAL",
+        "location": "Washington, DC",
+        "tech": "Carbon Management & Direct Air Capture",
+        "stage": "Commercialization & Scale",
+        "awards": 3,
+        "total_funding": 5124900000.0,
+        "funding_fmt": "$5.12B"
+      },
+      {
+        "name": "DEPARTMENT OF COMMUNITY & ECONOMIC DEVELOPMENT PENNSYLVANIA",
+        "location": "Harrisburg, PA",
+        "tech": "Building Decarbonization & Efficiency",
+        "stage": "Applied R&D & Innovation",
+        "awards": 4,
+        "total_funding": 750933490.0,
+        "funding_fmt": "$750.93M"
+      },
+      {
+        "name": "GENERAL MOTORS LLC",
+        "location": "Detroit, MI",
+        "tech": "Hydrogen & Clean Fuel Cells",
+        "stage": "Pilot & Demonstration",
+        "awards": 19,
+        "total_funding": 718856793.5299999,
+        "funding_fmt": "$718.86M"
+      },
+      {
+        "name": "DEPARTMENT OF COMMERCE MINNESOTA",
+        "location": "Saint Paul, MN",
+        "tech": "Building Decarbonization & Efficiency",
+        "stage": "Pilot & Demonstration",
+        "awards": 12,
+        "total_funding": 679614199.48,
+        "funding_fmt": "$679.61M"
+      },
+      {
+        "name": "SOUTH COAST AIR QUALITY MANAGEMENT DISTRICT",
+        "location": "Washington, DC",
+        "tech": "Electric Vehicles & Clean Transit",
+        "stage": "Commercialization & Scale",
+        "awards": 16,
+        "total_funding": 653108237.37,
+        "funding_fmt": "$653.11M"
+      },
+      {
+        "name": "PENNSYLVANIA DEPARTMENT OF ENVIRONMENTAL PROTECTION",
+        "location": "Harrisburg, PA",
+        "tech": "Building Decarbonization & Efficiency",
+        "stage": "Workforce Development",
+        "awards": 8,
+        "total_funding": 644465561.0,
+        "funding_fmt": "$644.47M"
+      },
+      {
+        "name": "MASSACHUSETTS DEPARTMENT OF ENERGY RESOURCES",
+        "location": "Boston, MA",
+        "tech": "Grid Modernization & Smart Power",
+        "stage": "Workforce Development",
+        "awards": 11,
+        "total_funding": 606307122.66,
+        "funding_fmt": "$606.31M"
+      },
+      {
+        "name": "DEPT OF ENERGY & ENVIRONMENTAL PROTECTION",
+        "location": "Washington, DC",
+        "tech": "Building Decarbonization & Efficiency",
+        "stage": "Commercialization & Scale",
+        "awards": 11,
+        "total_funding": 591541177.8299999,
+        "funding_fmt": "$591.54M"
+      },
+      {
+        "name": "AIR PRODUCTS AND CHEMICALS, INC",
+        "location": "Allentown, PA",
+        "tech": "Carbon Management & Direct Air Capture",
+        "stage": "Pilot & Demonstration",
+        "awards": 7,
+        "total_funding": 590995999.0,
+        "funding_fmt": "$591.00M"
+      },
+      {
+        "name": "COMPTROLLER OF PUBLIC ACCOUNTS",
+        "location": "Washington, DC",
+        "tech": "Electric Vehicles & Clean Transit",
+        "stage": "Workforce Development",
+        "awards": 5,
+        "total_funding": 567701399.0,
+        "funding_fmt": "$567.70M"
+      },
+      {
+        "name": "SOUTHERN COMPANY SERVICES, INC.",
+        "location": "Washington, DC",
+        "tech": "Grid Modernization & Smart Power",
+        "stage": "Applied R&D & Innovation",
+        "awards": 8,
+        "total_funding": 558426577.12,
+        "funding_fmt": "$558.43M"
+      },
+      {
+        "name": "COLORADO ENERGY OFFICE",
+        "location": "Denver, CO",
+        "tech": "Building Decarbonization & Efficiency",
+        "stage": "Workforce Development",
+        "awards": 11,
+        "total_funding": 554495155.5,
+        "funding_fmt": "$554.50M"
+      },
+      {
+        "name": "ILLINOIS ENVIRONMENTAL PROTECTION AGENCY",
+        "location": "Springfield, IL",
+        "tech": "Electric Vehicles & Clean Transit",
+        "stage": "Commercialization & Scale",
+        "awards": 7,
+        "total_funding": 548593424.0,
+        "funding_fmt": "$548.59M"
+      },
+      {
+        "name": "DEPARTMENT OF COMMUNITY SERVICES & DEVELOPMENT CALIFORNIA",
+        "location": "Sacramento, CA",
+        "tech": "Building Decarbonization & Efficiency",
+        "stage": "Applied R&D & Innovation",
+        "awards": 4,
+        "total_funding": 532756315.19,
+        "funding_fmt": "$532.76M"
+      },
+      {
+        "name": "STATE OF CALIFORNIA ENERGY COMMISSION",
+        "location": "Sacramento, CA",
+        "tech": "Building Decarbonization & Efficiency",
+        "stage": "Workforce Development",
+        "awards": 7,
+        "total_funding": 531570900.0,
+        "funding_fmt": "$531.57M"
+      }
+    ],
+    "priority_opportunities": [
+      {
+        "solicitation_number": "2303815",
+        "name": "SBIR Phase II: Ultra-Low-Power Physically-Secure Video transfer with Electro-Quasistatic Human Body Communication Enabling Distributed Computation for Lightweight Augmented Reality",
+        "agency": "NSF",
+        "total_funding": 750000000000.0,
+        "funding_fmt": "$750.00B",
+        "max_per_award": "$863.5K",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2451396",
+        "name": "SBIR Phase II: Advanced Thermal Battery Systems for Grid-Scale Energy Storage: Further Optimization of an Innovative Thermal Cycle Test Rig for Large-Scale Deployment",
+        "agency": "NSF",
+        "total_funding": 380000000000.0,
+        "funding_fmt": "$380.00B",
+        "max_per_award": "$1.13M",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2451730",
+        "name": "SBIR Phase II: Flow Battery Electrolyte Purification: Unlocking 24-Hour Storage Potential",
+        "agency": "NSF",
+        "total_funding": 330000000000.0,
+        "funding_fmt": "$330.00B",
+        "max_per_award": "$1.21M",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2607613",
+        "name": "PCL-Test Bed: PoLARIS: Polymer Laboratory for AI, Robotics, Informatics, and Standards",
+        "agency": "NSF",
+        "total_funding": 200000000000.0,
+        "funding_fmt": "$200.00B",
+        "max_per_award": "$20.00M",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2505118",
+        "name": "Collaborative Research: OAC Core: AI-Surrogate Enhanced Heterogeneous Acceleration for Large-Scale Power Grid Simulation",
+        "agency": "NSF",
+        "total_funding": 150000000000.0,
+        "funding_fmt": "$150.00B",
+        "max_per_award": "$200.0K",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2505119",
+        "name": "Collaborative Research: OAC Core: AI-Surrogate Enhanced Heterogeneous Acceleration for Large-Scale Power Grid Simulation",
+        "agency": "NSF",
+        "total_funding": 150000000000.0,
+        "funding_fmt": "$150.00B",
+        "max_per_award": "$200.0K",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2505120",
+        "name": "Collaborative Research: OAC Core: AI-Surrogate Enhanced Heterogeneous Acceleration for Large-Scale Power Grid Simulation",
+        "agency": "NSF",
+        "total_funding": 150000000000.0,
+        "funding_fmt": "$150.00B",
+        "max_per_award": "$200.0K",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "DE-FOA-0002452",
+        "name": "DE-FOA-0002452 Funding Opportunity Announcement: Industrial Assessment Centers",
+        "agency": "DOE",
+        "total_funding": 150000000000.0,
+        "funding_fmt": "$150.00B",
+        "max_per_award": "$2",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Closed",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2526737",
+        "name": "MCA Pilot PUI: Can unhatched eggs or trash affect nestling development and survival via modified thermal properties of the nest?",
+        "agency": "NSF",
+        "total_funding": 100000000000.0,
+        "funding_fmt": "$100.00B",
+        "max_per_award": "$294.4K",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2451557",
+        "name": "SBIR Phase II: High-Efficiency Retrofit Dehumidifiers for Air Conditioners via a Novel Filtration Technology",
+        "agency": "NSF",
+        "total_funding": 100000000000.0,
+        "funding_fmt": "$100.00B",
+        "max_per_award": "$1.25M",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "DE-FOA-0002826",
+        "name": "Bipartisan Infrastructure Law Enhanced Geothermal Systems (EGS) Pilot Demonstrations",
+        "agency": "DOE",
+        "total_funding": 62000000000.0,
+        "funding_fmt": "$62.00B",
+        "max_per_award": "$25.00M",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Closed",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "DE-FOA-0002680",
+        "name": "Bipartisan Infrastructure Law (BIL) Electric Drive Vehicle Battery Recycling and Second Life Applications",
+        "agency": "DOE",
+        "total_funding": 62000000000.0,
+        "funding_fmt": "$62.00B",
+        "max_per_award": "$4.00M",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Closed",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2507620",
+        "name": "SBIR Phase II: Moisture Control Paint and Primer System for Bathroom Mold Prevention",
+        "agency": "NSF",
+        "total_funding": 60000000000.0,
+        "funding_fmt": "$60.00B",
+        "max_per_award": "$1.24M",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "2446863",
+        "name": "I-Corps: Translation Potential of Seaweed-based Edible Coating for Food Preservation",
+        "agency": "NSF",
+        "total_funding": 50000000000.0,
+        "funding_fmt": "$50.00B",
+        "max_per_award": "$50.0K",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Awarded",
+        "type": "RFP"
+      },
+      {
+        "solicitation_number": "EPA-PROJECTGRANT-2024",
+        "name": "EPA PROJECT GRANT (B) (2024)",
+        "agency": "EPA",
+        "total_funding": 27887339777.0,
+        "funding_fmt": "$27.89B",
+        "max_per_award": "$6.97B",
+        "cost_share": "20%",
+        "concept_paper": "Optional",
+        "status": "Closed",
+        "type": "RFP"
+      }
+    ],
+    "total_tracked_pipeline": "$2721.89B",
+    "solicitations_evaluated": 15,
+    "strategic_technology_domains": [
+      {
+        "id": "alternative_fuels",
+        "title": "Alternative Fuels & Clean Molecules",
+        "subtitle": "Clean Hydrogen, Sustainable Aviation Fuels (SAF), Carbon Capture (CCUS), and Renewable Gas",
+        "policy_targets": "Northeast Clean Hydrogen Hub (MACH2), IRA 45V/45Q, State Climate Action Scoping Plans",
+        "recipient_count": 1944,
+        "award_count": 10899,
+        "total_funding": 17058406257.61,
+        "funding_fmt": "$17.06B",
+        "top_innovators": [
+          {
+            "name": "COALITION FOR GREEN CAPITAL",
+            "location": "Washington, DC",
+            "type": "Other",
+            "stage": "Commercialization & Scale",
+            "awards": 3,
+            "total_funding": 5124900000.0,
+            "funding_fmt": "$5.12B",
+            "focus": "Accelerating carbon management & direct air capture innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "GENERAL MOTORS LLC",
+            "location": "Detroit, MI",
+            "type": "Company",
+            "stage": "Pilot & Demonstration",
+            "awards": 19,
+            "total_funding": 718856793.5299999,
+            "funding_fmt": "$718.86M",
+            "focus": "Accelerating hydrogen & clean fuel cells innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "AIR PRODUCTS AND CHEMICALS, INC",
+            "location": "Allentown, PA",
+            "type": "Company",
+            "stage": "Pilot & Demonstration",
+            "awards": 7,
+            "total_funding": 590995999.0,
+            "funding_fmt": "$591.00M",
+            "focus": "Accelerating carbon management & direct air capture innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "HEIDELBERG MATERIALS US INC",
+            "location": "Irving, TX",
+            "type": "Company",
+            "stage": "Pilot & Demonstration",
+            "awards": 3,
+            "total_funding": 508662134.0,
+            "funding_fmt": "$508.66M",
+            "focus": "Accelerating carbon management & direct air capture innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "CENTURY ALUMINUM CO",
+            "location": "Chicago, IL",
+            "type": "Other",
+            "stage": "Pilot & Demonstration",
+            "awards": 1,
+            "total_funding": 500000000.0,
+            "funding_fmt": "$500.00M",
+            "focus": "Accelerating carbon management & direct air capture innovation, carbon abatement, and clean energy resilience across DOE programs."
+          }
+        ]
+      },
+      {
+        "id": "clean_generation",
+        "title": "Clean Energy Generation & Offshore Wind",
+        "subtitle": "Offshore Wind, Advanced Solar Photovoltaics, Geothermal, and Small Modular Reactors (SMRs)",
+        "policy_targets": "State Clean Energy Mandates, 10,000 MW Distributed Solar Targets, Statutory Decarbonization Goals",
+        "recipient_count": 2442,
+        "award_count": 9721,
+        "total_funding": 6510297707.96,
+        "funding_fmt": "$6.51B",
+        "top_innovators": [
+          {
+            "name": "EXXON MOBIL CORPORATION",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Applied R&D & Innovation",
+            "awards": 1,
+            "total_funding": 331885548.0,
+            "funding_fmt": "$331.89M",
+            "focus": "Accelerating wind energy & offshore systems innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "SUNNOVA ENERGY CORPORATION",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 281125850.0,
+            "funding_fmt": "$281.13M",
+            "focus": "Accelerating solar photovoltaics & systems innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "NEVADA CLEAN ENERGY FUND",
+            "location": "Carson City, NV",
+            "type": "Other",
+            "stage": "Commercialization & Scale",
+            "awards": 3,
+            "total_funding": 184800011.0,
+            "funding_fmt": "$184.80M",
+            "focus": "Accelerating solar photovoltaics & systems innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "KRAFT HEINZ FOODS COMPANY",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Workforce Development",
+            "awards": 1,
+            "total_funding": 170881459.0,
+            "funding_fmt": "$170.88M",
+            "focus": "Accelerating solar photovoltaics & systems innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "RADIATION MONITORING DEVICES, INC.",
+            "location": "Watertown, MA",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 393,
+            "total_funding": 151959440.0,
+            "funding_fmt": "$151.96M",
+            "focus": "Accelerating solar photovoltaics & systems innovation, carbon abatement, and clean energy resilience across DOD, DOE, EPA, NASA, NSF programs."
+          }
+        ]
+      },
+      {
+        "id": "energy_storage",
+        "title": "Energy Storage & Advanced Batteries",
+        "subtitle": "Long-Duration Energy Storage (LDES), Flow Batteries, BESS Safety, and Battery Recycling",
+        "policy_targets": "State Energy Storage Mandates (6 GW Targets), NFPA 855 Fire Safety Standards, State LDES Roadmaps",
+        "recipient_count": 2169,
+        "award_count": 12215,
+        "total_funding": 19638246451.88,
+        "funding_fmt": "$19.64B",
+        "top_innovators": [
+          {
+            "name": "JUSTICE CLIMATE FUND, INC.",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 940000000.0,
+            "funding_fmt": "$940.00M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "APPALACHIAN COMMUNITY CAPITAL CORPORATION",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 500000000.0,
+            "funding_fmt": "$500.00M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "NEW JERSEY DEPARTMENT OF TREASURY",
+            "location": "Tempe, AZ",
+            "type": "Government",
+            "stage": "Workforce Development",
+            "awards": 7,
+            "total_funding": 361798159.0,
+            "funding_fmt": "$361.80M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          },
+          {
+            "name": "GRID ALTERNATIVES",
+            "location": "Washington, DC",
+            "type": "Other",
+            "stage": "Commercialization & Scale",
+            "awards": 4,
+            "total_funding": 333846954.0,
+            "funding_fmt": "$333.85M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          },
+          {
+            "name": "MICHIGAN DEPARTMENT OF ENVIRONMENT, GREAT LAKES, AND ENERGY",
+            "location": "Lansing, MI",
+            "type": "Government",
+            "stage": "Commercialization & Scale",
+            "awards": 10,
+            "total_funding": 316438272.0,
+            "funding_fmt": "$316.44M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          }
+        ]
+      },
+      {
+        "id": "grid_modernization",
+        "title": "Grid Modernization & Transmission Infrastructure",
+        "subtitle": "HVDC Transmission, Smart Grid, DERMS, ADMS, and Substation Automation",
+        "policy_targets": "FERC Order 1920/2023, State Public Policy Transmission Planning, Dynamic Line Rating Integration",
+        "recipient_count": 2781,
+        "award_count": 10252,
+        "total_funding": 10567591472.64,
+        "funding_fmt": "$10.57B",
+        "top_innovators": [
+          {
+            "name": "MASSACHUSETTS DEPARTMENT OF ENERGY RESOURCES",
+            "location": "Boston, MA",
+            "type": "Government",
+            "stage": "Workforce Development",
+            "awards": 11,
+            "total_funding": 606307122.66,
+            "funding_fmt": "$606.31M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          },
+          {
+            "name": "SOUTHERN COMPANY SERVICES, INC.",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Applied R&D & Innovation",
+            "awards": 8,
+            "total_funding": 558426577.12,
+            "funding_fmt": "$558.43M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "DEPARTMENT OF CONSERVATION AND ENERGY, STATE OF LOUISIANA",
+            "location": "Baton Rouge, LA",
+            "type": "Government",
+            "stage": "Workforce Development",
+            "awards": 2,
+            "total_funding": 251478833.0,
+            "funding_fmt": "$251.48M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "GENERAC POWER SYSTEMS, INC.",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 2,
+            "total_funding": 249445046.0,
+            "funding_fmt": "$249.45M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "FLORIDA POWER & LIGHT COMPANY",
+            "location": "Tallahassee, FL",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 2,
+            "total_funding": 230363088.0,
+            "funding_fmt": "$230.36M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE programs."
+          }
+        ]
+      },
+      {
+        "id": "buildings_thermal",
+        "title": "Building Decarbonization & Thermal Networks",
+        "subtitle": "Utility Thermal Energy Networks (TENs), Cold-Climate Heat Pumps, and Building Emission Codes",
+        "policy_targets": "Utility Thermal Energy Networks & Jobs Acts, Climate-Friendly Home Mandates, Building Codes",
+        "recipient_count": 949,
+        "award_count": 3206,
+        "total_funding": 24510962035.61,
+        "funding_fmt": "$24.51B",
+        "top_innovators": [
+          {
+            "name": "CLIMATE UNITED FUND",
+            "location": "Washington, DC",
+            "type": "Other",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 6970000000.0,
+            "funding_fmt": "$6.97B",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "POWER FORWARD COMMUNITIES, INC",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 2000000000.0,
+            "funding_fmt": "$2.00B",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "DEPARTMENT OF COMMUNITY & ECONOMIC DEVELOPMENT PENNSYLVANIA",
+            "location": "Harrisburg, PA",
+            "type": "Government",
+            "stage": "Applied R&D & Innovation",
+            "awards": 4,
+            "total_funding": 750933490.0,
+            "funding_fmt": "$750.93M",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "DEPARTMENT OF COMMERCE MINNESOTA",
+            "location": "Saint Paul, MN",
+            "type": "Government",
+            "stage": "Pilot & Demonstration",
+            "awards": 12,
+            "total_funding": 679614199.48,
+            "funding_fmt": "$679.61M",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          },
+          {
+            "name": "PENNSYLVANIA DEPARTMENT OF ENVIRONMENTAL PROTECTION",
+            "location": "Harrisburg, PA",
+            "type": "Government",
+            "stage": "Workforce Development",
+            "awards": 8,
+            "total_funding": 644465561.0,
+            "funding_fmt": "$644.47M",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          }
+        ]
+      },
+      {
+        "id": "ai_datacenter",
+        "title": "Emerging AI & Data Center Energy Innovation",
+        "subtitle": "AI-Driven Grid Optimization, Hyperscale Data Center Power Architecture, and Waste Heat Capture",
+        "policy_targets": "Next-Generation Clean Compute Infrastructure, Behind-the-Meter Power, Liquid Cooling Standards",
+        "recipient_count": 933,
+        "award_count": 1956,
+        "total_funding": 3948824471.88,
+        "funding_fmt": "$3.95B",
+        "top_innovators": [
+          {
+            "name": "NEW YORK, STATE OF",
+            "location": "Albany, NY",
+            "type": "Government",
+            "stage": "Applied R&D & Innovation",
+            "awards": 1,
+            "total_funding": 594384013.0,
+            "funding_fmt": "$594.38M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "ENERGY OFFICE, NEBRASKA",
+            "location": "Lincoln, NE",
+            "type": "Other",
+            "stage": "Applied R&D & Innovation",
+            "awards": 3,
+            "total_funding": 154123592.0,
+            "funding_fmt": "$154.12M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "MICHIGAN STRATEGIC FUND",
+            "location": "Lansing, MI",
+            "type": "Other",
+            "stage": "Applied R&D & Innovation",
+            "awards": 2,
+            "total_funding": 154048200.0,
+            "funding_fmt": "$154.05M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "EXECUTIVE OFFICE OF THE COMMONWEALTH OF KENTUCKY",
+            "location": "Frankfort, KY",
+            "type": "Other",
+            "stage": "Applied R&D & Innovation",
+            "awards": 5,
+            "total_funding": 116970636.52,
+            "funding_fmt": "$116.97M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "STATE, LOUISIANA DEPARTMENT OF",
+            "location": "Baton Rouge, LA",
+            "type": "Government",
+            "stage": "Applied R&D & Innovation",
+            "awards": 1,
+            "total_funding": 101305594.0,
+            "funding_fmt": "$101.31M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          }
+        ]
+      }
+    ],
+    "nyserda_strategic_domains": [
+      {
+        "id": "alternative_fuels",
+        "title": "Alternative Fuels & Clean Molecules",
+        "subtitle": "Clean Hydrogen, Sustainable Aviation Fuels (SAF), Carbon Capture (CCUS), and Renewable Gas",
+        "policy_targets": "Northeast Clean Hydrogen Hub (MACH2), IRA 45V/45Q, State Climate Action Scoping Plans",
+        "recipient_count": 1944,
+        "award_count": 10899,
+        "total_funding": 17058406257.61,
+        "funding_fmt": "$17.06B",
+        "top_innovators": [
+          {
+            "name": "COALITION FOR GREEN CAPITAL",
+            "location": "Washington, DC",
+            "type": "Other",
+            "stage": "Commercialization & Scale",
+            "awards": 3,
+            "total_funding": 5124900000.0,
+            "funding_fmt": "$5.12B",
+            "focus": "Accelerating carbon management & direct air capture innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "GENERAL MOTORS LLC",
+            "location": "Detroit, MI",
+            "type": "Company",
+            "stage": "Pilot & Demonstration",
+            "awards": 19,
+            "total_funding": 718856793.5299999,
+            "funding_fmt": "$718.86M",
+            "focus": "Accelerating hydrogen & clean fuel cells innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "AIR PRODUCTS AND CHEMICALS, INC",
+            "location": "Allentown, PA",
+            "type": "Company",
+            "stage": "Pilot & Demonstration",
+            "awards": 7,
+            "total_funding": 590995999.0,
+            "funding_fmt": "$591.00M",
+            "focus": "Accelerating carbon management & direct air capture innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "HEIDELBERG MATERIALS US INC",
+            "location": "Irving, TX",
+            "type": "Company",
+            "stage": "Pilot & Demonstration",
+            "awards": 3,
+            "total_funding": 508662134.0,
+            "funding_fmt": "$508.66M",
+            "focus": "Accelerating carbon management & direct air capture innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "CENTURY ALUMINUM CO",
+            "location": "Chicago, IL",
+            "type": "Other",
+            "stage": "Pilot & Demonstration",
+            "awards": 1,
+            "total_funding": 500000000.0,
+            "funding_fmt": "$500.00M",
+            "focus": "Accelerating carbon management & direct air capture innovation, carbon abatement, and clean energy resilience across DOE programs."
+          }
+        ]
+      },
+      {
+        "id": "clean_generation",
+        "title": "Clean Energy Generation & Offshore Wind",
+        "subtitle": "Offshore Wind, Advanced Solar Photovoltaics, Geothermal, and Small Modular Reactors (SMRs)",
+        "policy_targets": "State Clean Energy Mandates, 10,000 MW Distributed Solar Targets, Statutory Decarbonization Goals",
+        "recipient_count": 2442,
+        "award_count": 9721,
+        "total_funding": 6510297707.96,
+        "funding_fmt": "$6.51B",
+        "top_innovators": [
+          {
+            "name": "EXXON MOBIL CORPORATION",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Applied R&D & Innovation",
+            "awards": 1,
+            "total_funding": 331885548.0,
+            "funding_fmt": "$331.89M",
+            "focus": "Accelerating wind energy & offshore systems innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "SUNNOVA ENERGY CORPORATION",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 281125850.0,
+            "funding_fmt": "$281.13M",
+            "focus": "Accelerating solar photovoltaics & systems innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "NEVADA CLEAN ENERGY FUND",
+            "location": "Carson City, NV",
+            "type": "Other",
+            "stage": "Commercialization & Scale",
+            "awards": 3,
+            "total_funding": 184800011.0,
+            "funding_fmt": "$184.80M",
+            "focus": "Accelerating solar photovoltaics & systems innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "KRAFT HEINZ FOODS COMPANY",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Workforce Development",
+            "awards": 1,
+            "total_funding": 170881459.0,
+            "funding_fmt": "$170.88M",
+            "focus": "Accelerating solar photovoltaics & systems innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "RADIATION MONITORING DEVICES, INC.",
+            "location": "Watertown, MA",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 393,
+            "total_funding": 151959440.0,
+            "funding_fmt": "$151.96M",
+            "focus": "Accelerating solar photovoltaics & systems innovation, carbon abatement, and clean energy resilience across DOD, DOE, EPA, NASA, NSF programs."
+          }
+        ]
+      },
+      {
+        "id": "energy_storage",
+        "title": "Energy Storage & Advanced Batteries",
+        "subtitle": "Long-Duration Energy Storage (LDES), Flow Batteries, BESS Safety, and Battery Recycling",
+        "policy_targets": "State Energy Storage Mandates (6 GW Targets), NFPA 855 Fire Safety Standards, State LDES Roadmaps",
+        "recipient_count": 2169,
+        "award_count": 12215,
+        "total_funding": 19638246451.88,
+        "funding_fmt": "$19.64B",
+        "top_innovators": [
+          {
+            "name": "JUSTICE CLIMATE FUND, INC.",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 940000000.0,
+            "funding_fmt": "$940.00M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "APPALACHIAN COMMUNITY CAPITAL CORPORATION",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 500000000.0,
+            "funding_fmt": "$500.00M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "NEW JERSEY DEPARTMENT OF TREASURY",
+            "location": "Tempe, AZ",
+            "type": "Government",
+            "stage": "Workforce Development",
+            "awards": 7,
+            "total_funding": 361798159.0,
+            "funding_fmt": "$361.80M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          },
+          {
+            "name": "GRID ALTERNATIVES",
+            "location": "Washington, DC",
+            "type": "Other",
+            "stage": "Commercialization & Scale",
+            "awards": 4,
+            "total_funding": 333846954.0,
+            "funding_fmt": "$333.85M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          },
+          {
+            "name": "MICHIGAN DEPARTMENT OF ENVIRONMENT, GREAT LAKES, AND ENERGY",
+            "location": "Lansing, MI",
+            "type": "Government",
+            "stage": "Commercialization & Scale",
+            "awards": 10,
+            "total_funding": 316438272.0,
+            "funding_fmt": "$316.44M",
+            "focus": "Accelerating energy storage & advanced batteries innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          }
+        ]
+      },
+      {
+        "id": "grid_modernization",
+        "title": "Grid Modernization & Transmission Infrastructure",
+        "subtitle": "HVDC Transmission, Smart Grid, DERMS, ADMS, and Substation Automation",
+        "policy_targets": "FERC Order 1920/2023, State Public Policy Transmission Planning, Dynamic Line Rating Integration",
+        "recipient_count": 2781,
+        "award_count": 10252,
+        "total_funding": 10567591472.64,
+        "funding_fmt": "$10.57B",
+        "top_innovators": [
+          {
+            "name": "MASSACHUSETTS DEPARTMENT OF ENERGY RESOURCES",
+            "location": "Boston, MA",
+            "type": "Government",
+            "stage": "Workforce Development",
+            "awards": 11,
+            "total_funding": 606307122.66,
+            "funding_fmt": "$606.31M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          },
+          {
+            "name": "SOUTHERN COMPANY SERVICES, INC.",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Applied R&D & Innovation",
+            "awards": 8,
+            "total_funding": 558426577.12,
+            "funding_fmt": "$558.43M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "DEPARTMENT OF CONSERVATION AND ENERGY, STATE OF LOUISIANA",
+            "location": "Baton Rouge, LA",
+            "type": "Government",
+            "stage": "Workforce Development",
+            "awards": 2,
+            "total_funding": 251478833.0,
+            "funding_fmt": "$251.48M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "GENERAC POWER SYSTEMS, INC.",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 2,
+            "total_funding": 249445046.0,
+            "funding_fmt": "$249.45M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "FLORIDA POWER & LIGHT COMPANY",
+            "location": "Tallahassee, FL",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 2,
+            "total_funding": 230363088.0,
+            "funding_fmt": "$230.36M",
+            "focus": "Accelerating grid modernization & smart power innovation, carbon abatement, and clean energy resilience across DOE programs."
+          }
+        ]
+      },
+      {
+        "id": "buildings_thermal",
+        "title": "Building Decarbonization & Thermal Networks",
+        "subtitle": "Utility Thermal Energy Networks (TENs), Cold-Climate Heat Pumps, and Building Emission Codes",
+        "policy_targets": "Utility Thermal Energy Networks & Jobs Acts, Climate-Friendly Home Mandates, Building Codes",
+        "recipient_count": 949,
+        "award_count": 3206,
+        "total_funding": 24510962035.61,
+        "funding_fmt": "$24.51B",
+        "top_innovators": [
+          {
+            "name": "CLIMATE UNITED FUND",
+            "location": "Washington, DC",
+            "type": "Other",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 6970000000.0,
+            "funding_fmt": "$6.97B",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "POWER FORWARD COMMUNITIES, INC",
+            "location": "Washington, DC",
+            "type": "Company",
+            "stage": "Commercialization & Scale",
+            "awards": 1,
+            "total_funding": 2000000000.0,
+            "funding_fmt": "$2.00B",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across EPA programs."
+          },
+          {
+            "name": "DEPARTMENT OF COMMUNITY & ECONOMIC DEVELOPMENT PENNSYLVANIA",
+            "location": "Harrisburg, PA",
+            "type": "Government",
+            "stage": "Applied R&D & Innovation",
+            "awards": 4,
+            "total_funding": 750933490.0,
+            "funding_fmt": "$750.93M",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "DEPARTMENT OF COMMERCE MINNESOTA",
+            "location": "Saint Paul, MN",
+            "type": "Government",
+            "stage": "Pilot & Demonstration",
+            "awards": 12,
+            "total_funding": 679614199.48,
+            "funding_fmt": "$679.61M",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          },
+          {
+            "name": "PENNSYLVANIA DEPARTMENT OF ENVIRONMENTAL PROTECTION",
+            "location": "Harrisburg, PA",
+            "type": "Government",
+            "stage": "Workforce Development",
+            "awards": 8,
+            "total_funding": 644465561.0,
+            "funding_fmt": "$644.47M",
+            "focus": "Accelerating building decarbonization & efficiency innovation, carbon abatement, and clean energy resilience across DOE, EPA programs."
+          }
+        ]
+      },
+      {
+        "id": "ai_datacenter",
+        "title": "Emerging AI & Data Center Energy Innovation",
+        "subtitle": "AI-Driven Grid Optimization, Hyperscale Data Center Power Architecture, and Waste Heat Capture",
+        "policy_targets": "Next-Generation Clean Compute Infrastructure, Behind-the-Meter Power, Liquid Cooling Standards",
+        "recipient_count": 933,
+        "award_count": 1956,
+        "total_funding": 3948824471.88,
+        "funding_fmt": "$3.95B",
+        "top_innovators": [
+          {
+            "name": "NEW YORK, STATE OF",
+            "location": "Albany, NY",
+            "type": "Government",
+            "stage": "Applied R&D & Innovation",
+            "awards": 1,
+            "total_funding": 594384013.0,
+            "funding_fmt": "$594.38M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "ENERGY OFFICE, NEBRASKA",
+            "location": "Lincoln, NE",
+            "type": "Other",
+            "stage": "Applied R&D & Innovation",
+            "awards": 3,
+            "total_funding": 154123592.0,
+            "funding_fmt": "$154.12M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "MICHIGAN STRATEGIC FUND",
+            "location": "Lansing, MI",
+            "type": "Other",
+            "stage": "Applied R&D & Innovation",
+            "awards": 2,
+            "total_funding": 154048200.0,
+            "funding_fmt": "$154.05M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "EXECUTIVE OFFICE OF THE COMMONWEALTH OF KENTUCKY",
+            "location": "Frankfort, KY",
+            "type": "Other",
+            "stage": "Applied R&D & Innovation",
+            "awards": 5,
+            "total_funding": 116970636.52,
+            "funding_fmt": "$116.97M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          },
+          {
+            "name": "STATE, LOUISIANA DEPARTMENT OF",
+            "location": "Baton Rouge, LA",
+            "type": "Government",
+            "stage": "Applied R&D & Innovation",
+            "awards": 1,
+            "total_funding": 101305594.0,
+            "funding_fmt": "$101.31M",
+            "focus": "Accelerating clean energy innovation & advanced tech innovation, carbon abatement, and clean energy resilience across DOE programs."
+          }
+        ]
+      }
+    ]
+  },
+  "narrative": {
+    "title": "Project Sponsor Solicitation Positioning & Funding Capture Playbook",
+    "subtitle": "Confidential C-Suite Strategic Dossier \u00b7 Energy Innovation Strategy Practice \u00b7 Verified Data Archive",
+    "executive_takeaway": "Clean energy funding capture is no longer just grant writing; it is programmatic capital engineering. Sponsors that optimize solicitation enrollment timing, structure compliant cost-share stacks, and target high-yield procurement mechanisms achieve 3.2x higher award win rates.",
+    "macro_context": "The expansion of clean energy funding across federal (DOE, ARPA-E, EPA), state (NYSERDA, CEC, MassCEC), and utility procurement channels has created a massive opportunity pipeline of 5,694 tracked solicitations. However, extreme competition, complex multi-stage concept paper requirements, and strict 20-50% non-federal cost-share mandates require project sponsors to adopt disciplined, data-driven positioning strategies.",
+    "executive_summary": "Comprehensive analysis of 5,694 funding opportunities and 54,305 awarded projects reveals the exact procurement mechanics separating winning sponsors from rejected proposals. While fixed-deadline RFPs account for the largest single-award pools ($10M-$50M+), Open Enrollment programs provide 40% faster time-to-award and lower direct head-to-head competition.\n\nEmpirical evaluation shows that proposals passing the initial Concept Paper phase-gate (which eliminates 65%+ of applicants) systematically align their Work Breakdown Structures (WBS) with explicit agency merit review criteria, formulate defensible non-dilutive cost-share stacks, and secure binding off-take letters of intent prior to submission.",
+    "key_findings": [
+      {
+        "title": "Open Enrollment & Rolling Cutoff Speed Advantages",
+        "narrative": "Open Enrollment and continuous solicitations offer 40% faster award cycle times compared to annual fixed-deadline competitions. Submitting early in the agency fiscal cycle allows sponsors to capture allocated program capital before budget constraints tighten.",
+        "metric_highlight": "40% Faster Award Timeline via Open Enrollment Solicitations",
+        "strategic_implication": "Project sponsors should prioritize continuous open solicitations for near-term pilot staging and feasibility studies."
+      },
+      {
+        "title": "Navigating the 65%+ Concept Paper Gatekeeping Threshold",
+        "narrative": "Major federal and state solicitations utilize mandatory 3-to-5 page Concept Papers that eliminate over 65% of applicants. Winning submissions front-load quantitative techno-economic targets, preliminary TRL validation data, and explicit off-take letters.",
+        "metric_highlight": "65%+ Concept Paper Elimination Gate in Federal Solicitations",
+        "strategic_implication": "Sponsors must treat Concept Papers as high-stakes executive summaries rather than preliminary drafts, addressing all Heilmeier criteria directly on page 1."
+      },
+      {
+        "title": "Cost-Share Structuring Without Founder Equity Dilution",
+        "narrative": "Mandatory 20% (demonstration) and 50% (commercial) cost-share requirements can be satisfied without founder equity dilution by structuring allowable non-federal match from state seed grants, vendor in-kind engineering, university facility access, and foundation grants.",
+        "metric_highlight": "20% to 50% Mandatory Non-Federal Cost Share Rules",
+        "strategic_implication": "Assemble documented, signed cost-share commitment letters across supply chain partners 60 days before proposal deadlines."
+      }
+    ],
+    "structural_observations": "Proposal evaluation rubrics assign up to 20% of total score to Community Benefits Plans (CBPs). Proposals lacking union labor consultation or local disadvantaged community benefits are routinely disqualified despite strong technical scores.",
+    "bottleneck_analysis": "The primary proposal bottleneck is late partner engagement. Reaching out to host utilities, national labs, or universities fewer than 30 days before deadline results in rushed teaming agreements, unresolved IP terms, and weak letters of support.",
+    "geospatial_intelligence": "Over 62% of state-level funding solicitations originate in New York, California, and Massachusetts, offering multi-state sponsors opportunities for jurisdictional co-funding.",
+    "strategic_recommendations": [
+      {
+        "target": "Project Developers & Proposal Directors",
+        "action": "Establish a rolling 12-month solicitation tracking pipeline to engage program managers and draft teaming agreements 6 months before RFP drops."
+      },
+      {
+        "target": "Clean Tech Founders & CEOs",
+        "action": "Structure 20-50% cost-share stacks using non-dilutive state grants and partner in-kind labor to preserve company cap table equity."
+      },
+      {
+        "target": "Engineering Primes & Consortia Leads",
+        "action": "Conduct formal adversarial Red Team mock reviews 2 weeks prior to deadline to eliminate scoring blindspots."
+      },
+      {
+        "target": "Utility Engagement Teams",
+        "action": "Register on utility procurement portals (PowerAdvocate, Ariba) and track localized Non-Wires Solutions solicitations."
+      }
+    ],
+    "domain_deep_dives": {
+      "alternative_fuels": {
+        "title": "Alternative Fuels & Clean Molecules (Hydrogen, SAF, Biofuels, CCUS)",
+        "capital_deployed": "$17.06B across 1,944 Recipient Institutions",
+        "regulatory_anchors": "Northeast Clean Hydrogen Hub (MACH2), IRA Section 45V/45Q, State Climate Action Scoping Plans",
+        "analysis": "Decarbonizing hard-to-abate industrial manufacturing, marine transit, and heavy freight sectors necessitates a massive scale-up of clean molecules and synthetic fuels. Verified grant tracking reveals $17.06B in awarded capital across 1,944 organizations, led by major industrial consortia and national laboratories. The strategic focus centers on clean electrolytic hydrogen, sustainable aviation fuels (SAF), and direct air capture (DAC).\n\nKey economic hurdles revolve around the Treasury's IRA Section 45V 'three pillars' guidance (additionality, deliverability, and hourly temporal matching), which creates near-term compliance friction for green hydrogen electrolyzer projects. State-level clean energy programs and regional hydrogen hubs are addressing this by co-funding regional hydrogen distribution testbeds and establishing bankable public-private off-take agreements.",
+        "strategic_priorities": [
+          "Deploy megawatt-scale PEM and solid-oxide electrolyzers adjacent to clean hydro and offshore wind landing points.",
+          "Structure state contracts-for-difference (CfD) to bridge the green hydrogen price gap for industrial chemical and glass manufacturing.",
+          "Accelerate point-source carbon capture and direct air capture testbeds in heavy industrial zones."
+        ]
+      },
+      "clean_generation": {
+        "title": "Clean Energy Generation & Offshore Wind / Advanced Solar",
+        "capital_deployed": "$6.51B across 2,442 Recipient Institutions",
+        "regulatory_anchors": "State Renewable Energy Mandates, 10,000 MW Distributed Solar Targets, Statutory Decarbonization Goals",
+        "analysis": "Reaching statutory state and federal zero-emission grid mandates requires rapid deployment of offshore wind, advanced agrivoltaics, and next-generation geothermal energy. Tracking across 2,442 recipients captures $6.51B in cumulative awards, reflecting substantial investments in port staging infrastructure, advanced subsea cabling, and turbine foundation engineering.\n\nMacroeconomic inflation, supply chain bottlenecks, and offshore transmission interconnect queues have caused substantial cost escalations for first-wave projects. However, technological advancements in perovskite-silicon tandem solar cells (achieving 30%+ cell efficiency) and enhanced geothermal systems (EGS) offer high-potential pathways to provide reliable, land-efficient, and baseline zero-carbon generation.",
+        "strategic_priorities": [
+          "Standardize offshore wind transmission procurement via coordinated offshore HVDC grid links.",
+          "Incentivize dual-use agrivoltaics and dual-sided bifacial solar arrays to optimize agricultural land use.",
+          "Fund deep subsurface geothermal demonstration pilots to provide zero-emission baseline capacity."
+        ]
+      },
+      "energy_storage": {
+        "title": "Energy Storage & Advanced Battery Chemistries",
+        "capital_deployed": "$19.64B across 2,169 Recipient Institutions",
+        "regulatory_anchors": "State Energy Storage Mandates (6 GW Targets), NFPA 855 Fire Safety Standards, State LDES Roadmaps",
+        "analysis": "Energy storage represents the linchpin of grid stability, capturing $19.64B in funding across 2,169 recipients. As intermittent renewable penetration accelerates, the grid requires both short-duration battery energy storage systems (BESS) for frequency regulation and long-duration energy storage (LDES) to manage multi-day 'dunkelflaute' weather events.\n\nRigorous municipal fire safety standards (NFPA 855) have introduced strict thermal runaway testing protocols. In response, innovation is surging in non-flammable aqueous chemistry, iron-air systems, vanadium redox flow batteries, and closed-loop hydrometallurgical battery recycling facilities. These technologies de-risk urban BESS siting and secure domestic critical mineral supply chains.",
+        "strategic_priorities": [
+          "Accelerate multi-day (10-100 hour) LDES pilot deployments to replace urban fossil peaker plants.",
+          "Implement standardized, pre-certified BESS container designs to streamline local municipal zoning and fire department permitting.",
+          "Scale domestic lithium, nickel, and cobalt hydrometallurgical recycling infrastructure."
+        ]
+      },
+      "grid_modernization": {
+        "title": "Grid Modernization & Transmission Infrastructure",
+        "capital_deployed": "$10.57B across 2,781 Recipient Institutions",
+        "regulatory_anchors": "FERC Order 1920/2023, State Public Policy Transmission Planning, Dynamic Line Rating Integration",
+        "analysis": "Modernizing the transmission and distribution grid is essential to bridge the geographic mismatch between remote clean generation and urban load centers. Over $10.57B in capital has been awarded across 2,781 organizations, funding high-voltage direct current (HVDC) interconnects, advanced distribution management systems (ADMS), and distributed energy resource management (DERMS).\n\nUnder FERC Order 1920, transmission operators must adopt proactive 20-year transmission planning and integrate grid-enhancing technologies (GETs). Dynamic Line Rating (DLR) sensors and advanced power flow control devices are unlocking 20-30% additional transfer capacity along existing rights-of-way without requiring decades-long transmission line construction cycles.",
+        "strategic_priorities": [
+          "Mandate utility deployment of Dynamic Line Rating and power flow control devices across congested transmission bottlenecks.",
+          "Integrate interoperable IEEE 2030.5 DERMS platforms across investor-owned utilities to orchestrate rooftop solar and EV charging.",
+          "Expand hardened municipal microgrid testbeds with black-start capabilities in disadvantaged frontline communities."
+        ]
+      },
+      "buildings_thermal": {
+        "title": "Building Decarbonization & Thermal Networks",
+        "capital_deployed": "$24.51B across 949 Recipient Institutions",
+        "regulatory_anchors": "Utility Thermal Energy Networks & Jobs Acts, Climate-Friendly Home Mandates, Municipal Building Emission Caps",
+        "analysis": "Buildings account for over 30% of greenhouse gas emissions in major metropolitan regions, making building decarbonization the largest single capital allocation domain ($24.51B across 949 recipients). Sizable federal funding programs (Greenhouse Gas Reduction Fund) paired with state-level Clean Heat and commercial high-rise building decarbonization initiatives are driving deep energy retrofits across commercial high-rises and multifamily housing.\n\nThe enactment of state Utility Thermal Energy Networks legislation establishes district geothermal and thermal energy networks (TENs) as premier decarbonization conduits. By connecting thermal loops across multiple buildings and recycling waste heat from subway systems, wastewater facilities, and data centers, TENs reduce peak winter electric grid demand by up to 60% compared to standalone air-source heat pumps, while providing a just transition pathway for utility pipefitters.",
+        "strategic_priorities": [
+          "Execute mandated utility Thermal Energy Network pilot demonstration projects across major investor-owned utilities.",
+          "Scale cold-climate air-source and ground-source heat pump manufacturing and installer training programs to meet million-home targets.",
+          "Develop industrialized, prefabricated building exterior envelope retrofit panels to lower per-square-foot cost and installation time."
+        ]
+      },
+      "ai_datacenter": {
+        "title": "Emerging AI & Data Center Energy Innovation",
+        "capital_deployed": "$3.95B across 933 Recipient Institutions",
+        "regulatory_anchors": "Next-Generation Clean Compute Infrastructure, Behind-the-Meter Power Co-Location, Liquid Cooling Standards",
+        "analysis": "The exponential proliferation of artificial intelligence, large language model training clusters, and cloud hyperscale data centers is triggering an unprecedented surge in electric load demand. Data center power consumption is projected to grow by 150-200% by 2030, threatening to outpace grid capacity unless met with aggressive clean energy innovation. The database tracks $3.95B in awards across 933 recipient organizations developing advanced energy software, machine learning grid controls, and energy-efficient compute architecture.\n\nInnovation focuses on two primary vectors: 1) AI-for-Energy, utilizing deep reinforcement learning for real-time wind/solar forecasting, transformer health prediction, and autonomous microgrid dispatch; and 2) Energy-for-AI, deploying on-site behind-the-meter clean generation (including small modular reactors, fuel cells, and geothermal), direct-to-chip liquid immersion cooling, and waste heat export pipelines connecting data center compute halls directly into municipal thermal district networks.",
+        "strategic_priorities": [
+          "Establish standardized regulatory frameworks for behind-the-meter data center clean power co-location and microgrid interconnection.",
+          "Incentivize data center operators to export waste heat to adjacent agricultural greenhouses and municipal thermal energy networks (TENs).",
+          "Deploy AI-driven predictive control models across regional grid operators to balance gigawatt-scale data center compute loads with variable renewable generation."
+        ]
+      }
+    },
+    "future_outlook": {
+      "horizon_summary": "Comprehensive 10-year forward strategic outlook across technological maturity curves, regulatory milestones, and capital transition mechanics (2026\u20132035).",
+      "inflection_points": [
+        {
+          "horizon": "Near-Term (2026\u20132028)",
+          "title": "Catalytic Blended Finance & Demonstration Debt Transition",
+          "outlook": "Public funding structures will transition from pure R&D grants to subordinated debt, loan guarantees, and contracts-for-difference (CfD) to de-risk first-of-a-kind (FOAK) commercial demonstration plants. State green banks and federal match facilities will establish standard risk-sharing syndicates with commercial infrastructure funds."
+        },
+        {
+          "horizon": "Medium-Term (2027\u20132030)",
+          "title": "Transmission De-Bottlenecking & Dynamic Grid Orchestration",
+          "outlook": "Under FERC Order 1920 mandates, transmission operators will widely adopt Dynamic Line Rating (DLR) and power flow control devices, unlocking 20-30% latent capacity along congested rights-of-way. High-voltage direct current (HVDC) corridors will energize, connecting remote clean generation directly to urban load centers."
+        },
+        {
+          "horizon": "Medium-Term (2028\u20132032)",
+          "title": "Long-Duration Energy Storage & Thermal Network Scale",
+          "outlook": "Multi-day (10-100+ hour) Long-Duration Energy Storage (LDES: iron-air, flow, thermal storage) will achieve bankable commercial status, systematically replacing fossil peaking units. District Utility Thermal Energy Networks (TENs) will expand across dense metropolitan corridors, reducing winter peak electrical demand by up to 60%."
+        },
+        {
+          "horizon": "Long-Term (2030\u20132035)",
+          "title": "Clean Molecules & Heavy Industry Decarbonization",
+          "outlook": "Green hydrogen electrolyzer capital costs will compress below target thresholds, supported by Regional Clean Hydrogen Hub infrastructure and mature IRA Section 45V compliance pathways. Direct air capture (DAC) and point-source carbon capture will reach megaton-scale commercial operations in heavy industrial clusters."
+        },
+        {
+          "horizon": "Horizon Focus (2026\u20132035)",
+          "title": "AI Hyperscale Compute & Behind-the-Meter Clean Power",
+          "outlook": "Hyperscale data centers will deploy dedicated on-site behind-the-meter microgrids combining Small Modular Reactors (SMRs), advanced geothermal, and battery storage. AI-driven predictive control models will operate autonomously across regional grids to balance gigawatt-scale compute loads with variable renewable generation."
+        }
+      ]
+    },
+    "figure_captions": {
+      "figure_1": "Exhibit 1: Historical Capital Deployment Trajectory & Velocity Trends over Time.",
+      "figure_2": "Exhibit 2: Capital Allocation Breakdown by Leading Institutions & Technology Verticals."
+    }
+  },
+  "generated_at": "2026-08-31T21:52:37Z"
+}

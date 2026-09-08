@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The proposed project focuses on Sustainable Materials, Industrial Decarbonization, and Clean Energy Manufacturing, while the matched opportunity is specifically for Battery Materials Processing and Manufacturing, which is unrelated to the project's scope.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

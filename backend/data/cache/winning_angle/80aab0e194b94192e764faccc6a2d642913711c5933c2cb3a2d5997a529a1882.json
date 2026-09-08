@@ -1,0 +1,52 @@
+{
+  "opportunity_id": 8614,
+  "solicitation_number": "DE-FOA-0002453",
+  "opportunity_name": "Flow Battery Systems Manufacturing FOA",
+  "agency": "DOE",
+  "program_name": "Clean Energy Program",
+  "match_score_pct": 92,
+  "winning_hook": "Unlocking the future of energy storage with innovative high-temperature phase change thermal storage technology, poised to revolutionize industrial decarbonization in New York.",
+  "strategic_framing": "Position the project as a critical advancement in energy storage that not only enhances manufacturability but also directly contributes to U.S. economic competitiveness and energy resilience.",
+  "hidden_rubric_breakdown": [
+    {
+      "criterion": "Technical Innovation and Feasibility",
+      "weight_pct": 35,
+      "target_score": "33/35",
+      "scoring_focus": "Reviewers will evaluate the novelty of the technology, its readiness for scale, and the clarity of the development plan.",
+      "reviewer_bias": "Reviewers may favor projects with clear, quantifiable metrics for success and demonstrable past performance."
+    }
+  ],
+  "mandatory_reviewer_keywords": [
+    "energy storage",
+    "manufacturability",
+    "cost-effective",
+    "scalable",
+    "prototype",
+    "industrial applications",
+    "flow battery",
+    "supply chain",
+    "validation",
+    "collaboration"
+  ],
+  "optimal_teaming_strategy": [
+    {
+      "role": "Manufacturing Partner",
+      "recommended_profile": "A company with expertise in advanced manufacturing processes and a track record in energy technologies.",
+      "strategic_rationale": "This partner can enhance the project's credibility and demonstrate a clear pathway to scalable manufacturing."
+    }
+  ],
+  "unwritten_evaluation_biases": [
+    "Emphasize collaboration with established industry players to mitigate perceived risks.",
+    "Highlight any previous funding or successful projects to build trust in the team's capability.",
+    "Demonstrate alignment with national energy goals to resonate with reviewers' priorities."
+  ],
+  "red_flag_landmines": [
+    "Overly ambitious timelines that do not align with TRL expectations.",
+    "Insufficient detail on how the project addresses specific manufacturing challenges.",
+    "Failure to clearly articulate the economic benefits and scalability of the proposed technology."
+  ],
+  "competitive_differentiation": "This project leverages cutting-edge thermal storage technology that not only meets the immediate needs of energy storage but also integrates seamlessly into existing industrial frameworks, setting it apart from conventional flow battery proposals.",
+  "target_score_benchmark": "94/100 (Top Decile Fundable)",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

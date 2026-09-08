@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on dynamic estimation and control for inverter-based resources, which is more aligned with grid operations and power systems rather than building electrification and energy storage. The project details emphasize building retrofits and training, which do not align with the technical focus of the opportunity.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on technical assistance and support for industrial assessment centers, which aligns with the project's emphasis on sustainable materials, industrial decarbonization, and clean energy manufacturing. Both the project and the opportunity aim to improve productivity and reduce waste in the industrial sector.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

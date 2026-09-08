@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on energy efficiency upgrades for nonprofit buildings, which aligns well with the proposed project's emphasis on building electrification and retrofitting. Both initiatives aim to reduce energy use and carbon emissions, making this a relevant funding opportunity.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

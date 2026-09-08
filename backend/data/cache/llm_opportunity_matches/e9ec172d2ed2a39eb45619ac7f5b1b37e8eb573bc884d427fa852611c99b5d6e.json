@@ -1,0 +1,15 @@
+{
+  "llm_match_score": 100.0,
+  "conviction_tier": "High Conviction",
+  "strategic_thesis": "This project's focus on Building Electrification directly satisfies NSF's program objectives under PD-18-7607. The proposed scope advances target reliability and decarbonization outcomes while meeting the applicant readiness and commercial deployment criteria.",
+  "criteria_strengths": [
+    "Direct technology alignment with NSF's stated focus on Building Electrification and sector decarbonization.",
+    "Project maturity (TRL 5) matches the programmatic deployment and demonstration window.",
+    "High geographic and jurisdiction relevance for Paul Smiths, NY infrastructure priorities."
+  ],
+  "potential_risks_or_flags": [
+    "Ensure proposal explicitly addresses institutional cost-share and local community benefit requirements."
+  ],
+  "recommended_positioning": "Frame the proposal around accelerating NSF's clean energy mandates with measurable metrics in hosting capacity, peak relief, and emissions reduction.",
+  "eligibility_verdict": "Directly Eligible"
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on environmental sustainability and supports research in sustainable materials, industrial ecology, and green engineering, which aligns well with the project's emphasis on sustainable materials and industrial decarbonization.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

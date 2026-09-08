@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on HVAC technician education, which aligns with the project's emphasis on Building Electrification and workforce development in commercial buildings. Both projects aim to enhance skills and technologies related to energy-efficient building systems.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

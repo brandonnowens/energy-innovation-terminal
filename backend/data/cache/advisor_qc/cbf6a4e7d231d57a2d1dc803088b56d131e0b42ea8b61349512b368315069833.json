@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on sustainable materials, industrial decarbonization, and clean energy manufacturing, while the matched opportunity is specifically centered on offshore wind energy, which does not align with the project's core technology areas.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

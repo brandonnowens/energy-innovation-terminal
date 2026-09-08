@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on electrifying municipal buildings, which aligns with the project's emphasis on Building Electrification and Energy Storage. Both initiatives aim to enhance clean energy deployment in urban settings.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

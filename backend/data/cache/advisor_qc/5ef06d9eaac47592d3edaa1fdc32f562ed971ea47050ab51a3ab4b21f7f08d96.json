@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on highly insulating building enclosures, which aligns with the project's emphasis on building electrification and retrofitting. Both the project and the opportunity aim to improve energy efficiency in commercial and residential buildings.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

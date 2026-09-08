@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on PV modules and systems, which aligns with the project's emphasis on solar technology and building electrification. The objectives of improving degradation profiles and service lifetime are relevant to the project's goals in clean energy deployment.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

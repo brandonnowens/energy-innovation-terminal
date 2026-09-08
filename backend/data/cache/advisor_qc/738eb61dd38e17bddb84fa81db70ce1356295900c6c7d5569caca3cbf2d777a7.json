@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on mathematical modeling and computational methods for nonlinear partial differential equations, which does not align with the project's emphasis on sustainable materials, industrial decarbonization, and clean energy manufacturing.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

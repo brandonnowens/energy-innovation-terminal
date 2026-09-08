@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on neuromorphic bioelectronics and semiconductor materials, which is unrelated to the proposed project's emphasis on building electrification, energy storage, and solar technologies.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

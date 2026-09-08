@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The project focuses on Building Electrification and Solar, which aligns well with the opportunity's emphasis on accelerating solar energy deployment for local governments. Both the project and the opportunity are centered around clean energy solutions.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

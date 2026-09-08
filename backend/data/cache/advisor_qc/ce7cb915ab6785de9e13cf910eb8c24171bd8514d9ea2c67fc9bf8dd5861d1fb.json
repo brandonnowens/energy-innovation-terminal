@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on building energy auditing and retrofitting, which aligns well with the proposed project's emphasis on building electrification and energy efficiency. Both projects aim to enhance sustainability in buildings, particularly in underserved communities.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

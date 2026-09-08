@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.95,
+  "reason": "The matched opportunity focuses on astronomical research and stellar surveys, which is unrelated to the clean energy technologies and activities outlined in the proposed project. There is no alignment between the domains of clean energy and astronomy.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on clean energy solutions, specifically integrating electric school buses into local grids, which aligns with the project's emphasis on building electrification and energy storage. Both projects aim to enhance energy resilience and utilize innovative technologies in the clean transportation sector.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

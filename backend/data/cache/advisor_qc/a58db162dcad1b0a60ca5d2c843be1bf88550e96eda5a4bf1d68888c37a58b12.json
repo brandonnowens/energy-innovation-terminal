@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Sustainable Materials & Circular Economy and Industrial Decarbonization, while the matched opportunity is specifically about improving the reliability of solar photovoltaic technologies. These areas do not align, as the project does not pertain to solar technology development.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

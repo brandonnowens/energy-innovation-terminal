@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.8,
+  "reason": "The matched opportunity is a Request for Information related to the Solar Decathlon, which focuses on solar-powered home competitions rather than the broader scope of building electrification, energy storage, and clean transportation outlined in the project. This indicates a domain mismatch.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

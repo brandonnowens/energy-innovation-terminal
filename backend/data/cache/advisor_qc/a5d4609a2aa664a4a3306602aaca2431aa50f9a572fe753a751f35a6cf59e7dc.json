@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on hybrid remanufacturing, which aligns with the project's emphasis on sustainable materials and industrial decarbonization. Both projects aim to enhance efficiency and sustainability in manufacturing processes.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

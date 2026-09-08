@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The opportunity focuses on advanced manufacturing and optimization of materials, which aligns with the project's emphasis on sustainable materials and industrial decarbonization. Both projects aim to improve manufacturing processes and environmental performance.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on solar physics research, which is unrelated to the proposed project's emphasis on building electrification, energy storage, and solar deployment activities. This creates a domain mismatch as the project does not align with the research-oriented nature of the opportunity.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

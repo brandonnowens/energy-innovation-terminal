@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity is restricted to U.S. colleges or schools of engineering, which does not align with the commercial entity applicant. Additionally, the focus on energy efficiency assessments for SMEs does not directly support the proposed project's emphasis on sustainable materials and circular economy in manufacturing.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

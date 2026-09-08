@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on grid integration of solar energy systems, which aligns well with the project's emphasis on solar technology and building electrification. The project's activities related to demonstration and deployment are relevant to the objectives of the funding opportunity.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on clean energy improvements in rural areas, which aligns with the project's emphasis on building electrification, energy storage, and solar technologies. Additionally, the project's activities such as training and deployment are relevant to the funding objectives of enhancing energy access and resilience.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

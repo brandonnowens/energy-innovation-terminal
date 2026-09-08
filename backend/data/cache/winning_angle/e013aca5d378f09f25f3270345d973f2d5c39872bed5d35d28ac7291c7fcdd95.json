@@ -1,0 +1,78 @@
+{
+  "opportunity_id": 8614,
+  "solicitation_number": "DE-FOA-0002453",
+  "opportunity_name": "Flow Battery Systems Manufacturing FOA",
+  "agency": "DOE",
+  "program_name": "Clean Energy Program",
+  "match_score_pct": 92,
+  "winning_hook": "Unlocking the future of industrial heat electrification through innovative high-temperature phase change thermal storage, paving the way for a sustainable energy landscape in New York.",
+  "strategic_framing": "Position the project as a critical solution for enhancing energy productivity and competitiveness in the industrial sector, emphasizing its role in advancing energy storage technologies and supporting U.S. manufacturing.",
+  "hidden_rubric_breakdown": [
+    {
+      "criterion": "Technical Innovation and Feasibility",
+      "weight_pct": 35,
+      "target_score": "33/35",
+      "scoring_focus": "Reviewers will evaluate the novelty of the technology, its readiness for deployment, and the clarity of the development plan.",
+      "reviewer_bias": "Preference for projects that demonstrate clear pathways to commercialization and integration into existing systems."
+    },
+    {
+      "criterion": "Economic Impact and Scalability",
+      "weight_pct": 30,
+      "target_score": "28/30",
+      "scoring_focus": "Assessing the potential economic benefits, job creation, and scalability of the proposed solution.",
+      "reviewer_bias": "Favoring proposals that clearly articulate economic advantages and align with regional economic development goals."
+    },
+    {
+      "criterion": "Collaboration and Supply Chain Strengthening",
+      "weight_pct": 20,
+      "target_score": "18/20",
+      "scoring_focus": "Evaluating the strength of partnerships and the ability to enhance U.S. supply chains.",
+      "reviewer_bias": "Preference for projects that involve diverse stakeholders and demonstrate a commitment to building robust supply chains."
+    },
+    {
+      "criterion": "Project Management and Team Qualifications",
+      "weight_pct": 15,
+      "target_score": "14/15",
+      "scoring_focus": "Reviewing the team's expertise, project management capabilities, and past performance.",
+      "reviewer_bias": "Favoring teams with proven track records in similar projects and effective management structures."
+    }
+  ],
+  "mandatory_reviewer_keywords": [
+    "energy storage",
+    "manufacturability",
+    "industrial applications",
+    "cost-effective",
+    "scalable",
+    "prototype",
+    "collaboration",
+    "supply chain",
+    "economic competitiveness",
+    "decarbonization"
+  ],
+  "optimal_teaming_strategy": [
+    {
+      "role": "Manufacturing Partner",
+      "recommended_profile": "A company with expertise in advanced manufacturing processes for energy technologies.",
+      "strategic_rationale": "This partner can enhance the project's credibility and demonstrate a clear path to scalable manufacturing, addressing key reviewer concerns."
+    },
+    {
+      "role": "Research Institution",
+      "recommended_profile": "A university or national lab with a strong background in energy storage research.",
+      "strategic_rationale": "Bringing in academic expertise can strengthen the technical foundation of the proposal and provide access to cutting-edge research."
+    }
+  ],
+  "unwritten_evaluation_biases": [
+    "Highlighting local economic benefits can sway reviewers favorably.",
+    "Demonstrating alignment with state energy goals may enhance perceived relevance.",
+    "Clear visuals and data in the proposal can significantly improve reviewer engagement."
+  ],
+  "red_flag_landmines": [
+    "Failing to clearly articulate the technology's readiness and integration into existing systems.",
+    "Neglecting to include a detailed budget justification that aligns with project goals.",
+    "Overlooking the importance of collaboration and not adequately detailing partnerships."
+  ],
+  "competitive_differentiation": "This project stands out by focusing on high-temperature phase change thermal storage, a niche yet critical area that addresses both energy storage and industrial decarbonization, setting it apart from typical flow battery proposals.",
+  "target_score_benchmark": "94/100 (Top Decile Fundable)",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

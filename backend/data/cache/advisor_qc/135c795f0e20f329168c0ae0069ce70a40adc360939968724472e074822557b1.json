@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on Smart Manufacturing technology, which aligns with the project's emphasis on Sustainable Materials, Industrial Decarbonization, and Clean Energy Manufacturing. Both the project and the opportunity aim to enhance manufacturing processes and energy efficiency.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

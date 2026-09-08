@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.8,
+  "reason": "The proposed project focuses on Sustainable Materials & Circular Economy and Industrial Decarbonization, while the matched opportunity emphasizes scalable cyber-physical solutions, which may not directly align with the project's specific technology areas and objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

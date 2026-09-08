@@ -1,0 +1,18 @@
+{
+  "llm_match_score": 15.0,
+  "conviction_tier": "Low Fit",
+  "strategic_thesis": "The proposed project focuses on clean energy technologies such as building electrification and energy storage, which are not aligned with the specific focus on Tribal Lands outlined in the funding opportunity. Additionally, the project budget significantly exceeds the maximum award amount specified in the opportunity.",
+  "criteria_strengths": [
+    "The project includes advanced technologies like energy storage and solar, which are relevant to clean energy deployment.",
+    "The proposed activities encompass a wide range of workstreams, including training and demonstration, which could be beneficial for community engagement.",
+    "The project aims to address multiple sectors, potentially increasing its relevance to broader clean energy goals."
+  ],
+  "potential_risks_or_flags": [
+    "The project budget far exceeds the maximum funding available under the opportunity, which caps at $2.",
+    "The project is not specifically targeting Tribal Lands, which is a core requirement of the funding opportunity."
+  ],
+  "recommended_positioning": "Emphasize the innovative aspects of the technologies being deployed and their potential impact on clean energy, while acknowledging the mismatch with the funding opportunity's focus on Tribal Lands.",
+  "eligibility_verdict": "Ineligible",
+  "is_llm_generated": true,
+  "model_used": "gpt-4o-mini"
+}

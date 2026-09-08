@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on advanced manufacturing-related traineeships, which does not align with the project's emphasis on sustainable materials and industrial decarbonization. The project is more about practical deployment and manufacturing rather than workforce training in advanced manufacturing disciplines.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Sustainable Materials & Circular Economy and Industrial Decarbonization, while the matched opportunity is centered on biomanufacturing routes to cement, which is not aligned with the project's primary technology areas and sectors.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

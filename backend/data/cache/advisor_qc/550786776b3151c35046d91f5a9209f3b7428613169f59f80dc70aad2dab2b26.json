@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The project focuses on clean energy technologies such as Building Electrification, Energy Storage, and Solar, which align with the objectives of transitioning Tribal Colleges and Universities to clean energy. The emphasis on curriculum planning and deployment in the matched opportunity supports the project's educational and training components.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

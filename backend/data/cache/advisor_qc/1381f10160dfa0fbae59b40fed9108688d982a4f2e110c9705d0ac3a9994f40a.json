@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on providing technical assistance to state officials rather than directly supporting projects related to Building Electrification, Energy Storage, or Solar technologies. This indicates a domain mismatch as the project is more implementation-focused while the opportunity is informational and RFI-based.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

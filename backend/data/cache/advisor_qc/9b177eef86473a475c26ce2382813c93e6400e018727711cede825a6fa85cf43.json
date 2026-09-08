@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on advanced physics research, which does not align with the project's emphasis on building electrification, energy storage, and solar technologies. The domains of fundamental physics research and clean energy applications are distinct and do not overlap.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

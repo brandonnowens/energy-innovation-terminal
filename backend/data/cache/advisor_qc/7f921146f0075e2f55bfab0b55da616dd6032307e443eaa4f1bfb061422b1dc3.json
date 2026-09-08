@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on sustainable chemistry and chemical research challenges, which does not align with the project's emphasis on building electrification, energy storage, and solar technologies. The domains of chemical innovation and building energy technologies are distinct and do not directly relate.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

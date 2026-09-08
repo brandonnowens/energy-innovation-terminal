@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on industrial energy efficiency, which aligns with the project's emphasis on sustainable materials, industrial decarbonization, and clean energy manufacturing. Both the project and the funding opportunity target the industrial sector and aim to improve energy performance.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

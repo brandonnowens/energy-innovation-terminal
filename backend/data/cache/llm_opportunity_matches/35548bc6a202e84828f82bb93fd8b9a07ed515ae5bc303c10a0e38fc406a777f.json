@@ -1,0 +1,17 @@
+{
+  "llm_match_score": 15.0,
+  "conviction_tier": "Low Fit",
+  "strategic_thesis": "The proposed project focuses on workforce development and clean energy manufacturing, which does not align with the geological and geochemical research objectives of the funding opportunity. The solicitation is primarily concerned with understanding magma production and continental lithosphere dynamics, which is outside the scope of clean energy technologies and workforce training.",
+  "criteria_strengths": [
+    "The proposed project addresses clean energy workforce development, which is a relevant sector but not the focus of the funding opportunity.",
+    "The project includes activities related to clean energy manufacturing, which could be tangentially relevant but does not meet the core objectives of the solicitation.",
+    "The project has a significant budget that may indicate a robust approach to clean energy, but it does not align with the specific research focus of the funding opportunity."
+  ],
+  "potential_risks_or_flags": [
+    "The funding opportunity has a maximum award of $600,000, which is significantly lower than the proposed project's budget of $5,000,000."
+  ],
+  "recommended_positioning": "Emphasize the importance of integrating clean energy workforce development with scientific research, although this may not align with the primary objectives of the funding opportunity.",
+  "eligibility_verdict": "Ineligible",
+  "is_llm_generated": true,
+  "model_used": "gpt-4o-mini"
+}

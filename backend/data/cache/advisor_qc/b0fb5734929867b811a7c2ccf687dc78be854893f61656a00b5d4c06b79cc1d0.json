@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on sustainable materials and industrial decarbonization, while the matched opportunity centers on developing low-energy strategies for degrading plastics, which is more aligned with waste management and recycling rather than clean energy manufacturing.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

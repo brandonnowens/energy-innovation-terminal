@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on research and development related to photovoltaic systems, which aligns with the proposed project's emphasis on solar technology and energy storage. Both projects aim to enhance the efficiency and sustainability of solar energy solutions.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

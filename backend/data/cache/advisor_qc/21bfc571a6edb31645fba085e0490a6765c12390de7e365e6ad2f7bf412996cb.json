@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on training for energy efficiency and electrification improvements, which aligns with the project's emphasis on Building Electrification and workforce development. Both the project and the opportunity aim to enhance skills and capabilities in clean energy technologies.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

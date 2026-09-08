@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on reducing embodied energy and emissions in materials manufacturing, which aligns well with the project's emphasis on sustainable materials and industrial decarbonization. Both the project and the opportunity aim to enhance clean energy manufacturing practices.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

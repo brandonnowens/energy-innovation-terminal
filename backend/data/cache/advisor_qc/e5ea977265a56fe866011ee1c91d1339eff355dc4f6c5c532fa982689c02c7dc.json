@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.95,
+  "reason": "The matched opportunity focuses on cash incentives for the installation of grid-connected solar photovoltaic systems, which aligns directly with the proposed project's focus on solar deployment and commercialization activities.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

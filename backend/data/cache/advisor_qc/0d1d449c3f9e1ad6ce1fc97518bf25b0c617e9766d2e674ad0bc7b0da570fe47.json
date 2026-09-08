@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.8,
+  "reason": "The project focuses on Building Electrification, Energy Storage, and Solar technologies, while the matched opportunity is a Request for Information that does not provide funding and is more focused on strategic planning for renewable energy deployment rather than specific project implementation.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

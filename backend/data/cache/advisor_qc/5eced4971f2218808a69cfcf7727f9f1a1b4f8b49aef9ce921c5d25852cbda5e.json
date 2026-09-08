@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on sustainable bioproducts and bio-derived composites, which aligns with the project's emphasis on sustainable materials and industrial decarbonization. Both initiatives aim to promote environmentally sustainable practices in manufacturing.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

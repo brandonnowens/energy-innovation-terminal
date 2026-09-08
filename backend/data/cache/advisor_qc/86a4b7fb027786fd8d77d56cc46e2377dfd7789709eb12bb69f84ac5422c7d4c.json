@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The proposed project focuses on Sustainable Materials, Circular Economy, and Industrial Decarbonization, while the matched opportunity is centered around a chemical analyzer technology that does not align with these themes. The domains of chemical analysis and mass spectrometry do not directly support the project's objectives in clean energy manufacturing and sustainability.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

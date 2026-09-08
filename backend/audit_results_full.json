@@ -1,0 +1,1900 @@
+{
+  "file_size_bytes": 297467904,
+  "file_size_mb": 283.69,
+  "table_counts": {
+    "abuse_reports": 0,
+    "analysis_matches": 5070,
+    "award_results": 0,
+    "awards": 54305,
+    "change_events": 344,
+    "contacts": 70,
+    "creator_tokens": 2,
+    "data_quality_issues": 38,
+    "eligibility_rules": 121,
+    "historical_opportunities": 5415,
+    "historical_projects": 1166,
+    "historical_projects_fts": 1166,
+    "historical_projects_fts_config": 1,
+    "historical_projects_fts_content": 1166,
+    "historical_projects_fts_data": 50,
+    "historical_projects_fts_docsize": 1166,
+    "historical_projects_fts_idx": 48,
+    "ingestion_runs": 106,
+    "opportunities": 5704,
+    "opportunities_fts": 5600,
+    "opportunities_fts_config": 1,
+    "opportunities_fts_content": 5600,
+    "opportunities_fts_data": 1211,
+    "opportunities_fts_docsize": 5600,
+    "opportunities_fts_idx": 999,
+    "opportunity_categories": 22943,
+    "opportunity_contact_links": 104,
+    "opportunity_contacts": 104,
+    "opportunity_documents": 228,
+    "opportunity_organizations": 5547,
+    "opportunity_relationships": 2751,
+    "opportunity_restrictions": 34530,
+    "opportunity_results": 78,
+    "opportunity_rounds": 84,
+    "organization_aliases": 14,
+    "organizations": 155,
+    "password_reset_tokens": 1,
+    "program_focus_areas": 25,
+    "programs": 143,
+    "programs_fts": 56,
+    "programs_fts_config": 1,
+    "programs_fts_content": 56,
+    "programs_fts_data": 8,
+    "programs_fts_docsize": 56,
+    "programs_fts_idx": 6,
+    "project_analyses": 41,
+    "proposals": 55,
+    "recipient_investments": 45,
+    "recipient_patents": 43,
+    "recipients": 13720,
+    "reports": 25,
+    "result_artifacts": 251,
+    "result_benchmarks": 5699,
+    "saved_charts": 1,
+    "saved_views": 3,
+    "source_conflicts": 0,
+    "sources": 31,
+    "sqlite_sequence": 13,
+    "strategies": 6,
+    "success_stories": 14,
+    "taxonomies": 39,
+    "users": 1
+  },
+  "opportunities": {
+    "total": 5704,
+    "by_agency": [
+      {
+        "ag": "NSF",
+        "cnt": 2767,
+        "with_funding": 146,
+        "sum_funding": 2594879788161.0,
+        "avg_funding": 17773149233.97945
+      },
+      {
+        "ag": "DOE",
+        "cnt": 1714,
+        "with_funding": 284,
+        "sum_funding": 405175467696.91,
+        "avg_funding": 1426674182.0313733
+      },
+      {
+        "ag": "Gates Foundation",
+        "cnt": 236,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "ARPA-E",
+        "cnt": 207,
+        "with_funding": 26,
+        "sum_funding": 5399666794.96,
+        "avg_funding": 207679492.11384615
+      },
+      {
+        "ag": "EPA",
+        "cnt": 197,
+        "with_funding": 95,
+        "sum_funding": 122364269707.0,
+        "avg_funding": 1288044944.2842104
+      },
+      {
+        "ag": "NYSERDA",
+        "cnt": 167,
+        "with_funding": 134,
+        "sum_funding": 482101343.0,
+        "avg_funding": 3597771.2164179105
+      },
+      {
+        "ag": "DOD",
+        "cnt": 68,
+        "with_funding": 68,
+        "sum_funding": 6822083117.0,
+        "avg_funding": 100324751.72058824
+      },
+      {
+        "ag": "NASA",
+        "cnt": 65,
+        "with_funding": 65,
+        "sum_funding": 1229701895.0,
+        "avg_funding": 18918490.692307692
+      },
+      {
+        "ag": "USDA",
+        "cnt": 45,
+        "with_funding": 42,
+        "sum_funding": 252291368.0,
+        "avg_funding": 6006937.333333333
+      },
+      {
+        "ag": "DOT",
+        "cnt": 38,
+        "with_funding": 38,
+        "sum_funding": 41244460.0,
+        "avg_funding": 1085380.5263157894
+      },
+      {
+        "ag": "MassCEC",
+        "cnt": 15,
+        "with_funding": 9,
+        "sum_funding": 23565000.0,
+        "avg_funding": 2618333.3333333335
+      },
+      {
+        "ag": "WI OEI",
+        "cnt": 11,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "Efficiency Maine",
+        "cnt": 10,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "CEC",
+        "cnt": 10,
+        "with_funding": 4,
+        "sum_funding": 120000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "NM EMNRD",
+        "cnt": 7,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "MD MEA",
+        "cnt": 5,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "LIPA",
+        "cnt": 5,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "NYPA",
+        "cnt": 4,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "Con Edison",
+        "cnt": 4,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "TX SECO",
+        "cnt": 3,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "RG&E",
+        "cnt": 3,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "Pacific Gas and Electric",
+        "cnt": 3,
+        "with_funding": 3,
+        "sum_funding": 187500000.0,
+        "avg_funding": 62500000.0
+      },
+      {
+        "ag": "PSEG Long Island",
+        "cnt": 3,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "National Grid",
+        "cnt": 3,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "NYSEG",
+        "cnt": 3,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "NY PSC",
+        "cnt": 3,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "Joint Utilities of NY",
+        "cnt": 3,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "Central Hudson",
+        "cnt": 3,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "Tennessee Valley Authority",
+        "cnt": 2,
+        "with_funding": 2,
+        "sum_funding": 175000000.0,
+        "avg_funding": 87500000.0
+      },
+      {
+        "ag": "Southern California Edison",
+        "cnt": 2,
+        "with_funding": 2,
+        "sum_funding": 103000000.0,
+        "avg_funding": 51500000.0
+      },
+      {
+        "ag": "Portland General Electric",
+        "cnt": 2,
+        "with_funding": 2,
+        "sum_funding": 100000000.0,
+        "avg_funding": 50000000.0
+      },
+      {
+        "ag": "Orange & Rockland",
+        "cnt": 2,
+        "with_funding": 0,
+        "sum_funding": 0,
+        "avg_funding": null
+      },
+      {
+        "ag": "NJEDA",
+        "cnt": 2,
+        "with_funding": 1,
+        "sum_funding": 2000000.0,
+        "avg_funding": 2000000.0
+      },
+      {
+        "ag": "IL DCEO",
+        "cnt": 2,
+        "with_funding": 2,
+        "sum_funding": 6000000.0,
+        "avg_funding": 3000000.0
+      },
+      {
+        "ag": "Georgia Power",
+        "cnt": 2,
+        "with_funding": 2,
+        "sum_funding": 115000000.0,
+        "avg_funding": 57500000.0
+      },
+      {
+        "ag": "Dominion Energy Virginia",
+        "cnt": 2,
+        "with_funding": 2,
+        "sum_funding": 135000000.0,
+        "avg_funding": 67500000.0
+      },
+      {
+        "ag": "Colorado CEO",
+        "cnt": 2,
+        "with_funding": 2,
+        "sum_funding": 15000000.0,
+        "avg_funding": 7500000.0
+      },
+      {
+        "ag": "We Energies",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 55000000.0,
+        "avg_funding": 55000000.0
+      },
+      {
+        "ag": "WA Commerce",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 15000000.0,
+        "avg_funding": 15000000.0
+      },
+      {
+        "ag": "United Illuminating",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 18000000.0,
+        "avg_funding": 18000000.0
+      },
+      {
+        "ag": "Tri-State Generation and Transmission",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      },
+      {
+        "ag": "Southern California Gas",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 30000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "Snohomish County PUD",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 15000000.0,
+        "avg_funding": 15000000.0
+      },
+      {
+        "ag": "Seattle City Light",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "Santee Cooper",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 30000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "San Diego Gas & Electric",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      },
+      {
+        "ag": "Salt River Project",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 60000000.0,
+        "avg_funding": 60000000.0
+      },
+      {
+        "ag": "Sacramento Municipal Utility District",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "Rocky Mountain Power (Wyoming)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 180000000.0,
+        "avg_funding": 180000000.0
+      },
+      {
+        "ag": "Rocky Mountain Power (Utah)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "Rhode Island Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 30000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "Puget Sound Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 32000000.0,
+        "avg_funding": 32000000.0
+      },
+      {
+        "ag": "Public Service Electric and Gas",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 50000000.0,
+        "avg_funding": 50000000.0
+      },
+      {
+        "ag": "Public Service Company of New Mexico",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 50000000.0,
+        "avg_funding": 50000000.0
+      },
+      {
+        "ag": "Public Service Company of Colorado",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 80000000.0,
+        "avg_funding": 80000000.0
+      },
+      {
+        "ag": "Potomac Electric Power Company (Maryland)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 22000000.0,
+        "avg_funding": 22000000.0
+      },
+      {
+        "ag": "Potomac Electric Power Company (District of Columbia)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "PPL Electric Utilities",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 22000000.0,
+        "avg_funding": 22000000.0
+      },
+      {
+        "ag": "PECO Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 28000000.0,
+        "avg_funding": 28000000.0
+      },
+      {
+        "ag": "Orlando Utilities Commission",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 15000000.0,
+        "avg_funding": 15000000.0
+      },
+      {
+        "ag": "Oncor Electric Delivery",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 40000000.0,
+        "avg_funding": 40000000.0
+      },
+      {
+        "ag": "Omaha Public Power District",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      },
+      {
+        "ag": "Oklahoma Gas and Electric",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "Northern States Power (Minnesota)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 45000000.0,
+        "avg_funding": 45000000.0
+      },
+      {
+        "ag": "NorthWestern Energy (Montana)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "North Carolina Electric Membership Corp",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 20000000.0,
+        "avg_funding": 20000000.0
+      },
+      {
+        "ag": "Nebraska Public Power District",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 40000000.0,
+        "avg_funding": 40000000.0
+      },
+      {
+        "ag": "National Grid Massachusetts",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 30000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "NV Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 75000000.0,
+        "avg_funding": 75000000.0
+      },
+      {
+        "ag": "Mississippi Power",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 20000000.0,
+        "avg_funding": 20000000.0
+      },
+      {
+        "ag": "MidAmerican Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 50000000.0,
+        "avg_funding": 50000000.0
+      },
+      {
+        "ag": "Madison Gas and Electric",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 12000000.0,
+        "avg_funding": 12000000.0
+      },
+      {
+        "ag": "MN Commerce",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 3000000.0,
+        "avg_funding": 3000000.0
+      },
+      {
+        "ag": "Louisville Gas and Electric and Kentucky Utilities",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 30000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "Los Angeles Department of Water and Power",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 120000000.0,
+        "avg_funding": 120000000.0
+      },
+      {
+        "ag": "Kauai Island Utility Cooperative",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 18000000.0,
+        "avg_funding": 18000000.0
+      },
+      {
+        "ag": "Jersey Central Power & Light",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 30000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "Intermountain Power Agency",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 80000000.0,
+        "avg_funding": 80000000.0
+      },
+      {
+        "ag": "Idaho Power",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 40000000.0,
+        "avg_funding": 40000000.0
+      },
+      {
+        "ag": "Hawaiian Electric Company",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 60000000.0,
+        "avg_funding": 60000000.0
+      },
+      {
+        "ag": "Green Mountain Power",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "Great River Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 18000000.0,
+        "avg_funding": 18000000.0
+      },
+      {
+        "ag": "Golden Valley Electric Association",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 22000000.0,
+        "avg_funding": 22000000.0
+      },
+      {
+        "ag": "Florida Power & Light",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 75000000.0,
+        "avg_funding": 75000000.0
+      },
+      {
+        "ag": "Eversource New Hampshire",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 18000000.0,
+        "avg_funding": 18000000.0
+      },
+      {
+        "ag": "Eversource Energy (Massachusetts)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      },
+      {
+        "ag": "Eversource Connecticut",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      },
+      {
+        "ag": "Evergy Missouri",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 20000000.0,
+        "avg_funding": 20000000.0
+      },
+      {
+        "ag": "Evergy Kansas",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      },
+      {
+        "ag": "Entergy Louisiana",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 45000000.0,
+        "avg_funding": 45000000.0
+      },
+      {
+        "ag": "Entergy Arkansas",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 45000000.0,
+        "avg_funding": 45000000.0
+      },
+      {
+        "ag": "EPB Chattanooga",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 18000000.0,
+        "avg_funding": 18000000.0
+      },
+      {
+        "ag": "Duquesne Light Company",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 18000000.0,
+        "avg_funding": 18000000.0
+      },
+      {
+        "ag": "Duke Energy Indiana",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "Duke Energy Florida",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 45000000.0,
+        "avg_funding": 45000000.0
+      },
+      {
+        "ag": "Duke Energy Carolinas",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 65000000.0,
+        "avg_funding": 65000000.0
+      },
+      {
+        "ag": "Dominion Energy South Carolina",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 45000000.0,
+        "avg_funding": 45000000.0
+      },
+      {
+        "ag": "Delmarva Power (Delaware)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 16000000.0,
+        "avg_funding": 16000000.0
+      },
+      {
+        "ag": "DTE Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 70000000.0,
+        "avg_funding": 70000000.0
+      },
+      {
+        "ag": "DOC",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 15500000.0,
+        "avg_funding": 15500000.0
+      },
+      {
+        "ag": "Consumers Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 40000000.0,
+        "avg_funding": 40000000.0
+      },
+      {
+        "ag": "Commonwealth Edison",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 42000000.0,
+        "avg_funding": 42000000.0
+      },
+      {
+        "ag": "Cobb EMC",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 12000000.0,
+        "avg_funding": 12000000.0
+      },
+      {
+        "ag": "Cleco Power",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      },
+      {
+        "ag": "Chugach Electric Association",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "Central Maine Power",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 20000000.0,
+        "avg_funding": 20000000.0
+      },
+      {
+        "ag": "CenterPoint Energy Houston Electric",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 50000000.0,
+        "avg_funding": 50000000.0
+      },
+      {
+        "ag": "CPS Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 60000000.0,
+        "avg_funding": 60000000.0
+      },
+      {
+        "ag": "Black Hills Power (South Dakota)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 20000000.0,
+        "avg_funding": 20000000.0
+      },
+      {
+        "ag": "Basin Electric Power Cooperative",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 40000000.0,
+        "avg_funding": 40000000.0
+      },
+      {
+        "ag": "Baltimore Gas and Electric",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "Austin Energy",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 18000000.0,
+        "avg_funding": 18000000.0
+      },
+      {
+        "ag": "Arkansas Electric Cooperative Corporation",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 20000000.0,
+        "avg_funding": 20000000.0
+      },
+      {
+        "ag": "Arizona Public Service",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      },
+      {
+        "ag": "Appalachian Power (West Virginia)",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 30000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "Ameren Missouri",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 30000000.0,
+        "avg_funding": 30000000.0
+      },
+      {
+        "ag": "Ameren Illinois",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 20000000.0,
+        "avg_funding": 20000000.0
+      },
+      {
+        "ag": "Alabama Power",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 20000000.0,
+        "avg_funding": 20000000.0
+      },
+      {
+        "ag": "AES Ohio",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 25000000.0,
+        "avg_funding": 25000000.0
+      },
+      {
+        "ag": "AES Indiana",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 50000000.0,
+        "avg_funding": 50000000.0
+      },
+      {
+        "ag": "AEP Ohio",
+        "cnt": 1,
+        "with_funding": 1,
+        "sum_funding": 35000000.0,
+        "avg_funding": 35000000.0
+      }
+    ],
+    "by_status": [
+      {
+        "st": "awarded",
+        "cnt": 2752
+      },
+      {
+        "st": "closed",
+        "cnt": 2674
+      },
+      {
+        "st": "open",
+        "cnt": 278
+      }
+    ],
+    "completeness": {
+      "total": 5704,
+      "has_name": 5704,
+      "has_desc": 5671,
+      "has_funding": 1013,
+      "has_max_award": 4983,
+      "has_open_date": 0,
+      "has_close_date": 0,
+      "has_url": 5610,
+      "has_trl": 5,
+      "has_geo_scope": 144,
+      "has_program": 5699,
+      "has_org": 5547
+    },
+    "date_range": {
+      "min_open": null,
+      "max_open": null,
+      "min_close": null,
+      "max_close": null,
+      "min_year": 1983,
+      "max_year": 2027
+    },
+    "total_funding_tracked": 3140671179542.87
+  },
+  "awards": {
+    "total": 54305,
+    "by_agency": [
+      {
+        "ag": "DOD",
+        "cnt": 19909,
+        "with_amount": 19727,
+        "sum_amount": 6822083117.0,
+        "avg_amount": 345824.66249302984
+      },
+      {
+        "ag": "DOE",
+        "cnt": 13937,
+        "with_amount": 13730,
+        "sum_amount": 46514838904.12,
+        "avg_amount": 3387825.1204748726
+      },
+      {
+        "ag": "NSF",
+        "cnt": 11329,
+        "with_amount": 11264,
+        "sum_amount": 5802665345.0,
+        "avg_amount": 515151.39781605115
+      },
+      {
+        "ag": "NASA",
+        "cnt": 4433,
+        "with_amount": 4357,
+        "sum_amount": 1229701895.0,
+        "avg_amount": 282235.91806288733
+      },
+      {
+        "ag": "EPA",
+        "cnt": 1592,
+        "with_amount": 1565,
+        "sum_amount": 35788469707.0,
+        "avg_amount": 22868031.761661343
+      },
+      {
+        "ag": "USDA",
+        "cnt": 1312,
+        "with_amount": 1282,
+        "sum_amount": 252291368.0,
+        "avg_amount": 196795.13884555383
+      },
+      {
+        "ag": "NYSERDA",
+        "cnt": 1166,
+        "with_amount": 1166,
+        "sum_amount": 365962717.0,
+        "avg_amount": 313861.6783876501
+      },
+      {
+        "ag": "Gates Foundation",
+        "cnt": 236,
+        "with_amount": 236,
+        "sum_amount": 610765844.0,
+        "avg_amount": 2587990.86440678
+      },
+      {
+        "ag": "DOT",
+        "cnt": 178,
+        "with_amount": 175,
+        "sum_amount": 41244460.0,
+        "avg_amount": 235682.62857142856
+      },
+      {
+        "ag": "ARPA-E",
+        "cnt": 115,
+        "with_amount": 115,
+        "sum_amount": 367666794.96,
+        "avg_amount": 3197102.564869565
+      },
+      {
+        "ag": "Pacific Gas and Electric",
+        "cnt": 3,
+        "with_amount": 3,
+        "sum_amount": 37700000.0,
+        "avg_amount": 12566666.666666666
+      },
+      {
+        "ag": "Tennessee Valley Authority",
+        "cnt": 2,
+        "with_amount": 2,
+        "sum_amount": 60500000.0,
+        "avg_amount": 30250000.0
+      },
+      {
+        "ag": "Southern California Edison",
+        "cnt": 2,
+        "with_amount": 2,
+        "sum_amount": 19700000.0,
+        "avg_amount": 9850000.0
+      },
+      {
+        "ag": "Rocky Mountain Power (Wyoming)",
+        "cnt": 2,
+        "with_amount": 2,
+        "sum_amount": 77000000.0,
+        "avg_amount": 38500000.0
+      },
+      {
+        "ag": "Hawaiian Electric Company",
+        "cnt": 2,
+        "with_amount": 2,
+        "sum_amount": 30200000.0,
+        "avg_amount": 15100000.0
+      },
+      {
+        "ag": "Green Mountain Power",
+        "cnt": 2,
+        "with_amount": 2,
+        "sum_amount": 11600000.0,
+        "avg_amount": 5800000.0
+      },
+      {
+        "ag": "Georgia Power",
+        "cnt": 2,
+        "with_amount": 2,
+        "sum_amount": 40900000.0,
+        "avg_amount": 20450000.0
+      },
+      {
+        "ag": "Con Edison",
+        "cnt": 2,
+        "with_amount": 2,
+        "sum_amount": 26500000.0,
+        "avg_amount": 13250000.0
+      },
+      {
+        "ag": "We Energies",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 19000000.0,
+        "avg_amount": 19000000.0
+      },
+      {
+        "ag": "United Illuminating",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4800000.0,
+        "avg_amount": 4800000.0
+      },
+      {
+        "ag": "Tri-State Generation and Transmission",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 10500000.0,
+        "avg_amount": 10500000.0
+      },
+      {
+        "ag": "Southern California Gas",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 6200000.0,
+        "avg_amount": 6200000.0
+      },
+      {
+        "ag": "Snohomish County PUD",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4500000.0,
+        "avg_amount": 4500000.0
+      },
+      {
+        "ag": "Seattle City Light",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 7200000.0,
+        "avg_amount": 7200000.0
+      },
+      {
+        "ag": "Santee Cooper",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 9500000.0,
+        "avg_amount": 9500000.0
+      },
+      {
+        "ag": "San Diego Gas & Electric",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 11200000.0,
+        "avg_amount": 11200000.0
+      },
+      {
+        "ag": "Salt River Project",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 24000000.0,
+        "avg_amount": 24000000.0
+      },
+      {
+        "ag": "Sacramento Municipal Utility District",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4800000.0,
+        "avg_amount": 4800000.0
+      },
+      {
+        "ag": "Rocky Mountain Power (Utah)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 7500000.0,
+        "avg_amount": 7500000.0
+      },
+      {
+        "ag": "Rhode Island Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 11200000.0,
+        "avg_amount": 11200000.0
+      },
+      {
+        "ag": "Puget Sound Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5800000.0,
+        "avg_amount": 5800000.0
+      },
+      {
+        "ag": "Public Service Electric and Gas",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 7800000.0,
+        "avg_amount": 7800000.0
+      },
+      {
+        "ag": "Public Service Company of New Mexico",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 18000000.0,
+        "avg_amount": 18000000.0
+      },
+      {
+        "ag": "Public Service Company of Colorado",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 25000000.0,
+        "avg_amount": 25000000.0
+      },
+      {
+        "ag": "Potomac Electric Power Company (Maryland)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5900000.0,
+        "avg_amount": 5900000.0
+      },
+      {
+        "ag": "Potomac Electric Power Company (District of Columbia)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5800000.0,
+        "avg_amount": 5800000.0
+      },
+      {
+        "ag": "PPL Electric Utilities",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 6200000.0,
+        "avg_amount": 6200000.0
+      },
+      {
+        "ag": "PECO Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5400000.0,
+        "avg_amount": 5400000.0
+      },
+      {
+        "ag": "Orlando Utilities Commission",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4200000.0,
+        "avg_amount": 4200000.0
+      },
+      {
+        "ag": "Oncor Electric Delivery",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 8500000.0,
+        "avg_amount": 8500000.0
+      },
+      {
+        "ag": "Omaha Public Power District",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 11500000.0,
+        "avg_amount": 11500000.0
+      },
+      {
+        "ag": "Oklahoma Gas and Electric",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5400000.0,
+        "avg_amount": 5400000.0
+      },
+      {
+        "ag": "Northern States Power (Minnesota)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 18000000.0,
+        "avg_amount": 18000000.0
+      },
+      {
+        "ag": "NorthWestern Energy (Montana)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 6900000.0,
+        "avg_amount": 6900000.0
+      },
+      {
+        "ag": "North Carolina Electric Membership Corp",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4100000.0,
+        "avg_amount": 4100000.0
+      },
+      {
+        "ag": "New York Power Authority",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 6800000.0,
+        "avg_amount": 6800000.0
+      },
+      {
+        "ag": "Nebraska Public Power District",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 14800000.0,
+        "avg_amount": 14800000.0
+      },
+      {
+        "ag": "National Grid Massachusetts",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4800000.0,
+        "avg_amount": 4800000.0
+      },
+      {
+        "ag": "NV Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 28000000.0,
+        "avg_amount": 28000000.0
+      },
+      {
+        "ag": "Mississippi Power",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5200000.0,
+        "avg_amount": 5200000.0
+      },
+      {
+        "ag": "MidAmerican Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 18500000.0,
+        "avg_amount": 18500000.0
+      },
+      {
+        "ag": "Madison Gas and Electric",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 3100000.0,
+        "avg_amount": 3100000.0
+      },
+      {
+        "ag": "Louisville Gas and Electric and Kentucky Utilities",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 9200000.0,
+        "avg_amount": 9200000.0
+      },
+      {
+        "ag": "Los Angeles Department of Water and Power",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 55000000.0,
+        "avg_amount": 55000000.0
+      },
+      {
+        "ag": "Long Island Power Authority",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 12500000.0,
+        "avg_amount": 12500000.0
+      },
+      {
+        "ag": "Kauai Island Utility Cooperative",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5800000.0,
+        "avg_amount": 5800000.0
+      },
+      {
+        "ag": "Jersey Central Power & Light",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 6500000.0,
+        "avg_amount": 6500000.0
+      },
+      {
+        "ag": "Intermountain Power Agency",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 32000000.0,
+        "avg_amount": 32000000.0
+      },
+      {
+        "ag": "Idaho Power",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 14200000.0,
+        "avg_amount": 14200000.0
+      },
+      {
+        "ag": "Great River Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5500000.0,
+        "avg_amount": 5500000.0
+      },
+      {
+        "ag": "Golden Valley Electric Association",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 6400000.0,
+        "avg_amount": 6400000.0
+      },
+      {
+        "ag": "Florida Power & Light",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 28000000.0,
+        "avg_amount": 28000000.0
+      },
+      {
+        "ag": "Eversource New Hampshire",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4600000.0,
+        "avg_amount": 4600000.0
+      },
+      {
+        "ag": "Eversource Energy (Massachusetts)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 3200000.0,
+        "avg_amount": 3200000.0
+      },
+      {
+        "ag": "Eversource Connecticut",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 7500000.0,
+        "avg_amount": 7500000.0
+      },
+      {
+        "ag": "Evergy Missouri",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4900000.0,
+        "avg_amount": 4900000.0
+      },
+      {
+        "ag": "Evergy Kansas",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 11500000.0,
+        "avg_amount": 11500000.0
+      },
+      {
+        "ag": "Entergy Louisiana",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 14200000.0,
+        "avg_amount": 14200000.0
+      },
+      {
+        "ag": "Entergy Arkansas",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 14500000.0,
+        "avg_amount": 14500000.0
+      },
+      {
+        "ag": "EPB Chattanooga",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5400000.0,
+        "avg_amount": 5400000.0
+      },
+      {
+        "ag": "Duquesne Light Company",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5100000.0,
+        "avg_amount": 5100000.0
+      },
+      {
+        "ag": "Duke Energy Indiana",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 6800000.0,
+        "avg_amount": 6800000.0
+      },
+      {
+        "ag": "Duke Energy Florida",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 13500000.0,
+        "avg_amount": 13500000.0
+      },
+      {
+        "ag": "Duke Energy Carolinas",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 18500000.0,
+        "avg_amount": 18500000.0
+      },
+      {
+        "ag": "Dominion Energy Virginia",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 26000000.0,
+        "avg_amount": 26000000.0
+      },
+      {
+        "ag": "Dominion Energy South Carolina",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 13800000.0,
+        "avg_amount": 13800000.0
+      },
+      {
+        "ag": "Delmarva Power (Delaware)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4500000.0,
+        "avg_amount": 4500000.0
+      },
+      {
+        "ag": "DTE Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 28000000.0,
+        "avg_amount": 28000000.0
+      },
+      {
+        "ag": "Consumers Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 11500000.0,
+        "avg_amount": 11500000.0
+      },
+      {
+        "ag": "Commonwealth Edison",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 7500000.0,
+        "avg_amount": 7500000.0
+      },
+      {
+        "ag": "Cobb EMC",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 3700000.0,
+        "avg_amount": 3700000.0
+      },
+      {
+        "ag": "Cleco Power",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 11800000.0,
+        "avg_amount": 11800000.0
+      },
+      {
+        "ag": "Chugach Electric Association",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 7800000.0,
+        "avg_amount": 7800000.0
+      },
+      {
+        "ag": "Central Maine Power",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5200000.0,
+        "avg_amount": 5200000.0
+      },
+      {
+        "ag": "CenterPoint Energy Houston Electric",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 12000000.0,
+        "avg_amount": 12000000.0
+      },
+      {
+        "ag": "CPS Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 22000000.0,
+        "avg_amount": 22000000.0
+      },
+      {
+        "ag": "Black Hills Power (South Dakota)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5800000.0,
+        "avg_amount": 5800000.0
+      },
+      {
+        "ag": "Basin Electric Power Cooperative",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 12800000.0,
+        "avg_amount": 12800000.0
+      },
+      {
+        "ag": "Baltimore Gas and Electric",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 6200000.0,
+        "avg_amount": 6200000.0
+      },
+      {
+        "ag": "Austin Energy",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 3800000.0,
+        "avg_amount": 3800000.0
+      },
+      {
+        "ag": "Arkansas Electric Cooperative Corporation",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5800000.0,
+        "avg_amount": 5800000.0
+      },
+      {
+        "ag": "Arizona Public Service",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 10500000.0,
+        "avg_amount": 10500000.0
+      },
+      {
+        "ag": "Appalachian Power (West Virginia)",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 9200000.0,
+        "avg_amount": 9200000.0
+      },
+      {
+        "ag": "Ameren Missouri",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 7100000.0,
+        "avg_amount": 7100000.0
+      },
+      {
+        "ag": "Ameren Illinois",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4200000.0,
+        "avg_amount": 4200000.0
+      },
+      {
+        "ag": "Alabama Power",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 4700000.0,
+        "avg_amount": 4700000.0
+      },
+      {
+        "ag": "AES Ohio",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 5600000.0,
+        "avg_amount": 5600000.0
+      },
+      {
+        "ag": "AES Indiana",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 19500000.0,
+        "avg_amount": 19500000.0
+      },
+      {
+        "ag": "AEP Ohio",
+        "cnt": 1,
+        "with_amount": 1,
+        "sum_amount": 7800000.0,
+        "avg_amount": 7800000.0
+      }
+    ],
+    "completeness": {
+      "total": 54305,
+      "has_recipient": 54305,
+      "has_amount": 53715,
+      "has_date": 3914,
+      "has_title": 54305,
+      "has_abstract": 53578,
+      "has_state": 54305,
+      "has_city": 54305,
+      "has_lat_lng": 54305,
+      "has_opp_link": 54305,
+      "has_pi_name": 42378,
+      "has_pi_email": 34974,
+      "has_uei": 0,
+      "has_website": 25611
+    },
+    "dates": {
+      "min_date": "1991-11-20T00:00:00.000Z",
+      "max_date": "2026-08-28T00:00:00",
+      "min_year": 1983,
+      "max_year": 2027
+    },
+    "total_award_dollars": 98981490152.08
+  },
+  "recipients_and_orgs": {
+    "total_recipients": 13720,
+    "total_organizations": 155,
+    "org_types": [
+      {
+        "ot": "utility",
+        "COUNT(*)": 90
+      },
+      {
+        "ot": "holding_company",
+        "COUNT(*)": 33
+      },
+      {
+        "ot": "funder",
+        "COUNT(*)": 22
+      },
+      {
+        "ot": "company",
+        "COUNT(*)": 9
+      },
+      {
+        "ot": "program_office",
+        "COUNT(*)": 1
+      }
+    ],
+    "recip_types": [
+      {
+        "rt": "company",
+        "COUNT(*)": 10776
+      },
+      {
+        "rt": "university",
+        "COUNT(*)": 872
+      },
+      {
+        "rt": "other",
+        "COUNT(*)": 801
+      },
+      {
+        "rt": "government",
+        "COUNT(*)": 604
+      },
+      {
+        "rt": "early stage company",
+        "COUNT(*)": 235
+      },
+      {
+        "rt": "corporate",
+        "COUNT(*)": 177
+      },
+      {
+        "rt": "nonprofit",
+        "COUNT(*)": 85
+      },
+      {
+        "rt": "municipality / government agency",
+        "COUNT(*)": 48
+      },
+      {
+        "rt": "consultant",
+        "COUNT(*)": 48
+      },
+      {
+        "rt": "lab",
+        "COUNT(*)": 29
+      },
+      {
+        "rt": "laboratory / research center",
+        "COUNT(*)": 22
+      },
+      {
+        "rt": "industry / trade association",
+        "COUNT(*)": 13
+      },
+      {
+        "rt": "utility",
+        "COUNT(*)": 7
+      },
+      {
+        "rt": "venture development organization",
+        "COUNT(*)": 3
+      }
+    ],
+    "recip_intelligence": {
+      "total": 13720,
+      "with_funding_received": 13708,
+      "sum_funding_received": 99441490152.08,
+      "with_awards_count": 13720,
+      "sum_awards_count": 54373,
+      "with_website": 13706,
+      "with_tech": 13720,
+      "with_state": 13706,
+      "with_lat_lng": 13706,
+      "with_desc": 13720
+    }
+  },
+  "knowledge_graph": {
+    "total_categories": 22943,
+    "category_types": [
+      {
+        "category_type": "fuel",
+        "COUNT(*)": 6370,
+        "COUNT(DISTINCT category_value)": 10
+      },
+      {
+        "category_type": "activity",
+        "COUNT(*)": 5940,
+        "COUNT(DISTINCT category_value)": 8
+      },
+      {
+        "category_type": "sector",
+        "COUNT(*)": 5760,
+        "COUNT(DISTINCT category_value)": 10
+      },
+      {
+        "category_type": "technology",
+        "COUNT(*)": 4873,
+        "COUNT(DISTINCT category_value)": 15
+      }
+    ],
+    "total_restrictions": 34530,
+    "restriction_categories": [
+      {
+        "category": "reporting",
+        "COUNT(*)": 5639,
+        "COUNT(DISTINCT opportunity_id)": 5639
+      },
+      {
+        "category": "use_of_funds",
+        "COUNT(*)": 5344,
+        "COUNT(DISTINCT opportunity_id)": 5343
+      },
+      {
+        "category": "cost_share",
+        "COUNT(*)": 5335,
+        "COUNT(DISTINCT opportunity_id)": 5333
+      },
+      {
+        "category": "ip",
+        "COUNT(*)": 4413,
+        "COUNT(DISTINCT opportunity_id)": 4413
+      },
+      {
+        "category": "applicant",
+        "COUNT(*)": 2912,
+        "COUNT(DISTINCT opportunity_id)": 2868
+      },
+      {
+        "category": "prior_awards",
+        "COUNT(*)": 2846,
+        "COUNT(DISTINCT opportunity_id)": 2846
+      },
+      {
+        "category": "lobbying",
+        "COUNT(*)": 1863,
+        "COUNT(DISTINCT opportunity_id)": 1863
+      },
+      {
+        "category": "procurement",
+        "COUNT(*)": 1758,
+        "COUNT(DISTINCT opportunity_id)": 1757
+      },
+      {
+        "category": "environmental",
+        "COUNT(*)": 1679,
+        "COUNT(DISTINCT opportunity_id)": 1679
+      },
+      {
+        "category": "conflict_of_interest",
+        "COUNT(*)": 1567,
+        "COUNT(DISTINCT opportunity_id)": 1567
+      },
+      {
+        "category": "geographic",
+        "COUNT(*)": 1174,
+        "COUNT(DISTINCT opportunity_id)": 1174
+      }
+    ],
+    "total_relationships": 2751,
+    "relationship_types": [
+      {
+        "relationship_type": "topical_cluster",
+        "COUNT(*)": 832,
+        "AVG(confidence)": 0.9000000000000001
+      },
+      {
+        "relationship_type": "stackable",
+        "COUNT(*)": 826,
+        "AVG(confidence)": 0.8723365617433414
+      },
+      {
+        "relationship_type": "recurring",
+        "COUNT(*)": 539,
+        "AVG(confidence)": 0.800834879406308
+      },
+      {
+        "relationship_type": "complementary",
+        "COUNT(*)": 536,
+        "AVG(confidence)": 0.6504664179104478
+      },
+      {
+        "relationship_type": "same_program_family",
+        "COUNT(*)": 18,
+        "AVG(confidence)": 0.55
+      }
+    ]
+  },
+  "additional_assets": {
+    "result_benchmarks": 5699,
+    "historical_projects": 1166,
+    "historical_opportunities": 5415,
+    "recipient_patents": 43,
+    "recipient_investments": 45,
+    "programs": 143,
+    "sources": 31,
+    "proposals": 55,
+    "project_analyses": 41,
+    "success_stories": 14,
+    "contacts": 70,
+    "opportunity_documents": 228,
+    "change_events": 344
+  }
+}

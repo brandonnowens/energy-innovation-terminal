@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on AI tools for interpreting X-ray data and does not align with the proposed project's emphasis on Building Electrification, Energy Storage, and Solar technologies. The domains of ultrafast X-ray diffraction and clean energy applications are not directly related.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

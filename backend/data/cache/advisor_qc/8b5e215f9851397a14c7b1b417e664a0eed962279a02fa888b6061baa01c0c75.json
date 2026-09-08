@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on building circularity and integrates AI for optimizing material selection, which aligns with the project's emphasis on building electrification and energy efficiency. Both projects aim to enhance sustainability in the built environment.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

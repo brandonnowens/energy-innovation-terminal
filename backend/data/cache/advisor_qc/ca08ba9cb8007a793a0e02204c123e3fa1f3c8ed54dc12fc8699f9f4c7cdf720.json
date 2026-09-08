@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on improving market conditions for rooftop PV, which aligns with the project's emphasis on solar energy and building electrification. Both the project and the opportunity aim to enhance the deployment and commercialization of clean energy technologies.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

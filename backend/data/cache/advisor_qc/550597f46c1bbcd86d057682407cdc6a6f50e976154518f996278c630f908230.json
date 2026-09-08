@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on reducing soft costs associated with solar energy systems, which aligns well with the project's emphasis on Building Electrification, Energy Storage, and Solar technologies. The project's activities, including demonstration and deployment, are relevant to the objectives of the SunShot Incubator Program.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

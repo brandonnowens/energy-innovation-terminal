@@ -1,0 +1,17 @@
+{
+  "llm_match_score": 85.0,
+  "conviction_tier": "Strong Alignment",
+  "strategic_thesis": "The proposed project aligns closely with the objectives of the IEDO FOA, particularly in its focus on industrial decarbonization and clean energy manufacturing. With a TRL of 7, the project is well-positioned to demonstrate innovative technologies that can significantly reduce industrial energy use and GHG emissions, directly supporting the goals outlined in the DOE\u2019s Industrial Decarbonization Roadmap.",
+  "criteria_strengths": [
+    "The project focuses on Sustainable Materials & Circular Economy, which is a key area of interest for the DOE's decarbonization efforts.",
+    "The proposed activities include deployment and manufacturing, aligning with the FOA's emphasis on demonstration and commercial deployment of clean energy technologies.",
+    "The project is located in New York, which is within the geographic scope of the funding opportunity, ensuring compliance with jurisdictional requirements."
+  ],
+  "potential_risks_or_flags": [
+    "The project may need to address potential cost-share requirements, although the FOA states that cost share is not mandatory."
+  ],
+  "recommended_positioning": "Emphasize the project's readiness for deployment and its alignment with the DOE's strategic goals for industrial decarbonization. Highlight the innovative aspects of the technology that can lead to significant market impact.",
+  "eligibility_verdict": "Directly Eligible",
+  "is_llm_generated": true,
+  "model_used": "gpt-4o-mini"
+}

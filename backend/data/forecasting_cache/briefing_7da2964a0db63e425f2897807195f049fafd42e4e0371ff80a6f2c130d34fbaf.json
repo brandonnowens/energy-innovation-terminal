@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "organization_code": "NYSERDA",
+  "organization_name": "New York State Energy Research and Development Authority",
+  "category": "State Energy Agencies",
+  "jurisdiction": "state",
+  "forecasted_release_window": "Q1 2027 (February 2027)",
+  "days_until_release": 163,
+  "cadence_regularity_score": 40,
+  "projected_total_pipeline": 58500000.0,
+  "briefing": "<b>1. Probabilistic Cadence Analysis:</b> Historical filings for New York State Energy Research and Development Authority demonstrate a 27.0-month inter-release cycle with a 40% cadence regularity index. The primary seasonal release window concentrates in Q1.\n\n<b>2. Capital Envelope Projection:</b> The projected upcoming funding envelope is estimated at $58,500,000 across anticipated competitive solicitations.\n\n<b>3. Statutory Driver & Policy Alignment:</b> Mandated under New York CLCPA 6 GW Energy Storage Mandate, funding priorities focus on PON, RFI, RFP, RFQL.\n\n<b>4. Strategic Pre-Positioning Recommendations:</b> Applicants should establish consortia partnerships and finalize cost-share commitments 90 to 120 days ahead of formal RFP release.",
+  "pre_positioning_playbook": [
+    "Verify alignment with NY statutory climate mandates and annual programmatic operating plans.",
+    "Secure host site demonstration agreements or commercial pilot commitments within NY.",
+    "Engage certified Minority- and Women-Owned Business Enterprises (MWBE) and Disadvantaged Community (DAC) partners.",
+    "Prepare cost-share verification letters and stage-gate milestone advancement roadmap (TRL 4 to TRL 7)."
+  ],
+  "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+}

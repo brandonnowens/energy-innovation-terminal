@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on clean energy and supports data-driven decision frameworks, which aligns with the project's emphasis on Building Electrification, Energy Storage, and Solar technologies. Additionally, the involvement of academic institutions in partnerships is relevant to the university applicant.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on the ecological impacts of solar energy rather than the building electrification and energy storage aspects of the proposed project. This indicates a domain mismatch as the project does not align with the specific objectives of the opportunity.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

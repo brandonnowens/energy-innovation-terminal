@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.85,
+  "reason": "The matched opportunity is restricted to Indian Tribes and focuses on feasibility studies for renewable energy on tribal lands, which does not align with the university's project on building electrification and energy storage in a non-tribal context.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

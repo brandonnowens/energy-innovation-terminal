@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on electric vehicle education, which aligns with the project's clean transportation and workforce development goals. Both projects aim to enhance skills and knowledge in the clean energy sector, particularly in relation to electric vehicles.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on acquiring a specialized X-ray photoelectron spectroscopy system for research on catalysts, which is not directly related to sustainable materials, circular economy, or industrial decarbonization in manufacturing. This indicates a domain mismatch with the proposed project's objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

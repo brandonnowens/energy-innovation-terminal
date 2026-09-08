@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.95,
+  "reason": "The matched opportunity focuses on advanced mathematical concepts and does not relate to clean energy technologies such as Building Electrification, Energy Storage, or Solar. This is a clear domain mismatch as the project is not aligned with the proposed project's objectives.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

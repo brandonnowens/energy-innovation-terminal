@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.8,
+  "reason": "The project focuses on Sustainable Materials & Circular Economy and Industrial Decarbonization, while the matched opportunity is primarily concerned with commercial building technologies, which may not directly align with the project's specific technology areas.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

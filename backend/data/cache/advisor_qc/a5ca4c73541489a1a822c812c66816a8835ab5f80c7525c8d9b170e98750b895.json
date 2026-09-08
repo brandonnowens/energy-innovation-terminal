@@ -1,0 +1,9 @@
+{
+  "makes_sense": false,
+  "decision": "SCREENED_OUT",
+  "confidence": 0.9,
+  "reason": "The matched opportunity focuses on atmospheric research and dynamics, which does not align with the project's emphasis on building electrification, energy storage, and solar technologies. The domains of atmospheric science and clean energy technology deployment are distinct and unrelated.",
+  "domain_alignment": "mismatch",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}

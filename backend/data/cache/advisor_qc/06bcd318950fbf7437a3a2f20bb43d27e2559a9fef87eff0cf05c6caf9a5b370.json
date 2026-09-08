@@ -1,0 +1,9 @@
+{
+  "makes_sense": true,
+  "decision": "APPROVED",
+  "confidence": 0.85,
+  "reason": "The matched opportunity focuses on expanding educational resources in clean energy and manufacturing, which aligns with the project's emphasis on sustainable materials, industrial decarbonization, and clean energy manufacturing. Both initiatives aim to enhance capabilities in the commercial and industrial sectors.",
+  "domain_alignment": "aligned",
+  "model_used": "gpt-4o-mini",
+  "is_llm_generated": true
+}
