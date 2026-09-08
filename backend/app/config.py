@@ -8,7 +8,7 @@ from pydantic_settings import BaseSettings
 _BACKEND_DIR = Path(__file__).parent.parent.resolve()
 _DEFAULT_DATA_DIR = _BACKEND_DIR / "data"
 _DEFAULT_DATA_DIR.mkdir(parents=True, exist_ok=True)
-_DEFAULT_POSTGRES_URL = "postgresql+psycopg2://postgres:postgres@127.0.0.1:5432/nyserda_innovation"
+_DEFAULT_POSTGRES_URL = "postgresql+psycopg2://postgres.muihufwteznnncvwqovz:AtWkDzYsICn5axnw@aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require"
 
 
 
@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     db_max_overflow: int = 15
     db_pool_timeout: int = 30
     db_pool_recycle: int = 300
-    db_ssl_mode: str = "prefer"  # disable, allow, prefer, require, verify-ca, verify-full
+    db_ssl_mode: str = "require"  # disable, allow, prefer, require, verify-ca, verify-full
 
     # CORS configuration for cloud hosting
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,https://terminal.aixenergy.io,https://aixenergy.io,https://energy-innovation-terminal.bowens-b7b.workers.dev,*"
@@ -77,7 +77,7 @@ class Settings(BaseSettings):
 
     # Ghost.org Membership & Subscription Integration
     ghost_api_url: str = "https://aixenergy.io"
-    ghost_admin_api_key: str = ""
+    ghost_admin_api_key: str = "6aa071318beeca0001359272:27a3cecadf182efd794de77a91368f6aaafbda0e61310f10815dedc6029349fd"
     ghost_webhook_secret: str = ""
 
     # System Admin & Gmail Outreach Integration
@@ -101,7 +101,7 @@ class Settings(BaseSettings):
     )
 
     # Server
-    host: str = "127.0.0.1"
+    host: str = "0.0.0.0"
     port: int = 8000
 
     # Data directory

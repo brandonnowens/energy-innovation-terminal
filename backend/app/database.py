@@ -20,41 +20,31 @@ def _build_engine():
     from pathlib import Path
     db_url = settings.database_url
     if db_url and "postgresql" in db_url.lower():
-        last_err = None
-        for attempt in range(1, 3):
-            try:
-                timeout_sec = 1 if ("127.0.0.1" in db_url or "localhost" in db_url) else 10
-                connect_args = {"connect_timeout": timeout_sec}
-                ssl_mode = getattr(settings, "db_ssl_mode", "prefer")
-                if "supabase" in db_url.lower() and ssl_mode == "prefer":
-                    ssl_mode = "require"
-                if "sslmode" not in db_url and ssl_mode:
-                    connect_args["sslmode"] = ssl_mode
+        timeout_sec = 1 if ("127.0.0.1" in db_url or "localhost" in db_url) else 15
+        connect_args = {"connect_timeout": timeout_sec}
+        ssl_mode = getattr(settings, "db_ssl_mode", "require")
+        if "supabase" in db_url.lower():
+            ssl_mode = "require"
+        if "sslmode" not in db_url and ssl_mode:
+            connect_args["sslmode"] = ssl_mode
 
-                pg_engine = create_engine(
-                    db_url,
-                    echo=False,
-                    pool_size=getattr(settings, "db_pool_size", 25),
-                    max_overflow=getattr(settings, "db_max_overflow", 15),
-                    pool_timeout=10,
-                    pool_pre_ping=True,
-                    pool_recycle=getattr(settings, "db_pool_recycle", 300),
-                    connect_args=connect_args
-                )
-                # Test connectivity
-                with pg_engine.connect() as conn:
-                    conn.execute(text("SELECT 1"))
-                print(f"[Database] Successfully connected to PostgreSQL cluster ({db_url.split('@')[-1] if '@' in db_url else 'localhost'})")
-                return pg_engine
-            except Exception as e:
-                last_err = e
-                if attempt < 3:
-                    time.sleep(1)
-                else:
-                    print(f"[Database Error] PostgreSQL connection failed after 3 attempts ({e}).")
-
-        if getattr(settings, "environment", "production") == "production":
-            raise RuntimeError(f"Critical: Unable to connect to primary PostgreSQL database cluster: {last_err}")
+        pg_engine = create_engine(
+            db_url,
+            echo=False,
+            pool_size=getattr(settings, "db_pool_size", 25),
+            max_overflow=getattr(settings, "db_max_overflow", 15),
+            pool_timeout=30,
+            pool_pre_ping=True,
+            pool_recycle=getattr(settings, "db_pool_recycle", 300),
+            connect_args=connect_args
+        )
+        try:
+            with pg_engine.connect() as conn:
+                conn.execute(text("SELECT 1"))
+            print(f"[Database] Successfully connected to PostgreSQL cluster ({db_url.split('@')[-1] if '@' in db_url else 'localhost'})")
+        except Exception as e:
+            print(f"[Database Warning] Initial PostgreSQL ping had exception ({e}), pool_pre_ping will retry on demand.")
+        return pg_engine
 
     # Fallback to local SQLite database in dev/offline testing only
     sqlite_path = Path(__file__).parent.parent / "data" / "nyserda.db"
