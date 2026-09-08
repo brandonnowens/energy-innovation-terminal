@@ -28,18 +28,7 @@ export function UserMenu() {
   }, []);
 
   if (!isAuthenticated || !user) {
-    return (
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={() => openAuthModal('login')}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold border border-slate-700 shadow-2xs transition-all cursor-pointer"
-        >
-          <LogIn size={13} className="text-slate-300" />
-          <span>Sign In</span>
-        </button>
-      </div>
-    );
+    return null;
   }
 
   const initial = user.full_name
