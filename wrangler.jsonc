@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "energy-innovation-terminal",
+  "compatibility_date": "2026-09-08",
+  "assets": {
+    "directory": "./frontend/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  "build": {
+    "command": "npm --prefix frontend install && npm --prefix frontend run build"
+  }
+}
