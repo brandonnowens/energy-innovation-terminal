@@ -957,27 +957,13 @@ export default function Chat() {
         </div>
 
         <div className="flex items-center gap-2">
-          {apiKey ? (
-            <button
-              type="button"
-              onClick={() => setShowKeyModal(true)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-[11.5px] font-medium transition-colors cursor-pointer"
-              title="OpenAI GPT-4o is active and streaming live reasoning"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Live GPT-4o Active</span>
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={() => setShowKeyModal(true)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 text-[11.5px] font-medium transition-colors cursor-pointer"
-              title="Click to enter your OpenAI API key for live GPT-4o deep thinking"
-            >
-              <Key size={12} className="text-slate-500 dark:text-slate-400" />
-              <span>Connect OpenAI Key</span>
-            </button>
-          )}
+          <div
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-[11.5px] font-medium"
+            title="OpenAI GPT-4o synthesis engine is active and streaming live reasoning"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>OpenAI GPT-4o Active</span>
+          </div>
 
           <button
             type="button"
@@ -1246,61 +1232,6 @@ export default function Chat() {
           </p>
         </div>
       </div>
-
-      {/* API Key Modal */}
-      {showKeyModal && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-slate-900 dark:text-slate-100 font-bold text-[14px]">
-                <Key size={16} className="text-slate-500" />
-                <span>OpenAI API Key</span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowKeyModal(false)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold"
-              >
-                ✕
-              </button>
-            </div>
-
-            <p className="text-[12px] text-slate-500 dark:text-slate-400 leading-relaxed">
-              Enter your OpenAI API key to unlock full live GPT-4o deep reasoning, competitive moat synthesis, and multi-step center grant advisory.
-            </p>
-
-            <div>
-              <input
-                type="password"
-                defaultValue={apiKey}
-                id="keyInput"
-                placeholder="sk-proj-..."
-                className="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-[13px] font-mono text-slate-900 dark:text-slate-100 focus:outline-hidden focus:border-slate-500"
-              />
-            </div>
-
-            <div className="flex items-center justify-end gap-2 pt-1">
-              <button
-                type="button"
-                onClick={() => handleSaveApiKey('')}
-                className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 text-[11.5px] font-medium"
-              >
-                Clear
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  const input = document.getElementById('keyInput') as HTMLInputElement;
-                  handleSaveApiKey(input?.value || '');
-                }}
-                className="px-3.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 text-[11.5px] font-semibold"
-              >
-                Save Key
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

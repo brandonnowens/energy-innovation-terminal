@@ -1154,17 +1154,14 @@ export default function AnalyzeProject() {
           </p>
         </div>
 
-        {/* OpenAI / LLM API Connection Verification Button */}
+        {/* OpenAI / LLM Engine Status Badge */}
         <div className="flex items-center gap-2.5 shrink-0">
-          <button
-            type="button"
-            onClick={() => setShowApiModal(true)}
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-white/10 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#0d1424] hover:bg-slate-50 dark:hover:bg-white/5 transition-all shadow-2xs cursor-pointer"
+          <div
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#0d1424] shadow-2xs"
           >
-            <span className={clsx("w-2 h-2 rounded-full", llmStatus?.openai?.configured ? "bg-emerald-500 animate-pulse" : "bg-amber-500")} />
-            <span>{llmStatus?.openai?.configured ? 'OpenAI Active (GPT-4o)' : 'Verify OpenAI API'}</span>
-            <Settings2 size={13} className="text-slate-400 ml-0.5" />
-          </button>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>OpenAI Intelligence Engine · Active</span>
+          </div>
         </div>
       </div>
 
@@ -1698,172 +1695,6 @@ export default function AnalyzeProject() {
               Public Information &amp; Regulatory Notice
             </div>
             <p>{data.disclaimer}</p>
-          </div>
-        </div>
-      )}
-
-      {/* OpenAI & LLM API Connection Verification Modal */}
-      {showApiModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="relative w-full max-w-lg bg-white dark:bg-[#0d1424] border border-slate-200 dark:border-white/15 rounded-2xl shadow-2xl p-6 text-slate-900 dark:text-white space-y-5">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/10 pb-3">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                  <PlugZap size={18} />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">OpenAI API Connection Settings</h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">Verify connectivity for project matching &amp; document parsing</p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowApiModal(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
-              >
-                <X size={16} />
-              </button>
-            </div>
-
-            {/* Live Connection Status Overview */}
-            <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-black/30 border border-slate-200/80 dark:border-white/10 space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-500 dark:text-slate-400 font-medium">Current Provider Status:</span>
-                <span className={clsx(
-                  "px-2 py-0.5 rounded-full font-bold uppercase text-[10px] tracking-wider flex items-center gap-1.5",
-                  llmStatus?.openai?.configured
-                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-500/30"
-                    : "bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-500/30"
-                )}>
-                  <div className={clsx("w-1.5 h-1.5 rounded-full", llmStatus?.openai?.configured ? "bg-emerald-500 animate-pulse" : "bg-amber-500")} />
-                  {llmStatus?.openai?.configured ? 'Active & Configured' : 'Key Unverified'}
-                </span>
-              </div>
-              {llmStatus?.openai?.masked_key && (
-                <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                  <span>Masked API Key:</span>
-                  <span className="font-mono text-indigo-600 dark:text-indigo-400 font-bold">{llmStatus.openai.masked_key}</span>
-                </div>
-              )}
-            </div>
-
-            {/* Provider and Model Selection */}
-            <div className="space-y-3.5">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1">AI Engine</label>
-                  <select
-                    value={apiProvider}
-                    onChange={(e) => setApiProvider(e.target.value as any)}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-white/10 text-xs text-slate-900 dark:text-white outline-none focus:border-indigo-500"
-                  >
-                    <option value="openai">OpenAI (GPT-4o)</option>
-                    <option value="gemini">Google Gemini</option>
-                    <option value="anthropic">Anthropic Claude</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1">Model Selection</label>
-                  <select
-                    value={selectedModel}
-                    onChange={(e) => setSelectedModel(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-white/10 text-xs text-slate-900 dark:text-white outline-none focus:border-indigo-500"
-                  >
-                    {apiProvider === 'openai' ? (
-                      <>
-                        <option value="gpt-4o">gpt-4o (Recommended)</option>
-                        <option value="gpt-4o-mini">gpt-4o-mini (Fast)</option>
-                        <option value="o3-mini">o3-mini (Reasoning)</option>
-                      </>
-                    ) : apiProvider === 'gemini' ? (
-                      <>
-                        <option value="gemini-2.5-flash">gemini-2.5-flash</option>
-                        <option value="gemini-2.5-pro">gemini-2.5-pro</option>
-                      </>
-                    ) : (
-                      <>
-                        <option value="claude-3-5-sonnet-20241022">claude-3-5-sonnet</option>
-                        <option value="claude-3-5-haiku-20241022">claude-3-5-haiku</option>
-                      </>
-                    )}
-                  </select>
-                </div>
-              </div>
-
-              {/* Custom API Key Input */}
-              <div>
-                <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1 flex items-center justify-between">
-                  <span>API Key (Optional Override)</span>
-                  <span className="text-[10px] text-slate-400 font-normal">Leave blank to use environment default</span>
-                </label>
-                <div className="relative">
-                  <input
-                    type="password"
-                    value={apiKeyInput}
-                    onChange={(e) => setApiKeyInput(e.target.value)}
-                    placeholder={llmStatus?.openai?.masked_key ? `Configured (${llmStatus.openai.masked_key})` : "sk-..."}
-                    className="w-full px-3 py-2 pl-9 rounded-xl bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-white/10 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:border-indigo-500 font-mono"
-                  />
-                  <KeyRound size={13} className="absolute left-3 top-2.5 text-slate-400" />
-                </div>
-              </div>
-            </div>
-
-            {/* Test Connection Results Alert */}
-            {apiTestResponse && (
-              <div className={clsx(
-                "p-3 rounded-xl border text-xs leading-relaxed animate-in fade-in duration-200",
-                apiTestResponse.connected
-                  ? "bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-500/30 text-emerald-900 dark:text-emerald-200"
-                  : "bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-200"
-              )}>
-                <div className="flex items-start gap-2">
-                  {apiTestResponse.connected ? (
-                    <CheckCircle2 size={15} className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  ) : (
-                    <AlertCircle size={15} className="text-rose-500 shrink-0 mt-0.5" />
-                  )}
-                  <div className="space-y-0.5">
-                    <div className="font-bold">{apiTestResponse.message}</div>
-                    {apiTestResponse.available_models && apiTestResponse.available_models.length > 0 && (
-                      <div className="text-[10.5px] text-emerald-700 dark:text-emerald-300">
-                        Models verified: {apiTestResponse.available_models.join(', ')}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Action Buttons */}
-            <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-slate-100 dark:border-white/10">
-              <button
-                type="button"
-                onClick={() => setShowApiModal(false)}
-                className="px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-white/10 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors cursor-pointer"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                onClick={handleTestApiConnection}
-                disabled={isTestingApi}
-                className="px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-2xs transition-all cursor-pointer disabled:opacity-50"
-              >
-                {isTestingApi ? (
-                  <>
-                    <Loader2 size={13} className="animate-spin text-white" />
-                    <span>Verifying...</span>
-                  </>
-                ) : (
-                  <>
-                    <PlugZap size={13} />
-                    <span>Test Connection</span>
-                  </>
-                )}
-              </button>
-            </div>
           </div>
         </div>
       )}

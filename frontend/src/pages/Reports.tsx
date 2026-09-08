@@ -464,16 +464,9 @@ export default function Reports() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
-  
-  // OpenAI API Key Configuration
-  const [openaiApiKey, setOpenaiApiKey] = useState<string>(() => localStorage.getItem('energysignal_openai_api_key') || localStorage.getItem('openai_api_key') || localStorage.getItem('cleangrants_openai_api_key') || '');
-  const [tempApiKey, setTempApiKey] = useState<string>('');
   const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini');
-  const [showApiKeyModal, setShowApiKeyModal] = useState(false);
-  const [showKeyVisibility, setShowKeyVisibility] = useState(false);
   const [isClearingCache, setIsClearingCache] = useState(false);
   const [keySavedToast, setKeySavedToast] = useState<string | null>(null);
-  const [isBackendConfigured, setIsBackendConfigured] = useState(false);
 
   // Preview Drawer Modal
   const [previewPreset, setPreviewPreset] = useState<any>(null);
@@ -483,21 +476,6 @@ export default function Reports() {
   // Pipeline execution modal
   const [showPipelineModal, setShowPipelineModal] = useState(false);
   const [pipelineResult, setPipelineResult] = useState<any>(null);
-
-  // Check backend OpenAI status on mount
-  useEffect(() => {
-    fetch('/api/chat/status')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.openai_configured) {
-          setIsBackendConfigured(true);
-          if (!openaiApiKey) {
-            setOpenaiApiKey('backend-configured');
-          }
-        }
-      })
-      .catch(() => {});
-  }, []);
 
   const { includeNyserda, isNyserda } = useNyserda();
 
@@ -518,65 +496,14 @@ export default function Reports() {
     });
   }, [rawReportsList, includeNyserda, isNyserda]);
 
-  const handleSaveApiKey = async (andRegenerate: boolean = false) => {
-    const trimmed = tempApiKey.trim();
-    setOpenaiApiKey(trimmed);
-    if (trimmed && trimmed !== 'backend-configured') {
-      localStorage.setItem('energysignal_openai_api_key', trimmed);
-      localStorage.setItem('openai_api_key', trimmed);
-      try {
-        await fetch('/api/chat/set-api-key', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ api_key: trimmed }),
-        });
-      } catch (e) {
-        console.error('Failed to sync API key with backend:', e);
-      }
-      setKeySavedToast('OpenAI API key saved. Reports will synthesize using live LLM.');
-      setTimeout(() => setKeySavedToast(null), 4000);
-    } else if (!trimmed) {
-      localStorage.removeItem('energysignal_openai_api_key');
-      localStorage.removeItem('openai_api_key');
-      localStorage.removeItem('cleangrants_openai_api_key');
-      try {
-        await fetch('/api/chat/set-api-key', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ api_key: '' }),
-        });
-      } catch (e) {}
-      setKeySavedToast('OpenAI API key cleared. Reports will use deterministic strategy engine.');
-      setTimeout(() => setKeySavedToast(null), 4000);
-    }
-    setShowApiKeyModal(false);
-
-    if (andRegenerate) {
-      try {
-        await api.clearReportCache();
-      } catch (e) {
-        console.error('Failed to clear report cache:', e);
-      }
-      if (previewPreset) {
-        handlePreviewReport(previewPreset, true, trimmed || undefined);
-      } else {
-        setShowPipelineModal(true);
-        pipelineMutation.mutate();
-      }
-    }
-  };
-
   const handleClearCache = async () => {
     setIsClearingCache(true);
     try {
-      const res = await api.clearReportCache();
-      setKeySavedToast(`Cleared ${res.cleared_count} cached report narratives. Next generation will author live.`);
+      await api.clearReportCache();
+      setKeySavedToast('Report cache cleared. Narratives will re-synthesize on next download.');
       setTimeout(() => setKeySavedToast(null), 4000);
-      if (previewPreset) {
-        handlePreviewReport(previewPreset, true);
-      }
     } catch (e) {
-      console.error('Failed to clear report cache:', e);
+      console.error('Failed to clear cache:', e);
     } finally {
       setIsClearingCache(false);
     }
@@ -585,9 +512,7 @@ export default function Reports() {
   // Pipeline Execution Mutation
   const pipelineMutation = useMutation({
     mutationFn: async () => {
-      const effectiveKey = (openaiApiKey && openaiApiKey !== 'backend-configured') ? openaiApiKey.trim() : undefined;
       return await api.runPipelineUpdate({
-        openai_api_key: effectiveKey,
         model_name: selectedModel,
       });
     },
@@ -597,11 +522,6 @@ export default function Reports() {
   });
 
   const handleRegenerateAllReports = () => {
-    if (!openaiApiKey.trim()) {
-      setTempApiKey('');
-      setShowApiKeyModal(true);
-      return;
-    }
     setShowPipelineModal(true);
     pipelineMutation.mutate();
   };
@@ -610,10 +530,8 @@ export default function Reports() {
   const handleDownloadReportPdf = async (report: any) => {
     setDownloadingId(report.id);
     try {
-      const effectiveKey = (openaiApiKey && openaiApiKey.trim() !== 'backend-configured') ? openaiApiKey.trim() : undefined;
       const req: ReportGenerateRequest = {
         preset_id: report.id,
-        openai_api_key: effectiveKey,
         model_name: selectedModel,
         force_refresh: true,
       };
@@ -628,22 +546,12 @@ export default function Reports() {
   };
 
   // Preview Report Handler (with optional forceRefresh to bypass cache and author live)
-  const handlePreviewReport = async (report: any, forceRefresh: boolean = false, overrideKey?: string) => {
-    const rawKey = overrideKey !== undefined ? overrideKey : openaiApiKey.trim();
-    const effectiveKey = (rawKey && rawKey !== 'backend-configured') ? rawKey : undefined;
-
-    if (forceRefresh && !rawKey) {
-      setTempApiKey('');
-      setShowApiKeyModal(true);
-      return;
-    }
-
+  const handlePreviewReport = async (report: any, forceRefresh: boolean = false) => {
     setPreviewPreset(report);
     setIsPreviewLoading(true);
     try {
       const req: ReportGenerateRequest = {
         preset_id: report.id,
-        openai_api_key: effectiveKey,
         model_name: selectedModel,
         force_refresh: forceRefresh,
       };
@@ -734,17 +642,10 @@ export default function Reports() {
               <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-slate-700/50 text-slate-300 border border-slate-600">
                 Executive Publication Series
               </span>
-              {openaiApiKey ? (
-                <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
-                  <Sparkles size={12} className="text-emerald-300 animate-pulse" />
-                  <span>OpenAI Live AI Active ({selectedModel})</span>
-                </span>
-              ) : (
-                <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
-                  <Info size={12} className="text-amber-300" />
-                  <span>Deterministic Fallback Active</span>
-                </span>
-              )}
+              <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+                <Sparkles size={12} className="text-emerald-300 animate-pulse" />
+                <span>OpenAI Synthesis Engine Active (GPT-4o)</span>
+              </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
               Executive Report Library
@@ -757,34 +658,22 @@ export default function Reports() {
 
           {/* Action / Configuration Controls */}
           <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-3 shrink-0">
-            {/* Configure OpenAI API Key Button */}
-            <button
-              onClick={() => {
-                setTempApiKey(openaiApiKey === 'backend-configured' ? '' : openaiApiKey);
-                setShowApiKeyModal(true);
-              }}
-              className={`px-4 py-3 rounded-xl text-xs font-bold transition-all flex items-center gap-3 cursor-pointer shadow-md hover:scale-[1.02] active:scale-[0.98] ${
-                openaiApiKey
-                  ? 'bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white border border-emerald-400/40'
-                  : 'bg-gradient-to-r from-indigo-600 to-violet-700 hover:from-indigo-500 hover:to-violet-600 text-white border border-indigo-400/40 ring-2 ring-indigo-400/20'
-              }`}
-              title="Add or edit your OpenAI API Key for customized AI report synthesis"
-            >
-              <div className={`p-2 rounded-lg ${openaiApiKey ? 'bg-emerald-500/30 text-emerald-200' : 'bg-white/20 text-white'}`}>
-                <Key size={16} />
+            <div className="px-4 py-2.5 rounded-xl bg-slate-800/90 border border-emerald-500/30 text-slate-200 flex items-center gap-3 shadow-sm">
+              <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-300">
+                <Sparkles size={16} className="animate-pulse" />
               </div>
               <div className="text-left">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-extrabold tracking-tight">
-                    {openaiApiKey ? 'OpenAI API Connected' : 'Add OpenAI API Key'}
+                  <span className="text-xs font-extrabold tracking-tight text-white">
+                    OpenAI Synthesis Engine
                   </span>
-                  <span className={`w-2 h-2 rounded-full ${openaiApiKey ? 'bg-emerald-300 animate-ping' : 'bg-amber-400'}`} />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                 </div>
-                <span className="text-[10px] text-white/80 font-normal block mt-0.5">
-                  {openaiApiKey ? `Synthesizing with ${selectedModel}` : 'Click to add key & unlock live LLM'}
+                <span className="text-[10px] text-slate-400 font-normal block mt-0.5">
+                  Automated GPT-4o Intelligence Active
                 </span>
               </div>
-            </button>
+            </div>
 
             {/* Clear Cache Button */}
             <button
@@ -961,31 +850,20 @@ export default function Reports() {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => {
-                    setTempApiKey(openaiApiKey === 'backend-configured' ? '' : openaiApiKey);
-                    setShowApiKeyModal(true);
-                  }}
-                  className="px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
-                  title="Configure OpenAI API Key or Model"
-                >
-                  <Key size={13} className="text-slate-500" />
-                  <span>{openaiApiKey ? 'Key Configured' : 'Add OpenAI Key'}</span>
-                </button>
-                <button
                   onClick={() => handlePreviewReport(previewPreset, true)}
                   disabled={isPreviewLoading}
-                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-indigo-700 bg-white hover:bg-indigo-50 border border-indigo-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-indigo-700 bg-white hover:bg-indigo-50 border border-indigo-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                   title="Re-author this report live using OpenAI"
                 >
                   <RotateCw size={13} className={isPreviewLoading ? 'animate-spin text-indigo-600' : 'text-indigo-600'} />
-                  <span>{isPreviewLoading ? 'Synthesizing...' : 'Regenerate'}</span>
+                  <span>{isPreviewLoading ? 'Synthesizing...' : 'Live Re-Author / Regenerate'}</span>
                 </button>
                 <button
                   onClick={() => {
                     setPreviewPreset(null);
                     setPreviewData(null);
                   }}
-                  className="p-1 text-slate-400 hover:text-slate-600 rounded-lg cursor-pointer"
+                  className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg cursor-pointer transition-colors"
                 >
                   <X size={18} />
                 </button>
@@ -1006,46 +884,28 @@ export default function Reports() {
                 </p>
               </div>
 
-              {/* Status Banner with Quick Key / Model Configuration */}
+              {/* Status Banner */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
                 <div className="flex items-center gap-2.5 text-xs text-slate-700">
-                  <div className={`p-2 rounded-lg ${openaiApiKey ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>
+                  <div className="p-2 rounded-lg bg-emerald-100 text-emerald-700">
                     <Sparkles size={16} />
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5 font-bold">
-                      {openaiApiKey ? (
-                        <span className="text-emerald-900">Authoring Engine: Live OpenAI ({selectedModel})</span>
-                      ) : (
-                        <span className="text-slate-900">Authoring Engine: Deterministic Strategy Engine</span>
-                      )}
+                    <div className="flex items-center gap-1.5 font-bold text-emerald-950">
+                      <span>Authoring Engine: Live OpenAI ({selectedModel})</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     </div>
                     <span className="text-[11px] text-slate-500 font-normal block mt-0.5">
-                      {openaiApiKey 
-                        ? 'Synthesizes tailored McKinsey-standard executive briefs using verified database context.'
-                        : 'Using pre-computed template. Connect an OpenAI API key to author dynamic narratives.'}
+                      Synthesizes tailored McKinsey-standard executive briefs using verified database context.
                     </span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0">
                   <button
-                    onClick={() => {
-                      setTempApiKey(openaiApiKey === 'backend-configured' ? '' : openaiApiKey);
-                      setShowApiKeyModal(true);
-                    }}
-                    className="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
-                  >
-                    <Key size={13} className="text-slate-500" />
-                    <span>{openaiApiKey ? 'Settings' : 'Connect Key'}</span>
-                  </button>
-
-                  <button
                     onClick={() => handlePreviewReport(previewPreset, true)}
                     disabled={isPreviewLoading}
-                    className={`px-3.5 py-1.5 rounded-lg text-xs font-bold text-white transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50 shadow-xs ${
-                      openaiApiKey ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-gradient-to-r from-amber-600 to-indigo-600 hover:from-amber-500 hover:to-indigo-500'
-                    }`}
+                    className="px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50 shadow-xs"
                   >
                     <RotateCw size={12} className={isPreviewLoading ? 'animate-spin' : ''} />
                     <span>{isPreviewLoading ? 'Synthesizing...' : 'Regenerate Narrative'}</span>
@@ -1057,7 +917,7 @@ export default function Reports() {
                 <div className="py-16 flex flex-col items-center justify-center gap-3 text-slate-400">
                   <Loader2 size={36} className="animate-spin text-indigo-600" />
                   <span className="text-xs font-semibold text-slate-700">
-                    {openaiApiKey ? `Authoring live McKinsey synthesis with OpenAI (${selectedModel})...` : 'Generating publication preview...'}
+                    Authoring live McKinsey synthesis with OpenAI ({selectedModel})...
                   </span>
                 </div>
               ) : previewData?.narrative ? (
@@ -1212,17 +1072,6 @@ export default function Reports() {
                   Close
                 </button>
                 <button
-                  onClick={() => {
-                    setTempApiKey(openaiApiKey === 'backend-configured' ? '' : openaiApiKey);
-                    setShowApiKeyModal(true);
-                  }}
-                  className="px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
-                  title="Configure OpenAI API Key"
-                >
-                  <Key size={13} className="text-slate-500" />
-                  <span>{openaiApiKey ? 'Key Configured' : 'Add API Key'}</span>
-                </button>
-                <button
                   onClick={() => handlePreviewReport(previewPreset, true)}
                   disabled={isPreviewLoading}
                   className="px-4 py-2 text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
@@ -1327,151 +1176,6 @@ export default function Reports() {
                 {pipelineMutation.isPending ? <Loader2 size={13} className="animate-spin" /> : <Play size={13} className="fill-white" />}
                 <span>Run Pipeline Now</span>
               </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* OpenAI API Key & Model Configuration Modal */}
-      {showApiKeyModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-md animate-in fade-in duration-150">
-          <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-lg w-full p-6 space-y-5 animate-in zoom-in-95 duration-150">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2.5 rounded-xl bg-indigo-100 text-indigo-800 font-bold">
-                  <Key size={18} className="text-indigo-600" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900">
-                    OpenAI Intelligence Configuration
-                  </h3>
-                  <p className="text-[11px] text-slate-500">
-                    Enable live McKinsey-level AI synthesis for Executive Reports &amp; PDF Monographs.
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setShowApiKeyModal(false)}
-                className="p-1 text-slate-400 hover:text-slate-600 rounded-lg cursor-pointer"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center justify-between">
-                  <span>OpenAI API Key</span>
-                  <span className="text-[10px] text-slate-400 font-normal">Stored securely in browser localStorage</span>
-                </label>
-                <div className="relative">
-                  <input
-                    type={showKeyVisibility ? "text" : "password"}
-                    value={tempApiKey}
-                    onChange={(e) => setTempApiKey(e.target.value)}
-                    placeholder="sk-proj-..."
-                    className="w-full pl-3.5 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:ring-2 focus:ring-indigo-500 outline-none text-slate-900"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowKeyVisibility(!showKeyVisibility)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
-                  >
-                    {showKeyVisibility ? <EyeOff size={15} /> : <Eye size={15} />}
-                  </button>
-                </div>
-                <p className="text-[10px] text-slate-400 mt-1.5 leading-relaxed">
-                  Provide your key to generate custom, non-deterministic AI executive narratives. If empty, the engine uses the verified deterministic house analysis.
-                </p>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5">
-                  LLM Model Selection
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedModel('gpt-4o-mini')}
-                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                      selectedModel === 'gpt-4o-mini'
-                        ? 'border-indigo-600 bg-indigo-50/50 text-indigo-950 ring-1 ring-indigo-500'
-                        : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="block text-xs font-bold font-mono">gpt-4o-mini</span>
-                      <span className="text-[9px] font-bold text-indigo-700 bg-indigo-100 px-1.5 py-0.2 rounded">Default</span>
-                    </div>
-                    <span className="block text-[10px] text-slate-500 mt-0.5">Fast, high-throughput &amp; cost-efficient</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setSelectedModel('gpt-4o')}
-                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                      selectedModel === 'gpt-4o'
-                        ? 'border-indigo-600 bg-indigo-50/50 text-indigo-950 ring-1 ring-indigo-500'
-                        : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="block text-xs font-bold font-mono">gpt-4o</span>
-                      <span className="text-[9px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.2 rounded">Flagship</span>
-                    </div>
-                    <span className="block text-[10px] text-slate-500 mt-0.5">Deep analytical reasoning &amp; strategy</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-              <button
-                type="button"
-                onClick={() => {
-                  setTempApiKey('');
-                  setOpenaiApiKey('');
-                  localStorage.removeItem('energysignal_openai_api_key');
-                  localStorage.removeItem('openai_api_key');
-                  localStorage.removeItem('cleangrants_openai_api_key');
-                  fetch('/api/chat/set-api-key', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ api_key: '' }),
-                  }).catch(() => {});
-                  setShowApiKeyModal(false);
-                  setKeySavedToast('OpenAI API key cleared.');
-                  setTimeout(() => setKeySavedToast(null), 3000);
-                }}
-                className="px-3 py-1.5 text-xs text-rose-600 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
-              >
-                Clear Key
-              </button>
-
-              <div className="flex flex-wrap items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setShowApiKeyModal(false)}
-                  className="px-3.5 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSaveApiKey(false)}
-                  className="px-4 py-2 text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 rounded-xl shadow-xs transition-all cursor-pointer"
-                >
-                  Save Key
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSaveApiKey(true)}
-                  className="px-4 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
-                >
-                  <RotateCw size={13} className="text-cyan-300" />
-                  <span>Save &amp; Regenerate</span>
-                </button>
-              </div>
             </div>
           </div>
         </div>

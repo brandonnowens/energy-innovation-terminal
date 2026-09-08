@@ -55,14 +55,14 @@ class Settings(BaseSettings):
             url = url.replace("postgres@", "postgres:postgres@", 1)
         return url
 
-    # LLM Provider
-    llm_provider: str = "none"  # gemini, openai, anthropic, none
+    # LLM Provider - Default to OpenAI for full intelligent synthesis across all features
+    llm_provider: str = "openai"  # gemini, openai, anthropic, none
     gemini_api_key: str = ""
     openai_api_key: str = ""
     anthropic_api_key: str = ""
 
     # Tavus.io Conversational Video
-    tavus_api_key: str = "b6c16583ce4c44ec970137dc7d142036"
+    tavus_api_key: str = ""
     tavus_replica_id: str = "read903b2a48"  # Brandon Owens April 14 2026 (Phoenix-4 CVI)
     tavus_persona_id: str = "p8c4fc7f28ac"  # Energy Innovation Terminal PAL (Ultra Low-Latency & Low-Token)
 
@@ -77,7 +77,7 @@ class Settings(BaseSettings):
 
     # Ghost.org Membership & Subscription Integration
     ghost_api_url: str = "https://aixenergy.io"
-    ghost_admin_api_key: str = "6aa071318beeca0001359272:27a3cecadf182efd794de77a91368f6aaafbda0e61310f10815dedc6029349fd"
+    ghost_admin_api_key: str = ""
     ghost_webhook_secret: str = ""
 
     # System Admin & Gmail Outreach Integration
