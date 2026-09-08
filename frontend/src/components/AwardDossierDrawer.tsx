@@ -198,7 +198,7 @@ export const AwardDossierDrawer: React.FC<AwardDossierDrawerProps> = ({
                       </div>
                       <div>
                         <span className="text-[10px] text-slate-400 uppercase font-bold block">State / Regional Grants</span>
-                        <span className="font-extrabold text-indigo-700 font-mono">{fmt(recipientDetail.nyserda_funding)}</span>
+                        <span className="font-extrabold text-indigo-700 font-mono">{fmt(recipientDetail.state_funding || recipientDetail.nyserda_funding)}</span>
                       </div>
                       <div>
                         <span className="text-[10px] text-slate-400 uppercase font-bold block">Total Innovation Capital</span>

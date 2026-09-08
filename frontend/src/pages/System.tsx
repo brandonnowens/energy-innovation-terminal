@@ -62,12 +62,9 @@ export default function System() {
       tier: 'Tier 2',
       title: 'State Clean Energy & Economic Development Authorities',
       scope: '50-state statutory energy authorities, economic development agencies, green banks, and clean tech matching funds',
-      authorities: includeNyserda
-        ? 'Empire State Development (ESD), CEC (California), MassCEC & MassVentures (Massachusetts), NYSERDA (New York), GO-Biz, JobsOhio, MEDC, Ben Franklin Tech Partners, CT Innovations, TEDCO, VIPC, OEDIT, DEED'
-        : 'Empire State Development (ESD), CEC (California), MassCEC & MassVentures (Massachusetts), GO-Biz, JobsOhio, MEDC, Ben Franklin Tech Partners, CT Innovations, TEDCO, VIPC, OEDIT, DEED',
-      authorityLogos: includeNyserda
-        ? ['NYSERDA', 'Empire State Development', 'CEC', 'MassCEC', 'NJEDA']
-        : ['Empire State Development', 'CEC', 'MassCEC', 'NJEDA'],
+      authorities:
+        'CEC (California), MassCEC & MassVentures (Massachusetts), NYSERDA (New York), Empire State Development (ESD), GO-Biz, JobsOhio, MEDC, Ben Franklin Tech Partners, CT Innovations, TEDCO, VIPC, OEDIT, DEED',
+      authorityLogos: ['CEC', 'MassCEC', 'NYSERDA', 'Empire State Development', 'NJEDA'],
       refresh: 'Synchronous State Feeds',
       status: 'Active & Verified',
       recordsCount: '5,800+ Records',

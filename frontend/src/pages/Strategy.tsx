@@ -44,18 +44,6 @@ export interface OrgConfig {
 
 const POPULAR_ORGANIZATIONS: OrgConfig[] = [
   {
-    id: 'nyserda',
-    name: 'NYSERDA',
-    shortName: 'NYSERDA',
-    orgType: 'State Energy Office (NYSERDA, CEC, MassCEC)',
-    defaultMandate: 'NY CLCPA: 6 GW storage by 2030, 70% renewable electricity by 2030, and 100% zero-emission electricity by 2040',
-    defaultPool: '$25,000,000',
-    defaultAwardCap: '$4,000,000',
-    defaultInstrument: '3-Stage Competitive RFP with Go/No-Go Milestone Gates',
-    defaultProgramLength: '5 Years (Standard Multi-Phase Pathway)',
-    defaultAwardDistribution: '5 Awards/Year (25 Total Awards across 5-Year Pathway)'
-  },
-  {
     id: 'doe',
     name: 'US Department of Energy (DOE)',
     shortName: 'US DOE',
@@ -83,11 +71,23 @@ const POPULAR_ORGANIZATIONS: OrgConfig[] = [
     id: 'cec',
     name: 'California Energy Commission (CEC)',
     shortName: 'CEC',
-    orgType: 'State Energy Office (NYSERDA, CEC, MassCEC)',
+    orgType: 'State Energy Office (CEC, MassCEC, NYSERDA)',
     defaultMandate: 'California SB 100 & EPIC IV: 100% clean electricity by 2045 and aggressive clean transportation targets',
     defaultPool: '$30,000,000',
     defaultAwardCap: '$5,000,000',
     defaultInstrument: 'EPIC Competitive Grant Funding Opportunity (GFO)',
+    defaultProgramLength: '5 Years (Standard Multi-Phase Pathway)',
+    defaultAwardDistribution: '5 Awards/Year (25 Total Awards across 5-Year Pathway)'
+  },
+  {
+    id: 'nyserda',
+    name: 'NYSERDA (New York State)',
+    shortName: 'NYSERDA',
+    orgType: 'State Energy Office (CEC, MassCEC, NYSERDA)',
+    defaultMandate: 'NY CLCPA: 6 GW storage by 2030, 70% renewable electricity by 2030, and 100% zero-emission electricity by 2040',
+    defaultPool: '$25,000,000',
+    defaultAwardCap: '$4,000,000',
+    defaultInstrument: '3-Stage Competitive RFP with Go/No-Go Milestone Gates',
     defaultProgramLength: '5 Years (Standard Multi-Phase Pathway)',
     defaultAwardDistribution: '5 Awards/Year (25 Total Awards across 5-Year Pathway)'
   },
@@ -351,8 +351,8 @@ const SPONSOR_TYPES = [
 ];
 
 const FUNDER_TYPES = [
-  'State Energy Office (NYSERDA, CEC, MassCEC)',
   'Federal Advanced Research Agency (DOE, ARPA-E, NSF)',
+  'State Energy Office (CEC, MassCEC, NYSERDA)',
   'Regulated Electric & Gas Utility (ConEd, National Grid)',
   'Corporate R&D / Corporate Venture (GE Vernova, Siemens Energy)',
   'Municipal Power Authority / Regional Transmission Org (NYPA, NYISO)'
@@ -396,9 +396,7 @@ export default function Strategy() {
     return POPULAR_ORGANIZATIONS.filter(o => includeNyserda || o.id !== 'nyserda');
   }, [includeNyserda]);
 
-  const funderTypes = useMemo(() => {
-    return FUNDER_TYPES.map(f => includeNyserda ? f : f.replace('NYSERDA, ', '').replace('NYSERDA', ''));
-  }, [includeNyserda]);
+  const funderTypes = FUNDER_TYPES;
 
   const [mode, setMode] = useState<'project_sponsor' | 'funding_organization'>('project_sponsor');
   const [activeTab, setActiveTab] = useState<'thesis' | 'pathway' | 'workstreams' | 'capital_stack' | 'awards_comps'>('thesis');
@@ -415,7 +413,7 @@ export default function Strategy() {
   const [sponsorTargetTrl, setSponsorTargetTrl] = useState(CLEAN_ENERGY_TECHNOLOGIES[0].defaultTrlMax);
   const [sponsorType, setSponsorType] = useState(SPONSOR_TYPES[0]);
   const [sponsorState, setSponsorState] = useState('New York');
-  const [sponsorAgency, setSponsorAgency] = useState('NYSERDA');
+  const [sponsorAgency, setSponsorAgency] = useState('DOE');
   const [sponsorBudget, setSponsorBudget] = useState('$10,000,000');
   const [sponsorCostShare, setSponsorCostShare] = useState('20% (Standard Federal/State Match)');
   const [sponsorBottlenecks, setSponsorBottlenecks] = useState(CLEAN_ENERGY_TECHNOLOGIES[0].defaultBottlenecks);
@@ -836,7 +834,7 @@ export default function Strategy() {
                   value={funderOrgName}
                   onChange={handleSelectOrg}
                   options={popularOrgs.map(o => o.name)}
-                  placeholder={includeNyserda ? "e.g. NYSERDA, DOE..." : "e.g. DOE, CEC..."}
+                  placeholder="e.g. US Department of Energy (DOE), California Energy Commission (CEC), NYSERDA..."
                 />
 
                 {/* Institution Type */}
@@ -1052,13 +1050,13 @@ export default function Strategy() {
                   subLabel="Target institutional funder for solicitation alignment &amp; win-rate optimization"
                   value={sponsorAgency}
                   onChange={setSponsorAgency}
-                  options={['NYSERDA', 'DOE', 'ARPA-E', 'CEC', 'MassCEC', 'Regulated Electric & Gas Utility (ConEd / National Grid)', 'GE Vernova / Corporate OEM', 'New York Power Authority (NYPA)', 'National Science Foundation (NSF)', 'DOD / ESTCP / DARPA'].filter(ag => includeNyserda || ag !== 'NYSERDA')}
-                  placeholder={includeNyserda ? "e.g. NYSERDA, DOE, CEC..." : "e.g. DOE, CEC, MassCEC..."}
+                  options={['DOE', 'ARPA-E', 'CEC', 'NYSERDA', 'MassCEC', 'Regulated Electric & Gas Utility (ConEd / National Grid)', 'GE Vernova / Corporate OEM', 'New York Power Authority (NYPA)', 'National Science Foundation (NSF)', 'DOD / ESTCP / DARPA']}
+                  placeholder="e.g. DOE, ARPA-E, CEC, NYSERDA, MassCEC..."
                 />
                 {/* 1-Click Popular Agency Quick Selectors */}
                 <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
                   <span className="text-[10px] text-slate-500 font-semibold">Quick select:</span>
-                  {['NYSERDA', 'DOE', 'ARPA-E', 'CEC', 'MassCEC', 'Con Edison', 'National Grid', 'GE Vernova'].filter(ag => includeNyserda || ag !== 'NYSERDA').map(ag => (
+                  {['DOE', 'ARPA-E', 'CEC', 'NYSERDA', 'MassCEC', 'Con Edison', 'National Grid', 'GE Vernova'].map(ag => (
                     <button
                       key={ag}
                       type="button"

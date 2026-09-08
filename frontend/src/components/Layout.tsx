@@ -356,9 +356,7 @@ export default function Layout() {
               </span>
               <span className={clsx(isDark ? "text-white/20" : "text-slate-300", "hidden md:inline")}>|</span>
               <span className={clsx(isDark ? "text-slate-400" : "text-slate-600", "hidden md:inline text-[11.5px] font-medium")}>
-                {includeNyserda
-                  ? "DOE · CEC · MassCEC · ARPA-E · NSF · NYSERDA · 140+ Utilities"
-                  : "DOE · CEC · MassCEC · ARPA-E · NSF · 140+ Utilities"}
+                DOE · ARPA-E · CEC · MassCEC · NSF · State Agencies · 140+ Utilities
               </span>
             </div>
           </div>

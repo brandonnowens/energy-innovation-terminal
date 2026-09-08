@@ -474,7 +474,7 @@ export default function TechReference() {
                   National Clean Tech &amp; Fuels Corpus
                 </span>
                 <span className="text-xs text-slate-400 font-mono">
-                  {includeNyserda ? 'DOE · NYSERDA · CEC · ARPA-E · NSF · 140+ Utilities' : 'DOE · CEC · ARPA-E · NSF · 140+ Utilities'}
+                  DOE · ARPA-E · CEC · MassCEC · NSF · State Programs · 140+ Utilities
                 </span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white mt-1.5 flex items-center gap-3">
@@ -2103,7 +2103,7 @@ export default function TechReference() {
                   <TrendingDown size={14} /> Empirical $/W &amp; $/kWh Learning Curves (2020–2025)
                 </h3>
                 <span className="text-xs font-mono text-slate-400">
-                  {includeNyserda ? 'NYSERDA & SGIP Verified' : 'SGIP Verified'}
+                  State Program &amp; SGIP Verified
                 </span>
               </div>
 

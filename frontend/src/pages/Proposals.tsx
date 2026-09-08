@@ -325,7 +325,7 @@ export default function Proposals() {
           <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Funded Proposals Linked</div>
           <div className="text-2xl font-extrabold text-slate-900 mt-1 font-mono">56,413 Records</div>
           <div className="text-[11px] text-slate-500 mt-0.5">
-            {includeNyserda ? 'DOE · NYSERDA · CEC · MassCEC · NSF' : 'DOE · CEC · MassCEC · NSF'}
+            DOE · ARPA-E · CEC · MassCEC · NSF · State Agencies
           </div>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">

@@ -312,7 +312,7 @@ export default function Opportunities() {
         {[
           { id: 'ALL', label: 'All Multi-State & Federal' },
           { id: 'US_FED', label: 'Federal (DOE / NSF / ARPA-E)' },
-          { id: 'NY', label: includeNyserda ? 'New York (NYSERDA & ESD)' : 'New York (ESD)' },
+          { id: 'NY', label: 'New York (State Programs)' },
           { id: 'CA', label: 'California (CEC & GO-Biz)' },
           { id: 'MA', label: 'Massachusetts (MassCEC)' },
           { id: 'OH', label: 'Ohio (JobsOhio)' },
@@ -686,8 +686,8 @@ export default function Opportunities() {
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-1.5">
-                          <OrgLogo org={opp.agency || 'NYSERDA'} size="xs" />
-                          <span className="text-[11px] dark:text-slate-200 text-slate-800 font-semibold">{opp.agency || 'NYSERDA'}</span>
+                          <OrgLogo org={opp.agency || 'Agency'} size="xs" />
+                          <span className="text-[11px] dark:text-slate-200 text-slate-800 font-semibold">{opp.agency || 'Agency'}</span>
                           {opp.org_type === 'utility' && <span title="Utility"><Zap size={11} className="text-amber-500 shrink-0" /></span>}
                         </div>
                       </td>
@@ -883,8 +883,8 @@ export default function Opportunities() {
                   <span className="font-mono text-[13px] font-bold text-indigo-600">{selectedOpp.solicitation_number}</span>
                   <span className="w-1 h-1 rounded-full bg-slate-300" />
                   <div className="flex items-center gap-1.5">
-                    <OrgLogo org={selectedOpp.agency || 'NYSERDA'} size="xs" />
-                    <span className="text-[11px] font-bold text-slate-800">{selectedOpp.agency || 'NYSERDA'}</span>
+                    <OrgLogo org={selectedOpp.agency || 'Agency'} size="xs" />
+                    <span className="text-[11px] font-bold text-slate-800">{selectedOpp.agency || 'Agency'}</span>
                   </div>
                   <span className={clsx('px-2 py-0.5 rounded text-[10px] font-bold border', getStatusBadge(selectedOpp.status))}>
                     {selectedOpp.status}

@@ -45,7 +45,7 @@ export default function TavusVideoConversation({
   const [isInitializing, setIsInitializing] = useState(false);
   const [activeConversation, setActiveConversation] = useState<TavusConversationResponse | null>(null);
   const [ragCitations, setRagCitations] = useState<ChatCitationsMetadata | null>(null);
-  const [detectedTopic, setDetectedTopic] = useState<string>('NYSERDA & US Clean Tech Strategic Intelligence');
+  const [detectedTopic, setDetectedTopic] = useState<string>('US Clean Energy Innovation & Capital Intelligence');
   const [activeQuery, setActiveQuery] = useState<string>('');
   const [executiveGist, setExecutiveGist] = useState<string>('');
   const [keyEntities, setKeyEntities] = useState<string[]>([]);

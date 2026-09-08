@@ -468,7 +468,7 @@ END:VCARD`;
             Key Contacts &amp; Innovation Directory
           </h1>
           <p className="text-[13px] sm:text-sm text-slate-600 max-w-3xl mt-1 leading-relaxed">
-            Public institutional directory and contact ledger across federal &amp; state funding agencies {includeNyserda ? '(DOE, ARPA-E, CEC, MassCEC, NYSERDA, EPA)' : '(DOE, ARPA-E, CEC, MassCEC, EPA)'}, energy innovation &amp; deep tech domain experts (Principal Investigators), national laboratory partnering desks, and utility innovation leads with verified email deliverability.
+            Public institutional directory and contact ledger across federal &amp; state funding agencies (DOE, ARPA-E, CEC, MassCEC, State Agencies, EPA), energy innovation &amp; deep tech domain experts (Principal Investigators), national laboratory partnering desks, and utility innovation leads with verified email deliverability.
           </p>
         </div>
 
@@ -559,7 +559,7 @@ END:VCARD`;
             {statsData?.program_officers_count || 74}
           </div>
           <div className="text-[11px] dark:text-slate-400 text-slate-500 font-medium mt-0.5">
-            DOE, CEC, MassCEC, NYSERDA
+            DOE, CEC, MassCEC, State Agencies
           </div>
         </div>
 

@@ -285,7 +285,7 @@ export default function Awards() {
           { label: 'All National Awards', icon: Globe, onClick: resetAllFilters, active: !hasActiveFilters && hasArtifactsFilter === null },
           { label: 'Technical Deliverables & Reports (206)', icon: FileText, onClick: () => { resetAllFilters(); setHasArtifactsFilter(true); setView('awards'); }, active: hasArtifactsFilter === true },
           { label: 'Federal Agencies (DOE / ARPA-E / NSF)', icon: Landmark, onClick: () => { resetAllFilters(); setAgencyFilter('DOE'); }, active: agencyFilter === 'DOE' },
-          { label: includeNyserda ? 'State Programs (CEC / MassCEC / NYSERDA)' : 'State Programs (CEC / MassCEC)', icon: Building2, onClick: () => { resetAllFilters(); setAgencyFilter('CEC'); }, active: ['CEC', 'MassCEC', 'NYSERDA'].includes(agencyFilter) },
+          { label: 'State Clean Energy Programs (CEC / MassCEC / State)', icon: Building2, onClick: () => { resetAllFilters(); setAgencyFilter('CEC'); }, active: ['CEC', 'MassCEC', 'NYSERDA'].includes(agencyFilter) },
           { label: 'Utility Grid Pilots', icon: Zap, onClick: () => { resetAllFilters(); setTypeFilter('utility'); }, active: typeFilter === 'utility' },
           { label: 'Universities & National Labs', icon: FlaskConical, onClick: () => { resetAllFilters(); setTypeFilter('university'); }, active: typeFilter === 'university' },
         ].map((btn, idx) => {
@@ -717,7 +717,7 @@ export default function Awards() {
                     <th className="px-4 py-3 uppercase tracking-wider text-[11px]">Primary Clean Tech &amp; Stage</th>
                     <th className="px-4 py-3 uppercase tracking-wider text-[11px]">Funding Organizations</th>
                     <RecipientSortHeader col="award_count" label="Awards" className="text-center" />
-                    {includeNyserda && <RecipientSortHeader col="nyserda_funding" label="NYSERDA Capital" className="text-right" />}
+                    <RecipientSortHeader col="state_funding" label="State Funding" className="text-right" />
                     <RecipientSortHeader col="total_funding" label="Total Capital" className="text-right" />
                     <th className="px-4 py-3 text-right uppercase tracking-wider text-[11px]">Action</th>
                   </tr>
@@ -819,18 +819,16 @@ export default function Awards() {
                         </span>
                       </td>
 
-                      {/* NYSERDA Funding */}
-                      {includeNyserda && (
-                        <td className="px-4 py-3.5 text-right whitespace-nowrap">
-                          {r.nyserda_funding > 0 ? (
-                            <div className="font-bold text-purple-700 font-mono text-[13px]">
-                              {fmt(r.nyserda_funding)}
-                            </div>
-                          ) : (
-                            <span className="text-slate-300 text-[11px]">-</span>
-                          )}
-                        </td>
-                      )}
+                      {/* State Funding */}
+                      <td className="px-4 py-3.5 text-right whitespace-nowrap">
+                        {(r.state_funding || r.nyserda_funding) > 0 ? (
+                          <div className="font-bold text-slate-700 dark:text-slate-300 font-mono text-[13px]">
+                            {fmt(r.state_funding || r.nyserda_funding)}
+                          </div>
+                        ) : (
+                          <span className="text-slate-300 text-[11px]">-</span>
+                        )}
+                      </td>
 
                       {/* Total Funding */}
                       <td className="px-4 py-3.5 text-right whitespace-nowrap">

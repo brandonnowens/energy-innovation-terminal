@@ -436,7 +436,7 @@ export default function Trends() {
               1,398 Project-Level Solicitations Active
             </h4>
             <p className="text-[11.5px] text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-              Capital deployment has decentralized from central federal hubs into regional utility programs (LADWP, TVA, NYSERDA, Rocky Mountain Power).
+              Capital deployment has decentralized from central federal hubs into regional utility programs (LADWP, TVA, Con Edison, Rocky Mountain Power).
             </p>
           </div>
         </div>

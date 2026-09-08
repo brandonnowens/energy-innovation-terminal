@@ -99,15 +99,15 @@ export const ROLES: RoleOption[] = [
     icon: Building2,
     description: 'Capital stacking, FEED studies, FOAK demo bankability & cost-share strategy',
     spokenStarters: [
-      'How can we stack NYSERDA feasibility grants with federal DOE demonstration awards?',
+      'How can we stack state clean energy grants with federal DOE demonstration awards?',
       'What active solicitations have cost-share under 20% and close in the next 90 days for hydrogen?',
       'Who are the top repeat winning prime developers for CEC microgrid awards in California?',
-      'What are the statutory Disadvantaged Community requirements for New York clean heat grants?'
+      'What are the statutory Disadvantaged Community requirements for clean energy grants?'
     ],
     starterPrompts: [
       {
         title: 'Grant Stacking Strategy',
-        prompt: 'How can we stack NYSERDA feasibility grants with federal DOE demonstration awards for a 10MW Long-Duration Energy Storage facility?'
+        prompt: 'How can we stack state clean energy grants with federal DOE demonstration awards for a 10MW Long-Duration Energy Storage facility?'
       },
       {
         title: 'Active Hydrogen Solicitations',
@@ -255,7 +255,7 @@ export const ROLES: RoleOption[] = [
     description: 'Compliance matrices, scoring rubric maximization & SOPO work plans',
     spokenStarters: [
       'Draft a 4-phase Statement of Project Objectives and milestone schedule for clean hydrogen.',
-      'Analyze active DOE and NYSERDA energy storage solicitations for mandatory disqualifying rules.',
+      'Analyze active DOE and state clean energy storage solicitations for mandatory disqualifying rules.',
       'What are allowable non-federal cost-share sources and third-party in-kind contributions?',
       'What key technical differentiators and community benefit plans maximize scores in review panels?'
     ],
@@ -266,7 +266,7 @@ export const ROLES: RoleOption[] = [
       },
       {
         title: 'Hard vs Soft Requirements',
-        prompt: 'Analyze active DOE and NYSERDA energy storage solicitations and list all mandatory disqualifying eligibility rules.'
+        prompt: 'Analyze active DOE and state clean energy storage solicitations and list all mandatory disqualifying eligibility rules.'
       },
       {
         title: 'Cost-Share Match Strategy',

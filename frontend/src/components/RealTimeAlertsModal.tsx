@@ -13,7 +13,7 @@ export const RealTimeAlertsModal: React.FC<RealTimeAlertsModalProps> = ({ isOpen
   const queryClient = useQueryClient();
   const [name, setName] = useState('');
   const [keywords, setKeywords] = useState('');
-  const [selectedAgencies, setSelectedAgencies] = useState<string[]>(['DOE', 'NYSERDA']);
+  const [selectedAgencies, setSelectedAgencies] = useState<string[]>(['DOE', 'ARPA-E', 'CEC']);
   const [minFunding, setMinFunding] = useState<number>(1000000);
   const [successMsg, setSuccessMsg] = useState('');
 
@@ -81,7 +81,7 @@ export const RealTimeAlertsModal: React.FC<RealTimeAlertsModalProps> = ({ isOpen
     });
   };
 
-  const agenciesList = ['DOE', 'ARPA-E', 'NYSERDA', 'CEC', 'MassCEC', 'NSF', 'EPA'];
+  const agenciesList = ['DOE', 'ARPA-E', 'CEC', 'MassCEC', 'NYSERDA', 'NSF', 'EPA'];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
