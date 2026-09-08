@@ -101,41 +101,41 @@ export default function Layout() {
 
   const navSections: NavSection[] = [
     {
-      title: 'Opportunity Matcher',
+      title: 'Capital Opportunities & FOAs',
       items: [
-        { to: '/analyze', icon: Sparkles, label: 'Match Opportunities' },
+        { to: '/analyze', icon: Sparkles, label: 'Match Solicitations' },
         { to: '/radar', icon: Radio, label: 'Early-Warning Radar' },
-        { to: '/opportunities', icon: FileSearch, label: 'Funding Directory' },
+        { to: '/opportunities', icon: FileSearch, label: 'Solicitations Database' },
       ]
     },
     {
-      title: 'Awards & Outcomes',
+      title: 'Awards & Capital Allocations',
       items: [
         { to: '/awards', icon: Trophy, label: 'Awards & Deployments' },
         { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Patents' },
-        { to: '/results', icon: Scale, label: 'Results & Outcomes' },
+        { to: '/results', icon: Scale, label: 'Project Outcomes' },
       ]
     },
     {
-      title: 'Organizations & Programs',
+      title: 'Institutions & Directories',
       items: [
-        { to: '/organizations', icon: Building2, label: 'Organizations' },
-        { to: '/programs', icon: Layers, label: 'Programs' },
-        { to: '/contacts', icon: BookUser, label: 'Key Contacts' },
-        { to: '/network', icon: Network, label: 'Entity Network' },
+        { to: '/organizations', icon: Building2, label: 'Funding Organizations' },
+        { to: '/programs', icon: Layers, label: 'Innovation Programs' },
+        { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
+        { to: '/network', icon: Network, label: 'Institutional Network' },
       ]
     },
     {
-      title: 'Strategy & Intelligence',
+      title: 'Strategic Capital Intelligence',
       items: [
-        { to: '/strategy', icon: Compass, label: 'Strategy' },
-        { to: '/sankey', icon: GitMerge, label: 'Funding Flows' },
-        { to: '/trends', icon: TrendingUp, label: 'Trends' },
+        { to: '/strategy', icon: Compass, label: 'Strategy Studio' },
+        { to: '/sankey', icon: GitMerge, label: 'Capital Flows' },
+        { to: '/trends', icon: TrendingUp, label: 'Trends & Allocation' },
         { to: '/reports', icon: FileText, label: 'Executive Reports' },
       ]
     },
     {
-      title: 'References',
+      title: 'Technical & Regulatory Grounding',
       items: [
         { to: '/technologies', icon: BookOpen, label: 'Technology Reference' },
         { to: '/policies', icon: ShieldCheck, label: 'Policy Reference' },
@@ -143,7 +143,7 @@ export default function Layout() {
       ]
     },
     {
-      title: 'Data & Audit',
+      title: 'Data Governance & Audit',
       items: [
         { to: '/updates', icon: Activity, label: 'Ingestion Feed' },
         { to: '/sources', icon: Database, label: 'Data Provenance & Audit' },

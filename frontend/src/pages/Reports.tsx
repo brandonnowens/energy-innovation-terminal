@@ -42,7 +42,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
   //   "badge": "Database Architecture & Reference",
   //   "icon": "Database",
   //   "pages": 24,
-  //   "capital_tracked": "$98.98B Tracked",
+  //   "capital_tracked": "$104.16B Tracked",
   //   "awards_count": "54,305 Awards (35-Yr Arc)",
   //   "key_focus": "Exhaustive technical documentation of all 10 data layers, 31+ public source connectors, 35-year longitudinal vintage (1991–2026), 3-tier credibility framework, relational knowledge graph topology, and 7-persona stakeholder decision-maker utility matrix."
   // },
@@ -57,8 +57,8 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "badge": "Ecosystem Blueprint",
     "icon": "Share2",
     "pages": 21,
-    "capital_tracked": "$98.98B Tracked",
-    "awards_count": "54,313 Awards (25-Yr Arc)",
+    "capital_tracked": "$104.16B Tracked",
+    "awards_count": "56,413 Awards (25-Yr Arc)",
     "key_focus": "25-year empirical retrospective of state clean energy consortia, incubator networks (NYSERDA CEI, MassCEC Greentown, CalSEED, ESD NY Ventures), 3.8x federal co-funding multiplier, utility regulatory sandboxes, Justice40 equity co-design, and 2026-2035 strategic blueprints."
   },
   {
@@ -70,21 +70,21 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "badge": "Institutional Blueprint",
     "icon": "Layers",
     "pages": 21,
-    "capital_tracked": "$98.98B Tracked",
-    "awards_count": "54,313 Awards (All Sectors)",
+    "capital_tracked": "$104.16B Tracked",
+    "awards_count": "56,413 Awards (All Sectors)",
     "key_focus": "Optimal programmatic funding strategies by institution type (Federal, State, Labs, Philanthropy, Utility), high-yield research pathways vs. stranded risks across 8 technology domains, open enrollment vs. phased RFP mechanics, 4-stage Go/No-Go contracting gates, and 2026–2035 institutional execution playbooks."
   },
   {
     "id": "us_energy_innovation_landscape_flagship",
     "title": "Understanding the U.S. Energy Innovation Landscape: Past, Present and Future",
-    "subtitle": "The Definitive Nationwide Meta-Synthesis: Evaluating 54,313 Project Awards, 5,741 Solicitations, 174 Programs, and 13,781 Institutions Across 50 Years of Policy, Physical Deployment Friction, and 2026–2035 Horizon Realities",
+    "subtitle": "The Definitive Nationwide Meta-Synthesis: Evaluating 56,413 Project Awards, 5,741 Solicitations, 174 Programs, and 13,781 Institutions Across 50 Years of Policy, Physical Deployment Friction, and 2026–2035 Horizon Realities",
     "category": "Macro & Policy Strategy",
     "target_audience": "Cabinet Secretaries, Governors' Energy Cabinets, Corporate C-Suite Leadership, Infrastructure Funds, Utility Executives",
     "badge": "Flagship Meta-Report",
     "icon": "Compass",
     "pages": 21,
-    "capital_tracked": "$98.98B Tracked",
-    "awards_count": "54,313 Awards (50-Yr Arc)",
+    "capital_tracked": "$104.16B Tracked",
+    "awards_count": "56,413 Awards (50-Yr Arc)",
     "key_focus": "Comprehensive meta-synthesis integrating findings across all strategic monographs: 50-year policy evolution, cross-sector capital stacks, TRL 4-7 Valley of Death bottlenecks, institutional broker centrality, and 2026-2035 executive roadmaps."
   },
   {
@@ -96,7 +96,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "badge": "Program ROI Scorecard",
     "icon": "Target",
     "pages": 21,
-    "capital_tracked": "$98.98B Evaluated",
+    "capital_tracked": "$104.16B Evaluated",
     "awards_count": "5,741 Solicitations",
     "key_focus": "Standardized return on public grant dollar metrics: Metric Tons CO2e Avoided / $10k Awarded, FTE Jobs / $1M, Private Capital Leverage multiples (1.5x - 8.3x), and Technology Readiness Level (TRL) advancement rates."
   },
@@ -135,7 +135,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "badge": "Regional Hubs",
     "icon": "MapPin",
     "pages": 21,
-    "capital_tracked": "$98.98B",
+    "capital_tracked": "$104.16B",
     "awards_count": "50 States & Hubs",
     "key_focus": "Metropolitan cluster agglomeration, interstate supply chain specialization (Northeast R&D vs Southeast Battery Belt), and secondary market grant capture disparities."
   },
@@ -148,7 +148,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "badge": "State Evolution",
     "icon": "Layers",
     "pages": 21,
-    "capital_tracked": "$98.98B",
+    "capital_tracked": "$104.16B",
     "awards_count": "50-Year Arc",
     "key_focus": "Historical policy mandates (1975-2026), institutional governance models, ratepayer SBC funding mechanisms, and 2026-2035 zero-emission milestones."
   },
@@ -163,7 +163,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "badge": "Commercialization Strategy",
     "icon": "TrendingUp",
     "pages": 21,
-    "capital_tracked": "$98.98B Tracked",
+    "capital_tracked": "$104.16B Tracked",
     "awards_count": "13,781 Scale-Ups",
     "key_focus": "Overcoming the TRL 4-7 Valley of Death, 4-stage milestone-contingent contracting, 5.2x private capital syndication, pre-negotiated utility testbed access, university tech transfer reform, and MRL 1-10 manufacturing escalators."
   },
@@ -257,7 +257,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "badge": "Winning Proposals Meta-Analysis",
     "icon": "Target",
     "pages": 21,
-    "capital_tracked": "$98.98B Tracked",
+    "capital_tracked": "$104.16B Tracked",
     "awards_count": "54,305 Winning Awards",
     "key_focus": "Empirical win-rate factors, 100-point scoring rubric mechanics, open vs rolling enrollment capture timing, 20-50% cost-share syndication, concept paper de-risking, and actionable C-Suite execution playbooks."
   },
