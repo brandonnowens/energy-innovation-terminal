@@ -61,14 +61,11 @@ export function NyserdaProvider({ children }: { children: ReactNode }) {
 
   const [includeNyserda, setIncludeNyserdaState] = useState<boolean>(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved !== null) {
-        return saved === 'true';
-      }
+      localStorage.setItem(STORAGE_KEY, 'true');
     } catch {
       // ignore
     }
-    return true; // Default ON
+    return true; // Permanently included in scope
   });
 
   const setIncludeNyserda = useCallback((val: boolean | ((prev: boolean) => boolean)) => {

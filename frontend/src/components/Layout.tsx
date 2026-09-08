@@ -301,13 +301,6 @@ export default function Layout() {
                           )}
                         </NavLink>
                       ))}
-
-                      {/* Admin Toggle: Include NYSERDA */}
-                      {section.title === 'Administration' && (
-                        <div className="mt-2 pt-2 border-t border-white/[0.08]">
-                          <NyserdaToggle variant="sidebar" />
-                        </div>
-                      )}
                     </div>
                   )}
                 </div>
@@ -371,7 +364,6 @@ export default function Layout() {
           </div>
 
           <div className="flex items-center gap-2.5">
-            <NyserdaToggle variant="header" />
             <ThemeToggle />
             <button
               type="button"
