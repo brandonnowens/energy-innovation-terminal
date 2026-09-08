@@ -148,12 +148,6 @@ export default function Layout() {
         { to: '/updates', icon: Activity, label: 'Ingestion Feed' },
         { to: '/sources', icon: Database, label: 'Data Provenance & Audit' },
       ]
-    },
-    {
-      title: 'Administration',
-      items: [
-        { to: '/admin/email-hub', icon: BookUser, label: 'Contact CRM & Intelligence', badge: 'CRM' },
-      ]
     }
   ];
 

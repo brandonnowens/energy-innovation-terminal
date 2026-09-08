@@ -38,7 +38,6 @@ const STATIC_ACTIONS = [
   { id: 'nav-updates', label: 'Live Ingestion Feed', sub: 'Real-time telemetry and audit feed of detected dataset updates', to: '/updates', icon: Sparkles, category: 'Data' },
   { id: 'nav-sources', label: 'Data Provenance & Audit', sub: 'Source authority ranking, audit metrics, and database status', to: '/sources', icon: Database, category: 'Data' },
   { id: 'nav-splash', label: 'Replay Terminal Splash Screen', sub: 'Interactive launch sequence and telemetry indexing animation', to: '__splash__', icon: Sparkles, category: 'Terminal System' },
-  { id: 'nav-admin-email', label: 'Outreach & Admin Console', sub: 'System administration email hub, campaign composer, Gmail correspondence CRM', to: '/admin/email-hub', icon: BookUser, category: 'Administration' },
 ];
 
 export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {

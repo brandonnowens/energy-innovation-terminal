@@ -261,8 +261,8 @@ export default function KeyContacts() {
   const { user } = useAuth();
   const { includeNyserda, isNyserda } = useNyserda();
   const navigate = useNavigate();
-  // Open access mode: Outreach Hub, batch tools, and CRM correspondence logs available to all
-  const isAdmin = true;
+  // Admin Outreach Hub and CRM correspondence logs hidden for now
+  const isAdmin = false;
 
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'top_25_say_yes' | 'funder_officers' | 'domain_experts' | 'institutional_gateways' | 'utilities'>('all');
