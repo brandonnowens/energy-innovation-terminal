@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { api } from '../api/client';
+import { api, isOpportunityNew } from '../api/client';
 import {
   Search, Loader2, FolderOpen, ChevronLeft, ChevronRight, ArrowUpDown,
   ShieldAlert, X, Calendar, Mail, Phone, FileText, ExternalLink,
@@ -482,6 +482,27 @@ export default function Opportunities() {
           <span className="text-[10.5px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-600 flex items-center gap-1 font-mono">
             <Sparkles size={12} className="text-slate-500" /> Focus Views:
           </span>
+
+          <button
+            type="button"
+            onClick={() => {
+              if (activeCategoryTab === 'recent') {
+                handleCategoryTabChange('all');
+              } else {
+                handleCategoryTabChange('recent');
+              }
+            }}
+            className={clsx(
+              "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all border cursor-pointer",
+              activeCategoryTab === 'recent'
+                ? "bg-emerald-600 text-white border-emerald-600 font-bold shadow-xs"
+                : "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60 hover:bg-emerald-100"
+            )}
+          >
+            <Sparkles size={11} className={activeCategoryTab === 'recent' ? "text-white" : "text-emerald-500 animate-pulse"} />
+            <span>New (Last 30 Days)</span>
+          </button>
+
           <button
             type="button"
             onClick={() => {
@@ -694,6 +715,12 @@ export default function Opportunities() {
                       <td className="px-4 py-3 dark:text-slate-100 text-slate-800 font-medium whitespace-normal max-w-md">
                         <div className="flex items-center gap-2 flex-wrap mb-1">
                           <span className="dark:group-hover:text-cyan-300 group-hover:text-cyan-700 font-bold transition-colors">{opp.name}</span>
+                          {isOpportunityNew(opp) && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9.5px] font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-xs tracking-wide">
+                              <Sparkles size={9} className="text-emerald-200 animate-pulse" />
+                              <span>NEW</span>
+                            </span>
+                          )}
                           {opp.status === 'open' && (
                             <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9.5px] font-semibold dark:bg-emerald-950/40 bg-emerald-50 dark:text-emerald-400 text-emerald-800 dark:border-emerald-800/60 border-emerald-200 border">
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
@@ -734,7 +761,8 @@ export default function Opportunities() {
                       <td className="px-4 py-3 whitespace-nowrap">
                         <div className="flex flex-col">
                           <span className={clsx(
-                            "inline-flex items-center gap-1 font-mono text-[12px] font-bold",
+                            "inline-flex items-center gap-1.5 font-mono text-[12px] font-bold",
+                            isOpportunityNew(opp) ? "text-emerald-600 dark:text-emerald-400 font-extrabold" :
                             opp.days_since_release === 0 ? "text-emerald-700" :
                             opp.days_since_release !== null && opp.days_since_release <= 7 ? "text-indigo-600" :
                             opp.days_since_release !== null && opp.days_since_release <= 30 ? "text-slate-800" :
@@ -745,6 +773,11 @@ export default function Opportunities() {
                               : opp.days_since_release === 0 
                                 ? 'Today (< 1d)' 
                                 : `${opp.days_since_release.toLocaleString()}d ago`}
+                            {isOpportunityNew(opp) && (
+                              <span className="text-[8.5px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700">
+                                NEW
+                              </span>
+                            )}
                           </span>
                           {opp.release_date && (
                             <span className="text-[10px] text-slate-400 font-mono">{opp.release_date}</span>
@@ -881,6 +914,12 @@ export default function Opportunities() {
               <div className="pr-8">
                 <div className="flex items-center gap-2 mb-2 flex-wrap">
                   <span className="font-mono text-[13px] font-bold text-indigo-600">{selectedOpp.solicitation_number}</span>
+                  {isOpportunityNew(selectedOpp) && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-600 text-white shadow-2xs">
+                      <Sparkles size={10} className="text-emerald-200 animate-pulse" />
+                      <span>NEW · Last 30 Days</span>
+                    </span>
+                  )}
                   <span className="w-1 h-1 rounded-full bg-slate-300" />
                   <div className="flex items-center gap-1.5">
                     <OrgLogo org={selectedOpp.agency || 'Agency'} size="xs" />

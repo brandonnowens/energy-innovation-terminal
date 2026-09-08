@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from './OrgLogo';
-import { GroupedOpportunityOrg } from '../api/client';
+import { GroupedOpportunityOrg, isOpportunityNew } from '../api/client';
 import { WinningAngleModal } from './WinningAngleModal';
 import { useNyserda } from '../context/NyserdaContext';
 
@@ -554,10 +554,16 @@ export function Top25OpportunitiesTable({
                                 {/* Solicitation & Program Name */}
                                 <td className="py-3 px-3.5">
                                   <div className="space-y-0.5">
-                                    <div className="flex items-center gap-1.5">
+                                    <div className="flex items-center gap-1.5 flex-wrap">
                                       <span className="font-mono font-bold text-[11px] text-indigo-600 dark:text-indigo-400">
                                         {m.solicitation_number || `OPP-${m.opportunity_id}`}
                                       </span>
+                                      {isOpportunityNew(m) && (
+                                        <span className="inline-flex items-center gap-0.5 text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500 text-white shadow-2xs tracking-wide">
+                                          <Sparkles size={8} className="animate-pulse" />
+                                          <span>NEW</span>
+                                        </span>
+                                      )}
                                       {m.lifecycle_status && (
                                         <span className="text-[8px] px-1.5 py-0.2 rounded bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 font-mono font-semibold">
                                           {m.lifecycle_status}
@@ -878,10 +884,16 @@ export function Top25OpportunitiesTable({
                         {/* Solicitation & Program Name */}
                         <td className="py-3 px-3.5">
                           <div className="space-y-0.5">
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-1.5 flex-wrap">
                               <span className="font-mono font-bold text-[11.5px] text-indigo-600 dark:text-indigo-400">
                                 {m.solicitation_number || `OPP-${m.opportunity_id}`}
                               </span>
+                              {isOpportunityNew(m) && (
+                                <span className="inline-flex items-center gap-0.5 text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500 text-white shadow-2xs tracking-wide">
+                                  <Sparkles size={8} className="animate-pulse" />
+                                  <span>NEW</span>
+                                </span>
+                              )}
                               {m.lifecycle_status && (
                                 <span className="text-[8.5px] px-1.5 py-0.2 rounded bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 font-mono font-semibold">
                                   {m.lifecycle_status}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useParams, Link } from 'react-router-dom';
-import { api } from '../api/client';
+import { api, isOpportunityNew } from '../api/client';
 import {
   ArrowLeft, Loader2, Calendar, Mail, Phone, FileText, ExternalLink,
   AlertTriangle, CheckCircle2, Info, ShieldAlert, Ban, Star, Printer,
@@ -225,6 +225,12 @@ export default function OpportunityDetail() {
                 <span className="font-mono text-xs font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-0.5 rounded-full">
                   {d.solicitation_number || 'SOLICITATION'}
                 </span>
+                {isOpportunityNew(d) && (
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-2xs">
+                    <Sparkles size={11} className="text-emerald-200 animate-pulse" />
+                    <span>NEW · Last 30 Days</span>
+                  </span>
+                )}
                 <span className={clsx(
                   'px-2.5 py-0.5 rounded-full text-xs font-bold border',
                   d.status === 'open' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-100 text-slate-600 border-slate-200'

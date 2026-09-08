@@ -412,6 +412,9 @@ export interface Opportunity {
   artifacts_count?: number;
   has_artifacts?: boolean;
   bundle_download_url?: string;
+  days_since_release?: number | null;
+  release_date?: string | null;
+  is_new?: boolean;
 }
 
 export interface OpportunityDetail extends Opportunity {
@@ -424,6 +427,42 @@ export interface OpportunityDetail extends Opportunity {
   changes: Array<{ date: string; description: string }>;
   conflicts: string[];
   lastVerified: string;
+}
+
+/**
+ * Automatically identifies whether an Opportunity was created or released in the last 30 days.
+ */
+export function isOpportunityNew(opp: any): boolean {
+  if (!opp) return false;
+  if (opp.is_new === true) return true;
+  if (typeof opp.days_since_release === 'number' && opp.days_since_release >= 0 && opp.days_since_release <= 30) {
+    return true;
+  }
+  const now = Date.now();
+  const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
+  const candidateDates = [
+    opp.release_date,
+    opp.open_date,
+    opp.created_at,
+    opp.posted_date,
+    opp.first_seen_at,
+    opp.first_seen,
+    opp.date_opened,
+    opp.last_modified
+  ];
+  for (const d of candidateDates) {
+    if (!d) continue;
+    try {
+      const parsed = new Date(d).getTime();
+      if (!isNaN(parsed)) {
+        const diff = now - parsed;
+        if (diff >= 0 && diff <= thirtyDaysMs) {
+          return true;
+        }
+      }
+    } catch {}
+  }
+  return false;
 }
 
 export interface Update {
