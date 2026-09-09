@@ -18,7 +18,7 @@ from app.models.policy import RegulatoryProceeding
 
 router = APIRouter(tags=["SEO & Sitemaps"])
 
-BASE_PUBLIC_URL = "https://energyinnovation.terminal"
+BASE_PUBLIC_URL = "https://terminal.aixenergy.io"
 
 
 def xml_escape(val: Optional[str]) -> str:
@@ -42,7 +42,7 @@ def slugify(text_val: Optional[str]) -> str:
 # ─────────────────────────────────────────────────────────────────────────────
 @router.get("/robots.txt", response_class=PlainTextResponse)
 def get_robots_txt():
-    """Authoritative robots.txt for Googlebot, Bingbot, PerplexityBot, and AI Crawlers."""
+    """Authoritative robots.txt: allows search engines while blocking bulk scrapers and raw API endpoints."""
     content = f"""# Robots.txt for Energy Innovation Terminal
 # Upstream Energy Innovation & Capital Intelligence Terminal
 
@@ -51,22 +51,48 @@ Allow: /
 Allow: /opportunities/
 Allow: /recipients/
 Allow: /technologies/
+Allow: /organizations/
 Allow: /agencies/
 Allow: /dockets/
 Allow: /venture-patents
 Allow: /trends
 Allow: /awards
+Allow: /reports
+Allow: /sankey
 Allow: /sitemap.xml
 Allow: /sitemap-*.xml
 Allow: /llms.txt
 Allow: /ai.txt
 Allow: /feed/
 
+# Disallow raw API endpoints and internal routes from indexing
+Disallow: /api/
 Disallow: /admin/
-Disallow: /api/system/
-Disallow: /api/auth/
+Disallow: /sources/
 
-# AI Search Crawlers Explicit Directives
+# Explicitly block aggressive bulk scrapers
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /api/
+
+User-agent: SemrushBot
+Disallow: /api/
+
+# Allowed AI Search Crawlers Directives
 User-agent: PerplexityBot
 Allow: /
 

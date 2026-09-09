@@ -66,10 +66,13 @@ app = FastAPI(
     title="Energy Innovation Terminal API",
     description=(
         "Energy Innovation Terminal - AI Clean Energy Grant Matching & Capital Intelligence API indexing "
-        "public funding solicitations and awards across DOE, CEC, MassCEC, ARPA-E, NSF, NYSERDA, and utilities."
+        "public funding solicitations and awards across DOE, CEC, MassCEC, ARPA-E, NSF, and utilities."
     ),
     version="3.5.0",
     lifespan=lifespan,
+    docs_url="/docs" if getattr(settings, "environment", "") == "development" else None,
+    redoc_url="/redoc" if getattr(settings, "environment", "") == "development" else None,
+    openapi_url="/openapi.json" if getattr(settings, "environment", "") == "development" else None,
 )
 
 # CORS for local and cloud deployment

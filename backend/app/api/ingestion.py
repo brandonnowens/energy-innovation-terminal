@@ -9,6 +9,8 @@ from pydantic import BaseModel
 
 from app.database import get_db
 from app.models.source import Source, IngestionRun
+from app.models.user import User
+from app.core.membership import require_role
 from app.services.ingestion.orchestrator import (
     get_all_worker_statuses, run_pipeline, start_scheduler
 )
@@ -48,7 +50,10 @@ def get_ingestion_pipeline_status(db: Session = Depends(get_db)):
 
 
 @router.post("/run/{source_code}")
-def trigger_manual_ingestion_sync(source_code: str):
+def trigger_manual_ingestion_sync(
+    source_code: str,
+    admin_user: User = Depends(require_role(["admin"]))
+):
     """Trigger an immediate sync for a specific worker ('grants_gov', 'state_clean_energy', 'utility_psc', or 'all')."""
     result = run_pipeline(source_code)
     if "error" in result:
@@ -57,7 +62,10 @@ def trigger_manual_ingestion_sync(source_code: str):
 
 
 @router.post("/scheduler/start")
-def start_automated_scheduler(req: StartSchedulerRequest):
+def start_automated_scheduler(
+    req: StartSchedulerRequest,
+    admin_user: User = Depends(require_role(["admin"]))
+):
     """Start the background 60‑minute automated ingestion loop."""
     interval = max(5, min(1440, req.interval_minutes))
     start_scheduler(interval)

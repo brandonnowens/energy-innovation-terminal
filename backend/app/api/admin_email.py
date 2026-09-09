@@ -16,7 +16,7 @@ from app.models.contact import Contact
 from app.models.admin_email import (
     AdminEmailCampaign, AdminEmailLog, ContactEmailThread, ContactEmailMessage
 )
-from app.core.membership import require_role, get_admin_user_or_default
+from app.core.membership import require_role
 from app.services.email_service import (
     send_single_email, test_gmail_smtp_connection, dispatch_campaign_to_contacts, interpolate_template
 )
@@ -63,7 +63,7 @@ class ThreadStatusUpdatePayload(BaseModel):
 
 @router.get("/status")
 def get_admin_email_status(
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Get system admin email configuration status, telemetry, and unread counts."""
@@ -100,7 +100,7 @@ def get_admin_email_status(
 
 
 @router.post("/test-connection")
-def test_connection(admin_user: User = Depends(get_admin_user_or_default)):
+def test_connection(admin_user: User = Depends(require_role(["admin"]))):
     """Run live diagnostic handshake against Gmail SMTP and IMAP endpoints."""
     smtp_ok, smtp_msg = test_gmail_smtp_connection()
     imap_ok, imap_msg = test_gmail_imap_connection()
@@ -128,7 +128,7 @@ def test_connection(admin_user: User = Depends(get_admin_user_or_default)):
 # ----------------------------------------------------------------------
 
 @router.get("/templates")
-def get_email_templates(admin_user: User = Depends(get_admin_user_or_default)):
+def get_email_templates(admin_user: User = Depends(require_role(["admin"]))):
     """Pre-built high-converting clean energy outreach and application invitation templates."""
     return {
         "templates": [
@@ -236,7 +236,7 @@ bowens@aixenergy.io""",
 async def send_email_campaign(
     payload_json: str = Form(..., description="JSON-encoded SendEmailPayload"),
     files: List[UploadFile] = File(None, description="Optional uploaded file attachments"),
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """
@@ -353,7 +353,7 @@ async def send_email_campaign(
 def list_campaigns(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """List past admin email outreach campaigns."""
@@ -372,7 +372,7 @@ def list_campaigns(
 @router.get("/campaigns/{campaign_id}")
 def get_campaign_detail(
     campaign_id: int,
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Get full campaign details and individual recipient delivery logs."""
@@ -395,7 +395,7 @@ def get_campaign_detail(
 @router.post("/sync")
 def trigger_gmail_sync(
     days_lookback: int = Query(30, ge=1, le=180),
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Trigger live IMAP sync with Gmail to fetch sent emails and inbound replies from contacts."""
@@ -410,7 +410,7 @@ def list_correspondence_threads(
     technology: Optional[str] = Query(None),
     page: int = Query(1, ge=1),
     page_size: int = Query(25, ge=1, le=100),
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """List all contact email correspondence threads with AI summaries and sentiment."""
@@ -450,7 +450,7 @@ def list_correspondence_threads(
 @router.get("/threads/{thread_id}")
 def get_thread_detail(
     thread_id: int,
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Get full chronological email stream and AI executive summary for a thread."""
@@ -490,7 +490,7 @@ def get_thread_detail(
 @router.get("/contact/{contact_id}/history")
 def get_contact_correspondence_history(
     contact_id: int,
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Get complete correspondence history and AI summary specifically for a given contact."""
@@ -522,7 +522,7 @@ def get_contact_correspondence_history(
 def quick_reply_to_thread(
     thread_id: int,
     payload: QuickReplyPayload,
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Send a quick reply to an existing contact correspondence thread."""
@@ -591,7 +591,7 @@ def quick_reply_to_thread(
 def update_thread_status(
     thread_id: int,
     payload: ThreadStatusUpdatePayload,
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Manually update thread status, next actions, and notes."""
@@ -615,7 +615,7 @@ def update_thread_status(
 @router.post("/threads/{thread_id}/summarize")
 def force_summarize_thread(
     thread_id: int,
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Trigger re-summarization of a conversation thread."""
@@ -626,7 +626,7 @@ def force_summarize_thread(
 @router.post("/threads/{thread_id}/draft-reply")
 def draft_reply_for_thread(
     thread_id: int,
-    admin_user: User = Depends(get_admin_user_or_default),
+    admin_user: User = Depends(require_role(["admin"])),
     db: Session = Depends(get_db)
 ):
     """Generate an authentic contextual email reply draft for a contact thread using LLM reasoning."""
