@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   Sparkles, FileSearch, Layers, Building2, Trophy, Network,
   TrendingUp, Database, GitMerge, FileText, Search, ShieldCheck,
   Zap, Command, FileEdit, Scale, Lightbulb, Clock, Activity, BookUser, BookOpen, Bot,
   ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X, Newspaper, Terminal
 } from 'lucide-react';
-
 
 import clsx from 'clsx';
 import { EnergyInnovationTerminalLogo } from './EnergyInnovationTerminalLogo';
@@ -36,6 +35,7 @@ export default function Layout() {
   const [apiModalOpen, setApiModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Persona Front Door Selection: 'investor' | 'innovator' | 'all'
   const [persona, setPersona] = useState<'investor' | 'innovator' | 'all'>(() => {
@@ -52,6 +52,89 @@ export default function Layout() {
       localStorage.setItem('energy_terminal_persona_v1', newPersona);
     } catch {}
     window.dispatchEvent(new CustomEvent('persona-changed', { detail: newPersona }));
+
+    // Contextual front door routing: if switching persona while on a primary landing page
+    if (newPersona === 'innovator' && (location.pathname === '/' || location.pathname === '/digest' || location.pathname === '/daily-digest')) {
+      navigate('/analyze');
+    } else if (newPersona === 'investor' && (location.pathname === '/analyze' || location.pathname === '/match')) {
+      navigate('/digest');
+    }
+  };
+
+  // Dynamic home destination matching active persona
+  const homeRoute = persona === 'innovator' ? '/analyze' : '/';
+
+  // Comprehensive active route matcher ensuring zero de-synchronization across aliases & deep links
+  const isItemActive = (itemTo: string): boolean => {
+    if (itemTo === '__api_modal__') return apiModalOpen;
+    const p = location.pathname;
+    if (itemTo === '/' || itemTo === '/digest') {
+      return p === '/' || p === '/digest' || p.startsWith('/digest') || p.startsWith('/daily-digest');
+    }
+    if (itemTo === '/analyze') {
+      return p === '/analyze' || p.startsWith('/analyze') || p === '/match' || p.startsWith('/match');
+    }
+    if (itemTo === '/radar') {
+      return p === '/radar' || p.startsWith('/radar') || p.startsWith('/forecasting');
+    }
+    if (itemTo === '/opportunities') {
+      return p === '/opportunities' || p.startsWith('/opportunities');
+    }
+    if (itemTo === '/proposals') {
+      return p === '/proposals' || p.startsWith('/proposals');
+    }
+    if (itemTo === '/awards') {
+      return p === '/awards' || p.startsWith('/awards') || p.startsWith('/recipients');
+    }
+    if (itemTo === '/venture-patents') {
+      return p === '/venture-patents' || p.startsWith('/venture-patents');
+    }
+    if (itemTo === '/results') {
+      return p === '/results' || p.startsWith('/results');
+    }
+    if (itemTo === '/organizations') {
+      return p === '/organizations' || p.startsWith('/organizations') || p.startsWith('/agencies');
+    }
+    if (itemTo === '/programs') {
+      return p === '/programs' || p.startsWith('/programs');
+    }
+    if (itemTo === '/contacts') {
+      return p === '/contacts' || p.startsWith('/contacts');
+    }
+    if (itemTo === '/network') {
+      return p === '/network' || p.startsWith('/network');
+    }
+    if (itemTo === '/strategy') {
+      return p === '/strategy' || p.startsWith('/strategy');
+    }
+    if (itemTo === '/sankey') {
+      return p === '/sankey' || p.startsWith('/sankey');
+    }
+    if (itemTo === '/trends') {
+      return p === '/trends' || p.startsWith('/trends');
+    }
+    if (itemTo === '/reports') {
+      return p === '/reports' || p.startsWith('/reports');
+    }
+    if (itemTo === '/technologies') {
+      return p === '/technologies' || p.startsWith('/technologies') || p.startsWith('/tech-reference') || p.startsWith('/tech-hub');
+    }
+    if (itemTo === '/policies') {
+      return p === '/policies' || p.startsWith('/policies') || p.startsWith('/policy-reference');
+    }
+    if (itemTo === '/dockets') {
+      return p === '/dockets' || p.startsWith('/dockets');
+    }
+    if (itemTo === '/updates') {
+      return p === '/updates' || p.startsWith('/updates');
+    }
+    if (itemTo === '/sources') {
+      return p === '/sources' || p.startsWith('/sources');
+    }
+    if (itemTo === '/chat') {
+      return p === '/chat' || p.startsWith('/chat');
+    }
+    return p === itemTo || p.startsWith(itemTo);
   };
 
   // Close mobile drawer upon navigation
@@ -79,18 +162,18 @@ export default function Layout() {
       // ignore
     }
     return {
-      'Opportunities': false,
-      'Awards': false,
-      'Directories': true,
-      'Intelligence': true,
-      'References': true,
+      'Opportunities & Studio': false,
+      'Awards & Precedents': false,
+      'Directories & Ecosystem': true,
+      'Market Intelligence': false,
+      'Regulatory & References': true,
       'Data & Audit': true,
       'Grant Seeking Suite': false,
-      'Market Intelligence': false,
-      'Due Diligence': false,
-      'Ecosystem & Partners': true,
-      'Project & Tech Sourcing': false,
+      'Ecosystem & Partners': false,
       'Intelligence & Reference': true,
+      'Due Diligence & Benchmarks': false,
+      'Project & Deal Sourcing': false,
+      'Data & Developer API': true,
     };
   });
 
@@ -169,6 +252,7 @@ export default function Layout() {
             { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
             { to: '/organizations', icon: Building2, label: 'Funding Organizations' },
             { to: '/network', icon: Network, label: 'Teaming & Network' },
+            { to: '/programs', icon: Layers, label: 'Programs (143)' },
           ]
         },
         {
@@ -200,29 +284,33 @@ export default function Layout() {
             { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Bayh-Dole IP' },
             { to: '/reports', icon: FileText, label: 'Reports & Blueprints' },
             { to: '/trends', icon: TrendingUp, label: 'Capital Velocity & Trends' },
+            { to: '/strategy', icon: Compass, label: 'Portfolio Strategy' },
           ]
         },
         {
-          title: 'Due Diligence',
+          title: 'Due Diligence & Benchmarks',
           items: [
             { to: '/awards', icon: Trophy, label: 'Awards Ledger ($104B)' },
-            { to: '/results', icon: Scale, label: 'Outcomes & ROI' },
+            { to: '/results', icon: Scale, label: 'Outcomes & Benchmarks' },
             { to: '/dockets', icon: Scale, label: 'Utility Dockets & Tariffs' },
             { to: '/organizations', icon: Building2, label: 'Agencies & Utilities' },
+            { to: '/programs', icon: Layers, label: 'Programs & Initiatives' },
           ]
         },
         {
-          title: 'Project Diligence',
+          title: 'Project & Deal Sourcing',
           items: [
             { to: '/analyze', icon: Sparkles, label: 'Project Bankability (TBR)' },
             { to: '/opportunities', icon: FileSearch, label: 'Active Solicitations' },
             { to: '/technologies', icon: BookOpen, label: 'Frontier Tech Taxonomy' },
+            { to: '/network', icon: Network, label: 'Ecosystem & Syndicates' },
           ]
         },
         {
           title: 'Data & Developer API',
           items: [
             { to: '/sources', icon: Database, label: 'Data Provenance' },
+            { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
             { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
           ]
         }
@@ -232,291 +320,307 @@ export default function Layout() {
     // Master / All Modules View
     return [
       {
-        title: 'Opportunities',
+        title: 'Opportunities & Studio',
         items: [
-          { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
-          { to: '/analyze', icon: Sparkles, label: 'Match' },
-          { to: '/radar', icon: Radio, label: 'Radar' },
-          { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
-          { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
+          { to: '/digest', icon: Newspaper, label: 'Daily Digest', badge: 'Briefing' },
+          { to: '/analyze', icon: Sparkles, label: 'Match Engine' },
+          { to: '/radar', icon: Radio, label: 'Predictive Radar' },
+          { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
+          { to: '/proposals', icon: FileEdit, label: 'Application Studio', badge: 'SOPO' },
         ]
       },
       {
-        title: 'Awards',
+        title: 'Awards & Precedents',
         items: [
-          { to: '/awards', icon: Trophy, label: 'Awards' },
-          { to: '/venture-patents', icon: Lightbulb, label: 'Venture & IP' },
-          { to: '/results', icon: Scale, label: 'Outcomes' },
+          { to: '/awards', icon: Trophy, label: 'Awards Ledger ($104B)' },
+          { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Bayh-Dole IP' },
+          { to: '/results', icon: Scale, label: 'Outcomes & Benchmarks' },
         ]
       },
       {
-        title: 'Directories',
+        title: 'Directories & Ecosystem',
         items: [
-          { to: '/organizations', icon: Building2, label: 'Organizations' },
-          { to: '/programs', icon: Layers, label: 'Programs' },
-          { to: '/contacts', icon: BookUser, label: 'Contacts' },
-          { to: '/network', icon: Network, label: 'Network' },
+          { to: '/organizations', icon: Building2, label: 'Organizations & Utilities' },
+          { to: '/programs', icon: Layers, label: 'Programs (143)' },
+          { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
+          { to: '/network', icon: Network, label: 'Teaming & Syndicates' },
         ]
       },
       {
-        title: 'Intelligence',
+        title: 'Market Intelligence',
         items: [
-          { to: '/strategy', icon: Compass, label: 'Strategy' },
-          { to: '/sankey', icon: GitMerge, label: 'Capital Flows' },
-          { to: '/trends', icon: TrendingUp, label: 'Trends' },
-          { to: '/reports', icon: FileText, label: 'Reports' },
+          { to: '/strategy', icon: Compass, label: 'Portfolio Strategy' },
+          { to: '/sankey', icon: GitMerge, label: 'Capital Flows (Sankey)' },
+          { to: '/trends', icon: TrendingUp, label: 'Capital Velocity & Trends' },
+          { to: '/reports', icon: FileText, label: 'Reports & Blueprints' },
         ]
       },
       {
-        title: 'References',
+        title: 'Regulatory & References',
         items: [
-          { to: '/technologies', icon: BookOpen, label: 'Technologies' },
-          { to: '/policies', icon: ShieldCheck, label: 'Policies' },
-          { to: '/dockets', icon: Scale, label: 'Dockets' },
+          { to: '/technologies', icon: BookOpen, label: 'Technology Reference' },
+          { to: '/policies', icon: ShieldCheck, label: 'IRA §45/§48 Tax Credits' },
+          { to: '/dockets', icon: Scale, label: 'Utility Dockets & Tariffs' },
         ]
       },
       {
-        title: 'Data & Audit',
+        title: 'Data & Developer API',
         items: [
-          { to: '/updates', icon: Activity, label: 'Feeds' },
-          { to: '/sources', icon: Database, label: 'Provenance' },
+          { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
+          { to: '/sources', icon: Database, label: 'Data Provenance' },
           { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
         ]
       }
     ];
   }, [persona]);
 
+  // Ensure active category is always expanded so current menu item is never hidden
+  useEffect(() => {
+    for (const section of navSections) {
+      if (section.items.some(item => isItemActive(item.to))) {
+        setCollapsedSections(prev => {
+          if (prev[section.title]) {
+            const updated = { ...prev, [section.title]: false };
+            try {
+              localStorage.setItem('energy_terminal_nav_collapsed_v6', JSON.stringify(updated));
+            } catch {}
+            return updated;
+          }
+          return prev;
+        });
+        break;
+      }
+    }
+  }, [location.pathname, persona, navSections]);
+
   const allCollapsed = useMemo(() => {
     return navSections.every(s => collapsedSections[s.title]);
   }, [navSections, collapsedSections]);
 
-  const renderSidebar = (isMobile = false) => (
-    <>
-      {/* Brand Header */}
-      <div className="px-5 py-4 border-b border-white/[0.06] flex items-center justify-between">
-        <NavLink to="/" onClick={() => isMobile && setMobileMenuOpen(false)} className="cursor-pointer">
-          <EnergyInnovationTerminalLogo size="md" showText={true} />
-        </NavLink>
-        {isMobile && (
+  const renderSidebar = (isMobile = false) => {
+    const isChatActive = isItemActive('/chat');
 
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(false)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-            aria-label="Close navigation"
-          >
-            <X size={18} />
-          </button>
-        )}
-      </div>
-
-      {/* Persona Front Door Selector */}
-      <div className="px-3 pt-3 pb-2 border-b border-white/[0.06] space-y-1.5">
-        <div className="flex items-center justify-between text-[10px] font-semibold text-slate-400 px-0.5">
-          <span className="uppercase tracking-wider text-[9px] text-slate-400">Front Door Mode</span>
-          {persona !== 'all' ? (
+    return (
+      <>
+        {/* Brand Header */}
+        <div className="px-5 py-4 border-b border-white/[0.06] flex items-center justify-between">
+          <NavLink to={homeRoute} onClick={() => isMobile && setMobileMenuOpen(false)} className="cursor-pointer" title="Energy Innovation Terminal Home">
+            <EnergyInnovationTerminalLogo size="md" showText={true} />
+          </NavLink>
+          {isMobile && (
             <button
               type="button"
-              onClick={() => handlePersonaChange('all')}
-              className="text-[9.5px] text-slate-400 hover:text-[#00E5FF] transition-colors cursor-pointer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              aria-label="Close navigation"
             >
-              All Modules
+              <X size={18} />
             </button>
-          ) : (
-            <span className="text-[9px] text-[#00E5FF] font-mono">Master</span>
           )}
         </div>
-        <div className="grid grid-cols-2 p-0.5 bg-white/[0.03] border border-white/[0.06] rounded-lg gap-0.5">
-          <button
-            type="button"
-            onClick={() => handlePersonaChange('investor')}
-            className={clsx(
-              "px-1.5 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
-              persona === 'investor'
-                ? "bg-cyan-500/20 text-[#00E5FF] border border-cyan-500/40 shadow-2xs"
-                : "text-slate-400 hover:text-slate-200"
-            )}
-            title="Spotlight: Daily Digest, Capital Flows (Sankey), Venture & IP, Reports, Trends"
-          >
-            <TrendingUp size={11} className={persona === 'investor' ? "text-[#00E5FF]" : "text-slate-400"} />
-            <span className="truncate">Investors</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => handlePersonaChange('innovator')}
-            className={clsx(
-              "px-1.5 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
-              persona === 'innovator'
-                ? "bg-indigo-500/25 text-indigo-300 border border-indigo-500/40 shadow-2xs"
-                : "text-slate-400 hover:text-slate-200"
-            )}
-            title="Spotlight: Project Match, Solicitations, Winning Proposals Studio, Key Contacts"
-          >
-            <Sparkles size={11} className={persona === 'innovator' ? "text-indigo-400" : "text-slate-400"} />
-            <span className="truncate">Innovators</span>
-          </button>
-        </div>
-      </div>
 
-      {/* Navigation Area */}
-      <nav className="flex-1 px-3 py-3 space-y-2 overflow-y-auto no-scrollbar">
-        {/* Top Primary Item: AI Advisor */}
-        <div className="space-y-1 mb-2">
-          <NavLink
-            to="/chat"
-            onClick={() => isMobile && setMobileMenuOpen(false)}
-            className={({ isActive }) =>
-              clsx(
+        {/* Persona Front Door Selector */}
+        <div className="px-3 pt-3 pb-2 border-b border-white/[0.06] space-y-1.5">
+          <div className="flex items-center justify-between text-[10px] font-semibold text-slate-400 px-0.5">
+            <span className="uppercase tracking-wider text-[9px] text-slate-400">Front Door Mode</span>
+            {persona !== 'all' ? (
+              <button
+                type="button"
+                onClick={() => handlePersonaChange('all')}
+                className="text-[9.5px] text-slate-400 hover:text-[#00E5FF] transition-colors cursor-pointer"
+              >
+                All Modules
+              </button>
+            ) : (
+              <span className="text-[9px] text-[#00E5FF] font-mono">Master</span>
+            )}
+          </div>
+          <div className="grid grid-cols-2 p-0.5 bg-white/[0.03] border border-white/[0.06] rounded-lg gap-0.5">
+            <button
+              type="button"
+              onClick={() => handlePersonaChange('investor')}
+              className={clsx(
+                "px-1.5 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
+                persona === 'investor'
+                  ? "bg-cyan-500/20 text-[#00E5FF] border border-cyan-500/40 shadow-2xs"
+                  : "text-slate-400 hover:text-slate-200"
+              )}
+              title="Spotlight: Daily Digest, Capital Flows (Sankey), Venture & IP, Reports, Trends"
+            >
+              <TrendingUp size={11} className={persona === 'investor' ? "text-[#00E5FF]" : "text-slate-400"} />
+              <span className="truncate">Investors</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => handlePersonaChange('innovator')}
+              className={clsx(
+                "px-1.5 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
+                persona === 'innovator'
+                  ? "bg-indigo-500/25 text-indigo-300 border border-indigo-500/40 shadow-2xs"
+                  : "text-slate-400 hover:text-slate-200"
+              )}
+              title="Spotlight: Project Match, Solicitations, Winning Proposals Studio, Key Contacts"
+            >
+              <Sparkles size={11} className={persona === 'innovator' ? "text-indigo-400" : "text-slate-400"} />
+              <span className="truncate">Innovators</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Navigation Area */}
+        <nav className="flex-1 px-3 py-3 space-y-2 overflow-y-auto no-scrollbar">
+          {/* Top Primary Item: AI Advisor */}
+          <div className="space-y-1 mb-2">
+            <NavLink
+              to="/chat"
+              onClick={() => isMobile && setMobileMenuOpen(false)}
+              className={clsx(
                 'flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border',
-                isActive
+                isChatActive
                   ? 'bg-gradient-to-r from-cyan-500/20 to-emerald-500/15 text-white border-cyan-400/50 shadow-glow-cyan-sm'
                   : 'bg-white/[0.03] hover:bg-white/[0.06] text-slate-300 border-white/[0.06] hover:text-white'
-              )
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <Bot
-                    size={15}
-                    strokeWidth={1.8}
-                    className={clsx(
-                      'shrink-0 transition-colors',
-                      isActive ? 'text-[#00E5FF]' : 'text-[#00F5A0]'
-                    )}
-                  />
-                  <span className="truncate font-bold">AI Advisor</span>
-                </div>
-                <span className={clsx(
-                  "text-[9px] font-bold px-1.5 py-0.2 rounded font-mono",
-                  isActive ? "bg-cyan-500/30 text-[#00E5FF] border border-cyan-400/40" : "bg-emerald-500/15 text-[#00F5A0] border border-emerald-500/30"
-                )}>
-                  AI
-                </span>
-              </>
-            )}
-          </NavLink>
-        </div>
-
-        {/* Sidebar Nav Category Header / Collapse Toggle */}
-        <div className="pt-2 pb-1 flex items-center justify-between text-[10px] text-slate-400 px-1 border-t border-white/[0.06]">
-          <span className="font-semibold uppercase tracking-wider text-[9px] text-slate-400">Navigation</span>
-          <button
-            type="button"
-            onClick={() => toggleAll(!allCollapsed)}
-            className="flex items-center gap-1 hover:text-slate-200 transition-colors text-[10px] font-medium cursor-pointer"
-            title={allCollapsed ? "Expand all categories" : "Collapse all categories"}
-          >
-            <ChevronsUpDown size={11} className="text-slate-400" />
-            <span>{allCollapsed ? 'Expand All' : 'Collapse All'}</span>
-          </button>
-        </div>
-
-        {/* Collapsible Accordion Sections */}
-        <div className="space-y-2">
-          {navSections.map((section) => {
-            const isCollapsed = !!collapsedSections[section.title];
-            const hasActiveChild = section.items.some(item => {
-              if (item.to === '/') return location.pathname === '/';
-              return location.pathname.startsWith(item.to);
-            });
-
-            return (
-              <div key={section.title} className="space-y-0.5">
-                <button
-                  type="button"
-                  onClick={() => toggleSection(section.title)}
-                  className="w-full px-2.5 py-1 rounded-md hover:bg-white/[0.04] text-[9.5px] font-bold uppercase tracking-[0.14em] text-slate-400 flex items-center justify-between group cursor-pointer transition-colors"
-                >
-                  <span className="group-hover:text-slate-200 transition-colors text-left truncate">{section.title}</span>
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    {hasActiveChild && isCollapsed && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_6px_#00E5FF]" />
-                    )}
-                    <span className="text-[9px] font-mono text-slate-400 font-normal">
-                      {section.items.length}
-                    </span>
-                    {isCollapsed ? (
-                      <ChevronRight size={12} className="text-slate-400 group-hover:text-slate-200 transition-transform" />
-                    ) : (
-                      <ChevronDown size={12} className="text-slate-400 group-hover:text-slate-200 transition-transform" />
-                    )}
-                  </div>
-                </button>
-
-                {!isCollapsed && (
-                  <div className="space-y-0.5 pl-0.5 animate-in fade-in-50 duration-100">
-                    {section.items.map((item) => (
-                      item.to === '__api_modal__' ? (
-                        <button
-                          key={item.label}
-                          type="button"
-                          onClick={() => {
-                            if (isMobile) setMobileMenuOpen(false);
-                            setApiModalOpen(true);
-                          }}
-                          className="w-full relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:bg-white/[0.04] hover:text-slate-200 transition-all cursor-pointer group text-left"
-                        >
-                          <div className="flex items-center gap-2.5 min-w-0">
-                            <item.icon
-                              size={14}
-                              strokeWidth={1.8}
-                              className="shrink-0 transition-colors text-slate-400 group-hover:text-[#00E5FF]"
-                            />
-                            <span className="truncate">{item.label}</span>
-                          </div>
-                          {item.badge && (
-                            <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-cyan-950/60 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
-                              {item.badge}
-                            </span>
-                          )}
-                        </button>
-                      ) : (
-                        <NavLink
-                          key={item.to}
-                          to={item.to}
-                          end={item.to === '/'}
-                          onClick={() => isMobile && setMobileMenuOpen(false)}
-                          className={({ isActive }) =>
-                            clsx(
-                              'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer',
-                              isActive
-                                ? 'bg-cyan-500/10 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs'
-                                : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
-                            )
-                          }
-                        >
-                          {({ isActive }) => (
-                            <>
-                              <div className="flex items-center gap-2.5 min-w-0">
-                                <item.icon
-                                  size={14}
-                                  strokeWidth={1.8}
-                                  className={clsx(
-                                    'shrink-0 transition-colors',
-                                    isActive ? 'text-[#00E5FF]' : 'text-slate-400'
-                                  )}
-                                />
-                                <span className={clsx("truncate", isActive && "text-white font-semibold")}>{item.label}</span>
-                              </div>
-                              {item.badge && (
-                                <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-slate-800 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
-                                  {item.badge}
-                                </span>
-                              )}
-                            </>
-                          )}
-                        </NavLink>
-                      )
-                    ))}
-
-                  </div>
-                )}
+              )}
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <Bot
+                  size={15}
+                  strokeWidth={1.8}
+                  className={clsx(
+                    'shrink-0 transition-colors',
+                    isChatActive ? 'text-[#00E5FF]' : 'text-[#00F5A0]'
+                  )}
+                />
+                <span className="truncate font-bold">AI Advisor</span>
               </div>
-            );
-          })}
-        </div>
-      </nav>
+              <span className={clsx(
+                "text-[9px] font-bold px-1.5 py-0.2 rounded font-mono",
+                isChatActive ? "bg-cyan-500/30 text-[#00E5FF] border border-cyan-400/40" : "bg-emerald-500/15 text-[#00F5A0] border border-emerald-500/30"
+              )}>
+                AI
+              </span>
+            </NavLink>
+          </div>
+
+          {/* Sidebar Nav Category Header / Collapse Toggle */}
+          <div className="pt-2 pb-1 flex items-center justify-between text-[10px] text-slate-400 px-1 border-t border-white/[0.06]">
+            <span className="font-semibold uppercase tracking-wider text-[9px] text-slate-400">Navigation</span>
+            <button
+              type="button"
+              onClick={() => toggleAll(!allCollapsed)}
+              className="flex items-center gap-1 hover:text-slate-200 transition-colors text-[10px] font-medium cursor-pointer"
+              title={allCollapsed ? "Expand all categories" : "Collapse all categories"}
+            >
+              <ChevronsUpDown size={11} className="text-slate-400" />
+              <span>{allCollapsed ? 'Expand All' : 'Collapse All'}</span>
+            </button>
+          </div>
+
+          {/* Collapsible Accordion Sections */}
+          <div className="space-y-2">
+            {navSections.map((section) => {
+              const isCollapsed = !!collapsedSections[section.title];
+              const hasActiveChild = section.items.some(item => isItemActive(item.to));
+
+              return (
+                <div key={section.title} className="space-y-0.5">
+                  <button
+                    type="button"
+                    onClick={() => toggleSection(section.title)}
+                    className="w-full px-2.5 py-1 rounded-md hover:bg-white/[0.04] text-[9.5px] font-bold uppercase tracking-[0.14em] text-slate-400 flex items-center justify-between group cursor-pointer transition-colors"
+                  >
+                    <span className="group-hover:text-slate-200 transition-colors text-left truncate">{section.title}</span>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      {hasActiveChild && isCollapsed && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_6px_#00E5FF]" />
+                      )}
+                      <span className="text-[9px] font-mono text-slate-400 font-normal">
+                        {section.items.length}
+                      </span>
+                      {isCollapsed ? (
+                        <ChevronRight size={12} className="text-slate-400 group-hover:text-slate-200 transition-transform" />
+                      ) : (
+                        <ChevronDown size={12} className="text-slate-400 group-hover:text-slate-200 transition-transform" />
+                      )}
+                    </div>
+                  </button>
+
+                  {!isCollapsed && (
+                    <div className="space-y-0.5 pl-0.5 animate-in fade-in-50 duration-100">
+                      {section.items.map((item) => {
+                        const active = isItemActive(item.to);
+                        return item.to === '__api_modal__' ? (
+                          <button
+                            key={item.label}
+                            type="button"
+                            onClick={() => {
+                              if (isMobile) setMobileMenuOpen(false);
+                              setApiModalOpen(true);
+                            }}
+                            className={clsx(
+                              "w-full relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer group text-left",
+                              apiModalOpen
+                                ? "bg-cyan-500/15 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs"
+                                : "text-slate-400 hover:bg-white/[0.04] hover:text-slate-200"
+                            )}
+                          >
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <item.icon
+                                size={14}
+                                strokeWidth={1.8}
+                                className={clsx(
+                                  "shrink-0 transition-colors",
+                                  apiModalOpen ? "text-[#00E5FF]" : "text-slate-400 group-hover:text-[#00E5FF]"
+                                )}
+                              />
+                              <span className="truncate">{item.label}</span>
+                            </div>
+                            {item.badge && (
+                              <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-cyan-950/60 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
+                                {item.badge}
+                              </span>
+                            )}
+                          </button>
+                        ) : (
+                          <NavLink
+                            key={`${section.title}-${item.to}-${item.label}`}
+                            to={item.to}
+                            onClick={() => isMobile && setMobileMenuOpen(false)}
+                            className={clsx(
+                              'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer',
+                              active
+                                ? 'bg-cyan-500/15 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs'
+                                : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
+                            )}
+                          >
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <item.icon
+                                size={14}
+                                strokeWidth={1.8}
+                                className={clsx(
+                                  'shrink-0 transition-colors',
+                                  active ? 'text-[#00E5FF]' : 'text-slate-400'
+                                )}
+                              />
+                              <span className={clsx("truncate", active && "text-white font-semibold")}>{item.label}</span>
+                            </div>
+                            {item.badge && (
+                              <span className={clsx(
+                                "text-[9px] font-semibold px-1.5 py-0.2 rounded border shrink-0 font-mono",
+                                active ? "bg-cyan-950/80 text-[#00E5FF] border-cyan-500/40" : "bg-slate-800 text-slate-300 border-white/10"
+                              )}>
+                                {item.badge}
+                              </span>
+                            )}
+                          </NavLink>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </nav>
 
       {/* Sidebar Footer */}
       <div className="px-4 py-3 border-t border-white/[0.06] flex items-center justify-between text-[10px] text-slate-400">
@@ -546,6 +650,7 @@ export default function Layout() {
       </div>
     </>
   );
+};
 
   return (
     <div className="flex h-screen bg-[#f8fafc] text-slate-800 antialiased selection:bg-blue-500/20 selection:text-blue-900 overflow-hidden">
@@ -605,7 +710,7 @@ export default function Layout() {
             </button>
 
             {/* Mobile Logo Icon */}
-            <NavLink to="/" className="md:hidden flex items-center shrink-0 cursor-pointer">
+            <NavLink to={homeRoute} className="md:hidden flex items-center shrink-0 cursor-pointer">
               <EnergyInnovationTerminalLogo size="sm" showText={false} />
             </NavLink>
 
