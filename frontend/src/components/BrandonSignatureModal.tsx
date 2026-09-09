@@ -221,6 +221,40 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
             </p>
           </div>
 
+          {/* AIxEnergy Parent Platform & Ecosystem Card */}
+          <div className={clsx(
+            "p-3.5 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3",
+            isDark ? "bg-white/[0.02] border-cyan-500/25" : "bg-slate-50 border-slate-200"
+          )}>
+            <div className="flex items-center gap-3 min-w-0">
+              <img
+                src="/aixenergy-logo.webp"
+                alt="AIxEnergy"
+                className="w-9 h-9 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 shadow-sm"
+              />
+              <div className="min-w-0">
+                <div className="text-xs font-bold text-slate-100 flex items-center gap-1.5">
+                  <span>AIxEnergy Ecosystem</span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-950/80 text-cyan-400 border border-cyan-500/30">
+                    PARENT PLATFORM
+                  </span>
+                </div>
+                <div className="text-[11px] text-slate-400 truncate">
+                  AI-driven intelligence for clean energy transition &amp; infrastructure
+                </div>
+              </div>
+            </div>
+            <a
+              href="https://aixenergy.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-white flex items-center justify-center gap-1.5 shrink-0 transition-colors shadow-xs"
+            >
+              <span>Visit aixenergy.io</span>
+              <span>↗</span>
+            </a>
+          </div>
+
           {/* Cryptographic & Architecture Seals */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-mono">
             <div className={clsx("p-3 rounded-xl border flex items-center gap-3", isDark ? "bg-white/[0.02] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>

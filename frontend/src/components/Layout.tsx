@@ -623,8 +623,32 @@ export default function Layout() {
           </div>
         </nav>
 
+      {/* AIxEnergy Parent Platform Link */}
+      <div className="px-3 py-2 border-t border-white/[0.06] bg-white/[0.01]">
+        <a
+          href="https://aixenergy.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-gradient-to-r from-slate-900/90 to-slate-800/80 hover:from-cyan-950/40 hover:to-slate-900 border border-white/[0.08] hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all shadow-xs group"
+          title="Return to AIxEnergy Parent Platform (aixenergy.io)"
+        >
+          <img
+            src="/aixenergy-logo.webp"
+            alt="AIxEnergy Logo"
+            className="w-6 h-6 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 group-hover:ring-cyan-400/80 group-hover:scale-105 transition-all shadow-sm"
+          />
+          <div className="flex flex-col text-left min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[11.5px] font-bold text-white leading-tight">AIxEnergy</span>
+              <span className="text-[10px] text-cyan-400 group-hover:translate-x-0.5 transition-transform font-mono">↗</span>
+            </div>
+            <span className="text-[9.5px] text-slate-400 font-normal leading-tight truncate">Parent Platform &amp; Hub</span>
+          </div>
+        </a>
+      </div>
+
       {/* Sidebar Footer */}
-      <div className="px-4 py-3 border-t border-white/[0.06] flex items-center justify-between text-[10px] text-slate-400">
+      <div className="px-4 py-2.5 border-t border-white/[0.06] flex items-center justify-between text-[10px] text-slate-400">
         <button
           type="button"
           onClick={() => {
@@ -779,6 +803,28 @@ export default function Layout() {
               </button>
             </div>
 
+            {/* Return to AIxEnergy Parent Site */}
+            <a
+              href="https://aixenergy.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={clsx(
+                "inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border shrink-0 group shadow-2xs",
+                isDark
+                  ? "bg-slate-800/70 hover:bg-slate-800 text-slate-200 border-white/10 hover:border-cyan-500/40 hover:text-white"
+                  : "bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-200 hover:border-cyan-500/40 hover:text-slate-950"
+              )}
+              title="Return to AIxEnergy Parent Platform (aixenergy.io)"
+            >
+              <img
+                src="/aixenergy-logo.webp"
+                alt="AIxEnergy"
+                className="w-4 h-4 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 group-hover:scale-110 transition-transform"
+              />
+              <span className="hidden sm:inline font-bold">AIxEnergy.io</span>
+              <span className="text-[10px] text-cyan-400 group-hover:translate-x-0.5 transition-transform">↗</span>
+            </a>
+
             <ThemeToggle />
             <button
               type="button"
@@ -837,6 +883,22 @@ export default function Layout() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>Curated &amp; Engineered by <strong className="text-cyan-400 group-hover:underline">Brandon N. Owens</strong></span>
             </button>
+
+            <a
+              href="https://aixenergy.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={clsx(
+                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10.5px] font-medium transition-all border group cursor-pointer",
+                isDark
+                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-300 hover:text-white border-white/[0.06] hover:border-cyan-500/30"
+                  : "bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 border-slate-200 hover:border-cyan-500/30"
+              )}
+              title="Visit AIxEnergy Parent Platform (aixenergy.io)"
+            >
+              <img src="/aixenergy-logo.webp" alt="AIxEnergy" className="w-3.5 h-3.5 rounded-full object-cover shrink-0" />
+              <span>Part of <strong className="text-cyan-400 group-hover:underline">AIxEnergy</strong> ↗</span>
+            </a>
 
             <button
               type="button"

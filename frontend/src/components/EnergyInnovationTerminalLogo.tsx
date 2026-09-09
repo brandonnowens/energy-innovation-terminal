@@ -11,7 +11,7 @@ export interface EnergyInnovationTerminalLogoProps {
 export function EnergyInnovationTerminalLogo({
   size = 'md',
   showText = false,
-  subtitle = 'Energy Innovation Research, LLC',
+  subtitle = 'by AIxEnergy',
   className = '',
   useImage = true,
 }: EnergyInnovationTerminalLogoProps) {
