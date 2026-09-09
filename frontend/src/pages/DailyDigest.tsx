@@ -163,43 +163,7 @@ export default function DailyDigest() {
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
-            {/* API & AI Agent Tools Modal Trigger */}
-            <button
-              onClick={() => setApiModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-cyan-200 dark:border-cyan-800 bg-cyan-50/50 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 hover:bg-cyan-100/60 dark:hover:bg-cyan-900/60 transition shadow-2xs"
-            >
-              <Bot size={13} className="text-cyan-600 dark:text-cyan-400" />
-              <span>API &amp; Agent Tools</span>
-              <span className="text-[10px] bg-cyan-200/60 dark:bg-cyan-800/80 px-1 py-0.2 rounded text-cyan-800 dark:text-cyan-200 font-mono">
-                OpenAPI
-              </span>
-            </button>
-
-            {/* RSS Feed link */}
-            <a
-              href="/rss.xml"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-2xs"
-              title="Syndicated RSS Feed for Feedly, Zapier, Inoreader"
-            >
-              <Rss size={13} className="text-amber-500" />
-              <span>RSS</span>
-            </a>
-
-            {/* llms.txt link */}
-            <a
-              href="/llms.txt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-2xs"
-              title="LLMs Context Manifest for Claude / GPT / Cursor / Copilot"
-            >
-              <Terminal size={13} className="text-slate-500" />
-              <span>llms.txt</span>
-            </a>
-
-            {/* Archive Selector Button */}
+            {/* Edition / Date Picker */}
             <div className="relative">
               <button
                 onClick={() => setShowArchive(!showArchive)}
@@ -239,33 +203,57 @@ export default function DailyDigest() {
               )}
             </div>
 
-            {/* Share / Copy */}
-            <button
-              onClick={handleCopy}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-2xs"
-            >
-              {copied ? <Check size={13} className="text-emerald-600" /> : <Share2 size={13} className="text-slate-500" />}
-              <span>{copied ? 'Copied' : 'Share'}</span>
-            </button>
-
-            {/* Print */}
-            <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-2xs"
-            >
-              <Printer size={13} className="text-slate-500" />
-              <span>Print</span>
-            </button>
-
-            {/* Refresh */}
+            {/* Refresh Button */}
             <button
               onClick={() => generateMutation.mutate()}
               disabled={generateMutation.isPending}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white transition shadow-2xs disabled:opacity-50"
+              title="Refresh or regenerate current edition"
             >
               <RefreshCw size={13} className={generateMutation.isPending ? 'animate-spin' : ''} />
               <span>{generateMutation.isPending ? 'Refreshing...' : 'Refresh'}</span>
             </button>
+
+            {/* Utility Actions Group */}
+            <div className="flex items-center bg-slate-100 dark:bg-slate-800/80 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
+              <button
+                onClick={handleCopy}
+                className="px-2.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded flex items-center gap-1.5 transition"
+                title="Copy briefing summary to clipboard"
+              >
+                {copied ? <Check size={12} className="text-emerald-500" /> : <Share2 size={12} />}
+                <span>{copied ? 'Copied' : 'Share'}</span>
+              </button>
+
+              <button
+                onClick={handlePrint}
+                className="px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded flex items-center gap-1 transition"
+                title="Print or export to PDF"
+              >
+                <Printer size={12} />
+                <span className="hidden sm:inline">Print</span>
+              </button>
+
+              <a
+                href="/rss.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded flex items-center gap-1 transition"
+                title="RSS Feed"
+              >
+                <Rss size={12} className="text-amber-500" />
+                <span className="hidden sm:inline">RSS</span>
+              </a>
+
+              <button
+                onClick={() => setApiModalOpen(true)}
+                className="px-2.5 py-1 text-xs font-medium text-cyan-700 dark:text-cyan-300 hover:text-cyan-800 dark:hover:text-cyan-200 rounded flex items-center gap-1 transition font-mono"
+                title="Open API & Developer Schema"
+              >
+                <Terminal size={12} />
+                <span>API</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -536,7 +524,7 @@ export default function DailyDigest() {
         <div className="space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
+              <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">
                 5. Algorithmic Opportunity Spotlight &amp; Bankability
               </h2>

@@ -339,9 +339,9 @@ export default function Opportunities() {
               setPage(1);
             }}
             className={clsx(
-              'px-2.5 py-1 rounded-lg text-[11.5px] font-semibold transition-all shrink-0 cursor-pointer',
+              'px-2.5 py-1 rounded-md text-[11.5px] font-medium transition-all shrink-0 cursor-pointer',
               jurisdictionFilter === j.id
-                ? 'bg-[#00E5FF] text-slate-950 font-bold shadow-glow-cyan-sm'
+                ? 'bg-slate-900 text-white dark:bg-cyan-500/20 dark:text-cyan-300 dark:border dark:border-cyan-500/40 font-semibold shadow-2xs'
                 : 'dark:text-slate-300 text-slate-600 hover:dark:bg-slate-800 hover:bg-slate-100 hover:text-slate-900 dark:hover:text-white'
             )}
           >

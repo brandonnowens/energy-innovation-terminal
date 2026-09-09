@@ -240,9 +240,9 @@ export default function Layout() {
         {
           title: 'Grant Seeking Suite',
           items: [
-            { to: '/analyze', icon: Sparkles, label: 'Match & Sponsoring', badge: 'Core' },
+            { to: '/analyze', icon: Sparkles, label: 'Match & Sponsoring' },
             { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
-            { to: '/proposals', icon: FileEdit, label: 'Application Studio', badge: 'SOPO' },
+            { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
             { to: '/radar', icon: Radio, label: 'Predictive Radar' },
           ]
         },
@@ -268,7 +268,7 @@ export default function Layout() {
           title: 'Data & Developer API',
           items: [
             { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
-            { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
+            { to: '__api_modal__', icon: Terminal, label: 'Developers & API' },
           ]
         }
       ];
@@ -279,7 +279,7 @@ export default function Layout() {
         {
           title: 'Market Intelligence',
           items: [
-            { to: '/digest', icon: Newspaper, label: 'Daily Digest', badge: 'Briefing' },
+            { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
             { to: '/sankey', icon: GitMerge, label: 'Capital Flows (Sankey)' },
             { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Bayh-Dole IP' },
             { to: '/reports', icon: FileText, label: 'Reports & Blueprints' },
@@ -311,7 +311,7 @@ export default function Layout() {
           items: [
             { to: '/sources', icon: Database, label: 'Data Provenance' },
             { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
-            { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
+            { to: '__api_modal__', icon: Terminal, label: 'Developers & API' },
           ]
         }
       ];
@@ -322,11 +322,11 @@ export default function Layout() {
       {
         title: 'Opportunities & Studio',
         items: [
-          { to: '/digest', icon: Newspaper, label: 'Daily Digest', badge: 'Briefing' },
+          { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
           { to: '/analyze', icon: Sparkles, label: 'Match Engine' },
           { to: '/radar', icon: Radio, label: 'Predictive Radar' },
           { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
-          { to: '/proposals', icon: FileEdit, label: 'Application Studio', badge: 'SOPO' },
+          { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
         ]
       },
       {
@@ -368,7 +368,7 @@ export default function Layout() {
         items: [
           { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
           { to: '/sources', icon: Database, label: 'Data Provenance' },
-          { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
+          { to: '__api_modal__', icon: Terminal, label: 'Developers & API' },
         ]
       }
     ];
@@ -477,7 +477,7 @@ export default function Layout() {
               className={clsx(
                 'flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border',
                 isChatActive
-                  ? 'bg-gradient-to-r from-cyan-500/20 to-emerald-500/15 text-white border-cyan-400/50 shadow-glow-cyan-sm'
+                  ? 'bg-cyan-500/15 text-white border-l-2 border-[#00E5FF] font-bold shadow-2xs'
                   : 'bg-white/[0.03] hover:bg-white/[0.06] text-slate-300 border-white/[0.06] hover:text-white'
               )}
             >
@@ -487,14 +487,14 @@ export default function Layout() {
                   strokeWidth={1.8}
                   className={clsx(
                     'shrink-0 transition-colors',
-                    isChatActive ? 'text-[#00E5FF]' : 'text-[#00F5A0]'
+                    isChatActive ? 'text-[#00E5FF]' : 'text-slate-400'
                   )}
                 />
-                <span className="truncate font-bold">AI Advisor</span>
+                <span className="truncate">AI Advisor</span>
               </div>
               <span className={clsx(
-                "text-[9px] font-bold px-1.5 py-0.2 rounded font-mono",
-                isChatActive ? "bg-cyan-500/30 text-[#00E5FF] border border-cyan-400/40" : "bg-emerald-500/15 text-[#00F5A0] border border-emerald-500/30"
+                "text-[9.5px] font-bold px-1.5 py-0.2 rounded font-mono",
+                isChatActive ? "bg-cyan-500/20 text-[#00E5FF] border border-cyan-400/30" : "bg-white/[0.05] text-slate-400 border border-white/10"
               )}>
                 AI
               </span>
@@ -717,18 +717,14 @@ export default function Layout() {
 
             <div className="flex items-center gap-2.5 text-xs font-medium min-w-0">
               <span className={clsx(
-                "inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-md font-semibold text-[10.5px] sm:text-[11px] font-mono shrink-0",
+                "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-semibold text-[11px] font-mono shrink-0",
                 isDark
-                  ? "bg-emerald-500/10 text-[#00F5A0] border border-emerald-500/30 shadow-[0_0_8px_rgba(0,245,160,0.15)]"
+                  ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
                   : "bg-emerald-50 text-emerald-800 border border-emerald-200"
               )}>
-                <span className="w-2 h-2 rounded-full bg-[#00F5A0] shadow-[0_0_8px_#00F5A0] animate-pulse shrink-0" />
-                <span className="hidden sm:inline">56,413 Awards · $104.16B Tracked · 10,250 Grid Projects</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                <span className="hidden sm:inline">56,413 Awards · $104.16B Capital Tracked</span>
                 <span className="sm:hidden">56k+ Awards · $104B+</span>
-              </span>
-              <span className={clsx(isDark ? "text-white/20" : "text-slate-300", "hidden xl:inline")}>|</span>
-              <span className={clsx(isDark ? "text-slate-400" : "text-slate-600", "hidden xl:inline text-[11.5px] font-medium truncate")}>
-                DOE · ARPA-E · CEC · MassCEC · NSF · State Agencies · 140+ Utilities
               </span>
             </div>
           </div>
@@ -818,28 +814,27 @@ export default function Layout() {
           <Outlet />
         </main>
 
-        {/* Global Signature Footer */}
+        {/* Global Executive Footer */}
         <footer className={clsx(
-          "border-t px-6 py-2 text-[11px] flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0 transition-colors duration-150",
+          "border-t px-6 py-2.5 text-[11px] flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0 transition-colors duration-150 select-none",
           isDark
             ? "bg-[#0b101c] border-white/[0.06] text-slate-400"
             : "bg-white border-slate-200 text-slate-600 shadow-2xs"
         )}>
-          <div className="flex items-center gap-2.5 flex-wrap">
+          <div className="flex items-center gap-3 flex-wrap">
             <button
               type="button"
               onClick={() => setSignatureModalOpen(true)}
               className={clsx(
-                "inline-flex items-center gap-2 px-2.5 py-1 rounded-lg text-xs font-medium transition-all border cursor-pointer group select-none",
+                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium transition-all border cursor-pointer group",
                 isDark
-                  ? "bg-white/[0.03] hover:bg-cyan-950/40 text-slate-200 border-white/[0.08] hover:border-cyan-500/40 shadow-xs"
-                  : "bg-slate-100 hover:bg-cyan-50 text-slate-800 border-slate-200 hover:border-cyan-300"
+                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-300 border-white/[0.08]"
+                  : "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200"
               )}
               title="Curated & Engineered by Brandon N. Owens (Click to view verified provenance & citation)"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#10b981] group-hover:scale-110 transition-transform" />
-              <span className="font-semibold text-[11px]">Curated &amp; Engineered by <strong className="text-cyan-400 font-bold group-hover:underline">Brandon N. Owens</strong></span>
-              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">VERIFIED</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>Curated &amp; Engineered by <strong className="text-cyan-400 group-hover:underline">Brandon N. Owens</strong></span>
             </button>
 
             <button
@@ -848,34 +843,26 @@ export default function Layout() {
               className={clsx(
                 "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10.5px] font-medium transition-all border cursor-pointer",
                 isDark
-                  ? "bg-white/[0.02] hover:bg-cyan-950/30 text-slate-300 border-white/[0.08] hover:border-cyan-500/30"
-                  : "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200"
+                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-400 hover:text-slate-300 border-white/[0.06]"
+                  : "bg-slate-100 hover:bg-slate-200 text-slate-600 border-slate-200"
               )}
               title="Public Records Provenance, Ethics, and Non-Affiliation Notice"
             >
-              <Scale size={11} className="text-cyan-400" />
-              <span>Legal &amp; Compliance Notice</span>
+              <Scale size={11} className="text-slate-400" />
+              <span>Legal &amp; Compliance</span>
             </button>
 
             <span className={clsx(isDark ? "text-white/10" : "text-slate-300", "hidden sm:inline")}>|</span>
 
             <span className="hidden lg:inline text-[10.5px] font-mono text-slate-400">
-              56,413 Awards · $104.16B Capital · 140+ Authorities · Public Open Records
+              56,413 Awards · $104.16B Capital · 140+ Authorities · Open Public Records
             </span>
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-[10px] text-slate-400">
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent('replay-splash-screen'))}
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1 cursor-pointer"
-              title="Replay intro splash screen"
-            >
-              <Sparkles size={11} className="text-cyan-400" />
-              <span className="hidden sm:inline">Splash Intro</span>
-            </button>
-            <span className={isDark ? "text-white/10" : "text-slate-300"}>·</span>
-            <span>Upstream Energy Intelligence Terminal v3.5</span>
+          <div className="flex items-center gap-2 font-mono text-[10px] text-slate-400">
+            <span>Energy Innovation Intelligence Terminal</span>
+            <span>·</span>
+            <span>v3.5</span>
           </div>
         </footer>
       </div>

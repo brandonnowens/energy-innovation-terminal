@@ -24,12 +24,12 @@
   --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.09), 0 4px 12px rgba(15, 23, 42, 0.05);
   --shadow-xl: 0 20px 48px rgba(15, 23, 42, 0.12), 0 8px 24px rgba(15, 23, 42, 0.06);
 
-  /* Electric Cyan & Aqua Glowing Shadows */
-  --shadow-glow-cyan-sm: 0 0 10px rgba(0, 210, 255, 0.35);
-  --shadow-glow-cyan: 0 0 18px rgba(0, 210, 255, 0.45);
-  --shadow-glow-cyan-lg: 0 0 32px rgba(0, 210, 255, 0.6);
-  --shadow-glow-emerald: 0 0 16px rgba(0, 245, 212, 0.45);
-  --shadow-glow-green: 0 0 16px rgba(0, 245, 212, 0.45);
+  /* Subtle Institutional Accent Shadows */
+  --shadow-glow-cyan-sm: 0 1px 3px rgba(0, 180, 216, 0.15);
+  --shadow-glow-cyan: 0 2px 8px rgba(0, 180, 216, 0.2);
+  --shadow-glow-cyan-lg: 0 4px 16px rgba(0, 180, 216, 0.25);
+  --shadow-glow-emerald: 0 2px 8px rgba(16, 185, 129, 0.2);
+  --shadow-glow-green: 0 2px 8px rgba(16, 185, 129, 0.2);
 }
 
 /* Base Body Styles */

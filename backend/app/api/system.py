@@ -74,7 +74,16 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
                     o.program_id,
                     COUNT(*) as opp_count,
                     SUM(CASE WHEN o.status = 'open' THEN 1 ELSE 0 END) as active_opp_count,
-                    COALESCE(SUM(o.total_funding), 0) as total_funding
+                    COALESCE(SUM(
+                        CASE 
+                            WHEN o.total_funding > 1000000000 THEN 
+                                CASE 
+                                    WHEN o.max_per_award IS NOT NULL AND o.max_per_award > 0 AND o.max_per_award < 50000000 THEN o.max_per_award * 10
+                                    ELSE 25000000
+                                END
+                            ELSE o.total_funding
+                        END
+                    ), 0) as total_funding
                 FROM opportunities o
                 WHERE o.agency = :org AND o.program_id IS NOT NULL
                 GROUP BY o.program_id
@@ -111,7 +120,16 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
                     program_id,
                     COUNT(*) as opp_count,
                     SUM(CASE WHEN status = 'open' THEN 1 ELSE 0 END) as active_opp_count,
-                    COALESCE(SUM(total_funding), 0) as total_funding
+                    COALESCE(SUM(
+                        CASE 
+                            WHEN total_funding > 1000000000 THEN 
+                                CASE 
+                                    WHEN max_per_award IS NOT NULL AND max_per_award > 0 AND max_per_award < 50000000 THEN max_per_award * 10
+                                    ELSE 25000000
+                                END
+                            ELSE total_funding
+                        END
+                    ), 0) as total_funding
                 FROM opportunities
                 WHERE program_id IS NOT NULL
                 GROUP BY program_id

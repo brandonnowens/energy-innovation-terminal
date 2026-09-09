@@ -110,6 +110,7 @@ export default function Programs() {
   const activeOpps = rawPrograms.reduce((s: number, p: any) => s + (p.active_opportunities_count || 0), 0);
   const totalFunding = rawPrograms.reduce((s: number, p: any) => s + (p.total_funding || 0), 0);
   const totalAwards = rawPrograms.reduce((s: number, p: any) => s + (p.award_count || 0), 0);
+  const totalAwarded = rawPrograms.reduce((s: number, p: any) => s + (p.total_awarded || 0), 0);
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 pb-12">
@@ -117,7 +118,7 @@ export default function Programs() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
               <Layers size={12} className="text-indigo-600" />
               <span>Program Portfolios</span>
             </span>
@@ -168,10 +169,10 @@ export default function Programs() {
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3 relative z-10">
         {[
           { label: 'Programs', value: totalPrograms, icon: <Layers size={16} className="text-indigo-500" /> },
-          { label: 'Total Opportunities', value: totalOpps, icon: <FileSearch size={16} className="text-sky-500" /> },
-          { label: 'Currently Open', value: activeOpps, icon: <Clock size={16} className="text-emerald-500" /> },
-          { label: 'Awards', value: totalAwards.toLocaleString(), icon: <Trophy size={16} className="text-amber-500" /> },
-          { label: 'Total Funding', value: totalFunding > 0 ? formatCurrency(totalFunding) : 'N/A', icon: <DollarSign size={16} className="text-emerald-500" /> },
+          { label: 'Total Opportunities', value: totalOpps.toLocaleString(), icon: <FileSearch size={16} className="text-sky-500" /> },
+          { label: 'Currently Open', value: activeOpps.toLocaleString(), icon: <Clock size={16} className="text-emerald-500" /> },
+          { label: 'Tracked Awards', value: totalAwards.toLocaleString(), icon: <Trophy size={16} className="text-amber-500" /> },
+          { label: 'Total Program Funding', value: totalFunding > 0 ? formatCurrency(totalFunding) : (totalAwarded > 0 ? formatCurrency(totalAwarded) : 'N/A'), icon: <DollarSign size={16} className="text-emerald-500" /> },
         ].map((stat, i) => (
           <div key={i} className="bg-white rounded-xl border border-slate-200/80 p-3.5 shadow-2xs">
             <div className="flex items-center gap-1.5 mb-1">

@@ -1152,27 +1152,22 @@ export default function AnalyzeProject() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-500/30">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-500/30">
               <Sparkles size={12} className="text-indigo-600 dark:text-indigo-400" />
-              <span>Multi-Agency Matching Engine</span>
+              <span>Multi-Agency Match Engine</span>
             </span>
             <span className="text-xs text-slate-300 dark:text-slate-600">|</span>
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">5,747 Solicitations Index</span>
-            <span className="text-xs text-slate-300 dark:text-slate-600">|</span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-500/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>PostgreSQL Vector Matching</span>
-            </span>
+            <span className="text-xs font-mono text-slate-500 dark:text-slate-400">5,747 Solicitations Indexed</span>
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Match Opportunities
+            Match Opportunities &amp; Capital Stacks
           </h1>
           <p className="text-[13px] sm:text-sm text-slate-500 dark:text-slate-400 max-w-3xl mt-1 leading-relaxed">
-            Upload project documents or provide technical scope to automatically configure matching parameters. Surface the <strong>Top 15 Organizations most likely to say YES</strong> and <strong>Top 25 High-Conviction Solicitations</strong> screened for technical readiness, financial scale, and statutory mandate fit.
+            Upload project documents or provide technical scope to automatically configure matching parameters. Surface the <strong>Top Organizations most likely to say YES</strong> and <strong>High-Conviction Solicitations</strong> screened for technical readiness, financial scale, and statutory mandate fit.
           </p>
         </div>
 
-        {/* Header Badges & Actions */}
+        {/* Header Actions */}
         <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
           <button
             type="button"
@@ -1180,20 +1175,13 @@ export default function AnalyzeProject() {
               window.dispatchEvent(new CustomEvent('switch-persona', { detail: 'investor' }));
               navigate('/digest');
             }}
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-cyan-200 dark:border-cyan-800/60 bg-cyan-50/60 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 hover:bg-cyan-100/70 dark:hover:bg-cyan-900/60 transition shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-2xs cursor-pointer"
             title="Switch to Investors & Strategists Front Door"
           >
-            <TrendingUp size={13} className="text-cyan-600 dark:text-cyan-400" />
+            <TrendingUp size={13} className="text-slate-500 dark:text-slate-400" />
             <span>Investor View</span>
-            <ArrowRight size={12} className="text-cyan-500" />
+            <ArrowRight size={12} className="text-slate-400" />
           </button>
-
-          <div
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#0d1424] shadow-2xs"
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>OpenAI Intelligence Engine · Active</span>
-          </div>
         </div>
       </div>
 
@@ -1297,9 +1285,9 @@ export default function AnalyzeProject() {
                 disabled={isCharacterizingText || !input.description?.trim()}
                 onClick={handleAutoCharacterizeText}
                 className={clsx(
-                  'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shadow-2xs cursor-pointer',
+                  'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-2xs cursor-pointer',
                   input.description?.trim()
-                    ? 'bg-cyan-500/15 text-[#00E5FF] border border-cyan-500/30 hover:bg-cyan-500/25 shadow-glow-cyan-sm'
+                    ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20'
                     : 'bg-slate-100 text-slate-400 dark:bg-white/5 dark:text-slate-500 border border-slate-200 dark:border-white/5 cursor-not-allowed'
                 )}
               >
@@ -1479,7 +1467,7 @@ export default function AnalyzeProject() {
             <button
               type="submit"
               disabled={mutation.isPending || !hasInput}
-              className="bg-[#00E5FF] hover:bg-[#33ebff] text-slate-950 text-xs font-bold h-10 px-6 rounded-xl shadow-glow-cyan-sm hover:shadow-glow-cyan transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 cursor-pointer"
+              className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold h-9 px-5 rounded-lg shadow-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 cursor-pointer"
             >
               {mutation.isPending ? (
                 <>
