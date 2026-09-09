@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {  api, isOpportunityNew , apiFetch } from '../api/client';
 import {
   Search, Loader2, FolderOpen, ChevronLeft, ChevronRight, ArrowUpDown,
@@ -102,12 +102,15 @@ export default function Opportunities() {
     keywords: ['energy innovation solicitations', 'DOE funding opportunities', 'cleantech RFPs', 'energy grants 2026', 'utility innovation solicitations', 'ARPA-E grants'],
   });
 
+  const [searchParams] = useSearchParams();
+  const initialUrlSearch = searchParams.get('search') || '';
+
   const { includeNyserda, isNyserda } = useNyserda();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(initialUrlSearch);
   const [showAlertsRadar, setShowAlertsRadar] = useState(false);
   const [showIngestionModal, setShowIngestionModal] = useState(false);
   const [selectedShredId, setSelectedShredId] = useState<number | null>(null);
-  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState(initialUrlSearch);
   const [statusFilter, setStatusFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [agencyFilter, setAgencyFilter] = useState('');

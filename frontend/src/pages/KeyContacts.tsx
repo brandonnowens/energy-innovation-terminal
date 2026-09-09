@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { api, ContactItem, ContactDetail as IContactDetail } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import {
@@ -264,7 +264,18 @@ export default function KeyContacts() {
   // Admin Outreach Hub and CRM correspondence logs hidden for now
   const isAdmin = false;
 
-  const [search, setSearch] = useState('');
+  const [searchParams] = useSearchParams();
+  const initialUrlSearch = searchParams.get('search') || '';
+
+  const [search, setSearch] = useState(initialUrlSearch);
+
+  React.useEffect(() => {
+    const urlQ = searchParams.get('search');
+    if (urlQ !== null && urlQ !== search) {
+      setSearch(urlQ);
+      setPage(1);
+    }
+  }, [searchParams]);
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'top_25_say_yes' | 'funder_officers' | 'domain_experts' | 'institutional_gateways' | 'utilities'>('all');
   const [selectedTech, setSelectedTech] = useState<string>('all');
   const [selectedSector, setSelectedSector] = useState<string>('all');

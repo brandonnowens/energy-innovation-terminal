@@ -549,6 +549,155 @@ export interface SystemStats {
   lastUpdated: string;
 }
 
+export interface UniversalSearchResponse {
+  query: string;
+  total_matches: number;
+  counts: Record<string, number>;
+  results: {
+    awards: Array<{
+      id: number;
+      recipient_name: string;
+      project_title: string;
+      agency: string;
+      award_amount: number;
+      award_amount_formatted: string;
+      year?: number;
+      state?: string;
+      city?: string;
+      pi_name?: string;
+      solicitation_number?: string;
+      external_award_id?: string;
+      to: string;
+    }>;
+    recipients: Array<{
+      id: number;
+      name: string;
+      recipient_type: string;
+      primary_technology?: string;
+      total_funding_received: number;
+      total_funding_formatted: string;
+      city?: string;
+      state?: string;
+      website_url?: string;
+      description?: string;
+      to: string;
+    }>;
+    opportunities: Array<{
+      id: number;
+      solicitation_number: string;
+      name: string;
+      agency: string;
+      total_funding?: number;
+      total_funding_formatted: string;
+      max_per_award?: number;
+      status: string;
+      deadline?: string;
+      short_description?: string;
+      to: string;
+    }>;
+    organizations: Array<{
+      id: number;
+      name: string;
+      org_type?: string;
+      state?: string;
+      city?: string;
+      domain?: string;
+      website?: string;
+      description?: string;
+      to: string;
+    }>;
+    contacts: Array<{
+      id: number;
+      name_display: string;
+      title?: string;
+      institution_name?: string;
+      email?: string;
+      email_status?: string;
+      role_type?: string;
+      technology_area?: string;
+      state?: string;
+      to: string;
+    }>;
+    patents: Array<{
+      id: number;
+      patent_number: string;
+      title: string;
+      assignee_name?: string;
+      technology_area?: string;
+      grant_date?: string;
+      bayh_dole_citation?: string;
+      to: string;
+    }>;
+    venture: Array<{
+      id: number;
+      company_name: string;
+      total_offering_usd?: number;
+      total_offering_formatted: string;
+      total_amount_sold_usd?: number;
+      filing_date?: string;
+      primary_industry?: string;
+      state?: string;
+      to: string;
+    }>;
+    technologies: Array<{
+      id: string;
+      name: string;
+      category: string;
+      description: string;
+      to: string;
+    }>;
+    policies: Array<{
+      id: string;
+      code_identifier: string;
+      title: string;
+      category: string;
+      jurisdiction_state?: string;
+      executive_summary: string;
+      to: string;
+    }>;
+    dockets: Array<{
+      id: string;
+      docket_number: string;
+      title: string;
+      commission: string;
+      topic_category: string;
+      jurisdiction_state?: string;
+      to: string;
+    }>;
+    interconnections: Array<{
+      id: number;
+      project_name: string;
+      developer?: string;
+      capacity_mw?: number;
+      fuel_type?: string;
+      iso_rto?: string;
+      utility?: string;
+      county?: string;
+      state?: string;
+      to: string;
+    }>;
+    labs: Array<{
+      id: number;
+      name: string;
+      parent_lab: string;
+      facility_type?: string;
+      focus_areas?: string;
+      city?: string;
+      state?: string;
+      to: string;
+    }>;
+    news: Array<{
+      id: number;
+      title: string;
+      summary: string;
+      category: string;
+      source_domain?: string;
+      published_at?: string;
+      to: string;
+    }>;
+  };
+}
+
 export interface PaginatedOpportunities {
   items: Opportunity[];
   total: number;
@@ -2058,6 +2207,17 @@ export const api = {
     return res.json();
   },
 
+
+  universalSearch: async (q: string, options?: { domain?: string; limit_per_domain?: number; exclude_nyserda?: boolean }): Promise<UniversalSearchResponse> => {
+    const params = new URLSearchParams();
+    params.set('q', q);
+    if (options?.domain) params.set('domain', options.domain);
+    if (options?.limit_per_domain) params.set('limit_per_domain', options.limit_per_domain.toString());
+    if (options?.exclude_nyserda !== undefined) params.set('exclude_nyserda', options.exclude_nyserda.toString());
+    const res = await apiFetch(`/api/search?${params.toString()}`, { headers: getAuthHeaders() });
+    if (!res.ok) throw new Error('Universal database search failed');
+    return res.json();
+  },
 
   getChatPresets: async (): Promise<{ categories: ChatPresetCategory[] }> => {
     const res = await apiFetch('/api/chat/presets', { headers: getAuthHeaders() });

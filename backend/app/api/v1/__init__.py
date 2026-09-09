@@ -14,6 +14,7 @@ from app.api.v1.technologies import router as technologies_router
 from app.api.v1.agents import router as agents_router
 from app.api.v1.jobs import router as jobs_router
 from app.api.v1.digest import router as digest_router
+from app.api.search import router as search_router
 
 v1_router = APIRouter()
 
@@ -24,6 +25,7 @@ v1_router.include_router(technologies_router)
 v1_router.include_router(agents_router)
 v1_router.include_router(jobs_router)
 v1_router.include_router(digest_router)
+v1_router.include_router(search_router)
 
 __all__ = ["v1_router"]
 

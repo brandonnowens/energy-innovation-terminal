@@ -87,7 +87,7 @@ def list_awards(
                 params[f"ag_{i}"] = ag
 
     if recipient:
-        base_where.append("a.recipient_name LIKE :recipient")
+        base_where.append("a.recipient_name ILIKE :recipient")
         params["recipient"] = f"%{recipient}%"
 
     if recipient_type:
@@ -176,7 +176,7 @@ def list_awards(
         base_where.append("a.award_type = :award_type")
         params["award_type"] = award_type
     if search:
-        base_where.append("(a.recipient_name LIKE :search OR a.pi_name LIKE :search OR a.project_title LIKE :search OR a.project_abstract LIKE :search)")
+        base_where.append("(a.recipient_name ILIKE :search OR a.pi_name ILIKE :search OR a.project_title ILIKE :search OR a.project_abstract ILIKE :search OR a.external_award_id ILIKE :search OR a.agency ILIKE :search OR a.program_name ILIKE :search OR a.recipient_city ILIKE :search OR a.cfda_title ILIKE :search)")
         params["search"] = f"%{search}%"
 
     where_clause = " AND ".join(base_where) if base_where else "1=1"
@@ -288,16 +288,16 @@ def list_recipients(
         where_parts.append("(r.name NOT LIKE '%NYSERDA%' AND (r.funded_agencies NOT LIKE '%NYSERDA%' OR r.funded_agencies IS NULL))")
 
     if search:
-        where_parts.append("(r.name LIKE :search OR r.headquarters_city LIKE :search OR r.description LIKE :search OR r.primary_technology LIKE :search)")
+        where_parts.append("(r.name ILIKE :search OR r.headquarters_city ILIKE :search OR r.description ILIKE :search OR r.primary_technology ILIKE :search OR r.technology_tags ILIKE :search)")
         params["search"] = f"%{search}%"
 
     if agency:
         ag_list = [a.strip() for a in agency.split(",") if a.strip()]
         if len(ag_list) == 1:
-            where_parts.append("r.funded_agencies LIKE :agency")
+            where_parts.append("r.funded_agencies ILIKE :agency")
             params["agency"] = f"%{ag_list[0]}%"
         elif len(ag_list) > 1:
-            ag_sub = [f"r.funded_agencies LIKE :ag_{i}" for i in range(len(ag_list))]
+            ag_sub = [f"r.funded_agencies ILIKE :ag_{i}" for i in range(len(ag_list))]
             where_parts.append(f"({' OR '.join(ag_sub)})")
             for i, ag in enumerate(ag_list):
                 params[f"ag_{i}"] = f"%{ag}%"
@@ -325,18 +325,17 @@ def list_recipients(
                 params[f"st_{i}"] = st
 
     if technology:
-        where_parts.append("(r.primary_technology LIKE :tech OR r.technology_tags LIKE :tech)")
+        where_parts.append("(r.primary_technology ILIKE :tech OR r.technology_tags ILIKE :tech)")
         params["tech"] = f"%{technology}%"
 
     if is_ny_only or (state and state.upper() == 'NY'):
         where_parts.append("(r.is_ny_based = TRUE OR r.headquarters_state = 'NY')")
 
-
     if nyserda_only:
         where_parts.append("r.total_nyserda_funding > 0")
 
     if stage:
-        where_parts.append("r.commercialization_stage LIKE :stage")
+        where_parts.append("r.commercialization_stage ILIKE :stage")
         params["stage"] = f"%{stage}%"
 
     where_clause = " AND ".join(where_parts) if where_parts else "1=1"
@@ -942,7 +941,7 @@ def awards_map(
         params["award_type"] = award_type
 
     if program_name:
-        where_parts.append("a.program_name LIKE :program_name")
+        where_parts.append("a.program_name ILIKE :program_name")
         params["program_name"] = f"%{program_name}%"
 
     if year_min:
@@ -961,11 +960,13 @@ def awards_map(
 
     if search:
         where_parts.append("""
-            (a.recipient_name LIKE :search 
-             OR a.pi_name LIKE :search 
-             OR a.project_title LIKE :search 
-             OR a.recipient_city LIKE :search
-             OR a.project_abstract LIKE :search)
+            (a.recipient_name ILIKE :search 
+             OR a.pi_name ILIKE :search 
+             OR a.project_title ILIKE :search 
+             OR a.recipient_city ILIKE :search
+             OR a.project_abstract ILIKE :search
+             OR a.external_award_id ILIKE :search
+             OR a.agency ILIKE :search)
         """)
         params["search"] = f"%{search}%"
 

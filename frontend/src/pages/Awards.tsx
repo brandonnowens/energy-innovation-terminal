@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { api, AwardMapMarker, WinningProposal } from '../api/client';
 import {
   Trophy, Search, Download, ChevronLeft, ChevronRight, ArrowUpDown, X,
@@ -45,9 +45,12 @@ export default function Awards() {
     keywords: ['energy innovation grant awards', 'cleantech award database', 'DOE grant recipients', 'ARPA-E awardees', 'energy innovation research funding map'],
   });
 
+  const [searchParams] = useSearchParams();
+  const initialUrlSearch = searchParams.get('search') || '';
+
   const { includeNyserda, isNyserda } = useNyserda();
-  const [search, setSearch] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [search, setSearch] = useState(initialUrlSearch);
+  const [debouncedSearch, setDebouncedSearch] = useState(initialUrlSearch);
   const [agencyFilter, setAgencyFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [stateFilter, setStateFilter] = useState('');
@@ -71,6 +74,15 @@ export default function Awards() {
   const [isoFilter, setIsoFilter] = useState('');
   const [mapTargetMode, setMapTargetMode] = useState<'awards' | 'recipients'>('awards');
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+
+  useEffect(() => {
+    const urlQ = searchParams.get('search');
+    if (urlQ !== null && urlQ !== search) {
+      setSearch(urlQ);
+      setDebouncedSearch(urlQ);
+      setPage(1);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const t = setTimeout(() => { setDebouncedSearch(search); setPage(1); }, 300);

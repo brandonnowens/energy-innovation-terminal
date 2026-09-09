@@ -158,9 +158,10 @@ from app.api.foa_shredder import router as foa_shredder_router
 from app.api.alerts import router as alerts_router
 from app.api.ira_calculator import router as ira_calculator_router
 from app.api.ingestion import router as ingestion_router
-from app.api.ghost_webhook import router as ghost_router
 from app.api.v1.digest import router as digest_router
+from app.api.search import router as search_router
 
+app.include_router(search_router, prefix="/api", tags=["Universal Search"])
 app.include_router(digest_router, prefix="/api", tags=["Daily Digest"])
 app.include_router(analyze_router, prefix="/api", tags=["Analysis"])
 app.include_router(opportunities_router, prefix="/api", tags=["Opportunities"])
