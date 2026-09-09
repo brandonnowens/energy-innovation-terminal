@@ -17,10 +17,13 @@ interface CommandPaletteProps {
 }
 
 const STATIC_ACTIONS = [
+  { id: 'persona-investors', label: 'Switch Front Door: Investors & Strategists', sub: 'Curated view spotlighting Daily Digest, Capital Flows (Sankey), Venture & IP, and Strategic Reports', to: '__persona_investor__', icon: TrendingUp, category: 'Front Doors' },
+  { id: 'persona-innovators', label: 'Switch Front Door: Innovators & Grant Seekers', sub: 'Curated view spotlighting Match Engine, Solicitations, and Application Studio', to: '__persona_innovator__', icon: Sparkles, category: 'Front Doors' },
+  { id: 'persona-all', label: 'Switch Front Door: All Modules (Master View)', sub: 'Display all modules, directories, intelligence suites, and reference databases', to: '__persona_all__', icon: Layers, category: 'Front Doors' },
   { id: 'nav-digest', label: 'Daily Digest', sub: 'Automated morning intelligence briefing analyzing new solicitations, deadlines, and venture wire', to: '/digest', icon: Newspaper, category: 'Opportunities' },
   { id: 'nav-chat', label: 'AI Advisor', sub: 'Grounded RAG AI expert copilot with direct access to all 56k+ awards & 5.7k+ opportunities', to: '/chat', icon: Bot, category: 'AI Advisor' },
-  { id: 'nav-match', label: 'Match', sub: 'Deterministic eligibility and funding architecture engine', to: '/', icon: Sparkles, category: 'Opportunities' },
-
+  { id: 'nav-match', label: 'Match', sub: 'Deterministic eligibility and funding architecture engine', to: '/analyze', icon: Sparkles, category: 'Opportunities' },
+  { id: 'nav-proposals', label: 'Application Studio', sub: 'SOPO generation, win strategy synthesis, and proposal builder', to: '/proposals', icon: FileEdit, category: 'Opportunities' },
   { id: 'nav-opps', label: 'Solicitations', sub: '5,757 active and historical funding opportunities', to: '/opportunities', icon: FileSearch, category: 'Opportunities' },
   { id: 'nav-awards', label: 'Awards', sub: '56,413 awards representing $104.16B tracked capital & 10k+ grid queues', to: '/awards', icon: Trophy, category: 'Awards' },
   { id: 'nav-venture-patents', label: 'Venture & IP', sub: 'USPTO Bayh-Dole patent citations, $58.22B private VC syndicates & lineage graph', to: '/venture-patents', icon: Lightbulb, category: 'Awards' },
@@ -193,6 +196,32 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
     return items;
   }, [debouncedQuery, oppsData, awardsData, matchingPrograms, includeNyserda, isNyserda, isNyserdaAgency]);
 
+  const handleSelectItem = (item: any) => {
+    if (!item) return;
+    if (item.to === '__splash__') {
+      onClose();
+      window.dispatchEvent(new CustomEvent('replay-splash-screen'));
+    } else if (item.to === '__api_modal__') {
+      onClose();
+      window.dispatchEvent(new CustomEvent('open-api-docs-modal'));
+    } else if (item.to === '__persona_investor__') {
+      onClose();
+      window.dispatchEvent(new CustomEvent('switch-persona', { detail: 'investor' }));
+    } else if (item.to === '__persona_innovator__') {
+      onClose();
+      window.dispatchEvent(new CustomEvent('switch-persona', { detail: 'innovator' }));
+    } else if (item.to === '__persona_all__') {
+      onClose();
+      window.dispatchEvent(new CustomEvent('switch-persona', { detail: 'all' }));
+    } else if (item.to.startsWith('http')) {
+      window.open(item.to, '_blank');
+      onClose();
+    } else {
+      navigate(item.to);
+      onClose();
+    }
+  };
+
   // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
@@ -205,21 +234,8 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       e.preventDefault();
       const item = results[selectedIndex];
       if (item) {
-        if (item.to === '__splash__') {
-          onClose();
-          window.dispatchEvent(new CustomEvent('replay-splash-screen'));
-        } else if (item.to === '__api_modal__') {
-          onClose();
-          window.dispatchEvent(new CustomEvent('open-api-docs-modal'));
-        } else if (item.to.startsWith('http')) {
-          window.open(item.to, '_blank');
-          onClose();
-        } else {
-          navigate(item.to);
-          onClose();
-        }
+        handleSelectItem(item);
       }
-
     } else if (e.key === 'Escape') {
       onClose();
     }
@@ -299,21 +315,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
                 <div
                   key={item.id}
                   data-index={idx}
-                  onClick={() => {
-                    if (item.to === '__splash__') {
-                      onClose();
-                      window.dispatchEvent(new CustomEvent('replay-splash-screen'));
-                    } else if (item.to === '__api_modal__') {
-                      onClose();
-                      window.dispatchEvent(new CustomEvent('open-api-docs-modal'));
-                    } else if (item.to.startsWith('http')) {
-                      window.open(item.to, '_blank');
-                      onClose();
-                    } else {
-                      navigate(item.to);
-                      onClose();
-                    }
-                  }}
+                  onClick={() => handleSelectItem(item)}
 
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={clsx(

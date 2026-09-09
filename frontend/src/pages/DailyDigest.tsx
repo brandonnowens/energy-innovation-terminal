@@ -137,15 +137,29 @@ export default function DailyDigest() {
       {/* Top Editorial Masthead Banner */}
       <div className="border-b border-slate-200 dark:border-slate-800 pb-6 pt-2">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60">
               <Newspaper size={13} className="text-cyan-600 dark:text-cyan-400" />
-              <span>Executive Morning Briefing</span>
+              <span>Investor &amp; Strategy Briefing</span>
             </span>
             <span className="text-xs text-slate-400 dark:text-slate-600">|</span>
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
               {digest.edition_number}
             </span>
+            <span className="text-xs text-slate-400 dark:text-slate-600 hidden sm:inline">|</span>
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('switch-persona', { detail: 'innovator' }));
+                navigate('/analyze');
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition shadow-2xs cursor-pointer"
+              title="Switch to Innovators & Grant Seekers Front Door"
+            >
+              <Sparkles size={12} className="text-indigo-600 dark:text-indigo-400" />
+              <span>Seeking Grants? Open Match Studio</span>
+              <ChevronRight size={12} className="text-indigo-500" />
+            </button>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">

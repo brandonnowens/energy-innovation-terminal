@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { api, AnalysisInput, SayYesOrganization, GroupedOpportunityOrg } from '../api/client';
 
@@ -891,6 +892,7 @@ function CopyBriefButton({ data }: { data: AnalysisResponse }) {
 // ─── Main Page ───────────────────────────────────────────────────────────────
 
 export default function AnalyzeProject() {
+  const navigate = useNavigate();
   useSEO({
     title: 'Energy Innovation Grant Match Engine & Funding Stacks',
     description: 'Autonomous AI matching engine evaluating energy innovation proposals against 56,000+ solicitations, DOE funding opportunities, ARPA-E, NSF, and 140+ utilities to engineer non-dilutive capital stacks.',
@@ -1170,8 +1172,22 @@ export default function AnalyzeProject() {
           </p>
         </div>
 
-        {/* OpenAI / LLM Engine Status Badge */}
-        <div className="flex items-center gap-2.5 shrink-0">
+        {/* Header Badges & Actions */}
+        <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
+          <button
+            type="button"
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('switch-persona', { detail: 'investor' }));
+              navigate('/digest');
+            }}
+            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-cyan-200 dark:border-cyan-800/60 bg-cyan-50/60 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 hover:bg-cyan-100/70 dark:hover:bg-cyan-900/60 transition shadow-2xs cursor-pointer"
+            title="Switch to Investors & Strategists Front Door"
+          >
+            <TrendingUp size={13} className="text-cyan-600 dark:text-cyan-400" />
+            <span>Investor View</span>
+            <ArrowRight size={12} className="text-cyan-500" />
+          </button>
+
           <div
             className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#0d1424] shadow-2xs"
           >

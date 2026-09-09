@@ -37,11 +37,38 @@ export default function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Persona Front Door Selection: 'investor' | 'innovator' | 'all'
+  const [persona, setPersona] = useState<'investor' | 'innovator' | 'all'>(() => {
+    try {
+      const saved = localStorage.getItem('energy_terminal_persona_v1');
+      if (saved === 'investor' || saved === 'innovator' || saved === 'all') return saved;
+    } catch {}
+    return 'investor';
+  });
+
+  const handlePersonaChange = (newPersona: 'investor' | 'innovator' | 'all') => {
+    setPersona(newPersona);
+    try {
+      localStorage.setItem('energy_terminal_persona_v1', newPersona);
+    } catch {}
+    window.dispatchEvent(new CustomEvent('persona-changed', { detail: newPersona }));
+  };
 
   // Close mobile drawer upon navigation
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  // Listen for persona changes from Command Palette or other components
+  useEffect(() => {
+    const onSwitchPersona = (e: CustomEvent) => {
+      if (e.detail && ['investor', 'innovator', 'all'].includes(e.detail)) {
+        handlePersonaChange(e.detail);
+      }
+    };
+    window.addEventListener('switch-persona' as any, onSwitchPersona);
+    return () => window.removeEventListener('switch-persona' as any, onSwitchPersona);
+  }, []);
 
   // Collapsed state for navigation sections
   const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>(() => {
@@ -58,6 +85,12 @@ export default function Layout() {
       'Intelligence': true,
       'References': true,
       'Data & Audit': true,
+      'Grant Seeking Suite': false,
+      'Market Intelligence': false,
+      'Due Diligence': false,
+      'Ecosystem & Partners': true,
+      'Project & Tech Sourcing': false,
+      'Intelligence & Reference': true,
     };
   });
 
@@ -106,7 +139,6 @@ export default function Layout() {
     };
   }, []);
 
-
   interface NavItem {
     to: string;
     icon: React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>;
@@ -119,61 +151,140 @@ export default function Layout() {
     items: NavItem[];
   }
 
-  const navSections: NavSection[] = [
-    {
-      title: 'Opportunities',
-      items: [
-        { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
-        { to: '/analyze', icon: Sparkles, label: 'Match' },
-        { to: '/radar', icon: Radio, label: 'Radar' },
-        { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
-      ]
-    },
-
-    {
-      title: 'Awards',
-      items: [
-        { to: '/awards', icon: Trophy, label: 'Awards' },
-        { to: '/venture-patents', icon: Lightbulb, label: 'Venture & IP' },
-        { to: '/results', icon: Scale, label: 'Outcomes' },
-      ]
-    },
-    {
-      title: 'Directories',
-      items: [
-        { to: '/organizations', icon: Building2, label: 'Organizations' },
-        { to: '/programs', icon: Layers, label: 'Programs' },
-        { to: '/contacts', icon: BookUser, label: 'Contacts' },
-        { to: '/network', icon: Network, label: 'Network' },
-      ]
-    },
-    {
-      title: 'Intelligence',
-      items: [
-        { to: '/strategy', icon: Compass, label: 'Strategy' },
-        { to: '/sankey', icon: GitMerge, label: 'Capital Flows' },
-        { to: '/trends', icon: TrendingUp, label: 'Trends' },
-        { to: '/reports', icon: FileText, label: 'Reports' },
-      ]
-    },
-    {
-      title: 'References',
-      items: [
-        { to: '/technologies', icon: BookOpen, label: 'Technologies' },
-        { to: '/policies', icon: ShieldCheck, label: 'Policies' },
-        { to: '/dockets', icon: Scale, label: 'Dockets' },
-      ]
-    },
-    {
-      title: 'Data & Audit',
-      items: [
-        { to: '/updates', icon: Activity, label: 'Feeds' },
-        { to: '/sources', icon: Database, label: 'Provenance' },
-        { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
-      ]
+  const navSections: NavSection[] = useMemo(() => {
+    if (persona === 'innovator') {
+      return [
+        {
+          title: 'Grant Seeking Suite',
+          items: [
+            { to: '/analyze', icon: Sparkles, label: 'Match & Sponsoring', badge: 'Core' },
+            { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
+            { to: '/proposals', icon: FileEdit, label: 'Application Studio', badge: 'SOPO' },
+            { to: '/radar', icon: Radio, label: 'Predictive Radar' },
+          ]
+        },
+        {
+          title: 'Ecosystem & Partners',
+          items: [
+            { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
+            { to: '/organizations', icon: Building2, label: 'Funding Organizations' },
+            { to: '/network', icon: Network, label: 'Teaming & Network' },
+          ]
+        },
+        {
+          title: 'Intelligence & Reference',
+          items: [
+            { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
+            { to: '/policies', icon: ShieldCheck, label: 'IRA §45/§48 Credits' },
+            { to: '/technologies', icon: BookOpen, label: 'Technology Reference' },
+            { to: '/awards', icon: Trophy, label: 'Award Precedents' },
+          ]
+        },
+        {
+          title: 'Data & Developer API',
+          items: [
+            { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
+            { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
+          ]
+        }
+      ];
     }
-  ];
 
+    if (persona === 'investor') {
+      return [
+        {
+          title: 'Market Intelligence',
+          items: [
+            { to: '/digest', icon: Newspaper, label: 'Daily Digest', badge: 'Briefing' },
+            { to: '/sankey', icon: GitMerge, label: 'Capital Flows (Sankey)' },
+            { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Bayh-Dole IP' },
+            { to: '/reports', icon: FileText, label: 'Reports & Blueprints' },
+            { to: '/trends', icon: TrendingUp, label: 'Capital Velocity & Trends' },
+          ]
+        },
+        {
+          title: 'Due Diligence',
+          items: [
+            { to: '/awards', icon: Trophy, label: 'Awards Ledger ($104B)' },
+            { to: '/results', icon: Scale, label: 'Outcomes & ROI' },
+            { to: '/dockets', icon: Scale, label: 'Utility Dockets & Tariffs' },
+            { to: '/organizations', icon: Building2, label: 'Agencies & Utilities' },
+          ]
+        },
+        {
+          title: 'Project Diligence',
+          items: [
+            { to: '/analyze', icon: Sparkles, label: 'Project Bankability (TBR)' },
+            { to: '/opportunities', icon: FileSearch, label: 'Active Solicitations' },
+            { to: '/technologies', icon: BookOpen, label: 'Frontier Tech Taxonomy' },
+          ]
+        },
+        {
+          title: 'Data & Developer API',
+          items: [
+            { to: '/sources', icon: Database, label: 'Data Provenance' },
+            { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
+          ]
+        }
+      ];
+    }
+
+    // Master / All Modules View
+    return [
+      {
+        title: 'Opportunities',
+        items: [
+          { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
+          { to: '/analyze', icon: Sparkles, label: 'Match' },
+          { to: '/radar', icon: Radio, label: 'Radar' },
+          { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
+          { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
+        ]
+      },
+      {
+        title: 'Awards',
+        items: [
+          { to: '/awards', icon: Trophy, label: 'Awards' },
+          { to: '/venture-patents', icon: Lightbulb, label: 'Venture & IP' },
+          { to: '/results', icon: Scale, label: 'Outcomes' },
+        ]
+      },
+      {
+        title: 'Directories',
+        items: [
+          { to: '/organizations', icon: Building2, label: 'Organizations' },
+          { to: '/programs', icon: Layers, label: 'Programs' },
+          { to: '/contacts', icon: BookUser, label: 'Contacts' },
+          { to: '/network', icon: Network, label: 'Network' },
+        ]
+      },
+      {
+        title: 'Intelligence',
+        items: [
+          { to: '/strategy', icon: Compass, label: 'Strategy' },
+          { to: '/sankey', icon: GitMerge, label: 'Capital Flows' },
+          { to: '/trends', icon: TrendingUp, label: 'Trends' },
+          { to: '/reports', icon: FileText, label: 'Reports' },
+        ]
+      },
+      {
+        title: 'References',
+        items: [
+          { to: '/technologies', icon: BookOpen, label: 'Technologies' },
+          { to: '/policies', icon: ShieldCheck, label: 'Policies' },
+          { to: '/dockets', icon: Scale, label: 'Dockets' },
+        ]
+      },
+      {
+        title: 'Data & Audit',
+        items: [
+          { to: '/updates', icon: Activity, label: 'Feeds' },
+          { to: '/sources', icon: Database, label: 'Provenance' },
+          { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
+        ]
+      }
+    ];
+  }, [persona]);
 
   const allCollapsed = useMemo(() => {
     return navSections.every(s => collapsedSections[s.title]);
@@ -197,6 +308,54 @@ export default function Layout() {
             <X size={18} />
           </button>
         )}
+      </div>
+
+      {/* Persona Front Door Selector */}
+      <div className="px-3 pt-3 pb-2 border-b border-white/[0.06] space-y-1.5">
+        <div className="flex items-center justify-between text-[10px] font-semibold text-slate-400 px-0.5">
+          <span className="uppercase tracking-wider text-[9px] text-slate-400">Front Door Mode</span>
+          {persona !== 'all' ? (
+            <button
+              type="button"
+              onClick={() => handlePersonaChange('all')}
+              className="text-[9.5px] text-slate-400 hover:text-[#00E5FF] transition-colors cursor-pointer"
+            >
+              All Modules
+            </button>
+          ) : (
+            <span className="text-[9px] text-[#00E5FF] font-mono">Master</span>
+          )}
+        </div>
+        <div className="grid grid-cols-2 p-0.5 bg-white/[0.03] border border-white/[0.06] rounded-lg gap-0.5">
+          <button
+            type="button"
+            onClick={() => handlePersonaChange('investor')}
+            className={clsx(
+              "px-1.5 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
+              persona === 'investor'
+                ? "bg-cyan-500/20 text-[#00E5FF] border border-cyan-500/40 shadow-2xs"
+                : "text-slate-400 hover:text-slate-200"
+            )}
+            title="Spotlight: Daily Digest, Capital Flows (Sankey), Venture & IP, Reports, Trends"
+          >
+            <TrendingUp size={11} className={persona === 'investor' ? "text-[#00E5FF]" : "text-slate-400"} />
+            <span className="truncate">Investors</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handlePersonaChange('innovator')}
+            className={clsx(
+              "px-1.5 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
+              persona === 'innovator'
+                ? "bg-indigo-500/25 text-indigo-300 border border-indigo-500/40 shadow-2xs"
+                : "text-slate-400 hover:text-slate-200"
+            )}
+            title="Spotlight: Project Match, Solicitations, Winning Proposals Studio, Key Contacts"
+          >
+            <Sparkles size={11} className={persona === 'innovator' ? "text-indigo-400" : "text-slate-400"} />
+            <span className="truncate">Innovators</span>
+          </button>
+        </div>
       </div>
 
       {/* Navigation Area */}
@@ -470,6 +629,54 @@ export default function Layout() {
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+            {/* Front Door Quick Switcher in Header */}
+            <div className={clsx(
+              "hidden md:flex items-center p-0.5 rounded-lg border text-xs font-semibold select-none shrink-0",
+              isDark ? "bg-white/[0.04] border-white/[0.08]" : "bg-slate-100 border-slate-200"
+            )}>
+              <button
+                type="button"
+                onClick={() => handlePersonaChange('investor')}
+                className={clsx(
+                  "px-2 py-0.5 rounded-md text-[10.5px] font-bold transition-all flex items-center gap-1 cursor-pointer",
+                  persona === 'investor'
+                    ? (isDark ? "bg-cyan-500/25 text-[#00E5FF] border border-cyan-500/40 shadow-2xs" : "bg-white text-cyan-700 shadow-2xs border border-cyan-200")
+                    : (isDark ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
+                )}
+                title="Investor & Strategist Front Door: Daily Digest, Capital Flows, Venture & IP, Reports"
+              >
+                <TrendingUp size={11} className={persona === 'investor' ? (isDark ? "text-[#00E5FF]" : "text-cyan-600") : "opacity-60"} />
+                <span>Investors</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handlePersonaChange('innovator')}
+                className={clsx(
+                  "px-2 py-0.5 rounded-md text-[10.5px] font-bold transition-all flex items-center gap-1 cursor-pointer",
+                  persona === 'innovator'
+                    ? (isDark ? "bg-indigo-500/25 text-indigo-300 border border-indigo-500/40 shadow-2xs" : "bg-white text-indigo-700 shadow-2xs border border-indigo-200")
+                    : (isDark ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
+                )}
+                title="Innovator & Grant Seeker Front Door: Match Engine, Solicitations, Application Studio"
+              >
+                <Sparkles size={11} className={persona === 'innovator' ? "text-indigo-400" : "text-indigo-600"} />
+                <span>Innovators</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handlePersonaChange('all')}
+                className={clsx(
+                  "px-1.5 py-0.5 rounded-md text-[10px] font-semibold transition-all cursor-pointer font-mono",
+                  persona === 'all'
+                    ? (isDark ? "bg-white/10 text-white shadow-2xs" : "bg-white text-slate-900 shadow-2xs border border-slate-300")
+                    : (isDark ? "text-slate-500 hover:text-slate-300" : "text-slate-400 hover:text-slate-700")
+                )}
+                title="All Modules (Master Navigation)"
+              >
+                All
+              </button>
+            </div>
+
             <ThemeToggle />
             <button
               type="button"
