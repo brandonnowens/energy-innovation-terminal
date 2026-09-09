@@ -2423,8 +2423,14 @@ export interface DailyDigest {
     open_solicitations_count: number;
     total_active_capital: number;
     total_active_capital_display: string;
+    federal_capital_display?: string;
+    state_capital_display?: string;
+    utility_capital_display?: string;
     tracked_recipients_count: number;
     total_historical_awards_count: number;
+    total_historical_capital_display?: string;
+    indexed_authorities_count?: string;
+    grid_projects_tracked?: string;
     new_solicitations_today: number;
     urgent_deadlines_count: number;
   };
@@ -2440,6 +2446,7 @@ export interface DailyDigest {
     due_date_display: string;
     short_description: string;
     solicitation_type: string;
+    cost_share_required?: string;
     detail_url: string;
   }>;
   urgent_deadlines: Array<{
@@ -2450,6 +2457,8 @@ export interface DailyDigest {
     due_date_display: string;
     total_funding_display: string;
     max_per_award_display: string;
+    days_remaining?: string;
+    package_requirements?: string;
     detail_url: string;
   }>;
   award_wire: Array<{
@@ -2457,10 +2466,13 @@ export interface DailyDigest {
     recipient_name: string;
     recipient_city?: string;
     recipient_state?: string;
+    location?: string;
     award_amount_display: string;
     project_title: string;
     pi_name?: string;
-    recipient_type: string;
+    recipient_type?: string;
+    technology_vertical?: string;
+    commercial_stage?: string;
   }>;
   regulatory_watch: Array<{
     code_identifier: string;
@@ -2469,6 +2481,13 @@ export interface DailyDigest {
     jurisdiction_state: string;
     executive_summary: string;
     compliance_mandate?: string;
+    impact_level?: string;
+  }>;
+  teaming_wire?: Array<{
+    partner_name: string;
+    role_type: string;
+    focus_area: string;
+    target_foas: string;
   }>;
   spotlight?: {
     opportunity_id: number;
@@ -2479,13 +2498,18 @@ export interface DailyDigest {
     max_per_award_display: string;
     due_date_display: string;
     short_description: string;
-    bankability_score?: number;
+    bankability_score?: number | string;
     bankability_grade?: string;
     bankability_readiness?: string;
-    ira_itc_rate?: number;
+    ira_itc_rate?: number | string;
     ira_tax_credit_value?: string;
-    blended_wacc_pct?: number;
-    non_dilutive_coverage_pct?: number;
+    modeled_grant_share?: string;
+    modeled_tax_equity_share?: string;
+    modeled_debt_share?: string;
+    modeled_sponsor_equity?: string;
+    blended_wacc_pct?: number | string;
+    non_dilutive_coverage_pct?: number | string;
+    win_angle_summary?: string;
   };
   generated_at: string;
 }

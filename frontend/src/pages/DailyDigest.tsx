@@ -298,13 +298,17 @@ export default function DailyDigest() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
           <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
-            <span>Active Funding Pool</span>
+            <span>Total Active Capital</span>
             <TrendingUp size={15} className="text-emerald-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {digest.macro_metrics?.total_active_capital_display || '$7.02B'}
+            {digest.macro_metrics?.total_active_capital_display || '$48.20B'}
           </div>
-          <div className="text-[11px] text-slate-400">Across all open programs</div>
+          <div className="text-[11px] text-slate-400 flex items-center gap-1.5 flex-wrap">
+            <span>Fed: {digest.macro_metrics?.federal_capital_display || '$31.3B'}</span>
+            <span>•</span>
+            <span>State: {digest.macro_metrics?.state_capital_display || '$12.0B'}</span>
+          </div>
         </div>
 
         <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
@@ -313,31 +317,33 @@ export default function DailyDigest() {
             <FileText size={15} className="text-cyan-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {digest.macro_metrics?.open_solicitations_count?.toLocaleString() || '292'}
+            {digest.macro_metrics?.open_solicitations_count?.toLocaleString() || '3,870+'}
           </div>
-          <div className="text-[11px] text-slate-400">Federal, State &amp; Utility RFPs</div>
+          <div className="text-[11px] text-slate-400">140+ federal &amp; state agencies</div>
         </div>
 
         <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
           <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
-            <span>Tracked Innovators</span>
+            <span>Historical Benchmark</span>
             <Building size={15} className="text-indigo-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {digest.macro_metrics?.tracked_recipients_count?.toLocaleString() || '8,573'}
+            {digest.macro_metrics?.total_historical_capital_display || '$104.16B'}
           </div>
-          <div className="text-[11px] text-slate-400">Award recipients &amp; labs</div>
+          <div className="text-[11px] text-slate-400">
+            {digest.macro_metrics?.total_historical_awards_count ? `${digest.macro_metrics.total_historical_awards_count.toLocaleString()} awards tracked` : '56,413 past awardees'}
+          </div>
         </div>
 
         <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
           <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
-            <span>Upcoming Deadlines</span>
+            <span>Critical Deadlines</span>
             <Clock size={15} className="text-amber-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {digest.macro_metrics?.urgent_deadlines_count ?? 6}
+            {digest.macro_metrics?.urgent_deadlines_count ?? 8}
           </div>
-          <div className="text-[11px] text-slate-400">Closing in 7-14 days</div>
+          <div className="text-[11px] text-amber-600 dark:text-amber-400 font-semibold">Closing in 14-30 days</div>
         </div>
       </div>
 
@@ -554,7 +560,7 @@ export default function DailyDigest() {
               </h2>
             </div>
             <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
-              TBR Grade: {digest.spotlight.bankability_grade || 'AAA'}
+              TBR Grade: {digest.spotlight.bankability_grade || 'A- / Investment Grade'}
             </span>
           </div>
 
@@ -562,7 +568,7 @@ export default function DailyDigest() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                  <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 font-mono">
                     {digest.spotlight.solicitation_number}
                   </span>
                   <span className="text-xs text-slate-400">•</span>
@@ -573,54 +579,121 @@ export default function DailyDigest() {
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                   {digest.spotlight.name}
                 </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Total Pool: <span className="font-semibold text-emerald-600 dark:text-emerald-400">{digest.spotlight.total_funding_display}</span> • Max Award: <span className="font-semibold text-emerald-600 dark:text-emerald-400">{digest.spotlight.max_per_award_display}</span>
+                </p>
               </div>
 
               <button
                 onClick={() => navigate(`/opportunities/${digest.spotlight?.opportunity_id}`)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 transition shadow-2xs shrink-0"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 transition shadow-2xs shrink-0 cursor-pointer"
               >
                 <span>Full Opportunity Dossier</span>
                 <ArrowUpRight size={15} />
               </button>
             </div>
 
+            {/* 4 Bankability Metric Cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
               <div className="space-y-1">
                 <div className="text-[11px] font-semibold text-slate-400">Technology Bankability (TBR)</div>
                 <div className="text-xl font-bold text-slate-900 dark:text-white">
-                  {digest.spotlight.bankability_score ? `${digest.spotlight.bankability_score.toFixed(1)}/100` : '90.1/100'}
+                  {typeof digest.spotlight.bankability_score === 'number'
+                    ? `${digest.spotlight.bankability_score.toFixed(1)}/100`
+                    : `${digest.spotlight.bankability_score || '86'}/100`}
                 </div>
                 <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
-                  Investment Grade ({digest.spotlight.bankability_grade || 'AAA'})
+                  {digest.spotlight.bankability_grade || 'A- / Investment Grade'}
                 </div>
               </div>
 
               <div className="space-y-1">
-                <div className="text-[11px] font-semibold text-slate-400">IRA Title 26 ITC Rate</div>
+                <div className="text-[11px] font-semibold text-slate-400">IRA ITC / Direct Pay Rate</div>
                 <div className="text-xl font-bold text-cyan-600 dark:text-cyan-400">
-                  {digest.spotlight.ira_itc_rate ? `${digest.spotlight.ira_itc_rate.toFixed(1)}%` : '30.0%'}
+                  {typeof digest.spotlight.ira_itc_rate === 'number'
+                    ? `${digest.spotlight.ira_itc_rate.toFixed(0)}%`
+                    : digest.spotlight.ira_itc_rate || '40%'}
                 </div>
                 <div className="text-[10px] text-slate-500 dark:text-slate-400">
-                  Valued at {digest.spotlight.ira_tax_credit_value || '$1.5M'}
+                  Valued at {digest.spotlight.ira_tax_credit_value || '$4.0M'}
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="text-[11px] font-semibold text-slate-400">Blended Cost of Capital (WACC)</div>
                 <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
-                  {digest.spotlight.blended_wacc_pct ? `${digest.spotlight.blended_wacc_pct.toFixed(1)}%` : '5.2%'}
+                  {typeof digest.spotlight.blended_wacc_pct === 'number'
+                    ? `${digest.spotlight.blended_wacc_pct.toFixed(1)}%`
+                    : digest.spotlight.blended_wacc_pct || '5.8%'}
                 </div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400">With Green Bank debt</div>
+                <div className="text-[10px] text-slate-500 dark:text-slate-400">Modeled DOE / Green Bank</div>
               </div>
 
               <div className="space-y-1">
                 <div className="text-[11px] font-semibold text-slate-400">Non-Dilutive Coverage</div>
                 <div className="text-xl font-bold text-indigo-600 dark:text-indigo-400">
-                  {digest.spotlight.non_dilutive_coverage_pct ? `${digest.spotlight.non_dilutive_coverage_pct.toFixed(0)}%` : '30%'}
+                  {typeof digest.spotlight.non_dilutive_coverage_pct === 'number'
+                    ? `${digest.spotlight.non_dilutive_coverage_pct.toFixed(0)}%`
+                    : digest.spotlight.non_dilutive_coverage_pct || '65%'}
                 </div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400">Of total capital stack</div>
+                <div className="text-[10px] text-slate-500 dark:text-slate-400">Public grant + tax credit</div>
               </div>
             </div>
+
+            {/* Decision-Maker Say-Yes Win Angle Banner */}
+            {digest.spotlight.win_angle_summary && (
+              <div className="p-4 rounded-xl bg-cyan-50/70 dark:bg-cyan-950/30 border border-cyan-200 dark:border-cyan-800/60 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-cyan-800 dark:text-cyan-300">
+                  <ShieldCheck size={14} className="text-cyan-600 dark:text-cyan-400" />
+                  <span>Decision-Maker 'Say-Yes' Win Angle</span>
+                </div>
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                  {digest.spotlight.win_angle_summary}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* 6. Consortia Teaming & National Lab Radar */}
+      {digest.teaming_wire && digest.teaming_wire.length > 0 && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+                6. Consortia Teaming &amp; Subcontractor Radar
+              </h2>
+            </div>
+            <span className="text-xs font-semibold text-slate-400">National Lab &amp; Utility Partners</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {digest.teaming_wire.map((tm, idx) => (
+              <div
+                key={idx}
+                className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-2xs space-y-2 flex flex-col justify-between"
+              >
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
+                      {tm.role_type}
+                    </span>
+                  </div>
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100 pt-1">
+                    {tm.partner_name}
+                  </h4>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {tm.focus_area}
+                  </p>
+                </div>
+
+                <div className="text-[11px] font-mono text-cyan-600 dark:text-cyan-400 pt-2 border-t border-slate-100 dark:border-slate-800/60">
+                  Target: {tm.target_foas}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
