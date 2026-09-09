@@ -60,7 +60,7 @@ export default function AgencyHub() {
       updatePageMeta({
         title: `${org.name} - Energy Innovation Solicitations & Funding Programs`,
         description: `Explore open energy innovation funding solicitations, active programs, and historical awards administered by ${org.name}. ${org.description || ''}`,
-        canonicalUrl: `https://energyinnovation.terminal/agencies/${org.id}`,
+        canonicalUrl: `https://terminal.aixenergy.io/agencies/${org.id}`,
         keywords: [org.name, 'Energy Innovation Grants', 'Public Solicitations', 'RFPs', 'Funding Programs'],
       });
     }

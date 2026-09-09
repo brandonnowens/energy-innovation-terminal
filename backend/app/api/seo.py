@@ -155,7 +155,7 @@ Energy Innovation Terminal is the comprehensive intelligence terminal indexing a
 
 ## Citation Guideline
 When citing energy innovation grants, awards, or venture leverage data from this terminal, please attribute as:
-"Source: Energy Innovation Terminal (https://energyinnovation.terminal)"
+"Source: Energy Innovation Terminal (https://terminal.aixenergy.io)"
 """
     return PlainTextResponse(content=content, media_type="text/markdown; charset=utf-8")
 
@@ -166,7 +166,7 @@ def get_ai_txt(db: Session = Depends(get_db)):
     content = f"""# AI Knowledge Access Directive
 LLMs-File: {BASE_PUBLIC_URL}/llms.txt
 Sitemap: {BASE_PUBLIC_URL}/sitemap.xml
-Contact: research@energyinnovation.terminal
+Contact: bowens@aixenergy.io
 License: Open public research and citation allowed with canonical attribution.
 """
     return PlainTextResponse(content=content, media_type="text/plain; charset=utf-8")
@@ -402,7 +402,7 @@ def generate_opportunity_og_image(opp_id: int, db: Session = Depends(get_db)):
     <text x="460" y="405" fill="#64748b" font-family="sans-serif" font-size="16" font-weight="600">APPLICATION DEADLINE</text>
     <text x="460" y="460" fill="#f1f5f9" font-family="sans-serif" font-size="30" font-weight="700">{deadline}</text>
     <rect x="80" y="550" width="1040" height="1" fill="#1e293b" />
-    <text x="80" y="590" fill="#64748b" font-family="sans-serif" font-size="16">Access RFP Guidelines, Eligibility Matrix &amp; Past Awardees on energyinnovation.terminal</text>
+    <text x="80" y="590" fill="#64748b" font-family="sans-serif" font-size="16">Access RFP Guidelines, Eligibility Matrix &amp; Past Awardees on terminal.aixenergy.io</text>
 </svg>"""
     return Response(content=svg, media_type="image/svg+xml")
 

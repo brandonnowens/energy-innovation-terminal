@@ -141,7 +141,7 @@ def get_email_templates(admin_user: User = Depends(require_role(["admin"]))):
 
 I am reaching out directly as the Founder & Lead Principal of the Energy Innovation Terminal. We have indexed your pioneering research, grant awards, and technology portfolio in {{technology_area}} at {{institution}}.
 
-I would like to personally invite you and your team to join the Energy Innovation Terminal (https://energyinnovation.terminal).
+I would like to personally invite you and your team to join the Energy Innovation Terminal (https://terminal.aixenergy.io).
 
 The platform provides comprehensive upstream intelligence across federal and state funding ecosystems (DOE, ARPA-E, CEC, MassCEC, NSF, and NYSERDA), including:
 • Multi-Agency Grant & Solicitation Match Engine
@@ -153,7 +153,7 @@ The platform provides comprehensive upstream intelligence across federal and sta
 As an active leader in {{sector}}, your profile and track record are already featured in our verified national directory. We would be delighted to grant you full researcher access.
 
 You can explore your indexed profile and active solicitations here:
-👉 https://energyinnovation.terminal
+👉 https://terminal.aixenergy.io
 
 Please let me know if you have any questions or if you would welcome a brief 10-minute walkthrough of our intelligence tools.
 

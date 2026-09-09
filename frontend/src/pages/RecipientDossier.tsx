@@ -98,8 +98,8 @@ export default function RecipientDossier() {
       updatePageMeta({
         title: `${recipient.name} - Energy Innovation Funding Dossier & Grants`,
         description: `Tracked with ${funding} in public grant funding across ${recipient.total_awards_count || 0} awards in ${tech}. Explore DOE awards, patent linkages, and venture attributions.`,
-        canonicalUrl: `https://energyinnovation.terminal/recipients/${recipient.id}`,
-        ogImage: `https://energyinnovation.terminal/api/seo/badge/${recipient.id}.svg`,
+        canonicalUrl: `https://terminal.aixenergy.io/recipients/${recipient.id}`,
+        ogImage: `https://terminal.aixenergy.io/api/seo/badge/${recipient.id}.svg`,
         keywords: [recipient.name, tech, recipient.sector || 'Clean Tech', 'DOE Grants', 'Energy Innovation Awards', 'Public Funding'],
         jsonLd: {
           '@context': 'https://schema.org',
@@ -115,7 +115,7 @@ export default function RecipientDossier() {
 
   const copyBadgeSnippet = () => {
     if (!recipient) return;
-    const snippet = `<a href="https://energyinnovation.terminal/recipients/${recipient.id}"><img src="https://energyinnovation.terminal/api/seo/badge/${recipient.id}.svg" alt="${recipient.name} Energy Innovation Funding" /></a>`;
+    const snippet = `<a href="https://terminal.aixenergy.io/recipients/${recipient.id}"><img src="https://terminal.aixenergy.io/api/seo/badge/${recipient.id}.svg" alt="${recipient.name} Energy Innovation Funding" /></a>`;
     navigator.clipboard.writeText(snippet);
     setCopiedBadge(true);
     setTimeout(() => setCopiedBadge(false), 3000);

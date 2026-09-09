@@ -30,7 +30,7 @@ BOT_USER_AGENTS = [
     "claudebot", "applebot", "ia_archiver"
 ]
 
-BASE_URL = "https://energyinnovation.terminal"
+BASE_URL = "https://terminal.aixenergy.io"
 
 
 def is_bot(user_agent: Optional[str]) -> bool:

@@ -190,57 +190,57 @@ def get_tier_scaffolding_manifest() -> Dict[str, Any]:
     """Metadata describing the sovereign enterprise licensing structure and institutional tiers."""
     return {
         "public_benefit_mode": settings.public_benefit_mode,
-        "active_message": "Sovereign Institutional Terminal Edition active with complete database access.",
+        "active_message": "Energy Innovation Terminal by AIxEnergy — Full Enterprise Seat Active.",
         "tiers": [
             {
                 "id": MembershipTier.FREE_PUBLIC_BENEFIT.value,
-                "name": "Academic & Research Pilot",
-                "tagline": "Standard multi-agency database query engine for university labs and non-profit innovators",
+                "name": "Community & Academic Pilot",
+                "tagline": "Standard multi-agency database search for university labs and non-profit researchers",
                 "price": "$0 / month (Pilot)",
                 "is_current_default": True,
                 "badge": "Research Pilot",
                 "features": [
-                    "Multi-Agency Solicitations Index (5,710 Solicitations)",
+                    "Multi-Agency Solicitations Index (3,870+ Active Grants)",
                     "Historical Awards & Recipient Ledger (54,305 Awards)",
                     "Basic Technology & Fuels Reference Profiles",
-                    "Standard Interactive D3 Capital Flow Visualizer",
-                    "Public Domain Citation & Standard Export",
+                    "Public Domain Citation & Standard Data Views",
                     "Community Support & Online Documentation"
                 ]
             },
             {
                 "id": MembershipTier.PRO.value,
-                "name": "Strategic Deal Team Seat",
-                "tagline": "Full quantitative analytics, 9-D lineage tracking, and AI proposal copilot for clean tech primes",
-                "price": "$25,000 / seat / mo",
+                "name": "Energy Innovation Terminal Seat",
+                "tagline": "Full institutional license: AI FOA Shredder, 50,000+ Teaming Network, 5-Stage Capital Ledger & Publication PDFs",
+                "price": "$1,500 / seat / month (Flat Rate)",
                 "is_current_default": False,
-                "badge": "Deal Team Tier",
+                "badge": "Institutional ($1,500/mo)",
                 "features": [
-                    "Everything in Academic Pilot Tier",
-                    "9-Dimensional Lineage Provenance Ribbon (Patent & VC Graph)",
-                    "Grounded RAG AI Advisor with Streaming Telemetry",
-                    "Automated SOPO & Justice40 CBP Scoring Generator",
-                    "Public Utility Commission (PUC) & FERC Dockets",
-                    "4K High-Res Infographic & Briefing PDF Exporter",
-                    "Direct Automated Webhook & Daily Opportunity Ingestion"
+                    "Instant AI FOA Shredder & 4-Part Proposal Blueprint Engine",
+                    "50,000+ Past Awardee & Consortia Teaming Network",
+                    "5-Stage Non-Dilutive Capital Stack Continuum Solver",
+                    "Predictive Solicitation Release Forecasting Radar",
+                    "DOE National Lab Testbed & User Facility Directory",
+                    "Policy, Codes, Standards & PUC Regulatory Dockets",
+                    "University Licensable IP & Spinout Portal",
+                    "IRA Direct Pay & Clean Energy Tax Credit Calculator",
+                    "Publication-Grade 1-Click ReportLab PDF Report Exports"
                 ]
             },
             {
                 "id": MembershipTier.ENTERPRISE.value,
-                "name": "Institutional Sovereign Enterprise",
-                "tagline": "Exclusive sovereign terminal access for major infrastructure funds, sovereign wealth, and tier-1 utilities",
-                "price": "$100,000 / seat / mo",
+                "name": "Consultancy & Practice Group License",
+                "tagline": "Multi-seat practice group license for boutique grant writing and clean energy consultancies",
+                "price": "$1,500 / seat / month (Volume Packages Available)",
                 "is_current_default": False,
-                "badge": "Sovereign Tier ($100k/mo)",
+                "badge": "Practice Group",
                 "features": [
-                    "Everything in Strategic Deal Team Tier",
-                    "Full Database Lake (54,305 Awards, $98.98B Tracked Capital)",
-                    "3.8x Catalytic Leverage Multiplier & Stacking Solver",
-                    "Dedicated Senior Intelligence Director Concierge",
-                    "Air-Gapped Private Sandbox & Custom Ingestion Connectors",
-                    "Unlimited C-Suite & Investment Committee Briefing Rights",
-                    "Institutional High-Throughput REST & SODA Data API",
-                    "SOC-2 / FedRAMP Security Standards & 99.99% SLA"
+                    "Everything in Energy Innovation Terminal Seat",
+                    "Multi-Seat Centralized Account & Billing Management",
+                    "Dedicated Onboarding & Teaming Strategy Review",
+                    "Direct High-Throughput REST API Access",
+                    "Custom Agency Watchlist Feeds & Webhook Alerts",
+                    "Client-Ready White-Label PDF Export Rights",
+                    "Priority Technical Support & SLAs"
                 ]
             }
         ]

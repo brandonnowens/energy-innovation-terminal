@@ -271,7 +271,7 @@ export default function AdminEmailHub() {
       .replace(/{{title}}|{title}/g, sampleContact.title || 'Innovator')
       .replace(/{{awards_count}}|{awards_count}/g, String(sampleContact.awards_count || 3))
       .replace(/{{total_funding}}|{total_funding}/g, '$8.5M')
-      .replace(/{{app_link}}|{app_link}/g, 'https://energyinnovation.terminal');
+      .replace(/{{app_link}}|{app_link}/g, 'https://terminal.aixenergy.io');
   }, [bodyText, sampleContact]);
 
   // Open preview mode active: everyone can access the Admin Email Hub and outreach console

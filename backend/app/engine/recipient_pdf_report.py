@@ -183,7 +183,7 @@ def generate_recipient_dossier_pdf(dossier_data: Dict[str, Any]) -> io.BytesIO:
     loc_str = f"{city}, {state}".strip(", ") or "United States"
     stage_str = recipient.get("commercialization_stage") or "Commercial Deployment"
     emp_str = recipient.get("employee_range") or "50–200"
-    web_str = recipient.get("website_url") or "https://energyinnovation.terminal"
+    web_str = recipient.get("website_url") or "https://terminal.aixenergy.io"
 
     meta_text = (
         f"<b>Technology Domain:</b> {tech_str} &nbsp;|&nbsp; "

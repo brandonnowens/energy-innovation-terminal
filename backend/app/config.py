@@ -99,7 +99,7 @@ class Settings(BaseSettings):
         "--\n"
         "Brandon N. Owens\n"
         "Founder & Lead Principal | Energy Innovation Terminal\n"
-        "bowens@aixenergy.io | https://energyinnovation.terminal\n"
+        "bowens@aixenergy.io | https://terminal.aixenergy.io\n"
         "Confidential Clean Energy Research & Ecosystem Communications"
     )
 

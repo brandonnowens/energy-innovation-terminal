@@ -57,8 +57,8 @@ def interpolate_template(template_str: str, contact: Contact, extra_vars: Option
         "{awards_count}": str(contact.awards_count or 0),
         "{{total_funding}}": funding_fmt,
         "{total_funding}": funding_fmt,
-        "{{app_link}}": "https://energyinnovation.terminal",
-        "{app_link}": "https://energyinnovation.terminal",
+        "{{app_link}}": "https://terminal.aixenergy.io",
+        "{app_link}": "https://terminal.aixenergy.io",
         "{{app_name}}": "Energy Innovation Terminal",
         "{app_name}": "Energy Innovation Terminal",
     }
@@ -87,7 +87,7 @@ def build_funding_alert_email_html(
     days_remaining: Optional[int],
     tech_areas: List[str],
     eligibility_summary: str,
-    app_base_url: str = "https://energyinnovation.terminal",
+    app_base_url: str = "https://terminal.aixenergy.io",
     opp_id: Optional[int] = None,
 ) -> str:
     """Construct a high-signal, publication-grade HTML financial terminal alert email."""
