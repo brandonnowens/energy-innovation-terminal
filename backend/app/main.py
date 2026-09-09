@@ -130,6 +130,7 @@ from app.api.system import router as system_router
 from app.api.agencies import router as agencies_router
 from app.api.trends import router as trends_router
 from app.api.auth import router as auth_router
+from app.api.ghost_webhook import router as ghost_router
 from app.api.pdf_report import router as pdf_router
 from app.api.relationships import router as relationships_router
 from app.api.organizations import router as orgs_router
