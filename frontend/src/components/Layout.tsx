@@ -35,15 +35,16 @@ export default function Layout() {
   // Collapsed state for navigation sections
   const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>(() => {
     try {
-      const saved = localStorage.getItem('energy_terminal_nav_collapsed_v5');
+      const saved = localStorage.getItem('energy_terminal_nav_collapsed_v6');
       if (saved) return JSON.parse(saved);
     } catch {
       // ignore
     }
     return {
-      'Awards & Outcomes': false,
-      'Organizations': true,
-      'Strategy & Intelligence': true,
+      'Opportunities': false,
+      'Awards': false,
+      'Directories': true,
+      'Intelligence': true,
       'References': true,
       'Data & Audit': true,
     };
@@ -53,7 +54,7 @@ export default function Layout() {
     setCollapsedSections(prev => {
       const updated = { ...prev, [sectionTitle]: !prev[sectionTitle] };
       try {
-        localStorage.setItem('energy_terminal_nav_collapsed_v5', JSON.stringify(updated));
+        localStorage.setItem('energy_terminal_nav_collapsed_v6', JSON.stringify(updated));
       } catch (e) {
         // ignore
       }
@@ -68,7 +69,7 @@ export default function Layout() {
     });
     setCollapsedSections(updated);
     try {
-      localStorage.setItem('energy_terminal_nav_collapsed_v5', JSON.stringify(updated));
+      localStorage.setItem('energy_terminal_nav_collapsed_v6', JSON.stringify(updated));
     } catch (e) {
       // ignore
     }
@@ -103,52 +104,52 @@ export default function Layout() {
 
   const navSections: NavSection[] = [
     {
-      title: 'Capital Opportunities & FOAs',
+      title: 'Opportunities',
       items: [
-        { to: '/analyze', icon: Sparkles, label: 'Match Solicitations' },
-        { to: '/radar', icon: Radio, label: 'Early-Warning Radar' },
-        { to: '/opportunities', icon: FileSearch, label: 'Solicitations Database' },
+        { to: '/analyze', icon: Sparkles, label: 'Match' },
+        { to: '/radar', icon: Radio, label: 'Radar' },
+        { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
       ]
     },
     {
-      title: 'Awards & Capital Allocations',
+      title: 'Awards',
       items: [
-        { to: '/awards', icon: Trophy, label: 'Awards & Deployments' },
-        { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Patents' },
-        { to: '/results', icon: Scale, label: 'Project Outcomes' },
+        { to: '/awards', icon: Trophy, label: 'Awards' },
+        { to: '/venture-patents', icon: Lightbulb, label: 'Venture & IP' },
+        { to: '/results', icon: Scale, label: 'Outcomes' },
       ]
     },
     {
-      title: 'Institutions & Directories',
+      title: 'Directories',
       items: [
-        { to: '/organizations', icon: Building2, label: 'Funding Organizations' },
-        { to: '/programs', icon: Layers, label: 'Innovation Programs' },
-        { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
-        { to: '/network', icon: Network, label: 'Institutional Network' },
+        { to: '/organizations', icon: Building2, label: 'Organizations' },
+        { to: '/programs', icon: Layers, label: 'Programs' },
+        { to: '/contacts', icon: BookUser, label: 'Contacts' },
+        { to: '/network', icon: Network, label: 'Network' },
       ]
     },
     {
-      title: 'Strategic Capital Intelligence',
+      title: 'Intelligence',
       items: [
-        { to: '/strategy', icon: Compass, label: 'Strategy Studio' },
+        { to: '/strategy', icon: Compass, label: 'Strategy' },
         { to: '/sankey', icon: GitMerge, label: 'Capital Flows' },
-        { to: '/trends', icon: TrendingUp, label: 'Trends & Allocation' },
-        { to: '/reports', icon: FileText, label: 'Executive Reports' },
+        { to: '/trends', icon: TrendingUp, label: 'Trends' },
+        { to: '/reports', icon: FileText, label: 'Reports' },
       ]
     },
     {
-      title: 'Technical & Regulatory Grounding',
+      title: 'References',
       items: [
-        { to: '/technologies', icon: BookOpen, label: 'Technology Reference' },
-        { to: '/policies', icon: ShieldCheck, label: 'Policy Reference' },
-        { to: '/dockets', icon: Scale, label: 'Regulatory Dockets' },
+        { to: '/technologies', icon: BookOpen, label: 'Technologies' },
+        { to: '/policies', icon: ShieldCheck, label: 'Policies' },
+        { to: '/dockets', icon: Scale, label: 'Dockets' },
       ]
     },
     {
-      title: 'Data Governance & Audit',
+      title: 'Data & Audit',
       items: [
-        { to: '/updates', icon: Activity, label: 'Ingestion Feed' },
-        { to: '/sources', icon: Database, label: 'Data Provenance & Audit' },
+        { to: '/updates', icon: Activity, label: 'Feeds' },
+        { to: '/sources', icon: Database, label: 'Provenance' },
       ]
     }
   ];
@@ -200,7 +201,7 @@ export default function Layout() {
                         isActive ? 'text-[#00E5FF]' : 'text-[#00F5A0]'
                       )}
                     />
-                    <span className="truncate font-bold">Strategic Advisor</span>
+                    <span className="truncate font-bold">AI Advisor</span>
                   </div>
                   <span className={clsx(
                     "text-[9px] font-bold px-1.5 py-0.2 rounded font-mono",
