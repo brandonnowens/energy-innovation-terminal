@@ -147,7 +147,12 @@ export default function RecipientDossier() {
     );
   }
 
-  const fundingTotal = recipient.total_funding_received || 0;
+  const fundingTotal = recipient.total_funding_received || continuum?.financial_aggregates?.total_public_grants_usd || 0;
+  const totalVcAmount = continuum?.financial_aggregates?.total_vc_investments_usd || 
+    (data?.investments || []).reduce((s, inv) => s + (inv.amount_usd || 0), 0);
+  const totalVcRounds = continuum?.vc_rounds?.length || (data?.investments || []).length;
+  const grandTotalCapital = continuum?.financial_aggregates?.grand_total_capital_usd || (fundingTotal + totalVcAmount);
+  const totalPatentsCount = continuum?.patents?.length || (data?.patents || []).length;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
@@ -178,8 +183,8 @@ export default function RecipientDossier() {
       <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-800 relative overflow-hidden">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
         
-        <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-          <div className="space-y-3 max-w-3xl">
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+          <div className="space-y-3 max-w-2xl">
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
                 {recipient.recipient_type || 'Innovator'}
@@ -232,22 +237,38 @@ export default function RecipientDossier() {
             </p>
           </div>
 
-          {/* Quick Stats Highlights */}
-          <div className="grid grid-cols-2 gap-3 min-w-[280px]">
-            <div className="bg-slate-800/80 rounded-xl p-4 border border-slate-700/60 backdrop-blur-sm">
-              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Grants</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 mt-1">
-                ${(fundingTotal / 1_000_000).toFixed(2)}M
+          {/* Quick Stats Highlights - Unified Hybrid Capital Stack */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 w-full lg:w-auto shrink-0">
+            <div className="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700/60 backdrop-blur-sm">
+              <div className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider">1. Public Grants</div>
+              <div className="text-xl sm:text-2xl font-extrabold text-white mt-1">
+                {fmt(fundingTotal)}
               </div>
-              <div className="text-xs text-slate-400 mt-0.5">Tracked Non-Dilutive</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">{recipient.total_awards_count || 0} Tracked Wins</div>
             </div>
 
-            <div className="bg-slate-800/80 rounded-xl p-4 border border-slate-700/60 backdrop-blur-sm">
-              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Award Count</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
-                {recipient.total_awards_count || 0}
+            <div className="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700/60 backdrop-blur-sm">
+              <div className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider">2. Private VC / Equity</div>
+              <div className="text-xl sm:text-2xl font-extrabold text-white mt-1">
+                {fmt(totalVcAmount)}
               </div>
-              <div className="text-xs text-slate-400 mt-0.5">Competitive Wins</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">{totalVcRounds} Rounds Raised</div>
+            </div>
+
+            <div className="bg-slate-800/80 rounded-xl p-3.5 border border-emerald-500/30 bg-emerald-950/20 backdrop-blur-sm">
+              <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Grand Total Capital</div>
+              <div className="text-xl sm:text-2xl font-extrabold text-emerald-300 mt-1 font-mono">
+                {fmt(grandTotalCapital)}
+              </div>
+              <div className="text-[11px] text-emerald-400/80 mt-0.5">Hybrid Capital Stack</div>
+            </div>
+
+            <div className="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700/60 backdrop-blur-sm">
+              <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider">Commercial IP</div>
+              <div className="text-xl sm:text-2xl font-extrabold text-white mt-1">
+                {totalPatentsCount}
+              </div>
+              <div className="text-[11px] text-slate-400 mt-0.5">Patents &amp; Filings</div>
             </div>
           </div>
         </div>

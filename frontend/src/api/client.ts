@@ -3668,6 +3668,8 @@ export interface PolicyStandard {
   official_source_url?: string;
   linked_technologies_count?: number;
   linked_opportunities_count?: number;
+  active_opportunities_count?: number;
+  total_pipeline_funding_usd?: number;
 }
 
 export interface PolicyTechItem {

@@ -183,10 +183,21 @@ def list_policies(
         if total == 0:
             return _get_fallback_policies(category, jurisdiction_level, jurisdiction_state, technology_id, fuel_vector, status, search, limit, offset)
 
+        # Batch query active opportunities and pipeline funding from view
+        active_opp_map = {}
+        try:
+            view_rows = db.execute(text(
+                "SELECT policy_id, active_linked_opportunities_count, total_linked_pipeline_funding_usd FROM vw_policy_statutory_mandates_matrix"
+            )).fetchall()
+            active_opp_map = {r[0]: (r[1], float(r[2] or 0.0)) for r in view_rows}
+        except Exception as e:
+            logger.debug(f"View lookup note in list_policies: {e}")
+
         policies = query.order_by(PolicyStandard.code_identifier.asc()).offset(offset).limit(limit).all()
 
         items = []
         for p in policies:
+            active_cnt, pipeline_f = active_opp_map.get(p.id, (0, 0.0))
             items.append({
                 "id": p.id,
                 "code_identifier": p.code_identifier,
@@ -204,8 +215,10 @@ def list_policies(
                 "commercial_friction_points": p.commercial_friction_points,
                 "associated_incentives": p.associated_incentives,
                 "official_source_url": p.official_source_url,
-                "linked_technologies_count": len(p.technology_links),
-                "linked_opportunities_count": len(p.opportunity_links)
+                "linked_technologies_count": len(p.technology_links) if p.technology_links else 0,
+                "linked_opportunities_count": len(p.opportunity_links) if p.opportunity_links else 0,
+                "active_opportunities_count": active_cnt,
+                "total_pipeline_funding_usd": pipeline_f,
             })
 
         return {

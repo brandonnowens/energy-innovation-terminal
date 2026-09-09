@@ -513,11 +513,25 @@ export default function PolicyReference() {
                 </div>
 
                 {/* Footer Link & Action */}
-                <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
-                  <span className="text-slate-500 font-medium">
-                    Click to view full statutory compliance dossier
-                  </span>
-                  <div className="flex items-center gap-1 text-emerald-600 font-bold group-hover:translate-x-0.5 transition-transform">
+                <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs gap-2 flex-wrap">
+                  {pol.active_opportunities_count && pol.active_opportunities_count > 0 ? (
+                    <Link
+                      to={`/opportunities?search=${encodeURIComponent(pol.code_identifier || pol.short_title || pol.title)}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold hover:bg-emerald-100 transition-colors shadow-2xs"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      <span>{pol.active_opportunities_count} Active {pol.active_opportunities_count === 1 ? 'Solicitation' : 'Solicitations'}</span>
+                      {pol.total_pipeline_funding_usd && pol.total_pipeline_funding_usd > 0 ? (
+                        <span className="text-emerald-700 font-mono text-[11px]">(${pol.total_pipeline_funding_usd >= 1e9 ? `${(pol.total_pipeline_funding_usd / 1e9).toFixed(1)}B` : `${(pol.total_pipeline_funding_usd / 1e6).toFixed(0)}M`})</span>
+                      ) : null}
+                    </Link>
+                  ) : (
+                    <span className="text-slate-400 font-medium">
+                      Statutory Compliance Dossier
+                    </span>
+                  )}
+                  <div className="flex items-center gap-1 text-emerald-600 font-bold group-hover:translate-x-0.5 transition-transform ml-auto">
                     <span>Explore Dossier</span>
                     <ChevronRight size={14} />
                   </div>
@@ -537,6 +551,7 @@ export default function PolicyReference() {
                   <th className="py-3 px-4">Title &amp; Summary</th>
                   <th className="py-3 px-4">Category</th>
                   <th className="py-3 px-4">Jurisdiction</th>
+                  <th className="py-3 px-4">Funding Pipeline</th>
                   <th className="py-3 px-4">Associated Incentives</th>
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
@@ -564,6 +579,20 @@ export default function PolicyReference() {
                       <span className="font-mono text-slate-600 uppercase">
                         {pol.jurisdiction_state ? `${pol.jurisdiction_state} · ${pol.jurisdiction_level}` : pol.jurisdiction_level}
                       </span>
+                    </td>
+                    <td className="py-3 px-4 whitespace-nowrap">
+                      {pol.active_opportunities_count && pol.active_opportunities_count > 0 ? (
+                        <Link
+                          to={`/opportunities?search=${encodeURIComponent(pol.code_identifier || pol.short_title || pol.title)}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold hover:bg-emerald-100 transition-colors"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          <span>{pol.active_opportunities_count} Open</span>
+                        </Link>
+                      ) : (
+                        <span className="text-slate-300">—</span>
+                      )}
                     </td>
                     <td className="py-3 px-4 max-w-xs">
                       {pol.associated_incentives ? (

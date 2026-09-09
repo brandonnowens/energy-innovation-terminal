@@ -7,7 +7,7 @@ import {
   ShieldAlert, X, Calendar, Mail, Phone, FileText, ExternalLink,
   AlertTriangle, Info, Ban, Star, Download, Printer, Share2, CheckCircle2,
   Building2, Sparkles, Filter, Trophy, Paperclip, FileDown, Layers, FileSearch, RotateCcw,
-  Zap, Landmark, RefreshCw, Radio
+  Zap, Landmark, RefreshCw, Radio, Clock
 } from 'lucide-react';
 import clsx from 'clsx';
 import { saveAs } from 'file-saver';
@@ -31,6 +31,67 @@ function formatDate(dateStr: string | null | undefined): string {
   try {
     return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   } catch { return dateStr; }
+}
+
+function formatDeadlineBadge(dateStr: string | null | undefined, status?: string) {
+  if (!dateStr) {
+    return status === 'open' ? (
+      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+        Rolling / Open
+      </span>
+    ) : (
+      <span className="text-slate-300 text-xs">—</span>
+    );
+  }
+
+  const targetDate = new Date(dateStr);
+  if (isNaN(targetDate.getTime())) {
+    return <span className="text-slate-500 font-mono text-[12px]">{dateStr}</span>;
+  }
+
+  const now = new Date();
+  const diffTime = targetDate.getTime() - now.getTime();
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const dateFormatted = targetDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+  if (diffDays < 0) {
+    return (
+      <span className="text-slate-400 text-[11px] font-mono" title={`Closed ${dateFormatted}`}>
+        {dateFormatted}
+      </span>
+    );
+  }
+
+  if (diffDays === 0) {
+    return (
+      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200" title={dateFormatted}>
+        <Clock size={11} className="text-rose-600" /> Closes Today
+      </span>
+    );
+  }
+
+  if (diffDays <= 7) {
+    return (
+      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200" title={dateFormatted}>
+        <Clock size={11} className="text-rose-600" /> {diffDays} {diffDays === 1 ? 'day' : 'days'} left
+      </span>
+    );
+  }
+
+  if (diffDays <= 30) {
+    return (
+      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200" title={dateFormatted}>
+        <Clock size={11} className="text-amber-600" /> {diffDays}d left
+      </span>
+    );
+  }
+
+  return (
+    <div className="flex flex-col text-left" title={`${diffDays} days remaining`}>
+      <span className="text-slate-700 font-mono text-[12px]">{dateFormatted}</span>
+      <span className="text-[10px] text-slate-400 font-sans">{diffDays}d remaining</span>
+    </div>
+  );
 }
 
 export default function Opportunities() {
@@ -829,7 +890,7 @@ export default function Opportunities() {
                           {opp.status}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-slate-600 font-mono text-[12px]">{formatDate(opp.next_deadline)}</td>
+                      <td className="px-4 py-3 text-slate-600 font-mono text-[12px]">{formatDeadlineBadge(opp.next_deadline, opp.status)}</td>
                       <td className="px-4 py-3 text-slate-800 font-semibold font-mono">{formatCurrency(opp.total_funding)}</td>
                       <td className="px-4 py-3">
                         {opp.restrictions && opp.restrictions.length > 0 ? (
