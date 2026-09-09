@@ -187,19 +187,23 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
             )
 
             # Compute Capital Stack
+            grant_val = float(spotlight_opp.max_per_award or (spotlight_opp.total_funding * 0.4 if spotlight_opp.total_funding else 1_500_000.0))
+            cost_val = float(spotlight_opp.total_funding or 5_000_000.0)
+            if grant_val > cost_val:
+                cost_val = grant_val * 1.5
 
             cap_stack_res = solve_capital_stack(
-                total_project_cost=spotlight_opp.total_funding or 5_000_000.0,
-                grant_award_request=(spotlight_opp.max_per_award or (spotlight_opp.total_funding * 0.4 if spotlight_opp.total_funding else 1_500_000.0)),
+                total_project_cost=cost_val,
+                grant_request=grant_val,
                 technology_type="energy_storage",
-                sponsor_equity_available=1_000_000.0,
-                commercial_debt_available=1_500_000.0,
-                green_bank_debt_request=1_000_000.0,
-                energy_community=True,
-                low_income_community=False,
-                prevailing_wage_compliant=True,
-                domestic_content_compliant=True
+                location_state="NY",
+                is_prevailing_wage_compliant=True,
+                is_energy_community=True,
+                is_domestic_content_compliant=True
             )
+
+            summary_info = cap_stack_res.get("summary", {})
+            tax_config = cap_stack_res.get("tax_credit_config", {})
 
             spotlight_data = {
                 "opportunity_id": spotlight_opp.id,
@@ -213,10 +217,10 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
                 "bankability_score": bankability_res.get("tbr_score"),
                 "bankability_grade": bankability_res.get("investment_grade"),
                 "bankability_readiness": bankability_res.get("commercial_readiness"),
-                "ira_itc_rate": cap_stack_res.get("ira_tax_credits", {}).get("effective_credit_rate_pct"),
-                "ira_tax_credit_value": format_currency(cap_stack_res.get("ira_tax_credits", {}).get("total_tax_credit_value")),
-                "blended_wacc_pct": cap_stack_res.get("blended_cost_of_capital_pct"),
-                "non_dilutive_coverage_pct": cap_stack_res.get("stack_proportions_pct", {}).get("grant_grant_pct")
+                "ira_itc_rate": tax_config.get("effective_itc_rate_pct"),
+                "ira_tax_credit_value": format_currency(summary_info.get("total_non_dilutive_capital")),
+                "blended_wacc_pct": summary_info.get("blended_wacc_pct"),
+                "non_dilutive_coverage_pct": summary_info.get("total_non_dilutive_pct")
             }
         except Exception as e:
             logger.warning(f"Error computing spotlight data: {e}")
