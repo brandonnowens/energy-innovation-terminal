@@ -30,6 +30,7 @@ import {
   FileDown
 } from 'lucide-react';
 import { api, apiFetch, DailyDigest as DailyDigestType, DigestArchiveItem } from '../api/client';
+import { DEFAULT_DAILY_DIGEST } from '../data/defaultDigest';
 import { OrgLogo } from '../components/OrgLogo';
 import { ApiDocsModal } from '../components/ApiDocsModal';
 import { RecipientQuickViewModal } from '../components/RecipientQuickViewModal';
@@ -68,13 +69,13 @@ export default function DailyDigest() {
       } catch (e) {
         // ignore
       }
-      return undefined;
+      return dateParam ? undefined : DEFAULT_DAILY_DIGEST;
     },
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
-    retry: 4,
-    retryDelay: (attemptIndex) => Math.min(1000 * Math.pow(1.8, attemptIndex), 8000),
-    placeholderData: (previousData) => previousData,
+    retry: 5,
+    retryDelay: (attemptIndex) => Math.min(1000 * Math.pow(1.6, attemptIndex), 6000),
+    placeholderData: (previousData) => previousData || (dateParam ? undefined : DEFAULT_DAILY_DIGEST),
   });
 
   // Sync latest successful digest to persistent localStorage cache

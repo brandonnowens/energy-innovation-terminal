@@ -1,4 +1,7 @@
-export const API_BASE_URL = (import.meta.env.VITE_API_URL || 'https://energy-innovation-api.onrender.com').replace(/\/+$/, '');
+export const API_BASE_URL = (
+  import.meta.env.VITE_API_URL || 
+  (import.meta.env.DEV ? '' : 'https://energy-innovation-api.onrender.com')
+).replace(/\/+$/, '');
 
 export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
   let target = typeof input === 'string' ? input : (input instanceof URL ? input.toString() : input.url);
@@ -8,7 +11,7 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
 
   const method = (init?.method || (input instanceof Request ? input.method : 'GET')).toUpperCase();
   const isRetryableMethod = method === 'GET' || method === 'HEAD';
-  const maxRetries = isRetryableMethod ? 6 : 1;
+  const maxRetries = isRetryableMethod ? 8 : 1;
 
   let lastError: any = null;
   for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -18,7 +21,7 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
 
       // If Render backend is sleeping or spinning up, status is 502/503/504
       if (isRetryableMethod && (res.status === 502 || res.status === 503 || res.status === 504) && attempt < maxRetries - 1) {
-        const delay = Math.min(1200 * Math.pow(1.6, attempt), 6000);
+        const delay = Math.min(1000 * Math.pow(1.5, attempt), 6000);
         await new Promise(resolve => setTimeout(resolve, delay));
         continue;
       }
@@ -27,7 +30,7 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
       lastError = err;
       if (err.name === 'AbortError') throw err;
       if (isRetryableMethod && attempt < maxRetries - 1) {
-        const delay = Math.min(1200 * Math.pow(1.6, attempt), 6000);
+        const delay = Math.min(1000 * Math.pow(1.5, attempt), 6000);
         await new Promise(resolve => setTimeout(resolve, delay));
         continue;
       }
@@ -2600,13 +2603,14 @@ export interface DailyDigest {
     name: string;
     agency: string;
     jurisdiction?: string;
-    total_funding?: number;
+    total_funding?: number | null;
     total_funding_display: string;
     max_per_award_display: string;
     due_date_display: string;
     short_description: string;
     solicitation_type: string;
     cost_share_required?: string;
+    cost_share_pct?: string;
     detail_url: string;
   }>;
   urgent_deadlines: Array<{
@@ -2618,6 +2622,8 @@ export interface DailyDigest {
     total_funding_display: string;
     max_per_award_display: string;
     days_remaining?: string;
+    urgency_label?: string;
+    required_volumes?: string;
     package_requirements?: string;
     detail_url: string;
   }>;
@@ -2627,6 +2633,7 @@ export interface DailyDigest {
     recipient_city?: string;
     recipient_state?: string;
     location?: string;
+    agency?: string;
     award_amount_display: string;
     project_title: string;
     pi_name?: string;

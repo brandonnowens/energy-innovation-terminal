@@ -40,8 +40,9 @@ backend/data/archive_sqlite/*.db
 backend/data/*.sql
 backend/pgsql/
 backend/data/cache/
-backend/data/reports_cache/
-data/
+backend/data/backups/
+/data/
+!frontend/src/data/
 scraper_out.txt
 *.html
 !frontend/index.html
