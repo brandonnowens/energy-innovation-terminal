@@ -171,8 +171,11 @@ export default function Layout() {
     <>
       {/* Brand Header */}
       <div className="px-5 py-4 border-b border-white/[0.06] flex items-center justify-between">
-        <EnergyInnovationTerminalLogo size="md" showText={true} />
+        <NavLink to="/" onClick={() => isMobile && setMobileMenuOpen(false)} className="cursor-pointer">
+          <EnergyInnovationTerminalLogo size="md" showText={true} />
+        </NavLink>
         {isMobile && (
+
           <button
             type="button"
             onClick={() => setMobileMenuOpen(false)}
@@ -404,9 +407,10 @@ export default function Layout() {
             </button>
 
             {/* Mobile Logo Icon */}
-            <div className="md:hidden flex items-center shrink-0">
+            <NavLink to="/" className="md:hidden flex items-center shrink-0 cursor-pointer">
               <EnergyInnovationTerminalLogo size="sm" showText={false} />
-            </div>
+            </NavLink>
+
 
             <div className="flex items-center gap-2.5 text-xs font-medium min-w-0">
               <span className={clsx(

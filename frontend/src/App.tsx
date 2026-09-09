@@ -70,14 +70,15 @@ function App() {
               <Suspense fallback={<PageLoadingFallback />}>
                 <Routes>
                   <Route path="/" element={<Layout />}>
-                    <Route index element={<AnalyzeProject />} />
+                    <Route index element={<DailyDigest />} />
+                    <Route path="digest" element={<DailyDigest />} />
+                    <Route path="daily-digest" element={<DailyDigest />} />
                     <Route path="analyze" element={<AnalyzeProject />} />
                     <Route path="match" element={<AnalyzeProject />} />
                     <Route path="radar" element={<ForecastingRadar />} />
                     <Route path="forecasting" element={<ForecastingRadar />} />
-                    <Route path="digest" element={<DailyDigest />} />
-                    <Route path="daily-digest" element={<DailyDigest />} />
                     <Route path="chat" element={<Chat />} />
+
 
                   <Route path="opportunities" element={<Opportunities />} />
                   <Route path="opportunities/:id" element={<OpportunityDetail />} />
