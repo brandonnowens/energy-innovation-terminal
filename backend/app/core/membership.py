@@ -195,13 +195,13 @@ def get_tier_scaffolding_manifest() -> Dict[str, Any]:
             {
                 "id": MembershipTier.FREE_PUBLIC_BENEFIT.value,
                 "name": "Community & Academic Pilot",
-                "tagline": "Standard multi-agency database search for university labs and non-profit researchers",
+                "tagline": "Standard multi-agency database search for university labs and academic researchers",
                 "price": "$0 / month (Pilot)",
                 "is_current_default": True,
                 "badge": "Research Pilot",
                 "features": [
-                    "Multi-Agency Solicitations Index (3,870+ Active Grants)",
-                    "Historical Awards & Recipient Ledger (54,305 Awards)",
+                    "Multi-Agency Solicitations Index (5,757+ Active & Historical Grants)",
+                    "Historical Awards & Recipient Ledger (56,413 Awards · $104.16B Tracked)",
                     "Basic Technology & Fuels Reference Profiles",
                     "Public Domain Citation & Standard Data Views",
                     "Community Support & Online Documentation"
@@ -210,37 +210,38 @@ def get_tier_scaffolding_manifest() -> Dict[str, Any]:
             {
                 "id": MembershipTier.PRO.value,
                 "name": "Energy Innovation Terminal Seat",
-                "tagline": "Full institutional license: AI FOA Shredder, 50,000+ Teaming Network, 5-Stage Capital Ledger & Publication PDFs",
+                "tagline": "Full institutional license: AI FOA Shredder, 56,400+ Teaming Network, Decision-Maker Say-Yes Matrix & Vector PDFs",
                 "price": "$1,500 / seat / month (Flat Rate)",
                 "is_current_default": False,
                 "badge": "Institutional ($1,500/mo)",
                 "features": [
                     "Instant AI FOA Shredder & 4-Part Proposal Blueprint Engine",
-                    "50,000+ Past Awardee & Consortia Teaming Network",
-                    "5-Stage Non-Dilutive Capital Stack Continuum Solver",
+                    "56,413 Awardee & Multi-Agency Consortia Teaming Network",
+                    "Decision-Maker Say-Yes Matrix & Program Manager Intelligence",
+                    "5-Stage Non-Dilutive Capital Stack & Precedent Continuum Solver",
                     "Predictive Solicitation Release Forecasting Radar",
                     "DOE National Lab Testbed & User Facility Directory",
                     "Policy, Codes, Standards & PUC Regulatory Dockets",
                     "University Licensable IP & Spinout Portal",
-                    "IRA Direct Pay & Clean Energy Tax Credit Calculator",
-                    "Publication-Grade 1-Click ReportLab PDF Report Exports"
+                    "IRA Section 48C / 45X Direct Pay & Tax Credit Calculator",
+                    "Publication-Grade 1-Click Vector PDF Report Exports"
                 ]
             },
             {
                 "id": MembershipTier.ENTERPRISE.value,
                 "name": "Consultancy & Practice Group License",
-                "tagline": "Multi-seat practice group license for boutique grant writing and clean energy consultancies",
-                "price": "$1,500 / seat / month (Volume Packages Available)",
+                "tagline": "Multi-seat practice group license for clean energy consultancies, VCs, and advisory firms",
+                "price": "$1,500 / seat / month (Team Packages Available)",
                 "is_current_default": False,
                 "badge": "Practice Group",
                 "features": [
                     "Everything in Energy Innovation Terminal Seat",
                     "Multi-Seat Centralized Account & Billing Management",
-                    "Dedicated Onboarding & Teaming Strategy Review",
-                    "Direct High-Throughput REST API Access",
+                    "Dedicated Onboarding & Winning Strategy Review",
+                    "High-Throughput REST API Access & Custom Ingestion Feeds",
                     "Custom Agency Watchlist Feeds & Webhook Alerts",
-                    "Client-Ready White-Label PDF Export Rights",
-                    "Priority Technical Support & SLAs"
+                    "Client-Ready White-Label Vector PDF Export Rights",
+                    "Priority Technical Support & Dedicated SLA"
                 ]
             }
         ]

@@ -1,8 +1,9 @@
-# Energy Innovation Terminal
+# Energy Innovation Terminal by AIxEnergy
 
-**The Upstream Innovation & Capital Intelligence Terminal for Advanced Energy**
+**The Upstream Innovation & Capital Intelligence Terminal for Advanced Energy**  
+**Live Platform:** [terminal.aixenergy.io](https://terminal.aixenergy.io) · **Parent Platform:** [aixenergy.io](https://aixenergy.io)
 
-A high-performance intelligence and decision-support terminal indexing active funding opportunities, historical awards, patent linkages, venture capital rounds, and organizational networks across federal agencies, 16+ state energy offices, and electric utilities, backed by the **U.S. Energy Innovation Database by Brandon N. Owens**.
+A high-performance intelligence and decision-support terminal indexing 56,413 active and historical funding awards, $104.16B in non-dilutive capital, patent linkages, venture capital rounds, and organizational networks across 140+ federal agencies, state energy offices, and electric utilities, backed by the **U.S. Energy Innovation Database by Brandon N. Owens**.
 
 > **LEGAL, ETHICS & PUBLIC RECORDS COMPLIANCE NOTICE**
 > 
@@ -14,6 +15,17 @@ A high-performance intelligence and decision-support terminal indexing active fu
 
 ---
 
+## Commercial Licensing Architecture
+
+| Plan Tier | Target Customer | Included Seats & Quotas | Monthly Price | Annual Rate |
+| :--- | :--- | :--- | :--- | :--- |
+| **Practitioner Seat** | Solo Grant Writers & Boutique Advisors | 1 Named Seat • Unlimited FOA Shreds • 56k+ Database • Vector PDF Exports | **$1,500 / mo** | **$15,000 / yr** ($1,250/mo) |
+| **Boutique Team** | Grant Writing Firms & Gov Affairs Practices | 3 Team Seats • Consortia Teaming Radar • White-Label PDFs • Predictive Radar | **$4,500 / mo** | **$45,000 / yr** ($3,750/mo) |
+| **Practice Group** | Consulting Firms & Clean Tech Practice Groups | 5–10 Seats • Team Collaboration • Central Billing • Priority Tech Support | **$7,500 / mo** | **$75,000 / yr** ($6,250/mo) |
+| **Enterprise Practice** | Global Energy Advisory (ICF, Guidehouse, Big 4) | 15+ Seats • Direct REST API • Custom Ingestion Feeds • Dedicated Support SLA | **Custom Invoice** | **Volume Enterprise SLA** |
+
+---
+
 ## Key Capabilities & Intelligence Modules
 
 1. **AI Matching & Workstream Decomposition Engine (`/`)**
@@ -21,33 +33,37 @@ A high-performance intelligence and decision-support terminal indexing active fu
    - Deterministic eligibility screening (**PASS / FAIL / UNKNOWN**) per solicitation rule.
    - Multi-dimensional scoring and multi-agency capital stacking across federal and state funding streams.
 
-2. **Nationwide Opportunities Index (`/opportunities`)**
-   - Active and recurring solicitations from **US DOE (EERE, ARPA-E, OCED, MESC), CEC (EPIC, Clean Transportation), MassCEC, NYSERDA, NSF, SBIR/STTR, and 16+ state energy agencies**.
+2. **AI FOA Shredder & Proposal Studio (`/proposals`)**
+   - Decomposes 80+ page federal FOAs into 4-part PDF blueprints in 10 seconds.
+   - Instant compliance matrices, reviewer scoring rubrics, and red-team win angles.
+
+3. **Nationwide Opportunities Index (`/opportunities`)**
+   - Active and recurring solicitations from **US DOE (EERE, ARPA-E, OCED, MESC), CEC (EPIC, Clean Transportation), MassCEC, NYSERDA, NSF, SBIR/STTR, and 140+ state energy agencies & utilities**.
    - Automated deadline extraction, cost-share requirements, and concept paper requirements.
 
-3. **Historical Awards & GIS Map Studio (`/awards`)**
-   - 54,000+ geocoded historical award records ($98.98B+ non-dilutive capital tracked).
-   - High-resolution publication exports (4K / 300 DPI) for presentations and executive briefings.
+4. **Historical Awards & GIS Map Studio (`/awards`)**
+   - **56,413 geocoded historical award records ($104.16B capital tracked)**.
+   - High-resolution publication exports (4K / 300 DPI vector PDFs) for presentations and executive briefings.
 
-4. **Venture Capital & Patent Intelligence (`/venture-patents`)**
+5. **Decision-Maker Say-Yes Matrix & Contacts (`/contacts`)**
+   - Direct directory of program managers, grant evaluators, and agency points of contact across 140+ entities.
+
+6. **Venture Capital & Patent Intelligence (`/venture-patents`)**
    - Private capital equity rounds cross-referenced with non-dilutive public grants.
    - USPTO patent citations, assignee linkages, and clean technology IP tracking.
 
-5. **Entity Knowledge Graph & Network Analytics (`/network`)**
+7. **Entity Knowledge Graph & Network Analytics (`/network`)**
    - Prime contractors, subcontractors, university tech transfer offices, and national lab partners.
    - Thematic community clustering and institutional network density analysis.
 
-6. **Multi-Stage Capital Flow Sankey Visualizer (`/sankey`)**
+8. **Multi-Stage Capital Flow Sankey Visualizer (`/sankey`)**
    - Interactive flow visualization tracing capital from source agencies through programs, technology verticals, and recipient categories.
 
-7. **Macro Market Trends & Quantitative Analytics (`/trends`)**
+9. **Macro Market Trends & Quantitative Analytics (`/trends`)**
    - Time-series funding distributions, technology domain trajectories, and state-by-state funding heatmaps.
 
-8. **AI Proposal Copilot (`/proposals`)**
-   - Structured grant proposal writer generating compliant work breakdown structures, risk matrices, and commercialization plans.
-
-9. **Executive Strategic Monograph PDF Generator (`/reports`)**
-   - Multi-page, publication-grade executive diligence reports with vector charts, GIS maps, and strategic syntheses.
+10. **Executive Strategic Monograph PDF Generator (`/reports`)**
+    - Multi-page, publication-grade executive diligence reports with vector charts, GIS maps, and strategic syntheses.
 
 ---
 
