@@ -22,10 +22,14 @@ import {
   Info,
   Layers,
   FileText,
-  AlertCircle
+  AlertCircle,
+  Terminal,
+  Rss,
+  Bot
 } from 'lucide-react';
 import { api, DailyDigest as DailyDigestType, DigestArchiveItem } from '../api/client';
 import { OrgLogo } from '../components/OrgLogo';
+import { ApiDocsModal } from '../components/ApiDocsModal';
 import { useSEO } from '../utils/seo';
 
 export default function DailyDigest() {
@@ -36,6 +40,8 @@ export default function DailyDigest() {
 
   const [copied, setCopied] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
+  const [apiModalOpen, setApiModalOpen] = useState(false);
+
 
   useSEO({
     title: 'Daily Clean Energy Intelligence Digest | Energy Innovation Terminal',
@@ -143,6 +149,42 @@ export default function DailyDigest() {
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
+            {/* API & AI Agent Tools Modal Trigger */}
+            <button
+              onClick={() => setApiModalOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-cyan-200 dark:border-cyan-800 bg-cyan-50/50 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 hover:bg-cyan-100/60 dark:hover:bg-cyan-900/60 transition shadow-2xs"
+            >
+              <Bot size={13} className="text-cyan-600 dark:text-cyan-400" />
+              <span>API &amp; Agent Tools</span>
+              <span className="text-[10px] bg-cyan-200/60 dark:bg-cyan-800/80 px-1 py-0.2 rounded text-cyan-800 dark:text-cyan-200 font-mono">
+                OpenAPI
+              </span>
+            </button>
+
+            {/* RSS Feed link */}
+            <a
+              href="/rss.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-2xs"
+              title="Syndicated RSS Feed for Feedly, Zapier, Inoreader"
+            >
+              <Rss size={13} className="text-amber-500" />
+              <span>RSS</span>
+            </a>
+
+            {/* llms.txt link */}
+            <a
+              href="/llms.txt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-2xs"
+              title="LLMs Context Manifest for Claude / GPT / Cursor / Copilot"
+            >
+              <Terminal size={13} className="text-slate-500" />
+              <span>llms.txt</span>
+            </a>
+
             {/* Archive Selector Button */}
             <div className="relative">
               <button
@@ -566,6 +608,9 @@ export default function DailyDigest() {
           Automated edition generated on {digest.generated_at ? new Date(digest.generated_at).toLocaleString() : digest.formatted_date}.
         </p>
       </div>
+
+      {/* Developer API & AI Agent Tool Docs Modal */}
+      <ApiDocsModal isOpen={apiModalOpen} onClose={() => setApiModalOpen(false)} />
     </div>
   );
 }

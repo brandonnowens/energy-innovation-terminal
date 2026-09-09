@@ -5,7 +5,7 @@ import { api } from '../api/client';
 import {
   Search, FileSearch, Layers, Trophy, Network, GitMerge, TrendingUp,
   FileText, Database, Building2, Sparkles, ArrowRight, X, Loader2,
-  ExternalLink, Globe, MapPin, Zap, ChevronRight, FileEdit, Scale, Lightbulb, BookUser, BookOpen, Bot, ShieldCheck, Compass, Newspaper
+  ExternalLink, Globe, MapPin, Zap, ChevronRight, FileEdit, Scale, Lightbulb, BookUser, BookOpen, Bot, ShieldCheck, Compass, Newspaper, Terminal
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from './OrgLogo';
@@ -38,8 +38,10 @@ const STATIC_ACTIONS = [
   { id: 'nav-dockets', label: 'Dockets', sub: 'Public Utility Commission dockets, large load interconnection & VPP tariffs', to: '/dockets', icon: Scale, category: 'References' },
   { id: 'nav-updates', label: 'Feeds', sub: 'Real-time telemetry and audit feed of detected dataset updates', to: '/updates', icon: Sparkles, category: 'Data & Audit' },
   { id: 'nav-sources', label: 'Provenance', sub: 'Source authority ranking, audit metrics, and database status', to: '/sources', icon: Database, category: 'Data & Audit' },
+  { id: 'nav-api-docs', label: 'Developers & API Docs', sub: 'Interactive OpenAPI docs, 9 AI agent tools, and Python/cURL endpoints', to: '__api_modal__', icon: Terminal, category: 'Data & Audit' },
   { id: 'nav-splash', label: 'Replay Splash', sub: 'Interactive launch sequence and telemetry indexing animation', to: '__splash__', icon: Sparkles, category: 'System' },
 ];
+
 
 export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
   const [query, setQuery] = useState('');
@@ -206,11 +208,18 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
         if (item.to === '__splash__') {
           onClose();
           window.dispatchEvent(new CustomEvent('replay-splash-screen'));
+        } else if (item.to === '__api_modal__') {
+          onClose();
+          window.dispatchEvent(new CustomEvent('open-api-docs-modal'));
+        } else if (item.to.startsWith('http')) {
+          window.open(item.to, '_blank');
+          onClose();
         } else {
           navigate(item.to);
           onClose();
         }
       }
+
     } else if (e.key === 'Escape') {
       onClose();
     }
@@ -294,11 +303,18 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
                     if (item.to === '__splash__') {
                       onClose();
                       window.dispatchEvent(new CustomEvent('replay-splash-screen'));
+                    } else if (item.to === '__api_modal__') {
+                      onClose();
+                      window.dispatchEvent(new CustomEvent('open-api-docs-modal'));
+                    } else if (item.to.startsWith('http')) {
+                      window.open(item.to, '_blank');
+                      onClose();
                     } else {
                       navigate(item.to);
                       onClose();
                     }
                   }}
+
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={clsx(
                     'flex items-center justify-between gap-3 px-3 py-2 rounded-lg cursor-pointer transition-all border',

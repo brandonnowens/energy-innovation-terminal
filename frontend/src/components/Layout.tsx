@@ -4,8 +4,9 @@ import {
   Sparkles, FileSearch, Layers, Building2, Trophy, Network,
   TrendingUp, Database, GitMerge, FileText, Search, ShieldCheck,
   Zap, Command, FileEdit, Scale, Lightbulb, Clock, Activity, BookUser, BookOpen, Bot,
-  ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X, Newspaper
+  ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X, Newspaper, Terminal
 } from 'lucide-react';
+
 
 import clsx from 'clsx';
 import { EnergyInnovationTerminalLogo } from './EnergyInnovationTerminalLogo';
@@ -18,6 +19,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { NyserdaToggle } from './NyserdaToggle';
 import { BrandonSignatureModal } from './BrandonSignatureModal';
 import { LegalComplianceModal } from './LegalComplianceModal';
+import { ApiDocsModal } from './ApiDocsModal';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNyserda } from '../context/NyserdaContext';
@@ -31,8 +33,10 @@ export default function Layout() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [signatureModalOpen, setSignatureModalOpen] = useState(false);
   const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [apiModalOpen, setApiModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+
 
   // Close mobile drawer upon navigation
   useEffect(() => {
@@ -94,8 +98,14 @@ export default function Layout() {
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const handleOpenApiDocs = () => setApiModalOpen(true);
+    window.addEventListener('open-api-docs-modal', handleOpenApiDocs);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('open-api-docs-modal', handleOpenApiDocs);
+    };
   }, []);
+
 
   interface NavItem {
     to: string;
@@ -159,9 +169,11 @@ export default function Layout() {
       items: [
         { to: '/updates', icon: Activity, label: 'Feeds' },
         { to: '/sources', icon: Database, label: 'Provenance' },
+        { to: '__api_modal__', icon: Terminal, label: 'Developers & API', badge: 'v1' },
       ]
     }
   ];
+
 
   const allCollapsed = useMemo(() => {
     return navSections.every(s => collapsedSections[s.title]);
@@ -276,42 +288,69 @@ export default function Layout() {
                 {!isCollapsed && (
                   <div className="space-y-0.5 pl-0.5 animate-in fade-in-50 duration-100">
                     {section.items.map((item) => (
-                      <NavLink
-                        key={item.to}
-                        to={item.to}
-                        end={item.to === '/'}
-                        onClick={() => isMobile && setMobileMenuOpen(false)}
-                        className={({ isActive }) =>
-                          clsx(
-                            'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer',
-                            isActive
-                              ? 'bg-cyan-500/10 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs'
-                              : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
-                          )
-                        }
-                      >
-                        {({ isActive }) => (
-                          <>
-                            <div className="flex items-center gap-2.5 min-w-0">
-                              <item.icon
-                                size={14}
-                                strokeWidth={1.8}
-                                className={clsx(
-                                  'shrink-0 transition-colors',
-                                  isActive ? 'text-[#00E5FF]' : 'text-slate-400'
-                                )}
-                              />
-                              <span className={clsx("truncate", isActive && "text-white font-semibold")}>{item.label}</span>
-                            </div>
-                            {item.badge && (
-                              <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-slate-800 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
-                                {item.badge}
-                              </span>
-                            )}
-                          </>
-                        )}
-                      </NavLink>
+                      item.to === '__api_modal__' ? (
+                        <button
+                          key={item.label}
+                          type="button"
+                          onClick={() => {
+                            if (isMobile) setMobileMenuOpen(false);
+                            setApiModalOpen(true);
+                          }}
+                          className="w-full relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:bg-white/[0.04] hover:text-slate-200 transition-all cursor-pointer group text-left"
+                        >
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <item.icon
+                              size={14}
+                              strokeWidth={1.8}
+                              className="shrink-0 transition-colors text-slate-400 group-hover:text-[#00E5FF]"
+                            />
+                            <span className="truncate">{item.label}</span>
+                          </div>
+                          {item.badge && (
+                            <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-cyan-950/60 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
+                              {item.badge}
+                            </span>
+                          )}
+                        </button>
+                      ) : (
+                        <NavLink
+                          key={item.to}
+                          to={item.to}
+                          end={item.to === '/'}
+                          onClick={() => isMobile && setMobileMenuOpen(false)}
+                          className={({ isActive }) =>
+                            clsx(
+                              'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer',
+                              isActive
+                                ? 'bg-cyan-500/10 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs'
+                                : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
+                            )
+                          }
+                        >
+                          {({ isActive }) => (
+                            <>
+                              <div className="flex items-center gap-2.5 min-w-0">
+                                <item.icon
+                                  size={14}
+                                  strokeWidth={1.8}
+                                  className={clsx(
+                                    'shrink-0 transition-colors',
+                                    isActive ? 'text-[#00E5FF]' : 'text-slate-400'
+                                  )}
+                                />
+                                <span className={clsx("truncate", isActive && "text-white font-semibold")}>{item.label}</span>
+                              </div>
+                              {item.badge && (
+                                <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-slate-800 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
+                                  {item.badge}
+                                </span>
+                              )}
+                            </>
+                          )}
+                        </NavLink>
+                      )
                     ))}
+
                   </div>
                 )}
               </div>
@@ -459,6 +498,8 @@ export default function Layout() {
         <AccountModal />
         <BrandonSignatureModal isOpen={signatureModalOpen} onClose={() => setSignatureModalOpen(false)} />
         <LegalComplianceModal isOpen={legalModalOpen} onClose={() => setLegalModalOpen(false)} />
+        <ApiDocsModal isOpen={apiModalOpen} onClose={() => setApiModalOpen(false)} />
+
 
         {/* Page Content */}
         <main className="flex-1 overflow-auto px-3 sm:px-6 py-4 sm:py-6 min-w-0">
