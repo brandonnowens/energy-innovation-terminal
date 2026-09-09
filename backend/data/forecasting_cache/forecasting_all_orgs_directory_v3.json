@@ -161,7 +161,7 @@
       "Energy Efficiency",
       "Grid Modernization"
     ],
-    "historical_opportunity_count": 1,
+    "historical_opportunity_count": 2,
     "cadence_regularity_score": 90,
     "cadence_stats": {
       "mean_interval_months": 12.0,
@@ -205,7 +205,7 @@
       "Energy Efficiency",
       "Grid Modernization"
     ],
-    "historical_opportunity_count": 0,
+    "historical_opportunity_count": 1,
     "cadence_regularity_score": 90,
     "cadence_stats": {
       "mean_interval_months": 12.0,
@@ -340,7 +340,7 @@
       "Energy Efficiency",
       "Grid Modernization"
     ],
-    "historical_opportunity_count": 1,
+    "historical_opportunity_count": 7,
     "cadence_regularity_score": 90,
     "cadence_stats": {
       "mean_interval_months": 12.0,
@@ -590,6 +590,47 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
+    "organization_id": 57,
+    "organization_code": "Pacific Gas and Electric",
+    "organization_name": "Pacific Gas and Electric",
+    "full_name": "Pacific Gas and Electric",
+    "aliases": [],
+    "category": "utility",
+    "category_label": "Electric & Gas Utilities",
+    "state": "CA",
+    "jurisdiction": "State / Regional",
+    "total_pipeline_funding": 250000000.0,
+    "upcoming_opportunities_count": 4,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "One of the largest combined natural gas and electric energy companies in the United States, serving 16 million people across 70,000 square miles in Northern and Central California.",
+    "technologies_funded": [
+      "V2G & Fleet Electrification"
+    ],
+    "historical_opportunity_count": 4,
+    "cadence_regularity_score": 85,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 2.4,
+      "regularity_score": 85,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 2,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 2
+      },
+      "sample_size": 3,
+      "historical_years": [
+        2025,
+        2026
+      ]
+    },
+    "org_type": "utility",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
     "organization_id": 168,
     "organization_code": "Bloomberg Philanthropies",
     "organization_name": "Bloomberg Philanthropies",
@@ -633,49 +674,6 @@
       ]
     },
     "org_type": "foundation",
-    "is_probabilistic_forecast": true,
-    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
-  },
-  {
-    "organization_id": 57,
-    "organization_code": "Pacific Gas and Electric",
-    "organization_name": "Pacific Gas and Electric",
-    "full_name": "Pacific Gas and Electric",
-    "aliases": [],
-    "category": "utility",
-    "category_label": "Electric & Gas Utilities",
-    "state": "CA",
-    "jurisdiction": "State / Regional",
-    "total_pipeline_funding": 187500000.0,
-    "upcoming_opportunities_count": 3,
-    "next_release_horizon": "Q4 2026 (November 2026)",
-    "min_days_until_release": 71,
-    "primary_mandate": "One of the largest combined natural gas and electric energy companies in the United States, serving 16 million people across 70,000 square miles in Northern and Central California.",
-    "technologies_funded": [
-      "Clean Energy Innovation",
-      "Energy Efficiency",
-      "Grid Modernization"
-    ],
-    "historical_opportunity_count": 3,
-    "cadence_regularity_score": 85,
-    "cadence_stats": {
-      "mean_interval_months": 12.0,
-      "std_dev_months": 2.4,
-      "regularity_score": 85,
-      "peak_quarter": "Q4",
-      "quarter_distribution": {
-        "Q1": 2,
-        "Q2": 1,
-        "Q3": 1,
-        "Q4": 2
-      },
-      "sample_size": 3,
-      "historical_years": [
-        2025,
-        2026
-      ]
-    },
-    "org_type": "utility",
     "is_probabilistic_forecast": true,
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
@@ -1531,7 +1529,7 @@
       "RFQL",
       "Thermal Energy Networks"
     ],
-    "historical_opportunity_count": 168,
+    "historical_opportunity_count": 170,
     "cadence_regularity_score": 85,
     "cadence_stats": {
       "mean_interval_months": 12.0,
@@ -1544,7 +1542,7 @@
         "Q3": 1,
         "Q4": 2
       },
-      "sample_size": 164,
+      "sample_size": 166,
       "historical_years": [
         2021,
         2022,
@@ -3421,49 +3419,6 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
-    "organization_id": 31,
-    "organization_code": "Avangrid, Inc.",
-    "organization_name": "Avangrid, Inc.",
-    "full_name": "Avangrid, Inc.",
-    "aliases": [],
-    "category": "utility",
-    "category_label": "Electric & Gas Utilities",
-    "state": "CT",
-    "jurisdiction": "National / Multi-State",
-    "total_pipeline_funding": 25000000.0,
-    "upcoming_opportunities_count": 1,
-    "next_release_horizon": "Q2 2027 (May 2027)",
-    "min_days_until_release": 252,
-    "primary_mandate": "Electric and natural gas utility holding company headquartered in Orange, CT.",
-    "technologies_funded": [
-      "Clean Energy Innovation",
-      "Energy Efficiency",
-      "Grid Modernization"
-    ],
-    "historical_opportunity_count": 0,
-    "cadence_regularity_score": 82,
-    "cadence_stats": {
-      "mean_interval_months": 24.0,
-      "std_dev_months": 3.0,
-      "regularity_score": 82,
-      "peak_quarter": "Q2",
-      "quarter_distribution": {
-        "Q1": 1,
-        "Q2": 1,
-        "Q3": 1,
-        "Q4": 1
-      },
-      "sample_size": 1,
-      "historical_years": [
-        2024,
-        2025
-      ]
-    },
-    "org_type": "holding_company",
-    "is_probabilistic_forecast": true,
-    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
-  },
-  {
     "organization_id": 32,
     "organization_code": "Eversource Energy",
     "organization_name": "Eversource Energy",
@@ -3738,7 +3693,7 @@
     "technologies_funded": [
       "Grid Modernization & NWS"
     ],
-    "historical_opportunity_count": 5,
+    "historical_opportunity_count": 8,
     "cadence_regularity_score": 82,
     "cadence_stats": {
       "mean_interval_months": 24.0,
@@ -3751,7 +3706,7 @@
         "Q3": 1,
         "Q4": 1
       },
-      "sample_size": 4,
+      "sample_size": 7,
       "historical_years": [
         2026
       ]
@@ -4636,7 +4591,7 @@
       "Energy Efficiency",
       "Grid Modernization"
     ],
-    "historical_opportunity_count": 4,
+    "historical_opportunity_count": 10,
     "cadence_regularity_score": 88,
     "cadence_stats": {
       "mean_interval_months": 12.0,
@@ -4650,6 +4605,50 @@
         "Q4": 1
       },
       "sample_size": 4,
+      "historical_years": [
+        2026
+      ]
+    },
+    "org_type": "funder",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
+    "organization_id": 15,
+    "organization_code": "MD MEA",
+    "organization_name": "Maryland Energy Administration",
+    "full_name": "Maryland Energy Administration",
+    "aliases": [
+      "MD MEA"
+    ],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "US",
+    "jurisdiction": "state",
+    "total_pipeline_funding": 20000000.0,
+    "upcoming_opportunities_count": 4,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 5,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 2,
       "historical_years": [
         2026
       ]
@@ -4680,7 +4679,7 @@
       "Energy Efficiency",
       "Grid Modernization"
     ],
-    "historical_opportunity_count": 4,
+    "historical_opportunity_count": 11,
     "cadence_regularity_score": 88,
     "cadence_stats": {
       "mean_interval_months": 12.0,
@@ -4810,7 +4809,7 @@
       "Energy Efficiency",
       "Grid Modernization"
     ],
-    "historical_opportunity_count": 5,
+    "historical_opportunity_count": 7,
     "cadence_regularity_score": 82,
     "cadence_stats": {
       "mean_interval_months": 24.0,
@@ -4823,7 +4822,7 @@
         "Q3": 1,
         "Q4": 1
       },
-      "sample_size": 5,
+      "sample_size": 7,
       "historical_years": [
         2026
       ]
@@ -5728,6 +5727,50 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
+    "organization_id": 19,
+    "organization_code": "TX SECO",
+    "organization_name": "Texas State Energy Conservation Office",
+    "full_name": "Texas State Energy Conservation Office",
+    "aliases": [
+      "TX SECO"
+    ],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "US",
+    "jurisdiction": "state",
+    "total_pipeline_funding": 15000000.0,
+    "upcoming_opportunities_count": 3,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 3,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 2,
+      "historical_years": [
+        2026
+      ]
+    },
+    "org_type": "funder",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
     "organization_id": 24,
     "organization_code": "NextEra Energy, Inc.",
     "organization_name": "NextEra Energy, Inc.",
@@ -5896,6 +5939,48 @@
       ]
     },
     "org_type": "holding_company",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
+    "organization_id": 185,
+    "organization_code": "Central Hudson Gas & Electric",
+    "organization_name": "Central Hudson Gas & Electric",
+    "full_name": "Central Hudson Gas & Electric",
+    "aliases": [],
+    "category": "utility",
+    "category_label": "Electric & Gas Utilities",
+    "state": "US",
+    "jurisdiction": "US State Jurisdiction",
+    "total_pipeline_funding": 15000000.0,
+    "upcoming_opportunities_count": 3,
+    "next_release_horizon": "Q2 2027 (May 2027)",
+    "min_days_until_release": 252,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 3,
+    "cadence_regularity_score": 82,
+    "cadence_stats": {
+      "mean_interval_months": 24.0,
+      "std_dev_months": 3.0,
+      "regularity_score": 82,
+      "peak_quarter": "Q2",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 3,
+      "historical_years": [
+        2026
+      ]
+    },
+    "org_type": "funder",
     "is_probabilistic_forecast": true,
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
@@ -7507,34 +7592,32 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
-    "organization_id": 15,
-    "organization_code": "MD MEA",
-    "organization_name": "Maryland Energy Administration",
-    "full_name": "Maryland Energy Administration",
-    "aliases": [
-      "MD MEA"
-    ],
-    "category": "state",
-    "category_label": "State Energy Agencies",
-    "state": "US",
-    "jurisdiction": "state",
+    "organization_id": 31,
+    "organization_code": "Avangrid, Inc.",
+    "organization_name": "Avangrid, Inc.",
+    "full_name": "Avangrid, Inc.",
+    "aliases": [],
+    "category": "utility",
+    "category_label": "Electric & Gas Utilities",
+    "state": "CT",
+    "jurisdiction": "National / Multi-State",
     "total_pipeline_funding": 10000000.0,
     "upcoming_opportunities_count": 2,
-    "next_release_horizon": "Q4 2026 (November 2026)",
-    "min_days_until_release": 71,
-    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "next_release_horizon": "Q2 2027 (May 2027)",
+    "min_days_until_release": 252,
+    "primary_mandate": "Electric and natural gas utility holding company headquartered in Orange, CT.",
     "technologies_funded": [
       "Clean Energy Innovation",
       "Energy Efficiency",
       "Grid Modernization"
     ],
     "historical_opportunity_count": 2,
-    "cadence_regularity_score": 88,
+    "cadence_regularity_score": 82,
     "cadence_stats": {
-      "mean_interval_months": 12.0,
-      "std_dev_months": 1.5,
-      "regularity_score": 88,
-      "peak_quarter": "Q4",
+      "mean_interval_months": 24.0,
+      "std_dev_months": 3.0,
+      "regularity_score": 82,
+      "peak_quarter": "Q2",
       "quarter_distribution": {
         "Q1": 1,
         "Q2": 1,
@@ -7546,51 +7629,7 @@
         2026
       ]
     },
-    "org_type": "funder",
-    "is_probabilistic_forecast": true,
-    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
-  },
-  {
-    "organization_id": 19,
-    "organization_code": "TX SECO",
-    "organization_name": "Texas State Energy Conservation Office",
-    "full_name": "Texas State Energy Conservation Office",
-    "aliases": [
-      "TX SECO"
-    ],
-    "category": "state",
-    "category_label": "State Energy Agencies",
-    "state": "US",
-    "jurisdiction": "state",
-    "total_pipeline_funding": 10000000.0,
-    "upcoming_opportunities_count": 2,
-    "next_release_horizon": "Q4 2026 (November 2026)",
-    "min_days_until_release": 71,
-    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
-    "technologies_funded": [
-      "Clean Energy Innovation",
-      "Energy Efficiency",
-      "Grid Modernization"
-    ],
-    "historical_opportunity_count": 2,
-    "cadence_regularity_score": 88,
-    "cadence_stats": {
-      "mean_interval_months": 12.0,
-      "std_dev_months": 1.5,
-      "regularity_score": 88,
-      "peak_quarter": "Q4",
-      "quarter_distribution": {
-        "Q1": 1,
-        "Q2": 1,
-        "Q3": 1,
-        "Q4": 1
-      },
-      "sample_size": 2,
-      "historical_years": [
-        2026
-      ]
-    },
-    "org_type": "funder",
+    "org_type": "holding_company",
     "is_probabilistic_forecast": true,
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
@@ -7866,6 +7905,50 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
+    "organization_id": 10,
+    "organization_code": "NJEDA",
+    "organization_name": "New Jersey Economic Development Authority",
+    "full_name": "New Jersey Economic Development Authority",
+    "aliases": [
+      "NJEDA"
+    ],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "US",
+    "jurisdiction": "state",
+    "total_pipeline_funding": 4000000.0,
+    "upcoming_opportunities_count": 2,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 2,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 1,
+      "historical_years": [
+        2026
+      ]
+    },
+    "org_type": "funder",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
     "organization_id": 164,
     "organization_code": "VIPC",
     "organization_name": "Virginia Innovation Partnership Corporation (VIPC)",
@@ -7909,50 +7992,6 @@
       ]
     },
     "org_type": "economic_development",
-    "is_probabilistic_forecast": true,
-    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
-  },
-  {
-    "organization_id": 10,
-    "organization_code": "NJEDA",
-    "organization_name": "New Jersey Economic Development Authority",
-    "full_name": "New Jersey Economic Development Authority",
-    "aliases": [
-      "NJEDA"
-    ],
-    "category": "state",
-    "category_label": "State Energy Agencies",
-    "state": "US",
-    "jurisdiction": "state",
-    "total_pipeline_funding": 2000000.0,
-    "upcoming_opportunities_count": 1,
-    "next_release_horizon": "Q4 2026 (November 2026)",
-    "min_days_until_release": 71,
-    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
-    "technologies_funded": [
-      "Clean Energy Innovation",
-      "Energy Efficiency",
-      "Grid Modernization"
-    ],
-    "historical_opportunity_count": 1,
-    "cadence_regularity_score": 88,
-    "cadence_stats": {
-      "mean_interval_months": 12.0,
-      "std_dev_months": 1.5,
-      "regularity_score": 88,
-      "peak_quarter": "Q4",
-      "quarter_distribution": {
-        "Q1": 1,
-        "Q2": 1,
-        "Q3": 1,
-        "Q4": 1
-      },
-      "sample_size": 1,
-      "historical_years": [
-        2026
-      ]
-    },
-    "org_type": "funder",
     "is_probabilistic_forecast": true,
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   }

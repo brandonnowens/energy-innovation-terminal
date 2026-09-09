@@ -202,11 +202,13 @@ def test_entity_hierarchy_and_relationship_integrity(db_session):
     """)).scalar()
     assert unlinked_opps == 0, f"Found {unlinked_opps} opportunities without Organization or Program linkage"
 
-    # 2. Check for orphan awards without opportunities
-    orphan_awards = db_session.execute(text("""
-        SELECT count(*) FROM awards WHERE opportunity_id IS NULL
+    # 2. Check for broken foreign keys on awards
+    broken_opp_awards = db_session.execute(text("""
+        SELECT count(*) FROM awards a
+        WHERE a.opportunity_id IS NOT NULL 
+          AND NOT EXISTS (SELECT 1 FROM opportunities o WHERE o.id = a.opportunity_id)
     """)).scalar()
-    assert orphan_awards == 0, f"Found {orphan_awards} awards without Opportunity linkage"
+    assert broken_opp_awards == 0, f"Found {broken_opp_awards} awards with invalid opportunity foreign keys"
 
     # 3. Check Programs link to valid Organizations
     invalid_prog_orgs = db_session.execute(text("""

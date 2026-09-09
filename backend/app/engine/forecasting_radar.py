@@ -1002,18 +1002,20 @@ def get_forecasting_organization_directory(db: Session) -> List[Dict[str, Any]]:
     cache_key = "forecasting_all_orgs_directory_v3"
     cache_path = os.path.join(CACHE_DIR, f"{cache_key}.json")
     
-    # Try reading cache (valid for 10 minutes)
+    # Query all organizations in the database
+    db_orgs = db.query(Organization).all()
+
+    # Try reading cache (valid for 10 minutes and matching live org count)
     if os.path.exists(cache_path):
         try:
             mtime = os.path.getmtime(cache_path)
             if datetime.now().timestamp() - mtime < 600:
                 with open(cache_path, "r", encoding="utf-8") as f:
-                    return json.load(f)
+                    cached_data = json.load(f)
+                    if isinstance(cached_data, list) and len(cached_data) == len(db_orgs):
+                        return cached_data
         except Exception:
             pass
-
-    # Query all organizations in the database
-    db_orgs = db.query(Organization).all()
     
     # Query aggregated opportunity metrics per organization
     opp_aggs = (

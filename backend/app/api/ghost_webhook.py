@@ -1,6 +1,6 @@
 """Ghost.org Webhook and Member Verification API Router."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional, Dict, Any
 from fastapi import APIRouter, Request, HTTPException, Depends, Header, status
 from pydantic import BaseModel
@@ -75,7 +75,7 @@ async def verify_ghost_member(req: VerifyGhostMemberRequest, db: Session = Depen
             ghost_status=member_profile.status,
             is_active=True,
             is_verified=True,
-            last_login_at=datetime.utcnow()
+            last_login_at=datetime.now(timezone.utc)
         )
         db.add(user)
     else:
@@ -84,7 +84,7 @@ async def verify_ghost_member(req: VerifyGhostMemberRequest, db: Session = Depen
         user.ghost_status = member_profile.status
         user.tier = mapped_tier
         user.tier_status = "active" if member_profile.status in ("paid", "comped", "free") else "past_due"
-        user.last_login_at = datetime.utcnow()
+        user.last_login_at = datetime.now(timezone.utc)
 
     db.commit()
     db.refresh(user)
@@ -149,7 +149,7 @@ async def ghost_webhook_receiver(
         user.ghost_status = ghost_status_val
         user.tier = mapped_tier
         user.tier_status = "active" if ghost_status_val in ("paid", "comped", "free") else "past_due"
-        user.updated_at = datetime.utcnow()
+        user.updated_at = datetime.now(timezone.utc)
         db.commit()
         return {"status": "updated", "email": email, "tier": mapped_tier}
     else:
@@ -165,7 +165,7 @@ async def ghost_webhook_receiver(
             ghost_status=ghost_status_val,
             is_active=True,
             is_verified=True,
-            last_login_at=datetime.utcnow()
+            last_login_at=datetime.now(timezone.utc)
         )
         db.add(new_user)
         db.commit()
