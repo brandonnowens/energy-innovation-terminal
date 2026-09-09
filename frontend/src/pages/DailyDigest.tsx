@@ -29,7 +29,7 @@ import {
   Loader2,
   FileDown
 } from 'lucide-react';
-import { api, DailyDigest as DailyDigestType, DigestArchiveItem } from '../api/client';
+import { api, apiFetch, DailyDigest as DailyDigestType, DigestArchiveItem } from '../api/client';
 import { OrgLogo } from '../components/OrgLogo';
 import { ApiDocsModal } from '../components/ApiDocsModal';
 import { useSEO } from '../utils/seo';
@@ -91,7 +91,7 @@ export default function DailyDigest() {
     setIsExportingPdf(true);
     try {
       const url = `/api/v1/digest/export-pdf${dateParam ? `?date=${dateParam}` : ''}`;
-      const res = await fetch(url);
+      const res = await apiFetch(url);
       if (!res.ok) throw new Error('Failed to generate daily digest PDF');
       const blob = await res.blob();
       const a = document.createElement('a');

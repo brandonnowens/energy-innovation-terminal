@@ -2554,7 +2554,7 @@ export const api = {
   // Daily Energy Innovation Intelligence Digest
   getDailyDigest: async (dateStr?: string): Promise<DailyDigest> => {
     const endpoint = dateStr ? `/api/v1/digest/${dateStr}` : '/api/v1/digest/latest';
-    const res = await fetch(endpoint, { headers: getAuthHeaders() });
+    const res = await apiFetch(endpoint, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to fetch daily digest: ${res.status}`);
     return res.json();
   },
@@ -2567,7 +2567,7 @@ export const api = {
 
   generateDigest: async (dateStr?: string): Promise<DailyDigest> => {
     const endpoint = dateStr ? `/api/v1/digest/generate?date_str=${dateStr}` : '/api/v1/digest/generate';
-    const res = await fetch(endpoint, { method: 'POST', headers: getAuthHeaders() });
+    const res = await apiFetch(endpoint, { method: 'POST', headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to generate daily digest');
     return res.json();
   },
