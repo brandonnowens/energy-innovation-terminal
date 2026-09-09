@@ -429,6 +429,7 @@ def get_shredded_blueprint(
 from fastapi.responses import Response
 
 @router.get("/{opportunity_id}/export-pdf")
+@router.get("/{opportunity_id}/blueprint-pdf")
 def export_foa_blueprint_pdf(opportunity_id: int, db: Session = Depends(get_db)):
     """
     Generates and streams an institutional, publication-grade multi-page PDF blueprint
