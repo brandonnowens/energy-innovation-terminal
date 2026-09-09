@@ -703,8 +703,12 @@ export default function Opportunities() {
                       )}
                       onClick={() => setSelectedOpp(opp)}
                     >
-                      <td className="px-3 py-3 text-center" onClick={(e) => toggleStar(opp.id, e)}>
-                        <button type="button" className="text-slate-400 hover:text-amber-500 transition-colors cursor-pointer">
+                      <td className="px-3 py-3 text-center">
+                        <button
+                          type="button"
+                          onClick={(e) => toggleStar(opp.id, e)}
+                          className="text-slate-400 hover:text-amber-500 transition-colors cursor-pointer p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800"
+                        >
                           <Star size={14} className={clsx(isStarred ? 'fill-amber-400 text-amber-500' : 'text-slate-300 dark:text-slate-600')} />
                         </button>
                       </td>

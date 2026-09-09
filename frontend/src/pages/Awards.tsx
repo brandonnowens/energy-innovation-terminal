@@ -681,6 +681,10 @@ export default function Awards() {
                       <td className="px-4 py-3.5 text-right whitespace-nowrap">
                         <button
                           type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedAward(a);
+                          }}
                           className="px-2.5 py-1 rounded-lg text-xs font-semibold text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-900/50 hover:text-white transition-all cursor-pointer font-mono shadow-2xs"
                         >
                           View Dossier

@@ -375,6 +375,7 @@ export function SayYesDecisionMakerMatrix({
                       <td className="py-3 px-3.5 text-center">
                         <button
                           type="button"
+                          onClick={() => setSelectedOrg(org)}
                           className="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 text-xs font-semibold flex items-center justify-center gap-1 mx-auto transition-colors cursor-pointer"
                         >
                           <span>Dossier</span>

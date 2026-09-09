@@ -425,6 +425,10 @@ export default function Dockets() {
                         <td className="py-3 px-4 text-right whitespace-nowrap">
                           <button
                             type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedProceedingId(proc.id);
+                            }}
                             className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-cyan-100 text-slate-800 hover:text-cyan-900 font-bold text-xs transition-colors cursor-pointer"
                           >
                             Details

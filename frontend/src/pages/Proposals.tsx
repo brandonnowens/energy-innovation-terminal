@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import {
   FileEdit, Sparkles, ShieldCheck, CheckCircle2, AlertTriangle,
   Layers, FileText, X, ChevronRight, UploadCloud, Bot, FileCheck, Scale,
@@ -163,6 +163,7 @@ const DEFAULT_PROPOSAL: WinningProposal = {
 
 export default function Proposals() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const urlProposalId = searchParams.get('proposalId');
   const { includeNyserda, isNyserda, isNyserdaAgency } = useNyserda();
 
@@ -184,9 +185,6 @@ export default function Proposals() {
       setPage(1);
     }
   }, [includeNyserda, agencyFilter, isNyserdaAgency]);
-
-  const [previewModalOpen, setPreviewModalOpen] = useState(false);
-  const [previewActionName, setPreviewActionName] = useState('');
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -225,11 +223,6 @@ export default function Proposals() {
     }
   }, [remoteProposalDetail, urlProposalId]);
 
-  const triggerDisabledAction = (actionName: string) => {
-    setPreviewActionName(actionName);
-    setPreviewModalOpen(true);
-  };
-
   const fmt = (val?: number | null): string => {
     if (!val) return '$0';
     if (val >= 1_000_000_000) return `$${(val / 1e9).toFixed(2)}B`;
@@ -267,7 +260,7 @@ export default function Proposals() {
         <div className="flex items-center gap-2.5 shrink-0">
           <button
             type="button"
-            onClick={() => triggerDisabledAction('Draft New Proposal')}
+            onClick={() => navigate('/analyze')}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all cursor-pointer"
           >
             <Sparkles size={13} />
@@ -592,7 +585,8 @@ export default function Proposals() {
                 </h3>
               </div>
               <button
-                onClick={() => triggerDisabledAction('Upload Custom Solicitation PDF')}
+                type="button"
+                onClick={() => navigate('/analyze')}
                 className="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 self-start cursor-pointer"
               >
                 <UploadCloud size={14} />
@@ -679,7 +673,8 @@ export default function Proposals() {
                 </h3>
               </div>
               <button
-                onClick={() => triggerDisabledAction('Export Word/PDF SOPO Package')}
+                type="button"
+                onClick={() => window.print()}
                 className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 self-start cursor-pointer"
               >
                 <FileDown size={14} />
@@ -747,7 +742,8 @@ export default function Proposals() {
                 </h3>
               </div>
               <button
-                onClick={() => triggerDisabledAction('Auto-Draft 15-Page CBP Document')}
+                type="button"
+                onClick={() => navigate('/chat?prompt=' + encodeURIComponent('Draft a comprehensive Justice40 Community Benefits Plan (CBP) for ' + selectedProposal.title + ' focusing on disadvantaged communities (DAC) investments, workforce agreements, and clean energy benefits.'))}
                 className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 self-start cursor-pointer"
               >
                 <Scale size={14} />
@@ -828,7 +824,8 @@ export default function Proposals() {
                 </h3>
               </div>
               <button
-                onClick={() => triggerDisabledAction('Re-run AI Red-Team Simulation')}
+                type="button"
+                onClick={() => navigate('/chat?prompt=' + encodeURIComponent('Conduct a rigorous red-team proposal evaluation simulation and scoring breakdown for ' + selectedProposal.title + ' under solicitation ' + selectedProposal.solicitation_number + ' (' + selectedProposal.agency + ').'))}
                 className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 self-start cursor-pointer"
               >
                 <Bot size={14} />
@@ -1012,45 +1009,6 @@ export default function Proposals() {
                 )}
               </div>
             )}
-          </div>
-        </div>
-      )}
-
-      {/* ACTION PREVIEW / DISABLED MODAL */}
-      {previewModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm animate-in fade-in duration-150">
-          <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-lg w-full p-6 space-y-5 animate-in zoom-in-95 duration-150">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2 text-indigo-700 font-bold text-sm">
-                <Sparkles size={16} />
-                <span>Feature Action</span>
-              </div>
-              <button
-                onClick={() => setPreviewModalOpen(false)}
-                className="p-1 text-slate-400 hover:text-slate-600 rounded-lg cursor-pointer"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            <div className="space-y-3">
-              <div className="p-3.5 bg-indigo-50/60 border border-indigo-100 rounded-xl text-xs text-indigo-900 font-medium">
-                Action: <strong>&ldquo;{previewActionName}&rdquo;</strong>
-              </div>
-
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Proposal packaging, Word/PDF compilation, and direct agency portal exports are fully enabled.
-              </p>
-            </div>
-
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
-              <button
-                onClick={() => setPreviewModalOpen(false)}
-                className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
-              >
-                Close
-              </button>
-            </div>
           </div>
         </div>
       )}
