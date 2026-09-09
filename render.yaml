@@ -1,0 +1,51 @@
+services:
+  # ─────────────────────────────────────────────────────────────
+  # 1. Primary API & Intelligence Web Service
+  # ─────────────────────────────────────────────────────────────
+  - type: web
+    name: energy-innovation-api
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+
+  # ─────────────────────────────────────────────────────────────
+  # 2. Daily Ingestion & Opportunity Sync Cron Job
+  # ─────────────────────────────────────────────────────────────
+  - type: cron
+    name: energy-innovation-sync
+    runtime: docker
+    plan: starter
+    schedule: "0 6 * * *" # Daily at 06:00 UTC (2:00 AM EDT)
+    dockerfilePath: ./Dockerfile
+    dockerCommand: "python -m app.jobs.cron_sync --source all"
+    envVars:
+      - fromService:
+          type: web
+          name: energy-innovation-api
+          envVarKey: DATABASE_URL
+      - fromService:
+          type: web
+          name: energy-innovation-api
+          envVarKey: SUPABASE_URL
+      - fromService:
+          type: web
+          name: energy-innovation-api
+          envVarKey: SUPABASE_KEY
+      - fromService:
+          type: web
+          name: energy-innovation-api
+          envVarKey: OPENAI_API_KEY
