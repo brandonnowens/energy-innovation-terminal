@@ -24,7 +24,10 @@ import {
   FileText,
   AlertCircle,
   Terminal,
-  Rss
+  Rss,
+  Download,
+  Loader2,
+  FileDown
 } from 'lucide-react';
 import { api, DailyDigest as DailyDigestType, DigestArchiveItem } from '../api/client';
 import { OrgLogo } from '../components/OrgLogo';
@@ -73,6 +76,8 @@ export default function DailyDigest() {
     },
   });
 
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
+
   const handleCopy = () => {
     if (!digest) return;
     const textToCopy = `${digest.headline}\n${digest.formatted_date} (${digest.edition_number})\n\n${digest.editorial_narrative}\n\nRead full briefing on Energy Innovation Terminal: https://terminal.aixenergy.io/digest?date=${digest.edition_date}`;
@@ -81,8 +86,27 @@ export default function DailyDigest() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handleDownloadPdf = async () => {
+    if (isExportingPdf) return;
+    setIsExportingPdf(true);
+    try {
+      const url = `/api/v1/digest/export-pdf${dateParam ? `?date=${dateParam}` : ''}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Failed to generate daily digest PDF');
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `Energy_Innovation_Daily_Briefing_${digest?.edition_date || dateParam || 'latest'}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    } catch (err) {
+      console.error('Failed to download digest PDF:', err);
+      alert('Failed to generate daily briefing PDF. Please try again.');
+    } finally {
+      setIsExportingPdf(false);
+    }
   };
 
   const handleSelectDate = (dStr: string) => {
@@ -225,12 +249,13 @@ export default function DailyDigest() {
               </button>
 
               <button
-                onClick={handlePrint}
-                className="px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded flex items-center gap-1 transition"
-                title="Print or export to PDF"
+                onClick={handleDownloadPdf}
+                disabled={isExportingPdf}
+                className="px-2.5 py-1 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded flex items-center gap-1.5 transition disabled:opacity-50 cursor-pointer shadow-2xs"
+                title="Download publication-grade executive PDF briefing"
               >
-                <Printer size={12} />
-                <span className="hidden sm:inline">Print</span>
+                {isExportingPdf ? <Loader2 size={12} className="animate-spin" /> : <Download size={12} />}
+                <span>{isExportingPdf ? 'Compiling PDF...' : 'Export PDF Briefing'}</span>
               </button>
 
               <a

@@ -5,7 +5,7 @@ import {
   FileEdit, ShieldCheck, CheckCircle2, AlertTriangle,
   Layers, FileText, X, ChevronRight, UploadCloud, FileCheck, Scale,
   Clock, Calendar, AlertCircle, Trophy, Download, Paperclip, ExternalLink,
-  Search, RotateCcw, Filter, Building2, User, DollarSign, FileDown, Target, Plus
+  Search, RotateCcw, Filter, Building2, User, DollarSign, FileDown, Target, Plus, Loader2
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
@@ -177,6 +177,34 @@ export default function Proposals() {
   const [debouncedSearch, setDebouncedSearch] = useState('');
   const [agencyFilter, setAgencyFilter] = useState('');
   const [page, setPage] = useState(1);
+  const [isExportingSopo, setIsExportingSopo] = useState(false);
+
+  const handleExportSopoPdf = async () => {
+    if (isExportingSopo || !selectedProposal) return;
+    setIsExportingSopo(true);
+    try {
+      const res = await fetch('/api/proposals/export-sopo-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(selectedProposal)
+      });
+      if (!res.ok) throw new Error('Failed to generate SOPO PDF');
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      const cleanTitle = (selectedProposal.title || 'SOPO').replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 40);
+      a.download = `${cleanTitle}_SOPO_Package.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    } catch (err) {
+      console.error('SOPO PDF export error:', err);
+      alert('Failed to generate SOPO package PDF. Please try again.');
+    } finally {
+      setIsExportingSopo(false);
+    }
+  };
 
   // Reset agency filter if NYSERDA was selected but NYSERDA is excluded
   useEffect(() => {
@@ -674,11 +702,12 @@ export default function Proposals() {
               </div>
               <button
                 type="button"
-                onClick={() => window.print()}
-                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 self-start cursor-pointer"
+                onClick={handleExportSopoPdf}
+                disabled={isExportingSopo}
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 self-start cursor-pointer disabled:opacity-50"
               >
-                <FileDown size={14} />
-                <span>Export SOPO Package</span>
+                {isExportingSopo ? <Loader2 size={14} className="animate-spin" /> : <FileDown size={14} />}
+                <span>{isExportingSopo ? 'Compiling PDF...' : 'Export SOPO Package (PDF)'}</span>
               </button>
             </div>
 

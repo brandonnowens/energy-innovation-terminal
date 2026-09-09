@@ -86,12 +86,13 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
           </div>
           <div className="flex items-center gap-2">
             <button
-              onClick={() => window.print()}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-amber-600 hover:bg-amber-500 text-white transition cursor-pointer shadow-xs"
-              title="Print / Save Blueprint PDF"
+              onClick={handleExportPdf}
+              disabled={isExportingPdf}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-amber-600 hover:bg-amber-500 text-white transition cursor-pointer shadow-xs disabled:opacity-50"
+              title="Download publication-grade FOA blueprint PDF"
             >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Export Blueprint (PDF)</span>
+              {isExportingPdf ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
+              <span>{isExportingPdf ? 'Compiling PDF...' : 'Export Blueprint (PDF)'}</span>
             </button>
             <button
               onClick={handleCopy}

@@ -133,7 +133,32 @@ export default function OpportunityDetail() {
   };
 
   const [copiedMemo, setCopiedMemo] = useState(false);
+  const [isExportingFoaPdf, setIsExportingFoaPdf] = useState(false);
 
+  const handleExportFoaPdf = async () => {
+    if (!id || isExportingFoaPdf) return;
+    setIsExportingFoaPdf(true);
+    try {
+      const res = await fetch(`/api/foa-shredder/${id}/export-pdf`);
+      if (!res.ok) throw new Error('Failed to export FOA blueprint PDF');
+      const blob = await res.blob();
+      const d = opp as any;
+      const safeSol = d?.solicitation_number ? d.solicitation_number.replace(/[^a-zA-Z0-9]/g, '_') : `Opp_${id}`;
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `FOA_${safeSol}_Blueprint.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error('FOA PDF Export Error:', err);
+      window.open(`/api/foa-shredder/${id}/export-pdf`, '_blank');
+    } finally {
+      setIsExportingFoaPdf(false);
+    }
+  };
   const copyCitation = () => {
     if (!opp) return;
     const d = opp as any;
@@ -229,6 +254,17 @@ export default function OpportunityDetail() {
           >
             <Zap size={13} className="text-amber-500" />
             <span>FOA Requirements Blueprint</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleExportFoaPdf}
+            disabled={isExportingFoaPdf}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600 hover:bg-amber-500 text-white transition cursor-pointer shadow-2xs disabled:opacity-50"
+            title="Download publication-grade FOA shred & requirements blueprint PDF"
+          >
+            {isExportingFoaPdf ? <Loader2 size={13} className="animate-spin" /> : <Download size={13} />}
+            <span>{isExportingFoaPdf ? 'Compiling PDF...' : 'Export Blueprint (PDF)'}</span>
           </button>
 
           <button
