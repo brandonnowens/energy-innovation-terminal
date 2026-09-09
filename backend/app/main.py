@@ -38,20 +38,28 @@ async def lifespan(app: FastAPI):
         print(f"[Lifespan Startup Warning] DB/FTS Init: {e}")
 
     try:
+        import gc
         with SessionLocal() as db:
             get_cached_opportunities(db)
+        gc.collect()
     except Exception as e:
         print(f"[Lifespan Startup Warning] Opportunity Cache Warm: {e}")
 
-    try:
-        start_daily_news_scheduler()
-    except Exception as e:
-        print(f"[Lifespan Startup Warning] News Scheduler: {e}")
+    # Background automated data schedulers (opt-in for dedicated worker nodes)
+    if getattr(settings, "enable_background_schedulers", False):
+        try:
+            start_daily_news_scheduler()
+            print("[Lifespan] Daily News Scheduler started.")
+        except Exception as e:
+            print(f"[Lifespan Startup Warning] News Scheduler: {e}")
 
-    try:
-        start_scheduler(60)
-    except Exception as e:
-        print(f"[Lifespan Startup Warning] Ingestion Scheduler: {e}")
+        try:
+            start_scheduler(60)
+            print("[Lifespan] Ingestion Pipeline Scheduler started (60m).")
+        except Exception as e:
+            print(f"[Lifespan Startup Warning] Ingestion Scheduler: {e}")
+    else:
+        print("[Lifespan] Background schedulers disabled on API web node to conserve memory (ENABLE_BACKGROUND_SCHEDULERS=false).")
 
     yield
 
@@ -84,12 +92,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Security, SEO & Compression middleware
-from app.middleware import RateLimitMiddleware, SecurityHeadersMiddleware, HttpCacheControlMiddleware
+# Security, SEO, Observability & Compression middleware
+from app.middleware import RateLimitMiddleware, SecurityHeadersMiddleware, HttpCacheControlMiddleware, ObservabilityMiddleware
 from app.middleware.seo_prerender import SeoPrerenderMiddleware
 from app.api.seo import router as seo_router
 
 app.add_middleware(GZipMiddleware, minimum_size=1000)
+app.add_middleware(ObservabilityMiddleware)
 app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(HttpCacheControlMiddleware)
 app.add_middleware(RateLimitMiddleware, default_rpm=120, contact_rpm=10, export_rpm=20)
@@ -98,7 +107,11 @@ app.add_middleware(SeoPrerenderMiddleware)
 # Mount SEO and Sitemaps at root
 app.include_router(seo_router)
 
-# Mount core API routes
+# Mount V1 Canonical Intelligence and Control Layer
+from app.api.v1 import v1_router
+app.include_router(v1_router, prefix="/api/v1", tags=["V1 Canonical Intelligence API"])
+
+# Mount core API routes (100% backward compatible)
 from app.api.analyze import router as analyze_router
 from app.api.opportunities import router as opportunities_router
 from app.api.system import router as system_router

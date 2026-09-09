@@ -47,6 +47,13 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         window = self.requests[key]
         # Prune old entries (older than 60s)
         window[:] = [t for t in window if now - t < 60]
+        
+        # Periodic cleanup if dictionary size grows large
+        if len(self.requests) > 2000:
+            stale_keys = [k for k, v in list(self.requests.items()) if not v or (now - v[-1] >= 60)]
+            for k in stale_keys:
+                self.requests.pop(k, None)
+
         if len(window) >= limit:
             return False
         window.append(now)
@@ -193,3 +200,7 @@ def generate_unguessable_id() -> str:
     """Generate an unguessable ID for public-facing resources."""
     import secrets
     return secrets.token_urlsafe(16)
+
+
+from app.middleware.observability import ObservabilityMiddleware
+

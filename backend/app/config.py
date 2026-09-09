@@ -25,11 +25,14 @@ class Settings(BaseSettings):
 
     # Database: Dedicated PostgreSQL cluster
     database_url: str = _DEFAULT_POSTGRES_URL
-    db_pool_size: int = 25
-    db_max_overflow: int = 15
+    db_pool_size: int = 5
+    db_max_overflow: int = 5
     db_pool_timeout: int = 30
     db_pool_recycle: int = 300
     db_ssl_mode: str = "require"  # disable, allow, prefer, require, verify-ca, verify-full
+
+    # Background automated data pipelines & schedulers
+    enable_background_schedulers: bool = False
 
     # CORS configuration for cloud hosting
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,https://terminal.aixenergy.io,https://aixenergy.io,https://energy-innovation-terminal.bowens-b7b.workers.dev,*"

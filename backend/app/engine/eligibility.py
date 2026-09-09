@@ -358,10 +358,14 @@ def evaluate_eligibility(
     # 3. Evaluate stored rules
     rules = getattr(opportunity, "_cached_eligibility_rules", None)
     if rules is None:
-        if hasattr(opportunity, "eligibility_rules") and opportunity.eligibility_rules is not None:
-            rules = opportunity.eligibility_rules
-        else:
+        try:
+            rules = getattr(opportunity, "eligibility_rules", None)
+        except Exception:
+            rules = None
+        if rules is None and db is not None:
             rules = db.query(EligibilityRule).filter_by(opportunity_id=opportunity.id).all()
+        elif rules is None:
+            rules = []
 
     for rule in rules:
         test = _evaluate_rule(rule, profile, opportunity)

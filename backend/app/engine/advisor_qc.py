@@ -137,6 +137,10 @@ def _get_cached_verdict(cache_key: str) -> Optional[AdvisorQCVerdict]:
 
 
 def _save_cached_verdict(cache_key: str, verdict: AdvisorQCVerdict) -> None:
+    if len(_IN_MEMORY_VERDICT_CACHE) > 1000:
+        # Evict oldest entry
+        oldest_k = next(iter(_IN_MEMORY_VERDICT_CACHE))
+        _IN_MEMORY_VERDICT_CACHE.pop(oldest_k, None)
     _IN_MEMORY_VERDICT_CACHE[cache_key] = verdict
     cache_file = CACHE_DIR / f"{cache_key}.json"
     try:

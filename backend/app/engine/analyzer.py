@@ -42,7 +42,52 @@ logger = logging.getLogger(__name__)
 # Global in-memory opportunity cache for sub-second candidate resolution
 _OPPORTUNITIES_CACHE: list[Opportunity] = []
 _OPPORTUNITIES_CACHE_TIME: float = 0.0
-_OPPORTUNITIES_CACHE_TTL: float = 300.0  # 5 minutes TTL
+_OPPORTUNITIES_CACHE_TTL: float = 86400.0  # 24 hours TTL (static dataset cached in memory)
+
+
+class CachedCategory:
+    __slots__ = ("category_type", "category_value", "source", "confidence")
+    def __init__(self, t: str, v: str, s: Optional[str] = None, c: float = 1.0):
+        self.category_type = t
+        self.category_value = v
+        self.source = s
+        self.confidence = c
+
+
+class CachedRule:
+    __slots__ = ("rule_type", "rule_key", "rule_value", "rule_operator", "is_hard_requirement", "source", "source_text", "confidence")
+    def __init__(self, t: str, k: str, v: str, op: str, h: bool, s: Optional[str] = None, st: Optional[str] = None, c: float = 1.0):
+        self.rule_type = t
+        self.rule_key = k
+        self.rule_value = v
+        self.rule_operator = op
+        self.is_hard_requirement = h
+        self.source = s
+        self.source_text = st
+        self.confidence = c
+
+
+class CachedRound:
+    __slots__ = ("round_number", "status", "due_date", "concept_paper_due_date")
+    def __init__(self, num: str, stat: str, due: Optional[datetime], c_due: Optional[datetime]):
+        self.round_number = num
+        self.status = stat
+        self.due_date = due
+        self.concept_paper_due_date = c_due
+
+
+class CachedRestriction:
+    __slots__ = ("category", "title", "description", "severity", "source", "source_text", "source_url", "data_provenance", "confidence")
+    def __init__(self, cat: str, title: str, desc: Optional[str], sev: str, s: Optional[str] = None, st: Optional[str] = None, su: Optional[str] = None, dp: Optional[str] = "observed", c: float = 1.0):
+        self.category = cat
+        self.title = title
+        self.description = desc
+        self.severity = sev
+        self.source = s
+        self.source_text = st
+        self.source_url = su
+        self.data_provenance = dp
+        self.confidence = c
 
 
 _RE_RESIDENTIAL_PROGRAM = re.compile(
@@ -89,6 +134,14 @@ def get_cached_opportunities(db: Session, force_refresh: bool = False) -> list[O
     global _OPPORTUNITIES_CACHE, _OPPORTUNITIES_CACHE_TIME
     now = time.time()
     if not _OPPORTUNITIES_CACHE or force_refresh or (now - _OPPORTUNITIES_CACHE_TIME > _OPPORTUNITIES_CACHE_TTL):
+        import gc
+        from sqlalchemy import select
+        from app.models.opportunity import (
+            OpportunityCategory,
+            OpportunityRestriction,
+            OpportunityRound,
+            EligibilityRule,
+        )
         from app.engine.fit import (
             _RE_RES_PROGRAM,
             _RE_INDUSTRIAL_OPP,
@@ -109,17 +162,41 @@ def get_cached_opportunities(db: Session, force_refresh: bool = False) -> list[O
         )
         from app.engine.eligibility import get_opportunity_required_state
 
-        _OPPORTUNITIES_CACHE = (
-            db.query(Opportunity)
-            .options(
-                selectinload(Opportunity.categories),
-                selectinload(Opportunity.eligibility_rules),
-                selectinload(Opportunity.rounds),
-                selectinload(Opportunity.restrictions),
-            )
-            .all()
-        )
-        for opp in _OPPORTUNITIES_CACHE:
+        # Query opportunities directly without instantiating 40,000 ORM instances
+        opps = db.query(Opportunity).all()
+
+        # Query lightweight scalar records in bulk
+        cat_rows = db.execute(
+            select(OpportunityCategory.opportunity_id, OpportunityCategory.category_type, OpportunityCategory.category_value, OpportunityCategory.source, OpportunityCategory.confidence)
+        ).fetchall()
+        cats_by_opp: dict[int, list[CachedCategory]] = {}
+        for opp_id, cat_type, cat_val, cat_src, cat_conf in cat_rows:
+            cats_by_opp.setdefault(opp_id, []).append(CachedCategory(cat_type or "", cat_val or "", cat_src, float(cat_conf or 1.0)))
+
+        rule_rows = db.execute(
+            select(EligibilityRule.opportunity_id, EligibilityRule.rule_type, EligibilityRule.rule_key, EligibilityRule.rule_value, EligibilityRule.rule_operator, EligibilityRule.is_hard_requirement, EligibilityRule.source, EligibilityRule.source_text, EligibilityRule.confidence)
+        ).fetchall()
+        rules_by_opp: dict[int, list[CachedRule]] = {}
+        for r in rule_rows:
+            rules_by_opp.setdefault(r[0], []).append(CachedRule(r[1] or "", r[2] or "", r[3] or "", r[4] or "equals", bool(r[5]), r[6], r[7], float(r[8] or 1.0)))
+
+        round_rows = db.execute(
+            select(OpportunityRound.opportunity_id, OpportunityRound.round_number, OpportunityRound.status, OpportunityRound.due_date, OpportunityRound.concept_paper_due_date)
+        ).fetchall()
+        rounds_by_opp: dict[int, list[CachedRound]] = {}
+        for r in round_rows:
+            rounds_by_opp.setdefault(r[0], []).append(CachedRound(r[1] or "", r[2] or "", r[3], r[4]))
+
+        restr_rows = db.execute(
+            select(OpportunityRestriction.opportunity_id, OpportunityRestriction.category, OpportunityRestriction.title, OpportunityRestriction.description, OpportunityRestriction.severity, OpportunityRestriction.source, OpportunityRestriction.source_text, OpportunityRestriction.source_url, OpportunityRestriction.data_provenance, OpportunityRestriction.confidence)
+        ).fetchall()
+        restrs_by_opp: dict[int, list[CachedRestriction]] = {}
+        for r in restr_rows:
+            restrs_by_opp.setdefault(r[0], []).append(CachedRestriction(r[1] or "other", r[2] or "", r[3], r[4] or "hard", r[5], r[6], r[7], r[8] or "observed", float(r[9] or 1.0)))
+
+        db.expunge_all()
+
+        for opp in opps:
             opp._search_corpus_lower = (
                 (opp.name or "") + " " +
                 (opp.short_description or "") + " " +
@@ -177,11 +254,11 @@ def get_cached_opportunities(db: Session, force_refresh: bool = False) -> list[O
             opp._required_state = get_opportunity_required_state(opp)
             opp._state_agency_state = opp._required_state
 
-            cats = opp.categories or []
-            opp._cached_categories = list(cats)
-            opp._cached_eligibility_rules = list(opp.eligibility_rules or [])
-            opp._cached_rounds = list(opp.rounds or [])
-            opp._cached_restrictions = list(opp.restrictions or [])
+            cats = cats_by_opp.get(opp.id, [])
+            opp._cached_categories = cats
+            opp._cached_eligibility_rules = rules_by_opp.get(opp.id, [])
+            opp._cached_rounds = rounds_by_opp.get(opp.id, [])
+            opp._cached_restrictions = restrs_by_opp.get(opp.id, [])
             opp._tech_cat_values = [
                 c.category_value.lower() for c in cats
                 if c.category_type in ("technology", "sector", "fuel")
@@ -194,7 +271,10 @@ def get_cached_opportunities(db: Session, force_refresh: bool = False) -> list[O
             opp._act_cat_str = " ".join(opp._act_cat_values)
             opp._bitmasks = build_opportunity_bitmasks(opp)
 
+        _OPPORTUNITIES_CACHE = opps
+        del cat_rows, rule_rows, round_rows, restr_rows, cats_by_opp, rules_by_opp, rounds_by_opp, restrs_by_opp
         build_opportunity_matrix(_OPPORTUNITIES_CACHE)
+        gc.collect()
         _OPPORTUNITIES_CACHE_TIME = now
     return _OPPORTUNITIES_CACHE
 
@@ -202,8 +282,10 @@ def get_cached_opportunities(db: Session, force_refresh: bool = False) -> list[O
 def invalidate_opportunities_cache():
     """Invalidate in-memory opportunity cache (e.g. after data ingestion)."""
     global _OPPORTUNITIES_CACHE, _OPPORTUNITIES_CACHE_TIME
+    import gc
     _OPPORTUNITIES_CACHE = []
     _OPPORTUNITIES_CACHE_TIME = 0.0
+    gc.collect()
 
 
 def analyze_project(
@@ -708,7 +790,14 @@ def _is_innovation_research(opp, db=None) -> bool:
 
     cat_activities = set()
     cat_techs = set()
-    categories = getattr(opp, "_cached_categories", getattr(opp, "categories", [])) or []
+    categories = getattr(opp, "_cached_categories", None)
+    if categories is None:
+        try:
+            categories = getattr(opp, "categories", None)
+        except Exception:
+            categories = None
+    if categories is None:
+        categories = []
     for c in categories:
         c_type = getattr(c, "category_type", None)
         c_val = getattr(c, "category_value", None)
@@ -860,7 +949,14 @@ def _assess_competitiveness(opp, elig_result, fit_result, profile, db=None, matc
     # --- TRL / Stage mismatch ---
     # I&R programs typically fund early-to-mid TRL; deployment projects are often TRL 7-9
     if profile.estimated_trl:
-        categories = getattr(opp, "_cached_categories", getattr(opp, "categories", [])) or []
+        categories = getattr(opp, "_cached_categories", None)
+        if categories is None:
+            try:
+                categories = getattr(opp, "categories", None)
+            except Exception:
+                categories = None
+        if categories is None:
+            categories = []
         cat_acts = {getattr(c, "category_value", None) for c in categories if getattr(c, "category_type", None) == "activity"}
 
         # Detect if this is an R&D/early-stage solicitation
@@ -1035,15 +1131,20 @@ def _build_action_timeline(opp, profile) -> dict:
     next_round = None
     concept_deadline = None
     all_rounds = []
-    for r in opp.rounds:
+    rounds_source = getattr(opp, "_cached_rounds", None)
+    if rounds_source is None:
+        rounds_source = getattr(opp, "rounds", None) or []
+    for r in rounds_source:
         all_rounds.append(r)
-        if r.status == "Open":
-            if r.due_date:
-                if next_deadline is None or r.due_date < next_deadline:
-                    next_deadline = r.due_date
+        if getattr(r, "status", "") == "Open":
+            r_due = getattr(r, "due_date", None)
+            if r_due:
+                if next_deadline is None or r_due < next_deadline:
+                    next_deadline = r_due
                     next_round = r
-            if r.concept_paper_due_date:
-                concept_deadline = r.concept_paper_due_date
+            r_concept = getattr(r, "concept_paper_due_date", None)
+            if r_concept:
+                concept_deadline = r_concept
 
     # Determine timing status and urgency
     if next_deadline:

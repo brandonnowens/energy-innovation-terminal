@@ -46,10 +46,13 @@ def generate_teaming_stack(
             agency = opp.agency or agency
             if opp.name:
                 tech_keywords.extend([w.strip() for w in opp.name.split() if len(w) > 4])
-            if hasattr(opp, "categories") and opp.categories:
-                for c in opp.categories:
-                    if c.category_type in ("technology", "sector", "fuel"):
-                        tech_keywords.append(c.category_value)
+            cats = getattr(opp, "_cached_categories", None)
+            if cats is None:
+                cats = getattr(opp, "categories", None) or []
+            if cats:
+                for c in cats:
+                    if getattr(c, "category_type", None) in ("technology", "sector", "fuel"):
+                        tech_keywords.append(getattr(c, "category_value", ""))
 
     if technology_area:
         tech_keywords.append(technology_area)

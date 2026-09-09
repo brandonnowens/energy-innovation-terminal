@@ -295,16 +295,9 @@ def get_news_telemetry(db: Session) -> Dict[str, Any]:
 async def _daily_news_scheduler_loop():
     """Background loop that runs daily news ingestion every 24 hours (86,400s)."""
     logger.info("Starting Daily Energy Innovation News Ingestion Scheduler (24h period).")
-    # Initial startup sync
-    await asyncio.sleep(2)
-    try:
-        run_news_ingestion_sync()
-    except Exception as e:
-        logger.warning(f"Startup news ingestion note: {e}")
-
     while True:
         try:
-            # 24 hours sleep interval
+            # 24 hours sleep interval between automatic runs
             await asyncio.sleep(86400)
             logger.info("Executing scheduled 24-hour daily energy news ingestion run...")
             run_news_ingestion_sync()

@@ -146,8 +146,11 @@ def calculate_win_rate_analytics(
     cost_share_score = 0.85
     cost_share_notes = "Standard statutory cost-share requirements apply."
     
-    # Check restrictions in DB
-    cost_share_restr = [r for r in (opp.restrictions or []) if r.category == "cost_share"]
+    # Check restrictions in DB or cache
+    restrs = getattr(opp, "_cached_restrictions", None)
+    if restrs is None:
+        restrs = getattr(opp, "restrictions", None) or []
+    cost_share_restr = [r for r in restrs if getattr(r, "category", "") == "cost_share"]
     if cost_share_restr:
         req_text = " ".join([(r.title or "") + " " + (r.description or "") for r in cost_share_restr]).lower()
         if "50%" in req_text:

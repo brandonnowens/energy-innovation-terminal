@@ -215,8 +215,11 @@ def build_opportunity_matrix(opportunities: List[Any]) -> Tuple[np.ndarray, Dict
         kw_text = (opp.keywords or "") * 2
         desc_text = (opp.short_description or "") + " " + (opp.objectives or "")
         cat_text = ""
-        if hasattr(opp, "categories") and opp.categories:
-            cat_text = " ".join([c.category_value for c in opp.categories if c.category_value]) * 2
+        cats = getattr(opp, "_cached_categories", None)
+        if cats is None:
+            cats = getattr(opp, "categories", None) or []
+        if cats:
+            cat_text = " ".join([getattr(c, "category_value", "") for c in cats if getattr(c, "category_value", None)]) * 2
 
         corpus = f"{name_text} {kw_text} {cat_text} {desc_text}"
         matrix[idx] = vectorize_text(corpus)

@@ -556,7 +556,12 @@ def _score_technology_taxonomy_fit(db: Session, opp: Opportunity, profile: Proje
     if opp_cat_str is None:
         opp_cat_values = getattr(opp, "_tech_cat_values", None)
         if opp_cat_values is None:
-            cached_cats = getattr(opp, "_cached_categories", getattr(opp, "categories", None))
+            cached_cats = getattr(opp, "_cached_categories", None)
+            if cached_cats is None:
+                try:
+                    cached_cats = getattr(opp, "categories", None)
+                except Exception:
+                    cached_cats = None
             if cached_cats is not None:
                 tech_cats = [c for c in cached_cats if getattr(c, "category_type", None) in ("technology", "sector", "fuel")]
             else:
@@ -621,7 +626,12 @@ def _score_activity_fit(db: Session, opp: Opportunity, profile: ProjectProfile) 
     if opp_act_str is None:
         opp_acts = getattr(opp, "_act_cat_values", None)
         if opp_acts is None:
-            cached_cats = getattr(opp, "_cached_categories", getattr(opp, "categories", None))
+            cached_cats = getattr(opp, "_cached_categories", None)
+            if cached_cats is None:
+                try:
+                    cached_cats = getattr(opp, "categories", None)
+                except Exception:
+                    cached_cats = None
             if cached_cats is not None:
                 act_cats = [c for c in cached_cats if getattr(c, "category_type", None) == "activity"]
             else:
@@ -1240,7 +1250,14 @@ def _extract_restrictions(opp: Opportunity, profile: ProjectProfile) -> list[dic
     restrictions = []
 
     # Database restrictions
-    cached_restr = getattr(opp, "_cached_restrictions", getattr(opp, "restrictions", None)) or []
+    cached_restr = getattr(opp, "_cached_restrictions", None)
+    if cached_restr is None:
+        try:
+            cached_restr = getattr(opp, "restrictions", None)
+        except Exception:
+            cached_restr = None
+    if cached_restr is None:
+        cached_restr = []
     for r in cached_restr:
         restrictions.append({
             "title": getattr(r, "title", "Program Restriction") or "Program Restriction",

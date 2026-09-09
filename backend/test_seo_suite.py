@@ -18,7 +18,7 @@ class TestSeoEngine(unittest.TestCase):
         resp = client.get("/robots.txt")
         self.assertEqual(resp.status_code, 200)
         self.assertIn("text/plain", resp.headers["content-type"])
-        self.assertIn("Sitemap: https://energyinnovation.terminal/sitemap.xml", resp.text)
+        self.assertIn("Sitemap: https://terminal.aixenergy.io/sitemap.xml", resp.text)
         self.assertIn("User-agent: PerplexityBot", resp.text)
         self.assertIn("User-agent: ChatGPT-User", resp.text)
         print("[PASS] /robots.txt serves valid directives and sitemap links.")

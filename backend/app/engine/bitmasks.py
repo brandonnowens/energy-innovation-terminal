@@ -236,12 +236,16 @@ def build_opportunity_bitmasks(opp: Opportunity) -> Dict[str, int]:
     """
     Constructs and returns pre-computed bitmasks for an Opportunity record.
     """
+    cats = getattr(opp, "_cached_categories", None)
+    if cats is None:
+        cats = getattr(opp, "categories", None) or []
+
     # 1. Tech Mask
     tech_mask = 0
-    if hasattr(opp, "categories") and opp.categories:
-        for c in opp.categories:
-            if c.category_type in ("technology", "sector", "fuel"):
-                val = (c.category_value or "").lower()
+    if cats:
+        for c in cats:
+            if getattr(c, "category_type", None) in ("technology", "sector", "fuel"):
+                val = (getattr(c, "category_value", "") or "").lower()
                 tech_mask |= compute_tech_mask_from_list([val])
     
     # Enrich tech mask from title/keywords
@@ -250,10 +254,10 @@ def build_opportunity_bitmasks(opp: Opportunity) -> Dict[str, int]:
 
     # 2. Activity Mask
     act_mask = 0
-    if hasattr(opp, "categories") and opp.categories:
-        for c in opp.categories:
-            if c.category_type == "activity":
-                act_mask |= compute_activity_mask([c.category_value])
+    if cats:
+        for c in cats:
+            if getattr(c, "category_type", None) == "activity":
+                act_mask |= compute_activity_mask([getattr(c, "category_value", "")])
     act_mask |= compute_activity_mask([opp.name, opp.short_description])
 
     # 3. Applicant Mask
