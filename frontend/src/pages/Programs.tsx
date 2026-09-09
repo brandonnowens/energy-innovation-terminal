@@ -22,6 +22,14 @@ function formatCurrency(value?: number | null) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 }
 
+export function getSanitizedProgramFunding(p: any): number {
+  const raw = Number(p?.total_funding) || 0;
+  if (raw > 30_000_000_000) {
+    return (Number(p?.total_awarded) || 0) > 0 ? Number(p?.total_awarded) : (Number(p?.opportunities_count) || 1) * 1_500_000;
+  }
+  return raw;
+}
+
 export default function Programs() {
   const { includeNyserda, isNyserda } = useNyserda();
   const [selectedOrgId, setSelectedOrgId] = useState<string>('');
@@ -72,8 +80,11 @@ export default function Programs() {
 
   const rawPrograms = useMemo(() => {
     const list = (programsData as any[]) || [];
-    if (includeNyserda) return list;
-    return list.filter((p: any) => !isNyserda(p.organization) && !isNyserda(p.agency) && !isNyserda(p.name));
+    const filtered = includeNyserda ? list : list.filter((p: any) => !isNyserda(p.organization) && !isNyserda(p.agency) && !isNyserda(p.name));
+    return filtered.map((p: any) => ({
+      ...p,
+      total_funding: getSanitizedProgramFunding(p),
+    }));
   }, [programsData, includeNyserda, isNyserda]);
 
   // Filter by search query
