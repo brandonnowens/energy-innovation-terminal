@@ -102,5 +102,16 @@ class TestSeoEngine(unittest.TestCase):
         self.assertIn("twitter:card", resp.text)
         print("[PASS] Googlebot crawler receives pre-rendered HTML with JSON-LD Schema & OG tags.")
 
+    def test_08_seo_telemetry_status(self):
+        resp = client.get("/api/seo/status")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertEqual(data["status"], "healthy")
+        self.assertGreater(data["indexing_summary"]["total_indexable_urls"], 1000)
+        self.assertIn("generative_engine_optimization", data)
+        self.assertIn("sitemaps", data)
+        print("[PASS] /api/seo/status provides comprehensive SEO & AI indexing telemetry.")
+
 if __name__ == "__main__":
     unittest.main()
+

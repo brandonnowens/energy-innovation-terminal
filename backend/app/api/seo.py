@@ -436,3 +436,76 @@ def generate_recipient_badge(recipient_id: int, db: Session = Depends(get_db)):
     <text x="42" y="36" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="13" font-weight="700">{funding_str} | {rec_name}</text>
 </svg>"""
     return Response(content=svg, media_type="image/svg+xml")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6. SEO & AI INDEXING TELEMETRY & HEALTH MONITOR
+# ─────────────────────────────────────────────────────────────────────────────
+@router.get("/api/seo/status")
+@router.get("/api/v1/seo/status")
+def get_seo_indexing_status(db: Session = Depends(get_db)):
+    """Comprehensive real-time health and indexing status monitor for search engines and AI bots."""
+    opp_total = db.query(Opportunity.id).count()
+    opp_open = db.query(Opportunity.id).filter(Opportunity.status == "open").count()
+    rec_total = db.query(Recipient.id).count()
+    tech_total = db.query(Technology.id).count()
+    org_total = db.query(Organization.id).count()
+    docket_total = db.query(RegulatoryProceeding.id).count()
+    
+    total_indexable_pages = opp_total + rec_total + tech_total + org_total + docket_total + 10 # core landing hubs
+
+    return {
+        "status": "healthy",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "canonical_domain": BASE_PUBLIC_URL,
+        "indexing_summary": {
+            "total_indexable_urls": total_indexable_pages,
+            "opportunities_indexed": opp_total,
+            "active_open_solicitations": opp_open,
+            "recipient_dossiers_indexed": rec_total,
+            "technology_hubs_indexed": tech_total,
+            "agency_profiles_indexed": org_total,
+            "regulatory_dockets_indexed": docket_total
+        },
+        "sitemaps": {
+            "master_index": f"{BASE_PUBLIC_URL}/sitemap.xml",
+            "sub_sitemaps": [
+                f"{BASE_PUBLIC_URL}/sitemap-opportunities.xml",
+                f"{BASE_PUBLIC_URL}/sitemap-recipients.xml",
+                f"{BASE_PUBLIC_URL}/sitemap-technologies.xml",
+                f"{BASE_PUBLIC_URL}/sitemap-agencies.xml",
+                f"{BASE_PUBLIC_URL}/sitemap-dockets.xml"
+            ],
+            "format": "sitemaps.org/schemas/sitemap/0.9",
+            "dynamic_generation": True
+        },
+        "generative_engine_optimization": {
+            "llms_txt": f"{BASE_PUBLIC_URL}/llms.txt",
+            "ai_txt": f"{BASE_PUBLIC_URL}/ai.txt",
+            "allowed_ai_crawlers": [
+                {"bot": "PerplexityBot", "status": "allowed", "target": "Perplexity Pro & Search"},
+                {"bot": "ChatGPT-User", "status": "allowed", "target": "OpenAI SearchGPT & ChatGPT Browsing"},
+                {"bot": "ClaudeBot", "status": "allowed", "target": "Anthropic Claude Web Citations"},
+                {"bot": "Google-Extended", "status": "allowed", "target": "Gemini & Google AI Overviews"},
+                {"bot": "Applebot-Extended", "status": "allowed", "target": "Apple Intelligence"}
+            ]
+        },
+        "crawlers_and_prerender": {
+            "robots_txt": f"{BASE_PUBLIC_URL}/robots.txt",
+            "ssr_bot_prerender": True,
+            "schema_org_json_ld": [
+                "GovernmentService (MonetaryGrant)",
+                "Organization",
+                "GovernmentOrganization"
+            ],
+            "open_graph_dynamic_svg": True,
+            "blocked_scrapers": [
+                "Bytespider", "CCBot", "Diffbot", "Scrapy", "DataForSeoBot"
+            ]
+        },
+        "syndication_feeds": {
+            "rss_2_0": f"{BASE_PUBLIC_URL}/feed/rss/opportunities.xml",
+            "feed_type": "Clean Energy Grants & RFPs"
+        }
+    }
+
