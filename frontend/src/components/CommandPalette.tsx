@@ -449,8 +449,6 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
     }
   }, [selectedIndex]);
 
-  if (!isOpen) return null;
-
   // Domain badge filter list with counts
   const availableFilterTabs = useMemo(() => {
     if (!debouncedQuery || !searchData?.counts) return [];
@@ -476,6 +474,8 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
 
     return tabs;
   }, [debouncedQuery, searchData]);
+
+  if (!isOpen) return null;
 
   return (
     <div 
