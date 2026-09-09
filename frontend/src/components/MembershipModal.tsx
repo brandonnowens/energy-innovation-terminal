@@ -14,13 +14,21 @@ export function MembershipModal() {
   const [successNotice, setSuccessNotice] = useState<string | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
     if (membershipModalOpen) {
       setLoading(true);
       api.getMembership()
-        .then(res => setManifest(res.membership_manifest))
+        .then(res => {
+          if (isMounted) setManifest(res.membership_manifest);
+        })
         .catch(err => console.error(err))
-        .finally(() => setLoading(false));
+        .finally(() => {
+          if (isMounted) setLoading(false);
+        });
     }
+    return () => {
+      isMounted = false;
+    };
   }, [membershipModalOpen]);
 
   if (!membershipModalOpen) return null;

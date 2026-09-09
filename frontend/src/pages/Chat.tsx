@@ -317,16 +317,31 @@ export default function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
+  const isMountedRef = useRef(true);
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+      abortControllerRef.current?.abort();
+    };
+  }, []);
+
   // Check backend OpenAI status on mount
   useEffect(() => {
+    let isMounted = true;
     apiFetch('/api/chat/status')
       .then(res => res.json())
       .then(data => {
-        if (data.openai_configured && !apiKey) {
+        if (isMounted && data.openai_configured && !apiKey) {
           setApiKey('backend-configured');
         }
       })
       .catch(() => {});
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   // Auto-resize textarea
@@ -388,6 +403,8 @@ export default function Chat() {
     setIsLoading(true);
 
     const historyPayload = messages.map(m => ({ role: m.role, content: m.content }));
+    const abortController = new AbortController();
+    abortControllerRef.current = abortController;
 
     try {
       const stream = streamChatCompletion(
@@ -395,13 +412,15 @@ export default function Chat() {
         historyPayload,
         apiKey || undefined,
         'gpt-4o-mini',
-        userRole
+        userRole,
+        abortController.signal
       );
 
       let accumulatedContent = '';
       let citationsData: ChatCitationsMetadata | undefined;
 
       for await (const chunk of stream) {
+        if (!isMountedRef.current) break;
         if (chunk.type === 'retrieval' && chunk.data) {
           citationsData = chunk.data;
           setMessages(prev =>
@@ -437,23 +456,28 @@ export default function Chat() {
         }
       }
     } catch (err: any) {
+      if (err.name === 'AbortError') return;
       console.error('Chat error:', err);
-      setMessages(prev =>
-        prev.map(m =>
-          m.id === assistantMessageId
-            ? {
-                ...m,
-                content:
-                  m.content ||
-                  `**Error communicating with database assistant:** ${err.message || 'Unknown network error'}. Please verify connection or retry.`,
-                isStreaming: false,
-              }
-            : m
-        )
-      );
+      if (isMountedRef.current) {
+        setMessages(prev =>
+          prev.map(m =>
+            m.id === assistantMessageId
+              ? {
+                  ...m,
+                  content:
+                    m.content ||
+                    `**Error communicating with database assistant:** ${err.message || 'Unknown network error'}. Please verify connection or retry.`,
+                  isStreaming: false,
+                }
+              : m
+          )
+        );
+      }
     } finally {
-      setIsLoading(false);
-      setTimeout(() => textareaRef.current?.focus(), 50);
+      if (isMountedRef.current) {
+        setIsLoading(false);
+        setTimeout(() => textareaRef.current?.focus(), 50);
+      }
     }
   };
 

@@ -722,8 +722,9 @@ export const AwardMap: React.FC<AwardMapProps> = ({
       className: 'award-map-hover-popup',
     });
 
+    mapInstance.current = map;
+
     map.on('load', () => {
-      mapInstance.current = map;
       setupLayers(map);
     });
 
@@ -739,10 +740,14 @@ export const AwardMap: React.FC<AwardMapProps> = ({
     });
 
     return () => {
-      if (mapInstance.current) {
-        mapInstance.current.remove();
-        mapInstance.current = null;
-      }
+      try {
+        hoverPopup.current?.remove();
+        hoverPopup.current = null;
+      } catch {}
+      try {
+        map.remove();
+      } catch {}
+      mapInstance.current = null;
     };
   }, []);
 

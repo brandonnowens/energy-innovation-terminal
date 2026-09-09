@@ -38,10 +38,13 @@ const DailyDigest = lazy(() => import('./pages/DailyDigest'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 
+import { apiFetch } from './api/client';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 1,
+      retry: 3,
+      retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 8000),
       refetchOnWindowFocus: false,
       staleTime: 5 * 60 * 1000, // 5 minutes cache freshness
       gcTime: 15 * 60 * 1000,   // 15 minutes garbage collection retention
@@ -59,6 +62,21 @@ function PageLoadingFallback() {
 }
 
 function App() {
+  // Keep-alive heartbeat to prevent cloud backend container from sleeping
+  React.useEffect(() => {
+    // Immediate ping on initial mount
+    apiFetch('/api/health').catch(() => {});
+
+    // Periodic heartbeat every 3.5 minutes
+    const interval = setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        apiFetch('/api/health').catch(() => {});
+      }
+    }, 210000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>

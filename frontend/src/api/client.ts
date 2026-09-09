@@ -1,14 +1,40 @@
 export const API_BASE_URL = (import.meta.env.VITE_API_URL || 'https://energy-innovation-api.onrender.com').replace(/\/+$/, '');
 
-export const apiFetch = (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
+export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
   let target = typeof input === 'string' ? input : (input instanceof URL ? input.toString() : input.url);
   if (target.startsWith('/api/') || target.startsWith('/api?') || target === '/api') {
     target = `${API_BASE_URL}${target}`;
   }
-  if (input instanceof Request) {
-    return fetch(new Request(target, input), init);
+
+  const method = (init?.method || (input instanceof Request ? input.method : 'GET')).toUpperCase();
+  const isRetryableMethod = method === 'GET' || method === 'HEAD';
+  const maxRetries = isRetryableMethod ? 3 : 1;
+
+  let lastError: any = null;
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const req = input instanceof Request ? new Request(target, input) : target;
+      const res = await fetch(req, init);
+
+      // If Render backend is sleeping or spinning up, status is 502/503/504
+      if (isRetryableMethod && (res.status === 502 || res.status === 503 || res.status === 504) && attempt < maxRetries - 1) {
+        const delay = Math.min(1000 * Math.pow(2, attempt), 4000);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        continue;
+      }
+      return res;
+    } catch (err: any) {
+      lastError = err;
+      if (err.name === 'AbortError') throw err;
+      if (isRetryableMethod && attempt < maxRetries - 1) {
+        const delay = Math.min(1000 * Math.pow(2, attempt), 4000);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        continue;
+      }
+      throw err;
+    }
   }
-  return fetch(target, init);
+  throw lastError || new Error('Network connection failed');
 };
 
 export interface DocumentMetadata {
@@ -3919,7 +3945,8 @@ export async function* streamChatCompletion(
   history: Array<{ role: string; content: string }>,
   apiKey?: string,
   model?: string,
-  userRole?: string
+  userRole?: string,
+  signal?: AbortSignal
 ): AsyncGenerator<{ type: 'retrieval' | 'token' | 'review_complete' | 'done'; data?: ChatCitationsMetadata; token?: string; reviewed_text?: string }> {
   const headers: Record<string, string> = {
     ...getAuthHeaders(),
@@ -3930,6 +3957,7 @@ export async function* streamChatCompletion(
     method: 'POST',
     headers,
     body: JSON.stringify({ query, history, api_key: apiKey, model, user_role: userRole }),
+    signal,
   });
 
   if (!response.ok) {

@@ -65,13 +65,17 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
 
   // Focus input when opened
   useEffect(() => {
+    let timer: any;
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
+      timer = setTimeout(() => inputRef.current?.focus(), 50);
       setSelectedIndex(0);
     } else {
       setQuery('');
       setDebouncedQuery('');
     }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, [isOpen]);
 
   // Quick query for live opportunities matching search

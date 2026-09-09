@@ -31,11 +31,11 @@ def _build_engine():
         pg_engine = create_engine(
             db_url,
             echo=False,
-            pool_size=getattr(settings, "db_pool_size", 25),
-            max_overflow=getattr(settings, "db_max_overflow", 15),
-            pool_timeout=30,
+            pool_size=getattr(settings, "db_pool_size", 5),
+            max_overflow=getattr(settings, "db_max_overflow", 5),
+            pool_timeout=getattr(settings, "db_pool_timeout", 15),
             pool_pre_ping=True,
-            pool_recycle=getattr(settings, "db_pool_recycle", 300),
+            pool_recycle=getattr(settings, "db_pool_recycle", 120),
             connect_args=connect_args
         )
         try:
