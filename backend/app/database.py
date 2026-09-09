@@ -306,6 +306,14 @@ def init_fts():
             _safe_exec(conn, "CREATE INDEX IF NOT EXISTS idx_policy_tech_link_tech ON policy_technology_links(technology_id);")
             _safe_exec(conn, "CREATE INDEX IF NOT EXISTS idx_policy_opp_link_opp ON policy_opportunity_links(opportunity_id);")
             _safe_exec(conn, "CREATE INDEX IF NOT EXISTS idx_policy_fuel_link_fuel ON policy_fuel_links(fuel_vector);")
+            
+            # Initialize core analytics summary views
+            try:
+                from app.database_views import views_sql
+                for _, view_create_sql in views_sql.items():
+                    _safe_exec(conn, view_create_sql)
+            except Exception as e:
+                print(f"[Database] View init note: {e}")
     elif engine.dialect.name == "sqlite":
         with engine.connect() as conn:
             _safe_exec(conn, "CREATE INDEX IF NOT EXISTS idx_opp_program_id ON opportunities (program_id);")
