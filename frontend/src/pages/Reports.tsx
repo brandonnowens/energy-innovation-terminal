@@ -11,6 +11,7 @@ import { saveAs } from 'file-saver';
 import { api, ReportPreset, ReportGenerateRequest } from '../api/client';
 import { OrgLogo } from '../components/OrgLogo';
 import { useNyserda } from '../context/NyserdaContext';
+import { useSEO } from '../utils/seo';
 
 const CATEGORIES = [
   'All Categories',
@@ -461,6 +462,13 @@ const DEFAULT_PRESETS: ReportPreset[] = [
 ];
 
 export default function Reports() {
+  useSEO({
+    title: 'Clean Energy Executive Strategic Monographs & Diligence Reports',
+    description: 'Download executive monographs, due diligence dossiers, and capital architecture analyses across long-duration storage, thermal networks, grid modernization, and hydrogen.',
+    canonicalUrl: 'https://terminal.aixenergy.io/reports',
+    keywords: ['clean energy intelligence reports', 'climate tech due diligence', 'clean energy monographs', 'energy transition strategy', 'IRA capital deployment analysis'],
+  });
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [downloadingId, setDownloadingId] = useState<string | null>(null);

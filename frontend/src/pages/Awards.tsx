@@ -14,6 +14,7 @@ import clsx from 'clsx';
 import { saveAs } from 'file-saver';
 import { OrgLogo } from '../components/OrgLogo';
 import { useNyserda } from '../context/NyserdaContext';
+import { useSEO } from '../utils/seo';
 
 const AwardMap = React.lazy(() => import('../components/AwardMap').then(m => ({ default: m.AwardMap })));
 
@@ -37,6 +38,13 @@ function fmtDate(d?: string | null): string {
 }
 
 export default function Awards() {
+  useSEO({
+    title: '$104B+ Clean Energy Grant Awards & Map 2026',
+    description: 'Explore 29,300+ clean energy awards, geospatial recipient mappings, winning proposal details, and research grant allocations across US states and agencies.',
+    canonicalUrl: 'https://terminal.aixenergy.io/awards',
+    keywords: ['clean energy grant awards', 'cleantech award database', 'DOE grant recipients', 'ARPA-E awardees', 'clean energy research funding map'],
+  });
+
   const { includeNyserda, isNyserda } = useNyserda();
   const [search, setSearch] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');

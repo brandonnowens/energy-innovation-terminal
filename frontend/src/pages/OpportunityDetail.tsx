@@ -13,6 +13,7 @@ import { OrgLogo } from '../components/OrgLogo';
 import { ProvenanceRibbon } from '../components/ProvenanceRibbon';
 import { FoaShredderModal } from '../components/FoaShredderModal';
 import { IraCalculatorModal } from '../components/IraCalculatorModal';
+import { useSEO } from '../utils/seo';
 
 function formatCurrency(val: number | null | undefined): string {
   if (!val) return '—';
@@ -41,6 +42,40 @@ export default function OpportunityDetail() {
     queryFn: () => api.getOpportunity(id!),
     enabled: !!id
   });
+
+  const oppAny = opp as any;
+
+  useSEO({
+    title: oppAny ? `${oppAny.solicitation_number || oppAny.solicitationNumber ? (oppAny.solicitation_number || oppAny.solicitationNumber) + ' · ' : ''}${oppAny.name} Funding & Eligibility` : 'Clean Energy Opportunity Details',
+    description: oppAny?.description ? `${oppAny.description.slice(0, 180)}... Total Funding: ${formatCurrency(oppAny.total_funding || oppAny.totalFunding)}. Organization: ${oppAny.agency || 'Public Agency'}.` : 'Comprehensive intelligence, proposal scoring, eligibility requirements, and historical awardees for this clean energy solicitation.',
+    canonicalUrl: `https://terminal.aixenergy.io/opportunities/${id}`,
+    keywords: [
+      oppAny?.solicitation_number || oppAny?.solicitationNumber || '',
+      oppAny?.name || '',
+      oppAny?.agency || '',
+      'clean energy grant',
+      'solicitation eligibility',
+      'proposal requirements',
+      'non-dilutive funding',
+    ].filter(Boolean),
+    jsonLd: oppAny ? {
+      '@context': 'https://schema.org',
+      '@type': 'GovernmentService',
+      name: oppAny.name,
+      serviceType: 'Clean Energy Innovation Grant / Funding Solicitation',
+      provider: {
+        '@type': 'Organization',
+        name: oppAny.agency || 'Funding Agency',
+      },
+      description: oppAny.description || oppAny.name,
+      url: `https://terminal.aixenergy.io/opportunities/${id}`,
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+    } : undefined,
+  }, [opp, id]);
 
   const { data: winRateData } = useQuery({
     queryKey: ['opportunity-win-rate', id],

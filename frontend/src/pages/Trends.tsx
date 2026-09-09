@@ -14,6 +14,7 @@ import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
 import { NYTGraphicExportModal } from '../components/NYTGraphicExportModal';
 import { useNyserda } from '../context/NyserdaContext';
+import { useSEO } from '../utils/seo';
 
 // ── COLOR PALETTES & FORMATTING ──
 const COCKPIT_COLORS = [
@@ -157,6 +158,13 @@ const CockpitTooltip = ({ active, payload, label, formatter }: any) => {
 };
 
 export default function Trends() {
+  useSEO({
+    title: 'US Clean Energy Capital Velocity & Grant Allocation Trends',
+    description: 'Real-time analytics and longitudinal visualization of $104B+ in clean energy funding flows, recipient distributions, and technology category trends.',
+    canonicalUrl: 'https://terminal.aixenergy.io/trends',
+    keywords: ['clean energy trends', 'energy grant analytics', 'cleantech capital velocity', 'IRA funding trajectory', 'DOE funding breakdown by state'],
+  });
+
   const { includeNyserda, isNyserda } = useNyserda();
 
   // Global Filters

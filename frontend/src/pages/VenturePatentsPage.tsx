@@ -1,8 +1,16 @@
 import React from 'react';
 import { VenturePatentView } from '../components/VenturePatentView';
 import { Lightbulb } from 'lucide-react';
+import { useSEO } from '../utils/seo';
 
 export default function VenturePatentsPage() {
+  useSEO({
+    title: 'USPTO Bayh-Dole Patents & Clean Energy VC Linkages',
+    description: 'Track how non-dilutive government grants catalyze breakthrough clean energy technology patents and multi-billion-dollar private venture capital investments.',
+    canonicalUrl: 'https://terminal.aixenergy.io/patents',
+    keywords: ['clean energy patents', 'Bayh-Dole Act energy grants', 'cleantech venture capital', 'USPTO energy technology', 'climate tech funding rounds'],
+  });
+
   return (
     <div className="max-w-7xl mx-auto space-y-6 pb-12">
       {/* Standard Page Header */}

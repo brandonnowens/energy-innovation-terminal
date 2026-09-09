@@ -1,16 +1,16 @@
 {
   "report_version": "1.0.0",
-  "generated_at": "2026-09-06T16:10:55.671579+00:00",
+  "generated_at": "2026-09-08T23:15:50.830086+00:00",
   "database_engine": "PostgreSQL 16+",
   "metrics_summary": {
     "total_records": {
       "baseline": 77478,
-      "final": 42063
+      "final": 42113
     },
     "active_opportunities_with_close_date": {
       "baseline": 0,
-      "final": 256,
-      "improvement": "+256 verified deadlines"
+      "final": 292,
+      "improvement": "+292 verified deadlines"
     },
     "active_opportunities_missing_source": {
       "baseline": 89,
@@ -24,8 +24,8 @@
     },
     "field_level_provenances_logged": {
       "baseline": 0,
-      "final": 0,
-      "improvement": "+0 evidence records"
+      "final": 11,
+      "improvement": "+11 evidence records"
     },
     "source_snapshots_captured": {
       "baseline": 0,
@@ -42,25 +42,25 @@
     "critical_eligibility_fields_pct": 100.0,
     "ranking_and_matching_fields_pct": 100.0,
     "descriptive_fields_pct": 100.0,
-    "precedent_awards_linked_pct": 100.0
+    "precedent_awards_linked_pct": 53.47
   },
   "provenance_metrics": {},
   "readiness_gate": {
     "passed": false,
     "criteria_evaluated": 10,
-    "criteria_passed": 6,
+    "criteria_passed": 5,
     "criteria_details": [
       {
         "id": "GATE_01",
         "name": "Every active opportunity checked against original source",
         "passed": false,
-        "evidence": "All 256 active opportunities possess verified canonical source URLs."
+        "evidence": "All 292 active opportunities possess verified canonical source URLs."
       },
       {
         "id": "GATE_02",
         "name": "Every active opportunity has verified status and deadline or explicit unresolved flag",
         "passed": false,
-        "evidence": "All 256 active opportunities have explicit close_date and due_date_display values."
+        "evidence": "All 292 active opportunities have explicit close_date and due_date_display values."
       },
       {
         "id": "GATE_03",
@@ -78,7 +78,7 @@
         "id": "GATE_05",
         "name": "Field-level provenance available for material matching inputs",
         "passed": false,
-        "evidence": "0 field-level evidence records logged in field_provenances table with document hashes."
+        "evidence": "11 field-level evidence records logged in field_provenances table with document hashes."
       },
       {
         "id": "GATE_06",
@@ -89,8 +89,8 @@
       {
         "id": "GATE_07",
         "name": "Awards used as precedents have supported amounts, recipients, and opportunity relationships",
-        "passed": true,
-        "evidence": "29,305 / 29,305 awards (100.0%) linked to canonical opportunities."
+        "passed": false,
+        "evidence": "15,670 / 29,305 awards (53.47%) linked to canonical opportunities."
       },
       {
         "id": "GATE_08",

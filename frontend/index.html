@@ -47,6 +47,12 @@
     <meta http-equiv="Permissions-Policy" content="camera=*, microphone=*, display-capture=*, autoplay=*, clipboard-write=*" />
     <meta name="permissions-policy" content="camera=*, microphone=*, display-capture=*, autoplay=*, clipboard-write=*" />
     
+    <!-- Mobile & PWA Optimization -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+
     <!-- JSON-LD Structured Data for Google Search & Knowledge Graph -->
     <script type="application/ld+json">
     {
@@ -104,6 +110,44 @@
           },
           "spatialCoverage": "US",
           "temporalCoverage": "2015/2026"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://terminal.aixenergy.io/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I find clean energy grants and non-dilutive funding in 2026?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Energy Innovation Terminal indexes over 56,000 solicitations and 29,300+ awards across US Department of Energy (DOE), ARPA-E, NSF, state agencies (CEC, MassCEC, NY), and 140+ investor-owned utilities. You can search, filter by Technology Readiness Level (TRL), and use the AI Match Engine to characterize your project."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the Clean Energy Grant Match Engine?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Clean Energy Grant Match Engine uses state-of-the-art semantic AI to evaluate your technology description or project proposal against active funding opportunities, generating a customized non-dilutive capital stack and compliance assessment in seconds."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which organizations and utilities are tracked?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The platform tracks funding announcements and grants from federal agencies (DOE EERE, ARPA-E, OCED, MESC, NSF, EPA), regional state energy offices, and over 140 major electric and gas utilities across all 50 US states."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the terminal track Bayh-Dole patent and venture capital linkages?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Venture & IP Hub traces USPTO patent filings back to government award grants and correlates downstream private Series A-C venture capital funding rounds to quantify the ROI of public energy R&D investments."
+              }
+            }
+          ]
         }
       ]
     }

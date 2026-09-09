@@ -18,6 +18,7 @@ import { SayYesDecisionMakerMatrix } from '../components/SayYesDecisionMakerMatr
 import { Top25OpportunitiesTable, MatchItem } from '../components/Top25OpportunitiesTable';
 import { ExtractedProjectProfile, TestConnectionResponse, LlmStatusResponse } from '../api/client';
 import { useNyserda } from '../context/NyserdaContext';
+import { useSEO } from '../utils/seo';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -890,6 +891,21 @@ function CopyBriefButton({ data }: { data: AnalysisResponse }) {
 // ─── Main Page ───────────────────────────────────────────────────────────────
 
 export default function AnalyzeProject() {
+  useSEO({
+    title: 'Clean Energy Grant Match Engine & Funding Stacks',
+    description: 'Autonomous AI matching engine evaluating clean energy proposals against 56,000+ solicitations, DOE funding opportunities, ARPA-E, NSF, and 140+ utilities to engineer non-dilutive capital stacks.',
+    canonicalUrl: 'https://terminal.aixenergy.io/',
+    keywords: [
+      'clean energy grant match engine',
+      'non-dilutive funding stacks',
+      'DOE clean energy solicitations',
+      'climate tech grants',
+      'energy innovation proposals',
+      'ARPA-E grants',
+      'cleantech grant tracker',
+    ],
+  });
+
   const { includeNyserda, isNyserda } = useNyserda();
   const { data: agenciesData } = useQuery({
     queryKey: ['agencies'],

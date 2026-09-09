@@ -10,6 +10,7 @@ import {
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
 import { useNyserda } from '../context/NyserdaContext';
+import { useSEO } from '../utils/seo';
 
 function fmt(v?: number | null): string {
   if (!v) return '—';
@@ -20,6 +21,13 @@ function fmt(v?: number | null): string {
 }
 
 export default function Organizations() {
+  useSEO({
+    title: 'Directory of 140+ Clean Energy Funding Organizations & Utilities',
+    description: 'Explore the complete index of US federal grant agencies, state energy offices, investor-owned electric utilities, and climate foundations.',
+    canonicalUrl: 'https://terminal.aixenergy.io/organizations',
+    keywords: ['clean energy funding organizations', 'utility innovation programs', 'state energy agencies directory', 'DOE offices', 'clean energy foundations'],
+  });
+
   const { includeNyserda, isNyserda } = useNyserda();
   const [search, setSearch] = useState('');
   const [selectedOrg, setSelectedOrg] = useState<any | null>(null);

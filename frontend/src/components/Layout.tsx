@@ -4,7 +4,7 @@ import {
   Sparkles, FileSearch, Layers, Building2, Trophy, Network,
   TrendingUp, Database, GitMerge, FileText, Search, ShieldCheck,
   Zap, Command, FileEdit, Scale, Lightbulb, Clock, Activity, BookUser, BookOpen, Bot,
-  ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio
+  ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X
 } from 'lucide-react';
 import clsx from 'clsx';
 import { EnergyInnovationTerminalLogo } from './EnergyInnovationTerminalLogo';
@@ -30,7 +30,13 @@ export default function Layout() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [signatureModalOpen, setSignatureModalOpen] = useState(false);
   const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  // Close mobile drawer upon navigation
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   // Collapsed state for navigation sections
   const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>(() => {
@@ -158,6 +164,185 @@ export default function Layout() {
     return navSections.every(s => collapsedSections[s.title]);
   }, [navSections, collapsedSections]);
 
+  const renderSidebar = (isMobile = false) => (
+    <>
+      {/* Brand Header */}
+      <div className="px-5 py-4 border-b border-white/[0.06] flex items-center justify-between">
+        <EnergyInnovationTerminalLogo size="md" showText={true} />
+        {isMobile && (
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(false)}
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            aria-label="Close navigation"
+          >
+            <X size={18} />
+          </button>
+        )}
+      </div>
+
+      {/* Navigation Area */}
+      <nav className="flex-1 px-3 py-3 space-y-2 overflow-y-auto no-scrollbar">
+        {/* Top Primary Item: AI Advisor */}
+        <div className="space-y-1 mb-2">
+          <NavLink
+            to="/chat"
+            onClick={() => isMobile && setMobileMenuOpen(false)}
+            className={({ isActive }) =>
+              clsx(
+                'flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border',
+                isActive
+                  ? 'bg-gradient-to-r from-cyan-500/20 to-emerald-500/15 text-white border-cyan-400/50 shadow-glow-cyan-sm'
+                  : 'bg-white/[0.03] hover:bg-white/[0.06] text-slate-300 border-white/[0.06] hover:text-white'
+              )
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <Bot
+                    size={15}
+                    strokeWidth={1.8}
+                    className={clsx(
+                      'shrink-0 transition-colors',
+                      isActive ? 'text-[#00E5FF]' : 'text-[#00F5A0]'
+                    )}
+                  />
+                  <span className="truncate font-bold">AI Advisor</span>
+                </div>
+                <span className={clsx(
+                  "text-[9px] font-bold px-1.5 py-0.2 rounded font-mono",
+                  isActive ? "bg-cyan-500/30 text-[#00E5FF] border border-cyan-400/40" : "bg-emerald-500/15 text-[#00F5A0] border border-emerald-500/30"
+                )}>
+                  AI
+                </span>
+              </>
+            )}
+          </NavLink>
+        </div>
+
+        {/* Sidebar Nav Category Header / Collapse Toggle */}
+        <div className="pt-2 pb-1 flex items-center justify-between text-[10px] text-slate-400 px-1 border-t border-white/[0.06]">
+          <span className="font-semibold uppercase tracking-wider text-[9px] text-slate-400">Navigation</span>
+          <button
+            type="button"
+            onClick={() => toggleAll(!allCollapsed)}
+            className="flex items-center gap-1 hover:text-slate-200 transition-colors text-[10px] font-medium cursor-pointer"
+            title={allCollapsed ? "Expand all categories" : "Collapse all categories"}
+          >
+            <ChevronsUpDown size={11} className="text-slate-400" />
+            <span>{allCollapsed ? 'Expand All' : 'Collapse All'}</span>
+          </button>
+        </div>
+
+        {/* Collapsible Accordion Sections */}
+        <div className="space-y-2">
+          {navSections.map((section) => {
+            const isCollapsed = !!collapsedSections[section.title];
+            const hasActiveChild = section.items.some(item => {
+              if (item.to === '/') return location.pathname === '/';
+              return location.pathname.startsWith(item.to);
+            });
+
+            return (
+              <div key={section.title} className="space-y-0.5">
+                <button
+                  type="button"
+                  onClick={() => toggleSection(section.title)}
+                  className="w-full px-2.5 py-1 rounded-md hover:bg-white/[0.04] text-[9.5px] font-bold uppercase tracking-[0.14em] text-slate-400 flex items-center justify-between group cursor-pointer transition-colors"
+                >
+                  <span className="group-hover:text-slate-200 transition-colors text-left truncate">{section.title}</span>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {hasActiveChild && isCollapsed && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_6px_#00E5FF]" />
+                    )}
+                    <span className="text-[9px] font-mono text-slate-400 font-normal">
+                      {section.items.length}
+                    </span>
+                    {isCollapsed ? (
+                      <ChevronRight size={12} className="text-slate-400 group-hover:text-slate-200 transition-transform" />
+                    ) : (
+                      <ChevronDown size={12} className="text-slate-400 group-hover:text-slate-200 transition-transform" />
+                    )}
+                  </div>
+                </button>
+
+                {!isCollapsed && (
+                  <div className="space-y-0.5 pl-0.5 animate-in fade-in-50 duration-100">
+                    {section.items.map((item) => (
+                      <NavLink
+                        key={item.to}
+                        to={item.to}
+                        end={item.to === '/'}
+                        onClick={() => isMobile && setMobileMenuOpen(false)}
+                        className={({ isActive }) =>
+                          clsx(
+                            'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer',
+                            isActive
+                              ? 'bg-cyan-500/10 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs'
+                              : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
+                          )
+                        }
+                      >
+                        {({ isActive }) => (
+                          <>
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <item.icon
+                                size={14}
+                                strokeWidth={1.8}
+                                className={clsx(
+                                  'shrink-0 transition-colors',
+                                  isActive ? 'text-[#00E5FF]' : 'text-slate-400'
+                                )}
+                              />
+                              <span className={clsx("truncate", isActive && "text-white font-semibold")}>{item.label}</span>
+                            </div>
+                            {item.badge && (
+                              <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-slate-800 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
+                                {item.badge}
+                              </span>
+                            )}
+                          </>
+                        )}
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </nav>
+
+      {/* Sidebar Footer */}
+      <div className="px-4 py-3 border-t border-white/[0.06] flex items-center justify-between text-[10px] text-slate-400">
+        <button
+          type="button"
+          onClick={() => {
+            if (isMobile) setMobileMenuOpen(false);
+            setSignatureModalOpen(true);
+          }}
+          className="flex items-center gap-1.5 hover:text-cyan-300 transition-colors cursor-pointer group text-left min-w-0"
+          title="View Executive Provenance & Author Briefing"
+        >
+          <ShieldCheck size={13} className="text-cyan-400 group-hover:scale-110 transition-transform shrink-0" />
+          <span className="text-slate-300 font-medium tracking-wide group-hover:text-white truncate">Energy Terminal</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            if (isMobile) setMobileMenuOpen(false);
+            setSignatureModalOpen(true);
+          }}
+          className="font-mono text-slate-400 text-[9.5px] hover:text-cyan-300 transition-colors cursor-pointer px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] shrink-0"
+          title="Version 3.5.0 - Click for Author Dossier"
+        >
+          v3.5
+        </button>
+      </div>
+    </>
+  );
+
   return (
     <div className="flex h-screen bg-[#f8fafc] text-slate-800 antialiased selection:bg-blue-500/20 selection:text-blue-900 overflow-hidden">
       {/* Global Command Palette */}
@@ -166,166 +351,27 @@ export default function Layout() {
         onClose={() => setCommandPaletteOpen(false)}
       />
 
-      {/* Executive Sidebar */}
-      <aside className="w-64 bg-[#090d16] text-slate-300 flex flex-col border-r border-white/[0.08] z-20 shrink-0 select-none">
-        {/* Brand Header */}
-        <div className="px-5 py-4 border-b border-white/[0.06]">
-          <div className="flex items-center justify-between">
-            <EnergyInnovationTerminalLogo size="md" showText={true} />
-          </div>
-        </div>
+      {/* Mobile Drawer Backdrop */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/75 backdrop-blur-xs z-40 md:hidden transition-opacity animate-in fade-in"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
 
-        {/* Navigation Area */}
-        <nav className="flex-1 px-3 py-3 space-y-2 overflow-y-auto no-scrollbar">
-          {/* Top Primary Item: Strategic AI Advisor */}
-          <div className="space-y-1 mb-2">
-            <NavLink
-              to="/chat"
-              className={({ isActive }) =>
-                clsx(
-                  'flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border',
-                  isActive
-                    ? 'bg-gradient-to-r from-cyan-500/20 to-emerald-500/15 text-white border-cyan-400/50 shadow-glow-cyan-sm'
-                    : 'bg-white/[0.03] hover:bg-white/[0.06] text-slate-300 border-white/[0.06] hover:text-white'
-                )
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <Bot
-                      size={15}
-                      strokeWidth={1.8}
-                      className={clsx(
-                        'shrink-0 transition-colors',
-                        isActive ? 'text-[#00E5FF]' : 'text-[#00F5A0]'
-                      )}
-                    />
-                    <span className="truncate font-bold">AI Advisor</span>
-                  </div>
-                  <span className={clsx(
-                    "text-[9px] font-bold px-1.5 py-0.2 rounded font-mono",
-                    isActive ? "bg-cyan-500/30 text-[#00E5FF] border border-cyan-400/40" : "bg-emerald-500/15 text-[#00F5A0] border border-emerald-500/30"
-                  )}>
-                    AI
-                  </span>
-                </>
-              )}
-            </NavLink>
-          </div>
+      {/* Mobile Slide-Over Drawer */}
+      <div
+        className={clsx(
+          "fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-[#090d16] text-slate-300 flex flex-col border-r border-white/[0.08] shadow-2xl transition-transform duration-200 md:hidden select-none",
+          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+      >
+        {renderSidebar(true)}
+      </div>
 
-          {/* Sidebar Nav Category Header / Collapse Toggle */}
-          <div className="pt-2 pb-1 flex items-center justify-between text-[10px] text-slate-400 px-1 border-t border-white/[0.06]">
-            <span className="font-semibold uppercase tracking-wider text-[9px] text-slate-400">Navigation</span>
-            <button
-              type="button"
-              onClick={() => toggleAll(!allCollapsed)}
-              className="flex items-center gap-1 hover:text-slate-200 transition-colors text-[10px] font-medium cursor-pointer"
-              title={allCollapsed ? "Expand all categories" : "Collapse all categories"}
-            >
-              <ChevronsUpDown size={11} className="text-slate-400" />
-              <span>{allCollapsed ? 'Expand All' : 'Collapse All'}</span>
-            </button>
-          </div>
-
-          {/* Collapsible Accordion Sections */}
-          <div className="space-y-2">
-            {navSections.map((section) => {
-              const isCollapsed = !!collapsedSections[section.title];
-              const hasActiveChild = section.items.some(item => {
-                if (item.to === '/') return location.pathname === '/';
-                return location.pathname.startsWith(item.to);
-              });
-
-              return (
-                <div key={section.title} className="space-y-0.5">
-                  <button
-                    type="button"
-                    onClick={() => toggleSection(section.title)}
-                    className="w-full px-2.5 py-1 rounded-md hover:bg-white/[0.04] text-[9.5px] font-bold uppercase tracking-[0.14em] text-slate-400 flex items-center justify-between group cursor-pointer transition-colors"
-                  >
-                    <span className="group-hover:text-slate-200 transition-colors text-left truncate">{section.title}</span>
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      {hasActiveChild && isCollapsed && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_6px_#00E5FF]" />
-                      )}
-                      <span className="text-[9px] font-mono text-slate-400 font-normal">
-                        {section.items.length}
-                      </span>
-                      {isCollapsed ? (
-                        <ChevronRight size={12} className="text-slate-400 group-hover:text-slate-200 transition-transform" />
-                      ) : (
-                        <ChevronDown size={12} className="text-slate-400 group-hover:text-slate-200 transition-transform" />
-                      )}
-                    </div>
-                  </button>
-
-                    {!isCollapsed && (
-                    <div className="space-y-0.5 pl-0.5 animate-in fade-in-50 duration-100">
-                      {section.items.map((item) => (
-                        <NavLink
-                          key={item.to}
-                          to={item.to}
-                          end={item.to === '/'}
-                          className={({ isActive }) =>
-                            clsx(
-                              'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer',
-                              isActive
-                                ? 'bg-cyan-500/10 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs'
-                                : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
-                            )
-                          }
-                        >
-                          {({ isActive }) => (
-                            <>
-                              <div className="flex items-center gap-2.5 min-w-0">
-                                <item.icon
-                                  size={14}
-                                  strokeWidth={1.8}
-                                  className={clsx(
-                                    'shrink-0 transition-colors',
-                                    isActive ? 'text-[#00E5FF]' : 'text-slate-400'
-                                  )}
-                                />
-                                <span className={clsx("truncate", isActive && "text-white font-semibold")}>{item.label}</span>
-                              </div>
-                              {item.badge && (
-                                <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-slate-800 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
-                                  {item.badge}
-                                </span>
-                              )}
-                            </>
-                          )}
-                        </NavLink>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </nav>
-
-        {/* Sidebar Footer */}
-        <div className="px-4 py-3 border-t border-white/[0.06] flex items-center justify-between text-[10px] text-slate-400">
-          <button
-            type="button"
-            onClick={() => setSignatureModalOpen(true)}
-            className="flex items-center gap-1.5 hover:text-cyan-300 transition-colors cursor-pointer group text-left"
-            title="View Executive Provenance & Author Briefing"
-          >
-            <ShieldCheck size={13} className="text-cyan-400 group-hover:scale-110 transition-transform" />
-            <span className="text-slate-300 font-medium tracking-wide group-hover:text-white">Energy Innovation Terminal</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setSignatureModalOpen(true)}
-            className="font-mono text-slate-400 text-[9.5px] hover:text-cyan-300 transition-colors cursor-pointer px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.08]"
-            title="Version 3.5.0 - Click for Author Dossier"
-          >
-            v3.5
-          </button>
-        </div>
+      {/* Desktop Executive Sidebar */}
+      <aside className="hidden md:flex md:w-64 bg-[#090d16] text-slate-300 flex-col border-r border-white/[0.08] z-20 shrink-0 select-none">
+        {renderSidebar(false)}
       </aside>
 
       {/* Main Content Area */}
@@ -335,45 +381,64 @@ export default function Layout() {
       )}>
         {/* Top Header Bar */}
         <header className={clsx(
-          "h-13 px-6 flex items-center justify-between shrink-0 z-10 transition-colors duration-150 border-b",
+          "h-13 px-3 sm:px-6 flex items-center justify-between shrink-0 z-10 transition-colors duration-150 border-b gap-2",
           isDark
             ? "bg-[#0b101c] border-white/[0.08] text-slate-100"
             : "bg-white border-slate-200 text-slate-900 shadow-2xs"
         )}>
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="flex items-center gap-2.5 text-xs font-medium flex-wrap">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            {/* Mobile Hamburger Toggle */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className={clsx(
+                "p-1.5 -ml-1 rounded-lg md:hidden cursor-pointer transition-colors",
+                isDark ? "text-slate-300 hover:text-white hover:bg-white/10" : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+              )}
+              aria-label="Open navigation menu"
+            >
+              <Menu size={20} />
+            </button>
+
+            {/* Mobile Logo Icon */}
+            <div className="md:hidden flex items-center shrink-0">
+              <EnergyInnovationTerminalLogo size="sm" showText={false} />
+            </div>
+
+            <div className="flex items-center gap-2.5 text-xs font-medium min-w-0">
               <span className={clsx(
-                "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-semibold text-[11px] font-mono",
+                "inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-md font-semibold text-[10.5px] sm:text-[11px] font-mono shrink-0",
                 isDark
                   ? "bg-emerald-500/10 text-[#00F5A0] border border-emerald-500/30 shadow-[0_0_8px_rgba(0,245,160,0.15)]"
                   : "bg-emerald-50 text-emerald-800 border border-emerald-200"
               )}>
-                <span className="w-2 h-2 rounded-full bg-[#00F5A0] shadow-[0_0_8px_#00F5A0] animate-pulse" />
-                <span>56,413 Awards · $104.16B Tracked · 10,250 Grid Projects</span>
+                <span className="w-2 h-2 rounded-full bg-[#00F5A0] shadow-[0_0_8px_#00F5A0] animate-pulse shrink-0" />
+                <span className="hidden sm:inline">56,413 Awards · $104.16B Tracked · 10,250 Grid Projects</span>
+                <span className="sm:hidden">56k+ Awards · $104B+</span>
               </span>
-              <span className={clsx(isDark ? "text-white/20" : "text-slate-300", "hidden md:inline")}>|</span>
-              <span className={clsx(isDark ? "text-slate-400" : "text-slate-600", "hidden md:inline text-[11.5px] font-medium")}>
+              <span className={clsx(isDark ? "text-white/20" : "text-slate-300", "hidden xl:inline")}>|</span>
+              <span className={clsx(isDark ? "text-slate-400" : "text-slate-600", "hidden xl:inline text-[11.5px] font-medium truncate")}>
                 DOE · ARPA-E · CEC · MassCEC · NSF · State Agencies · 140+ Utilities
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             <ThemeToggle />
             <button
               type="button"
               onClick={() => setCommandPaletteOpen(true)}
               className={clsx(
-                "inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all border shadow-2xs cursor-pointer",
+                "inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all border shadow-2xs cursor-pointer",
                 isDark
                   ? "bg-slate-800/70 hover:bg-slate-800 text-slate-200 border-white/10 hover:border-slate-600"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-200 hover:border-slate-300"
               )}
             >
               <Search size={13} className={isDark ? "text-slate-400" : "text-slate-600"} />
-              <span>Search Database</span>
+              <span className="hidden sm:inline">Search Database</span>
               <kbd className={clsx(
-                "text-[10px] font-mono font-semibold px-1.5 py-0.2 rounded border",
+                "text-[9px] sm:text-[10px] font-mono font-semibold px-1 sm:px-1.5 py-0.2 rounded border",
                 isDark ? "bg-slate-900 text-slate-300 border-slate-700" : "bg-white text-slate-700 border-slate-200"
               )}>⌘K</kbd>
             </button>
@@ -389,7 +454,7 @@ export default function Layout() {
         <LegalComplianceModal isOpen={legalModalOpen} onClose={() => setLegalModalOpen(false)} />
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto px-6 py-6 min-w-0">
+        <main className="flex-1 overflow-auto px-3 sm:px-6 py-4 sm:py-6 min-w-0">
           <Outlet />
         </main>
 

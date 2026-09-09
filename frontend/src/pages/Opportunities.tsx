@@ -16,6 +16,7 @@ import { RealTimeAlertsModal } from '../components/RealTimeAlertsModal';
 import { IngestionHubModal } from '../components/IngestionHubModal';
 import { FoaShredderModal } from '../components/FoaShredderModal';
 import { useNyserda } from '../context/NyserdaContext';
+import { useSEO } from '../utils/seo';
 
 function formatCurrency(val: number | null | undefined): string {
   if (!val) return 'Varies';
@@ -33,6 +34,13 @@ function formatDate(dateStr: string | null | undefined): string {
 }
 
 export default function Opportunities() {
+  useSEO({
+    title: '5,700+ Clean Energy Solicitations & Grants Database 2026',
+    description: 'Search and filter active and historical clean energy grant solicitations, RFPs, PONs, and FOAs across US DOE, CEC, ARPA-E, MassCEC, and 140+ electric utilities.',
+    canonicalUrl: 'https://terminal.aixenergy.io/opportunities',
+    keywords: ['clean energy solicitations', 'DOE funding opportunities', 'cleantech RFPs', 'energy grants 2026', 'utility innovation solicitations', 'ARPA-E grants'],
+  });
+
   const { includeNyserda, isNyserda } = useNyserda();
   const [search, setSearch] = useState('');
   const [showAlertsRadar, setShowAlertsRadar] = useState(false);

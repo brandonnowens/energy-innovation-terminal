@@ -1857,6 +1857,49 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
+    "organization_id": 179,
+    "organization_code": "MassCEC",
+    "organization_name": "MassCEC",
+    "full_name": "MassCEC",
+    "aliases": [],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "MA",
+    "jurisdiction": "MA State Jurisdiction",
+    "total_pipeline_funding": 47500000.0,
+    "upcoming_opportunities_count": 2,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "California Senate Bill 100 & EPIC 2024-2027 Triennial Investment Plan",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 2,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 2,
+      "historical_years": [
+        2024,
+        2025
+      ]
+    },
+    "org_type": "funder",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
     "organization_id": 71,
     "organization_code": "Duke Energy Florida",
     "organization_name": "Duke Energy Florida",
@@ -2129,7 +2172,7 @@
       "Competitive Grant",
       "Energy Storage & Manufacturing"
     ],
-    "historical_opportunity_count": 11,
+    "historical_opportunity_count": 10,
     "cadence_regularity_score": 85,
     "cadence_stats": {
       "mean_interval_months": 12.0,
@@ -2142,7 +2185,7 @@
         "Q3": 1,
         "Q4": 2
       },
-      "sample_size": 9,
+      "sample_size": 8,
       "historical_years": [
         2025,
         2026
@@ -2447,6 +2490,48 @@
       ]
     },
     "org_type": "economic_development",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
+    "organization_id": 178,
+    "organization_code": "CEC",
+    "organization_name": "CEC",
+    "full_name": "CEC",
+    "aliases": [],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "CA",
+    "jurisdiction": "CA State Jurisdiction",
+    "total_pipeline_funding": 40000000.0,
+    "upcoming_opportunities_count": 1,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "California Senate Bill 100 & EPIC 2024-2027 Triennial Investment Plan",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 4,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 4,
+      "historical_years": [
+        2026
+      ]
+    },
+    "org_type": "funder",
     "is_probabilistic_forecast": true,
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
@@ -4225,6 +4310,49 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
+    "organization_id": 183,
+    "organization_code": "WA Commerce",
+    "organization_name": "WA Commerce",
+    "full_name": "WA Commerce",
+    "aliases": [],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "WA",
+    "jurisdiction": "WA State Jurisdiction",
+    "total_pipeline_funding": 24000000.0,
+    "upcoming_opportunities_count": 1,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 1,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 1,
+      "historical_years": [
+        2024,
+        2025
+      ]
+    },
+    "org_type": "funder",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
     "organization_id": 76,
     "organization_code": "PPL Electric Utilities",
     "organization_name": "PPL Electric Utilities",
@@ -4347,6 +4475,49 @@
       ]
     },
     "org_type": "utility",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
+    "organization_id": 180,
+    "organization_code": "TX SECO",
+    "organization_name": "TX SECO",
+    "full_name": "TX SECO",
+    "aliases": [],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "TX",
+    "jurisdiction": "TX State Jurisdiction",
+    "total_pipeline_funding": 22000000.0,
+    "upcoming_opportunities_count": 1,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 1,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 1,
+      "historical_years": [
+        2024,
+        2025
+      ]
+    },
+    "org_type": "funder",
     "is_probabilistic_forecast": true,
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
@@ -5092,6 +5263,49 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
+    "organization_id": 181,
+    "organization_code": "Colorado CEO",
+    "organization_name": "Colorado CEO",
+    "full_name": "Colorado CEO",
+    "aliases": [],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "CO",
+    "jurisdiction": "CO State Jurisdiction",
+    "total_pipeline_funding": 20000000.0,
+    "upcoming_opportunities_count": 1,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 1,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 1,
+      "historical_years": [
+        2024,
+        2025
+      ]
+    },
+    "org_type": "funder",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
     "organization_id": 66,
     "organization_code": "Austin Energy",
     "organization_name": "Austin Energy",
@@ -5386,6 +5600,49 @@
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },
   {
+    "organization_id": 184,
+    "organization_code": "Pennsylvania DEP",
+    "organization_name": "Pennsylvania DEP",
+    "full_name": "Pennsylvania DEP",
+    "aliases": [],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "PA",
+    "jurisdiction": "PA State Jurisdiction",
+    "total_pipeline_funding": 18000000.0,
+    "upcoming_opportunities_count": 1,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 1,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 1,
+      "historical_years": [
+        2024,
+        2025
+      ]
+    },
+    "org_type": "funder",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
     "organization_id": 137,
     "organization_code": "Delmarva Power",
     "organization_name": "Delmarva Power (Delaware)",
@@ -5424,6 +5681,49 @@
       ]
     },
     "org_type": "utility",
+    "is_probabilistic_forecast": true,
+    "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
+  },
+  {
+    "organization_id": 182,
+    "organization_code": "IL DCEO",
+    "organization_name": "IL DCEO",
+    "full_name": "IL DCEO",
+    "aliases": [],
+    "category": "state",
+    "category_label": "State Energy Agencies",
+    "state": "IL",
+    "jurisdiction": "IL State Jurisdiction",
+    "total_pipeline_funding": 16000000.0,
+    "upcoming_opportunities_count": 1,
+    "next_release_horizon": "Q4 2026 (November 2026)",
+    "min_days_until_release": 71,
+    "primary_mandate": "Advance clean energy innovation and statutory goals under state frameworks.",
+    "technologies_funded": [
+      "Clean Energy Innovation",
+      "Energy Efficiency",
+      "Grid Modernization"
+    ],
+    "historical_opportunity_count": 1,
+    "cadence_regularity_score": 88,
+    "cadence_stats": {
+      "mean_interval_months": 12.0,
+      "std_dev_months": 1.5,
+      "regularity_score": 88,
+      "peak_quarter": "Q4",
+      "quarter_distribution": {
+        "Q1": 1,
+        "Q2": 1,
+        "Q3": 1,
+        "Q4": 1
+      },
+      "sample_size": 1,
+      "historical_years": [
+        2024,
+        2025
+      ]
+    },
+    "org_type": "funder",
     "is_probabilistic_forecast": true,
     "disclaimer": "Probabilistic Forecast Notice: Opportunity release projections, timing horizons, and funding envelopes are probabilistic statistical estimates and heuristic models derived strictly from publicly available historical solicitations, awards, and statutory filings. They do NOT constitute guarantees, commitments, or official announcements by funding entities. These forecasts represent analytical estimations based exclusively on available public information and do not include any non-public or confidential intelligence."
   },

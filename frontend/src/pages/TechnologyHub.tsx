@@ -81,7 +81,7 @@ export default function TechnologyHub() {
       updatePageMeta({
         title: `${tech.name} Clean Energy Grants, Funding & Solicitations 2026`,
         description: `Explore active federal and state public funding opportunities, DOE grant awards, and leading clean tech startups in ${tech.name}. ${tech.headline || ''}`,
-        canonicalUrl: `https://energyinnovation.terminal/technologies/${slug}`,
+        canonicalUrl: `https://terminal.aixenergy.io/technologies/${slug}`,
         keywords: [tech.name, tech.sector || 'Clean Tech', 'Government Grants', 'DOE Funding', 'Clean Energy RFPs', 'Public Funding 2026'],
       });
     }

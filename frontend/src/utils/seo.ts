@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 /**
  * Client-Side SEO and Dynamic Meta Tag Management Utility
  */
@@ -86,4 +88,10 @@ export function updatePageMeta({
     }
     script.textContent = JSON.stringify(jsonLd);
   }
+}
+
+export function useSEO(config: MetaTagsConfig, deps: any[] = []) {
+  useEffect(() => {
+    updatePageMeta(config);
+  }, deps);
 }
