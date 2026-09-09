@@ -5,7 +5,7 @@ import { api } from '../api/client';
 import {
   Building2, Search, Globe, MapPin, ExternalLink, FileSearch,
   Trophy, Layers, ChevronRight, X, Loader2, Calendar, DollarSign,
-  Zap, Landmark, Sparkles, Filter, CheckCircle2
+  Zap, Landmark, HeartHandshake, Filter, CheckCircle2
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
@@ -117,7 +117,7 @@ export default function Organizations() {
           { id: 'state', label: 'State Energy Agencies', icon: Building2 },
           { id: 'economic_development', label: 'Economic Development', icon: Building2 },
           { id: 'funder', label: 'Climate VC & Funders', icon: DollarSign },
-          { id: 'foundation', label: 'Philanthropic Foundations', icon: Sparkles },
+          { id: 'foundation', label: 'Philanthropic Foundations', icon: HeartHandshake },
         ].map(tab => {
           const Icon = tab.icon;
           const isSelected = categoryFilter === tab.id;

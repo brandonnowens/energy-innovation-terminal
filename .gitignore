@@ -40,6 +40,9 @@ backend/data/*.db
 backend/data/archive_sqlite/*.db
 backend/data/*.sql
 backend/pgsql/
+backend/data/cache/
+backend/data/reports_cache/
+data/
 scraper_out.txt
 *.html
 !frontend/index.html
@@ -49,6 +52,9 @@ scratch/
 scratch.py
 test_scraper.py
 backend/scratch*.py
+scratch_*.txt
+deep_scan_results.txt
+backend/benchmark_foa_pdf.py
 
 # Operating System & IDEs
 .DS_Store

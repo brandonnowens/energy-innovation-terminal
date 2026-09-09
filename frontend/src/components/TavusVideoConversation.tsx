@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Video, Maximize2, Minimize2, PhoneOff,
-  Sparkles, ShieldCheck, RefreshCw, ChevronDown, Check,
+  ShieldCheck, RefreshCw, ChevronDown, Check,
   MessageSquare, Volume2, Play, Clock,
   FileText, ArrowRight, AlertCircle, User, Building2,
   Trophy, BookUser, BookOpen, ExternalLink, Search,
-  TrendingUp, BarChart3, Mic, MicOff, Zap, CheckCircle2, Layers
+  TrendingUp, BarChart3, Mic, MicOff, Zap, CheckCircle2, Layers,
+  Database, Activity, Compass
 } from 'lucide-react';
 import DailyIframe, { DailyCall } from '@daily-co/daily-js';
 import {
@@ -521,15 +522,15 @@ export default function TavusVideoConversation({
                 </p>
               </div>
 
-              {/* Active Perspectives & Brain */}
+              {/* Active Perspectives & Reference Database */}
               <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-slate-200">
                   <currentRoleConfig.icon size={13} className="text-cyan-400" />
-                  <span>Adopting: <strong className="text-white">{currentRoleConfig.badge}</strong></span>
+                  <span>Perspective: <strong className="text-white">{currentRoleConfig.badge}</strong></span>
                 </div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-slate-200">
-                  <Sparkles size={13} className="text-emerald-400" />
-                  <span>Knowledge Brain: <strong className="text-white">US Energy Innovation Database by Brandon N. Owens (56,413 Awards · $104.16B)</strong></span>
+                  <Database size={13} className="text-emerald-400" />
+                  <span>Reference Database: <strong className="text-white">US Energy Innovation Database (56,413 Awards · $104.16B)</strong></span>
                 </div>
               </div>
 
@@ -563,12 +564,12 @@ export default function TavusVideoConversation({
               <div className="flex items-center justify-center gap-4 text-[11px] text-slate-500 pt-2">
                 <span className="flex items-center gap-1">
                   <ShieldCheck size={12} className="text-emerald-400" />
-                  <span>Enterprise WebRTC Encrypted</span>
+                  <span>Encrypted WebRTC Stream</span>
                 </span>
                 <span>·</span>
                 <span className="flex items-center gap-1">
-                  <Sparkles size={12} className="text-cyan-400" />
-                  <span>Sub-second Neural Streaming</span>
+                  <Activity size={12} className="text-cyan-400" />
+                  <span>Real-Time Low Latency Protocol</span>
                 </span>
               </div>
             </div>
@@ -636,7 +637,7 @@ export default function TavusVideoConversation({
               <div className="p-3 border-b border-slate-800 space-y-2.5 shrink-0 bg-slate-950/50">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-slate-200">
-                    <Sparkles size={13} className="text-cyan-400" />
+                    <Activity size={13} className="text-cyan-400" />
                     <span>Real-Time Intelligence</span>
                   </div>
                   <div className="flex items-center gap-1">
@@ -756,11 +757,11 @@ export default function TavusVideoConversation({
                         <div className="p-3 rounded-xl bg-gradient-to-br from-slate-800/90 via-slate-800/60 to-cyan-950/30 border border-slate-700/80 shadow-xs space-y-2">
                           <div className="flex items-center justify-between">
                             <span className="text-[9.5px] font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
-                              <Sparkles size={11} className="text-cyan-400" />
+                              <Compass size={11} className="text-cyan-400" />
                               <span>Discussion Gist &amp; Focus:</span>
                             </span>
                             <span className="text-[9px] font-mono text-slate-400 bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-700/50">
-                              30s AI Sync
+                              30s Cadence Sync
                             </span>
                           </div>
 
@@ -967,7 +968,7 @@ export default function TavusVideoConversation({
                   className="w-full inline-flex items-center justify-center gap-1.5 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-medium transition-colors cursor-pointer"
                 >
                   <FileText size={13} className="text-cyan-400" />
-                  <span>Generate Full Monograph in Chat</span>
+                  <span>Open Full Monograph in Advisory Chat</span>
                   <ArrowRight size={12} className="text-slate-400" />
                 </button>
               </div>
@@ -994,8 +995,8 @@ export default function TavusVideoConversation({
               {executiveGist && (
                 <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-left space-y-2 text-xs">
                   <span className="font-semibold text-slate-300 text-[10.5px] uppercase tracking-wider flex items-center gap-1.5">
-                    <Sparkles size={13} className="text-cyan-400" />
-                    <span>Executive Session Gist:</span>
+                    <FileText size={13} className="text-cyan-400" />
+                    <span>Executive Session Summary:</span>
                   </span>
                   <p className="text-slate-200 leading-relaxed text-[11.5px]">
                     {executiveGist}

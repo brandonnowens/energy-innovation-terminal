@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { 
   X, Zap, ShieldAlert, CheckCircle2, FileText, 
-  Award, AlertTriangle, Scale, Clock, Copy, Check, Download, Layers
+  Award, AlertTriangle, Scale, Clock, Copy, Check, Download, Layers, Printer, Loader2
 } from 'lucide-react';
 
 interface FoaShredderModalProps {
@@ -14,6 +14,7 @@ interface FoaShredderModalProps {
 export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityId, isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState<'rubric' | 'compliance' | 'checklist' | 'strategy'>('rubric');
   const [copied, setCopied] = useState(false);
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
 
   const { data: shred, isLoading } = useQuery({
     queryKey: ['foa-shred', opportunityId],
@@ -26,6 +27,30 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
   });
 
   if (!isOpen) return null;
+
+  const handleExportPdf = async () => {
+    if (!opportunityId) return;
+    try {
+      setIsExportingPdf(true);
+      const res = await fetch(`/api/foa-shredder/${opportunityId}/export-pdf`);
+      if (!res.ok) throw new Error('Failed to generate FOA blueprint PDF');
+      const blob = await res.blob();
+      const safeSol = shred?.solicitation_number ? shred.solicitation_number.replace(/[^a-zA-Z0-9]/g, '_') : `Opp_${opportunityId}`;
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `FOA_${safeSol}_Blueprint.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error('FOA PDF Export Error:', err);
+      window.open(`/api/foa-shredder/${opportunityId}/export-pdf`, '_blank');
+    } finally {
+      setIsExportingPdf(false);
+    }
+  };
 
   const handleCopy = () => {
     if (!shred) return;
@@ -48,7 +73,7 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                  AI FOA Shredder Blueprint
+                  FOA Requirements &amp; Scoring Blueprint
                 </span>
                 <span className="text-xs font-mono dark:text-slate-400 text-slate-500">
                   {shred?.solicitation_number || `Opp #${opportunityId}`}
@@ -61,6 +86,14 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
           </div>
           <div className="flex items-center gap-2">
             <button
+              onClick={() => window.print()}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-amber-600 hover:bg-amber-500 text-white transition cursor-pointer shadow-xs"
+              title="Print / Save Blueprint PDF"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>Export Blueprint (PDF)</span>
+            </button>
+            <button
               onClick={handleCopy}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg dark:bg-white/5 bg-slate-100 hover:dark:bg-white/10 hover:bg-slate-200 dark:text-slate-300 text-slate-700 transition"
               title="Copy Summary"
@@ -70,7 +103,7 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
             </button>
             <button 
               onClick={onClose}
-              className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-white/10 text-slate-400 hover:text-slate-600 dark:hover:text-white transition"
+              className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-white/10 text-slate-400 hover:text-slate-600 dark:hover:text-white transition cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -109,7 +142,7 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-16 space-y-3">
               <Zap className="w-8 h-8 animate-spin text-amber-500" />
-              <p className="text-sm dark:text-slate-400 text-slate-600">AI Engine is parsing FOA text, scoring weights, and compliance rules...</p>
+              <p className="text-sm dark:text-slate-400 text-slate-600">Parsing solicitation text, scoring weights, and compliance rules...</p>
             </div>
           ) : shred ? (
             <>
@@ -262,7 +295,7 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
 
         {/* Footer */}
         <div className="p-4 border-t dark:border-white/10 border-slate-200 dark:bg-[#070d1e] bg-slate-50 flex items-center justify-between text-xs text-slate-500">
-          <span>Engine: {shred?.shredded_by || 'AI FOA Synthesizer'}</span>
+          <span>Parser: Solicitation Compliance &amp; Rubric Engine</span>
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition"

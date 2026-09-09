@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useNyserda } from '../context/NyserdaContext';
 import {
-  Compass, Zap, Building2, Download, Sparkles, Layers,
+  Compass, Zap, Building2, Download, Layers,
   TrendingUp, Award, Users, ShieldCheck, FileText, ArrowRight,
   CheckCircle2, AlertTriangle, FileDown, Loader2, ArrowUpRight,
   Bookmark, BarChart3, Cpu, Check, Info, Calendar, DollarSign,
   Clock, Target, RefreshCw, ChevronRight, Sliders, ChevronDown,
-  ExternalLink, HelpCircle
+  ExternalLink, HelpCircle, FileCheck
 } from 'lucide-react';
 import { OrgLogo } from '../components/OrgLogo';
 import { EditableComboBox, ComboBoxOption } from '../components/EditableComboBox';
@@ -866,7 +866,7 @@ export default function Strategy() {
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <label className="block text-xs font-semibold text-slate-700">
-                    Program Philosophy &amp; Strategic Thesis (Interpreted by LLM):
+                    Program Philosophy &amp; Strategic Thesis:
                   </label>
                   <span className="text-[11px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
                     Auto-Grounded to Selection
@@ -877,7 +877,7 @@ export default function Strategy() {
                   value={funderProgramPhilosophy}
                   onChange={e => setFunderProgramPhilosophy(e.target.value)}
                   className="w-full text-xs p-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800 bg-slate-50/50"
-                  placeholder="Strategic thesis interpreted by the LLM to design the stage-gated RFP architecture, scoring criteria, and Go/No-Go milestones..."
+                  placeholder="Strategic thesis to design the stage-gated RFP architecture, scoring criteria, and Go/No-Go milestones..."
                 />
               </div>
 
@@ -984,11 +984,11 @@ export default function Strategy() {
                   {isExecuting ? (
                     <>
                       <Loader2 size={18} className="animate-spin text-white" />
-                      <span>Synthesizing Strategy via OpenAI GPT-4o...</span>
+                      <span>Analyzing Portfolio Strategy &amp; Allocation...</span>
                     </>
                   ) : (
                     <>
-                      <Sparkles size={18} className="text-amber-300" />
+                      <Compass size={18} className="text-amber-300" />
                       <span>Generate {activeOrgObj?.shortName || funderOrgName} Program Architecture</span>
                       <ArrowRight size={16} />
                     </>
@@ -1171,11 +1171,11 @@ export default function Strategy() {
                 {isExecuting ? (
                   <>
                     <Loader2 size={18} className="animate-spin text-white" />
-                    <span>Synthesizing Strategy via OpenAI GPT-4o...</span>
+                    <span>Analyzing Portfolio Strategy &amp; Roadmap...</span>
                   </>
                 ) : (
                   <>
-                    <Sparkles size={18} className="text-amber-300" />
+                    <Compass size={18} className="text-amber-300" />
                     <span>Run Strategy Analysis</span>
                     <ArrowRight size={16} />
                   </>
@@ -1196,10 +1196,10 @@ export default function Strategy() {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                  OpenAI GPT-4o Grounded Synthesis Complete
+                  Strategic Analysis Complete
                 </span>
                 <span className="text-xs text-slate-400">|</span>
-                <span className="text-xs text-slate-300">{strategyResults.llm_engine}</span>
+                <span className="text-xs text-slate-300">Verified Database Evidence</span>
               </div>
               <h2 className="text-lg font-bold tracking-tight">
                 {strategyResults.title}
@@ -1226,7 +1226,7 @@ export default function Strategy() {
                   onClick={handlePushToProposalCopilot}
                   className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs"
                 >
-                  <span>Send to Proposal Copilot</span>
+                  <span>Send to Application Studio</span>
                   <ArrowUpRight size={14} />
                 </button>
               )}
@@ -1304,11 +1304,11 @@ export default function Strategy() {
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                    <Sparkles size={16} className="text-indigo-600" />
+                    <Target size={16} className="text-indigo-600" />
                     <span>Executive Strategic Thesis &amp; Positioning Narrative</span>
                   </h3>
                   <span className="text-[11px] text-slate-500 font-medium">
-                    Synthesized from 54,000+ Database Records
+                    Derived from 54,000+ Database Records
                   </span>
                 </div>
                 <div className="prose prose-sm max-w-none text-slate-700 text-xs leading-relaxed space-y-2 whitespace-pre-line">

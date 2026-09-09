@@ -4,7 +4,7 @@ import {
   FileText, Search, Download, Layers, MapPin, Share2, Activity,
   Zap, Scale, TrendingUp, Globe, Loader2, Play,
   CheckCheck, X, Flame, Sun, BatteryCharging, Cpu, Home,
-  Compass, Eye, EyeOff, Building, Target, Users, Key, Sparkles, ShieldCheck,
+  Compass, Eye, EyeOff, Building, Target, Users, Key, ShieldCheck,
   RotateCw, RefreshCw, Database, Check, AlertCircle, Info, ExternalLink, Settings
 } from 'lucide-react';
 import { saveAs } from 'file-saver';
@@ -103,11 +103,11 @@ const DEFAULT_PRESETS: ReportPreset[] = [
   },
   {
     "id": "federal_state_synergy",
-    "title": "Federal vs. State Energy Agency Synergies & Co-Funding Matrix",
+    "title": "Federal vs. State Energy Agency Joint Partnerships & Co-Funding Matrix",
     "subtitle": "Intergovernmental policy analysis quantifying the catalytic multiplier effect of state seed funding in winning federal awards.",
     "category": "Macro & Policy Strategy",
     "target_audience": "State Energy Leadership, DOE OCED Directors, Policy Advisors",
-    "badge": "Synergy Matrix",
+    "badge": "Partnership Matrix",
     "icon": "Scale",
     "pages": 21,
     "capital_tracked": "3.8x Multiplier",
@@ -651,8 +651,8 @@ export default function Reports() {
                 Executive Publication Series
               </span>
               <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
-                <Sparkles size={12} className="text-emerald-300 animate-pulse" />
-                <span>OpenAI Synthesis Engine Active (GPT-4o)</span>
+                <ShieldCheck size={12} className="text-emerald-300" />
+                <span>Curated &amp; Verified Precedents</span>
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
@@ -668,17 +668,17 @@ export default function Reports() {
           <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-3 shrink-0">
             <div className="px-4 py-2.5 rounded-xl bg-slate-800/90 border border-emerald-500/30 text-slate-200 flex items-center gap-3 shadow-sm">
               <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-300">
-                <Sparkles size={16} className="animate-pulse" />
+                <FileText size={16} />
               </div>
               <div className="text-left">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-extrabold tracking-tight text-white">
-                    OpenAI Synthesis Engine
+                    Research Publication Hub
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 </div>
                 <span className="text-[10px] text-slate-400 font-normal block mt-0.5">
-                  Automated GPT-4o Intelligence Active
+                  54,305 Verified Records Indexed
                 </span>
               </div>
             </div>
@@ -688,7 +688,7 @@ export default function Reports() {
               onClick={handleClearCache}
               disabled={isClearingCache}
               className="px-3.5 py-3 rounded-xl text-xs font-bold bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-              title="Clear all cached report narratives to force live re-synthesis"
+              title="Clear all cached report narratives and refresh"
             >
               <RefreshCw size={14} className={isClearingCache ? 'animate-spin text-cyan-400' : 'text-slate-400'} />
               <span>{isClearingCache ? 'Clearing...' : 'Clear Cache'}</span>
@@ -861,10 +861,10 @@ export default function Reports() {
                   onClick={() => handlePreviewReport(previewPreset, true)}
                   disabled={isPreviewLoading}
                   className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-indigo-700 bg-white hover:bg-indigo-50 border border-indigo-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
-                  title="Re-author this report live using OpenAI"
+                  title="Re-run analysis for this report"
                 >
                   <RotateCw size={13} className={isPreviewLoading ? 'animate-spin text-indigo-600' : 'text-indigo-600'} />
-                  <span>{isPreviewLoading ? 'Synthesizing...' : 'Live Re-Author / Regenerate'}</span>
+                  <span>{isPreviewLoading ? 'Analyzing...' : 'Refresh Analysis'}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -896,15 +896,15 @@ export default function Reports() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
                 <div className="flex items-center gap-2.5 text-xs text-slate-700">
                   <div className="p-2 rounded-lg bg-emerald-100 text-emerald-700">
-                    <Sparkles size={16} />
+                    <FileText size={16} />
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5 font-bold text-emerald-950">
-                      <span>Authoring Engine: Live OpenAI ({selectedModel})</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>Grounded Analysis Engine</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     </div>
                     <span className="text-[11px] text-slate-500 font-normal block mt-0.5">
-                      Synthesizes tailored McKinsey-standard executive briefs using verified database context.
+                      Generates structured executive briefs grounded in verified historical award and patent data.
                     </span>
                   </div>
                 </div>
@@ -916,7 +916,7 @@ export default function Reports() {
                     className="px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50 shadow-xs"
                   >
                     <RotateCw size={12} className={isPreviewLoading ? 'animate-spin' : ''} />
-                    <span>{isPreviewLoading ? 'Synthesizing...' : 'Regenerate Narrative'}</span>
+                    <span>{isPreviewLoading ? 'Analyzing...' : 'Refresh Narrative'}</span>
                   </button>
                 </div>
               </div>
@@ -925,7 +925,7 @@ export default function Reports() {
                 <div className="py-16 flex flex-col items-center justify-center gap-3 text-slate-400">
                   <Loader2 size={36} className="animate-spin text-indigo-600" />
                   <span className="text-xs font-semibold text-slate-700">
-                    Authoring live McKinsey synthesis with OpenAI ({selectedModel})...
+                    Generating executive analysis from database records...
                   </span>
                 </div>
               ) : previewData?.narrative ? (
@@ -947,11 +947,11 @@ export default function Reports() {
                     <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
                       <div className="flex items-center justify-between">
                         <h4 className="text-xs font-bold text-slate-900 font-serif uppercase tracking-wider flex items-center gap-1.5">
-                          <Sparkles size={14} className="text-indigo-600" />
-                          <span>Executive Summary // Strategic Synthesis &amp; Market Dynamics</span>
+                          <FileText size={14} className="text-indigo-600" />
+                          <span>Executive Summary // Strategic Analysis &amp; Market Dynamics</span>
                         </h4>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">
-                          Executive Synthesis
+                          Executive Analysis
                         </span>
                       </div>
                       <div 
@@ -1083,10 +1083,10 @@ export default function Reports() {
                   onClick={() => handlePreviewReport(previewPreset, true)}
                   disabled={isPreviewLoading}
                   className="px-4 py-2 text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
-                  title="Re-run OpenAI synthesis to author fresh narrative"
+                  title="Re-run analysis to generate fresh narrative"
                 >
                   <RotateCw size={13} className={isPreviewLoading ? 'animate-spin text-indigo-600' : 'text-indigo-600'} />
-                  <span>Regenerate Narrative</span>
+                  <span>Refresh Narrative</span>
                 </button>
                 <button
                   onClick={() => handleDownloadReportPdf(previewPreset)}

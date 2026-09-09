@@ -5,9 +5,10 @@ import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell
 } from 'recharts';
 import {
-  TrendingUp, Sparkles, Activity, Layers, Zap, Building2, Calendar, RefreshCw,
+  TrendingUp, Activity, Layers, Zap, Building2, Calendar, RefreshCw,
   Image as ImageIcon, FileText, CheckCircle2, ChevronRight, BarChart3, PieChart,
-  ShieldCheck, ArrowUpRight, Trophy, FileSearch, HelpCircle, X, Download, Sliders, Globe
+  ShieldCheck, ArrowUpRight, Trophy, FileSearch, HelpCircle, X, Download, Sliders, Globe,
+  Target
 } from 'lucide-react';
 import { saveAs } from 'file-saver';
 import clsx from 'clsx';
@@ -103,8 +104,8 @@ const CockpitCard: React.FC<CockpitCardProps> = ({
             className="px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center gap-1.5 transition-colors cursor-pointer"
             title="Export high-res publication visual"
           >
-            <Sparkles size={12} className="text-amber-500" />
-            <span>Export Art</span>
+            <Download size={12} className="text-slate-500 dark:text-slate-400" />
+            <span>Export Graphic</span>
           </button>
         </div>
       </div>
@@ -335,7 +336,7 @@ export default function Trends() {
             onClick={() => setBriefingOpen(true)}
             className="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 text-white shadow-xs transition-all flex items-center gap-2 cursor-pointer"
           >
-            <Sparkles size={14} className="text-amber-400" />
+            <FileText size={14} className="text-indigo-400 dark:text-indigo-600" />
             <span>Executive Briefing</span>
             <ChevronRight size={13} className="text-slate-400 dark:text-slate-600" />
           </button>
@@ -1072,7 +1073,7 @@ export default function Trends() {
             <div className="p-4 sm:p-5 bg-gradient-to-r from-slate-950 via-[#0b1329] to-[#090e17] text-white flex items-center justify-between border-b border-white/10">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-amber-400/20 rounded-xl border border-amber-400/30">
-                  <Sparkles size={20} className="text-amber-300" />
+                  <TrendingUp size={20} className="text-amber-300" />
                 </div>
                 <div>
                   <h2 className="text-base font-bold tracking-tight">Macro Trend Executive Intelligence Dossier</h2>

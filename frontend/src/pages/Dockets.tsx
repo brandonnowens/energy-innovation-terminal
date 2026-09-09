@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import {
   Scale, FileText, Building2, Zap, Search, ExternalLink,
   ShieldCheck, AlertTriangle, TrendingUp, Clock, ChevronRight,
-  Filter, Sparkles, Layers, Activity, CheckCircle2, Calendar,
-  ArrowUpRight, X, Grid, List, Compass, Info, FileSpreadsheet
+  Filter, Layers, Activity, CheckCircle2, Calendar,
+  ArrowUpRight, X, Grid, List, Compass, Info, FileSpreadsheet, Target
 } from 'lucide-react';
 import { api, RegulatoryProceeding, ProceedingDossier, ProceedingMacroStats } from '../api/client';
 import clsx from 'clsx';
@@ -337,7 +337,7 @@ export default function Dockets() {
                     {/* Innovation Impact Highlight */}
                     <div className="mt-3.5 p-3 rounded-xl bg-cyan-50/50 border border-cyan-100 text-xs">
                       <span className="font-bold text-cyan-900 block text-[11px] uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                        <Sparkles size={12} className="text-cyan-600" />
+                        <ShieldCheck size={12} className="text-cyan-600" />
                         Why This Matters for Clean Tech Innovation:
                       </span>
                       <p className="text-slate-700 text-[11.5px] line-clamp-2 leading-relaxed">
@@ -514,8 +514,8 @@ export default function Dockets() {
                   {/* Innovation Impact Synthesis */}
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1.5">
-                      <Sparkles size={14} className="text-cyan-600" />
-                      Implications for Energy Startups & Clean Tech
+                      <ShieldCheck size={14} className="text-cyan-600" />
+                      Implications for Energy Startups &amp; Clean Tech
                     </h4>
                     <div className="p-4 rounded-xl bg-cyan-50/60 border border-cyan-200/80 text-xs text-slate-800 leading-relaxed shadow-2xs">
                       {selectedDossier.innovation_impact}

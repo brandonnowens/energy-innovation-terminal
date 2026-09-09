@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
   RefreshCw, X, CheckCircle2, AlertTriangle, Play, Clock, 
-  Layers, Database, ShieldCheck, Activity, Radio, Cpu, Sparkles 
+  Layers, Database, ShieldCheck, Activity, Radio, Cpu 
 } from 'lucide-react';
 
 interface IngestionHubModalProps {

@@ -6,11 +6,12 @@ import { api, AnalysisInput, SayYesOrganization, GroupedOpportunityOrg } from '.
 import {
   Loader2, CheckCircle2, AlertTriangle, AlertCircle, ExternalLink,
   DollarSign, Calendar, Target, Clock, ArrowRight, Zap, TrendingUp,
-  CircleDot, ChevronDown, X, Search, Sparkles, FileDown,
+  CircleDot, ChevronDown, X, Search, FileDown,
   Building2, Landmark, HeartHandshake, Filter, Globe, Share2,
   Check, Copy, Compass, Layers, ShieldCheck, PieChart,
   BarChart3, Plus, Settings2, KeyRound, PlugZap, SlidersHorizontal,
-  MapPin, FileText, FlaskConical
+  MapPin, FileText, FlaskConical, Sliders, Lightbulb, FileCheck,
+  Sun, BatteryCharging
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
@@ -242,7 +243,7 @@ export const SAMPLE_PROJECT_PRESETS: SampleProject[] = [
     id: 'iron_air_storage',
     name: 'Long-Duration Iron-Air Battery (100h LDES)',
     badge: 'Storage & Grid',
-    icon: '⚡',
+    icon: 'battery',
     description: 'Deploying a 10 MW / 1,000 MWh multi-day iron-air long-duration battery storage system (LDES) to eliminate peak fossil peaker run hours and resolve transmission bottlenecks under utility interconnection.',
     location: 'New York, NY',
     applicantType: 'business',
@@ -259,7 +260,7 @@ export const SAMPLE_PROJECT_PRESETS: SampleProject[] = [
     id: 'thermal_heat_pumps',
     name: 'Commercial Thermal Energy Network & Industrial Heat Pumps',
     badge: 'Buildings & Decarb',
-    icon: '🏢',
+    icon: 'building',
     description: 'Engineering and installing large-scale industrial high-temperature air-to-water heat pump networks (160°C) with thermal energy storage across multi-building commercial campuses.',
     location: 'Boston, MA',
     applicantType: 'consortium',
@@ -276,7 +277,7 @@ export const SAMPLE_PROJECT_PRESETS: SampleProject[] = [
     id: 'green_hydrogen_soec',
     name: 'Clean Hydrogen & High-Temp Solid Oxide Electrolyzers',
     badge: 'H2 & E-Fuels',
-    icon: '🧪',
+    icon: 'hydrogen',
     description: 'Demonstrating high-temperature solid oxide electrolyzer cells (SOEC) co-located with renewable power to produce clean hydrogen and green ammonia for heavy transportation and industrial heat.',
     location: 'Bakersfield, CA',
     applicantType: 'university',
@@ -293,7 +294,7 @@ export const SAMPLE_PROJECT_PRESETS: SampleProject[] = [
     id: 'agrivoltaics_microgrid',
     name: 'Agrivoltaics & Dual-Use Smart Solar Microgrid',
     badge: 'Solar & Resilience',
-    icon: '☀️',
+    icon: 'solar',
     description: 'Deploying elevated bi-facial solar PV racking combined with autonomous microgrid controls and battery storage on agricultural land to maintain active farming while feeding rural distribution substations.',
     location: 'Ithaca, NY',
     applicantType: 'business',
@@ -516,7 +517,7 @@ function OrganizationMultiSelector({
           </span>
           {recommendedOrgCodes.length > 0 && (
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-950/30 dark:text-amber-300 dark:border-amber-500/30 flex items-center gap-1">
-              <Sparkles size={10} /> {recommendedOrgCodes.length} In-State &amp; Federal Matches
+              <Target size={10} /> {recommendedOrgCodes.length} In-State &amp; Federal Matches
             </span>
           )}
         </div>
@@ -529,7 +530,7 @@ function OrganizationMultiSelector({
                 onClick={() => onChange(recommendedOrgCodes)}
                 className="text-[11px] font-bold text-amber-700 dark:text-amber-300 hover:underline transition-colors cursor-pointer flex items-center gap-1 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-500/30"
               >
-                <Sparkles size={11} />
+                <Target size={11} />
                 High Propensity Only ({recommendedOrgCodes.length})
               </button>
               <span className="text-slate-300 dark:text-slate-600">·</span>
@@ -678,7 +679,7 @@ function OrganizationMultiSelector({
                     <div className="flex items-center gap-1 shrink-0">
                       {isRecommended && (
                         <span className="text-[7.5px] font-bold px-1 rounded bg-amber-100 text-amber-800 border border-amber-200 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-500/40">
-                          ★ Match
+                          Match
                         </span>
                       )}
                       {org.state && (
@@ -728,17 +729,17 @@ function ExecutiveSummaryCard({ data }: { data: AnalysisResponse }) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-white/5 pb-3">
         <div className="flex items-center gap-2.5">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-500/30">
-            <Sparkles size={12} className="text-indigo-600 dark:text-indigo-400" />
+            <FileCheck size={12} className="text-indigo-600 dark:text-indigo-400" />
             <span>Executive Strategic Diligence</span>
           </span>
           <span className="text-xs text-slate-300 dark:text-slate-600">|</span>
           <span className="text-[11px] font-mono font-bold text-slate-500 dark:text-slate-400">
-            AI Opportunity Briefing
+            Opportunity Briefing
           </span>
         </div>
 
         <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-          Model: {briefing.model_used || 'GPT-4o'}
+          Strategic Synthesis
         </div>
       </div>
 
@@ -1153,7 +1154,7 @@ export default function AnalyzeProject() {
         <div>
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-500/30">
-              <Sparkles size={12} className="text-indigo-600 dark:text-indigo-400" />
+              <Sliders size={12} className="text-indigo-600 dark:text-indigo-400" />
               <span>Multi-Agency Match Engine</span>
             </span>
             <span className="text-xs text-slate-300 dark:text-slate-600">|</span>
@@ -1213,7 +1214,7 @@ export default function AnalyzeProject() {
         <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-black/20 border border-slate-200/80 dark:border-white/5 space-y-2.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
             <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 uppercase tracking-wider">
-              <Sparkles size={12} className="text-indigo-600 dark:text-indigo-400" />
+              <Lightbulb size={12} className="text-indigo-600 dark:text-indigo-400" />
               <span>Quick Test Presets · 1-Click Sample Energy Innovation Projects</span>
             </span>
             <span className="text-[10.5px] text-slate-500 dark:text-slate-400">Click any preset to autofill scope, budget &amp; taxonomy:</span>
@@ -1228,7 +1229,12 @@ export default function AnalyzeProject() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-1 mb-1">
-                    <span className="text-base">{preset.icon}</span>
+                    <div className="w-6 h-6 rounded-md bg-slate-100 dark:bg-white/5 flex items-center justify-center">
+                      {preset.icon === 'battery' && <BatteryCharging size={13} className="text-amber-500" />}
+                      {preset.icon === 'building' && <Building2 size={13} className="text-orange-500" />}
+                      {preset.icon === 'hydrogen' && <FlaskConical size={13} className="text-emerald-500" />}
+                      {preset.icon === 'solar' && <Sun size={13} className="text-yellow-500" />}
+                    </div>
                     <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 font-mono">
                       {preset.badge}
                     </span>
@@ -1298,8 +1304,8 @@ export default function AnalyzeProject() {
                   </>
                 ) : (
                   <>
-                    <Sparkles size={13} className="text-[#00E5FF]" />
-                    <span>Auto-Characterize Project &amp; Set Parameters</span>
+                    <SlidersHorizontal size={13} className="text-[#00E5FF]" />
+                    <span>Auto-Fill Parameters from Scope</span>
                   </>
                 )}
               </button>
@@ -1476,7 +1482,7 @@ export default function AnalyzeProject() {
                 </>
               ) : (
                 <>
-                  <Sparkles size={14} className="text-slate-950" />
+                  <Target size={14} className="text-slate-950" />
                   <span>Match Opportunities</span>
                 </>
               )}

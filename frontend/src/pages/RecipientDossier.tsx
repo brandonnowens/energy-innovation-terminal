@@ -4,10 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import { 
   Building2, Award, DollarSign, Globe, MapPin, Tag, 
   ExternalLink, Share2, Code, ArrowLeft, ShieldCheck, CheckCircle2,
-  Sparkles, FileText, TrendingUp, Layers, Zap, Lightbulb
+  FileText, TrendingUp, Layers, Zap, Lightbulb, Target, Download, Printer, Check, Loader2
 } from 'lucide-react';
 import { api, RecipientCapitalContinuumResponse } from '../api/client';
 import { updatePageMeta } from '../utils/seo';
+import { CapitalContinuumTimeline } from '../components/CapitalContinuumTimeline';
 
 interface RecipientDossierData {
   recipient: {
@@ -126,6 +127,32 @@ export default function RecipientDossier() {
     setTimeout(() => setCopiedLink(false), 3000);
   };
 
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
+
+  const handleExportPdf = async () => {
+    if (!id) return;
+    try {
+      setIsExportingPdf(true);
+      const res = await fetch(`/api/recipients/${id}/export-pdf`);
+      if (!res.ok) throw new Error('Failed to generate PDF dossier');
+      const blob = await res.blob();
+      const safeName = recipient?.name ? recipient.name.replace(/[^a-zA-Z0-9]/g, '_') : `Recipient_${id}`;
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${safeName}_Dossier_EnergyInnovation.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error('PDF Export Error:', err);
+      window.open(`/api/recipients/${id}/export-pdf`, '_blank');
+    } finally {
+      setIsExportingPdf(false);
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="flex h-96 items-center justify-center">
@@ -162,6 +189,15 @@ export default function RecipientDossier() {
           <ArrowLeft className="h-4 w-4" /> Back to Awards Database
         </Link>
         <div className="flex items-center gap-2">
+          <button 
+            onClick={handleExportPdf}
+            disabled={isExportingPdf}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 shadow-sm transition-all cursor-pointer"
+            title="Export Institutional PDF Dossier"
+          >
+            {isExportingPdf ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />}
+            <span>{isExportingPdf ? 'Compiling PDF...' : 'Export Dossier (PDF)'}</span>
+          </button>
           <button 
             onClick={copyShareLink}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 shadow-sm transition-all"
@@ -274,9 +310,12 @@ export default function RecipientDossier() {
         </div>
       </div>
 
-      {/* ── MULTI-STAGE CAPITAL CONTINUUM DASHBOARD ── */}
+      {/* ── MULTI-STAGE CAPITAL CONTINUUM DASHBOARD & D3 TIMELINE ── */}
       {continuum && (
-        <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-800 space-y-5">
+        <>
+          <CapitalContinuumTimeline continuum={continuum} recipientName={recipient.name} />
+
+          <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-800 space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/10">
             <div>
               <div className="flex items-center gap-2">
@@ -442,6 +481,7 @@ export default function RecipientDossier() {
             )}
           </div>
         </div>
+        </>
       )}
 
       {/* Climate Impact & Key Innovations Focus */}
@@ -450,7 +490,7 @@ export default function RecipientDossier() {
           {recipient.climate_impact_focus && (
             <div className="bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm">
               <div className="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-2">
-                <Sparkles className="h-4 w-4" /> Climate Impact &amp; Decarbonization Mandate
+                <ShieldCheck className="h-4 w-4" /> Climate Impact &amp; Decarbonization Mandate
               </div>
               <p className="text-sm text-slate-700 leading-relaxed">
                 {recipient.climate_impact_focus}

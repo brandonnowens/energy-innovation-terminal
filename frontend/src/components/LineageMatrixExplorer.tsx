@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import { api, LinkageMatrixResponse } from '../api/client';
 import { ProvenanceRibbon } from './ProvenanceRibbon';
 import {
-  Sparkles,
   Layers,
   Filter,
   Download,

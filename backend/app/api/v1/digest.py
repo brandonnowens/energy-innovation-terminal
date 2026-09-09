@@ -15,6 +15,7 @@ router = APIRouter(prefix="/digest", tags=["Daily Digest"])
 
 @router.get("/latest")
 @router.get("/today")
+@router.get("/daily")
 def get_latest_digest(db: Session = Depends(get_db)):
     """Retrieve today's Daily Energy Innovation Intelligence Digest."""
     try:

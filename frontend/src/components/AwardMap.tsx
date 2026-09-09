@@ -3,7 +3,7 @@ import * as maptilersdk from '@maptiler/sdk';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 import {
   Layers, MapPin, DollarSign, Compass, Maximize2, RotateCcw,
-  Sparkles, Download, Eye, EyeOff, Radio, Circle, Globe,
+  Download, Eye, EyeOff, Radio, Circle, Globe,
   ZoomIn, ZoomOut, Flame, Filter, ChevronRight, ChevronDown, ChevronUp, BarChart2,
   Building2, ExternalLink, Sliders, Box, HelpCircle, Info
 } from 'lucide-react';
@@ -126,15 +126,15 @@ export type ColorByMode = 'agency' | 'technology' | 'sector' | 'fuel' | 'stage' 
 export type SizeByMode = 'funding' | 'uniform' | 'cost_share';
 export type OutlineMode = 'white' | 'dark' | 'glow' | 'match' | 'none';
 
-const COLOR_BY_OPTIONS: { id: ColorByMode; label: string; icon: string }[] = [
-  { id: 'agency', label: 'Organization', icon: '🏛️' },
-  { id: 'technology', label: 'Technology', icon: '⚡' },
-  { id: 'sector', label: 'Sector', icon: '🏭' },
-  { id: 'fuel', label: 'Clean Fuel', icon: '🌱' },
-  { id: 'stage', label: 'Stage', icon: '📈' },
-  { id: 'type', label: 'Entity Type', icon: '👥' },
-  { id: 'bracket', label: 'Capital Bracket', icon: '💰' },
-  { id: 'vintage', label: 'Award Vintage', icon: '📅' },
+const COLOR_BY_OPTIONS: { id: ColorByMode; label: string }[] = [
+  { id: 'agency', label: 'Organization' },
+  { id: 'technology', label: 'Technology' },
+  { id: 'sector', label: 'Sector' },
+  { id: 'fuel', label: 'Clean Fuel' },
+  { id: 'stage', label: 'Stage' },
+  { id: 'type', label: 'Entity Type' },
+  { id: 'bracket', label: 'Capital Bracket' },
+  { id: 'vintage', label: 'Award Vintage' },
 ];
 
 const SIZE_BY_OPTIONS: { id: SizeByMode; label: string; desc: string }[] = [
@@ -152,12 +152,12 @@ const OUTLINE_OPTIONS: { id: OutlineMode; label: string; swatch: string }[] = [
 ];
 
 const MAP_STYLES = [
-  { id: 'dataviz-light', label: 'Dataviz Light', icon: '☀️', style: maptilersdk.MapStyle.DATAVIZ.LIGHT },
-  { id: 'dataviz-dark', label: 'Dataviz Dark', icon: '🌙', style: maptilersdk.MapStyle.DATAVIZ.DARK },
-  { id: 'backdrop', label: 'Classic Editorial', icon: '📰', style: maptilersdk.MapStyle.BACKDROP.LIGHT },
-  { id: 'outdoor', label: 'Outdoor Topo', icon: '🏔️', style: maptilersdk.MapStyle.OUTDOOR },
-  { id: 'satellite', label: 'Satellite Hybrid', icon: '🛰️', style: maptilersdk.MapStyle.SATELLITE },
-  { id: 'streets', label: 'Streets Nav', icon: '🗺️', style: maptilersdk.MapStyle.STREETS },
+  { id: 'dataviz-light', label: 'Dataviz Light', style: maptilersdk.MapStyle.DATAVIZ.LIGHT },
+  { id: 'dataviz-dark', label: 'Dataviz Dark', style: maptilersdk.MapStyle.DATAVIZ.DARK },
+  { id: 'backdrop', label: 'Classic Editorial', style: maptilersdk.MapStyle.BACKDROP.LIGHT },
+  { id: 'outdoor', label: 'Outdoor Topo', style: maptilersdk.MapStyle.OUTDOOR },
+  { id: 'satellite', label: 'Satellite Hybrid', style: maptilersdk.MapStyle.SATELLITE },
+  { id: 'streets', label: 'Streets Nav', style: maptilersdk.MapStyle.STREETS },
 ];
 
 const PROJECTIONS = [
@@ -972,10 +972,10 @@ export const AwardMap: React.FC<AwardMapProps> = ({
         {/* Vintage Wave Timeline Quick-Filter Pill */}
         <div className="flex items-center bg-white/95 backdrop-blur-md rounded-xl border border-slate-200/80 shadow-md p-0.5">
           {[
-            { id: 'all', label: 'All Vintages', icon: '🌐' },
-            { id: '2024', label: '2024 Infra ($39.8B)', icon: '🏛️' },
-            { id: '2025', label: '2025 Scale ($12.95B)', icon: '⚡' },
-            { id: '2026', label: '2026 Utility ($1.08B)', icon: '🔌' },
+            { id: 'all', label: 'All Vintages' },
+            { id: '2024', label: '2024 ($39.8B)' },
+            { id: '2025', label: '2025 ($12.95B)' },
+            { id: '2026', label: '2026 ($1.08B)' },
           ].map((v) => (
             <button
               key={v.id}
@@ -987,8 +987,7 @@ export const AwardMap: React.FC<AwardMapProps> = ({
               }`}
               title={`Filter to ${v.label}`}
             >
-              <span>{v.icon}</span>
-              <span className="hidden lg:inline">{v.label}</span>
+              <span>{v.label}</span>
             </button>
           ))}
         </div>
@@ -1006,8 +1005,7 @@ export const AwardMap: React.FC<AwardMapProps> = ({
               }`}
               title={st.label}
             >
-              <span>{st.icon}</span>
-              <span className="hidden xl:inline">{st.label}</span>
+              <span>{st.label}</span>
             </button>
           ))}
         </div>
@@ -1039,14 +1037,14 @@ export const AwardMap: React.FC<AwardMapProps> = ({
           <span className="hidden sm:inline">3D</span>
         </button>
 
-        {/* Executive GIS Wall Map Export Button */}
+        {/* Publication Map Export Button */}
         <button
           onClick={() => setIsExportOpen(true)}
           className="px-3 py-1.5 rounded-xl border border-indigo-600 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
-          title="Export high-resolution Executive Publication GIS wall map"
+          title="Export high-resolution publication GIS map"
         >
           <Download size={14} />
-          <span>Executive Export</span>
+          <span>Export Map</span>
         </button>
       </div>
 
@@ -1083,21 +1081,20 @@ export const AwardMap: React.FC<AwardMapProps> = ({
               {/* Studio Tabs Navigation */}
               <div className="grid grid-cols-4 gap-1 p-0.5 bg-slate-100 rounded-lg">
                 {[
-                  { id: 'color' as const, label: 'Color', icon: '🎨' },
-                  { id: 'size' as const, label: 'Size', icon: '📏' },
-                  { id: 'outline' as const, label: 'Outline', icon: '⭕' },
-                  { id: 'layers' as const, label: 'Layers', icon: '⚙️' },
+                  { id: 'color' as const, label: 'Color' },
+                  { id: 'size' as const, label: 'Size' },
+                  { id: 'outline' as const, label: 'Outline' },
+                  { id: 'layers' as const, label: 'Layers' },
                 ].map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setLegendTab(tab.id)}
-                    className={`py-1 text-[10px] font-bold rounded-md transition-all flex items-center justify-center gap-1 ${
+                    className={`py-1 text-[10px] font-bold rounded-md transition-all flex items-center justify-center ${
                       legendTab === tab.id
                         ? 'bg-white text-indigo-700 shadow-xs'
                         : 'text-slate-500 hover:text-slate-800'
                     }`}
                   >
-                    <span>{tab.icon}</span>
                     <span>{tab.label}</span>
                   </button>
                 ))}

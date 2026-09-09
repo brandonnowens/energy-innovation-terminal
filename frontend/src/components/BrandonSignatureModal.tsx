@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  ShieldCheck, Award, Sparkles, Check, Copy, ExternalLink,
+  ShieldCheck, Award, Check, Copy, ExternalLink,
   Layers, Database, Zap, BookOpen, Activity, Compass,
   Cpu, Lock, FileText, X, RefreshCw
 } from 'lucide-react';
@@ -115,7 +115,7 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
           )}>
             <div className="flex items-start gap-3">
               <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0 mt-0.5 border border-cyan-500/20">
-                <Sparkles size={16} />
+                <Award size={16} />
               </div>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">

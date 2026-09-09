@@ -6,7 +6,7 @@ import {
   Scale, ShieldCheck, FileText, ExternalLink, Search,
   CheckCircle2, ChevronDown, ChevronRight, Building2,
   Award, Quote, FileCheck, ArrowUpDown, ArrowUpRight, RotateCcw,
-  Sparkles
+  Layers, Target
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
@@ -194,7 +194,7 @@ export default function Results() {
                 : 'text-slate-600 hover:text-slate-900'
             )}
           >
-            <Sparkles size={13} className="text-amber-500" />
+            <Layers size={13} className="text-amber-500" />
             <span>Venture &amp; Patents</span>
             <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
               NEW

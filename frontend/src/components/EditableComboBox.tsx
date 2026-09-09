@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown, Check, X, Search, Sparkles } from 'lucide-react';
+import { ChevronDown, Check, X, Search, Sliders } from 'lucide-react';
 
 export interface ComboBoxOption {
   value: string;
@@ -121,7 +121,7 @@ export const EditableComboBox: React.FC<EditableComboBoxProps> = ({
           </label>
           {badge && (
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
-              <Sparkles size={10} />
+              <Sliders size={10} />
               {badge}
             </span>
           )}

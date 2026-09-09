@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
-  LogIn, LogOut, Settings, ShieldCheck, ChevronDown, Sparkles, Crown
+  LogIn, LogOut, Settings, ShieldCheck, ChevronDown, Crown
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 

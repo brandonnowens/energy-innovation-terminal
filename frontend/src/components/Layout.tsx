@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
-  Sparkles, FileSearch, Layers, Building2, Trophy, Network,
+  FileSearch, Layers, Building2, Trophy, Network,
   TrendingUp, Database, GitMerge, FileText, Search, ShieldCheck,
-  Zap, Command, FileEdit, Scale, Lightbulb, Clock, Activity, BookUser, BookOpen, Bot,
-  ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X, Newspaper, Terminal
+  Zap, Command, FileEdit, Scale, Lightbulb, Clock, Activity, BookUser, BookOpen,
+  ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X, Newspaper, Terminal,
+  Sliders, MessageSquare, Target
 } from 'lucide-react';
 
 import clsx from 'clsx';
@@ -240,7 +241,7 @@ export default function Layout() {
         {
           title: 'Grant Seeking Suite',
           items: [
-            { to: '/analyze', icon: Sparkles, label: 'Match & Sponsoring' },
+            { to: '/analyze', icon: Sliders, label: 'Match & Sponsoring' },
             { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
             { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
             { to: '/radar', icon: Radio, label: 'Predictive Radar' },
@@ -300,7 +301,7 @@ export default function Layout() {
         {
           title: 'Project & Deal Sourcing',
           items: [
-            { to: '/analyze', icon: Sparkles, label: 'Project Bankability (TBR)' },
+            { to: '/analyze', icon: Sliders, label: 'Project Bankability (TBR)' },
             { to: '/opportunities', icon: FileSearch, label: 'Active Solicitations' },
             { to: '/technologies', icon: BookOpen, label: 'Frontier Tech Taxonomy' },
             { to: '/network', icon: Network, label: 'Ecosystem & Syndicates' },
@@ -323,7 +324,7 @@ export default function Layout() {
         title: 'Opportunities & Studio',
         items: [
           { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
-          { to: '/analyze', icon: Sparkles, label: 'Match Engine' },
+          { to: '/analyze', icon: Sliders, label: 'Match Engine' },
           { to: '/radar', icon: Radio, label: 'Predictive Radar' },
           { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
           { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
@@ -461,7 +462,7 @@ export default function Layout() {
               )}
               title="Spotlight: Project Match, Solicitations, Winning Proposals Studio, Key Contacts"
             >
-              <Sparkles size={11} className={persona === 'innovator' ? "text-indigo-400" : "text-slate-400"} />
+              <Lightbulb size={11} className={persona === 'innovator' ? "text-indigo-400" : "text-slate-400"} />
               <span className="truncate">Innovators</span>
             </button>
           </div>
@@ -469,7 +470,7 @@ export default function Layout() {
 
         {/* Navigation Area */}
         <nav className="flex-1 px-3 py-3 space-y-2 overflow-y-auto no-scrollbar">
-          {/* Top Primary Item: AI Advisor */}
+          {/* Top Primary Item: Strategic Advisory */}
           <div className="space-y-1 mb-2">
             <NavLink
               to="/chat"
@@ -482,7 +483,7 @@ export default function Layout() {
               )}
             >
               <div className="flex items-center gap-2.5 min-w-0">
-                <Bot
+                <MessageSquare
                   size={15}
                   strokeWidth={1.8}
                   className={clsx(
@@ -490,13 +491,13 @@ export default function Layout() {
                     isChatActive ? 'text-[#00E5FF]' : 'text-slate-400'
                   )}
                 />
-                <span className="truncate">AI Advisor</span>
+                <span className="truncate">Strategic Advisory</span>
               </div>
               <span className={clsx(
                 "text-[9.5px] font-bold px-1.5 py-0.2 rounded font-mono",
                 isChatActive ? "bg-cyan-500/20 text-[#00E5FF] border border-cyan-400/30" : "bg-white/[0.05] text-slate-400 border border-white/10"
               )}>
-                AI
+                LIVE
               </span>
             </NavLink>
           </div>
@@ -760,7 +761,7 @@ export default function Layout() {
                 )}
                 title="Innovator & Grant Seeker Front Door: Match Engine, Solicitations, Application Studio"
               >
-                <Sparkles size={11} className={persona === 'innovator' ? "text-indigo-400" : "text-indigo-600"} />
+                <Lightbulb size={11} className={persona === 'innovator' ? "text-indigo-400" : "text-indigo-600"} />
                 <span>Innovators</span>
               </button>
               <button

@@ -2311,6 +2311,17 @@ def get_live_technology_evidence(db: Session, tech_id: str) -> Dict[str, Any]:
     if tech_id in _LIVE_EVIDENCE_CACHE:
         return _LIVE_EVIDENCE_CACHE[tech_id]
 
+    disk_file = CACHE_DIR / f"evidence_{tech_id}.json"
+    if disk_file.exists():
+        try:
+            with open(disk_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if data:
+                    _LIVE_EVIDENCE_CACHE[tech_id] = data
+                    return data
+        except Exception:
+            pass
+
     tech_def = TECHNOLOGY_REGISTRY.get(tech_id)
     if not tech_def:
         return {}
@@ -2506,7 +2517,7 @@ def get_live_technology_evidence(db: Session, tech_id: str) -> Dict[str, Any]:
             pass
         logger.warning(f"Error querying patents for {tech_id}: {e}")
 
-    return {
+    result = {
         "tracked_capital_usd": total_funding,
         "tracked_capital_fmt": f"${total_funding / 1e9:,.2f}B" if total_funding >= 1e9 else f"${total_funding / 1e6:,.1f}M",
         "award_count": award_count,
@@ -2523,6 +2534,11 @@ def get_live_technology_evidence(db: Session, tech_id: str) -> Dict[str, Any]:
         "patent_count": patent_count
     }
     _LIVE_EVIDENCE_CACHE[tech_id] = result
+    try:
+        with open(disk_file, "w", encoding="utf-8") as f:
+            json.dump(result, f, indent=2)
+    except Exception:
+        pass
     return result
 
 # ==============================================================================
@@ -3349,10 +3365,52 @@ def get_fuel_pathways_matrix(db: Session) -> List[Dict[str, Any]]:
     return results
 
 
-def get_frontier_matrix(db: Session) -> List[Dict[str, Any]]:
+_FRONTIER_MATRIX_CACHE: Optional[List[Dict[str, Any]]] = None
+
+def get_frontier_matrix(db: Optional[Session] = None, force_refresh: bool = False) -> List[Dict[str, Any]]:
     """Returns all 36 technologies with normalized metrics for scatter/quadrant analysis."""
+    global _FRONTIER_MATRIX_CACHE
+    if _FRONTIER_MATRIX_CACHE is not None and not force_refresh:
+        return _FRONTIER_MATRIX_CACHE
+
+    matrix_file = CACHE_DIR / "frontier_matrix.json"
+    if not force_refresh and matrix_file.exists():
+        try:
+            with open(matrix_file, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+                if cached:
+                    _FRONTIER_MATRIX_CACHE = cached
+                    return cached
+        except Exception:
+            pass
+
     results = []
-    tech_rows = db.query(Technology).all() if db else []
+    tech_rows = []
+    if db:
+        try:
+            tech_rows = db.query(Technology).all()
+        except Exception as e:
+            logger.warning(f"Error querying Technology rows for frontier matrix: {e}")
+            try:
+                db.rollback()
+            except Exception:
+                pass
+
+    if not tech_rows:
+        tech_rows = [type('TechObj', (), {
+            'id': k,
+            'name': v['name'],
+            'category_id': v['category_id'],
+            'category': type('CatObj', (), {'name': v.get('category_name', v['category_id'])}),
+            'sector': v.get('sector', 'Clean Tech'),
+            'fuel_vector': v.get('fuel_vector', 'Electricity'),
+            'vector_type': v.get('vector_type', 'hardware'),
+            'trl_current': v.get('trl_current', 6),
+            'trl_target': v.get('trl_target', 9),
+            'bottlenecks_json': json.dumps(v.get('frontier', {}).get('bottlenecks', [])),
+            'moonshot_goal': v.get('frontier', {}).get('moonshot_goal', '')
+        })() for k, v in TECHNOLOGY_REGISTRY.items()]
+
     for t in tech_rows:
         reg_t = TECHNOLOGY_REGISTRY.get(t.id, {})
         cost_perf = synthesize_cost_performance(t.id, reg_t)
@@ -3371,8 +3429,8 @@ def get_frontier_matrix(db: Session) -> List[Dict[str, Any]]:
         except Exception:
             imp_pct_num = 50.0
 
-        evidence = get_live_technology_evidence(db, t.id)
-        bottlenecks = json.loads(t.bottlenecks_json or "[]")
+        evidence = get_live_technology_evidence(db, t.id) if db else {}
+        bottlenecks = json.loads(getattr(t, 'bottlenecks_json', None) or "[]")
         primary_bn = bottlenecks[0] if bottlenecks else "Materials durability"
 
         results.append({
@@ -3404,6 +3462,13 @@ def get_frontier_matrix(db: Session) -> List[Dict[str, Any]]:
             "primary_bottleneck": primary_bn,
             "moonshot_goal": t.moonshot_goal
         })
+    if results:
+        _FRONTIER_MATRIX_CACHE = results
+        try:
+            with open(matrix_file, "w", encoding="utf-8") as f:
+                json.dump(results, f, indent=2)
+        except Exception:
+            pass
     return results
 
 

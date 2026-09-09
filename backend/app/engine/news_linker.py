@@ -159,10 +159,10 @@ def compute_content_fingerprint(title: str, url: str) -> str:
     return hashlib.sha256(raw.encode('utf-8')).hexdigest()[:32]
 
 
-def clean_and_shorten_headline(raw_title: str, raw_content: str = "", source_name: str = "") -> str:
+def clean_and_shorten_headline(raw_title: str, raw_content: str = "", source_name: str = "", use_ai: bool = False) -> str:
     """
     Cleans, declutters, and shortens news headlines into punchy, Bloomberg-terminal style titles.
-    Removes publisher suffixes, clickbait, trailing fluff, and utilizes OpenAI if available.
+    Removes publisher suffixes, clickbait, trailing fluff, and utilizes OpenAI if explicitly requested.
     """
     if not raw_title:
         return ""
@@ -200,8 +200,8 @@ def clean_and_shorten_headline(raw_title: str, raw_content: str = "", source_nam
     for pattern in prefixes_to_strip:
         text = re.sub(pattern, '', text, flags=re.IGNORECASE).strip()
 
-    # 4. If OpenAI is configured, generate an ultra-clean, concise Bloomberg headline (7-12 words)
-    if settings.openai_api_key:
+    # 4. If OpenAI is explicitly requested, generate an ultra-clean, concise Bloomberg headline (7-12 words)
+    if use_ai and settings.openai_api_key:
         try:
             from openai import OpenAI
             client = OpenAI(api_key=settings.openai_api_key)

@@ -3,13 +3,12 @@ import {
   X,
   Code,
   Terminal,
-  Bot,
+  Cpu,
   ExternalLink,
   Copy,
   Check,
   Zap,
   Layers,
-  Sparkles,
   ShieldCheck,
   FileCode,
   Rss,
@@ -67,10 +66,10 @@ export function ApiDocsModal({ isOpen, onClose }: ApiDocsModalProps) {
               <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">v1.0 Canonical API</span>
             </div>
             <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              Energy Innovation Terminal API &amp; Agent Tools
+              Energy Innovation Terminal API &amp; Automation Endpoints
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 max-w-2xl">
-              Programmatic access to 54,300+ historical awards, active solicitations, IRA financial engineering, and 9 OpenAPI tools for autonomous AI agents.
+              Programmatic access to 54,300+ historical awards, active solicitations, IRA financial engineering, and 9 OpenAPI endpoints for programmatic analysis.
             </p>
           </div>
 
@@ -86,9 +85,9 @@ export function ApiDocsModal({ isOpen, onClose }: ApiDocsModalProps) {
         <div className="flex items-center gap-2 px-6 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-x-auto text-xs font-semibold">
           {[
             { id: 'endpoints', label: 'Interactive Docs & Endpoints', icon: Code },
-            { id: 'agents', label: '9 AI Agent Tools', icon: Bot },
+            { id: 'agents', label: '9 Automation Endpoints', icon: Cpu },
             { id: 'code', label: 'Code Snippets (Python / cURL)', icon: FileCode },
-            { id: 'feeds', label: 'GEO & Syndication (LLMs.txt / RSS)', icon: Rss },
+            { id: 'feeds', label: 'Machine-Readable Feeds & Indexes', icon: Rss },
           ].map((t) => {
             const Icon = t.icon;
             return (
@@ -162,15 +161,15 @@ export function ApiDocsModal({ isOpen, onClose }: ApiDocsModalProps) {
             </div>
           )}
 
-          {/* 2. AI Agent Tools */}
+          {/* 2. Automation Endpoints */}
           {activeTab === 'agents' && (
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/60 flex items-start gap-3">
-                <Bot className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+                <Cpu className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <div className="font-bold text-slate-900 dark:text-white">Deterministic Agent Tools Manifest</div>
+                  <div className="font-bold text-slate-900 dark:text-white">Deterministic Automation &amp; Analysis Tool Manifest</div>
                   <div className="text-slate-600 dark:text-slate-300">
-                    Use these 9 grounded tool functions directly inside OpenAI Assistants, Anthropic Claude Tool Use, LangChain, or CrewAI agents to power automated research workflows.
+                    Use these 9 grounded tool functions directly inside automated scripts, analytical pipelines, LangChain, or custom integrations.
                   </div>
                 </div>
               </div>
@@ -207,7 +206,7 @@ export function ApiDocsModal({ isOpen, onClose }: ApiDocsModalProps) {
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 text-cyan-600 dark:text-cyan-400 font-bold hover:underline"
                 >
-                  <span>Download Raw OpenAPI Agent Tool Manifest (JSON)</span>
+                  <span>Download Raw OpenAPI Tool Manifest (JSON)</span>
                   <ExternalLink size={12} />
                 </a>
               </div>
@@ -262,15 +261,15 @@ print(f"Active Capital: {digest['macro_metrics']['total_active_capital_display']
           {activeTab === 'feeds' && (
             <div className="space-y-4">
               <p className="text-slate-600 dark:text-slate-300">
-                The terminal natively provides standardized Generative Engine Optimization (GEO) feeds and RSS 2.0 feeds for automated aggregation by external bots, research newsletters, and language models:
+                The terminal natively provides standardized machine-readable data feeds and RSS 2.0 feeds for automated aggregation by external research tools, analytical systems, and syndication platforms:
               </p>
 
               <div className="space-y-3">
                 {[
                   {
-                    title: 'LLMs.txt (GEO Knowledge Base for AI)',
+                    title: 'LLMs.txt (Machine-Readable Knowledge Base)',
                     url: `${API_HOST}/llms.txt`,
-                    desc: 'Clean markdown knowledge summary indexed by Perplexity, SearchGPT, and Claude.',
+                    desc: 'Structured markdown knowledge summary formatted for external research tools and search indexers.',
                   },
                   {
                     title: 'RSS 2.0 Grants Syndication Feed',

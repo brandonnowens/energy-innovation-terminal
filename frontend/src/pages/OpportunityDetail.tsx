@@ -6,11 +6,12 @@ import {
   ArrowLeft, Loader2, Calendar, Mail, Phone, FileText, ExternalLink,
   AlertTriangle, CheckCircle2, Info, ShieldAlert, Ban, Star, Printer,
   Share2, Copy, Building2, Zap, Landmark, Check, Trophy, Download,
-  Paperclip, FileDown, FileEdit, Award, Users, Target, TrendingUp, Send, Sparkles, Lock, DollarSign
+  Paperclip, FileDown, FileEdit, Award, Users, Target, TrendingUp, Send, Lock, DollarSign, Layers
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
 import { ProvenanceRibbon } from '../components/ProvenanceRibbon';
+import { SolicitationLifecycleRunway } from '../components/SolicitationLifecycleRunway';
 import { FoaShredderModal } from '../components/FoaShredderModal';
 import { IraCalculatorModal } from '../components/IraCalculatorModal';
 import { useSEO } from '../utils/seo';
@@ -227,7 +228,7 @@ export default function OpportunityDetail() {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition cursor-pointer shadow-2xs"
           >
             <Zap size={13} className="text-amber-500" />
-            <span>⚡ Shred FOA Blueprint</span>
+            <span>FOA Requirements Blueprint</span>
           </button>
 
           <button
@@ -236,7 +237,7 @@ export default function OpportunityDetail() {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 transition cursor-pointer shadow-2xs"
           >
             <DollarSign size={13} className="text-emerald-500" />
-            <span>💵 IRA Capital Stack</span>
+            <span>IRA Capital Stack</span>
           </button>
 
           <button
@@ -244,7 +245,7 @@ export default function OpportunityDetail() {
             onClick={copyExecutiveMemo}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-50 text-indigo-800 border border-indigo-200 hover:bg-indigo-100 transition-colors cursor-pointer shadow-2xs"
           >
-            {copiedMemo ? <CheckCircle2 size={13} className="text-emerald-600" /> : <Sparkles size={13} className="text-indigo-600" />}
+            {copiedMemo ? <CheckCircle2 size={13} className="text-emerald-600" /> : <FileText size={13} className="text-indigo-600" />}
             <span>{copiedMemo ? 'Memo Copied!' : 'Copy Executive Brief'}</span>
           </button>
         </div>
@@ -261,8 +262,8 @@ export default function OpportunityDetail() {
                   {d.solicitation_number || 'SOLICITATION'}
                 </span>
                 {isOpportunityNew(d) && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-2xs">
-                    <Sparkles size={11} className="text-emerald-200 animate-pulse" />
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-600 text-white shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-200" />
                     <span>NEW · Last 30 Days</span>
                   </span>
                 )}
@@ -328,6 +329,9 @@ export default function OpportunityDetail() {
           entityId={id}
         />
       )}
+
+      {/* Stage-Gate Solicitation Runway Timeline */}
+      <SolicitationLifecycleRunway opportunity={d} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
@@ -396,7 +400,7 @@ export default function OpportunityDetail() {
 
               {/* Recommended Strategy Box */}
               <div className="p-3 bg-indigo-950/60 rounded-xl border border-indigo-700/40 text-[12px] text-indigo-100 flex items-start gap-2.5 leading-relaxed">
-                <Sparkles size={16} className="text-amber-400 shrink-0 mt-0.5" />
+                <Target size={16} className="text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-white">Winning Proposal Strategy: </strong>
                   {winRateData.recommended_strategy}
@@ -1027,7 +1031,7 @@ export default function OpportunityDetail() {
         </div>
       </div>
     
-      {/* AI FOA Shredder Modal */}
+      {/* FOA Requirements Analysis Modal */}
       <FoaShredderModal
         opportunityId={Number(id)}
         isOpen={showFoaShred}

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import {
-  Zap, Play, Pause, RotateCw, Info, AlertTriangle, Sparkles,
+  Zap, Play, Pause, RotateCw, Info, AlertTriangle, Target,
   Layers, Sliders, ChevronRight, Activity, Eye, ShieldCheck,
   CheckCircle2, Gauge, Thermometer, Wind, Droplets, BatteryCharging,
   Cpu, Atom, Flame, ArrowRight, RefreshCw, ZoomIn, Sun
@@ -878,7 +878,7 @@ export function TechSystemDiagram({ technologyId, technologyName, categoryName, 
         <div>
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-100 text-cyan-800 border border-cyan-200">
-              <Sparkles size={11} className="text-cyan-600" />
+              <Layers size={11} className="text-cyan-600" />
               Explorable Subsystem Architecture
             </span>
             <span className="text-xs text-slate-400 font-mono">Interactive Vector Model</span>
@@ -1135,7 +1135,7 @@ export function TechSystemDiagram({ technologyId, technologyName, categoryName, 
               {/* Active Research Vanguard */}
               <div className="p-2.5 rounded-xl bg-violet-50 border border-violet-200 text-violet-950">
                 <span className="text-[10px] font-bold uppercase text-violet-700 flex items-center gap-1 mb-0.5">
-                  <Sparkles size={12} /> Active Research Track
+                  <Target size={12} /> Active Research Track
                 </span>
                 <p className="text-[11px] leading-relaxed">
                   {selectedNode.activeResearch}

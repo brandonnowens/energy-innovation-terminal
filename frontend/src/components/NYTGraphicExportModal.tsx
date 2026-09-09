@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  Download, X, Sparkles, Eye, Check, Sliders, Loader2, Image as ImageIcon,
+  Download, X, Eye, Check, Sliders, Loader2, Image as ImageIcon,
   Share2, Printer, Smartphone, Monitor, Globe, FileText
 } from 'lucide-react';
 import { saveAs } from 'file-saver';
@@ -9,7 +9,7 @@ import html2canvas from 'html2canvas';
 export type NYTPresetCategory = 'publication' | 'social';
 
 export type NYTAspectRatio =
-  | '16:9'      // 4K Ultra-HD Wall Art / Landscape
+  | '16:9'      // 4K Ultra-HD Presentation / Landscape
   | '4:3'       // Exhibition Poster
   | '3:2'       // Classic Publication Format
   | '1:1'       // Square Post (Instagram / LinkedIn)
@@ -461,12 +461,12 @@ export const NYTGraphicExportModal: React.FC<NYTGraphicExportModalProps> = ({
         {/* Modal Header */}
         <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 text-white shadow-md">
-              <Sparkles size={18} />
+            <div className="p-2.5 rounded-xl bg-slate-900 text-white shadow-md">
+              <Download size={18} />
             </div>
             <div>
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <span>Executive Publication &amp; Social Graphic Studio</span>
+                <span>Publication &amp; Social Graphic Studio</span>
                 <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">
                   4K / 300 DPI Ultra-HD
                 </span>
@@ -505,7 +505,7 @@ export const NYTGraphicExportModal: React.FC<NYTGraphicExportModalProps> = ({
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  <Printer size={14} /> Executive Wall Art &amp; Print
+                  <Printer size={14} /> High-Resolution Publication Export
                 </button>
                 <button
                   onClick={() => {
@@ -531,7 +531,7 @@ export const NYTGraphicExportModal: React.FC<NYTGraphicExportModalProps> = ({
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   {[
-                    { id: '16:9', label: '16:9 Wall Art', desc: '3840×2160 (4K Master)' },
+                    { id: '16:9', label: '16:9 Presentation 4K', desc: '3840×2160 (4K Master)' },
                     { id: '4:3', label: '4:3 Exhibition', desc: '3200×2400 (Poster)' },
                     { id: '3:2', label: '3:2 Broadside', desc: '3600×2400 (Publication)' },
                     { id: '1:1', label: '1:1 Gallery Square', desc: '2400×2400 (Art Print)' },

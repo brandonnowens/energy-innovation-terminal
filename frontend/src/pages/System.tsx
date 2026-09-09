@@ -122,7 +122,7 @@ export default function System() {
             className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition shadow-2xs cursor-pointer"
           >
             <Cpu size={14} />
-            <span>⚡ Automated Ingestion Hub</span>
+            <span>Automated Ingestion Hub</span>
           </button>
           <div className="text-right">
             <div className="text-[11px] font-medium text-slate-400">System Telemetry</div>

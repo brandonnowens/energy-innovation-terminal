@@ -128,11 +128,11 @@ export function OrgSelect({
   }, [filteredOptions, activeCategory]);
 
   const CATEGORY_TITLES: Record<string, string> = {
-    utility: '⚡ Electric & Gas Utilities',
-    federal: '🏛️ Federal Agencies',
-    state: '🗽 State Energy Agencies & Regulators',
-    foundation: '🌱 Philanthropic Foundations',
-    national_lab: '🔬 Research Institutions',
+    utility: 'Electric & Gas Utilities',
+    federal: 'Federal Agencies',
+    state: 'State Energy Agencies & Regulators',
+    foundation: 'Philanthropic Foundations',
+    national_lab: 'Research Institutions',
   };
 
   return (

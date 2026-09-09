@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowUp, Sparkles, Plus, Copy, Check, Key, ShieldCheck,
-  ChevronDown, ChevronUp, ExternalLink, RefreshCw, Bot, FileText,
+  ArrowUp, Plus, Copy, Check, Key, ShieldCheck,
+  ChevronDown, ChevronUp, ExternalLink, RefreshCw, FileText,
   Building2, TrendingUp, BookOpen, Zap, User, Award, CheckCircle2,
-  Landmark, Rocket, Video, MessageSquare
+  Landmark, Rocket, Video, MessageSquare, Compass, Sliders
 } from 'lucide-react';
 import {
   api,
@@ -445,7 +445,7 @@ export default function Chat() {
                 ...m,
                 content:
                   m.content ||
-                  `⚠️ **Error communicating with database assistant:** ${err.message || 'Unknown network error'}. Please verify connection or retry.`,
+                  `**Error communicating with database assistant:** ${err.message || 'Unknown network error'}. Please verify connection or retry.`,
                 isStreaming: false,
               }
             : m
@@ -683,11 +683,11 @@ export default function Chat() {
           {/* Landing Header */}
           <div className="text-center space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-100 border border-cyan-200 text-cyan-900 text-xs font-semibold shadow-2xs">
-              <Sparkles size={14} className="text-cyan-600" />
-              <span>AI Advisor · Multi-Modal Strategic Counsel</span>
+              <Compass size={14} className="text-cyan-600" />
+              <span>Strategic Advisory · Interactive Research Counsel</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Advisor
+              Advisory Hub
             </h1>
             <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
               Select your operational perspective below, then choose whether to interact via deep text chat or launch directly into a live face-to-face video session with Brandon Owens, grounded in the US Energy Innovation Database by Brandon N. Owens.
@@ -827,7 +827,7 @@ export default function Chat() {
                       <Video size={24} />
                     </div>
                     <span className="text-[10px] font-bold font-mono uppercase bg-cyan-600 text-white px-2 py-0.5 rounded shadow-2xs">
-                      Tavus.io · Brandon Owens
+                      Video Advisory · Live Session
                     </span>
                   </div>
 
@@ -886,7 +886,7 @@ export default function Chat() {
             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[12px] font-semibold transition-colors cursor-pointer"
             title="Return to Advisor Perspectives"
           >
-            <Sparkles size={13} className="text-slate-500 dark:text-slate-400" />
+            <Compass size={13} className="text-slate-500 dark:text-slate-400" />
             <span>Perspectives</span>
           </button>
 
@@ -907,9 +907,6 @@ export default function Chat() {
             >
               <Video size={13} className="text-slate-500 dark:text-slate-400" />
               <span>Video Advisor</span>
-              <span className="text-[9.5px] font-mono px-1 py-0.2 rounded font-bold uppercase bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
-                Tavus
-              </span>
             </button>
           </div>
 
@@ -959,10 +956,10 @@ export default function Chat() {
         <div className="flex items-center gap-2">
           <div
             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-[11.5px] font-medium"
-            title="OpenAI GPT-4o synthesis engine is active and streaming live reasoning"
+            title="Database Connected (56,413 Awards · 5,757 Solicitations)"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>OpenAI GPT-4o Active</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span>Database Connected</span>
           </div>
 
           <button
@@ -980,11 +977,11 @@ export default function Chat() {
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <div className="max-w-3xl mx-auto space-y-6">
           {messages.length === 0 ? (
-            /* Simple Clean ChatGPT-Style Empty State Tailored to Role */
+            /* Simple Clean Query Empty State Tailored to Role */
             <div className="min-h-[50vh] flex flex-col items-center justify-center text-center space-y-6 pt-2">
               <div className="space-y-2">
                 <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 mb-2">
-                  <Sparkles size={20} className="text-slate-600 dark:text-slate-300" />
+                  <Compass size={20} className="text-slate-600 dark:text-slate-300" />
                 </div>
                 <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
                   What can I help you evaluate today?
@@ -1041,7 +1038,7 @@ export default function Chat() {
                   /* Assistant Message - Left-aligned clean typography */
                   <div className="flex gap-3 text-slate-800 dark:text-slate-200 pt-1">
                     <div className="w-7 h-7 rounded-lg bg-slate-900 dark:bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center shrink-0 shadow-2xs mt-0.5">
-                      <Sparkles size={14} className="text-slate-300" />
+                      <FileText size={14} className="text-slate-300" />
                     </div>
 
                     <div className="flex-1 min-w-0 space-y-3">
@@ -1052,7 +1049,7 @@ export default function Chat() {
                       {msg.isStreaming && (
                         <div className="flex items-center gap-2 text-slate-400 text-[12px] font-medium animate-pulse pt-1">
                           <RefreshCw size={12} className="animate-spin text-slate-500" />
-                          <span>Synthesizing strategic advisory & market intelligence for {currentRoleConfig.badge}...</span>
+                          <span>Searching records and analyzing strategic directives for {currentRoleConfig.badge}...</span>
                         </div>
                       )}
 

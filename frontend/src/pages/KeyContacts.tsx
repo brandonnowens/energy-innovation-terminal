@@ -6,11 +6,11 @@ import { useAuth } from '../context/AuthContext';
 import {
   Users, Search, Mail, Phone, Globe, MapPin, ExternalLink,
   Building2, Trophy, Layers, ChevronRight, X, Loader2,
-  DollarSign, Zap, Landmark, Sparkles, Filter, CheckCircle2,
+  DollarSign, Zap, Landmark, Filter, CheckCircle2,
   Download, ShieldCheck, Copy, Check, BookOpen, Award,
   Flame, Cpu, BatteryCharging, Sun, Wind, Atom, Factory,
   Home, Truck, Network, FileText, ArrowRight, LayoutGrid, List,
-  Send, MessageSquare, AlertCircle, RefreshCw, Share2, FlaskConical
+  Send, MessageSquare, AlertCircle, RefreshCw, Share2, FlaskConical, Target
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
@@ -34,7 +34,7 @@ const TECH_ICONS: Record<string, React.ReactNode> = {
   'Hydrogen & Clean Fuels': <Flame size={12} className="text-emerald-500" />,
   'Hydrogen & Clean Fuel Cells': <Flame size={12} className="text-emerald-500" />,
   'Grid Modernization & Smart Power': <Network size={12} className="text-indigo-500" />,
-  'Carbon Capture & CCUS': <Sparkles size={12} className="text-teal-500" />,
+  'Carbon Capture & CCUS': <Layers size={12} className="text-teal-500" />,
   'Building Decarbonization & Clean Heat': <Home size={12} className="text-orange-500" />,
   'Building Decarbonization & Efficiency': <Home size={12} className="text-orange-500" />,
   'Electric Mobility & Transportation': <Truck size={12} className="text-blue-500" />,
@@ -139,7 +139,7 @@ function EmailComposerModal({ contact, onClose }: EmailComposerModalProps) {
                 { id: 'teaming', label: 'Grant Teaming', icon: Users },
                 { id: 'tech_inquiry', label: 'Tech Diligence', icon: Cpu },
                 { id: 'solicitation_question', label: 'Program Scope', icon: Landmark },
-                { id: 'general', label: 'Ecosystem Connect', icon: Sparkles },
+                { id: 'general', label: 'Ecosystem Connect', icon: Network },
               ].map(t => {
                 const Icon = t.icon;
                 return (
@@ -594,7 +594,7 @@ END:VCARD`;
       <div className="flex items-center gap-1.5 border-b dark:border-white/10 border-slate-200 pb-2 overflow-x-auto no-scrollbar">
         {[
           { id: 'all', label: 'All Key Contacts', icon: Users, count: statsData?.total_contacts },
-          { id: 'top_25_say_yes', label: 'Top 25 "Say Yes" Decision-Makers', icon: Sparkles, count: 25 },
+          { id: 'top_25_say_yes', label: 'Top 25 "Say Yes" Decision-Makers', icon: Target, count: 25 },
           { id: 'funder_officers', label: 'Agency Program Officers', icon: Landmark, count: statsData?.program_officers_count },
           { id: 'domain_experts', label: 'Technology & Sector Experts (PIs)', icon: FlaskConical, count: statsData?.domain_experts_count },
           { id: 'institutional_gateways', label: 'National Lab Desks', icon: Building2, count: statsData?.institutional_gateways_count },
@@ -670,12 +670,12 @@ END:VCARD`;
               }}
               className="px-3 py-2 dark:bg-[#090e18] bg-white border dark:border-white/10 border-slate-200 rounded-xl text-xs font-semibold dark:text-slate-200 text-slate-800 outline-none focus:border-cyan-400 shadow-2xs cursor-pointer font-medium"
             >
-              <option value="funding_desc">💰 Funding Volume Led (High to Low)</option>
-              <option value="awards_desc">🏆 Most Awards &amp; Projects</option>
-              <option value="name_asc">🔤 Contact Name (A to Z)</option>
-              <option value="org_asc">🏢 Institution Name (A to Z)</option>
-              <option value="email_score">⚡ Verified Email Deliverability</option>
-              <option value="recent">⏱️ Recently Verified</option>
+              <option value="funding_desc">Funding Volume Led (High to Low)</option>
+              <option value="awards_desc">Most Awards &amp; Projects</option>
+              <option value="name_asc">Contact Name (A to Z)</option>
+              <option value="org_asc">Institution Name (A to Z)</option>
+              <option value="email_score">Verified Email Deliverability</option>
+              <option value="recent">Recently Verified</option>
             </select>
 
             {/* View Mode Toggle */}
@@ -717,19 +717,19 @@ END:VCARD`;
             }}
             className="px-2.5 py-1.5 dark:bg-[#090e18] bg-white border dark:border-white/10 border-slate-200 rounded-lg text-xs font-medium dark:text-slate-200 text-slate-800 outline-none hover:dark:bg-white/[0.08] hover:bg-slate-50 transition-colors cursor-pointer"
           >
-            <option value="all">⚡ All Technology Domains</option>
-            <option value="Energy Storage & Advanced Batteries">🔋 Energy Storage &amp; Batteries</option>
-            <option value="Solar">☀️ Solar &amp; Photovoltaics</option>
-            <option value="Wind">💨 Wind &amp; Offshore Wind</option>
-            <option value="Hydrogen">💧 Hydrogen &amp; Clean Fuels</option>
-            <option value="Grid Modernization">⚡ Grid Modernization &amp; Smart Power</option>
-            <option value="Carbon Capture">🌱 Carbon Capture &amp; CCUS</option>
-            <option value="Building Decarbonization">🏢 Building Decarbonization &amp; Clean Heat</option>
-            <option value="Electric Mobility">🚗 Electric Mobility &amp; EVs</option>
-            <option value="Nuclear">⚛️ Advanced Nuclear &amp; Fusion</option>
-            <option value="Industrial Decarbonization">🏭 Industrial Decarb &amp; Heat</option>
-            <option value="AI">🤖 AI, ML &amp; Energy Software</option>
-            <option value="Bioenergy">🌾 Bioenergy &amp; Sustainable Fuels</option>
+            <option value="all">All Technology Domains</option>
+            <option value="Energy Storage & Advanced Batteries">Energy Storage &amp; Batteries</option>
+            <option value="Solar">Solar &amp; Photovoltaics</option>
+            <option value="Wind">Wind &amp; Offshore Wind</option>
+            <option value="Hydrogen">Hydrogen &amp; Clean Fuels</option>
+            <option value="Grid Modernization">Grid Modernization &amp; Smart Power</option>
+            <option value="Carbon Capture">Carbon Capture &amp; CCUS</option>
+            <option value="Building Decarbonization">Building Decarbonization &amp; Clean Heat</option>
+            <option value="Electric Mobility">Electric Mobility &amp; EVs</option>
+            <option value="Nuclear">Advanced Nuclear &amp; Fusion</option>
+            <option value="Industrial Decarbonization">Industrial Decarb &amp; Heat</option>
+            <option value="AI">AI, ML &amp; Energy Software</option>
+            <option value="Bioenergy">Bioenergy &amp; Sustainable Fuels</option>
           </select>
 
           {/* Sector Selector */}
@@ -741,14 +741,14 @@ END:VCARD`;
             }}
             className="px-2.5 py-1.5 dark:bg-[#090e18] bg-white border dark:border-white/10 border-slate-200 rounded-lg text-xs font-medium dark:text-slate-200 text-slate-800 outline-none hover:dark:bg-white/[0.08] hover:bg-slate-50 transition-colors cursor-pointer"
           >
-            <option value="all">🌐 All Market Sectors</option>
-            <option value="Electric Grid & Utility">⚡ Electric Grid &amp; Utility</option>
-            <option value="Industrial & Manufacturing">🏭 Industrial &amp; Manufacturing</option>
-            <option value="Transportation & Mobility">🚗 Transportation &amp; Mobility</option>
-            <option value="Buildings & Real Estate">🏢 Buildings &amp; Real Estate</option>
-            <option value="Agriculture & Forestry">🌾 Agriculture &amp; Forestry</option>
-            <option value="Government & Municipal">🏛️ Government &amp; Municipal</option>
-            <option value="Cross-Cutting & Policy">📜 Cross-Cutting &amp; Policy</option>
+            <option value="all">All Market Sectors</option>
+            <option value="Electric Grid & Utility">Electric Grid &amp; Utility</option>
+            <option value="Industrial & Manufacturing">Industrial &amp; Manufacturing</option>
+            <option value="Transportation & Mobility">Transportation &amp; Mobility</option>
+            <option value="Buildings & Real Estate">Buildings &amp; Real Estate</option>
+            <option value="Agriculture & Forestry">Agriculture &amp; Forestry</option>
+            <option value="Government & Municipal">Government &amp; Municipal</option>
+            <option value="Cross-Cutting & Policy">Cross-Cutting &amp; Policy</option>
           </select>
 
           {/* State / Location Selector */}
@@ -760,18 +760,18 @@ END:VCARD`;
             }}
             className="px-2.5 py-1.5 dark:bg-[#090e18] bg-white border dark:border-white/10 border-slate-200 rounded-lg text-xs font-medium dark:text-slate-200 text-slate-800 outline-none hover:dark:bg-white/[0.08] hover:bg-slate-50 transition-colors cursor-pointer"
           >
-            <option value="all">📍 All States &amp; Regions</option>
-            <option value="NY">🗽 New York (NY)</option>
-            <option value="CA">☀️ California (CA)</option>
-            <option value="MA">🏛️ Massachusetts (MA)</option>
-            <option value="DC">🏛️ Washington, DC</option>
-            <option value="CO">🏔️ Colorado (CO)</option>
-            <option value="WA">🌲 Washington (WA)</option>
-            <option value="TX">⭐ Texas (TX)</option>
-            <option value="IL">🏙️ Illinois (IL)</option>
-            <option value="PA">🔔 Pennsylvania (PA)</option>
-            <option value="NC">🌲 North Carolina (NC)</option>
-            <option value="TN">⛰️ Tennessee (TN)</option>
+            <option value="all">All States &amp; Regions</option>
+            <option value="NY">New York (NY)</option>
+            <option value="CA">California (CA)</option>
+            <option value="MA">Massachusetts (MA)</option>
+            <option value="DC">Washington, DC</option>
+            <option value="CO">Colorado (CO)</option>
+            <option value="WA">Washington (WA)</option>
+            <option value="TX">Texas (TX)</option>
+            <option value="IL">Illinois (IL)</option>
+            <option value="PA">Pennsylvania (PA)</option>
+            <option value="NC">North Carolina (NC)</option>
+            <option value="TN">Tennessee (TN)</option>
           </select>
 
           {/* Deliverable Only Toggle */}
@@ -1298,7 +1298,7 @@ END:VCARD`;
                             </p>
                             {contactCorrespondence.thread?.next_action && (
                               <div className="text-[10px] text-blue-300 font-medium">
-                                👉 Next: {contactCorrespondence.thread.next_action}
+                                <span className="font-semibold text-blue-400">Next Action:</span> {contactCorrespondence.thread.next_action}
                               </div>
                             )}
                           </div>

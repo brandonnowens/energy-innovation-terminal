@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   X, Mail, Lock, User as UserIcon, Building2, Eye, EyeOff,
-  Sparkles, ShieldCheck, ArrowRight, AlertCircle, CheckCircle2,
+  ShieldCheck, ArrowRight, AlertCircle, CheckCircle2,
   Loader2, KeyRound
 } from 'lucide-react';
 import { EnergyInnovationTerminalLogo } from './EnergyInnovationTerminalLogo';
@@ -357,7 +357,7 @@ export function AuthModal() {
                     </>
                   ) : (
                     <>
-                      <Sparkles size={15} />
+                      <ShieldCheck size={15} />
                       <span>Create Account</span>
                     </>
                   )}

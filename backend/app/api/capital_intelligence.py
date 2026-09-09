@@ -14,6 +14,7 @@ Endpoints for:
 import json
 from typing import Optional, List, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import text, func, desc, or_
 
@@ -663,3 +664,50 @@ def get_recipient_capital_continuum(recipient_id: int, db: Session = Depends(get
             for q in queues
         ]
     }
+
+
+from fastapi.responses import Response
+
+@router.get("/recipients/{recipient_id}/export-pdf")
+@router.get("/attributions/recipients/{recipient_id}/export-pdf")
+def export_recipient_dossier_pdf(recipient_id: int, db: Session = Depends(get_db)):
+    """
+    Generates and streams an institutional, publication-grade multi-page PDF dossier
+    for a clean energy recipient organization.
+    """
+    from app.engine.recipient_pdf_report import generate_recipient_dossier_pdf
+
+    continuum_data = get_recipient_capital_continuum(recipient_id=recipient_id, db=db)
+    recipient = db.query(Recipient).get(recipient_id)
+    if not recipient:
+        raise HTTPException(status_code=404, detail="Recipient entity not found")
+
+    dossier_payload = {
+        "recipient": {
+            "id": recipient.id,
+            "name": recipient.name,
+            "primary_technology": recipient.primary_technology,
+            "headquarters_city": recipient.headquarters_city,
+            "headquarters_state": recipient.headquarters_state,
+            "commercialization_stage": recipient.commercialization_stage,
+            "employee_range": recipient.employee_range,
+            "website_url": recipient.website_url,
+            "description": recipient.description,
+            "total_funding_received": recipient.total_funding_received,
+            "climate_impact_focus": recipient.climate_impact_focus,
+            "key_innovations": recipient.key_innovations
+        },
+        "continuum": continuum_data
+    }
+
+    pdf_buffer = generate_recipient_dossier_pdf(dossier_payload)
+    safe_name = "".join(c if c.isalnum() else "_" for c in recipient.name)[:40].strip("_")
+
+    return Response(
+        content=pdf_buffer.getvalue(),
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'attachment; filename="{safe_name}_Dossier_EnergyInnovation.pdf"'
+        }
+    )
+

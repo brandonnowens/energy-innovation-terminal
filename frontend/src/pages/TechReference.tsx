@@ -4,7 +4,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import {
   Search, BatteryCharging, Sun, Atom, Flame, Network, Factory,
   Wind, Home, Truck, Layers, Cpu, ShieldCheck, ArrowRight,
-  ExternalLink, Sparkles, CheckCircle2, AlertTriangle, Clock,
+  ExternalLink, CheckCircle2, AlertTriangle, Clock,
   DollarSign, Trophy, FileText, ChevronRight, ChevronDown, Activity, Info,
   TrendingUp, TrendingDown, Award, Building2, Lightbulb, RefreshCw, Send,
   HelpCircle, Compass, BarChart3, Sliders, Target, Zap, Grid, List, X,
@@ -358,7 +358,7 @@ export default function TechReference() {
     setExpandedSectors(prev => ({ ...prev, [catId]: !prev[catId] }));
   };
 
-  // AI Insights Mutation
+  // Technical Diligence Mutation
   const aiMutation = useMutation({
     mutationFn: (questionText: string) => api.getTechAIInsights(activeTechId, {
       custom_question: questionText,
@@ -847,7 +847,7 @@ export default function TechReference() {
                       </p>
                     </div>
 
-                    {/* Action Bar (Compare, AI Diligence) */}
+                    {/* Action Bar (Compare, Diligence) */}
                     <div className="flex items-center gap-2 shrink-0">
                       <button
                         onClick={() => {
@@ -947,7 +947,7 @@ export default function TechReference() {
                     { id: 'evidence', label: 'Empirical Capital & Solicitations ($104.16B)', icon: DollarSign },
                     { id: 'tradeoffs', label: '6D Radar & Trade-Offs', icon: Gauge },
                     { id: 'policies', label: 'Codes, Standards & PUC Dockets', icon: Scale },
-                    { id: 'ai', label: 'AI Diligence Specialist Copilot', icon: Sparkles },
+                    { id: 'ai', label: 'Technical Diligence Guide', icon: Compass },
                   ].map((tab) => (
                     <button
                       key={tab.id}
@@ -990,7 +990,7 @@ export default function TechReference() {
 
                       <div className="p-6 rounded-3xl bg-[#0b101b] border border-white/[0.08] space-y-2">
                         <div className="flex items-center gap-2 text-purple-400 font-bold text-xs font-mono uppercase">
-                          <Sparkles size={14} />
+                          <ShieldCheck size={14} />
                           <span>Why It Matters & Macro Problem Solved</span>
                         </div>
                         <p className="text-sm text-slate-200 leading-relaxed">
@@ -1136,7 +1136,7 @@ export default function TechReference() {
 
                       <div className="p-6 rounded-3xl bg-[#0b101b] border border-cyan-500/20 space-y-3">
                         <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs font-mono uppercase">
-                          <Sparkles size={14} />
+                          <Target size={14} />
                           <span>Active R&amp;D Tracks &amp; Consortia Focus</span>
                         </div>
                         <ul className="space-y-2 text-xs text-slate-300">
@@ -1499,19 +1499,19 @@ export default function TechReference() {
                   </div>
                 )}
 
-                {/* TAB 7: AI TECHNICAL SPECIALIST DILIGENCE COPILOT */}
+                {/* TAB 7: TECHNICAL DILIGENCE SPECIALIST */}
                 {activeTab === 'ai' && (
                   <div className="space-y-6 animate-in fade-in-50 duration-200">
                     <div className="p-6 rounded-3xl bg-gradient-to-br from-[#0c1424] to-[#080c14] border border-cyan-500/30 shadow-2xl space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Sparkles size={18} className="text-cyan-400" />
+                          <Compass size={18} className="text-cyan-400" />
                           <h3 className="text-base font-extrabold text-white">
-                            AI Technical Diligence Specialist (Deterministic &amp; OpenAI Mode)
+                            Technical Diligence Specialist &amp; Review Guide
                           </h3>
                         </div>
                         <span className="text-xs text-slate-400 font-mono">
-                          SHA-256 Cached Engine
+                          Verified Reference Model
                         </span>
                       </div>
 
@@ -1557,11 +1557,11 @@ export default function TechReference() {
                         </div>
                       </form>
 
-                      {/* AI Response Output */}
+                      {/* Diligence Analysis Output */}
                       {aiMutation.data && (
                         <div className="p-6 rounded-2xl bg-black/40 border border-cyan-500/30 space-y-4 text-xs animate-in fade-in-50">
                           <div>
-                            <div className="text-[10px] text-cyan-400 font-mono uppercase font-bold">Executive Synthesis</div>
+                            <div className="text-[10px] text-cyan-400 font-mono uppercase font-bold">Executive Summary</div>
                             <p className="text-slate-200 mt-1 text-sm leading-relaxed whitespace-pre-line">
                               {aiMutation.data.executive_synthesis}
                             </p>

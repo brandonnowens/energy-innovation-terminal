@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  X, ShieldCheck, Check, Sparkles, Zap, Building2,
+  X, ShieldCheck, Check, Zap, Building2,
   Crown, ArrowUpRight, CheckCircle2, Loader2, Info
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -171,8 +171,8 @@ export function MembershipModal() {
                   {/* Action / Upgrade Button */}
                   <div className="pt-2">
                     {isCurrent ? (
-                      <div className="w-full py-2 px-3 text-center bg-emerald-100/70 text-emerald-800 text-xs font-bold rounded-xl border border-emerald-200">
-                        ✓ Currently Active (Full Access)
+                      <div className="w-full py-2 px-3 text-center bg-emerald-100/70 text-emerald-800 text-xs font-bold rounded-xl border border-emerald-200 flex items-center justify-center gap-1.5">
+                        <Check size={13} /> Currently Active (Full Access)
                       </div>
                     ) : (
                       <button

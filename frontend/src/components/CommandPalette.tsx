@@ -4,8 +4,9 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from '../api/client';
 import {
   Search, FileSearch, Layers, Trophy, Network, GitMerge, TrendingUp,
-  FileText, Database, Building2, Sparkles, ArrowRight, X, Loader2,
-  ExternalLink, Globe, MapPin, Zap, ChevronRight, FileEdit, Scale, Lightbulb, BookUser, BookOpen, Bot, ShieldCheck, Compass, Newspaper, Terminal
+  FileText, Database, Building2, ArrowRight, X, Loader2,
+  ExternalLink, Globe, MapPin, Zap, ChevronRight, FileEdit, Scale, Lightbulb, BookUser, BookOpen, ShieldCheck, Compass, Newspaper, Terminal,
+  Sliders, MessageSquare, Activity
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from './OrgLogo';
@@ -18,12 +19,12 @@ interface CommandPaletteProps {
 
 const STATIC_ACTIONS = [
   { id: 'persona-investors', label: 'Switch Front Door: Investors & Strategists', sub: 'Curated view spotlighting Daily Digest, Capital Flows (Sankey), Venture & IP, and Strategic Reports', to: '__persona_investor__', icon: TrendingUp, category: 'Front Doors' },
-  { id: 'persona-innovators', label: 'Switch Front Door: Innovators & Grant Seekers', sub: 'Curated view spotlighting Match Engine, Solicitations, and Application Studio', to: '__persona_innovator__', icon: Sparkles, category: 'Front Doors' },
+  { id: 'persona-innovators', label: 'Switch Front Door: Innovators & Grant Seekers', sub: 'Curated view spotlighting Match Engine, Solicitations, and Application Studio', to: '__persona_innovator__', icon: Lightbulb, category: 'Front Doors' },
   { id: 'persona-all', label: 'Switch Front Door: All Modules (Master View)', sub: 'Display all modules, directories, intelligence suites, and reference databases', to: '__persona_all__', icon: Layers, category: 'Front Doors' },
-  { id: 'nav-digest', label: 'Daily Digest', sub: 'Automated morning intelligence briefing analyzing new solicitations, deadlines, and venture wire', to: '/digest', icon: Newspaper, category: 'Opportunities' },
-  { id: 'nav-chat', label: 'AI Advisor', sub: 'Grounded RAG AI expert copilot with direct access to all 56k+ awards & 5.7k+ opportunities', to: '/chat', icon: Bot, category: 'AI Advisor' },
-  { id: 'nav-match', label: 'Match', sub: 'Deterministic eligibility and funding architecture engine', to: '/analyze', icon: Sparkles, category: 'Opportunities' },
-  { id: 'nav-proposals', label: 'Application Studio', sub: 'SOPO generation, win strategy synthesis, and proposal builder', to: '/proposals', icon: FileEdit, category: 'Opportunities' },
+  { id: 'nav-digest', label: 'Daily Digest', sub: 'Morning intelligence briefing analyzing new solicitations, deadlines, and venture wire', to: '/digest', icon: Newspaper, category: 'Opportunities' },
+  { id: 'nav-chat', label: 'Strategic Advisory', sub: 'Interactive research query tool with direct access to all 56k+ awards & 5.7k+ opportunities', to: '/chat', icon: MessageSquare, category: 'Research' },
+  { id: 'nav-match', label: 'Match Engine', sub: 'Eligibility and capital stacking analysis engine', to: '/analyze', icon: Sliders, category: 'Opportunities' },
+  { id: 'nav-proposals', label: 'Application Studio', sub: 'Statement of project objectives, scoring review, and proposal builder', to: '/proposals', icon: FileEdit, category: 'Opportunities' },
   { id: 'nav-opps', label: 'Solicitations', sub: '5,757 active and historical funding opportunities', to: '/opportunities', icon: FileSearch, category: 'Opportunities' },
   { id: 'nav-awards', label: 'Awards', sub: '56,413 awards representing $104.16B tracked capital & 10k+ grid queues', to: '/awards', icon: Trophy, category: 'Awards' },
   { id: 'nav-venture-patents', label: 'Venture & IP', sub: 'USPTO Bayh-Dole patent citations, $58.22B private VC syndicates & lineage graph', to: '/venture-patents', icon: Lightbulb, category: 'Awards' },
@@ -39,10 +40,10 @@ const STATIC_ACTIONS = [
   { id: 'nav-technologies', label: 'Technologies', sub: 'Engineering mechanics, fuel pathways, 2026-2035 frontier targets, and database capital evidence', to: '/technologies', icon: BookOpen, category: 'References' },
   { id: 'nav-policies', label: 'Policies', sub: 'Federal IRA §45/§48 tax credits, elective direct pay cash monetization, NFPA/UL safety codes, and state climate statutes', to: '/policies', icon: ShieldCheck, category: 'References' },
   { id: 'nav-dockets', label: 'Dockets', sub: 'Public Utility Commission dockets, large load interconnection & VPP tariffs', to: '/dockets', icon: Scale, category: 'References' },
-  { id: 'nav-updates', label: 'Feeds', sub: 'Real-time telemetry and audit feed of detected dataset updates', to: '/updates', icon: Sparkles, category: 'Data & Audit' },
+  { id: 'nav-updates', label: 'Feeds', sub: 'Real-time telemetry and audit feed of detected dataset updates', to: '/updates', icon: Activity, category: 'Data & Audit' },
   { id: 'nav-sources', label: 'Provenance', sub: 'Source authority ranking, audit metrics, and database status', to: '/sources', icon: Database, category: 'Data & Audit' },
-  { id: 'nav-api-docs', label: 'Developers & API Docs', sub: 'Interactive OpenAPI docs, 9 AI agent tools, and Python/cURL endpoints', to: '__api_modal__', icon: Terminal, category: 'Data & Audit' },
-  { id: 'nav-splash', label: 'Replay Splash', sub: 'Interactive launch sequence and telemetry indexing animation', to: '__splash__', icon: Sparkles, category: 'System' },
+  { id: 'nav-api-docs', label: 'Developers & API Docs', sub: 'Interactive OpenAPI docs, developer tools, and Python/cURL endpoints', to: '__api_modal__', icon: Terminal, category: 'Data & Audit' },
+  { id: 'nav-splash', label: 'Replay Splash', sub: 'Interactive launch sequence and telemetry indexing animation', to: '__splash__', icon: Compass, category: 'System' },
 ];
 
 

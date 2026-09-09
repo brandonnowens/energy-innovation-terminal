@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  Download, X, Sparkles, Image as ImageIcon, Check, Sliders,
+  Download, X, Image as ImageIcon, Check, Sliders,
   Layers, MapPin, DollarSign, Calendar, Eye, Loader2,
   Printer, Share2, Smartphone, Monitor, Globe
 } from 'lucide-react';
@@ -10,7 +10,7 @@ import { AwardMapMarker, AwardMapSummary } from '../api/client';
 export type MapPresetCategory = 'publication' | 'social';
 
 export type AspectRatio =
-  | '16:9'              // 4K Wall Art (3840x2160)
+  | '16:9'              // 4K Presentation (3840x2160)
   | '4:3'               // Poster (3200x2400)
   | '3:2'               // Publication (3600x2400)
   | '1:1'               // Gallery Square (2400x2400)
@@ -436,18 +436,18 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
         {/* Header */}
         <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 text-white shadow-md">
-              <Sparkles size={18} />
+            <div className="p-2.5 rounded-xl bg-slate-900 text-white shadow-md">
+              <Download size={18} />
             </div>
             <div>
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <span>Executive GIS Wall Map &amp; Publication Studio</span>
+                <span>Publication GIS Map &amp; Graphic Studio</span>
                 <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">
                   4K / 300 DPI Ultra-HD
                 </span>
               </h2>
               <p className="text-xs text-slate-500">
-                Download a high-resolution, publication-ready thematic wall map citing <strong>U.S. Energy Innovation Database by Brandon N. Owens</strong>.
+                Download a high-resolution, publication-ready thematic map citing <strong>U.S. Energy Innovation Database by Brandon N. Owens</strong>.
               </p>
             </div>
           </div>
@@ -480,7 +480,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  <Printer size={14} /> Executive Wall Art &amp; Print
+                  <Printer size={14} /> High-Resolution Publication Export
                 </button>
                 <button
                   onClick={() => {
@@ -506,7 +506,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   {[
-                    { id: '16:9', label: '16:9 Wall Art', desc: '3840×2160 (4K Master)' },
+                    { id: '16:9', label: '16:9 Presentation 4K', desc: '3840×2160 (4K Master)' },
                     { id: '4:3', label: '4:3 Exhibition', desc: '3200×2400 (Poster)' },
                     { id: '3:2', label: '3:2 Broadside', desc: '3600×2400 (Publication)' },
                     { id: '1:1', label: '1:1 Gallery Square', desc: '2400×2400 (Art Print)' },
@@ -655,7 +655,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
               ) : previewUrl ? (
                 <img
                   src={previewUrl}
-                  alt="Executive Map Wall Art Preview"
+                  alt="Publication Map Preview"
                   className="max-h-[500px] max-w-full object-contain rounded-lg shadow-xl border border-slate-300 transition-all"
                 />
               ) : (

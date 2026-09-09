@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ShieldAlert, ShieldCheck, Scale, FileText, CheckCircle2,
-  ExternalLink, X, Lock, AlertTriangle, Building2, Info, Sparkles
+  ExternalLink, X, Lock, AlertTriangle, Building2, Info
 } from 'lucide-react';
 import clsx from 'clsx';
 import { useTheme } from '../context/ThemeContext';

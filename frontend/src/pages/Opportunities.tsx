@@ -6,7 +6,7 @@ import {
   Search, Loader2, FolderOpen, ChevronLeft, ChevronRight, ArrowUpDown,
   ShieldAlert, X, Calendar, Mail, Phone, FileText, ExternalLink,
   AlertTriangle, Info, Ban, Star, Download, Printer, Share2, CheckCircle2,
-  Building2, Sparkles, Filter, Trophy, Paperclip, FileDown, Layers, FileSearch, RotateCcw,
+  Building2, HeartHandshake, Filter, Trophy, Paperclip, FileDown, Layers, FileSearch, RotateCcw,
   Zap, Landmark, RefreshCw, Radio, Clock
 } from 'lucide-react';
 import clsx from 'clsx';
@@ -419,7 +419,7 @@ export default function Opportunities() {
           { id: 'federal', label: 'Federal Agencies', icon: Landmark },
           { id: 'state', label: 'State Energy Agencies', icon: Building2 },
           { id: 'economic_development', label: 'Economic Development', icon: Building2 },
-          { id: 'foundation', label: 'Philanthropic Foundations', icon: Sparkles },
+          { id: 'foundation', label: 'Philanthropic Foundations', icon: HeartHandshake },
           { id: 'utility', label: 'Electric & Gas Utilities', icon: Zap },
           { id: 'watchlist', label: `Saved Watchlist (${starredIds.length})`, icon: Star },
         ].map(tab => {
@@ -549,7 +549,7 @@ export default function Opportunities() {
         {/* Cockpit Quick Presets */}
         <div className="flex items-center gap-2 flex-wrap pt-2 border-t dark:border-white/10 border-slate-200 text-xs">
           <span className="text-[10.5px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-600 flex items-center gap-1 font-mono">
-            <Sparkles size={12} className="text-slate-500" /> Focus Views:
+            <Filter size={12} className="text-slate-500" /> Focus Views:
           </span>
 
           <button
@@ -568,7 +568,7 @@ export default function Opportunities() {
                 : "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60 hover:bg-emerald-100"
             )}
           >
-            <Sparkles size={11} className={activeCategoryTab === 'recent' ? "text-white" : "text-emerald-500 animate-pulse"} />
+            <Clock size={11} className={activeCategoryTab === 'recent' ? "text-white" : "text-emerald-500"} />
             <span>New (Last 30 Days)</span>
           </button>
 
@@ -789,8 +789,8 @@ export default function Opportunities() {
                         <div className="flex items-center gap-2 flex-wrap mb-1">
                           <span className="dark:group-hover:text-cyan-300 group-hover:text-cyan-700 font-bold transition-colors">{opp.name}</span>
                           {isOpportunityNew(opp) && (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9.5px] font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-xs tracking-wide">
-                              <Sparkles size={9} className="text-emerald-200 animate-pulse" />
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9.5px] font-extrabold bg-emerald-600 text-white shadow-xs tracking-wide">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-200" />
                               <span>NEW</span>
                             </span>
                           )}
@@ -818,7 +818,7 @@ export default function Opportunities() {
                           <div className="flex items-center gap-2 mt-1">
                             {opp.vendorRegistrationRequired && (
                               <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
-                                🔒 Vendor Reg. Required
+                                <ShieldAlert size={10} /> Vendor Reg. Required
                               </span>
                             )}
                             {opp.procurementPortalUrl && (
@@ -989,7 +989,7 @@ export default function Opportunities() {
                   <span className="font-mono text-[13px] font-bold text-indigo-600">{selectedOpp.solicitation_number}</span>
                   {isOpportunityNew(selectedOpp) && (
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-600 text-white shadow-2xs">
-                      <Sparkles size={10} className="text-emerald-200 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-200" />
                       <span>NEW · Last 30 Days</span>
                     </span>
                   )}

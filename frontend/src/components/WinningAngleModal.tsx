@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Sparkles,
   Zap,
   ShieldAlert,
   Users,
@@ -158,7 +157,7 @@ export function WinningAngleModal({
                 )}
                 {report?.is_llm_generated && (
                   <span className="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30">
-                    Live GPT-4o Grounded
+                    Deep Strategic Analysis
                   </span>
                 )}
               </div>
@@ -174,7 +173,7 @@ export function WinningAngleModal({
               onClick={() => fetchWinningAngle(true)}
               disabled={loading || liveRefreshing}
               className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 text-xs font-semibold flex items-center gap-1.5 border border-slate-200 dark:border-white/10 transition-colors disabled:opacity-50 cursor-pointer"
-              title="Force live LLM reasoning"
+              title="Re-run in-depth strategic analysis"
             >
               <RefreshCw size={12} className={clsx(liveRefreshing && 'animate-spin')} />
               <span className="hidden sm:inline">Live Deep-Dive</span>
@@ -214,7 +213,7 @@ export function WinningAngleModal({
               <div className="relative p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-500/10 via-indigo-500/5 to-purple-500/10 border border-amber-500/30 shadow-sm">
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider font-mono">
-                    <Sparkles size={14} />
+                    <Target size={14} />
                     <span>The Winning Proposal Hook (Executive Summary)</span>
                   </div>
                   <button

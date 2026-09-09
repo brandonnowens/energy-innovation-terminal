@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import {
-  Sparkles, ShieldCheck, Mail, MapPin, Target, CheckCircle2,
+  ShieldCheck, Mail, MapPin, Target, CheckCircle2,
   ExternalLink, Copy, Check, ChevronDown, ChevronUp, Search,
   Filter, Building2, Zap, Landmark, HeartHandshake, Download,
   Users, Flame, ArrowUpRight, Compass, Layers, Globe, X,
@@ -74,7 +74,7 @@ export function SayYesDecisionMakerMatrix({
   if (!organizations || organizations.length === 0) {
     return (
       <div className="p-8 text-center bg-white dark:bg-[#0d1424] rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-2xs">
-        <Sparkles className="mx-auto mb-2 text-indigo-600 dark:text-indigo-400 opacity-60" size={28} />
+        <Target className="mx-auto mb-2 text-indigo-600 dark:text-indigo-400 opacity-60" size={28} />
         <p className="text-sm font-bold text-slate-800 dark:text-slate-200">No organization match rankings available yet.</p>
         <p className="text-xs text-slate-500 mt-1">Run project matching to generate the ranked outreach matrix.</p>
       </div>
@@ -308,7 +308,7 @@ export function SayYesDecisionMakerMatrix({
                       <td className="py-3 px-3.5 text-center">
                         <div className="inline-flex flex-col items-center">
                           <div className="flex items-center gap-1 font-mono font-bold text-sm text-emerald-600 dark:text-emerald-400">
-                            <Sparkles size={12} className="text-emerald-500" />
+                            <Target size={12} className="text-emerald-500" />
                             <span>{org.say_yes_score}%</span>
                           </div>
                           <div className="w-20 bg-slate-200 dark:bg-white/10 h-1.5 rounded-full overflow-hidden mt-1">

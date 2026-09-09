@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   ShieldCheck, Scale, DollarSign, FileText, Zap, Search,
-  ExternalLink, Sparkles, Layers, Activity, CheckCircle2,
+  ExternalLink, Layers, Activity, CheckCircle2,
   Building2, ArrowUpRight, X, Grid, List, Compass, Info,
   Calculator, Flame, Sun, BatteryCharging, AlertTriangle,
   FileSpreadsheet, ChevronRight, HelpCircle, Award

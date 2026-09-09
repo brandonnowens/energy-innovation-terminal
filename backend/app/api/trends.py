@@ -238,6 +238,7 @@ def trends_by_agency(
     return _set_cached_trends(cache_key, res)
 
 @router.get("/by-technology")
+@router.get("/by-tech")
 def trends_by_technology(year_min: int | None = None, year_max: int | None = None, agency: str | None = None, status: str | None = None, data_source: str = "sanitized", top_n: int = 20, sort_by: str = "count", db: Session = Depends(get_db)):
     """Technology distribution from categories: {technology, count, total_funding}"""
     cache_key = f"by_tech:{year_min}:{year_max}:{agency}:{status}:{data_source}:{top_n}:{sort_by}"

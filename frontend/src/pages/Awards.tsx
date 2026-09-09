@@ -7,8 +7,8 @@ import {
   Loader2, Building2, User, MapPin, DollarSign, Calendar, Filter,
   ExternalLink, FileText, GraduationCap, FlaskConical, Briefcase, Landmark,
   Globe, Users, Map as MapIcon, List, BarChart3, Phone, Mail, Award,
-  Sparkles, RotateCcw, SlidersHorizontal, FileEdit, CheckCircle2, ShieldCheck,
-  FileDown, Paperclip, Check, Layers, Zap
+  RotateCcw, SlidersHorizontal, FileEdit, CheckCircle2, ShieldCheck,
+  FileDown, Paperclip, Check, Layers, Zap, Target
 } from 'lucide-react';
 import clsx from 'clsx';
 import { saveAs } from 'file-saver';
@@ -754,7 +754,7 @@ export default function Awards() {
                               </span>
                               {r.is_ny_based && (
                                 <span className="px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 text-[9px] font-extrabold border border-purple-200 shrink-0">
-                                  🗽 NY
+                                  NY Based
                                 </span>
                               )}
                             </div>
@@ -779,7 +779,7 @@ export default function Awards() {
                           )}
                           {r.employee_range && (
                             <span className="text-[10px] text-slate-400">
-                              👥 {r.employee_range} emp
+                              {r.employee_range} emp
                             </span>
                           )}
                         </div>
@@ -1247,7 +1247,7 @@ export default function Awards() {
                                   <span className="font-mono text-indigo-300 text-[10.5px]">{task.budget}</span>
                                 </div>
                                 <div className="text-[10.5px] text-slate-400 flex items-center justify-between">
-                                  <span>🎯 {task.milestone}</span>
+                                  <span className="flex items-center gap-1"><Target size={11} className="text-slate-400" /> {task.milestone}</span>
                                   <span className="text-emerald-400 font-semibold">{task.trl}</span>
                                 </div>
                               </div>

@@ -8,11 +8,11 @@ import {
   AttributionsGraphNode
 } from '../api/client';
 import {
-  Sparkles, Trophy, Building2, Lightbulb, TrendingUp, ExternalLink,
+  Trophy, Building2, Lightbulb, TrendingUp, ExternalLink,
   Search, Filter, ChevronRight, X, ArrowUpRight, ShieldCheck,
   Zap, Compass, Layers, GitFork, Users, Network, DollarSign, Award,
   ArrowUpDown, ZoomIn, ZoomOut, RefreshCw, Maximize2, Minimize2,
-  Download, Eye, EyeOff, Info, Check, Sliders
+  Download, Eye, EyeOff, Info, Check, Sliders, Target
 } from 'lucide-react';
 import clsx from 'clsx';
 import { saveAs } from 'file-saver';
@@ -139,7 +139,7 @@ export function VenturePatentView() {
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold uppercase tracking-wider">Catalytic Leverage</span>
             <span className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600 border border-indigo-200">
-              <Sparkles size={16} />
+              <TrendingUp size={16} />
             </span>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
@@ -182,7 +182,7 @@ export function VenturePatentView() {
               subTab === 'table' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-600 hover:text-slate-900'
             )}
           >
-            <span>📋 Venture & Patent Table</span>
+            <span>Venture &amp; Patent Table</span>
           </button>
 
           <button
@@ -192,8 +192,8 @@ export function VenturePatentView() {
               subTab === 'matrix' ? 'bg-white text-indigo-700 shadow-2xs' : 'text-slate-600 hover:text-slate-900'
             )}
           >
-            <Sparkles size={13} />
-            <span>🧬 9-D Innovation Matrix & Trace</span>
+            <Layers size={13} />
+            <span>9-D Innovation Matrix &amp; Trace</span>
           </button>
 
           <button
@@ -204,7 +204,7 @@ export function VenturePatentView() {
             )}
           >
             <Network size={13} />
-            <span>🕸️ Lineage Graph</span>
+            <span>Lineage Graph</span>
           </button>
 
           <button
@@ -215,7 +215,7 @@ export function VenturePatentView() {
             )}
           >
             <Users size={13} />
-            <span>🏆 Investor Syndicates</span>
+            <span>Investor Syndicates</span>
           </button>
 
           <button
@@ -226,7 +226,7 @@ export function VenturePatentView() {
             )}
           >
             <DollarSign size={13} />
-            <span>📑 SEC Form D Private Offerings</span>
+            <span>SEC Form D Private Offerings</span>
           </button>
         </div>
 
@@ -993,7 +993,7 @@ function InteractiveGraphStudio({
                   layoutMode === mode ? 'bg-indigo-600 text-white shadow-2xs' : 'text-slate-400 hover:text-white'
                 )}
               >
-                {mode === 'orbit' ? '🪐 Multi-Orbit' : (mode === 'bipartite' ? '⚡ Flow Stream' : '🌌 Clusters')}
+                {mode === 'orbit' ? 'Multi-Orbit' : (mode === 'bipartite' ? 'Flow Stream' : 'Clusters')}
               </button>
             ))}
           </div>
@@ -1207,7 +1207,7 @@ function InteractiveGraphStudio({
                   selectedNode.type === 'investor' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
                   selectedNode.type === 'company' ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30' : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
                 )}>
-                  {selectedNode.type === 'patent' ? '💡 USPTO Bayh-Dole Patent' : (selectedNode.type === 'investor' ? '💰 Climate VC Fund' : (selectedNode.type === 'company' ? '🏢 Awardee Startup' : '🏛️ Funding Agency'))}
+                  {selectedNode.type === 'patent' ? 'USPTO Bayh-Dole Patent' : (selectedNode.type === 'investor' ? 'Climate VC Fund' : (selectedNode.type === 'company' ? 'Awardee Startup' : 'Funding Agency'))}
                 </span>
                 <h3 className="font-bold text-sm text-slate-100 mt-1.5 leading-snug">{selectedNode.name}</h3>
               </div>

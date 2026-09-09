@@ -14,7 +14,7 @@ import {
 import { useAuth } from '../context/AuthContext';
 import {
   Mail, Send, Inbox, RefreshCw, CheckCircle2, AlertCircle,
-  Paperclip, FileText, Users, Search, ShieldCheck, Sparkles,
+  Paperclip, FileText, Users, Search, ShieldCheck,
   ChevronRight, X, Loader2, ArrowRight, Eye, Trash2, Clock,
   MessageSquare, UserCheck, Check, CornerDownRight, Tag,
   Globe, Building2, MapPin, ExternalLink, Sliders, Zap
@@ -406,10 +406,10 @@ export default function AdminEmailHub() {
       {/* Main Tab Navigation */}
       <div className="flex items-center gap-1 border-b border-slate-200 pb-2 overflow-x-auto no-scrollbar">
         {[
-          { id: 'compose', label: '✉️ Compose & Bulk Dispatch', badge: selectedContactIds.length > 0 ? `${selectedContactIds.length} Selected` : undefined },
-          { id: 'inbox', label: '📬 Inbox & Correspondence CRM', badge: statusData?.telemetry?.unread_inbound_messages ? `${statusData.telemetry.unread_inbound_messages} New` : undefined },
-          { id: 'campaigns', label: '📊 Campaign History & Logs' },
-          { id: 'diagnostics', label: '⚙️ Gmail Settings & Connection' },
+          { id: 'compose', label: 'Compose & Bulk Dispatch', badge: selectedContactIds.length > 0 ? `${selectedContactIds.length} Selected` : undefined },
+          { id: 'inbox', label: 'Inbox & Correspondence CRM', badge: statusData?.telemetry?.unread_inbound_messages ? `${statusData.telemetry.unread_inbound_messages} New` : undefined },
+          { id: 'campaigns', label: 'Campaign History & Logs' },
+          { id: 'diagnostics', label: 'Gmail Settings & Connection' },
         ].map(tab => (
           <button
             key={tab.id}
@@ -662,10 +662,10 @@ export default function AdminEmailHub() {
                       onChange={e => setFilterCategory(e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
                     >
-                      <option value="funder_officers">🏛️ Agency Program Officers (DOE, CEC, MassCEC, NYSERDA)</option>
-                      <option value="domain_experts">🔬 Technology &amp; Sector Domain Experts (PIs)</option>
-                      <option value="institutional_gateways">🏢 National Lab &amp; Institutional Partner Desks</option>
-                      <option value="utilities">⚡ Utility Energy Innovation POCs</option>
+                      <option value="funder_officers">Agency Program Officers (DOE, CEC, MassCEC, NYSERDA)</option>
+                      <option value="domain_experts">Technology &amp; Sector Domain Experts (PIs)</option>
+                      <option value="institutional_gateways">National Lab &amp; Institutional Partner Desks</option>
+                      <option value="utilities">Utility Energy Innovation POCs</option>
                     </select>
                   </div>
                 )}
@@ -678,15 +678,15 @@ export default function AdminEmailHub() {
                       onChange={e => setFilterTech(e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
                     >
-                      <option value="Energy Storage & Advanced Batteries">🔋 Energy Storage &amp; Batteries</option>
-                      <option value="Solar">☀️ Solar &amp; Photovoltaics</option>
-                      <option value="Wind">💨 Wind &amp; Offshore Wind</option>
-                      <option value="Hydrogen">💧 Hydrogen &amp; Clean Fuels</option>
-                      <option value="Grid Modernization">⚡ Grid Modernization</option>
-                      <option value="Carbon Capture">🌱 Carbon Capture &amp; CCUS</option>
-                      <option value="Building Decarbonization">🏢 Building Decarb &amp; Heat</option>
-                      <option value="Electric Mobility">🚗 Electric Mobility &amp; EVs</option>
-                      <option value="Nuclear">⚛️ Advanced Nuclear &amp; Fusion</option>
+                      <option value="Energy Storage & Advanced Batteries">Energy Storage &amp; Batteries</option>
+                      <option value="Solar">Solar &amp; Photovoltaics</option>
+                      <option value="Wind">Wind &amp; Offshore Wind</option>
+                      <option value="Hydrogen">Hydrogen &amp; Clean Fuels</option>
+                      <option value="Grid Modernization">Grid Modernization</option>
+                      <option value="Carbon Capture">Carbon Capture &amp; CCUS</option>
+                      <option value="Building Decarbonization">Building Decarb &amp; Heat</option>
+                      <option value="Electric Mobility">Electric Mobility &amp; EVs</option>
+                      <option value="Nuclear">Advanced Nuclear &amp; Fusion</option>
                     </select>
                   </div>
                 )}
@@ -699,13 +699,13 @@ export default function AdminEmailHub() {
                       onChange={e => setFilterState(e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
                     >
-                      <option value="NY">🗽 New York (NY)</option>
-                      <option value="CA">☀️ California (CA)</option>
-                      <option value="MA">🏛️ Massachusetts (MA)</option>
-                      <option value="DC">🏛️ Washington, DC</option>
-                      <option value="CO">🏔️ Colorado (CO)</option>
-                      <option value="TX">⭐ Texas (TX)</option>
-                      <option value="WA">🌲 Washington (WA)</option>
+                      <option value="NY">New York (NY)</option>
+                      <option value="CA">California (CA)</option>
+                      <option value="MA">Massachusetts (MA)</option>
+                      <option value="DC">Washington, DC</option>
+                      <option value="CO">Colorado (CO)</option>
+                      <option value="TX">Texas (TX)</option>
+                      <option value="WA">Washington (WA)</option>
                     </select>
                   </div>
                 )}
@@ -754,8 +754,8 @@ export default function AdminEmailHub() {
                   <div className="pt-2 border-t border-slate-200 flex items-center gap-1.5 flex-wrap">
                     <span className="text-[10px] font-bold text-slate-500">Attachments:</span>
                     {attachedFiles.map((f, i) => (
-                      <span key={i} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">
-                        📎 {f.name}
+                      <span key={i} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200 inline-flex items-center gap-1">
+                        <Paperclip size={10} /> {f.name}
                       </span>
                     ))}
                   </div>
@@ -944,34 +944,34 @@ export default function AdminEmailHub() {
                     <select
                       value={threadDetail?.thread.status || 'pending_reply'}
                       onChange={async (e) => {
-                        await api.updateAdminEmailThreadStatus(selectedThreadId, { status: e.target.value });
+                        await api.updateAdminEmailThreadStatus(selectedThreadId!, { status: e.target.value });
                         refetchThreadDetail();
                         refetchThreads();
                       }}
                       className="px-2.5 py-1 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-700 outline-none"
                     >
-                      <option value="pending_reply">⏳ Pending Reply</option>
-                      <option value="replied">💬 Replied</option>
-                      <option value="interested">🌟 Interested / Warm</option>
-                      <option value="meeting_scheduled">📅 Meeting Scheduled</option>
-                      <option value="joined">🚀 Joined Platform</option>
-                      <option value="opted_out">🛑 Opted Out</option>
+                      <option value="pending_reply">Pending Reply</option>
+                      <option value="replied">Replied</option>
+                      <option value="interested">Interested / Warm</option>
+                      <option value="meeting_scheduled">Meeting Scheduled</option>
+                      <option value="joined">Joined Platform</option>
+                      <option value="opted_out">Opted Out</option>
                     </select>
                   </div>
 
-                  {/* AI Conversation Summary Box */}
+                  {/* Executive Conversation Summary Box */}
                   {threadDetail?.thread.conversation_summary && (
                     <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100 text-xs space-y-1">
                       <div className="flex items-center gap-1.5 font-bold text-indigo-900 text-[10.5px] uppercase tracking-wider">
-                        <Sparkles size={12} className="text-indigo-600" />
-                        <span>AI Executive Conversation Summary</span>
+                        <FileText size={12} className="text-indigo-600" />
+                        <span>Executive Conversation Summary</span>
                       </div>
                       <p className="text-slate-700 leading-relaxed text-[11.5px]">
                         {threadDetail.thread.conversation_summary}
                       </p>
                       {threadDetail.thread.next_action && (
                         <div className="text-[10.5px] text-indigo-800 font-semibold pt-1">
-                          👉 Suggested Next Step: {threadDetail.thread.next_action}
+                          Suggested Next Step: {threadDetail.thread.next_action}
                         </div>
                       )}
                     </div>
@@ -1014,8 +1014,8 @@ export default function AdminEmailHub() {
                             <div className="pt-1.5 flex items-center gap-1.5 flex-wrap border-t border-white/10">
                               <span className="text-[9.5px] font-bold text-slate-400">Attachments:</span>
                               {msg.attachments.map((a: any, i) => (
-                                <span key={i} className="text-[9.5px] font-mono px-1.5 py-0.2 rounded bg-white/20 text-white">
-                                  📎 {typeof a === 'string' ? a : a.filename}
+                                <span key={i} className="text-[9.5px] font-mono px-1.5 py-0.2 rounded bg-white/20 text-white inline-flex items-center gap-1">
+                                  <Paperclip size={9} /> {typeof a === 'string' ? a : a.filename}
                                 </span>
                               ))}
                             </div>

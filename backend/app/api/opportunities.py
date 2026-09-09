@@ -506,6 +506,36 @@ def list_opportunities(
     }
 
 
+@router.get("/opportunities/stats")
+@router.get("/opportunities/summary")
+def get_opportunity_stats(db: Session = Depends(get_db)):
+    """Aggregate portfolio statistics for solicitations and funding opportunities."""
+    stats_row = db.execute(text("""
+        SELECT 
+            COUNT(*) as total_count,
+            COUNT(CASE WHEN LOWER(status) = 'open' THEN 1 END) as open_count,
+            COALESCE(SUM(total_funding), 0) as total_funding_usd,
+            COALESCE(SUM(CASE WHEN LOWER(status) = 'open' THEN total_funding ELSE 0 END), 0) as active_funding_usd,
+            COUNT(DISTINCT agency) as distinct_agencies,
+            COUNT(DISTINCT jurisdiction) as distinct_jurisdictions
+        FROM opportunities
+    """)).fetchone()
+    
+    tot_fnd = float(stats_row[2] or 0.0) if stats_row else 0.0
+    act_fnd = float(stats_row[3] or 0.0) if stats_row else 0.0
+    
+    return {
+        "total_opportunities": stats_row[0] if stats_row else 0,
+        "open_solicitations": stats_row[1] if stats_row else 0,
+        "total_funding_usd": tot_fnd,
+        "total_funding_fmt": f"${tot_fnd / 1e9:,.2f}B" if tot_fnd >= 1e9 else f"${tot_fnd / 1e6:,.1f}M",
+        "active_funding_usd": act_fnd,
+        "active_funding_fmt": f"${act_fnd / 1e9:,.2f}B" if act_fnd >= 1e9 else f"${act_fnd / 1e6:,.1f}M",
+        "distinct_agencies": stats_row[4] if stats_row else 0,
+        "distinct_jurisdictions": stats_row[5] if stats_row else 0,
+    }
+
+
 @router.get("/opportunities/{opp_id}")
 def get_opportunity(opp_id: int, db: Session = Depends(get_db)):
     """Get detailed opportunity information."""

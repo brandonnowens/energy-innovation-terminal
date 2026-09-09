@@ -2,10 +2,10 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import {
-  FileEdit, Sparkles, ShieldCheck, CheckCircle2, AlertTriangle,
-  Layers, FileText, X, ChevronRight, UploadCloud, Bot, FileCheck, Scale,
+  FileEdit, ShieldCheck, CheckCircle2, AlertTriangle,
+  Layers, FileText, X, ChevronRight, UploadCloud, FileCheck, Scale,
   Clock, Calendar, AlertCircle, Trophy, Download, Paperclip, ExternalLink,
-  Search, RotateCcw, Filter, Building2, User, DollarSign, FileDown
+  Search, RotateCcw, Filter, Building2, User, DollarSign, FileDown, Target, Plus
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
@@ -263,8 +263,8 @@ export default function Proposals() {
             onClick={() => navigate('/analyze')}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all cursor-pointer"
           >
-            <Sparkles size={13} />
-            <span>+ New Pursuit</span>
+            <Plus size={13} />
+            <span>New Pursuit</span>
           </button>
         </div>
       </div>
@@ -285,7 +285,7 @@ export default function Proposals() {
             )}
           >
             <Trophy size={14} className={mainView === 'won_repository' ? 'text-amber-500' : 'text-slate-400'} />
-            <span>🏆 Won Proposals &amp; Award Records</span>
+            <span>Won Proposals &amp; Award Records</span>
           </button>
           <button
             onClick={() => {
@@ -345,7 +345,7 @@ export default function Proposals() {
           { id: 'foa', label: '1. Solicitation & Rubric Breakdown', icon: FileCheck },
           { id: 'sopo', label: '2. SOPO Work Breakdown', icon: FileText },
           { id: 'cbp', label: '3. Justice40 & Community Benefits', icon: Scale },
-          { id: 'red_team', label: '4. AI Evaluator Scoring Rubric', icon: Bot },
+          { id: 'red_team', label: '4. Evaluator Scoring Rubric & Review', icon: Scale },
           { id: 'artifacts', label: `5. Downloadable Artifacts (${selectedProposal.artifacts_count || (selectedProposal.artifacts?.length ?? 0)})`, icon: Paperclip },
         ].map((tab) => {
           const Icon = tab.icon;
@@ -709,10 +709,14 @@ export default function Proposals() {
                     </span>
                   </div>
                   <div className="text-[11px] text-slate-500">Lead Entity: <strong className="text-slate-700">{t.lead}</strong></div>
-                  <div className="p-2.5 bg-white rounded-lg border border-slate-200 text-[11px] space-y-1">
-                    <div className="text-slate-700 font-medium">🎯 {t.milestone}</div>
-                    <div className="text-amber-800 font-semibold bg-amber-50/70 p-1.5 rounded border border-amber-200/60">
-                      ⚠️ {t.gate}
+                  <div className="p-2.5 bg-white rounded-lg border border-slate-200 text-[11px] space-y-1.5">
+                    <div className="text-slate-700 font-medium flex items-center gap-1.5">
+                      <Target size={12} className="text-indigo-600 shrink-0" />
+                      <span>{t.milestone}</span>
+                    </div>
+                    <div className="text-amber-800 font-semibold bg-amber-50/70 p-1.5 rounded border border-amber-200/60 flex items-center gap-1.5">
+                      <AlertTriangle size={12} className="text-amber-600 shrink-0" />
+                      <span>{t.gate}</span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between text-[10px] text-slate-400">
@@ -810,7 +814,7 @@ export default function Proposals() {
         </div>
       )}
 
-      {/* TAB 5: AI RED-TEAM SIMULATOR */}
+      {/* TAB 5: EVALUATION SIMULATION */}
       {activeTab === 'red_team' && (
         <div className="space-y-6">
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-6">
@@ -820,7 +824,7 @@ export default function Proposals() {
                   Adversarial Pre-Submission Scoring Simulation
                 </span>
                 <h3 className="text-base font-bold text-slate-900">
-                  AI Evaluator Panel: Reviewer Evaluation Simulation (Score: {selectedProposal.red_team_score || 90}/100)
+                  Evaluator Panel: Reviewer Scoring Rubric Simulation (Score: {selectedProposal.red_team_score || 90}/100)
                 </h3>
               </div>
               <button
@@ -828,8 +832,8 @@ export default function Proposals() {
                 onClick={() => navigate('/chat?prompt=' + encodeURIComponent('Conduct a rigorous red-team proposal evaluation simulation and scoring breakdown for ' + selectedProposal.title + ' under solicitation ' + selectedProposal.solicitation_number + ' (' + selectedProposal.agency + ').'))}
                 className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 self-start cursor-pointer"
               >
-                <Bot size={14} />
-                <span>Run Simulation</span>
+                <Scale size={14} />
+                <span>Run Evaluation Review</span>
               </button>
             </div>
 

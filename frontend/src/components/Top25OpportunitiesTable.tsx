@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import {
   Target,
-  Sparkles,
   Download,
   Search,
   ExternalLink,
@@ -475,7 +474,7 @@ export function Top25OpportunitiesTable({
                   <div className="flex items-center gap-3 shrink-0">
                     <div className="text-right">
                       <div className="flex items-center gap-1 font-mono font-bold text-xs text-emerald-600 dark:text-emerald-400">
-                        <Sparkles size={12} />
+                        <Target size={12} />
                         <span>{org.say_yes_score}% Say-Yes Score</span>
                       </div>
                       <div className="text-[10.5px] text-slate-400 font-mono">
@@ -559,8 +558,8 @@ export function Top25OpportunitiesTable({
                                         {m.solicitation_number || `OPP-${m.opportunity_id}`}
                                       </span>
                                       {isOpportunityNew(m) && (
-                                        <span className="inline-flex items-center gap-0.5 text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500 text-white shadow-2xs tracking-wide">
-                                          <Sparkles size={8} className="animate-pulse" />
+                                        <span className="inline-flex items-center gap-1 text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500 text-white shadow-2xs tracking-wide">
+                                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                                           <span>NEW</span>
                                         </span>
                                       )}
@@ -633,12 +632,12 @@ export function Top25OpportunitiesTable({
                                 <tr className="bg-slate-50/80 dark:bg-black/30 animate-in fade-in duration-150">
                                   <td colSpan={7} className="p-4 border-b border-slate-200 dark:border-white/10">
                                     <div className="space-y-4 max-w-5xl mx-auto">
-                                      {/* Top Summary Info & LLM Strategic Analysis */}
+                                      {/* Top Summary Info & Strategic Analysis */}
                                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 rounded-xl bg-white dark:bg-[#0d1424] border border-slate-200/80 dark:border-white/10 text-xs shadow-2xs">
                                         <div className="md:col-span-2 space-y-2">
                                           <div className="text-[10px] uppercase font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1">
-                                            <Sparkles size={12} />
-                                            <span>LLM Strategic Match Thesis</span>
+                                            <Target size={12} />
+                                            <span>Strategic Match Thesis</span>
                                           </div>
                                           <div className="text-slate-800 dark:text-slate-200 text-xs leading-relaxed italic">
                                             &ldquo;{m.strategic_thesis || m.why_it_fits || m.assessment?.verdict_detail || 'Strong programmatic fit matching technology readiness and applicant scope.'}&rdquo;
@@ -889,8 +888,8 @@ export function Top25OpportunitiesTable({
                                 {m.solicitation_number || `OPP-${m.opportunity_id}`}
                               </span>
                               {isOpportunityNew(m) && (
-                                <span className="inline-flex items-center gap-0.5 text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500 text-white shadow-2xs tracking-wide">
-                                  <Sparkles size={8} className="animate-pulse" />
+                                <span className="inline-flex items-center gap-1 text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500 text-white shadow-2xs tracking-wide">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                                   <span>NEW</span>
                                 </span>
                               )}
@@ -978,12 +977,12 @@ export function Top25OpportunitiesTable({
                         <tr className="bg-slate-50/80 dark:bg-black/30 animate-in fade-in duration-150">
                           <td colSpan={8} className="p-4 border-b border-slate-200 dark:border-white/10">
                             <div className="space-y-4 max-w-5xl mx-auto">
-                              {/* Top Summary Info & LLM Strategic Analysis */}
+                              {/* Top Summary Info & Strategic Analysis */}
                               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 rounded-xl bg-white dark:bg-[#0d1424] border border-slate-200/80 dark:border-white/10 text-xs shadow-2xs">
                                 <div className="md:col-span-2 space-y-2">
                                   <div className="text-[10px] uppercase font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1">
-                                    <Sparkles size={12} />
-                                    <span>LLM Strategic Match Thesis</span>
+                                    <Target size={12} />
+                                    <span>Strategic Match Thesis</span>
                                   </div>
                                   <div className="text-slate-800 dark:text-slate-200 text-xs leading-relaxed italic">
                                     &ldquo;{m.strategic_thesis || m.why_it_fits || m.assessment?.verdict_detail || 'Strong programmatic fit matching technology readiness and applicant scope.'}&rdquo;

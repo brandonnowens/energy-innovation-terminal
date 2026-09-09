@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { api, AwardMapMarker } from '../api/client';
 import {
   X, Building2, User, MapPin, DollarSign, Calendar, ExternalLink,
-  FileText, Award, Globe, Mail, Phone, Loader2, Sparkles, Layers,
+  FileText, Award, Globe, Mail, Phone, Loader2, Layers,
   ChevronRight, BookmarkCheck, Atom, Zap, Lightbulb, TrendingUp
 } from 'lucide-react';
 import { OrgLogo } from './OrgLogo';
@@ -294,7 +294,7 @@ export const AwardDossierDrawer: React.FC<AwardDossierDrawerProps> = ({
                 {/* Taxonomy & Thematic Classification */}
                 <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3">
                   <h3 className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                    <Sparkles size={13} className="text-amber-500" /> Thematic Classification
+                    <Layers size={13} className="text-indigo-600" /> Thematic Classification
                   </h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react';
 import {
   Upload, FileText, FileSpreadsheet, Presentation, CheckCircle2,
-  AlertCircle, Loader2, Sparkles, X, Trash2, ArrowRight, ShieldCheck,
-  Check, RefreshCw, FileCode
+  AlertCircle, Loader2, SlidersHorizontal, X, Trash2, ArrowRight, ShieldCheck,
+  Check, RefreshCw, FileCode, Target, FileSearch
 } from 'lucide-react';
 import clsx from 'clsx';
 import {
@@ -139,7 +139,7 @@ export function ProjectDocumentUploader({
       setProgressStep(`Extracting text from ${files.length} document${files.length > 1 ? 's' : ''}...`);
       await new Promise(r => setTimeout(r, 300));
 
-      setProgressStep('Extracting project scope, TRL, budget, location & taxonomy with OpenAI...');
+      setProgressStep('Extracting project scope, TRL, budget, location & taxonomy from document...');
 
       const response = await api.uploadAndExtractProjectDocs(files);
 
@@ -172,7 +172,7 @@ export function ProjectDocumentUploader({
             Upload Project Documents for Instant Auto-Characterization
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
-            Upload technical proposals, pitch decks, TEA sheets, or executive summaries. OpenAI interprets the text, sets matching parameters, and surfaces target funding organizations.
+            Upload technical proposals, pitch decks, TEA sheets, or executive summaries. The system extracts scope parameters, fills criteria, and identifies matching funding programs.
           </p>
         </div>
       </div>
@@ -267,8 +267,8 @@ export function ProjectDocumentUploader({
           {/* Action Trigger Button */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
             <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-              <Sparkles size={13} className="text-indigo-600 dark:text-indigo-400 shrink-0" />
-              <span>LLM extracts project parameters and auto-fills matching settings below.</span>
+              <SlidersHorizontal size={13} className="text-indigo-600 dark:text-indigo-400 shrink-0" />
+              <span>Automatically extracts project parameters and auto-fills matching criteria below.</span>
             </div>
 
             <button
@@ -284,8 +284,8 @@ export function ProjectDocumentUploader({
                 </>
               ) : (
                 <>
-                  <Sparkles size={13} />
-                  <span>Interpret &amp; Set Matching Parameters</span>
+                  <SlidersHorizontal size={13} />
+                  <span>Extract &amp; Set Matching Parameters</span>
                 </>
               )}
             </button>
@@ -297,7 +297,7 @@ export function ProjectDocumentUploader({
       {isProcessing && (
         <div className="p-3.5 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-500/30 text-indigo-900 dark:text-indigo-200 text-xs flex items-center gap-2.5 animate-in fade-in duration-200">
           <Loader2 size={14} className="animate-spin text-indigo-600 dark:text-indigo-400 shrink-0" />
-          <div className="font-mono text-xs">{progressStep || 'Processing documents with OpenAI...'}</div>
+          <div className="font-mono text-xs">{progressStep || 'Processing documents...'}</div>
         </div>
       )}
 

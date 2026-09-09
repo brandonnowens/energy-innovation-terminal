@@ -4,6 +4,7 @@ import logging
 from datetime import datetime
 from typing import Optional, List, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from pydantic import BaseModel
@@ -423,4 +424,35 @@ def get_shredded_blueprint(
         "shredded_by": target_obj.shredded_by,
         "updated_at": target_obj.updated_at.isoformat() if target_obj.updated_at else None
     }
+
+
+from fastapi.responses import Response
+
+@router.get("/{opportunity_id}/export-pdf")
+def export_foa_blueprint_pdf(opportunity_id: int, db: Session = Depends(get_db)):
+    """
+    Generates and streams an institutional, publication-grade multi-page PDF blueprint
+    for a clean energy funding opportunity announcement.
+    """
+    from app.engine.foa_pdf_report import generate_foa_blueprint_pdf
+
+    shred_data = get_shredded_blueprint(opportunity_id=opportunity_id, force_refresh=False, db=db)
+    opp = db.query(Opportunity).get(opportunity_id)
+    if not opp:
+        raise HTTPException(status_code=404, detail="Opportunity record not found")
+
+    shred_data["total_funding"] = opp.total_funding or 0
+    shred_data["max_award"] = opp.max_per_award or 0
+
+    pdf_buffer = generate_foa_blueprint_pdf(shred_data)
+    safe_sol = "".join(c if c.isalnum() else "_" for c in (opp.solicitation_number or f"SOL_{opp.id}"))[:40].strip("_")
+
+    return Response(
+        content=pdf_buffer.getvalue(),
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'attachment; filename="FOA_{safe_sol}_Blueprint.pdf"'
+        }
+    )
+
 

@@ -13,7 +13,7 @@ import {
   Factory,
   TrendingUp,
   ChevronRight,
-  Sparkles,
+  Layers,
   ExternalLink,
   ShieldCheck,
   Loader2,
@@ -75,11 +75,11 @@ export function ProvenanceRibbon({
       <div className="flex items-center justify-between border-b border-slate-100 pb-2">
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-1 text-[11px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-full">
-            <Sparkles size={11} className="text-indigo-600" />
+            <Layers size={11} className="text-indigo-600" />
             <span>9-D Innovation Lineage HUD</span>
           </span>
           <span className="text-[11px] text-slate-400 font-medium">
-            Policy & Funding ➔ Grant Award ➔ Bayh-Dole IP & Commercial Growth
+            Policy &amp; Funding &rarr; Grant Award &rarr; Bayh-Dole IP &amp; Commercial Growth
           </span>
         </div>
         {rec && rec.total_grants_usd ? (

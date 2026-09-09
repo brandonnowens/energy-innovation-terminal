@@ -13,7 +13,7 @@ import {
 } from 'd3-sankey';
 import {
   GitMerge,
-  Sparkles,
+  Target,
   Layers,
   Zap,
   Landmark,
@@ -116,7 +116,7 @@ const ALL_DIMENSIONS = [
   { id: 'sector', label: 'Sector / End-Use', icon: Briefcase, desc: 'Economic sector (Grid, Buildings, Mobility, Industry)' },
   { id: 'technology', label: 'Technology Solution', icon: TrendingUp, desc: 'Clean technology focus (Storage, Heat Pumps, Geothermal)' },
   { id: 'fuel', label: 'Clean Fuel / Resource', icon: Zap, desc: 'Energy resource (Electricity, Hydrogen, Thermal, Solar)' },
-  { id: 'activity', label: 'Innovation Stage', icon: Sparkles, desc: 'R&D, Demonstration, Commercialization, Technical Assistance' },
+  { id: 'activity', label: 'Innovation Stage', icon: Target, desc: 'R&D, Demonstration, Commercialization, Technical Assistance' },
   { id: 'recipient_type', label: 'Recipient Type', icon: PieChart, desc: 'Startups, Universities, Utilities, Municipalities' },
   { id: 'recipient_state', label: 'Recipient State', icon: Landmark, desc: 'Geographic location of capital deployment' },
   { id: 'status', label: 'Solicitation Status', icon: Filter, desc: 'Open solicitations vs closed/archived' },
@@ -467,15 +467,15 @@ export default function Sankey() {
   };
 
   const PRESET_OPTIONS = [
-    { id: 'ecosystem', label: '🌐 Ecosystem Flow', desc: 'Tier → Funder → Sector → Tech', tier: 'all' },
-    { id: 'commercialization_9d', label: '🧬 9-D Commercialization Pipeline', desc: 'Agency → Program → Sector → Tech → Fuel → Stage', tier: 'all' },
-    { id: 'patent_catalyst', label: '💡 Patent & Grant Catalyst', desc: 'Tier → Agency → Tech → Stage → Recipient', tier: 'all' },
-    { id: 'utilities', label: '⚡ Utility Pipeline', desc: 'Structure → Utility → Program → Tech', tier: 'utility' },
-    { id: 'state_energy', label: '🗽 State Energy Innovation', desc: 'State Funder → Program → Sector → Tech', tier: 'state' },
-    { id: 'nonprofit_funds', label: '🌱 Non-Profit & Philanthropy', desc: 'Foundation → Stage → Sector → Tech', tier: 'foundation' },
-    { id: 'capital_deployment', label: '🚀 Capital Deployment', desc: 'Funder → Stage → Recipient → State', tier: 'all' },
-    { id: 'portfolio', label: '📁 Portfolio Stages', desc: 'Agency → Program → Activity → Status', tier: 'all' },
-    { id: 'tech_fuels', label: '🔥 Sector & Fuels Matrix', desc: 'Sector → Tech → Fuel → Agency', tier: 'all' },
+    { id: 'ecosystem', label: 'Macro Ecosystem Flow', desc: 'Tier → Funder → Sector → Tech', tier: 'all' },
+    { id: 'commercialization_9d', label: 'Commercialization Pipeline', desc: 'Agency → Program → Sector → Tech → Fuel → Stage', tier: 'all' },
+    { id: 'patent_catalyst', label: 'Patent & Grant Catalyst', desc: 'Tier → Agency → Tech → Stage → Recipient', tier: 'all' },
+    { id: 'utilities', label: 'Utility Capital Pipeline', desc: 'Structure → Utility → Program → Tech', tier: 'utility' },
+    { id: 'state_energy', label: 'State Energy Innovation', desc: 'State Funder → Program → Sector → Tech', tier: 'state' },
+    { id: 'nonprofit_funds', label: 'Philanthropic Capital', desc: 'Foundation → Stage → Sector → Tech', tier: 'foundation' },
+    { id: 'capital_deployment', label: 'State Capital Deployment', desc: 'Funder → Stage → Recipient → State', tier: 'all' },
+    { id: 'portfolio', label: 'Portfolio Stages', desc: 'Agency → Program → Activity → Status', tier: 'all' },
+    { id: 'tech_fuels', label: 'Sector & Fuels Matrix', desc: 'Sector → Tech → Fuel → Agency', tier: 'all' },
   ];
 
   // Filtered agencies for dropdown
@@ -680,7 +680,7 @@ export default function Sankey() {
                   metric === 'funding' ? 'bg-white text-indigo-700 font-bold shadow-xs' : 'hover:text-slate-900'
                 )}
               >
-                💵 Funding ($)
+                Funding ($)
               </button>
               <button
                 onClick={() => setMetric('opportunities')}
@@ -689,7 +689,7 @@ export default function Sankey() {
                   metric === 'opportunities' ? 'bg-white text-indigo-700 font-bold shadow-xs' : 'hover:text-slate-900'
                 )}
               >
-                📋 Opps (#)
+                Opportunities (#)
               </button>
               <button
                 onClick={() => setMetric('awards')}
@@ -698,25 +698,25 @@ export default function Sankey() {
                   metric === 'awards' ? 'bg-white text-indigo-700 font-bold shadow-xs' : 'hover:text-slate-900'
                 )}
               >
-                🏆 Awards (#)
+                Awards (#)
               </button>
             </div>
 
-            {/* Executive Export Button */}
+            {/* Publication Export Button */}
             <button
               onClick={() => setNytExportOpen(true)}
               className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold shadow-xs transition-all cursor-pointer"
-              title="Download Executive Publication style editorial wall art (PNG)"
+              title="Download high-resolution publication graphic (PNG)"
             >
-              <Sparkles size={13} className="text-amber-300" /> Executive Art
+              <Download size={13} className="text-slate-300" /> Publication Graphic
             </button>
 
             {/* Insights Button */}
             <button
               onClick={() => setInsightsOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white rounded-xl text-xs font-semibold shadow-xs transition-all"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold shadow-xs transition-all cursor-pointer"
             >
-              <Sparkles size={13} className="text-amber-300" /> Insights
+              <Activity size={13} className="text-indigo-200" /> Flow Insights
             </button>
 
             {/* Guide Button */}
@@ -737,12 +737,12 @@ export default function Sankey() {
                 <Download size={13} className="text-slate-500" /> Export <ChevronDown size={12} />
               </button>
               {exportOpen && (
-                <div className="absolute right-0 mt-1.5 w-48 bg-white border border-slate-200 rounded-xl shadow-xl p-1 z-50 text-xs animate-in fade-in zoom-in-95 duration-100">
+                <div className="absolute right-0 mt-1.5 w-52 bg-white border border-slate-200 rounded-xl shadow-xl p-1 z-50 text-xs animate-in fade-in zoom-in-95 duration-100">
                   <button
                     onClick={() => { setNytExportOpen(true); setExportOpen(false); }}
                     className="w-full text-left px-3 py-1.5 rounded-lg hover:bg-indigo-50 text-indigo-900 hover:text-indigo-700 font-semibold flex items-center gap-2"
                   >
-                    <Sparkles size={12} className="text-amber-500" /> Executive Wall Art (PNG)
+                    <Download size={12} className="text-indigo-600" /> Publication Graphic (PNG)
                   </button>
                   <button
                     onClick={() => handleExport('svg')}
@@ -771,7 +771,7 @@ export default function Sankey() {
             <div className="text-base font-extrabold text-slate-900">{formatMetricValue(sankeyStats.totalFlow, metric)}</div>
           </div>
           <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">
-            💸
+            <DollarSign size={16} />
           </div>
         </div>
 
@@ -781,7 +781,7 @@ export default function Sankey() {
             <div className="text-base font-extrabold text-indigo-600">{sankeyStats.corridorsCount} Streams</div>
           </div>
           <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">
-            🔀
+            <GitMerge size={16} />
           </div>
         </div>
 
@@ -803,7 +803,7 @@ export default function Sankey() {
             <div className="text-base font-extrabold text-slate-800">{sankeyStats.stageCount} Stages · {sankeyStats.uniqueNodes} Nodes</div>
           </div>
           <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm">
-            ⚡
+            <Layers size={16} />
           </div>
         </div>
       </div>
@@ -1287,7 +1287,7 @@ export default function Sankey() {
                     }}
                     className="p-2 rounded-lg border border-slate-200 text-left hover:border-indigo-300 hover:bg-indigo-50/30 transition-all text-xs"
                   >
-                    <div className="font-bold text-slate-800">🌐 Macro Ecosystem</div>
+                    <div className="font-bold text-slate-800">Macro Ecosystem</div>
                     <div className="text-[10px] text-slate-400">Tier → Funder → Sector → Tech</div>
                   </button>
                   <button
@@ -1297,7 +1297,7 @@ export default function Sankey() {
                     }}
                     className="p-2 rounded-lg border border-slate-200 text-left hover:border-amber-300 hover:bg-amber-50/30 transition-all text-xs"
                   >
-                    <div className="font-bold text-amber-900">⚡ Utility Modernization</div>
+                    <div className="font-bold text-amber-900">Utility Modernization</div>
                     <div className="text-[10px] text-slate-400">Structure → Utility → Program → Tech</div>
                   </button>
                   <button
@@ -1307,7 +1307,7 @@ export default function Sankey() {
                     }}
                     className="p-2 rounded-lg border border-slate-200 text-left hover:border-blue-300 hover:bg-blue-50/30 transition-all text-xs"
                   >
-                    <div className="font-bold text-blue-900">🗽 State Energy Innovation</div>
+                    <div className="font-bold text-blue-900">State Energy Innovation</div>
                     <div className="text-[10px] text-slate-400">State Agency → Program → Sector → Tech</div>
                   </button>
                   <button
@@ -1317,7 +1317,7 @@ export default function Sankey() {
                     }}
                     className="p-2 rounded-lg border border-slate-200 text-left hover:border-emerald-300 hover:bg-emerald-50/30 transition-all text-xs"
                   >
-                    <div className="font-bold text-emerald-900">🌱 Philanthropic Capital</div>
+                    <div className="font-bold text-emerald-900">Philanthropic Capital</div>
                     <div className="text-[10px] text-slate-400">Foundation → Stage → Sector → Tech</div>
                   </button>
                   <button
@@ -1327,7 +1327,7 @@ export default function Sankey() {
                     }}
                     className="p-2 rounded-lg border border-slate-200 text-left hover:border-indigo-300 hover:bg-indigo-50/30 transition-all text-xs col-span-2"
                   >
-                    <div className="font-bold text-indigo-900">🚀 Capital Deployment to States</div>
+                    <div className="font-bold text-indigo-900">State Capital Deployment</div>
                     <div className="text-[10px] text-slate-400">Funder → Innovation Stage → Recipient Type → Recipient State</div>
                   </button>
                 </div>
@@ -1443,8 +1443,8 @@ export default function Sankey() {
           <div className="bg-white w-full max-w-[460px] h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-200">
             <div className="p-4 border-b border-slate-100 bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 text-white flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 bg-amber-400/20 rounded-xl border border-amber-400/30">
-                  <Sparkles size={18} className="text-amber-300" />
+                <div className="p-2 bg-indigo-500/20 rounded-xl border border-indigo-400/30">
+                  <Activity size={18} className="text-indigo-300" />
                 </div>
                 <div>
                   <h2 className="text-sm font-bold tracking-tight">Capital Flow Intelligence</h2>

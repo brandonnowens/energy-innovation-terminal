@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import {
-  Sparkles, Trophy, Building2, Lightbulb, TrendingUp, ExternalLink,
+  Trophy, Building2, Lightbulb, TrendingUp, ExternalLink,
   Search, Filter, ChevronRight, X, ArrowUpRight, ShieldCheck,
   Zap, Compass, Layers, GitFork, Users, Network, DollarSign, Award,
   ArrowUpDown, ZoomIn, ZoomOut, RefreshCw, Maximize2, Minimize2,
@@ -344,7 +344,7 @@ export function InteractiveEgoGraph({
                   layoutMode === mode ? 'bg-cyan-600 text-white shadow-2xs' : 'text-slate-400 hover:text-white'
                 )}
               >
-                {mode === 'orbital' ? '🪐 Orbit' : (mode === 'physics' ? '⚡ Physics' : '📊 Stream')}
+                {mode === 'orbital' ? 'Orbit' : (mode === 'physics' ? 'Network' : 'Stream')}
               </button>
             ))}
           </div>
@@ -551,7 +551,7 @@ export function InteractiveEgoGraph({
                     fontWeight="bold"
                     className="pointer-events-none select-none"
                   >
-                    {isCenter ? '🏢' : (node.type === 'patent' ? '💡' : (node.type === 'investor' ? '💰' : '🏛️'))}
+                    {isCenter ? 'HQ' : (node.type === 'patent' ? 'IP' : (node.type === 'investor' ? 'VC' : 'GOV'))}
                   </text>
 
                   {/* Node Label Text */}
@@ -600,7 +600,7 @@ export function InteractiveEgoGraph({
                   selectedNode.type === 'investor' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
                   selectedNode.type === 'company' ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30' : 'bg-indigo-500/20 text-indigo-300'
                 )}>
-                  {selectedNode.type === 'patent' ? '💡 USPTO Bayh-Dole Patent' : (selectedNode.type === 'investor' ? '💰 Syndicate Investor' : '🏢 Scale-Up')}
+                  {selectedNode.type === 'patent' ? 'USPTO Bayh-Dole Patent' : (selectedNode.type === 'investor' ? 'Syndicate Investor' : 'Scale-Up Startup')}
                 </span>
                 <h4 className="font-bold text-xs text-slate-100 mt-1 leading-snug">{selectedNode.name}</h4>
               </div>

@@ -1,6 +1,6 @@
 {
   "report_version": "1.0.0",
-  "generated_at": "2026-09-08T23:15:50.830086+00:00",
+  "generated_at": "2026-09-09T06:10:26.128713+00:00",
   "database_engine": "PostgreSQL 16+",
   "metrics_summary": {
     "total_records": {

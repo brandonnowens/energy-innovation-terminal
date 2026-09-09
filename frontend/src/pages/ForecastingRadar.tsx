@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import {
   Radio,
-  Sparkles,
   Calendar,
   Clock,
   DollarSign,
@@ -25,11 +24,11 @@ import {
   Landmark,
   X,
   MapPin,
-  Bot,
   Activity,
   Award,
   BookOpen,
-  Info
+  Info,
+  FileText
 } from 'lucide-react';
 import clsx from 'clsx';
 import { API_BASE_URL } from '../api/client';
@@ -261,12 +260,12 @@ export function ForecastingRadar() {
 
   const categories = [
     { id: 'all', label: 'All Organizations' },
-    { id: 'state', label: '🏛️ State Energy Agencies' },
-    { id: 'federal', label: '🇺🇸 Federal Funding Agencies' },
-    { id: 'utility', label: '⚡ Electric & Gas Utilities' },
-    { id: 'foundation', label: '🤝 Philanthropic Foundations' },
-    { id: 'university', label: '🎓 Universities & Research' },
-    { id: 'economic_development', label: '💼 Economic Development' },
+    { id: 'state', label: 'State Energy Agencies' },
+    { id: 'federal', label: 'Federal Funding Agencies' },
+    { id: 'utility', label: 'Electric & Gas Utilities' },
+    { id: 'foundation', label: 'Philanthropic Foundations' },
+    { id: 'university', label: 'Universities & Research' },
+    { id: 'economic_development', label: 'Economic Development' },
   ];
 
   const locations = [
@@ -612,8 +611,8 @@ export function ForecastingRadar() {
               onClick={() => openBriefingModal(activeOrg.organization_code)}
               className="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
             >
-              <Bot size={13} />
-              <span>AI Strategic Briefing</span>
+              <FileText size={13} />
+              <span>Strategic Forecast Briefing</span>
             </button>
 
             <button
@@ -828,8 +827,8 @@ export function ForecastingRadar() {
                       onClick={() => openBriefingModal(fc.agency_code || fc.agency)}
                       className="px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
                     >
-                      <Bot size={13} />
-                      <span>AI Briefing</span>
+                      <FileText size={13} />
+                      <span>Forecast Briefing</span>
                     </button>
 
                     <button
@@ -838,7 +837,7 @@ export function ForecastingRadar() {
                       className="px-3.5 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
                     >
                       <Zap size={13} className="fill-amber-500" />
-                      <span>⚡ Reverse-Engineer Winning Angle</span>
+                      <span>Positioning Analysis</span>
                     </button>
                   </div>
                 </div>
@@ -848,18 +847,18 @@ export function ForecastingRadar() {
         </div>
       )}
 
-      {/* AI Strategic Briefing Modal */}
+      {/* Strategic Briefing Modal */}
       {briefingModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="relative w-full max-w-2xl bg-white dark:bg-[#0c1220] rounded-2xl border border-slate-200 dark:border-white/10 shadow-2xl p-6 space-y-4 max-h-[85vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-white/5">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
-                  <Bot size={20} />
+                  <FileText size={20} />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                    AI Strategic Opportunity Briefing
+                    Strategic Opportunity Forecast Briefing
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
                     Probabilistic Cadence &amp; Pre-Positioning Dossier

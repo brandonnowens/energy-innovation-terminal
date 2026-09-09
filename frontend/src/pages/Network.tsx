@@ -4,9 +4,9 @@ import { api } from '../api/client';
 import {
   Network as NetworkIcon, Search, Download, Filter, RefreshCw, X, ZoomIn, ZoomOut,
   Maximize2, Building2, FileSearch, Trophy, Landmark, Cpu, Factory, Globe, Users,
-  ChevronRight, ExternalLink, Loader2, Crosshair, Sparkles, HelpCircle,
+  ChevronRight, ExternalLink, Loader2, Crosshair, HelpCircle,
   TrendingUp, Compass, Layers, GitFork, Activity, Share2,
-  CheckCircle2, Flame, Sliders, BarChart3,
+  CheckCircle2, Flame, Sliders, BarChart3, Target
 } from 'lucide-react';
 import Graph from 'graphology';
 import { SigmaContainer, useLoadGraph, useSigma, useRegisterEvents } from '@react-sigma/core';
@@ -300,7 +300,7 @@ function NetworkGuideModal({ onClose }: { onClose: () => void }) {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-1.5 flex items-center gap-2"><Sparkles size={16} className="text-amber-500" /> 2. Community &amp; Thematic Clusters</h3>
+            <h3 className="text-sm font-semibold text-slate-900 mb-1.5 flex items-center gap-2"><Layers size={16} className="text-amber-500" /> 2. Community &amp; Thematic Clusters</h3>
             <p>
               The graph automatically groups tightly interconnected programs, technologies, and awardees using the <strong>Louvain Modularity Algorithm</strong>.
               Toggle <strong>Color by Cluster</strong> to reveal innovation thematic boundaries.
@@ -417,11 +417,11 @@ function InsightsDrawer({ analyticsData, onClose, onSelectAgency, onSelectTech }
       <div className="p-4 border-b border-slate-100 bg-gradient-to-r from-indigo-950 via-indigo-900 to-slate-900 text-white flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <div className="p-2 bg-amber-400/20 rounded-xl border border-amber-400/30">
-            <Sparkles size={18} className="text-amber-300" />
+            <Activity size={18} className="text-amber-300" />
           </div>
           <div>
             <h2 className="text-sm font-bold tracking-tight">Network Intelligence Discoveries</h2>
-            <p className="text-[11px] text-indigo-200">Automated topological &amp; structural analytics</p>
+            <p className="text-[11px] text-indigo-200">Topological &amp; structural analytics</p>
           </div>
         </div>
         <button onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"><X size={16} /></button>
@@ -438,7 +438,7 @@ function InsightsDrawer({ analyticsData, onClose, onSelectAgency, onSelectTech }
           <div className="text-xs font-bold text-indigo-700">{bridgeAwardees.length} Multi-Funder</div>
         </div>
         <div className="p-2 bg-white rounded-lg border border-slate-200/80 shadow-xs">
-          <div className="text-[10px] uppercase font-semibold text-slate-400">Cross Synergies</div>
+          <div className="text-[10px] uppercase font-semibold text-slate-400">Joint Partnerships</div>
           <div className="text-xs font-bold text-purple-700">{synergies.length} Agency Pairs</div>
         </div>
       </div>
@@ -447,7 +447,7 @@ function InsightsDrawer({ analyticsData, onClose, onSelectAgency, onSelectTech }
       <div className="flex border-b border-slate-200 bg-white p-1 gap-1">
         <button onClick={() => setInsightFilter('all')} className={clsx('flex-1 py-1.5 text-[11px] font-semibold rounded-md transition-colors', insightFilter === 'all' ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'text-slate-500 hover:text-slate-800')}>All ({insights.length})</button>
         <button onClick={() => setInsightFilter('anchors')} className={clsx('flex-1 py-1.5 text-[11px] font-semibold rounded-md transition-colors', insightFilter === 'anchors' ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'text-slate-500 hover:text-slate-800')}>Anchors &amp; Bridges</button>
-        <button onClick={() => setInsightFilter('tech')} className={clsx('flex-1 py-1.5 text-[11px] font-semibold rounded-md transition-colors', insightFilter === 'tech' ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'text-slate-500 hover:text-slate-800')}>Tech &amp; Synergies</button>
+        <button onClick={() => setInsightFilter('tech')} className={clsx('flex-1 py-1.5 text-[11px] font-semibold rounded-md transition-colors', insightFilter === 'tech' ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'text-slate-500 hover:text-slate-800')}>Tech &amp; Partnerships</button>
         <button onClick={() => setInsightFilter('strategy')} className={clsx('flex-1 py-1.5 text-[11px] font-semibold rounded-md transition-colors', insightFilter === 'strategy' ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'text-slate-500 hover:text-slate-800')}>Strategy</button>
       </div>
 
@@ -489,7 +489,7 @@ function InsightsDrawer({ analyticsData, onClose, onSelectAgency, onSelectTech }
 
         {synergies.length > 0 && (
           <div>
-            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center gap-1.5"><Share2 size={13} className="text-emerald-600" /> Cross-Agency Co-Investment Synergies</h3>
+            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center gap-1.5"><Share2 size={13} className="text-emerald-600" /> Cross-Agency Co-Investment &amp; Partnerships</h3>
             <div className="space-y-2">
               {synergies.slice(0, 8).map((syn: any, i: number) => (
                 <div key={i} className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs hover:border-indigo-300 transition-colors">
@@ -1316,17 +1316,17 @@ export default function Network() {
         {/* Action Buttons */}
         <div className="flex items-center gap-2 flex-wrap">
           <button onClick={() => setInsightsOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white rounded-xl text-xs font-semibold shadow-xs transition-all">
-            <Sparkles size={13} className="text-amber-300" /> Generate Insights
+            className="flex items-center gap-1.5 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold shadow-xs transition-all cursor-pointer">
+            <Activity size={13} className="text-amber-300" /> Network Insights
           </button>
 
           <button onClick={() => setCentralityOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-2xs transition-colors">
+            className="flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-2xs transition-colors cursor-pointer">
             <BarChart3 size={13} className="text-indigo-600" /> Centrality &amp; Bridges
           </button>
 
           <button onClick={() => { setPathMode(!pathMode); setPathStart(null); setPathEnd(null); setPathNodes([]); }}
-            className={clsx("flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-colors shadow-2xs",
+            className={clsx("flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-colors shadow-2xs cursor-pointer",
               pathMode ? "bg-amber-50 text-amber-800 border-amber-300 font-bold" : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50")}>
             <GitFork size={13} /> {pathMode ? 'Exit Pathfinder' : 'Find Path'}
           </button>
@@ -1339,7 +1339,7 @@ export default function Network() {
           </div>
 
           {neighborhoodNode && (
-            <button onClick={() => setNeighborhoodNode(null)} className="px-3 py-2 bg-amber-50 border border-amber-200 rounded-xl text-xs font-bold text-amber-800 hover:bg-amber-100 flex items-center gap-1 shadow-2xs">
+            <button onClick={() => setNeighborhoodNode(null)} className="px-3 py-2 bg-amber-50 border border-amber-200 rounded-xl text-xs font-bold text-amber-800 hover:bg-amber-100 flex items-center gap-1 shadow-2xs cursor-pointer">
               <Maximize2 size={13} /> Show All
             </button>
           )}
@@ -1348,22 +1348,22 @@ export default function Network() {
           <button
             onClick={() => setNytExportOpen(true)}
             className="flex items-center gap-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold shadow-xs transition-all cursor-pointer"
-            title="Generate high-resolution Executive Publication infographic wall art"
+            title="Generate high-resolution publication infographic graphic"
           >
-            <Sparkles size={13} className="text-amber-300" />
-            <span>Executive Graphic</span>
+            <Download size={13} className="text-amber-300" />
+            <span>Publication Graphic</span>
           </button>
 
           <div className="relative">
-            <button onClick={() => setExportOpen(!exportOpen)} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-2xs">
+            <button onClick={() => setExportOpen(!exportOpen)} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-2xs cursor-pointer">
               <Download size={13} /> Export
             </button>
             {exportOpen && (
               <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-slate-200 rounded-xl shadow-xl z-50 overflow-hidden">
-                <button onClick={() => { setNytExportOpen(true); setExportOpen(false); }} className="w-full text-left px-3 py-2 text-xs text-indigo-900 hover:bg-indigo-50 font-semibold flex items-center gap-2">
-                  <Sparkles size={12} className="text-amber-500" /> Executive Wall Art (PNG)
+                <button onClick={() => { setNytExportOpen(true); setExportOpen(false); }} className="w-full text-left px-3 py-2 text-xs text-indigo-900 hover:bg-indigo-50 font-semibold flex items-center gap-2 cursor-pointer">
+                  <Download size={12} className="text-indigo-600" /> Publication Graphic (PNG)
                 </button>
-                <button onClick={() => { handleExport('png'); setExportOpen(false); }} className="w-full text-left px-3 py-2 text-xs text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 flex items-center gap-2 border-t border-slate-100">Standard High-Res PNG</button>
+                <button onClick={() => { handleExport('png'); setExportOpen(false); }} className="w-full text-left px-3 py-2 text-xs text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 flex items-center gap-2 border-t border-slate-100 cursor-pointer">Standard High-Res PNG</button>
               </div>
             )}
           </div>
@@ -1378,7 +1378,7 @@ export default function Network() {
             <div className="text-base font-extrabold text-slate-900">{stats.nodes} Nodes · {stats.edges} Links</div>
           </div>
           <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">
-            🌐
+            <Globe size={16} />
           </div>
         </div>
 
@@ -1388,7 +1388,7 @@ export default function Network() {
             <div className="text-base font-extrabold text-emerald-600">{stats.clusters} Communities</div>
           </div>
           <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">
-            ✨
+            <Layers size={16} />
           </div>
         </div>
 
@@ -1398,7 +1398,7 @@ export default function Network() {
             <div className="text-base font-extrabold text-slate-800">{(stats.density * 100).toFixed(2)}% Density</div>
           </div>
           <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm">
-            ⚡
+            <Activity size={16} />
           </div>
         </div>
 
@@ -1408,7 +1408,7 @@ export default function Network() {
             <div className="text-base font-extrabold text-indigo-700">{topBetweenness.length} Key Connectors</div>
           </div>
           <div className="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-bold text-sm">
-            🌉
+            <GitFork size={16} />
           </div>
         </div>
       </div>
@@ -1541,22 +1541,22 @@ export default function Network() {
                 <select value={agencyFilter} onChange={e => setAgencyFilter(e.target.value)} className="w-full px-2 py-1.5 text-[11px] bg-slate-50 border border-slate-200 rounded outline-none focus:ring-1 focus:ring-indigo-500">
                   <option value="">All Organizations ({agencies.length})</option>
                   {groupedAgencies.utility?.length > 0 && (
-                    <optgroup label="⚡ Electric & Gas Utilities">
+                    <optgroup label="Electric & Gas Utilities">
                       {groupedAgencies.utility.map((a: string) => <option key={a} value={a}>{a}</option>)}
                     </optgroup>
                   )}
                   {groupedAgencies.federal?.length > 0 && (
-                    <optgroup label="🏛️ Federal Agencies">
+                    <optgroup label="Federal Agencies">
                       {groupedAgencies.federal.map((a: string) => <option key={a} value={a}>{a}</option>)}
                     </optgroup>
                   )}
                   {groupedAgencies.state?.length > 0 && (
-                    <optgroup label="🗽 State Energy Agencies">
+                    <optgroup label="State Energy Agencies">
                       {groupedAgencies.state.map((a: string) => <option key={a} value={a}>{a}</option>)}
                     </optgroup>
                   )}
                   {groupedAgencies.foundation?.length > 0 && (
-                    <optgroup label="🌱 Philanthropic Foundations">
+                    <optgroup label="Philanthropic Foundations">
                       {groupedAgencies.foundation.map((a: string) => <option key={a} value={a}>{a}</option>)}
                     </optgroup>
                   )}
