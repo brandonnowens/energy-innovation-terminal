@@ -538,7 +538,7 @@ def get_recipient_capital_continuum(recipient_id: int, db: Session = Depends(get
     if not recipient:
         raise HTTPException(404, "Recipient not found")
 
-    # 1. Non-Dilutive Grants
+    # 1. Non-Dilutive Grants (Full historical ledger)
     awards = db.query(Award).filter(Award.recipient_name.ilike(recipient.name)).order_by(Award.award_date.asc()).all()
     
     # 2. SEC Form D Offerings
@@ -558,6 +558,48 @@ def get_recipient_capital_continuum(recipient_id: int, db: Session = Depends(get
 
     # 7. Grid Interconnection Queues
     queues = db.query(InterconnectionQueueProject).filter(InterconnectionQueueProject.recipient_id == recipient_id).all()
+
+    # 8. Key Contacts & Principal Investigators
+    from app.models.contact import Contact
+    contact_list = []
+    seen_contact_names = set()
+    
+    first_token = recipient.name.split()[0] if recipient.name else ""
+    db_contacts = db.query(Contact).filter(
+        or_(
+            Contact.institution_name.ilike(f"%{recipient.name}%"),
+            Contact.institution_name.ilike(f"%{first_token}%") if len(first_token) > 3 else False
+        )
+    ).all()
+    for c in db_contacts:
+        c_name = (c.name_display or "").strip()
+        if c_name and c_name.lower() not in seen_contact_names:
+            seen_contact_names.add(c_name.lower())
+            contact_list.append({
+                "id": str(c.id),
+                "name_display": c.name_display,
+                "title": c.title or "Domain Expert",
+                "role_type": c.role_type or "Principal Investigator",
+                "email": c.email,
+                "institution_name": c.institution_name or recipient.name,
+                "email_status": c.email_status or ("Verified Contact" if c.email else "Direct Contact")
+            })
+
+    # Extract distinct PIs from award ledger
+    for a in awards:
+        if a.pi_name and a.pi_name.strip():
+            pi_clean = a.pi_name.strip()
+            if pi_clean.lower() not in seen_contact_names:
+                seen_contact_names.add(pi_clean.lower())
+                contact_list.append({
+                    "id": f"pi-{a.id}",
+                    "name_display": pi_clean,
+                    "title": "Principal Investigator",
+                    "role_type": "pi",
+                    "email": a.pi_email,
+                    "institution_name": a.pi_institution or recipient.name,
+                    "email_status": f"Verified ({a.pi_email})" if a.pi_email else "Verified Award PI"
+                })
 
     # Summary Totals
     total_grants = sum(a.award_amount or 0 for a in awards)
@@ -589,7 +631,7 @@ def get_recipient_capital_continuum(recipient_id: int, db: Session = Depends(get
                 "project_title": a.project_title,
                 "solicitation_number": a.external_award_id or a.source_name
             }
-            for a in awards[:15]
+            for a in awards
         ],
         "sec_form_d_filings": [
             {
@@ -625,6 +667,7 @@ def get_recipient_capital_continuum(recipient_id: int, db: Session = Depends(get
             }
             for p in patents
         ],
+        "contacts": contact_list,
         "scaleup_allocations": [
             {
                 "id": sc.id,
@@ -666,21 +709,54 @@ def get_recipient_capital_continuum(recipient_id: int, db: Session = Depends(get
     }
 
 
+@router.get("/recipients/by-name/{recipient_name}/capital-continuum")
+def get_recipient_capital_continuum_by_name(recipient_name: str, db: Session = Depends(get_db)):
+    """Look up recipient capital continuum by organization name."""
+    clean_name = recipient_name.strip()
+    recipient = db.query(Recipient).filter(
+        or_(
+            Recipient.name.ilike(clean_name),
+            Recipient.name.ilike(f"%{clean_name}%")
+        )
+    ).first()
+    if not recipient:
+        # Fallback search directly by award recipient name
+        award = db.query(Award).filter(Award.recipient_name.ilike(f"%{clean_name}%")).first()
+        if not award:
+            raise HTTPException(404, f"No recipient or awards found matching '{recipient_name}'")
+        # Find if recipient with award recipient_name exists
+        recipient = db.query(Recipient).filter(Recipient.name.ilike(award.recipient_name)).first()
+        if not recipient:
+            recipient = Recipient(
+                name=award.recipient_name,
+                primary_technology="Energy Innovation",
+                headquarters_city=award.recipient_city,
+                headquarters_state=award.recipient_state,
+                commercialization_stage="Commercial Growth"
+            )
+            db.add(recipient)
+            db.commit()
+            db.refresh(recipient)
+
+    return get_recipient_capital_continuum(recipient_id=recipient.id, db=db)
+
+
 from fastapi.responses import Response
 
 @router.get("/recipients/{recipient_id}/export-pdf")
 @router.get("/attributions/recipients/{recipient_id}/export-pdf")
 def export_recipient_dossier_pdf(recipient_id: int, db: Session = Depends(get_db)):
     """
-    Generates and streams an institutional, publication-grade multi-page PDF dossier
+    Generates and streams an institutional, publication-grade multi-page PDF executive brief
     for a clean energy recipient organization.
     """
     from app.engine.recipient_pdf_report import generate_recipient_dossier_pdf
 
-    continuum_data = get_recipient_capital_continuum(recipient_id=recipient_id, db=db)
     recipient = db.query(Recipient).get(recipient_id)
     if not recipient:
         raise HTTPException(status_code=404, detail="Recipient entity not found")
+
+    continuum_data = get_recipient_capital_continuum(recipient_id=recipient_id, db=db)
 
     dossier_payload = {
         "recipient": {
@@ -695,7 +771,8 @@ def export_recipient_dossier_pdf(recipient_id: int, db: Session = Depends(get_db
             "description": recipient.description,
             "total_funding_received": recipient.total_funding_received,
             "climate_impact_focus": recipient.climate_impact_focus,
-            "key_innovations": recipient.key_innovations
+            "key_innovations": recipient.key_innovations,
+            "funded_agencies": recipient.funded_agencies
         },
         "continuum": continuum_data
     }
@@ -707,7 +784,41 @@ def export_recipient_dossier_pdf(recipient_id: int, db: Session = Depends(get_db
         content=pdf_buffer.getvalue(),
         media_type="application/pdf",
         headers={
-            "Content-Disposition": f'attachment; filename="{safe_name}_Dossier_EnergyInnovation.pdf"'
+            "Content-Disposition": f'attachment; filename="{safe_name}_Executive_Brief_EnergyInnovation.pdf"'
         }
     )
+
+
+@router.get("/recipients/by-name/{recipient_name}/export-pdf")
+def export_recipient_dossier_pdf_by_name(recipient_name: str, db: Session = Depends(get_db)):
+    """
+    Generates and streams an institutional, publication-grade multi-page PDF executive brief
+    by recipient name.
+    """
+    clean_name = recipient_name.strip()
+    recipient = db.query(Recipient).filter(
+        or_(
+            Recipient.name.ilike(clean_name),
+            Recipient.name.ilike(f"%{clean_name}%")
+        )
+    ).first()
+    if not recipient:
+        award = db.query(Award).filter(Award.recipient_name.ilike(f"%{clean_name}%")).first()
+        if not award:
+            raise HTTPException(status_code=404, detail=f"Recipient not found for '{recipient_name}'")
+        recipient = db.query(Recipient).filter(Recipient.name.ilike(award.recipient_name)).first()
+        if not recipient:
+            recipient = Recipient(
+                name=award.recipient_name,
+                primary_technology="Energy Innovation",
+                headquarters_city=award.recipient_city,
+                headquarters_state=award.recipient_state,
+                commercialization_stage="Commercial Growth"
+            )
+            db.add(recipient)
+            db.commit()
+            db.refresh(recipient)
+
+    return export_recipient_dossier_pdf(recipient_id=recipient.id, db=db)
+
 

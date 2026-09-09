@@ -2918,6 +2918,15 @@ export interface RecipientCapitalContinuumResponse {
     bayh_dole_citation?: string | null;
     cited_by_count?: number | null;
   }>;
+  contacts?: Array<{
+    id: string | number;
+    name_display: string;
+    title?: string | null;
+    role_type?: string | null;
+    email?: string | null;
+    institution_name?: string | null;
+    email_status?: string | null;
+  }>;
   scaleup_allocations: Array<{
     id: number;
     program_category: string;

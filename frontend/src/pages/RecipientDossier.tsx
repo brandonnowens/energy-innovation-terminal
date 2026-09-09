@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { 
   Building2, Award, DollarSign, Globe, MapPin, Tag, 
   ExternalLink, Share2, Code, ArrowLeft, ShieldCheck, CheckCircle2,
-  FileText, TrendingUp, Layers, Zap, Lightbulb, Target, Download, Printer, Check, Loader2
+  FileText, TrendingUp, Layers, Zap, Lightbulb, Target, Download, Printer, Check, Loader2, User, Users
 } from 'lucide-react';
 import {  api, RecipientCapitalContinuumResponse , apiFetch } from '../api/client';
 import { updatePageMeta } from '../utils/seo';
@@ -130,24 +130,30 @@ export default function RecipientDossier() {
   const [isExportingPdf, setIsExportingPdf] = useState(false);
 
   const handleExportPdf = async () => {
-    if (!id) return;
+    const targetId = recipient?.id || id;
+    if (!targetId && !recipient?.name) return;
     try {
       setIsExportingPdf(true);
-      const res = await apiFetch(`/api/recipients/${id}/export-pdf`);
-      if (!res.ok) throw new Error('Failed to generate PDF dossier');
+      const isNum = targetId && !isNaN(Number(targetId));
+      const targetUrl = isNum
+        ? `/api/recipients/${targetId}/export-pdf`
+        : `/api/recipients/by-name/${encodeURIComponent(recipient?.name || String(targetId))}/export-pdf`;
+      const res = await apiFetch(targetUrl);
+      if (!res.ok) throw new Error('Failed to generate PDF executive brief');
       const blob = await res.blob();
-      const safeName = recipient?.name ? recipient.name.replace(/[^a-zA-Z0-9]/g, '_') : `Recipient_${id}`;
+      const safeName = recipient?.name ? recipient.name.replace(/[^a-zA-Z0-9]/g, '_') : `Recipient_${targetId}`;
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${safeName}_Dossier_EnergyInnovation.pdf`;
+      a.download = `${safeName}_Executive_Brief_EnergyInnovation.pdf`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     } catch (err) {
       console.error('PDF Export Error:', err);
-      window.open(`/api/recipients/${id}/export-pdf`, '_blank');
+      const fallbackUrl = `/api/recipients/${targetId}/export-pdf`;
+      window.open(fallbackUrl, '_blank');
     } finally {
       setIsExportingPdf(false);
     }
@@ -193,10 +199,10 @@ export default function RecipientDossier() {
             onClick={handleExportPdf}
             disabled={isExportingPdf}
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 shadow-sm transition-all cursor-pointer"
-            title="Export Institutional PDF Dossier"
+            title="Export Institutional PDF Executive Brief"
           >
             {isExportingPdf ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />}
-            <span>{isExportingPdf ? 'Compiling PDF...' : 'Export Dossier (PDF)'}</span>
+            <span>{isExportingPdf ? 'Compiling PDF...' : 'Download Executive Brief (PDF)'}</span>
           </button>
           <button 
             onClick={copyShareLink}
@@ -474,6 +480,36 @@ export default function RecipientDossier() {
                         <span>{q.iso_rto} · Queue #{q.queue_id}</span>
                         <span className="px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 font-bold font-mono text-[9.5px]">{q.study_phase || q.status}</span>
                       </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Key Contacts & Principal Investigators Card */}
+            {continuum.contacts && continuum.contacts.length > 0 && (
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-2.5 lg:col-span-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-bold text-emerald-300 uppercase font-mono flex items-center gap-1.5">
+                    <Users size={13} /> Key Contacts, Domain Experts &amp; Principal Investigators
+                  </span>
+                  <span className="text-slate-400 font-mono">{continuum.contacts.length} Experts Tracked</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {continuum.contacts.map((c) => (
+                    <div key={c.id} className="p-3 rounded-lg bg-black/40 border border-white/5 text-xs space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-white truncate">{c.name_display}</span>
+                        <span className="px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-bold font-mono text-[9.5px] shrink-0">{c.email_status || 'Verified'}</span>
+                      </div>
+                      <div className="text-slate-400 text-[11px] truncate">
+                        {c.title || 'Technical Lead'}
+                      </div>
+                      {c.email && (
+                        <div className="text-cyan-400/90 font-mono text-[10.5px] truncate pt-0.5">
+                          {c.email}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

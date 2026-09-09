@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { api, AwardMapMarker } from '../api/client';
+import { api, apiFetch, AwardMapMarker } from '../api/client';
 import {
   X, Building2, User, MapPin, DollarSign, Calendar, ExternalLink,
   FileText, Award, Globe, Mail, Phone, Loader2, Layers,
-  ChevronRight, BookmarkCheck, Atom, Zap, Lightbulb, TrendingUp
+  ChevronRight, BookmarkCheck, Atom, Zap, Lightbulb, TrendingUp, Download
 } from 'lucide-react';
 import { OrgLogo } from './OrgLogo';
 import { InteractiveEgoGraph } from './InteractiveEgoGraph';
@@ -39,6 +39,7 @@ export const AwardDossierDrawer: React.FC<AwardDossierDrawerProps> = ({
   onSelectRelatedAward,
 }) => {
   const awardId = award?.id;
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
 
   const { data: detail, isLoading } = useQuery({
     queryKey: ['award-detail', awardId],
@@ -75,6 +76,34 @@ export const AwardDossierDrawer: React.FC<AwardDossierDrawerProps> = ({
     },
     enabled: !!award?.name,
   });
+
+  const handleDownloadExecutiveBriefPdf = async () => {
+    if (!award?.name) return;
+    try {
+      setIsExportingPdf(true);
+      const targetUrl = recipientDetail?.id
+        ? `/api/recipients/${recipientDetail.id}/export-pdf`
+        : `/api/recipients/by-name/${encodeURIComponent(award.name)}/export-pdf`;
+      const res = await apiFetch(targetUrl);
+      if (!res.ok) throw new Error('Failed to generate Company Executive Brief PDF');
+      const blob = await res.blob();
+      const safeName = award.name.replace(/[^a-zA-Z0-9]/g, '_');
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${safeName}_Executive_Brief_EnergyInnovation.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error('PDF Brief export error:', err);
+      const fallbackUrl = `/api/recipients/by-name/${encodeURIComponent(award.name)}/export-pdf`;
+      window.open(fallbackUrl, '_blank');
+    } finally {
+      setIsExportingPdf(false);
+    }
+  };
 
   if (!award) return null;
 
@@ -223,6 +252,27 @@ export const AwardDossierDrawer: React.FC<AwardDossierDrawerProps> = ({
                           </a>
                         </div>
                       )}
+                    </div>
+
+                    {/* Executive Brief PDF Download & Dossier Actions */}
+                    <div className="pt-3 border-t border-slate-100 flex items-center gap-2 flex-wrap">
+                      <button
+                        onClick={handleDownloadExecutiveBriefPdf}
+                        disabled={isExportingPdf}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-xs transition-all cursor-pointer disabled:opacity-50"
+                        title="Download publication-grade executive brief PDF for this company"
+                      >
+                        {isExportingPdf ? <Loader2 size={13} className="animate-spin" /> : <Download size={13} />}
+                        <span>{isExportingPdf ? 'Compiling PDF...' : 'Download Company Executive Brief (PDF)'}</span>
+                      </button>
+                      <a
+                        href={`/recipients/${recipientDetail.id || encodeURIComponent(award.name)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all"
+                      >
+                        <ExternalLink size={12} /> View Full Profile
+                      </a>
                     </div>
                   </div>
                 )}
@@ -595,8 +645,17 @@ export const AwardDossierDrawer: React.FC<AwardDossierDrawerProps> = ({
             </div>
             <div className="flex items-center gap-2">
               <button
+                onClick={handleDownloadExecutiveBriefPdf}
+                disabled={isExportingPdf}
+                className="px-3 py-1.5 text-[12px] font-bold text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 rounded-lg shadow-xs transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                title="Download complete PDF Executive Brief for this company"
+              >
+                {isExportingPdf ? <Loader2 size={13} className="animate-spin" /> : <Download size={13} />}
+                <span>{isExportingPdf ? 'Exporting...' : 'Company PDF Brief'}</span>
+              </button>
+              <button
                 onClick={onClose}
-                className="px-3.5 py-1.5 text-[12px] font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                className="px-3.5 py-1.5 text-[12px] font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -605,9 +664,9 @@ export const AwardDossierDrawer: React.FC<AwardDossierDrawerProps> = ({
                   href={detail?.source_url || (award.website?.startsWith('http') ? award.website : `https://${award.website}`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-1.5 text-[12px] font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-xs transition-colors inline-flex items-center gap-1"
+                  className="px-3.5 py-1.5 text-[12px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg shadow-xs transition-colors inline-flex items-center gap-1"
                 >
-                  <ExternalLink size={12} /> Official Source
+                  <ExternalLink size={12} /> Source
                 </a>
               )}
             </div>
