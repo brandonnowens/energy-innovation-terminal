@@ -50,14 +50,44 @@ export default function DailyDigest() {
     description: 'Automated morning briefing analyzing active energy innovation funding solicitations, upcoming deadlines, venture attributions, and regulatory proceedings.',
   });
 
-  // Fetch Digest with smooth cache retention
+  const cacheKey = `energy_innovation_daily_digest_${dateParam || 'latest'}`;
+
+  // Fetch Digest with instant localStorage hydration and cold-start resilience
   const { data: digest, isLoading, isError, isFetching, refetch } = useQuery<DailyDigestType>({
     queryKey: ['daily-digest', dateParam],
-    queryFn: () => api.getDailyDigest(dateParam),
-    staleTime: 10 * 60 * 1000,
+    queryFn: async () => {
+      const data = await api.getDailyDigest(dateParam);
+      return data;
+    },
+    initialData: () => {
+      try {
+        const raw = localStorage.getItem(cacheKey) || (dateParam ? null : localStorage.getItem('energy_innovation_daily_digest_latest'));
+        if (raw) return JSON.parse(raw);
+      } catch (e) {
+        // ignore
+      }
+      return undefined;
+    },
+    staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
+    retry: 4,
+    retryDelay: (attemptIndex) => Math.min(1000 * Math.pow(1.8, attemptIndex), 8000),
     placeholderData: (previousData) => previousData,
   });
+
+  // Sync latest successful digest to persistent localStorage cache
+  React.useEffect(() => {
+    if (digest) {
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify(digest));
+        if (!dateParam) {
+          localStorage.setItem('energy_innovation_daily_digest_latest', JSON.stringify(digest));
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
+  }, [digest, cacheKey, dateParam]);
 
   // Fetch Archive Editions
   const { data: archive } = useQuery<DigestArchiveItem[]>({
@@ -65,6 +95,8 @@ export default function DailyDigest() {
     queryFn: () => api.getDigestArchive(),
     staleTime: 15 * 60 * 1000,
     gcTime: 60 * 60 * 1000,
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * Math.pow(1.5, attemptIndex), 5000),
   });
 
   // Force Regeneration Mutation
@@ -73,6 +105,9 @@ export default function DailyDigest() {
     onSuccess: (newDigest) => {
       queryClient.setQueryData(['daily-digest', dateParam], newDigest);
       queryClient.invalidateQueries({ queryKey: ['daily-digest-archive'] });
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify(newDigest));
+      } catch (e) {}
     },
   });
 
@@ -116,18 +151,24 @@ export default function DailyDigest() {
 
   if (isLoading && !digest) {
     return (
-      <div className="max-w-6xl mx-auto space-y-8 pb-20 px-4 sm:px-6 animate-pulse">
-        <div className="border-b border-slate-200 dark:border-slate-800 pb-6 pt-2 space-y-4">
+      <div className="max-w-6xl mx-auto space-y-8 pb-20 px-4 sm:px-6">
+        <div className="flex items-center justify-center p-6 bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/40 rounded-2xl animate-pulse">
+          <div className="flex items-center space-x-3 text-emerald-800 dark:text-emerald-300">
+            <Loader2 className="w-5 h-5 animate-spin" />
+            <span className="text-sm font-medium">Connecting to Energy Innovation intelligence network & compiling live briefings...</span>
+          </div>
+        </div>
+        <div className="border-b border-slate-200 dark:border-slate-800 pb-6 pt-2 space-y-4 animate-pulse">
           <div className="h-6 w-48 bg-slate-200 dark:bg-slate-800 rounded-full" />
           <div className="h-10 w-3/4 bg-slate-200 dark:bg-slate-800 rounded-lg" />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-pulse">
           {[1, 2, 3, 4].map(i => (
             <div key={i} className="h-24 bg-slate-200 dark:bg-slate-800 rounded-xl" />
           ))}
         </div>
-        <div className="h-32 bg-slate-200 dark:bg-slate-800 rounded-2xl" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="h-32 bg-slate-200 dark:bg-slate-800 rounded-2xl animate-pulse" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-pulse">
           {[1, 2, 3, 4].map(i => (
             <div key={i} className="h-40 bg-slate-200 dark:bg-slate-800 rounded-xl" />
           ))}
@@ -136,20 +177,30 @@ export default function DailyDigest() {
     );
   }
 
-
-  if (isError || !digest) {
+  if (isError && !digest) {
     return (
       <div className="max-w-4xl mx-auto py-12 px-4">
         <div className="p-8 rounded-xl border border-red-200 bg-red-50/50 text-center space-y-4">
           <AlertCircle className="w-10 h-10 text-red-500 mx-auto" />
           <h2 className="text-lg font-bold text-slate-900">Unable to load Daily Digest</h2>
-          <p className="text-sm text-slate-600">The daily briefing could not be retrieved from the server.</p>
-          <button
-            onClick={() => refetch()}
-            className="px-4 py-2 bg-slate-900 text-white text-xs font-semibold rounded-lg hover:bg-slate-800 transition"
-          >
-            Retry Connection
-          </button>
+          <p className="text-sm text-slate-600">The daily briefing could not be retrieved from the server. The backend may be waking from sleep.</p>
+          <div className="flex items-center justify-center space-x-3 pt-2">
+            <button
+              onClick={() => refetch()}
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-slate-900 text-white text-xs font-semibold rounded-lg hover:bg-slate-800 transition shadow-sm"
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+              <span>Retry Connection</span>
+            </button>
+            <button
+              onClick={() => generateMutation.mutate()}
+              disabled={generateMutation.isPending}
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-600 text-white text-xs font-semibold rounded-lg hover:bg-emerald-700 transition shadow-sm disabled:opacity-50"
+            >
+              {generateMutation.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Zap className="w-3.5 h-3.5" />}
+              <span>Force Generate</span>
+            </button>
+          </div>
         </div>
       </div>
     );

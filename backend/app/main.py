@@ -41,9 +41,11 @@ async def lifespan(app: FastAPI):
         import gc
         with SessionLocal() as db:
             get_cached_opportunities(db)
+        from app.engine.daily_digest import warm_digest_cache
+        warm_digest_cache()
         gc.collect()
     except Exception as e:
-        print(f"[Lifespan Startup Warning] Opportunity Cache Warm: {e}")
+        print(f"[Lifespan Startup Warning] Opportunity & Digest Cache Warm: {e}")
 
     # Background automated data schedulers (opt-in for dedicated worker nodes)
     if getattr(settings, "enable_background_schedulers", False):

@@ -204,6 +204,7 @@ def calculate_capital_stack(
     domestic_content_bonus: bool = False,
     prevailing_wage_compliant: bool = True,
     tax_exempt_direct_pay: Optional[bool] = None,
+    skip_llm: bool = False,
 ) -> Dict[str, Any]:
     """
     Computes a pro-forma capital stack waterfall with technology-specific statutory eligibility gating.
@@ -477,7 +478,8 @@ def calculate_capital_stack(
         statutory_code=statutory_code,
         total_itc_rate=total_itc_rate,
         effective_direct_pay=effective_direct_pay,
-        project_summary=project_summary
+        project_summary=project_summary,
+        skip_llm=skip_llm
     )
 
     return {
@@ -579,12 +581,61 @@ def _synthesize_diligence_memo(
     statutory_code: str,
     total_itc_rate: float,
     effective_direct_pay: bool,
-    project_summary: Optional[str] = None
+    project_summary: Optional[str] = None,
+    skip_llm: bool = False,
 ) -> Dict[str, str]:
     """
     Synthesizes an institutional 3-paragraph Investment Committee Diligence Memorandum
     using OpenAI, Gemini, or Claude, with graceful deterministic fallback.
     """
+    monetization_mode = "26 U.S.C. § 6417 Direct Pay (100% Cash Refund)" if effective_direct_pay else "26 U.S.C. § 6418 Transferability (~93.5% Net Proceeds)"
+    if not is_tax_eligible:
+        monetization_mode = "Ineligible / 0.0% (Non-Energy Property under Title 26)"
+
+    # Deterministic Rule-Based Generator (used if skip_llm=True or as robust fallback)
+    def _build_deterministic_memo() -> Dict[str, str]:
+        p1 = (
+            f"**Capital Structure & Non-Dilutive Subsidy Architecture**: "
+            f"The subject project proposes a total capital expenditure of ${total_cost:,.2f}. "
+            f"Through a syndicated multi-tier capital stack, the project captures ${total_non_dilutive_amount:,.2f} ({total_non_dilutive_pct}%) "
+            f"in non-dilutive subsidization comprising public co-funding grants (${grant_amount:,.2f})"
+            + (f" and statutory IRA tax equity (${tax_credit_net:,.2f}). " if is_tax_eligible else ". ")
+            + f"Layering concessionary green bank gap debt (${green_bank_debt_amount:,.2f}) narrows the net sponsor equity commitment to "
+            f"${sponsor_equity_amount:,.2f} ({sponsor_equity_pct}%), significantly de-risking downside exposure for prime equity sponsors."
+        )
+
+        p2 = (
+            f"**Cost of Capital (WACC) Optimization & Fiduciary Savings**: "
+            f"From a cost-of-capital perspective, structuring non-dilutive grant co-funding alongside low-cost subordinated debt (5.25% fixed coupon) "
+            f"compresses the blended project WACC from an unsubsidized commercial benchmark of {unsubsidized_wacc_pct}% down to {blended_wacc_pct}%. "
+            f"This generates a {wacc_savings_bps} bps financing cost advantage, yielding approximately ${annual_carrying_cost_savings:,.2f} "
+            f"in annual debt-service and carrying cost reductions, representing ${ten_year_cumulative_savings:,.2f} in cumulative 10-year value preservation."
+        )
+
+        if is_tax_eligible:
+            p3 = (
+                f"**Statutory Tax Structuring & Monetization Mechanics**: "
+                f"Statutory tax equity monetization is structured under {statutory_code} ({statutory_name}), "
+                f"yielding an effective statutory incentive rate of {int(total_itc_rate * 100)}%. "
+                f"Capital realization is executed via {monetization_mode}, "
+                f"predicated on satisfying prevailing wage, registered apprenticeship, and qualified siting requirements under Treasury guidance."
+            )
+        else:
+            p3 = (
+                "**Statutory Tax Structuring & Monetization Mechanics**: "
+                "Because the proposed scope resides outside IRC Title 26 eligible energy property categories, "
+                "federal clean energy tax credits are strictly modeled at $0.00 (0.00%) to preserve fiduciary accuracy. "
+                "Project capitalization relies exclusively on competitive public innovation grants and programmatic economic development financing."
+            )
+
+        return {
+            "memo": f"{p1}\n\n{p2}\n\n{p3}",
+            "synthesized_by": "Rule-Based Deterministic Fallback"
+        }
+
+    if skip_llm:
+        return _build_deterministic_memo()
+
     import os
     import json
     try:
@@ -697,42 +748,5 @@ Return ONLY the 3-paragraph professional memorandum."""
             logger.warning(f"Anthropic capital stack memo synthesis failed: {e}")
 
     # Deterministic Rule-Based Fallback
-    p1 = (
-        f"**Capital Structure & Non-Dilutive Subsidy Architecture**: "
-        f"The subject project proposes a total capital expenditure of ${total_cost:,.2f}. "
-        f"Through a syndicated multi-tier capital stack, the project captures ${total_non_dilutive_amount:,.2f} ({total_non_dilutive_pct}%) "
-        f"in non-dilutive subsidization comprising public co-funding grants (${grant_amount:,.2f})"
-        + (f" and statutory IRA tax equity (${tax_credit_net:,.2f}). " if is_tax_eligible else ". ")
-        + f"Layering concessionary green bank gap debt (${green_bank_debt_amount:,.2f}) narrows the net sponsor equity commitment to "
-        f"${sponsor_equity_amount:,.2f} ({sponsor_equity_pct}%), significantly de-risking downside exposure for prime equity sponsors."
-    )
-
-    p2 = (
-        f"**Cost of Capital (WACC) Optimization & Fiduciary Savings**: "
-        f"From a cost-of-capital perspective, structuring non-dilutive grant co-funding alongside low-cost subordinated debt (5.25% fixed coupon) "
-        f"compresses the blended project WACC from an unsubsidized commercial benchmark of {unsubsidized_wacc_pct}% down to {blended_wacc_pct}%. "
-        f"This generates a {wacc_savings_bps} bps financing cost advantage, yielding approximately ${annual_carrying_cost_savings:,.2f} "
-        f"in annual debt-service and carrying cost reductions, representing ${ten_year_cumulative_savings:,.2f} in cumulative 10-year value preservation."
-    )
-
-    if is_tax_eligible:
-        p3 = (
-            f"**Statutory Tax Structuring & Monetization Mechanics**: "
-            f"Statutory tax equity monetization is structured under {statutory_code} ({statutory_name}), "
-            f"yielding an effective statutory incentive rate of {int(total_itc_rate * 100)}%. "
-            f"Capital realization is executed via {monetization_mode}, "
-            f"predicated on satisfying prevailing wage, registered apprenticeship, and qualified siting requirements under Treasury guidance."
-        )
-    else:
-        p3 = (
-            "**Statutory Tax Structuring & Monetization Mechanics**: "
-            "Because the proposed scope resides outside IRC Title 26 eligible energy property categories, "
-            "federal clean energy tax credits are strictly modeled at $0.00 (0.00%) to preserve fiduciary accuracy. "
-            "Project capitalization relies exclusively on competitive public innovation grants and programmatic economic development financing."
-        )
-
-    return {
-        "memo": f"{p1}\n\n{p2}\n\n{p3}",
-        "synthesized_by": "Rule-Based Deterministic Fallback"
-    }
+    return _build_deterministic_memo()
 

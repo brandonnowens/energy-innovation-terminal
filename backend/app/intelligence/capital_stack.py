@@ -48,7 +48,8 @@ def solve_capital_stack(
     senior_debt_share_pct: Optional[float] = None,
     equity_cost_of_capital_pct: Optional[float] = None,
     applicant_type: Optional[str] = None,
-    project_summary: Optional[str] = None
+    project_summary: Optional[str] = None,
+    skip_llm: bool = False
 ) -> Dict[str, Any]:
     """
     Computes audited multi-layer project capital stack, IRC Title 26 IRA tax incentives,
@@ -67,7 +68,8 @@ def solve_capital_stack(
         applicant_type=applicant_type,
         energy_community_bonus=is_energy_community,
         domestic_content_bonus=is_domestic_content_compliant,
-        prevailing_wage_compliant=is_prevailing_wage_compliant
+        prevailing_wage_compliant=is_prevailing_wage_compliant,
+        skip_llm=skip_llm
     )
 
     # Derive standardized return payload

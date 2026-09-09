@@ -8,7 +8,7 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
 
   const method = (init?.method || (input instanceof Request ? input.method : 'GET')).toUpperCase();
   const isRetryableMethod = method === 'GET' || method === 'HEAD';
-  const maxRetries = isRetryableMethod ? 3 : 1;
+  const maxRetries = isRetryableMethod ? 6 : 1;
 
   let lastError: any = null;
   for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -18,7 +18,7 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
 
       // If Render backend is sleeping or spinning up, status is 502/503/504
       if (isRetryableMethod && (res.status === 502 || res.status === 503 || res.status === 504) && attempt < maxRetries - 1) {
-        const delay = Math.min(1000 * Math.pow(2, attempt), 4000);
+        const delay = Math.min(1200 * Math.pow(1.6, attempt), 6000);
         await new Promise(resolve => setTimeout(resolve, delay));
         continue;
       }
@@ -27,7 +27,7 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
       lastError = err;
       if (err.name === 'AbortError') throw err;
       if (isRetryableMethod && attempt < maxRetries - 1) {
-        const delay = Math.min(1000 * Math.pow(2, attempt), 4000);
+        const delay = Math.min(1200 * Math.pow(1.6, attempt), 6000);
         await new Promise(resolve => setTimeout(resolve, delay));
         continue;
       }

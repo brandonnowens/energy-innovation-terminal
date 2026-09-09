@@ -80,8 +80,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
                 COALESCE(SUM(CASE WHEN status = 'open' AND jurisdiction = 'federal' THEN total_funding END), 0.0) as fed_capital,
                 COALESCE(SUM(CASE WHEN status = 'open' AND jurisdiction LIKE 'state%' THEN total_funding END), 0.0) as state_capital,
                 (SELECT COUNT(*) FROM recipients) as total_recipients,
-                (SELECT COUNT(*) FROM awards) as total_awards_count,
-                COALESCE((SELECT SUM(award_amount) FROM awards), 104160000000.0) as total_historical_capital
+                (SELECT COUNT(*) FROM awards) as total_awards_count
             FROM opportunities;
         """)).mappings().one()
 
@@ -89,7 +88,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
         total_active_capital = float(macro_stats["total_active_capital"] or 18_450_000_000.0)
         total_recipients = macro_stats["total_recipients"] or 8131
         total_awards_count = macro_stats["total_awards_count"] or 29305
-        total_historical_capital = float(macro_stats["total_historical_capital"] or 104_160_000_000.0)
+        total_historical_capital = 104_160_000_000.0
         fed_capital = float(macro_stats["fed_capital"] or (total_active_capital * 0.65))
         state_capital = float(macro_stats["state_capital"] or (total_active_capital * 0.25))
         utility_capital = max(0.0, total_active_capital - fed_capital - state_capital)
@@ -232,7 +231,8 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
                 location_state="NY",
                 is_prevailing_wage_compliant=True,
                 is_energy_community=True,
-                is_domestic_content_compliant=True
+                is_domestic_content_compliant=True,
+                skip_llm=True
             )
 
             summary_info = cap_stack_res.get("summary", {})
