@@ -35,7 +35,9 @@ const PolicyReference = lazy(() => import('./pages/PolicyReference'));
 const Chat = lazy(() => import('./pages/Chat'));
 const AdminEmailHub = lazy(() => import('./pages/AdminEmailHub'));
 const ForecastingRadar = lazy(() => import('./pages/ForecastingRadar').then(m => ({ default: m.ForecastingRadar })));
+const DailyDigest = lazy(() => import('./pages/DailyDigest'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -73,7 +75,10 @@ function App() {
                     <Route path="match" element={<AnalyzeProject />} />
                     <Route path="radar" element={<ForecastingRadar />} />
                     <Route path="forecasting" element={<ForecastingRadar />} />
+                    <Route path="digest" element={<DailyDigest />} />
+                    <Route path="daily-digest" element={<DailyDigest />} />
                     <Route path="chat" element={<Chat />} />
+
                   <Route path="opportunities" element={<Opportunities />} />
                   <Route path="opportunities/:id" element={<OpportunityDetail />} />
                   {/* Programmatic SEO Hubs */}

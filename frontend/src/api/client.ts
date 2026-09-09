@@ -2353,7 +2353,113 @@ export const api = {
     if (!res.ok) throw new Error('Failed to fetch recipient capital continuum');
     return res.json();
   },
+
+  // Daily Clean Energy Intelligence Digest
+  getDailyDigest: async (dateStr?: string): Promise<DailyDigest> => {
+    const endpoint = dateStr ? `/api/v1/digest/${dateStr}` : '/api/v1/digest/latest';
+    const res = await fetch(endpoint, { headers: getAuthHeaders() });
+    if (!res.ok) throw new Error(`Failed to fetch daily digest: ${res.status}`);
+    return res.json();
+  },
+
+  getDigestArchive: async (): Promise<DigestArchiveItem[]> => {
+    const res = await fetch('/api/v1/digest/archive', { headers: getAuthHeaders() });
+    if (!res.ok) throw new Error('Failed to fetch digest archive');
+    return res.json();
+  },
+
+  generateDigest: async (dateStr?: string): Promise<DailyDigest> => {
+    const endpoint = dateStr ? `/api/v1/digest/generate?date_str=${dateStr}` : '/api/v1/digest/generate';
+    const res = await fetch(endpoint, { method: 'POST', headers: getAuthHeaders() });
+    if (!res.ok) throw new Error('Failed to generate daily digest');
+    return res.json();
+  },
 };
+
+export interface DailyDigest {
+  edition_date: string;
+  formatted_date: string;
+  edition_number: string;
+  headline: string;
+  editorial_narrative: string;
+  macro_metrics: {
+    open_solicitations_count: number;
+    total_active_capital: number;
+    total_active_capital_display: string;
+    tracked_recipients_count: number;
+    total_historical_awards_count: number;
+    new_solicitations_today: number;
+    urgent_deadlines_count: number;
+  };
+  new_solicitations: Array<{
+    id: number;
+    solicitation_number: string;
+    name: string;
+    agency: string;
+    jurisdiction?: string;
+    total_funding?: number;
+    total_funding_display: string;
+    max_per_award_display: string;
+    due_date_display: string;
+    short_description: string;
+    solicitation_type: string;
+    detail_url: string;
+  }>;
+  urgent_deadlines: Array<{
+    id: number;
+    solicitation_number: string;
+    name: string;
+    agency: string;
+    due_date_display: string;
+    total_funding_display: string;
+    max_per_award_display: string;
+    detail_url: string;
+  }>;
+  award_wire: Array<{
+    id: number;
+    recipient_name: string;
+    recipient_city?: string;
+    recipient_state?: string;
+    award_amount_display: string;
+    project_title: string;
+    pi_name?: string;
+    recipient_type: string;
+  }>;
+  regulatory_watch: Array<{
+    code_identifier: string;
+    title: string;
+    category: string;
+    jurisdiction_state: string;
+    executive_summary: string;
+    compliance_mandate?: string;
+  }>;
+  spotlight?: {
+    opportunity_id: number;
+    solicitation_number: string;
+    name: string;
+    agency: string;
+    total_funding_display: string;
+    max_per_award_display: string;
+    due_date_display: string;
+    short_description: string;
+    bankability_score?: number;
+    bankability_grade?: string;
+    bankability_readiness?: string;
+    ira_itc_rate?: number;
+    ira_tax_credit_value?: string;
+    blended_wacc_pct?: number;
+    non_dilutive_coverage_pct?: number;
+  };
+  generated_at: string;
+}
+
+export interface DigestArchiveItem {
+  date: string;
+  formatted_date: string;
+  headline: string;
+  is_today: boolean;
+}
+
 
 // -------------------------------------------------------------
 // Capital Intelligence & Infrastructure TypeScript Interfaces

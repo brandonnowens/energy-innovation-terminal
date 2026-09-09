@@ -41,9 +41,21 @@ def main():
         if "error" in result:
             logger.error(f"Sync reported an error: {result['error']}")
             sys.exit(1)
+
+        # Automatically compile and save the fresh daily digest for UI readers
+        try:
+            from app.database import SessionLocal
+            from app.engine.daily_digest import generate_daily_digest
+            with SessionLocal() as db:
+                digest = generate_daily_digest(db)
+                logger.info(f"Successfully compiled automated Daily Digest edition: {digest.get('edition_number')} ({digest.get('formatted_date')})")
+        except Exception as digest_err:
+            logger.warning(f"Non-fatal warning: Daily digest auto-compilation encountered: {digest_err}")
+
     except Exception as e:
         logger.exception(f"Fatal error during scheduled sync run: {e}")
         sys.exit(1)
+
 
 
 if __name__ == "__main__":

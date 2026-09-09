@@ -4,8 +4,9 @@ import {
   Sparkles, FileSearch, Layers, Building2, Trophy, Network,
   TrendingUp, Database, GitMerge, FileText, Search, ShieldCheck,
   Zap, Command, FileEdit, Scale, Lightbulb, Clock, Activity, BookUser, BookOpen, Bot,
-  ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X
+  ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X, Newspaper
 } from 'lucide-react';
+
 import clsx from 'clsx';
 import { EnergyInnovationTerminalLogo } from './EnergyInnovationTerminalLogo';
 import { CommandPalette } from './CommandPalette';
@@ -112,11 +113,13 @@ export default function Layout() {
     {
       title: 'Opportunities',
       items: [
+        { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
         { to: '/analyze', icon: Sparkles, label: 'Match' },
         { to: '/radar', icon: Radio, label: 'Radar' },
         { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
       ]
     },
+
     {
       title: 'Awards',
       items: [

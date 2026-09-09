@@ -5,7 +5,7 @@ import { api } from '../api/client';
 import {
   Search, FileSearch, Layers, Trophy, Network, GitMerge, TrendingUp,
   FileText, Database, Building2, Sparkles, ArrowRight, X, Loader2,
-  ExternalLink, Globe, MapPin, Zap, ChevronRight, FileEdit, Scale, Lightbulb, BookUser, BookOpen, Bot, ShieldCheck, Compass
+  ExternalLink, Globe, MapPin, Zap, ChevronRight, FileEdit, Scale, Lightbulb, BookUser, BookOpen, Bot, ShieldCheck, Compass, Newspaper
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from './OrgLogo';
@@ -17,8 +17,10 @@ interface CommandPaletteProps {
 }
 
 const STATIC_ACTIONS = [
+  { id: 'nav-digest', label: 'Daily Digest', sub: 'Automated morning intelligence briefing analyzing new solicitations, deadlines, and venture wire', to: '/digest', icon: Newspaper, category: 'Opportunities' },
   { id: 'nav-chat', label: 'AI Advisor', sub: 'Grounded RAG AI expert copilot with direct access to all 56k+ awards & 5.7k+ opportunities', to: '/chat', icon: Bot, category: 'AI Advisor' },
   { id: 'nav-match', label: 'Match', sub: 'Deterministic eligibility and funding architecture engine', to: '/', icon: Sparkles, category: 'Opportunities' },
+
   { id: 'nav-opps', label: 'Solicitations', sub: '5,757 active and historical funding opportunities', to: '/opportunities', icon: FileSearch, category: 'Opportunities' },
   { id: 'nav-awards', label: 'Awards', sub: '56,413 awards representing $104.16B tracked capital & 10k+ grid queues', to: '/awards', icon: Trophy, category: 'Awards' },
   { id: 'nav-venture-patents', label: 'Venture & IP', sub: 'USPTO Bayh-Dole patent citations, $58.22B private VC syndicates & lineage graph', to: '/venture-patents', icon: Lightbulb, category: 'Awards' },
