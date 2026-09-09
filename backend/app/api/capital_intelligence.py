@@ -785,7 +785,7 @@ def export_recipient_dossier_pdf(recipient_id: int, db: Session = Depends(get_db
     """
     from app.engine.recipient_pdf_report import generate_recipient_dossier_pdf
 
-    recipient = db.query(Recipient).get(recipient_id)
+    recipient = db.get(Recipient, recipient_id)
     if not recipient:
         raise HTTPException(status_code=404, detail="Recipient entity not found")
 
