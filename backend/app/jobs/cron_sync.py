@@ -33,10 +33,19 @@ def main():
         logger.info(f"Worker Statuses: {statuses}")
         return
 
-    logger.info(f"Triggering scheduled sync for source: '{args.source}'")
-    result = run_pipeline(source_code=args.source)
-    logger.info(f"Sync complete. Results: {result}")
+    logger.info(f"Triggering scheduled automated daily sync for source: '{args.source}'")
+    try:
+        result = run_pipeline(source_code=args.source)
+        logger.info(f"Sync complete. Summary: inserted={result.get('total_new_opportunities_inserted', 0)}, updated={result.get('total_existing_updated', 0)}, alerts={result.get('total_alerts_dispatched', 0)}")
+        logger.info(f"Full Result: {result}")
+        if "error" in result:
+            logger.error(f"Sync reported an error: {result['error']}")
+            sys.exit(1)
+    except Exception as e:
+        logger.exception(f"Fatal error during scheduled sync run: {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
     main()
+
