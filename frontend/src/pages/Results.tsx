@@ -6,11 +6,12 @@ import {
   Scale, ShieldCheck, FileText, ExternalLink, Search,
   CheckCircle2, ChevronDown, ChevronRight, Building2,
   Award, Quote, FileCheck, ArrowUpDown, ArrowUpRight, RotateCcw,
-  Layers, Target
+  Layers, Target, FileDown
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
 import { VenturePatentView } from '../components/VenturePatentView';
+import { RecipientQuickViewModal } from '../components/RecipientQuickViewModal';
 import { useNyserda } from '../context/NyserdaContext';
 
 function formatCurrency(val: number | null | undefined): string {
@@ -35,6 +36,7 @@ export default function Results() {
   const [selectedAgency, setSelectedAgency] = useState<string>('ALL');
   const [selectedTech, setSelectedTech] = useState<string>('ALL');
   const [expandedOrg, setExpandedOrg] = useState<string | null>(null);
+  const [quickViewRecipient, setQuickViewRecipient] = useState<{ id?: number | string | null; name?: string | null } | null>(null);
 
   // Benchmarks sorting
   const [bmSortBy, setBmSortBy] = useState('leverage_ratio');
@@ -359,9 +361,15 @@ export default function Results() {
                         <div className="space-y-1 max-w-3xl">
                           <div className="flex items-center gap-2.5 flex-wrap">
                             <OrgLogo org={org.recipient_name} size="sm" />
-                            <span className="font-bold text-base sm:text-lg text-slate-900">
-                              {org.recipient_name}
-                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setQuickViewRecipient({ name: org.recipient_name })}
+                              className="font-bold text-base sm:text-lg text-slate-900 hover:text-emerald-700 hover:underline transition-colors flex items-center gap-1.5 cursor-pointer text-left"
+                              title="Quick View Company Intelligence & Executive Brief"
+                            >
+                              <span>{org.recipient_name}</span>
+                              <FileDown size={14} className="text-emerald-600 opacity-70 hover:opacity-100" />
+                            </button>
                             <span className={clsx(
                               'inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider',
                               org.agency === 'NYSERDA' ? 'bg-amber-100 text-amber-900' :
@@ -387,6 +395,16 @@ export default function Results() {
 
                         {/* Actions */}
                         <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => setQuickViewRecipient({ name: org.recipient_name })}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 text-xs font-bold transition-all border border-emerald-200/80 cursor-pointer shadow-2xs"
+                            title="Quick view intelligence & download executive brief PDF"
+                          >
+                            <FileDown size={12} />
+                            <span>Executive Brief (PDF)</span>
+                          </button>
+
                           {org.artifacts.length > 0 && (
                             <a
                               href={org.artifacts[0].source_url}
@@ -794,6 +812,14 @@ export default function Results() {
         )}
 
       </div>
+
+      {/* Recipient Quick-View Intelligence & PDF Briefing Modal */}
+      <RecipientQuickViewModal
+        isOpen={!!quickViewRecipient}
+        onClose={() => setQuickViewRecipient(null)}
+        recipientId={quickViewRecipient?.id}
+        recipientName={quickViewRecipient?.name}
+      />
     </div>
   );
 }

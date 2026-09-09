@@ -13,6 +13,7 @@ import {
 import clsx from 'clsx';
 import { saveAs } from 'file-saver';
 import { OrgLogo } from '../components/OrgLogo';
+import { RecipientQuickViewModal } from '../components/RecipientQuickViewModal';
 import { useNyserda } from '../context/NyserdaContext';
 import { useSEO } from '../utils/seo';
 
@@ -70,6 +71,7 @@ export default function Awards() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(50);
   const [selectedAward, setSelectedAward] = useState<any | null>(null);
+  const [quickViewRecipient, setQuickViewRecipient] = useState<{ id?: number | string | null; name?: string | null } | null>(null);
   const [view, setView] = useState<'awards' | 'recipients' | 'interconnection' | 'map'>('awards');
   const [isoFilter, setIsoFilter] = useState('');
   const [mapTargetMode, setMapTargetMode] = useState<'awards' | 'recipients'>('awards');
@@ -604,7 +606,18 @@ export default function Awards() {
                         <div className="flex items-center gap-2">
                           <OrgLogo org={a.recipient_name} size="xs" showTooltip={false} />
                           <div className="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1.5 flex-wrap">
-                            <span>{a.recipient_name}</span>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setQuickViewRecipient({ name: a.recipient_name });
+                              }}
+                              className="text-left font-bold text-white hover:text-cyan-300 hover:underline transition-colors flex items-center gap-1 cursor-pointer"
+                              title="Quick View Company Intelligence & Executive Brief"
+                            >
+                              <span>{a.recipient_name}</span>
+                              <FileDown size={11} className="text-cyan-400 opacity-60 hover:opacity-100" />
+                            </button>
                             {hasDeliverables && (
                               <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9.5px] font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 shadow-2xs font-mono">
                                 <Paperclip size={9} />
@@ -752,7 +765,7 @@ export default function Awards() {
                     return (
                     <tr
                       key={idx}
-                      onClick={() => { setSearch(r.name); setView('awards'); setPage(1); }}
+                      onClick={() => setQuickViewRecipient({ id: r.id, name: r.name })}
                       className="hover:bg-indigo-50/40 transition-colors cursor-pointer group"
                     >
                       {/* Name & Type */}
@@ -863,17 +876,32 @@ export default function Awards() {
 
                       {/* Actions */}
                       <td className="px-4 py-3.5 text-right whitespace-nowrap">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSearch(r.name);
-                            setView('awards');
-                            setPage(1);
-                          }}
-                          className="px-2.5 py-1 text-[11px] font-semibold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-md transition-colors"
-                        >
-                          View Awards
-                        </button>
+                        <div className="flex items-center justify-end gap-1.5">
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setQuickViewRecipient({ id: r.id, name: r.name });
+                            }}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-md transition-colors"
+                            title="Quick view intelligence & download executive brief PDF"
+                          >
+                            <FileDown size={12} />
+                            <span>Executive Brief</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSearch(r.name);
+                              setView('awards');
+                              setPage(1);
+                            }}
+                            className="px-2.5 py-1 text-[11px] font-semibold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-md transition-colors"
+                          >
+                            Awards
+                          </button>
+                        </div>
                       </td>
                     </tr>
                     );
@@ -1067,6 +1095,18 @@ export default function Awards() {
                 </div>
                 <h2 className="text-xl font-bold text-slate-900 leading-tight">{selectedAward.recipient_name}</h2>
                 {selectedAward.project_title && <p className="text-[13px] text-slate-600 mt-1 leading-snug">{selectedAward.project_title}</p>}
+                <div className="flex items-center gap-2 mt-2.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setQuickViewRecipient({ id: awardDetail?.recipient_id || selectedAward.recipient_id, name: selectedAward.recipient_name });
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition shadow-xs cursor-pointer"
+                  >
+                    <FileDown size={13} />
+                    <span>Company Quick View &amp; Executive Brief (PDF)</span>
+                  </button>
+                </div>
               </div>
               <button onClick={() => setSelectedAward(null)} className="p-1.5 rounded-md text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors bg-white border border-slate-200 shadow-sm flex-shrink-0">
                 <X size={20} />
@@ -1392,6 +1432,13 @@ export default function Awards() {
           </div>
         </div>
       )}
+      {/* Recipient Quick View & Executive Brief Modal */}
+      <RecipientQuickViewModal
+        isOpen={!!quickViewRecipient}
+        onClose={() => setQuickViewRecipient(null)}
+        recipientId={quickViewRecipient?.id}
+        recipientName={quickViewRecipient?.name}
+      />
     </div>
   );
 }

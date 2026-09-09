@@ -32,6 +32,7 @@ import {
 import { api, apiFetch, DailyDigest as DailyDigestType, DigestArchiveItem } from '../api/client';
 import { OrgLogo } from '../components/OrgLogo';
 import { ApiDocsModal } from '../components/ApiDocsModal';
+import { RecipientQuickViewModal } from '../components/RecipientQuickViewModal';
 import { useSEO } from '../utils/seo';
 
 export default function DailyDigest() {
@@ -43,6 +44,7 @@ export default function DailyDigest() {
   const [copied, setCopied] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
   const [apiModalOpen, setApiModalOpen] = useState(false);
+  const [selectedRecipient, setSelectedRecipient] = useState<{ id?: number | string | null; name?: string | null } | null>(null);
 
 
   useSEO({
@@ -533,31 +535,41 @@ export default function DailyDigest() {
           {(digest.award_wire || []).map((aw) => (
             <div
               key={aw.id}
-              className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-2xs space-y-2 flex flex-col justify-between"
+              onClick={() => setSelectedRecipient({ name: aw.recipient_name })}
+              className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 flex flex-col justify-between group"
             >
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
                     {aw.award_amount_display}
                   </span>
                   <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
-                    {aw.recipient_city ? `${aw.recipient_city}, ${aw.recipient_state}` : aw.recipient_state || 'US'}
+                    {aw.location || (aw.recipient_city ? `${aw.recipient_city}, ${aw.recipient_state}` : aw.recipient_state || 'US')}
                   </span>
                 </div>
-                <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100 pt-1">
-                  {aw.recipient_name}
-                </h4>
+
+                <div className="flex items-center justify-between gap-1.5 pt-0.5">
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition flex items-center gap-1">
+                    <span>{aw.recipient_name}</span>
+                    <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-600" />
+                  </h4>
+                </div>
+
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2">
                   {aw.project_title}
                 </p>
               </div>
 
-              {aw.pi_name && (
-                <div className="text-[11px] text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800/60 flex items-center gap-1">
+              <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800/60 text-[11px]">
+                <span className="text-slate-400 flex items-center gap-1">
                   <Award size={12} className="text-slate-400" />
-                  <span>Lead PI: {aw.pi_name}</span>
-                </div>
-              )}
+                  <span>{aw.pi_name ? `PI: ${aw.pi_name}` : aw.commercial_stage || 'TRL 7–9'}</span>
+                </span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold text-[10px] flex items-center gap-0.5 group-hover:underline">
+                  <span>Quick View &amp; PDF</span>
+                  <ChevronRight size={12} />
+                </span>
+              </div>
             </div>
           ))}
         </div>
@@ -761,6 +773,14 @@ export default function DailyDigest() {
 
       {/* Developer API & AI Agent Tool Docs Modal */}
       <ApiDocsModal isOpen={apiModalOpen} onClose={() => setApiModalOpen(false)} />
+
+      {/* Recipient Quick-View Intelligence & PDF Briefing Modal */}
+      <RecipientQuickViewModal
+        isOpen={!!selectedRecipient}
+        onClose={() => setSelectedRecipient(null)}
+        recipientId={selectedRecipient?.id}
+        recipientName={selectedRecipient?.name}
+      />
     </div>
   );
 }

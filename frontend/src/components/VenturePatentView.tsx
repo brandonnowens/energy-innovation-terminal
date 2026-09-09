@@ -2,6 +2,7 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   api,
+  apiFetch,
   AttributionRecipientItem,
   RecipientAttributionDossier,
   AttributionsGraphResponse,
@@ -12,7 +13,7 @@ import {
   Search, Filter, ChevronRight, X, ArrowUpRight, ShieldCheck,
   Zap, Compass, Layers, GitFork, Users, Network, DollarSign, Award,
   ArrowUpDown, ZoomIn, ZoomOut, RefreshCw, Maximize2, Minimize2,
-  Download, Eye, EyeOff, Info, Check, Sliders, Target
+  Download, Eye, EyeOff, Info, Check, Sliders, Target, FileDown, Loader2
 } from 'lucide-react';
 import clsx from 'clsx';
 import { saveAs } from 'file-saver';
@@ -36,6 +37,31 @@ export function VenturePatentView() {
   const [sortBy, setSortBy] = useState('leverage_ratio');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
   const [selectedRecipientId, setSelectedRecipientId] = useState<number | null>(null);
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
+
+  const handleDownloadPdf = async (targetId: number, companyName: string) => {
+    if (isExportingPdf) return;
+    try {
+      setIsExportingPdf(true);
+      const res = await apiFetch(`/api/recipients/${targetId}/export-pdf`);
+      if (!res.ok) throw new Error('Failed to generate PDF briefing');
+      const blob = await res.blob();
+      const safeName = companyName.replace(/[^a-zA-Z0-9]/g, '_');
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${safeName}_Executive_Brief_EnergyInnovation.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Download PDF error:', err);
+      alert('Failed to generate executive brief PDF. Please try again.');
+    } finally {
+      setIsExportingPdf(false);
+    }
+  };
 
   // Fetch overview stats
   const { data: overview, isLoading: overviewLoading } = useQuery({
@@ -605,12 +631,23 @@ export function VenturePatentView() {
                 <h2 className="text-base font-bold text-slate-900 mt-0.5">{dossier.recipient.name}</h2>
               </div>
             </div>
-            <button
-              onClick={() => setSelectedRecipientId(null)}
-              className="p-1 rounded-lg hover:bg-slate-200 text-slate-500 transition-colors"
-            >
-              <X size={18} />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPdf(dossier.recipient.id, dossier.recipient.name)}
+                disabled={isExportingPdf}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition shadow-xs disabled:opacity-50 cursor-pointer"
+                title="Download publication-grade executive brief PDF"
+              >
+                {isExportingPdf ? <Loader2 size={13} className="animate-spin" /> : <FileDown size={13} />}
+                <span>Executive Brief (PDF)</span>
+              </button>
+              <button
+                onClick={() => setSelectedRecipientId(null)}
+                className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-500 transition-colors"
+              >
+                <X size={18} />
+              </button>
+            </div>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-6">
