@@ -12,12 +12,13 @@ Synthesizes daily morning briefings covering:
 
 import os
 import json
+import time
 import logging
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
-from sqlalchemy import func, desc, or_
+from sqlalchemy import func, desc, or_, text
 
 from app.models.opportunity import Opportunity, OpportunityRound
 from app.models.recipient import Recipient
@@ -28,12 +29,16 @@ from app.database import SessionLocal
 from app.intelligence.bankability import evaluate_technology_bankability
 from app.intelligence.capital_stack import solve_capital_stack
 
-
 logger = logging.getLogger("DailyDigestEngine")
 
 # Cache directory for daily digests
 DIGEST_DIR = Path(__file__).parent.parent.parent / "data" / "digests"
 DIGEST_DIR.mkdir(parents=True, exist_ok=True)
+
+# High-Performance In-Memory RAM Cache
+_DIGEST_RAM_CACHE: Dict[str, Dict[str, Any]] = {}
+_DIGEST_CACHE_TIME: Dict[str, float] = {}
+CACHE_TTL_SECONDS = 3600  # 1 hour
 
 
 def format_currency(val: Optional[float]) -> str:
@@ -46,6 +51,7 @@ def format_currency(val: Optional[float]) -> str:
     if val >= 1_000:
         return f"${val / 1_000:.0f}K"
     return f"${val:,.0f}"
+
 
 
 def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) -> Dict[str, Any]:
@@ -256,6 +262,10 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
         "generated_at": datetime.now(timezone.utc).isoformat()
     }
 
+    # Save to RAM cache
+    _DIGEST_RAM_CACHE[target_date_str] = digest
+    _DIGEST_CACHE_TIME[target_date_str] = time.time()
+
     # Save to disk cache
     cache_file = DIGEST_DIR / f"{target_date_str}.json"
     try:
@@ -269,19 +279,42 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
 
 
 def get_daily_digest(db: Session, target_date_str: Optional[str] = None) -> Dict[str, Any]:
-    """Retrieve daily digest from cache or generate if missing."""
+    """Retrieve daily digest with sub-millisecond RAM caching and disk fallback."""
     if not target_date_str:
         target_date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+    # 1. Check RAM Cache (<1hr old)
+    now_ts = time.time()
+    if target_date_str in _DIGEST_RAM_CACHE:
+        cache_age = now_ts - _DIGEST_CACHE_TIME.get(target_date_str, 0)
+        if cache_age < CACHE_TTL_SECONDS:
+            return _DIGEST_RAM_CACHE[target_date_str]
+
+    # 2. Check Disk Cache
     cache_file = DIGEST_DIR / f"{target_date_str}.json"
     if cache_file.exists():
         try:
             with open(cache_file, "r", encoding="utf-8") as f:
-                return json.load(f)
+                data = json.load(f)
+                _DIGEST_RAM_CACHE[target_date_str] = data
+                _DIGEST_CACHE_TIME[target_date_str] = now_ts
+                return data
         except Exception as e:
             logger.warning(f"Error reading cache file {cache_file}: {e}")
 
+    # 3. Generate on-the-fly and populate RAM + Disk
     return generate_daily_digest(db, target_date_str)
+
+
+def warm_digest_cache():
+    """Background helper to pre-generate and warm today's digest in RAM."""
+    try:
+        from app.database import SessionLocal
+        with SessionLocal() as db:
+            get_daily_digest(db)
+            logger.info("Pre-warmed Daily Digest cache in memory.")
+    except Exception as e:
+        logger.warning(f"Could not pre-warm digest cache: {e}")
 
 
 def get_digest_archive_list(db: Session) -> List[Dict[str, Any]]:
@@ -321,3 +354,4 @@ def get_digest_archive_list(db: Session) -> List[Dict[str, Any]]:
             continue
 
     return archive
+

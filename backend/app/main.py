@@ -107,6 +107,18 @@ app.add_middleware(SeoPrerenderMiddleware)
 # Mount SEO and Sitemaps at root
 app.include_router(seo_router)
 
+# Mount AI Chat copilot
+from app.api.chat import router as chat_router
+app.include_router(chat_router, prefix="/api/chat", tags=["AI Copilot"])
+
+
+@app.on_event("startup")
+async def startup_event_warmup():
+    """Background startup tasks to ensure sub-millisecond API responses."""
+    import threading
+    from app.engine.daily_digest import warm_digest_cache
+    threading.Thread(target=warm_digest_cache, daemon=True).start()
+
 # Mount V1 Canonical Intelligence and Control Layer
 from app.api.v1 import v1_router
 app.include_router(v1_router, prefix="/api/v1", tags=["V1 Canonical Intelligence API"])

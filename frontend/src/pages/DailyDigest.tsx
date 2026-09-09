@@ -42,18 +42,21 @@ export default function DailyDigest() {
     description: 'Automated morning briefing analyzing active clean energy funding solicitations, upcoming deadlines, venture attributions, and regulatory proceedings.',
   });
 
-  // Fetch Digest
-  const { data: digest, isLoading, isError, refetch } = useQuery<DailyDigestType>({
+  // Fetch Digest with smooth cache retention
+  const { data: digest, isLoading, isError, isFetching, refetch } = useQuery<DailyDigestType>({
     queryKey: ['daily-digest', dateParam],
     queryFn: () => api.getDailyDigest(dateParam),
-    staleTime: 5 * 60 * 1000,
+    staleTime: 10 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
+    placeholderData: (previousData) => previousData,
   });
 
   // Fetch Archive Editions
   const { data: archive } = useQuery<DigestArchiveItem[]>({
     queryKey: ['daily-digest-archive'],
     queryFn: () => api.getDigestArchive(),
-    staleTime: 10 * 60 * 1000,
+    staleTime: 15 * 60 * 1000,
+    gcTime: 60 * 60 * 1000,
   });
 
   // Force Regeneration Mutation
@@ -82,14 +85,28 @@ export default function DailyDigest() {
     setShowArchive(false);
   };
 
-  if (isLoading) {
+  if (isLoading && !digest) {
     return (
-      <div className="max-w-6xl mx-auto py-16 px-4 flex flex-col items-center justify-center gap-4 text-slate-500">
-        <RefreshCw className="w-8 h-8 animate-spin text-cyan-600" />
-        <p className="text-sm font-medium">Synthesizing Daily Clean Energy Intelligence Briefing...</p>
+      <div className="max-w-6xl mx-auto space-y-8 pb-20 px-4 sm:px-6 animate-pulse">
+        <div className="border-b border-slate-200 dark:border-slate-800 pb-6 pt-2 space-y-4">
+          <div className="h-6 w-48 bg-slate-200 dark:bg-slate-800 rounded-full" />
+          <div className="h-10 w-3/4 bg-slate-200 dark:bg-slate-800 rounded-lg" />
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className="h-24 bg-slate-200 dark:bg-slate-800 rounded-xl" />
+          ))}
+        </div>
+        <div className="h-32 bg-slate-200 dark:bg-slate-800 rounded-2xl" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className="h-40 bg-slate-200 dark:bg-slate-800 rounded-xl" />
+          ))}
+        </div>
       </div>
     );
   }
+
 
   if (isError || !digest) {
     return (
