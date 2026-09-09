@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { api, isOpportunityNew } from '../api/client';
+import {  api, isOpportunityNew , apiFetch } from '../api/client';
 import {
   Search, Loader2, FolderOpen, ChevronLeft, ChevronRight, ArrowUpDown,
   ShieldAlert, X, Calendar, Mail, Phone, FileText, ExternalLink,
@@ -256,7 +256,7 @@ export default function Opportunities() {
   const { data: oppDetail, isLoading: detailLoading } = useQuery<any>({
     queryKey: ['opportunity-detail', selectedOpp?.id],
     queryFn: async () => {
-      const res = await fetch(`/api/opportunities/${selectedOpp.id}`);
+      const res = await apiFetch(`/api/opportunities/${selectedOpp.id}`);
       if (!res.ok) throw new Error('Failed to fetch opportunity');
       return res.json();
     },

@@ -6,7 +6,7 @@ import {
   ExternalLink, Share2, Code, ArrowLeft, ShieldCheck, CheckCircle2,
   FileText, TrendingUp, Layers, Zap, Lightbulb, Target, Download, Printer, Check, Loader2
 } from 'lucide-react';
-import { api, RecipientCapitalContinuumResponse } from '../api/client';
+import {  api, RecipientCapitalContinuumResponse , apiFetch } from '../api/client';
 import { updatePageMeta } from '../utils/seo';
 import { CapitalContinuumTimeline } from '../components/CapitalContinuumTimeline';
 
@@ -68,10 +68,10 @@ export default function RecipientDossier() {
   const { data, isLoading, error } = useQuery<RecipientDossierData>({
     queryKey: ['recipient-dossier', id],
     queryFn: async () => {
-      const res = await fetch(`/api/attributions/recipients/${id}`);
+      const res = await apiFetch(`/api/attributions/recipients/${id}`);
       if (!res.ok) {
         // Fallback to direct recipient query if attributions not found
-        const recRes = await fetch(`/api/awards/recipients/${id}`);
+        const recRes = await apiFetch(`/api/awards/recipients/${id}`);
         if (recRes.ok) return recRes.json();
         throw new Error('Recipient not found');
       }
@@ -133,7 +133,7 @@ export default function RecipientDossier() {
     if (!id) return;
     try {
       setIsExportingPdf(true);
-      const res = await fetch(`/api/recipients/${id}/export-pdf`);
+      const res = await apiFetch(`/api/recipients/${id}/export-pdf`);
       if (!res.ok) throw new Error('Failed to generate PDF dossier');
       const blob = await res.blob();
       const safeName = recipient?.name ? recipient.name.replace(/[^a-zA-Z0-9]/g, '_') : `Recipient_${id}`;

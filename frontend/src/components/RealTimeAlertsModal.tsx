@@ -1,3 +1,4 @@
+import { apiFetch } from '../api/client';
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
@@ -20,7 +21,7 @@ export const RealTimeAlertsModal: React.FC<RealTimeAlertsModalProps> = ({ isOpen
   const { data: triggers = [], isLoading } = useQuery({
     queryKey: ['alert-triggers'],
     queryFn: async () => {
-      const res = await fetch('/api/alerts/triggers');
+      const res = await apiFetch('/api/alerts/triggers');
       if (!res.ok) throw new Error('Failed to load alert triggers');
       return res.json();
     },
@@ -30,7 +31,7 @@ export const RealTimeAlertsModal: React.FC<RealTimeAlertsModalProps> = ({ isOpen
   const { data: liveMatches = [] } = useQuery({
     queryKey: ['live-radar-matches', keywords, minFunding],
     queryFn: async () => {
-      const res = await fetch(`/api/alerts/live-matches?keywords=${encodeURIComponent(keywords)}&min_funding=${minFunding}`);
+      const res = await apiFetch(`/api/alerts/live-matches?keywords=${encodeURIComponent(keywords)}&min_funding=${minFunding}`);
       if (!res.ok) return [];
       return res.json();
     },
@@ -39,7 +40,7 @@ export const RealTimeAlertsModal: React.FC<RealTimeAlertsModalProps> = ({ isOpen
 
   const createTriggerMutation = useMutation({
     mutationFn: async (payload: any) => {
-      const res = await fetch('/api/alerts/triggers', {
+      const res = await apiFetch('/api/alerts/triggers', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -57,7 +58,7 @@ export const RealTimeAlertsModal: React.FC<RealTimeAlertsModalProps> = ({ isOpen
 
   const deleteTriggerMutation = useMutation({
     mutationFn: async (id: number) => {
-      const res = await fetch(`/api/alerts/triggers/${id}`, { method: 'DELETE' });
+      const res = await apiFetch(`/api/alerts/triggers/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Failed to delete trigger');
       return res.json();
     },

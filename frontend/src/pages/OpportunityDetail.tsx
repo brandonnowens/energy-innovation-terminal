@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useParams, Link } from 'react-router-dom';
-import { api, isOpportunityNew } from '../api/client';
+import {  api, isOpportunityNew , apiFetch } from '../api/client';
 import {
   ArrowLeft, Loader2, Calendar, Mail, Phone, FileText, ExternalLink,
   AlertTriangle, CheckCircle2, Info, ShieldAlert, Ban, Star, Printer,
@@ -139,7 +139,7 @@ export default function OpportunityDetail() {
     if (!id || isExportingFoaPdf) return;
     setIsExportingFoaPdf(true);
     try {
-      const res = await fetch(`/api/foa-shredder/${id}/export-pdf`);
+      const res = await apiFetch(`/api/foa-shredder/${id}/export-pdf`);
       if (!res.ok) throw new Error('Failed to export FOA blueprint PDF');
       const blob = await res.blob();
       const d = opp as any;

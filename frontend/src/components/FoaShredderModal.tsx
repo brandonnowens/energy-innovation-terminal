@@ -1,3 +1,4 @@
+import { apiFetch } from '../api/client';
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { 
@@ -19,7 +20,7 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
   const { data: shred, isLoading } = useQuery({
     queryKey: ['foa-shred', opportunityId],
     queryFn: async () => {
-      const res = await fetch(`/api/foa-shredder/${opportunityId}`);
+      const res = await apiFetch(`/api/foa-shredder/${opportunityId}`);
       if (!res.ok) throw new Error('Failed to load shredded FOA blueprint');
       return res.json();
     },
@@ -32,7 +33,7 @@ export const FoaShredderModal: React.FC<FoaShredderModalProps> = ({ opportunityI
     if (!opportunityId) return;
     try {
       setIsExportingPdf(true);
-      const res = await fetch(`/api/foa-shredder/${opportunityId}/export-pdf`);
+      const res = await apiFetch(`/api/foa-shredder/${opportunityId}/export-pdf`);
       if (!res.ok) throw new Error('Failed to generate FOA blueprint PDF');
       const blob = await res.blob();
       const safeSol = shred?.solicitation_number ? shred.solicitation_number.replace(/[^a-zA-Z0-9]/g, '_') : `Opp_${opportunityId}`;

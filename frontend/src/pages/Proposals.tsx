@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from '../components/OrgLogo';
-import { api, WinningProposal, ProposalArtifact } from '../api/client';
+import {  api, WinningProposal, ProposalArtifact , apiFetch } from '../api/client';
 import { useNyserda } from '../context/NyserdaContext';
 
 export interface UrgencyMeta {
@@ -183,7 +183,7 @@ export default function Proposals() {
     if (isExportingSopo || !selectedProposal) return;
     setIsExportingSopo(true);
     try {
-      const res = await fetch('/api/proposals/export-sopo-pdf', {
+      const res = await apiFetch('/api/proposals/export-sopo-pdf', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedProposal)

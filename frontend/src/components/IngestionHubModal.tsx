@@ -1,3 +1,4 @@
+import { apiFetch } from '../api/client';
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
@@ -18,7 +19,7 @@ export const IngestionHubModal: React.FC<IngestionHubModalProps> = ({ isOpen, on
   const { data: pipelineStatus, isLoading, refetch } = useQuery({
     queryKey: ['ingestion-status'],
     queryFn: async () => {
-      const res = await fetch('/api/ingestion/status');
+      const res = await apiFetch('/api/ingestion/status');
       if (!res.ok) throw new Error('Failed to fetch ingestion status');
       return res.json();
     },
@@ -29,7 +30,7 @@ export const IngestionHubModal: React.FC<IngestionHubModalProps> = ({ isOpen, on
   const syncMutation = useMutation({
     mutationFn: async (sourceCode: string) => {
       setSyncingWorker(sourceCode);
-      const res = await fetch(`/api/ingestion/run/${sourceCode}`, { method: 'POST' });
+      const res = await apiFetch(`/api/ingestion/run/${sourceCode}`, { method: 'POST' });
       if (!res.ok) throw new Error('Sync failed');
       return res.json();
     },

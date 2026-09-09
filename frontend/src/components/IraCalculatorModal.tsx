@@ -1,3 +1,4 @@
+import { apiFetch } from '../api/client';
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { 
@@ -39,7 +40,7 @@ export const IraCalculatorModal: React.FC<IraCalculatorModalProps> = ({
       energyComm, domesticContent, lowIncome, monetization, transferRate, debtPct
     ],
     queryFn: async () => {
-      const res = await fetch('/api/ira-calculator/calculate', {
+      const res = await apiFetch('/api/ira-calculator/calculate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

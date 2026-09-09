@@ -1,3 +1,4 @@
+import { apiFetch } from '../api/client';
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -46,7 +47,7 @@ export default function AgencyHub() {
   const { data, isLoading, error } = useQuery<AgencyHubData>({
     queryKey: ['agency-hub', id],
     queryFn: async () => {
-      const res = await fetch(`/api/organizations/${id}`);
+      const res = await apiFetch(`/api/organizations/${id}`);
       if (!res.ok) throw new Error('Failed to load agency');
       return res.json();
     },

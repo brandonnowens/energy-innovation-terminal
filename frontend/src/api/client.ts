@@ -1,5 +1,16 @@
 export const API_BASE_URL = (import.meta.env.VITE_API_URL || 'https://energy-innovation-api.onrender.com').replace(/\/+$/, '');
 
+export const apiFetch = (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
+  let target = typeof input === 'string' ? input : (input instanceof URL ? input.toString() : input.url);
+  if (target.startsWith('/api/') || target.startsWith('/api?') || target === '/api') {
+    target = `${API_BASE_URL}${target}`;
+  }
+  if (input instanceof Request) {
+    return fetch(new Request(target, input), init);
+  }
+  return fetch(target, init);
+};
+
 export interface DocumentMetadata {
   filename: string;
   doc_type: string;
@@ -804,7 +815,7 @@ export const api = {
     if (input.fuelTypes?.length) payload.fuel_types = input.fuelTypes;
     if (input.agencies?.length) payload.agencies = input.agencies;
 
-    const res = await fetch('/api/analyze', {
+    const res = await apiFetch('/api/analyze', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -826,7 +837,7 @@ export const api = {
     if (options?.model) formData.append('model', options.model);
     if (options?.provider) formData.append('provider', options.provider);
 
-    const res = await fetch('/api/analyze/upload-docs', {
+    const res = await apiFetch('/api/analyze/upload-docs', {
       method: 'POST',
       body: formData,
     });
@@ -841,7 +852,7 @@ export const api = {
     text: string,
     options?: { apiKey?: string; model?: string; provider?: string }
   ): Promise<DocumentExtractionResponse> => {
-    const res = await fetch('/api/analyze/extract-text', {
+    const res = await apiFetch('/api/analyze/extract-text', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -868,7 +879,7 @@ export const api = {
     agencies?: string[];
     limit?: number;
   }): Promise<{ success: boolean; total_ranked: number; say_yes_matrix: SayYesOrganization[] }> => {
-    const res = await fetch('/api/analyze/say-yes-matrix', {
+    const res = await apiFetch('/api/analyze/say-yes-matrix', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -892,7 +903,7 @@ export const api = {
     if (options?.model) formData.append('model', options.model);
     if (options?.provider) formData.append('provider', options.provider);
 
-    const res = await fetch('/api/analyze/upload-and-match', {
+    const res = await apiFetch('/api/analyze/upload-and-match', {
       method: 'POST',
       body: formData,
     });
@@ -904,7 +915,7 @@ export const api = {
   },
 
   getLlmStatus: async (): Promise<LlmStatusResponse> => {
-    const res = await fetch('/api/analyze/llm-status');
+    const res = await apiFetch('/api/analyze/llm-status');
     if (!res.ok) throw new Error('Failed to fetch LLM configuration status');
     return res.json();
   },
@@ -915,7 +926,7 @@ export const api = {
     model?: string;
     saveKey?: boolean;
   }): Promise<TestConnectionResponse> => {
-    const res = await fetch('/api/analyze/test-connection', {
+    const res = await apiFetch('/api/analyze/test-connection', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -942,20 +953,20 @@ export const api = {
       });
     }
     const search = searchParams.toString();
-    const res = await fetch(`/api/opportunities${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/opportunities${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch opportunities');
     return res.json();
   },
 
   getOpportunity: async (id: string): Promise<OpportunityDetail> => {
-    const res = await fetch(`/api/opportunities/${id}`);
+    const res = await apiFetch(`/api/opportunities/${id}`);
     if (!res.ok) throw new Error('Failed to fetch opportunity');
     return res.json();
   },
 
   getUpdates: async (params?: Record<string, string>): Promise<Update[]> => {
     const search = params ? new URLSearchParams(params).toString() : '';
-    const res = await fetch(`/api/updates${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/updates${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch updates');
     return res.json();
   },
@@ -968,7 +979,7 @@ export const api = {
       });
     }
     const search = searchParams.toString();
-    const res = await fetch(`/api/programs${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/programs${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch programs');
     return res.json();
   },
@@ -976,43 +987,43 @@ export const api = {
     const params = new URLSearchParams();
     if (organization) params.append('organization', organization);
     const search = params.toString();
-    const res = await fetch(`/api/programs/${programId}/opportunities${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/programs/${programId}/opportunities${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch program opportunities');
     return res.json();
   },
 
   getSystemSources: async (): Promise<SystemSource[]> => {
-    const res = await fetch('/api/system/sources');
+    const res = await apiFetch('/api/system/sources');
     if (!res.ok) throw new Error('Failed to fetch sources');
     return res.json();
   },
 
   getSystemAudit: async (): Promise<SystemAudit> => {
-    const res = await fetch('/api/system/audit');
+    const res = await apiFetch('/api/system/audit');
     if (!res.ok) throw new Error('Failed to fetch audit');
     return res.json();
   },
 
   getSystemStats: async (): Promise<SystemStats> => {
-    const res = await fetch('/api/system/stats');
+    const res = await apiFetch('/api/system/stats');
     if (!res.ok) throw new Error('Failed to fetch stats');
     return res.json();
   },
 
   getFeedHealthStatus: async (): Promise<FeedHealthSummary> => {
-    const res = await fetch('/api/system/feed-health');
+    const res = await apiFetch('/api/system/feed-health');
     if (!res.ok) throw new Error('Failed to fetch feed health');
     return res.json();
   },
 
   runHealthCheck: async (sampleSize: number = 25): Promise<any> => {
-    const res = await fetch(`/api/system/run-health-check?sample_size=${sampleSize}`, { method: 'POST' });
+    const res = await apiFetch(`/api/system/run-health-check?sample_size=${sampleSize}`, { method: 'POST' });
     if (!res.ok) throw new Error('Failed to execute health check');
     return res.json();
   },
 
   getWinRateBenchmark: async (oppId: string | number): Promise<WinRateAnalytics> => {
-    const res = await fetch(`/api/opportunities/${oppId}/win-rate-benchmark`);
+    const res = await apiFetch(`/api/opportunities/${oppId}/win-rate-benchmark`);
     if (!res.ok) throw new Error('Failed to fetch win rate benchmark');
     return res.json();
   },
@@ -1025,7 +1036,7 @@ export const api = {
       });
     }
     const search = searchParams.toString();
-    const res = await fetch(`/api/network/teaming-recommendations${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/network/teaming-recommendations${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch teaming recommendations');
     return res.json();
   },
@@ -1045,7 +1056,7 @@ export const api = {
     prevailing_wage_compliant?: boolean;
     tax_exempt_direct_pay?: boolean;
   }): Promise<CapitalStack> => {
-    const res = await fetch('/api/capital-stack', {
+    const res = await apiFetch('/api/capital-stack', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(params),
@@ -1055,7 +1066,7 @@ export const api = {
   },
 
   downloadProjectAnalysisPdf: async (analysisData: any): Promise<Blob> => {
-    const res = await fetch('/api/analyze/export-pdf', {
+    const res = await apiFetch('/api/analyze/export-pdf', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(analysisData),
@@ -1065,19 +1076,19 @@ export const api = {
   },
 
   getStatutoryDeficits: async (): Promise<{ total_mandates_tracked: number; deficits: StatutoryDeficit[] }> => {
-    const res = await fetch('/api/policies/deficits');
+    const res = await apiFetch('/api/policies/deficits');
     if (!res.ok) throw new Error('Failed to fetch statutory compliance deficits');
     return res.json();
   },
 
   getStatutoryDeficit: async (id: string): Promise<StatutoryDeficit> => {
-    const res = await fetch(`/api/policies/deficits/${id}`);
+    const res = await apiFetch(`/api/policies/deficits/${id}`);
     if (!res.ok) throw new Error(`Failed to fetch statutory deficit ${id}`);
     return res.json();
   },
 
   getTechnologyBankability: async (techId: string): Promise<TechnologyBankabilityRating> => {
-    const res = await fetch(`/api/tech-reference/technologies/${techId}/bankability`);
+    const res = await apiFetch(`/api/tech-reference/technologies/${techId}/bankability`);
     if (!res.ok) throw new Error(`Failed to fetch bankability rating for ${techId}`);
     return res.json();
   },
@@ -1086,7 +1097,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/overview${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/overview${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends overview');
     return res.json();
   },
@@ -1095,7 +1106,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/by-agency${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/by-agency${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends by agency');
     return res.json();
   },
@@ -1104,7 +1115,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/by-technology${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/by-technology${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends by technology');
     return res.json();
   },
@@ -1113,7 +1124,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/by-type${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/by-type${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends by type');
     return res.json();
   },
@@ -1122,7 +1133,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/amounts${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/amounts${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends amounts');
     return res.json();
   },
@@ -1131,7 +1142,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/heatmap${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/heatmap${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends heatmap');
     return res.json();
   },
@@ -1139,7 +1150,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/by-sector${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/by-sector${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends by sector');
     return res.json();
   },
@@ -1147,7 +1158,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/by-fuel${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/by-fuel${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends by fuel');
     return res.json();
   },
@@ -1155,7 +1166,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/analytics${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/analytics${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends analytics');
     return res.json();
   },
@@ -1163,7 +1174,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/comparison${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/comparison${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch trends comparison matrix');
     return res.json();
   },
@@ -1171,14 +1182,14 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/trends/stacked-timeseries${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/trends/stacked-timeseries${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch stacked timeseries');
     return res.json();
   },
   getAgencies: async (): Promise<{ items: any[]; total: number; categories: any[] }> => {
 
 
-    const res = await fetch('/api/agencies');
+    const res = await apiFetch('/api/agencies');
     if (!res.ok) throw new Error('Failed to fetch agencies');
     return res.json();
   },
@@ -1187,12 +1198,12 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== '' && v !== null) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/awards${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/awards${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch awards');
     return res.json();
   },
   getAwardStats: async () => {
-    const res = await fetch('/api/awards/stats');
+    const res = await apiFetch('/api/awards/stats');
     if (!res.ok) throw new Error('Failed to fetch award stats');
     return res.json();
   },
@@ -1200,12 +1211,12 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== '' && v !== null) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/awards/recipients${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/awards/recipients${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch recipients');
     return res.json();
   },
   getAward: async (id: number) => {
-    const res = await fetch(`/api/awards/${id}`);
+    const res = await apiFetch(`/api/awards/${id}`);
     if (!res.ok) throw new Error('Failed to fetch award');
     return res.json();
   },
@@ -1213,17 +1224,17 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== '' && v !== null) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/awards/map${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/awards/map${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch award map');
     return res.json();
   },
   getAwardMapFilters: async (): Promise<AwardMapFilters> => {
-    const res = await fetch('/api/awards/map/filters');
+    const res = await apiFetch('/api/awards/map/filters');
     if (!res.ok) throw new Error('Failed to fetch award map filters');
     return res.json();
   },
   getAwardMapStateSummary: async (): Promise<AwardMapStateSummary[]> => {
-    const res = await fetch('/api/awards/map/state-summary');
+    const res = await apiFetch('/api/awards/map/state-summary');
     if (!res.ok) throw new Error('Failed to fetch award map state summary');
     return res.json();
   },
@@ -1231,12 +1242,12 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== '' && v !== null) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/awards/recipients/map${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/awards/recipients/map${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch award recipients map');
     return res.json();
   },
   getRecipientDetail: async (idOrName: string | number): Promise<AwardRecipient & { awards: any[] }> => {
-    const res = await fetch(`/api/awards/recipient/${encodeURIComponent(idOrName)}`);
+    const res = await apiFetch(`/api/awards/recipient/${encodeURIComponent(idOrName)}`);
     if (!res.ok) throw new Error('Failed to fetch recipient detail');
     return res.json();
   },
@@ -1246,21 +1257,21 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/organizations${search ? `?${search}` : ''}`, {
+    const res = await apiFetch(`/api/organizations${search ? `?${search}` : ''}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch organizations');
     return res.json();
   },
   getOrganization: async (id: string) => {
-    const res = await fetch(`/api/organizations/${id}`, {
+    const res = await apiFetch(`/api/organizations/${id}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch organization');
     return res.json();
   },
   searchOrganizations: async (query: string) => {
-    const res = await fetch(`/api/organizations/search?q=${encodeURIComponent(query)}`, {
+    const res = await apiFetch(`/api/organizations/search?q=${encodeURIComponent(query)}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to search organizations');
@@ -1278,21 +1289,21 @@ export const api = {
       });
     }
     const search = searchParams.toString();
-    const res = await fetch(`/api/contacts${search ? `?${search}` : ''}`, {
+    const res = await apiFetch(`/api/contacts${search ? `?${search}` : ''}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch contacts');
     return res.json();
   },
   getContact: async (id: string | number) => {
-    const res = await fetch(`/api/contacts/${id}`, {
+    const res = await apiFetch(`/api/contacts/${id}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch contact');
     return res.json();
   },
   getContactStats: async () => {
-    const res = await fetch('/api/contacts/stats', {
+    const res = await apiFetch('/api/contacts/stats', {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch contact statistics');
@@ -1301,19 +1312,19 @@ export const api = {
 
   // Community
   createToken: async () => {
-    const res = await fetch('/api/community/token', { method: 'POST' });
+    const res = await apiFetch('/api/community/token', { method: 'POST' });
     if (!res.ok) throw new Error('Failed to create token');
     return res.json();
   },
   verifyToken: async (token: string) => {
-    const res = await fetch('/api/community/verify', {
+    const res = await apiFetch('/api/community/verify', {
       headers: { 'X-Creator-Token': token }
     });
     if (!res.ok) throw new Error('Failed to verify token');
     return res.json();
   },
   recoverToken: async (key: string) => {
-    const res = await fetch('/api/community/recover', {
+    const res = await apiFetch('/api/community/recover', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ key })
@@ -1327,7 +1338,7 @@ export const api = {
     const token = localStorage.getItem('creator_token');
     const headers: Record<string, string> = { 'Content-Type': 'application/json' };
     if (token) headers['X-Creator-Token'] = token;
-    const res = await fetch('/api/strategies', {
+    const res = await apiFetch('/api/strategies', {
       method: 'POST',
       headers,
       body: JSON.stringify(data)
@@ -1336,12 +1347,12 @@ export const api = {
     return res.json();
   },
   getStrategy: async (id: string) => {
-    const res = await fetch(`/api/strategies/${id}`);
+    const res = await apiFetch(`/api/strategies/${id}`);
     if (!res.ok) throw new Error('Failed to fetch strategy');
     return res.json();
   },
   executeStrategy: async (id: string) => {
-    const res = await fetch(`/api/strategies/${id}/execute`, { method: 'POST' });
+    const res = await apiFetch(`/api/strategies/${id}/execute`, { method: 'POST' });
     if (!res.ok) throw new Error('Failed to execute strategy');
     return res.json();
   },
@@ -1349,7 +1360,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/strategies${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/strategies${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to list strategies');
     return res.json();
   },
@@ -1357,12 +1368,12 @@ export const api = {
     const token = localStorage.getItem('creator_token');
     const headers: Record<string, string> = {};
     if (token) headers['X-Creator-Token'] = token;
-    const res = await fetch(`/api/strategies/${id}`, { method: 'DELETE', headers });
+    const res = await apiFetch(`/api/strategies/${id}`, { method: 'DELETE', headers });
     if (!res.ok) throw new Error('Failed to delete strategy');
     return res.json();
   },
   getStrategyPdf: async (id: string) => {
-    const res = await fetch(`/api/strategies/${id}/pdf`);
+    const res = await apiFetch(`/api/strategies/${id}/pdf`);
     if (!res.ok) throw new Error('Failed to get strategy PDF');
     return res.blob();
   },
@@ -1372,7 +1383,7 @@ export const api = {
     const token = localStorage.getItem('creator_token');
     const headers: Record<string, string> = { 'Content-Type': 'application/json' };
     if (token) headers['X-Creator-Token'] = token;
-    const res = await fetch('/api/reports', {
+    const res = await apiFetch('/api/reports', {
       method: 'POST',
       headers,
       body: JSON.stringify(data)
@@ -1381,12 +1392,12 @@ export const api = {
     return res.json();
   },
   getReport: async (id: string) => {
-    const res = await fetch(`/api/reports/${id}`);
+    const res = await apiFetch(`/api/reports/${id}`);
     if (!res.ok) throw new Error('Failed to fetch report');
     return res.json();
   },
   executeReport: async (id: string) => {
-    const res = await fetch(`/api/reports/${id}/execute`, { method: 'POST' });
+    const res = await apiFetch(`/api/reports/${id}/execute`, { method: 'POST' });
     if (!res.ok) throw new Error('Failed to execute report');
     return res.json();
   },
@@ -1394,7 +1405,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/reports${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/reports${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to list reports');
     return res.json();
   },
@@ -1402,12 +1413,12 @@ export const api = {
     const token = localStorage.getItem('creator_token');
     const headers: Record<string, string> = {};
     if (token) headers['X-Creator-Token'] = token;
-    const res = await fetch(`/api/reports/${id}`, { method: 'DELETE', headers });
+    const res = await apiFetch(`/api/reports/${id}`, { method: 'DELETE', headers });
     if (!res.ok) throw new Error('Failed to delete report');
     return res.json();
   },
   getReportPdf: async (id: string) => {
-    const res = await fetch(`/api/reports/${id}/pdf`);
+    const res = await apiFetch(`/api/reports/${id}/pdf`);
     if (!res.ok) throw new Error('Failed to get report PDF');
     return res.blob();
   },
@@ -1417,7 +1428,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/charts/data${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/charts/data${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch chart data');
     return res.json();
   },
@@ -1425,7 +1436,7 @@ export const api = {
     const token = localStorage.getItem('creator_token');
     const headers: Record<string, string> = { 'Content-Type': 'application/json' };
     if (token) headers['X-Creator-Token'] = token;
-    const res = await fetch('/api/charts/save', {
+    const res = await apiFetch('/api/charts/save', {
       method: 'POST',
       headers,
       body: JSON.stringify(config)
@@ -1434,7 +1445,7 @@ export const api = {
     return res.json();
   },
   getSavedCharts: async () => {
-    const res = await fetch('/api/charts/saved');
+    const res = await apiFetch('/api/charts/saved');
     if (!res.ok) throw new Error('Failed to get saved charts');
     return res.json();
   },
@@ -1442,7 +1453,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v) searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/charts/export${search ? `?${search}` : ''}`);
+    const res = await apiFetch(`/api/charts/export${search ? `?${search}` : ''}`);
     if (!res.ok) throw new Error('Failed to export chart CSV');
     return res.blob();
   },
@@ -1452,14 +1463,14 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/relationships/network${search ? `?${search}` : ''}`, {
+    const res = await apiFetch(`/api/relationships/network${search ? `?${search}` : ''}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch network data');
     return res.json();
   },
   getRelationshipStats: async () => {
-    const res = await fetch('/api/relationships/stats', {
+    const res = await apiFetch('/api/relationships/stats', {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch relationship stats');
@@ -1469,14 +1480,14 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/network/graph${search ? `?${search}` : ''}`, {
+    const res = await apiFetch(`/api/network/graph${search ? `?${search}` : ''}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch knowledge graph');
     return res.json();
   },
   getNodeDetail: async (nodeType: string, nodeId: string | number) => {
-    const res = await fetch(`/api/network/node/${nodeType}/${encodeURIComponent(nodeId)}`, {
+    const res = await apiFetch(`/api/network/node/${nodeType}/${encodeURIComponent(nodeId)}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch node detail');
@@ -1486,7 +1497,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/network/analytics${search ? `?${search}` : ''}`, {
+    const res = await apiFetch(`/api/network/analytics${search ? `?${search}` : ''}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch network analytics');
@@ -1495,7 +1506,7 @@ export const api = {
 
   // Sankey & Funding Flows
   getSankeyPresets: async () => {
-    const res = await fetch('/api/sankey/presets', {
+    const res = await apiFetch('/api/sankey/presets', {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch sankey presets');
@@ -1505,7 +1516,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/sankey/flow${search ? `?${search}` : ''}`, {
+    const res = await apiFetch(`/api/sankey/flow${search ? `?${search}` : ''}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch sankey flow');
@@ -1515,7 +1526,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const search = searchParams.toString();
-    const res = await fetch(`/api/sankey/insights${search ? `?${search}` : ''}`, {
+    const res = await apiFetch(`/api/sankey/insights${search ? `?${search}` : ''}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch sankey insights');
@@ -1524,12 +1535,12 @@ export const api = {
 
   // Executive Reports & AI Dossier Generation
   getReportPresets: async (): Promise<{ presets: ReportPreset[] }> => {
-    const res = await fetch('/api/reports/presets');
+    const res = await apiFetch('/api/reports/presets');
     if (!res.ok) throw new Error('Failed to fetch report presets');
     return res.json();
   },
   generateExecutiveReport: async (req: ReportGenerateRequest): Promise<ReportGenerateResponse> => {
-    const res = await fetch('/api/reports/generate', {
+    const res = await apiFetch('/api/reports/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(req),
@@ -1538,7 +1549,7 @@ export const api = {
     return res.json();
   },
   exportExecutiveReportPdf: async (req: ReportGenerateRequest): Promise<Blob> => {
-    const res = await fetch('/api/reports/export-pdf', {
+    const res = await apiFetch('/api/reports/export-pdf', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(req),
@@ -1547,7 +1558,7 @@ export const api = {
     return res.blob();
   },
   runPipelineUpdate: async (params?: { openai_api_key?: string; model_name?: string }): Promise<any> => {
-    const res = await fetch('/api/reports/run-pipeline', {
+    const res = await apiFetch('/api/reports/run-pipeline', {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(params || {}),
@@ -1556,7 +1567,7 @@ export const api = {
     return res.json();
   },
   clearReportCache: async (): Promise<{ status: string; cleared_count: number }> => {
-    const res = await fetch('/api/reports/clear-cache', {
+    const res = await apiFetch('/api/reports/clear-cache', {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
     });
@@ -1566,7 +1577,7 @@ export const api = {
 
   // Authentication & Membership
   register: async (data: { email: string; password: string; full_name?: string; organization_name?: string }): Promise<AuthResponse> => {
-    const res = await fetch('/api/auth/register', {
+    const res = await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -1579,7 +1590,7 @@ export const api = {
   },
 
   login: async (data: { email: string; password: string }): Promise<AuthResponse> => {
-    const res = await fetch('/api/auth/login', {
+    const res = await apiFetch('/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -1592,7 +1603,7 @@ export const api = {
   },
 
   getMe: async (): Promise<{ user: User }> => {
-    const res = await fetch('/api/auth/me', {
+    const res = await apiFetch('/api/auth/me', {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch user session');
@@ -1600,7 +1611,7 @@ export const api = {
   },
 
   updateProfile: async (data: { full_name?: string; organization_name?: string; preferences?: Record<string, any> }): Promise<{ status: string; user: User }> => {
-    const res = await fetch('/api/auth/me', {
+    const res = await apiFetch('/api/auth/me', {
       method: 'PUT',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(data),
@@ -1613,7 +1624,7 @@ export const api = {
   },
 
   changePassword: async (data: { current_password: string; new_password: string }): Promise<{ status: string; message: string }> => {
-    const res = await fetch('/api/auth/change-password', {
+    const res = await apiFetch('/api/auth/change-password', {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(data),
@@ -1626,7 +1637,7 @@ export const api = {
   },
 
   forgotPassword: async (email: string): Promise<{ status: string; message: string; reset_token?: string }> => {
-    const res = await fetch('/api/auth/forgot-password', {
+    const res = await apiFetch('/api/auth/forgot-password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
@@ -1639,7 +1650,7 @@ export const api = {
   },
 
   resetPassword: async (data: { token: string; new_password: string }): Promise<{ status: string; message: string }> => {
-    const res = await fetch('/api/auth/reset-password', {
+    const res = await apiFetch('/api/auth/reset-password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -1652,7 +1663,7 @@ export const api = {
   },
 
   getMembership: async (): Promise<{ user: User | null; membership_manifest: MembershipManifest }> => {
-    const res = await fetch('/api/auth/membership', {
+    const res = await apiFetch('/api/auth/membership', {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch membership details');
@@ -1660,7 +1671,7 @@ export const api = {
   },
 
   mockUpgradeTier: async (tier: string): Promise<{ status: string; message: string; user: User }> => {
-    const res = await fetch('/api/auth/mock-upgrade', {
+    const res = await apiFetch('/api/auth/mock-upgrade', {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify({ tier }),
@@ -1672,61 +1683,61 @@ export const api = {
   // Results, Outcomes, and Apples-to-Apples Benchmarks
   getResults: async (params?: Record<string, any>): Promise<{ items: OutcomeMetric[]; total: number; page: number; page_size: number; total_pages: number }> => {
     const query = new URLSearchParams(params as any).toString();
-    const res = await fetch(`/api/results${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/results${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch results metrics');
     return res.json();
   },
 
   getBenchmarks: async (params?: Record<string, any>): Promise<{ items: ResultBenchmark[]; total: number; page: number; page_size: number; total_pages: number }> => {
     const query = new URLSearchParams(params as any).toString();
-    const res = await fetch(`/api/results/benchmarks${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/results/benchmarks${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch result benchmarks');
     return res.json();
   },
 
   getResultsSummary: async (params?: Record<string, any>): Promise<ResultsSummary> => {
     const query = new URLSearchParams(params as any).toString();
-    const res = await fetch(`/api/results/metrics-summary${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/results/metrics-summary${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch results summary');
     return res.json();
   },
 
   getSuccessStories: async (params?: Record<string, any>): Promise<SuccessStory[]> => {
     const query = new URLSearchParams(params as any).toString();
-    const res = await fetch(`/api/results/success-stories${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/results/success-stories${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch success stories');
     return res.json();
   },
 
   getSuccessStory: async (id: number): Promise<SuccessStory> => {
-    const res = await fetch(`/api/results/success-stories/${id}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/results/success-stories/${id}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch success story detail');
     return res.json();
   },
 
   getOpportunityResults: async (oppId: string | number): Promise<{ opportunity_id: number; solicitation_number: string; name: string; agency: string; benchmark: ResultBenchmark; results: OutcomeMetric[]; success_stories: SuccessStory[]; artifacts: ResultArtifact[] }> => {
-    const res = await fetch(`/api/opportunities/${oppId}/results`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/opportunities/${oppId}/results`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch opportunity results');
     return res.json();
   },
 
   getResultArtifacts: async (params?: Record<string, any>): Promise<ResultArtifact[]> => {
     const query = new URLSearchParams(params as any).toString();
-    const res = await fetch(`/api/results/artifacts${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/results/artifacts${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch result artifacts');
     return res.json();
   },
 
   getOrganizationResults: async (params?: Record<string, any>): Promise<OrganizationResultsResponse> => {
     const query = new URLSearchParams(params as any).toString();
-    const res = await fetch(`/api/results/organizations${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/results/organizations${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch organization results');
     return res.json();
   },
 
   compareOpportunities: async (ids: (string | number)[] | string): Promise<{ compared_count: number; items: any[] }> => {
     const idStr = Array.isArray(ids) ? ids.join(',') : ids;
-    const res = await fetch(`/api/results/compare?ids=${encodeURIComponent(idStr)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/results/compare?ids=${encodeURIComponent(idStr)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to compare opportunities');
     return res.json();
   },
@@ -1740,25 +1751,25 @@ export const api = {
       });
     }
     const query = searchParams.toString();
-    const res = await fetch(`/api/proposals${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/proposals${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch proposals');
     return res.json();
   },
 
   getProposal: async (id: string): Promise<WinningProposal> => {
-    const res = await fetch(`/api/proposals/${encodeURIComponent(id)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/proposals/${encodeURIComponent(id)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch proposal detail');
     return res.json();
   },
 
   getOpportunityWinningProposals: async (oppId: string | number): Promise<OpportunityWinningProposalsResponse> => {
-    const res = await fetch(`/api/opportunities/${oppId}/winning-proposals`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/opportunities/${oppId}/winning-proposals`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch opportunity winning proposals');
     return res.json();
   },
 
   getAwardWinningProposal: async (awardId: string | number): Promise<WinningProposal> => {
-    const res = await fetch(`/api/awards/${awardId}/winning-proposal`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/awards/${awardId}/winning-proposal`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch award winning proposal');
     return res.json();
   },
@@ -1772,19 +1783,19 @@ export const api = {
       });
     }
     const query = searchParams.toString();
-    const res = await fetch(`/api/artifacts${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/artifacts${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch artifacts');
     return res.json();
   },
 
   getArtifact: async (id: number): Promise<ProposalArtifact> => {
-    const res = await fetch(`/api/artifacts/${id}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/artifacts/${id}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch artifact');
     return res.json();
   },
 
   discoverAndDownloadArtifacts: async (): Promise<any> => {
-    const res = await fetch('/api/artifacts/discover-and-download', {
+    const res = await apiFetch('/api/artifacts/discover-and-download', {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
     });
@@ -1794,7 +1805,7 @@ export const api = {
 
   // Venture & Patent Attributions
   getAttributionsOverview: async (): Promise<AttributionsOverview> => {
-    const res = await fetch('/api/attributions/overview', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/attributions/overview', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch attributions overview');
     return res.json();
   },
@@ -1807,38 +1818,38 @@ export const api = {
       });
     }
     const query = searchParams.toString();
-    const res = await fetch(`/api/attributions/recipients${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/attributions/recipients${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch attribution recipients');
     return res.json();
   },
 
   getRecipientAttributionDossier: async (recipientId: number | string): Promise<RecipientAttributionDossier> => {
-    const res = await fetch(`/api/attributions/recipients/${recipientId}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/attributions/recipients/${recipientId}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch recipient attribution dossier');
     return res.json();
   },
 
   getAttributionsGraph: async (): Promise<AttributionsGraphResponse> => {
-    const res = await fetch('/api/attributions/graph', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/attributions/graph', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch attributions graph');
     return res.json();
   },
 
   getAttributionSyndicates: async (): Promise<{ syndicates: AttributionSyndicate[] }> => {
-    const res = await fetch('/api/attributions/syndicates', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/attributions/syndicates', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch attribution syndicates');
     return res.json();
   },
 
   // 9-Dimensional Innovation Linkages & Provenance
   getLinkageOverview: async (): Promise<LinkageOverviewResponse> => {
-    const res = await fetch('/api/linkages/overview', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/linkages/overview', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch linkage overview');
     return res.json();
   },
 
   getLinkageTrace: async (entityType: string, entityId: string | number): Promise<LinkageTraceResponse> => {
-    const res = await fetch(`/api/linkages/trace?entity_type=${encodeURIComponent(entityType)}&entity_id=${encodeURIComponent(entityId)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/linkages/trace?entity_type=${encodeURIComponent(entityType)}&entity_id=${encodeURIComponent(entityId)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to trace 9D lineage for ${entityType} ${entityId}`);
     return res.json();
   },
@@ -1851,20 +1862,20 @@ export const api = {
       });
     }
     const q = searchParams.toString();
-    const res = await fetch(`/api/linkages/matrix${q ? `?${q}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/linkages/matrix${q ? `?${q}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch linkage cross matrix');
     return res.json();
   },
 
   resolvePatentLinkages: async (): Promise<any> => {
-    const res = await fetch('/api/linkages/resolve-patents', { method: 'POST', headers: getAuthHeaders() });
+    const res = await apiFetch('/api/linkages/resolve-patents', { method: 'POST', headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to resolve patent linkages');
     return res.json();
   },
 
   // Technology Reference & Innovation Frontier Guide
   getTechCategories: async (): Promise<TechCategory[]> => {
-    const res = await fetch('/api/tech-reference/categories', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/tech-reference/categories', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch technology categories');
     return res.json();
   },
@@ -1875,13 +1886,13 @@ export const api = {
     if (params?.search) searchParams.append('search', params.search);
     if (params?.vector_type) searchParams.append('vector_type', params.vector_type);
     const query = searchParams.toString();
-    const res = await fetch(`/api/tech-reference/technologies${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/tech-reference/technologies${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch technologies');
     return res.json();
   },
 
   getTechnologyDossier: async (techId: string): Promise<TechDossier> => {
-    const res = await fetch(`/api/tech-reference/technologies/${encodeURIComponent(techId)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/tech-reference/technologies/${encodeURIComponent(techId)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to fetch dossier for technology '${techId}'`);
     return res.json();
   },
@@ -1891,7 +1902,7 @@ export const api = {
     payload: { custom_question?: string; api_key?: string; model_name?: string; force_refresh?: boolean }
   ): Promise<TechAIInsights> => {
     const headers = getAuthHeaders({ 'Content-Type': 'application/json' });
-    const res = await fetch(`/api/tech-reference/technologies/${encodeURIComponent(techId)}/ai-insights`, {
+    const res = await apiFetch(`/api/tech-reference/technologies/${encodeURIComponent(techId)}/ai-insights`, {
       method: 'POST',
       headers,
       body: JSON.stringify(payload)
@@ -1901,32 +1912,32 @@ export const api = {
   },
 
   getTechnologySubsystems: async (techId: string): Promise<{ technology_id: string; subsystems: TechSubsystemNode[] }> => {
-    const res = await fetch(`/api/tech-reference/technologies/${encodeURIComponent(techId)}/subsystems`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/tech-reference/technologies/${encodeURIComponent(techId)}/subsystems`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to fetch subsystems for technology '${techId}'`);
     return res.json();
   },
 
   getComparativeTechnologies: async (techIds: string[]): Promise<{ compared_count: number; technologies: TechDossier[] }> => {
     const idsQuery = encodeURIComponent(techIds.join(','));
-    const res = await fetch(`/api/tech-reference/compare?ids=${idsQuery}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/tech-reference/compare?ids=${idsQuery}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch comparative technology data');
     return res.json();
   },
 
   getFuelsMatrix: async (): Promise<FuelsMatrixItem[]> => {
-    const res = await fetch('/api/tech-reference/fuels-matrix', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/tech-reference/fuels-matrix', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch zero-carbon fuels matrix');
     return res.json();
   },
 
   getFrontierMatrix: async (): Promise<FrontierMatrixItem[]> => {
-    const res = await fetch('/api/tech-reference/frontier-matrix', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/tech-reference/frontier-matrix', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch innovation frontier matrix');
     return res.json();
   },
 
   getTechReferenceStats: async (): Promise<any> => {
-    const res = await fetch('/api/tech-reference/stats', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/tech-reference/stats', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch tech reference stats');
     return res.json();
   },
@@ -1950,31 +1961,31 @@ export const api = {
       });
     }
     const query = searchParams.toString();
-    const res = await fetch(`/api/policies${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/policies${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch policies');
     return res.json();
   },
 
   getPolicy: async (policyId: string): Promise<PolicyDossier> => {
-    const res = await fetch(`/api/policies/${encodeURIComponent(policyId)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/policies/${encodeURIComponent(policyId)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to fetch policy dossier for '${policyId}'`);
     return res.json();
   },
 
   getPoliciesByTechnology: async (techId: string): Promise<{ technology_id: string; technology_name: string; policies_count: number; policies: PolicyTechItem[] }> => {
-    const res = await fetch(`/api/policies/by-technology/${encodeURIComponent(techId)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/policies/by-technology/${encodeURIComponent(techId)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to fetch policies for technology '${techId}'`);
     return res.json();
   },
 
   getPoliciesByOpportunity: async (oppId: number | string): Promise<{ opportunity_id: number; solicitation_number: string; opportunity_name: string; agency: string; policies_count: number; policies: any[] }> => {
-    const res = await fetch(`/api/policies/by-opportunity/${encodeURIComponent(oppId)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/policies/by-opportunity/${encodeURIComponent(oppId)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to fetch policies for opportunity '${oppId}'`);
     return res.json();
   },
 
   getPolicyStats: async (): Promise<any> => {
-    const res = await fetch('/api/policies/stats', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/policies/stats', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch policy stats');
     return res.json();
   },
@@ -1998,38 +2009,38 @@ export const api = {
       });
     }
     const query = searchParams.toString();
-    const res = await fetch(`/api/policies/proceedings${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/policies/proceedings${query ? `?${query}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch regulatory proceedings');
     return res.json();
   },
 
   getRegulatoryProceedingDetail: async (proceedingId: string): Promise<ProceedingDossier> => {
-    const res = await fetch(`/api/policies/proceedings/${encodeURIComponent(proceedingId)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/policies/proceedings/${encodeURIComponent(proceedingId)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to fetch dossier for proceeding '${proceedingId}'`);
     return res.json();
   },
 
   getProceedingsByTechnology: async (techId: string): Promise<{ technology_id: string; technology_name: string; proceedings_count: number; proceedings: ProceedingTechItem[] }> => {
-    const res = await fetch(`/api/policies/proceedings/by-technology/${encodeURIComponent(techId)}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/policies/proceedings/by-technology/${encodeURIComponent(techId)}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error(`Failed to fetch proceedings for technology '${techId}'`);
     return res.json();
   },
 
   getProceedingStats: async (): Promise<ProceedingMacroStats> => {
-    const res = await fetch('/api/policies/proceedings/stats', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/policies/proceedings/stats', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch proceeding stats');
     return res.json();
   },
 
 
   getChatPresets: async (): Promise<{ categories: ChatPresetCategory[] }> => {
-    const res = await fetch('/api/chat/presets', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/chat/presets', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch chat presets');
     return res.json();
   },
 
   sendChatSync: async (query: string, history?: Array<{ role: string; content: string }>, apiKey?: string): Promise<{ answer: string; citations: ChatCitationsMetadata; intent: any }> => {
-    const res = await fetch('/api/chat/query-sync', {
+    const res = await apiFetch('/api/chat/query-sync', {
       method: 'POST',
       headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
       body: JSON.stringify({ query, history, api_key: apiKey }),
@@ -2040,13 +2051,13 @@ export const api = {
 
   // Tavus.io Conversational Video AI
   getTavusStatus: async (): Promise<TavusStatus> => {
-    const res = await fetch('/api/tavus/status', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/tavus/status', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch Tavus status');
     return res.json();
   },
 
   setTavusApiKey: async (payload: TavusSetKeyPayload): Promise<{ success: boolean; message: string }> => {
-    const res = await fetch('/api/tavus/set-api-key', {
+    const res = await apiFetch('/api/tavus/set-api-key', {
       method: 'POST',
       headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -2056,7 +2067,7 @@ export const api = {
   },
 
   createTavusConversation: async (payload: TavusCreateConversationPayload): Promise<TavusConversationResponse> => {
-    const res = await fetch('/api/tavus/conversations/create', {
+    const res = await apiFetch('/api/tavus/conversations/create', {
       method: 'POST',
       headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -2069,7 +2080,7 @@ export const api = {
   },
 
   endTavusConversation: async (conversationId: string, apiKey?: string): Promise<{ success: boolean; status?: number }> => {
-    const res = await fetch(`/api/tavus/conversations/${encodeURIComponent(conversationId)}/end`, {
+    const res = await apiFetch(`/api/tavus/conversations/${encodeURIComponent(conversationId)}/end`, {
       method: 'POST',
       headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
       body: JSON.stringify({ api_key: apiKey }),
@@ -2080,7 +2091,7 @@ export const api = {
 
   getTavusConversationStatus: async (conversationId: string, apiKey?: string): Promise<any> => {
     const query = apiKey ? `?api_key=${encodeURIComponent(apiKey)}` : '';
-    const res = await fetch(`/api/tavus/conversations/${encodeURIComponent(conversationId)}${query}`, {
+    const res = await apiFetch(`/api/tavus/conversations/${encodeURIComponent(conversationId)}${query}`, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) throw new Error('Failed to fetch Tavus conversation status');
@@ -2089,20 +2100,20 @@ export const api = {
 
   getTavusReplicas: async (apiKey?: string): Promise<{ data: Array<{ replica_id: string; replica_name: string; status: string; thumbnail_url?: string }> }> => {
     const query = apiKey ? `?api_key=${encodeURIComponent(apiKey)}` : '';
-    const res = await fetch(`/api/tavus/replicas${query}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/tavus/replicas${query}`, { headers: getAuthHeaders() });
     if (!res.ok) return { data: [] };
     return res.json();
   },
 
   getTavusPersonas: async (apiKey?: string): Promise<{ data: Array<{ persona_id: string; persona_name: string; persona_description?: string }> }> => {
     const query = apiKey ? `?api_key=${encodeURIComponent(apiKey)}` : '';
-    const res = await fetch(`/api/tavus/personas${query}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/tavus/personas${query}`, { headers: getAuthHeaders() });
     if (!res.ok) return { data: [] };
     return res.json();
   },
 
   reviewTavusSession: async (payload: { transcript_or_notes: string; user_role?: string; api_key?: string }): Promise<{ reviewed_text: string; citations: ChatCitationsMetadata; referenced_entities: Record<string, any> }> => {
-    const res = await fetch('/api/tavus/review-session', {
+    const res = await apiFetch('/api/tavus/review-session', {
       method: 'POST',
       headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -2112,7 +2123,7 @@ export const api = {
   },
 
   syncTavusIntelligence: async (payload: { query_or_transcript: string; user_role?: string; conversation_id?: string; api_key?: string }): Promise<TavusSyncIntelligenceResponse> => {
-    const res = await fetch('/api/tavus/sync-intelligence', {
+    const res = await apiFetch('/api/tavus/sync-intelligence', {
       method: 'POST',
       headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -2128,7 +2139,7 @@ export const api = {
     conversation_id?: string;
     api_key?: string;
   }): Promise<TavusSynthesizeAndSyncResponse> => {
-    const res = await fetch('/api/tavus/synthesize-and-sync', {
+    const res = await apiFetch('/api/tavus/synthesize-and-sync', {
       method: 'POST',
       headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -2141,13 +2152,13 @@ export const api = {
   // System Administration: Email Hub, Campaigns & Correspondence
   // -------------------------------------------------------------
   getAdminEmailStatus: async (): Promise<AdminEmailStatusResponse> => {
-    const res = await fetch('/api/admin/email/status', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/admin/email/status', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch admin email status');
     return res.json();
   },
 
   testAdminEmailConnection: async (): Promise<AdminEmailConnectionTestResponse> => {
-    const res = await fetch('/api/admin/email/test-connection', {
+    const res = await apiFetch('/api/admin/email/test-connection', {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
     });
@@ -2156,7 +2167,7 @@ export const api = {
   },
 
   getAdminEmailTemplates: async (): Promise<{ templates: EmailTemplate[] }> => {
-    const res = await fetch('/api/admin/email/templates', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/admin/email/templates', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch email templates');
     return res.json();
   },
@@ -2175,7 +2186,7 @@ export const api = {
     // Do NOT set Content-Type header manually when sending FormData so browser sets boundary
     delete headers['Content-Type'];
 
-    const res = await fetch('/api/admin/email/send', {
+    const res = await apiFetch('/api/admin/email/send', {
       method: 'POST',
       headers,
       body: formData,
@@ -2192,19 +2203,19 @@ export const api = {
     if (params?.page) searchParams.append('page', params.page.toString());
     if (params?.page_size) searchParams.append('page_size', params.page_size.toString());
     const q = searchParams.toString();
-    const res = await fetch(`/api/admin/email/campaigns${q ? `?${q}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/admin/email/campaigns${q ? `?${q}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch email campaigns');
     return res.json();
   },
 
   getAdminEmailCampaign: async (id: number): Promise<{ campaign: AdminEmailCampaign; logs: AdminEmailLog[] }> => {
-    const res = await fetch(`/api/admin/email/campaigns/${id}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/admin/email/campaigns/${id}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch campaign details');
     return res.json();
   },
 
   syncAdminEmail: async (days: number = 30): Promise<{ success: boolean; messages_synced: number; threads_updated: number; synced_at: string; error?: string }> => {
-    const res = await fetch(`/api/admin/email/sync?days_lookback=${days}`, {
+    const res = await apiFetch(`/api/admin/email/sync?days_lookback=${days}`, {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
     });
@@ -2226,25 +2237,25 @@ export const api = {
       });
     }
     const q = searchParams.toString();
-    const res = await fetch(`/api/admin/email/threads${q ? `?${q}` : ''}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/admin/email/threads${q ? `?${q}` : ''}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch correspondence threads');
     return res.json();
   },
 
   getAdminEmailThread: async (threadId: number): Promise<{ thread: ContactEmailThread; contact: any; messages: ContactEmailMessage[] }> => {
-    const res = await fetch(`/api/admin/email/threads/${threadId}`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/admin/email/threads/${threadId}`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch thread detail');
     return res.json();
   },
 
   getContactCorrespondenceHistory: async (contactId: number): Promise<{ contact_id: number; has_thread: boolean; status?: string; summary?: string; thread?: ContactEmailThread; messages: ContactEmailMessage[] }> => {
-    const res = await fetch(`/api/admin/email/contact/${contactId}/history`, { headers: getAuthHeaders() });
+    const res = await apiFetch(`/api/admin/email/contact/${contactId}/history`, { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch contact correspondence history');
     return res.json();
   },
 
   quickReplyAdminEmailThread: async (threadId: number, data: { subject: string; body_text: string; body_html?: string; footer_text?: string }): Promise<{ status: string; message: string; thread: ContactEmailThread }> => {
-    const res = await fetch(`/api/admin/email/threads/${threadId}/reply`, {
+    const res = await apiFetch(`/api/admin/email/threads/${threadId}/reply`, {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(data),
@@ -2257,7 +2268,7 @@ export const api = {
   },
 
   updateAdminEmailThreadStatus: async (threadId: number, data: { status: string; next_action?: string }): Promise<{ status: string; thread: ContactEmailThread }> => {
-    const res = await fetch(`/api/admin/email/threads/${threadId}/status`, {
+    const res = await apiFetch(`/api/admin/email/threads/${threadId}/status`, {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(data),
@@ -2267,7 +2278,7 @@ export const api = {
   },
 
   summarizeAdminEmailThread: async (threadId: number): Promise<any> => {
-    const res = await fetch(`/api/admin/email/threads/${threadId}/summarize`, {
+    const res = await apiFetch(`/api/admin/email/threads/${threadId}/summarize`, {
       method: 'POST',
       headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
     });
@@ -2280,7 +2291,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const q = searchParams.toString();
-    const res = await fetch(`/api/interconnection-queues${q ? `?${q}` : ''}`);
+    const res = await apiFetch(`/api/interconnection-queues${q ? `?${q}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch interconnection queues');
     return res.json();
   },
@@ -2289,7 +2300,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const q = searchParams.toString();
-    const res = await fetch(`/api/interconnection-queues/geojson${q ? `?${q}` : ''}`);
+    const res = await apiFetch(`/api/interconnection-queues/geojson${q ? `?${q}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch interconnection geojson');
     return res.json();
   },
@@ -2298,7 +2309,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const q = searchParams.toString();
-    const res = await fetch(`/api/lab-facilities${q ? `?${q}` : ''}`);
+    const res = await apiFetch(`/api/lab-facilities${q ? `?${q}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch lab facilities');
     return res.json();
   },
@@ -2307,7 +2318,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const q = searchParams.toString();
-    const res = await fetch(`/api/sec-form-d${q ? `?${q}` : ''}`);
+    const res = await apiFetch(`/api/sec-form-d${q ? `?${q}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch SEC Form D filings');
     return res.json();
   },
@@ -2316,7 +2327,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const q = searchParams.toString();
-    const res = await fetch(`/api/scaleup-allocations${q ? `?${q}` : ''}`);
+    const res = await apiFetch(`/api/scaleup-allocations${q ? `?${q}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch scaleup allocations');
     return res.json();
   },
@@ -2325,7 +2336,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const q = searchParams.toString();
-    const res = await fetch(`/api/procurement-contracts${q ? `?${q}` : ''}`);
+    const res = await apiFetch(`/api/procurement-contracts${q ? `?${q}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch procurement contracts');
     return res.json();
   },
@@ -2334,7 +2345,7 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const q = searchParams.toString();
-    const res = await fetch(`/api/der-deployments/benchmarks${q ? `?${q}` : ''}`);
+    const res = await apiFetch(`/api/der-deployments/benchmarks${q ? `?${q}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch DER cost benchmarks');
     return res.json();
   },
@@ -2343,13 +2354,13 @@ export const api = {
     const searchParams = new URLSearchParams();
     if (params) Object.entries(params).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') searchParams.append(k, v.toString()); });
     const q = searchParams.toString();
-    const res = await fetch(`/api/university-ip${q ? `?${q}` : ''}`);
+    const res = await apiFetch(`/api/university-ip${q ? `?${q}` : ''}`);
     if (!res.ok) throw new Error('Failed to fetch university IP');
     return res.json();
   },
 
   getRecipientCapitalContinuum: async (recipientId: number): Promise<RecipientCapitalContinuumResponse> => {
-    const res = await fetch(`/api/recipients/${recipientId}/capital-continuum`);
+    const res = await apiFetch(`/api/recipients/${recipientId}/capital-continuum`);
     if (!res.ok) throw new Error('Failed to fetch recipient capital continuum');
     return res.json();
   },
@@ -2363,7 +2374,7 @@ export const api = {
   },
 
   getDigestArchive: async (): Promise<DigestArchiveItem[]> => {
-    const res = await fetch('/api/v1/digest/archive', { headers: getAuthHeaders() });
+    const res = await apiFetch('/api/v1/digest/archive', { headers: getAuthHeaders() });
     if (!res.ok) throw new Error('Failed to fetch digest archive');
     return res.json();
   },
@@ -3915,7 +3926,7 @@ export async function* streamChatCompletion(
     'Content-Type': 'application/json',
   };
 
-  const response = await fetch('/api/chat/stream', {
+  const response = await apiFetch('/api/chat/stream', {
     method: 'POST',
     headers,
     body: JSON.stringify({ query, history, api_key: apiKey, model, user_role: userRole }),
@@ -4050,7 +4061,7 @@ export interface CorpusDailyActivityResponse {
 
 export async function fetchCorpusDailyActivity(days: number = 60): Promise<CorpusDailyActivityResponse> {
   try {
-    const res = await fetch(`/api/trends/corpus-daily-activity?days=${days}`, {
+    const res = await apiFetch(`/api/trends/corpus-daily-activity?days=${days}`, {
       headers: { ...getAuthHeaders() },
     });
     if (res.ok) {
@@ -4456,31 +4467,31 @@ export interface NewsTelemetry {
 }
 
 export async function fetchNewsTicker(limit: number = 25): Promise<NewsTickerResponse> {
-  const res = await fetch(`/api/news/ticker?limit=${limit}`);
+  const res = await apiFetch(`/api/news/ticker?limit=${limit}`);
   if (!res.ok) throw new Error('Failed to fetch news ticker feed');
   return res.json();
 }
 
 export async function fetchNewsDetail(newsId: number): Promise<NewsItemDetail> {
-  const res = await fetch(`/api/news/${newsId}`);
+  const res = await apiFetch(`/api/news/${newsId}`);
   if (!res.ok) throw new Error(`Failed to fetch news item ${newsId}`);
   return res.json();
 }
 
 export async function fetchNewsTelemetry(): Promise<NewsTelemetry> {
-  const res = await fetch('/api/news/stats');
+  const res = await apiFetch('/api/news/stats');
   if (!res.ok) throw new Error('Failed to fetch news telemetry');
   return res.json();
 }
 
 export async function fetchNewsForElement(elementType: string, elementId: string): Promise<any> {
-  const res = await fetch(`/api/news/element/${elementType}/${elementId}`);
+  const res = await apiFetch(`/api/news/element/${elementType}/${elementId}`);
   if (!res.ok) throw new Error(`Failed to fetch news for ${elementType}:${elementId}`);
   return res.json();
 }
 
 export async function triggerNewsIngestion(forceSeed: boolean = true): Promise<any> {
-  const res = await fetch(`/api/news/ingest?force_seed=${forceSeed}`, { method: 'POST' });
+  const res = await apiFetch(`/api/news/ingest?force_seed=${forceSeed}`, { method: 'POST' });
   if (!res.ok) throw new Error('Failed to trigger news ingestion');
   return res.json();
 }
@@ -4639,7 +4650,7 @@ export interface StrategyTemplatesResponse {
 }
 
 export async function fetchStrategyTemplates(): Promise<StrategyTemplatesResponse> {
-  const res = await fetch('/api/strategy/templates');
+  const res = await apiFetch('/api/strategy/templates');
   if (!res.ok) throw new Error('Failed to fetch strategy templates');
   return res.json();
 }
@@ -4649,7 +4660,7 @@ export async function quickExecuteStrategy(payload: {
   title?: string;
   inputs: Record<string, any>;
 }): Promise<{ status: string; mode: string; title: string; results: StrategyResultPayload }> {
-  const res = await fetch('/api/strategy/quick-execute', {
+  const res = await apiFetch('/api/strategy/quick-execute', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
@@ -4671,7 +4682,7 @@ export async function createStrategyWorkspace(payload: {
   if (payload.creatorToken) {
     headers['X-Creator-Token'] = payload.creatorToken;
   }
-  const res = await fetch('/api/strategy', {
+  const res = await apiFetch('/api/strategy', {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -4689,7 +4700,7 @@ export async function executeStrategyWorkspace(strategyId: number, creatorToken?
   if (creatorToken) {
     headers['X-Creator-Token'] = creatorToken;
   }
-  const res = await fetch(`/api/strategy/${strategyId}/execute`, {
+  const res = await apiFetch(`/api/strategy/${strategyId}/execute`, {
     method: 'POST',
     headers
   });
@@ -4702,13 +4713,13 @@ export async function fetchStrategyDetail(strategyId: number, creatorToken?: str
   if (creatorToken) {
     headers['X-Creator-Token'] = creatorToken;
   }
-  const res = await fetch(`/api/strategy/${strategyId}`, { headers });
+  const res = await apiFetch(`/api/strategy/${strategyId}`, { headers });
   if (!res.ok) throw new Error(`Failed to fetch strategy ${strategyId}`);
   return res.json();
 }
 
 export async function downloadStrategyPdf(results: StrategyResultPayload, title?: string, mode?: string): Promise<void> {
-  const res = await fetch('/api/strategy/export-pdf', {
+  const res = await apiFetch('/api/strategy/export-pdf', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ results, title, mode })

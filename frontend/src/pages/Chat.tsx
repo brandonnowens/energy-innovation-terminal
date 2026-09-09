@@ -6,12 +6,12 @@ import {
   Building2, TrendingUp, BookOpen, Zap, User, Award, CheckCircle2,
   Landmark, Rocket, Video, MessageSquare, Compass, Sliders
 } from 'lucide-react';
-import {
+import { 
   api,
   ChatMessageItem,
   ChatCitationsMetadata,
   streamChatCompletion
-} from '../api/client';
+, apiFetch } from '../api/client';
 
 import { MermaidDiagram } from '../components/MermaidDiagram';
 import TavusVideoConversation from '../components/TavusVideoConversation';
@@ -319,7 +319,7 @@ export default function Chat() {
 
   // Check backend OpenAI status on mount
   useEffect(() => {
-    fetch('/api/chat/status')
+    apiFetch('/api/chat/status')
       .then(res => res.json())
       .then(data => {
         if (data.openai_configured && !apiKey) {
@@ -347,7 +347,7 @@ export default function Chat() {
     }
 
     try {
-      await fetch('/api/chat/set-api-key', {
+      await apiFetch('/api/chat/set-api-key', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ api_key: trimmed })

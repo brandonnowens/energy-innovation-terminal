@@ -1,3 +1,4 @@
+import { apiFetch } from '../api/client';
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -46,7 +47,7 @@ export default function TechnologyHub() {
     queryKey: ['tech-hub', slug],
     queryFn: async () => {
       // Look up technology by name or slug from tech reference endpoint
-      const res = await fetch(`/api/tech-reference/technologies`);
+      const res = await apiFetch(`/api/tech-reference/technologies`);
       if (!res.ok) throw new Error('Failed to load technologies');
       const allTechs = await res.json();
       
@@ -56,11 +57,11 @@ export default function TechnologyHub() {
       }) || allTechs[0];
 
       // Fetch opportunities matching this category
-      const oppRes = await fetch(`/api/opportunities?technology_area=${encodeURIComponent(matched.name)}&limit=20`);
+      const oppRes = await apiFetch(`/api/opportunities?technology_area=${encodeURIComponent(matched.name)}&limit=20`);
       const oppData = oppRes.ok ? await oppRes.json() : { items: [] };
 
       // Fetch top recipients in this technology
-      const recRes = await fetch(`/api/awards/recipients?technology=${encodeURIComponent(matched.name)}&limit=10`);
+      const recRes = await apiFetch(`/api/awards/recipients?technology=${encodeURIComponent(matched.name)}&limit=10`);
       const recData = recRes.ok ? await recRes.json() : { items: [] };
 
       return {
