@@ -741,6 +741,39 @@ def get_recipient_capital_continuum_by_name(recipient_name: str, db: Session = D
     return get_recipient_capital_continuum(recipient_id=recipient.id, db=db)
 
 
+@router.get("/recipients/by-name/{recipient_name}/export-pdf")
+def export_recipient_dossier_pdf_by_name(recipient_name: str, db: Session = Depends(get_db)):
+    """
+    Generates and streams an institutional, publication-grade multi-page PDF executive brief
+    by recipient name.
+    """
+    clean_name = recipient_name.strip()
+    recipient = db.query(Recipient).filter(
+        or_(
+            Recipient.name.ilike(clean_name),
+            Recipient.name.ilike(f"%{clean_name}%")
+        )
+    ).first()
+    if not recipient:
+        award = db.query(Award).filter(Award.recipient_name.ilike(f"%{clean_name}%")).first()
+        if not award:
+            raise HTTPException(status_code=404, detail=f"Recipient not found for '{recipient_name}'")
+        recipient = db.query(Recipient).filter(Recipient.name.ilike(award.recipient_name)).first()
+        if not recipient:
+            recipient = Recipient(
+                name=award.recipient_name,
+                primary_technology="Energy Innovation",
+                headquarters_city=award.recipient_city,
+                headquarters_state=award.recipient_state,
+                commercialization_stage="Commercial Growth"
+            )
+            db.add(recipient)
+            db.commit()
+            db.refresh(recipient)
+
+    return export_recipient_dossier_pdf(recipient_id=recipient.id, db=db)
+
+
 from fastapi.responses import Response
 
 @router.get("/recipients/{recipient_id}/export-pdf")
@@ -787,38 +820,5 @@ def export_recipient_dossier_pdf(recipient_id: int, db: Session = Depends(get_db
             "Content-Disposition": f'attachment; filename="{safe_name}_Executive_Brief_EnergyInnovation.pdf"'
         }
     )
-
-
-@router.get("/recipients/by-name/{recipient_name}/export-pdf")
-def export_recipient_dossier_pdf_by_name(recipient_name: str, db: Session = Depends(get_db)):
-    """
-    Generates and streams an institutional, publication-grade multi-page PDF executive brief
-    by recipient name.
-    """
-    clean_name = recipient_name.strip()
-    recipient = db.query(Recipient).filter(
-        or_(
-            Recipient.name.ilike(clean_name),
-            Recipient.name.ilike(f"%{clean_name}%")
-        )
-    ).first()
-    if not recipient:
-        award = db.query(Award).filter(Award.recipient_name.ilike(f"%{clean_name}%")).first()
-        if not award:
-            raise HTTPException(status_code=404, detail=f"Recipient not found for '{recipient_name}'")
-        recipient = db.query(Recipient).filter(Recipient.name.ilike(award.recipient_name)).first()
-        if not recipient:
-            recipient = Recipient(
-                name=award.recipient_name,
-                primary_technology="Energy Innovation",
-                headquarters_city=award.recipient_city,
-                headquarters_state=award.recipient_state,
-                commercialization_stage="Commercial Growth"
-            )
-            db.add(recipient)
-            db.commit()
-            db.refresh(recipient)
-
-    return export_recipient_dossier_pdf(recipient_id=recipient.id, db=db)
 
 
