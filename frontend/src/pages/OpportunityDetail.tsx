@@ -46,14 +46,14 @@ export default function OpportunityDetail() {
   const oppAny = opp as any;
 
   useSEO({
-    title: oppAny ? `${oppAny.solicitation_number || oppAny.solicitationNumber ? (oppAny.solicitation_number || oppAny.solicitationNumber) + ' · ' : ''}${oppAny.name} Funding & Eligibility` : 'Clean Energy Opportunity Details',
-    description: oppAny?.description ? `${oppAny.description.slice(0, 180)}... Total Funding: ${formatCurrency(oppAny.total_funding || oppAny.totalFunding)}. Organization: ${oppAny.agency || 'Public Agency'}.` : 'Comprehensive intelligence, proposal scoring, eligibility requirements, and historical awardees for this clean energy solicitation.',
+    title: oppAny ? `${oppAny.solicitation_number || oppAny.solicitationNumber ? (oppAny.solicitation_number || oppAny.solicitationNumber) + ' · ' : ''}${oppAny.name} Funding & Eligibility` : 'Energy Innovation Opportunity Details',
+    description: oppAny?.description ? `${oppAny.description.slice(0, 180)}... Total Funding: ${formatCurrency(oppAny.total_funding || oppAny.totalFunding)}. Organization: ${oppAny.agency || 'Public Agency'}.` : 'Comprehensive intelligence, proposal scoring, eligibility requirements, and historical awardees for this energy innovation solicitation.',
     canonicalUrl: `https://terminal.aixenergy.io/opportunities/${id}`,
     keywords: [
       oppAny?.solicitation_number || oppAny?.solicitationNumber || '',
       oppAny?.name || '',
       oppAny?.agency || '',
-      'clean energy grant',
+      'energy innovation grant',
       'solicitation eligibility',
       'proposal requirements',
       'non-dilutive funding',
@@ -62,7 +62,7 @@ export default function OpportunityDetail() {
       '@context': 'https://schema.org',
       '@type': 'GovernmentService',
       name: oppAny.name,
-      serviceType: 'Clean Energy Innovation Grant / Funding Solicitation',
+      serviceType: 'Energy Innovation Innovation Grant / Funding Solicitation',
       provider: {
         '@type': 'Organization',
         name: oppAny.agency || 'Funding Agency',
@@ -147,14 +147,14 @@ export default function OpportunityDetail() {
     const d = opp as any;
     const lines = [
       `# EXECUTIVE FUNDING INTELLIGENCE BRIEF: ${d.solicitation_number || 'SOL'}`,
-      `**Title:** ${d.name || 'Clean Energy Solicitation'}`,
+      `**Title:** ${d.name || 'Energy Innovation Solicitation'}`,
       `**Issuing Authority:** ${d.agency || 'Funder'} | **Status:** ${d.status || 'Active'}`,
       `**Total Program Funding:** ${formatCurrency(d.total_funding)} | **Max Award:** ${d.max_per_award ? formatCurrency(d.max_per_award) : 'Varies'}`,
       `**Cost-Share Requirement:** ${d.cost_share_pct ? `${d.cost_share_pct}% mandatory non-federal cost-share` : '0% (100% grant funded)'}`,
       `**Submission Deadline:** ${d.deadline ? formatDate(d.deadline) : 'Rolling / Open Enrollment'}`,
       ``,
       `## Technology & Sector Scope`,
-      `- **Technologies:** ${(d.technologies || []).join(', ') || 'Clean Energy & Decarbonization'}`,
+      `- **Technologies:** ${(d.technologies || []).join(', ') || 'Energy Innovation & Decarbonization'}`,
       `- **Sectors:** ${(d.sectors || []).join(', ') || 'Utility / Commercial / Industrial'}`,
       `- **Target TRL Stage:** ${d.target_trl_min ? `TRL ${d.target_trl_min}–${d.target_trl_max || 8}` : 'R&D through Commercial Deployment'}`,
       ``,

@@ -37,8 +37,8 @@ export const ROLES: RoleOption[] = [
     icon: Landmark,
     description: '5-year research agendas, center grants, issuing PONs, faculty clusters & F&A recovery',
     spokenStarters: [
-      'How should we structure our 5-year clean energy research roadmap and internal PONs?',
-      'What strategies anchor a $50M regional clean energy hub consortium?',
+      'How should we structure our 5-year energy innovation research roadmap and internal PONs?',
+      'What strategies anchor a $50M regional energy innovation hub consortium?',
       'Which faculty clusters show the highest verified grant momentum in hydrogen and storage?',
       'How do we structure master industry agreements while protecting Bayh-Dole IP?'
     ],
@@ -49,7 +49,7 @@ export const ROLES: RoleOption[] = [
       },
       {
         title: '$50M+ Regional Hub Consortium',
-        prompt: 'How can our institution anchor a $50M+ regional clean energy hub consortium across DOE OCED, state agencies, and utility off-takers?'
+        prompt: 'How can our institution anchor a $50M+ regional energy innovation hub consortium across DOE OCED, state agencies, and utility off-takers?'
       },
       {
         title: 'High-Impact Faculty Clusters',
@@ -99,15 +99,15 @@ export const ROLES: RoleOption[] = [
     icon: Building2,
     description: 'Capital stacking, FEED studies, FOAK demo bankability & cost-share strategy',
     spokenStarters: [
-      'How can we stack state clean energy grants with federal DOE demonstration awards?',
+      'How can we stack state energy innovation grants with federal DOE demonstration awards?',
       'What active solicitations have cost-share under 20% and close in the next 90 days for hydrogen?',
       'Who are the top repeat winning prime developers for CEC microgrid awards in California?',
-      'What are the statutory Disadvantaged Community requirements for clean energy grants?'
+      'What are the statutory Disadvantaged Community requirements for energy innovation grants?'
     ],
     starterPrompts: [
       {
         title: 'Grant Stacking Strategy',
-        prompt: 'How can we stack state clean energy grants with federal DOE demonstration awards for a 10MW Long-Duration Energy Storage facility?'
+        prompt: 'How can we stack state energy innovation grants with federal DOE demonstration awards for a 10MW Long-Duration Energy Storage facility?'
       },
       {
         title: 'Active Hydrogen Solicitations',
@@ -224,7 +224,7 @@ export const ROLES: RoleOption[] = [
     description: 'Designing public funding programs, statutory Justice40 / DAC compliance & ratepayer ROI',
     spokenStarters: [
       'Benchmark programmatic funding allocation and median award size across state energy agencies.',
-      'How do state energy offices ensure 35 to 40% of clean energy benefits flow to DAC communities?',
+      'How do state energy offices ensure 35 to 40% of energy innovation benefits flow to DAC communities?',
       'What are the primary equipment lead times and interconnection queue bottlenecks?',
       'How are state green banks structuring risk-sharing facilities with federal loan programs?'
     ],
@@ -235,11 +235,11 @@ export const ROLES: RoleOption[] = [
       },
       {
         title: 'DAC Equity Allocation',
-        prompt: 'How do state energy offices ensure 35-40% of clean energy program benefits flow to frontline disadvantaged communities?'
+        prompt: 'How do state energy offices ensure 35-40% of energy innovation program benefits flow to frontline disadvantaged communities?'
       },
       {
         title: 'Interconnection Bottlenecks',
-        prompt: 'What are the primary equipment lead times and interconnection queue bottlenecks impacting state clean energy targets?'
+        prompt: 'What are the primary equipment lead times and interconnection queue bottlenecks impacting state energy innovation targets?'
       },
       {
         title: 'Green Bank Loan Facilities',
@@ -255,7 +255,7 @@ export const ROLES: RoleOption[] = [
     description: 'Compliance matrices, scoring rubric maximization & SOPO work plans',
     spokenStarters: [
       'Draft a 4-phase Statement of Project Objectives and milestone schedule for clean hydrogen.',
-      'Analyze active DOE and state clean energy storage solicitations for mandatory disqualifying rules.',
+      'Analyze active DOE and state energy innovation storage solicitations for mandatory disqualifying rules.',
       'What are allowable non-federal cost-share sources and third-party in-kind contributions?',
       'What key technical differentiators and community benefit plans maximize scores in review panels?'
     ],
@@ -266,7 +266,7 @@ export const ROLES: RoleOption[] = [
       },
       {
         title: 'Hard vs Soft Requirements',
-        prompt: 'Analyze active DOE and state clean energy storage solicitations and list all mandatory disqualifying eligibility rules.'
+        prompt: 'Analyze active DOE and state energy innovation storage solicitations and list all mandatory disqualifying eligibility rules.'
       },
       {
         title: 'Cost-Share Match Strategy',
@@ -847,7 +847,7 @@ export default function Chat() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="text-emerald-600 shrink-0 mt-0.5" />
-                      <span>Grounded in 56,413 clean energy awards &amp; 5,757 solicitations</span>
+                      <span>Grounded in 56,413 energy innovation awards &amp; 5,757 solicitations</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 size={14} className="text-emerald-600 shrink-0 mt-0.5" />

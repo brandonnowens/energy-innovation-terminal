@@ -35,10 +35,10 @@ function formatDate(dateStr: string | null | undefined): string {
 
 export default function Opportunities() {
   useSEO({
-    title: '5,700+ Clean Energy Solicitations & Grants Database 2026',
-    description: 'Search and filter active and historical clean energy grant solicitations, RFPs, PONs, and FOAs across US DOE, CEC, ARPA-E, MassCEC, and 140+ electric utilities.',
+    title: '5,700+ Energy Innovation Solicitations & Grants Database 2026',
+    description: 'Search and filter active and historical energy innovation grant solicitations, RFPs, PONs, and FOAs across US DOE, CEC, ARPA-E, MassCEC, and 140+ electric utilities.',
     canonicalUrl: 'https://terminal.aixenergy.io/opportunities',
-    keywords: ['clean energy solicitations', 'DOE funding opportunities', 'cleantech RFPs', 'energy grants 2026', 'utility innovation solicitations', 'ARPA-E grants'],
+    keywords: ['energy innovation solicitations', 'DOE funding opportunities', 'cleantech RFPs', 'energy grants 2026', 'utility innovation solicitations', 'ARPA-E grants'],
   });
 
   const { includeNyserda, isNyserda } = useNyserda();

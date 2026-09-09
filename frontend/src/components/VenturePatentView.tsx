@@ -252,7 +252,7 @@ export function VenturePatentView() {
               <option value="Energy Storage & Advanced Batteries">Energy Storage</option>
               <option value="Industrial Decarbonization & Clean Heat">Industrial Decarb</option>
               <option value="Hydrogen & Clean Fuel Cells">Hydrogen & Fuel Cells</option>
-              <option value="Clean Energy Innovation & Advanced Tech">Fusion & Advanced Tech</option>
+              <option value="Energy Innovation Innovation & Advanced Tech">Fusion & Advanced Tech</option>
               <option value="Critical Minerals & Supply Chain">Critical Minerals</option>
               <option value="Solar Photovoltaics & Systems">Solar PV</option>
               <option value="Grid Modernization & Smart Power">Grid Power</option>
@@ -1222,7 +1222,7 @@ function InteractiveGraphStudio({
             {selectedNode.type === 'patent' && (
               <div className="space-y-2 pt-2 border-t border-slate-800 text-[11px]">
                 <div className="text-slate-300 leading-relaxed">
-                  Verified Bayh-Dole patent citing federal & state clean energy grant awards.
+                  Verified Bayh-Dole patent citing federal & state energy innovation grant awards.
                 </div>
                 <a
                   href={`https://patents.google.com/patent/${selectedNode.name.replace(/[^A-Za-z0-9]/g, '')}/en`}

@@ -79,10 +79,10 @@ export default function TechnologyHub() {
   useEffect(() => {
     if (tech) {
       updatePageMeta({
-        title: `${tech.name} Clean Energy Grants, Funding & Solicitations 2026`,
+        title: `${tech.name} Energy Innovation Grants, Funding & Solicitations 2026`,
         description: `Explore active federal and state public funding opportunities, DOE grant awards, and leading clean tech startups in ${tech.name}. ${tech.headline || ''}`,
         canonicalUrl: `https://terminal.aixenergy.io/technologies/${slug}`,
-        keywords: [tech.name, tech.sector || 'Clean Tech', 'Government Grants', 'DOE Funding', 'Clean Energy RFPs', 'Public Funding 2026'],
+        keywords: [tech.name, tech.sector || 'Clean Tech', 'Government Grants', 'DOE Funding', 'Energy Innovation RFPs', 'Public Funding 2026'],
       });
     }
   }, [tech, slug]);
@@ -129,7 +129,7 @@ export default function TechnologyHub() {
         <div className="max-w-3xl space-y-3">
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-              {tech.sector || 'Clean Energy Technology'}
+              {tech.sector || 'Energy Innovation Technology'}
             </span>
             {tech.trl_current && (
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300">

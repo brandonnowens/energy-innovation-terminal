@@ -39,10 +39,10 @@ function fmtDate(d?: string | null): string {
 
 export default function Awards() {
   useSEO({
-    title: '$104B+ Clean Energy Grant Awards & Map 2026',
-    description: 'Explore 29,300+ clean energy awards, geospatial recipient mappings, winning proposal details, and research grant allocations across US states and agencies.',
+    title: '$104B+ Energy Innovation Grant Awards & Map 2026',
+    description: 'Explore 29,300+ energy innovation awards, geospatial recipient mappings, winning proposal details, and research grant allocations across US states and agencies.',
     canonicalUrl: 'https://terminal.aixenergy.io/awards',
-    keywords: ['clean energy grant awards', 'cleantech award database', 'DOE grant recipients', 'ARPA-E awardees', 'clean energy research funding map'],
+    keywords: ['energy innovation grant awards', 'cleantech award database', 'DOE grant recipients', 'ARPA-E awardees', 'energy innovation research funding map'],
   });
 
   const { includeNyserda, isNyserda } = useNyserda();
@@ -293,7 +293,7 @@ export default function Awards() {
           { label: 'All National Awards', icon: Globe, onClick: resetAllFilters, active: !hasActiveFilters && hasArtifactsFilter === null },
           { label: 'Technical Deliverables & Reports (206)', icon: FileText, onClick: () => { resetAllFilters(); setHasArtifactsFilter(true); setView('awards'); }, active: hasArtifactsFilter === true },
           { label: 'Federal Agencies (DOE / ARPA-E / NSF)', icon: Landmark, onClick: () => { resetAllFilters(); setAgencyFilter('DOE'); }, active: agencyFilter === 'DOE' },
-          { label: 'State Clean Energy Programs (CEC / MassCEC / State)', icon: Building2, onClick: () => { resetAllFilters(); setAgencyFilter('CEC'); }, active: ['CEC', 'MassCEC', 'NYSERDA'].includes(agencyFilter) },
+          { label: 'State Energy Innovation Programs (CEC / MassCEC / State)', icon: Building2, onClick: () => { resetAllFilters(); setAgencyFilter('CEC'); }, active: ['CEC', 'MassCEC', 'NYSERDA'].includes(agencyFilter) },
           { label: 'Utility Grid Pilots', icon: Zap, onClick: () => { resetAllFilters(); setTypeFilter('utility'); }, active: typeFilter === 'utility' },
           { label: 'Universities & National Labs', icon: FlaskConical, onClick: () => { resetAllFilters(); setTypeFilter('university'); }, active: typeFilter === 'university' },
         ].map((btn, idx) => {
@@ -547,14 +547,14 @@ export default function Awards() {
             {isLoading ? (
               <div className="flex flex-col items-center justify-center py-20 space-y-3">
                 <Loader2 className="animate-spin text-indigo-600" size={32} />
-                <p className="text-sm text-slate-500 font-medium">Fetching clean energy innovation awards database...</p>
+                <p className="text-sm text-slate-500 font-medium">Fetching energy innovation innovation awards database...</p>
               </div>
             ) : data?.items?.length === 0 ? (
               <div className="text-center py-16 px-4">
                 <Trophy size={36} className="mx-auto text-slate-300 mb-3" />
                 <h3 className="text-sm font-bold text-slate-800">No Awards Found</h3>
                 <p className="text-xs text-slate-500 max-w-md mx-auto mt-1 mb-4">
-                  No clean energy innovation awards match your current filters.
+                  No energy innovation innovation awards match your current filters.
                 </p>
                 <button
                   onClick={resetAllFilters}
@@ -624,7 +624,7 @@ export default function Awards() {
                       {/* Project Title */}
                       <td className="px-4 py-3.5 max-w-[380px]">
                         <div className="font-medium text-slate-200 line-clamp-2 leading-snug group-hover:text-white transition-colors">
-                          {a.project_title || 'Clean Energy Innovation Research Grant'}
+                          {a.project_title || 'Energy Innovation Innovation Research Grant'}
                         </div>
                         {a.project_abstract && (
                           <div className="text-[11px] text-slate-400 line-clamp-1 mt-1 leading-normal">
@@ -788,7 +788,7 @@ export default function Awards() {
                       {/* Primary Tech & Stage */}
                       <td className="px-4 py-3.5 max-w-[220px]">
                         <span className="inline-block px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-[11px] font-bold border border-indigo-100 mb-1">
-                          {r.primary_technology || 'Clean Energy'}
+                          {r.primary_technology || 'Energy Innovation'}
                         </span>
                         <div className="text-[10px] text-slate-500 font-medium">
                           {r.commercialization_stage || 'Applied R&D'}

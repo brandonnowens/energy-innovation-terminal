@@ -1,8 +1,8 @@
 """
-Automated Daily Clean Energy Intelligence Digest Generation Engine.
+Automated Daily Energy Innovation Intelligence Digest Generation Engine.
 
 Synthesizes daily morning briefings covering:
-1. Macro Clean Energy Capital & Solicitation Flow
+1. Macro Energy Innovation Capital & Solicitation Flow
 2. Newly Released Solicitations & RFPs (Federal, State, Utilities)
 3. Upcoming Critical Application Deadlines (Next 7-14 Days)
 4. Recipient Venture, Award & Patent Wire
@@ -55,7 +55,7 @@ def format_currency(val: Optional[float]) -> str:
 
 
 def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) -> Dict[str, Any]:
-    """Compile and generate the Daily Clean Energy Intelligence Digest."""
+    """Compile and generate the Daily Energy Innovation Intelligence Digest."""
     if not target_date_str:
         now = datetime.now(timezone.utc)
         target_date_str = now.strftime("%Y-%m-%d")
@@ -93,7 +93,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
             "id": opp.id,
             "solicitation_number": opp.solicitation_number,
             "name": opp.name,
-            "agency": opp.agency or "Clean Energy Agency",
+            "agency": opp.agency or "Energy Innovation Agency",
             "jurisdiction": opp.jurisdiction,
             "total_funding": opp.total_funding,
             "total_funding_display": format_currency(opp.total_funding),
@@ -144,7 +144,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
             "recipient_city": aw.recipient_city,
             "recipient_state": aw.recipient_state,
             "award_amount_display": format_currency(aw.award_amount),
-            "project_title": aw.project_title or "Clean Energy Deployment & Demonstration",
+            "project_title": aw.project_title or "Energy Innovation Deployment & Demonstration",
             "pi_name": aw.pi_name,
             "recipient_type": aw.recipient_type or "company"
         })
@@ -233,7 +233,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
 
     # 7. Executive Editorial Narrative
     editorial_narrative = (
-        f"Public clean energy funding markets open today with {open_opps_count:,} active competitive solicitations "
+        f"Public energy innovation funding markets open today with {open_opps_count:,} active competitive solicitations "
         f"representing {format_currency(total_active_capital)} in unallocated non-dilutive capital across federal, "
         f"state, and utility funding authorities. Key momentum centers on grid resilience, high-density storage, "
         f"and industrial decarbonization programs with heavy IRA Title 26 bonus credit alignment."
@@ -243,7 +243,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
         "edition_date": target_date_str,
         "formatted_date": formatted_date,
         "edition_number": edition_number,
-        "headline": f"Daily Clean Energy Intelligence Briefing: {formatted_date}",
+        "headline": f"Daily Energy Innovation Intelligence Briefing: {formatted_date}",
         "editorial_narrative": editorial_narrative,
         "macro_metrics": {
             "open_solicitations_count": open_opps_count,
@@ -347,7 +347,7 @@ def get_digest_archive_list(db: Session) -> List[Dict[str, Any]]:
             archive.append({
                 "date": d_str,
                 "formatted_date": dt.strftime("%B %d, %Y"),
-                "headline": f"Daily Clean Energy Intelligence Briefing - {dt.strftime('%b %d, %Y')}",
+                "headline": f"Daily Energy Innovation Intelligence Briefing - {dt.strftime('%b %d, %Y')}",
                 "is_today": d_str == today_dt.strftime("%Y-%m-%d")
             })
         except ValueError:

@@ -45,7 +45,7 @@ export default function TavusVideoConversation({
   const [isInitializing, setIsInitializing] = useState(false);
   const [activeConversation, setActiveConversation] = useState<TavusConversationResponse | null>(null);
   const [ragCitations, setRagCitations] = useState<ChatCitationsMetadata | null>(null);
-  const [detectedTopic, setDetectedTopic] = useState<string>('US Clean Energy Innovation & Capital Intelligence');
+  const [detectedTopic, setDetectedTopic] = useState<string>('US Energy Innovation Innovation & Capital Intelligence');
   const [activeQuery, setActiveQuery] = useState<string>('');
   const [executiveGist, setExecutiveGist] = useState<string>('');
   const [keyEntities, setKeyEntities] = useState<string[]>([]);
@@ -766,7 +766,7 @@ export default function TavusVideoConversation({
 
                           <div className="space-y-1">
                             <div className="font-semibold text-white text-[12px] leading-snug">
-                              {detectedTopic || 'Clean Energy Discussion'}
+                              {detectedTopic || 'Energy Innovation Discussion'}
                             </div>
                             {executiveGist && (
                               <p className="text-[11px] text-slate-300 leading-relaxed bg-slate-900/40 p-2 rounded-lg border border-slate-800/80">
@@ -856,7 +856,7 @@ export default function TavusVideoConversation({
                                 >
                                   <div className="truncate pr-2">
                                     <span className="font-semibold text-white group-hover:text-emerald-300 truncate block">
-                                      {awd.project_title || 'Clean Energy Demonstration'}
+                                      {awd.project_title || 'Energy Innovation Demonstration'}
                                     </span>
                                     <span className="text-slate-400 text-[10.5px] truncate block">
                                       {awd.recipient_name} {awd.year ? `(${awd.year})` : ''}

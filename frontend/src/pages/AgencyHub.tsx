@@ -58,10 +58,10 @@ export default function AgencyHub() {
   useEffect(() => {
     if (org) {
       updatePageMeta({
-        title: `${org.name} - Clean Energy Solicitations & Funding Programs`,
-        description: `Explore open clean energy funding solicitations, active programs, and historical awards administered by ${org.name}. ${org.description || ''}`,
+        title: `${org.name} - Energy Innovation Solicitations & Funding Programs`,
+        description: `Explore open energy innovation funding solicitations, active programs, and historical awards administered by ${org.name}. ${org.description || ''}`,
         canonicalUrl: `https://energyinnovation.terminal/agencies/${org.id}`,
-        keywords: [org.name, 'Clean Energy Grants', 'Public Solicitations', 'RFPs', 'Funding Programs'],
+        keywords: [org.name, 'Energy Innovation Grants', 'Public Solicitations', 'RFPs', 'Funding Programs'],
       });
     }
   }, [org]);

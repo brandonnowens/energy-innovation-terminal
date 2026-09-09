@@ -249,7 +249,7 @@ export const AwardMap: React.FC<AwardMapProps> = ({
   const getMarkerCategory = (m: AwardMapMarker): string => {
     if (colorBy === 'technology') {
       const t = m.technologies?.[0] || m.primary_technology;
-      return t || 'Clean Energy';
+      return t || 'Energy Innovation';
     }
     if (colorBy === 'sector') {
       const s = m.sectors?.[0] || m.primary_sector;

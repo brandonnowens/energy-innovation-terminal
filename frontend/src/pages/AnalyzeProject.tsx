@@ -132,14 +132,14 @@ export const ORGANIZATIONS: OrgMeta[] = [
   { code: 'Empire State Development', label: 'Empire State Development', desc: 'Empire State Development (ESD & NY Ventures)', category: 'state', category_label: 'State Agency', state: 'NY' },
   { code: 'CEC', label: 'CEC', desc: 'California Energy Commission', category: 'state', category_label: 'State Energy Agency', state: 'CA' },
   { code: 'California GO-Biz', label: 'California GO-Biz', desc: 'California Governor\'s Office of Business and Economic Development', category: 'state', category_label: 'State Agency', state: 'CA' },
-  { code: 'MassCEC', label: 'MassCEC', desc: 'Massachusetts Clean Energy Center', category: 'state', category_label: 'State Energy Agency', state: 'MA' },
+  { code: 'MassCEC', label: 'MassCEC', desc: 'Massachusetts Energy Innovation Center', category: 'state', category_label: 'State Energy Agency', state: 'MA' },
   { code: 'MassVentures', label: 'MassVentures', desc: 'Massachusetts Technology Development Corporation', category: 'state', category_label: 'State Agency', state: 'MA' },
   { code: 'TX SECO', label: 'TX SECO', desc: 'Texas State Energy Conservation Office', category: 'state', category_label: 'State Energy Agency', state: 'TX' },
   { code: 'Colorado CEO', label: 'Colorado CEO', desc: 'Colorado Energy Office', category: 'state', category_label: 'State Energy Agency', state: 'CO' },
   { code: 'Colorado OEDIT', label: 'Colorado OEDIT', desc: 'Colorado Office of Economic Development & International Trade', category: 'state', category_label: 'State Agency', state: 'CO' },
   { code: 'IL DCEO', label: 'IL DCEO', desc: 'Illinois Department of Commerce & Economic Opportunity', category: 'state', category_label: 'State Agency', state: 'IL' },
   { code: 'NJEDA', label: 'NJEDA', desc: 'New Jersey Economic Development Authority', category: 'state', category_label: 'State Agency', state: 'NJ' },
-  { code: 'JobsOhio', label: 'JobsOhio', desc: 'JobsOhio Clean Energy & Advanced Manufacturing', category: 'state', category_label: 'State Agency', state: 'OH' },
+  { code: 'JobsOhio', label: 'JobsOhio', desc: 'JobsOhio Energy Innovation & Advanced Manufacturing', category: 'state', category_label: 'State Agency', state: 'OH' },
   { code: 'MEDC', label: 'MEDC', desc: 'Michigan Economic Development Corporation', category: 'state', category_label: 'State Agency', state: 'MI' },
   { code: 'Ben Franklin Tech Partners', label: 'Ben Franklin Tech Partners', desc: 'Ben Franklin Technology Partners (Pennsylvania)', category: 'state', category_label: 'State Agency', state: 'PA' },
   { code: 'MD MEA', label: 'MD MEA', desc: 'Maryland Energy Administration', category: 'state', category_label: 'State Energy Agency', state: 'MD' },
@@ -892,13 +892,13 @@ function CopyBriefButton({ data }: { data: AnalysisResponse }) {
 
 export default function AnalyzeProject() {
   useSEO({
-    title: 'Clean Energy Grant Match Engine & Funding Stacks',
-    description: 'Autonomous AI matching engine evaluating clean energy proposals against 56,000+ solicitations, DOE funding opportunities, ARPA-E, NSF, and 140+ utilities to engineer non-dilutive capital stacks.',
+    title: 'Energy Innovation Grant Match Engine & Funding Stacks',
+    description: 'Autonomous AI matching engine evaluating energy innovation proposals against 56,000+ solicitations, DOE funding opportunities, ARPA-E, NSF, and 140+ utilities to engineer non-dilutive capital stacks.',
     canonicalUrl: 'https://terminal.aixenergy.io/',
     keywords: [
-      'clean energy grant match engine',
+      'energy innovation grant match engine',
       'non-dilutive funding stacks',
-      'DOE clean energy solicitations',
+      'DOE energy innovation solicitations',
       'climate tech grants',
       'energy innovation proposals',
       'ARPA-E grants',
@@ -1210,7 +1210,7 @@ export default function AnalyzeProject() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
             <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 uppercase tracking-wider">
               <Sparkles size={12} className="text-indigo-600 dark:text-indigo-400" />
-              <span>Quick Test Presets · 1-Click Sample Clean Energy Projects</span>
+              <span>Quick Test Presets · 1-Click Sample Energy Innovation Projects</span>
             </span>
             <span className="text-[10.5px] text-slate-500 dark:text-slate-400">Click any preset to autofill scope, budget &amp; taxonomy:</span>
           </div>
@@ -1687,7 +1687,7 @@ export default function AnalyzeProject() {
                     <span className="px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 text-[10px] font-mono font-bold">30% ITC</span>
                   </div>
                   <div className="text-[11px] text-slate-600 dark:text-slate-300">
-                    Direct qualification pathway for clean energy equipment manufacturing and critical minerals extraction.
+                    Direct qualification pathway for energy innovation equipment manufacturing and critical minerals extraction.
                   </div>
                 </div>
 

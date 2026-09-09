@@ -60,7 +60,7 @@ export default function System() {
     },
     {
       tier: 'Tier 2',
-      title: 'State Clean Energy & Economic Development Authorities',
+      title: 'State Energy Innovation & Economic Development Authorities',
       scope: '50-state statutory energy authorities, economic development agencies, green banks, and clean tech matching funds',
       authorities:
         'CEC (California), MassCEC & MassVentures (Massachusetts), NYSERDA (New York), Empire State Development (ESD), GO-Biz, JobsOhio, MEDC, Ben Franklin Tech Partners, CT Innovations, TEDCO, VIPC, OEDIT, DEED',
@@ -275,7 +275,7 @@ export default function System() {
             <span className="text-[13px] font-bold text-slate-900">Deterministic Classification</span>
           </div>
           <p className="text-[12px] text-slate-600 leading-relaxed">
-            15 canonical clean energy technologies, 8 sectors, 10 fuels, and 6 innovation stages disambiguated via deterministic multi-keyword boundaries with zero hallucination.
+            15 canonical energy innovation technologies, 8 sectors, 10 fuels, and 6 innovation stages disambiguated via deterministic multi-keyword boundaries with zero hallucination.
           </p>
         </div>
 
@@ -295,7 +295,7 @@ export default function System() {
             <span className="text-[13px] font-bold text-slate-900">Integrity & Linkage Verification</span>
           </div>
           <p className="text-[12px] text-slate-600 leading-relaxed">
-            Every transaction is linked to an issuing organization, opportunity, and clean energy category with zero broken foreign keys or duplicate category tuples.
+            Every transaction is linked to an issuing organization, opportunity, and energy innovation category with zero broken foreign keys or duplicate category tuples.
           </p>
         </div>
       </div>

@@ -5,10 +5,10 @@ import { useSEO } from '../utils/seo';
 
 export default function VenturePatentsPage() {
   useSEO({
-    title: 'USPTO Bayh-Dole Patents & Clean Energy VC Linkages',
-    description: 'Track how non-dilutive government grants catalyze breakthrough clean energy technology patents and multi-billion-dollar private venture capital investments.',
+    title: 'USPTO Bayh-Dole Patents & Energy Innovation VC Linkages',
+    description: 'Track how non-dilutive government grants catalyze breakthrough energy innovation technology patents and multi-billion-dollar private venture capital investments.',
     canonicalUrl: 'https://terminal.aixenergy.io/patents',
-    keywords: ['clean energy patents', 'Bayh-Dole Act energy grants', 'cleantech venture capital', 'USPTO energy technology', 'climate tech funding rounds'],
+    keywords: ['energy innovation patents', 'Bayh-Dole Act energy grants', 'cleantech venture capital', 'USPTO energy technology', 'climate tech funding rounds'],
   });
 
   return (
@@ -28,7 +28,7 @@ export default function VenturePatentsPage() {
             Venture &amp; Patent Commercialization Hub
           </h1>
           <p className="text-[13px] sm:text-sm text-slate-500 max-w-3xl mt-1 leading-relaxed">
-            Track how non-dilutive government funding catalyzes breakthrough clean energy technology patents and multi-billion-dollar private venture capital rounds.
+            Track how non-dilutive government funding catalyzes breakthrough energy innovation technology patents and multi-billion-dollar private venture capital rounds.
           </p>
         </div>
       </div>

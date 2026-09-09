@@ -137,7 +137,7 @@ export function ApiDocsModal({ isOpen, onClose }: ApiDocsModalProps) {
 
                 <div className="space-y-2">
                   {[
-                    { method: 'GET', path: '/api/v1/digest/latest', desc: 'Today\'s synthesized clean energy morning briefing & macro capital flow.' },
+                    { method: 'GET', path: '/api/v1/digest/latest', desc: 'Today\'s synthesized energy innovation morning briefing & macro capital flow.' },
                     { method: 'POST', path: '/api/v1/intelligence/capital-stack', desc: 'Title 26 IRA Section 48/45X tax credits, Green Bank debt, and WACC solver.' },
                     { method: 'POST', path: '/api/v1/intelligence/bankability', desc: '4-Pillar Technology Bankability Rating (TBR) & commercial gap score.' },
                     { method: 'GET', path: '/api/v1/intelligence/forecasts', desc: '18-month early-warning predictive radar of unreleased RFPs.' },
@@ -231,7 +231,7 @@ export function ApiDocsModal({ isOpen, onClose }: ApiDocsModalProps) {
                 <pre className="p-3 rounded-xl bg-slate-950 text-slate-200 font-mono text-[11px] overflow-x-auto">
 {`import requests
 
-# Fetch today's Daily Clean Energy Intelligence Briefing
+# Fetch today's Daily Energy Innovation Intelligence Briefing
 resp = requests.get("${API_HOST}/api/v1/digest/latest")
 digest = resp.json()
 print(f"Headline: {digest['headline']}")

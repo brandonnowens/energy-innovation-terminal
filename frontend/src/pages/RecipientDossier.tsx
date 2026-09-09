@@ -89,24 +89,24 @@ export default function RecipientDossier() {
 
   useEffect(() => {
     if (recipient) {
-      const tech = recipient.primary_technology || 'Clean Energy';
+      const tech = recipient.primary_technology || 'Energy Innovation';
       const funding = recipient.total_funding_received 
         ? `$${(recipient.total_funding_received / 1_000_000).toFixed(1)}M` 
         : '$0';
       
       updatePageMeta({
-        title: `${recipient.name} - Clean Energy Funding Dossier & Grants`,
+        title: `${recipient.name} - Energy Innovation Funding Dossier & Grants`,
         description: `Tracked with ${funding} in public grant funding across ${recipient.total_awards_count || 0} awards in ${tech}. Explore DOE awards, patent linkages, and venture attributions.`,
         canonicalUrl: `https://energyinnovation.terminal/recipients/${recipient.id}`,
         ogImage: `https://energyinnovation.terminal/api/seo/badge/${recipient.id}.svg`,
-        keywords: [recipient.name, tech, recipient.sector || 'Clean Tech', 'DOE Grants', 'Clean Energy Awards', 'Public Funding'],
+        keywords: [recipient.name, tech, recipient.sector || 'Clean Tech', 'DOE Grants', 'Energy Innovation Awards', 'Public Funding'],
         jsonLd: {
           '@context': 'https://schema.org',
           '@type': 'Organization',
           name: recipient.name,
           description: recipient.description,
           url: recipient.website_url,
-          knowsAbout: [tech, recipient.sector || 'Clean Energy'],
+          knowsAbout: [tech, recipient.sector || 'Energy Innovation'],
         },
       });
     }
@@ -114,7 +114,7 @@ export default function RecipientDossier() {
 
   const copyBadgeSnippet = () => {
     if (!recipient) return;
-    const snippet = `<a href="https://energyinnovation.terminal/recipients/${recipient.id}"><img src="https://energyinnovation.terminal/api/seo/badge/${recipient.id}.svg" alt="${recipient.name} Clean Energy Funding" /></a>`;
+    const snippet = `<a href="https://energyinnovation.terminal/recipients/${recipient.id}"><img src="https://energyinnovation.terminal/api/seo/badge/${recipient.id}.svg" alt="${recipient.name} Energy Innovation Funding" /></a>`;
     navigator.clipboard.writeText(snippet);
     setCopiedBadge(true);
     setTimeout(() => setCopiedBadge(false), 3000);
@@ -508,7 +508,7 @@ export default function RecipientDossier() {
             <ShieldCheck className="h-4 w-4 text-cyan-600" /> Embed Verified Public Funding Badge on Your Website
           </div>
           <p className="text-xs text-slate-500">
-            Showcase your tracked federal and state clean energy grant validation to investors, partners, and customers.
+            Showcase your tracked federal and state energy innovation grant validation to investors, partners, and customers.
           </p>
         </div>
         <button

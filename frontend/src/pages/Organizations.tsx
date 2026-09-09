@@ -22,10 +22,10 @@ function fmt(v?: number | null): string {
 
 export default function Organizations() {
   useSEO({
-    title: 'Directory of 140+ Clean Energy Funding Organizations & Utilities',
+    title: 'Directory of 140+ Energy Innovation Funding Organizations & Utilities',
     description: 'Explore the complete index of US federal grant agencies, state energy offices, investor-owned electric utilities, and climate foundations.',
     canonicalUrl: 'https://terminal.aixenergy.io/organizations',
-    keywords: ['clean energy funding organizations', 'utility innovation programs', 'state energy agencies directory', 'DOE offices', 'clean energy foundations'],
+    keywords: ['energy innovation funding organizations', 'utility innovation programs', 'state energy agencies directory', 'DOE offices', 'energy innovation foundations'],
   });
 
   const { includeNyserda, isNyserda } = useNyserda();

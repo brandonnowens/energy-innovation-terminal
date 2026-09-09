@@ -527,7 +527,7 @@ function InsightsDrawer({ analyticsData, onClose, onSelectAgency, onSelectTech }
 
         {stateCorridors.length > 0 && (
           <div>
-            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center gap-1.5"><Globe size={13} className="text-sky-600" /> Top Regional Clean Energy Corridors</h3>
+            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center gap-1.5"><Globe size={13} className="text-sky-600" /> Top Regional Energy Innovation Corridors</h3>
             <div className="grid grid-cols-2 gap-2">
               {stateCorridors.slice(0, 6).map((st: any, i: number) => (
                 <div key={i} className="p-2.5 bg-slate-50 rounded-lg border border-slate-200/80 text-xs">

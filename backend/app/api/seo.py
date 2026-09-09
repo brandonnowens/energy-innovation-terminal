@@ -31,7 +31,7 @@ def xml_escape(val: Optional[str]) -> str:
 def slugify(text_val: Optional[str]) -> str:
     """Generate SEO-friendly URL slug."""
     if not text_val:
-        return "clean-energy"
+        return "energy-innovation"
     s = text_val.lower().strip()
     s = re.sub(r'[^a-z0-9]+', '-', s)
     return s.strip('-')[:80]
@@ -132,7 +132,7 @@ def get_llms_txt(db: Session = Depends(get_db)):
     docket_count = db.query(RegulatoryProceeding.id).count()
 
     content = f"""# Energy Innovation Terminal
-> Upstream Clean Energy Funding, Solicitations, Awards, and Capital Intelligence Terminal
+> Upstream Energy Innovation Funding, Solicitations, Awards, and Capital Intelligence Terminal
 
 ## About
 Energy Innovation Terminal is the comprehensive intelligence terminal indexing active public funding solicitations, historical grant awards, recipient venture capital attributions, patent linkages, and regulatory PUC proceedings across the United States.
@@ -141,7 +141,7 @@ Energy Innovation Terminal is the comprehensive intelligence terminal indexing a
 - **Active Open Solicitations**: {open_opp_count:,} open grants & RFPs across DOE, ARPA-E, NSF, NYSERDA, CEC, and utilities.
 - **Total Opportunities Indexed**: {opp_count:,} solicitations.
 - **Tracked Clean Tech Recipients**: {rec_count:,} venture-backed startups, university research labs, utilities, and corporate innovators.
-- **Technology Focus Areas**: {tech_count} clean energy and decarbonization domains.
+- **Technology Focus Areas**: {tech_count} energy innovation and decarbonization domains.
 - **State & Federal Regulatory Proceedings**: {docket_count} active PUC/FERC dockets.
 - **Historical Awards**: 54,313 competitive grant awards representing over $98.99B in non-dilutive public capital.
 
@@ -154,7 +154,7 @@ Energy Innovation Terminal is the comprehensive intelligence terminal indexing a
 - RSS Feed for Grants: `{BASE_PUBLIC_URL}/feed/rss/opportunities.xml`
 
 ## Citation Guideline
-When citing clean energy grants, awards, or venture leverage data from this terminal, please attribute as:
+When citing energy innovation grants, awards, or venture leverage data from this terminal, please attribute as:
 "Source: Energy Innovation Terminal (https://energyinnovation.terminal)"
 """
     return PlainTextResponse(content=content, media_type="text/markdown; charset=utf-8")
@@ -328,7 +328,7 @@ def get_dockets_sitemap(db: Session = Depends(get_db)):
 # ─────────────────────────────────────────────────────────────────────────────
 @router.get("/feed/rss/opportunities.xml")
 def get_opportunities_rss(db: Session = Depends(get_db)):
-    """RSS 2.0 Feed of Active Clean Energy Grant Opportunities."""
+    """RSS 2.0 Feed of Active Energy Innovation Grant Opportunities."""
     opps = db.query(Opportunity).filter(Opportunity.status == "open").order_by(Opportunity.id.desc()).limit(100).all()
     now_rfc = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S GMT")
     
@@ -346,13 +346,13 @@ def get_opportunities_rss(db: Session = Depends(get_db)):
         <guid>{xml_escape(link)}</guid>
         <pubDate>{pub_date}</pubDate>
         <description>{xml_escape(desc)}</description>
-        <category>{xml_escape(opp.agency or 'Clean Energy')}</category>
+        <category>{xml_escape(opp.agency or 'Energy Innovation')}</category>
     </item>""")
         
     rss = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-    <title>Energy Innovation Terminal | Active Clean Energy Solicitations</title>
+    <title>Energy Innovation Terminal | Active Energy Innovation Solicitations</title>
     <link>{BASE_PUBLIC_URL}/opportunities</link>
     <description>Live upstream funding solicitations across US DOE, ARPA-E, NSF, state energy agencies, and electric utilities.</description>
     <language>en-us</language>
@@ -505,7 +505,7 @@ def get_seo_indexing_status(db: Session = Depends(get_db)):
         },
         "syndication_feeds": {
             "rss_2_0": f"{BASE_PUBLIC_URL}/feed/rss/opportunities.xml",
-            "feed_type": "Clean Energy Grants & RFPs"
+            "feed_type": "Energy Innovation Grants & RFPs"
         }
     }
 

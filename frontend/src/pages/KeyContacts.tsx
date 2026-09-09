@@ -64,20 +64,20 @@ function EmailComposerModal({ contact, onClose }: EmailComposerModalProps) {
   useMemo(() => {
     const name = contact.name_display;
     const inst = contact.institution_name || contact.organization_name || 'your institution';
-    const tech = contact.technology_area || 'Clean Energy Innovation';
+    const tech = contact.technology_area || 'Energy Innovation Innovation';
 
     if (template === 'teaming') {
       setSubject(`Grant Collaboration & Teaming Inquiry: ${tech} - ${name}`);
-      setBody(`Dear ${name},\n\nI hope this email finds you well.\n\nI am reaching out regarding your pioneering innovation work in ${tech} at ${inst}. We are currently assembling a multi-disciplinary consortium for upcoming non-dilutive clean energy grant solicitations (including federal DOE/ARPA-E and state innovation programs).\n\nGiven your track record and research leadership, we would welcome the opportunity to explore potential teaming, subcontracting, or advisory alignment on upcoming proposals.\n\nWould you have 15 minutes in the coming weeks for a brief introductory conversation?\n\nThank you for your time and continued leadership in clean technology.\n\nBest regards,\n[Your Name]\n[Your Organization / Clean Energy Project]\n[Your Phone / Contact Info]`);
+      setBody(`Dear ${name},\n\nI hope this email finds you well.\n\nI am reaching out regarding your pioneering innovation work in ${tech} at ${inst}. We are currently assembling a multi-disciplinary consortium for upcoming non-dilutive energy innovation grant solicitations (including federal DOE/ARPA-E and state innovation programs).\n\nGiven your track record and research leadership, we would welcome the opportunity to explore potential teaming, subcontracting, or advisory alignment on upcoming proposals.\n\nWould you have 15 minutes in the coming weeks for a brief introductory conversation?\n\nThank you for your time and continued leadership in clean technology.\n\nBest regards,\n[Your Name]\n[Your Organization / Energy Innovation Project]\n[Your Phone / Contact Info]`);
     } else if (template === 'tech_inquiry') {
       setSubject(`Inquiry regarding ${tech} Research & Technology Track Record - ${name}`);
-      setBody(`Dear ${name},\n\nI am contacting you regarding your research portfolio and funded projects in ${tech} at ${inst}.\n\nOur team is currently evaluating commercialization trajectories, intellectual property, and deployment readiness across the clean energy sector. We reviewed your public project filings and were deeply impressed by your advancements.\n\nWe would appreciate the opportunity to learn more about the current stage of development and any potential collaboration or commercial demonstration opportunities.\n\nLooking forward to connecting.\n\nSincerely,\n[Your Name]\n[Your Title / Organization]`);
+      setBody(`Dear ${name},\n\nI am contacting you regarding your research portfolio and funded projects in ${tech} at ${inst}.\n\nOur team is currently evaluating commercialization trajectories, intellectual property, and deployment readiness across the energy innovation sector. We reviewed your public project filings and were deeply impressed by your advancements.\n\nWe would appreciate the opportunity to learn more about the current stage of development and any potential collaboration or commercial demonstration opportunities.\n\nLooking forward to connecting.\n\nSincerely,\n[Your Name]\n[Your Title / Organization]`);
     } else if (template === 'solicitation_question') {
-      setSubject(`Inquiry regarding Clean Energy Solicitation & Program Scope - Attn: ${name}`);
-      setBody(`Dear ${name},\n\nI am writing to inquire about clean energy funding opportunities and program priorities within ${inst}.\n\nOur team is developing an innovative project in ${tech} and we are reviewing program guidelines, eligibility criteria, and upcoming submission cycles.\n\nCould you kindly confirm if this technology focus aligns with current program objectives, and whether technical guidance is available for prospective applicants?\n\nThank you for your assistance and guidance.\n\nRespectfully,\n[Your Name]\n[Your Organization]`);
+      setSubject(`Inquiry regarding Energy Innovation Solicitation & Program Scope - Attn: ${name}`);
+      setBody(`Dear ${name},\n\nI am writing to inquire about energy innovation funding opportunities and program priorities within ${inst}.\n\nOur team is developing an innovative project in ${tech} and we are reviewing program guidelines, eligibility criteria, and upcoming submission cycles.\n\nCould you kindly confirm if this technology focus aligns with current program objectives, and whether technical guidance is available for prospective applicants?\n\nThank you for your assistance and guidance.\n\nRespectfully,\n[Your Name]\n[Your Organization]`);
     } else {
-      setSubject(`Clean Energy Ecosystem Connection: ${tech} - ${name}`);
-      setBody(`Dear ${name},\n\nI am reaching out from the clean energy innovation community regarding your work in ${tech} at ${inst}.\n\nWe are actively engaged in accelerating high-impact energy solutions and would value the chance to connect, exchange perspectives, and explore mutual synergies across our respective initiatives.\n\nPlease let me know if you would be open to a brief introductory discussion.\n\nBest regards,\n[Your Name]\n[Your Organization]`);
+      setSubject(`Energy Innovation Ecosystem Connection: ${tech} - ${name}`);
+      setBody(`Dear ${name},\n\nI am reaching out from the energy innovation innovation community regarding your work in ${tech} at ${inst}.\n\nWe are actively engaged in accelerating high-impact energy solutions and would value the chance to connect, exchange perspectives, and explore mutual synergies across our respective initiatives.\n\nPlease let me know if you would be open to a brief introductory discussion.\n\nBest regards,\n[Your Name]\n[Your Organization]`);
     }
   }, [template, contact]);
 
@@ -290,7 +290,7 @@ export default function KeyContacts() {
     queryKey: ['say-yes-matrix-contacts', selectedState, selectedTech, includeNyserda],
     queryFn: () => api.getSayYesMatrix({
       location: selectedState !== 'all' ? selectedState : (includeNyserda ? 'NY' : 'CA'),
-      technology_areas: selectedTech !== 'all' ? [selectedTech] : ['Energy Storage', 'Grid Modernization', 'Clean Energy'],
+      technology_areas: selectedTech !== 'all' ? [selectedTech] : ['Energy Storage', 'Grid Modernization', 'Energy Innovation'],
       limit: 25,
     }),
     enabled: selectedCategory === 'top_25_say_yes',
@@ -598,7 +598,7 @@ END:VCARD`;
           { id: 'funder_officers', label: 'Agency Program Officers', icon: Landmark, count: statsData?.program_officers_count },
           { id: 'domain_experts', label: 'Technology & Sector Experts (PIs)', icon: FlaskConical, count: statsData?.domain_experts_count },
           { id: 'institutional_gateways', label: 'National Lab Desks', icon: Building2, count: statsData?.institutional_gateways_count },
-          { id: 'utilities', label: 'Utility Clean Energy Leads', icon: Zap, count: statsData?.utility_leads_count },
+          { id: 'utilities', label: 'Utility Energy Innovation Leads', icon: Zap, count: statsData?.utility_leads_count },
         ].map(tab => {
           const Icon = tab.icon;
           const isSelected = selectedCategory === tab.id;
@@ -816,14 +816,14 @@ END:VCARD`;
         ) : (
           <SayYesDecisionMakerMatrix
             organizations={sayYesData?.say_yes_matrix || []}
-            projectTitle="Clean Energy Innovation Initiative"
+            projectTitle="Energy Innovation Innovation Initiative"
             projectLocation={selectedState !== 'all' ? selectedState : 'New York'}
           />
         )
       ) : isLoading ? (
         <div className="h-72 flex flex-col items-center justify-center gap-3 bg-white rounded-2xl border border-slate-200/80 shadow-2xs">
           <Loader2 className="animate-spin text-indigo-600" size={32} />
-          <span className="text-xs font-semibold text-slate-600">Querying verified clean energy innovation contacts...</span>
+          <span className="text-xs font-semibold text-slate-600">Querying verified energy innovation innovation contacts...</span>
         </div>
       ) : (
         <div className="flex gap-6 items-start">

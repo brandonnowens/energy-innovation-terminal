@@ -432,7 +432,7 @@ export default function Results() {
 
                         {metrics.total_clean_energy_mwh_yr > 0 && (
                           <div className="p-2.5 bg-white rounded-lg border border-slate-200/70">
-                            <div className="text-[9.5px] font-bold text-slate-400 uppercase tracking-wider">Clean Energy</div>
+                            <div className="text-[9.5px] font-bold text-slate-400 uppercase tracking-wider">Energy Innovation</div>
                             <div className="text-sm font-bold font-mono text-cyan-700 mt-0.5">
                               {formatNumber(metrics.total_clean_energy_mwh_yr)} MWh
                             </div>

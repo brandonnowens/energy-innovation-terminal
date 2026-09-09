@@ -44,8 +44,8 @@ export default function DailyDigest() {
 
 
   useSEO({
-    title: 'Daily Clean Energy Intelligence Digest | Energy Innovation Terminal',
-    description: 'Automated morning briefing analyzing active clean energy funding solicitations, upcoming deadlines, venture attributions, and regulatory proceedings.',
+    title: 'Daily Energy Innovation Intelligence Digest | Energy Innovation Terminal',
+    description: 'Automated morning briefing analyzing active energy innovation funding solicitations, upcoming deadlines, venture attributions, and regulatory proceedings.',
   });
 
   // Fetch Digest with smooth cache retention

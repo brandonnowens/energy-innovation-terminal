@@ -365,7 +365,7 @@ export function ProjectDocumentUploader({
                 {extractionResult.extracted_profile.technology_areas.slice(0, 2).join(', ')}
               </div>
               <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
-                {extractionResult.extracted_profile.sectors?.[0] || 'Clean Energy'}
+                {extractionResult.extracted_profile.sectors?.[0] || 'Energy Innovation'}
               </div>
             </div>
           </div>

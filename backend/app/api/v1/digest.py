@@ -1,4 +1,4 @@
-"""Daily Clean Energy Intelligence Digest API Router (v1)."""
+"""Daily Energy Innovation Intelligence Digest API Router (v1)."""
 
 from typing import Optional, Dict, Any, List
 from fastapi import APIRouter, Depends, HTTPException, Query, BackgroundTasks
@@ -16,7 +16,7 @@ router = APIRouter(prefix="/digest", tags=["Daily Digest"])
 @router.get("/latest")
 @router.get("/today")
 def get_latest_digest(db: Session = Depends(get_db)):
-    """Retrieve today's Daily Clean Energy Intelligence Digest."""
+    """Retrieve today's Daily Energy Innovation Intelligence Digest."""
     try:
         return get_daily_digest(db)
     except Exception as e:

@@ -2354,7 +2354,7 @@ export const api = {
     return res.json();
   },
 
-  // Daily Clean Energy Intelligence Digest
+  // Daily Energy Innovation Intelligence Digest
   getDailyDigest: async (dateStr?: string): Promise<DailyDigest> => {
     const endpoint = dateStr ? `/api/v1/digest/${dateStr}` : '/api/v1/digest/latest';
     const res = await fetch(endpoint, { headers: getAuthHeaders() });
@@ -4072,7 +4072,7 @@ function generateFallbackCorpusDailyActivity(days: number = 60): CorpusDailyActi
 
   const sampleAgencies = ['DOE', 'NYSERDA', 'CEC', 'ARPA-E', 'MassCEC', 'NSF', 'Con Edison', 'National Grid'];
   const sampleTitles = [
-    'Clean Energy Deep Decarbonization Accelerator',
+    'Energy Innovation Deep Decarbonization Accelerator',
     'Advanced Long-Duration Grid Battery Demo',
     'NextGen High-Temperature Heat Pumps for Multi-Family',
     'Offshore Wind Transmission High-Voltage Interconnect',

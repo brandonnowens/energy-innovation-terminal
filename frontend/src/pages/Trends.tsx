@@ -117,7 +117,7 @@ const CockpitCard: React.FC<CockpitCardProps> = ({
         isOpen={showNYTExport}
         onClose={() => setShowNYTExport(false)}
         defaultTitle={title}
-        defaultSubtitle={subtitle || 'Macro quantitative intelligence analysis of clean energy allocations.'}
+        defaultSubtitle={subtitle || 'Macro quantitative intelligence analysis of energy innovation allocations.'}
         eyebrow="ENERGY INNOVATION MACRO TRENDS · EXECUTIVE TELEMETRY"
         targetElementId={`${id}-content`}
         stats={[
@@ -159,10 +159,10 @@ const CockpitTooltip = ({ active, payload, label, formatter }: any) => {
 
 export default function Trends() {
   useSEO({
-    title: 'US Clean Energy Capital Velocity & Grant Allocation Trends',
-    description: 'Real-time analytics and longitudinal visualization of $104B+ in clean energy funding flows, recipient distributions, and technology category trends.',
+    title: 'US Energy Innovation Capital Velocity & Grant Allocation Trends',
+    description: 'Real-time analytics and longitudinal visualization of $104B+ in energy innovation funding flows, recipient distributions, and technology category trends.',
     canonicalUrl: 'https://terminal.aixenergy.io/trends',
-    keywords: ['clean energy trends', 'energy grant analytics', 'cleantech capital velocity', 'IRA funding trajectory', 'DOE funding breakdown by state'],
+    keywords: ['energy innovation trends', 'energy grant analytics', 'cleantech capital velocity', 'IRA funding trajectory', 'DOE funding breakdown by state'],
   });
 
   const { includeNyserda, isNyserda } = useNyserda();
@@ -319,7 +319,7 @@ export default function Trends() {
             </span>
             <span className="text-xs text-slate-300 dark:text-slate-700">|</span>
             <span className="text-xs font-mono font-medium text-slate-500 dark:text-slate-400">
-              U.S. Clean Energy Capital Horizon
+              U.S. Energy Innovation Capital Horizon
             </span>
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -856,7 +856,7 @@ export default function Trends() {
           <CockpitCard
             id="cockpit-fuel"
             title="Clean Fuel &amp; Energy Carrier Trajectory"
-            subtitle="Distribution across primary clean energy carriers (Hydrogen, Electricity, Biofuels, Nuclear)"
+            subtitle="Distribution across primary energy innovation carriers (Hydrogen, Electricity, Biofuels, Nuclear)"
             badge="Carrier Allocations"
             exportCsvData={byFuel || []}
             minHeight="min-h-[260px]"

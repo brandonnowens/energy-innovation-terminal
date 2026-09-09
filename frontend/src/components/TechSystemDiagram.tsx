@@ -786,7 +786,7 @@ function generateProceduralDiagram(techId: string, techName: string, categoryNam
       x: 82,
       y: 50,
       icon: 'Zap',
-      summary: `Conditioning, compression, or power electronics stage delivering clean energy or materials to the grid/off-taker.`,
+      summary: `Conditioning, compression, or power electronics stage delivering energy innovation or materials to the grid/off-taker.`,
       operatingValue: 'Standardized Commercial Output Spec',
       materials: 'Silicon Carbide / High-Voltage Power Components',
       failureMode: 'Grid interconnection transients and thermal overheating during peak export.',

@@ -119,7 +119,7 @@ export default function Dockets() {
             Regulatory Reference &amp; Energy Dockets
           </h1>
           <p className="text-[13px] sm:text-sm text-slate-500 max-w-3xl mt-1 leading-relaxed">
-            Public Utility Commission orders, active interconnection dockets, large load &amp; AI data center inquiries, Virtual Power Plant rate reforms, and utility filings shaping clean energy commercialization.
+            Public Utility Commission orders, active interconnection dockets, large load &amp; AI data center inquiries, Virtual Power Plant rate reforms, and utility filings shaping energy innovation commercialization.
           </p>
         </div>
       </div>

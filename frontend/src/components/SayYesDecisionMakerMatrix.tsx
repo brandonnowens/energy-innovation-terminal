@@ -558,7 +558,7 @@ export function SayYesDecisionMakerMatrix({
                           )}
                         </button>
                         <a
-                          href={`mailto:${contact.email}?subject=${encodeURIComponent(`Project Diligence & Sponsoring Alignment: ${projectTitle || 'Clean Energy Innovation'}`)}`}
+                          href={`mailto:${contact.email}?subject=${encodeURIComponent(`Project Diligence & Sponsoring Alignment: ${projectTitle || 'Energy Innovation Innovation'}`)}`}
                           className="px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-2xs"
                         >
                           <Mail size={11} />

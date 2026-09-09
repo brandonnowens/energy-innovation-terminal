@@ -37,14 +37,14 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
   getMapCanvas,
   markers,
   summary,
-  activeFiltersDesc = 'All Tracked Clean Energy Innovation Awards & Programs',
+  activeFiltersDesc = 'All Tracked Energy Innovation Innovation Awards & Programs',
   colorByMode,
   colorPalette,
 }) => {
   const [aspectRatio, setAspectRatio] = useState<AspectRatio>('16:9');
   const [presetCategory, setPresetCategory] = useState<MapPresetCategory>('publication');
   const [theme, setTheme] = useState<MapTheme>('editorial');
-  const [title, setTitle] = useState('THE GEOGRAPHY OF CLEAN ENERGY INNOVATION');
+  const [title, setTitle] = useState('THE GEOGRAPHY OF ENERGY INNOVATION INNOVATION');
   const [subtitle, setSubtitle] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -55,7 +55,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
       const fundStr = summary.total_funding >= 1e9
         ? `$${(summary.total_funding / 1e9).toFixed(1)} Billion`
         : `$${(summary.total_funding / 1e6).toFixed(1)} Million`;
-      setSubtitle(`Distribution of ${fundStr} across ${summary.total_matches.toLocaleString()} clean energy awards spanning 50 states, federal & state agencies, electric utilities, and research laboratories.`);
+      setSubtitle(`Distribution of ${fundStr} across ${summary.total_matches.toLocaleString()} energy innovation awards spanning 50 states, federal & state agencies, electric utilities, and research laboratories.`);
     }
   }, [summary]);
 
@@ -207,7 +207,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
     ctx.font = `bold ${titleSize}px Georgia, "Playfair Display", "Times New Roman", serif`;
     ctx.fillStyle = themeColors.textPrimary;
     const titleY = headerTop + eyebrowSize + Math.round(titleSize * 1.25);
-    ctx.fillText(title || 'THE GEOGRAPHY OF CLEAN ENERGY INNOVATION', contentLeft, titleY);
+    ctx.fillText(title || 'THE GEOGRAPHY OF ENERGY INNOVATION INNOVATION', contentLeft, titleY);
 
     // Dynamic Subtitle
     const subtitleSize = isVertical
@@ -215,7 +215,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
       : Math.max(18, Math.round(width * 0.010));
     ctx.font = `400 ${subtitleSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
     ctx.fillStyle = themeColors.textSecondary;
-    const subText = subtitle || `Visualizing spatial capital deployment across ${markers.length.toLocaleString()} clean energy innovation awards.`;
+    const subText = subtitle || `Visualizing spatial capital deployment across ${markers.length.toLocaleString()} energy innovation innovation awards.`;
     const subtitleY = titleY + Math.round(subtitleSize * 1.7);
     ctx.fillText(subText, contentLeft, subtitleY);
 

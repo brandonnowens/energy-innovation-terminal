@@ -743,7 +743,7 @@ export default function Proposals() {
               </div>
               <button
                 type="button"
-                onClick={() => navigate('/chat?prompt=' + encodeURIComponent('Draft a comprehensive Justice40 Community Benefits Plan (CBP) for ' + selectedProposal.title + ' focusing on disadvantaged communities (DAC) investments, workforce agreements, and clean energy benefits.'))}
+                onClick={() => navigate('/chat?prompt=' + encodeURIComponent('Draft a comprehensive Justice40 Community Benefits Plan (CBP) for ' + selectedProposal.title + ' focusing on disadvantaged communities (DAC) investments, workforce agreements, and energy innovation benefits.'))}
                 className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 self-start cursor-pointer"
               >
                 <Scale size={14} />

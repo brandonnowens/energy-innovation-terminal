@@ -197,7 +197,7 @@ export default function PolicyReference() {
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-white mt-1">
-              Federal Clean Energy Tax Credit &amp; Elective Direct Pay Architecture
+              Federal Energy Innovation Tax Credit &amp; Elective Direct Pay Architecture
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 max-w-3xl mt-1 leading-relaxed">
               Provides uncapped, refundable production tax credits (PTC) and investment tax credits (ITC) alongside direct transferability and non-profit/governmental elective Direct Pay monetization under 26 U.S.C. §§ 6417 &amp; 6418.
@@ -432,7 +432,7 @@ export default function PolicyReference() {
           <ShieldCheck size={40} className="mx-auto text-slate-300 mb-3" />
           <h3 className="text-base font-bold text-slate-800">No policies match your filter criteria</h3>
           <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
-            Try adjusting your category or search query to find relevant clean energy tax credits, safety codes, or state climate mandates.
+            Try adjusting your category or search query to find relevant energy innovation tax credits, safety codes, or state climate mandates.
           </p>
           <button
             onClick={() => {

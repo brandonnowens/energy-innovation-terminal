@@ -93,10 +93,10 @@ const POPULAR_ORGANIZATIONS: OrgConfig[] = [
   },
   {
     id: 'masscec',
-    name: 'Massachusetts Clean Energy Center (MassCEC)',
+    name: 'Massachusetts Energy Innovation Center (MassCEC)',
     shortName: 'MassCEC',
     orgType: 'State Energy Office (NYSERDA, CEC, MassCEC)',
-    defaultMandate: 'Massachusetts Clean Energy and Climate Plan for 2030: Offshore wind, clean heat, and grid equity',
+    defaultMandate: 'Massachusetts Energy Innovation and Climate Plan for 2030: Offshore wind, clean heat, and grid equity',
     defaultPool: '$15,000,000',
     defaultAwardCap: '$2,500,000',
     defaultInstrument: 'Targeted Innovation Challenge & Demonstration Grant',
@@ -346,7 +346,7 @@ const SPONSOR_TYPES = [
   'Established Commercial Hardtech OEM',
   'Academic Institution / University Research Lab',
   'National Laboratory / FFRDC Partner',
-  'Multi-Stakeholder Regional Clean Energy Consortium',
+  'Multi-Stakeholder Regional Energy Innovation Consortium',
   'Project Developer / Independent Power Producer (IPP)'
 ];
 
@@ -554,7 +554,7 @@ export default function Strategy() {
       const payload = {
         mode,
         title: mode === 'project_sponsor'
-          ? `${sponsorTech || 'Clean Energy'} Research Strategy & Capital Architecture`
+          ? `${sponsorTech || 'Energy Innovation'} Research Strategy & Capital Architecture`
           : `${funderOrgName} Program Strategy & Solicitation Architecture`,
         inputs: mode === 'project_sponsor'
           ? {
@@ -1025,10 +1025,10 @@ export default function Strategy() {
 
           <div className="space-y-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {/* 112+ Clean Energy Technologies Combobox */}
+              {/* 112+ Energy Innovation Technologies Combobox */}
               <div>
                 <EditableComboBox
-                  label="Primary Clean Energy Technology &amp; Carrier Vector"
+                  label="Primary Energy Innovation Technology &amp; Carrier Vector"
                   subLabel="Select or search across 112+ expansive clean technologies, carriers, and decarbonization systems"
                   value={sponsorTech}
                   onChange={handleSelectCleanTech}

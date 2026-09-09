@@ -187,7 +187,7 @@ export function AccountModal() {
                       type="text"
                       value={organization}
                       onChange={(e) => setOrganization(e.target.value)}
-                      placeholder="e.g. Clean Energy Innovations"
+                      placeholder="e.g. Energy Innovation Innovations"
                       className="w-full pl-9 pr-3 py-2 text-xs border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:ring-2 focus:ring-indigo-500 outline-none text-slate-800"
                     />
                   </div>

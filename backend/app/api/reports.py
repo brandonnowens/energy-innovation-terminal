@@ -54,7 +54,7 @@ REPORT_PRESETS = [
 
         "id": "state_partnership_ecosystem",
         "title": "State Innovation Program Partnership & Ecosystem Expansion Lessons Learned and Future Strategies",
-        "subtitle": "The Definitive Retrospective and Forward Blueprint: Analyzing 25 Years of State-Level Clean Energy Consortia, Multi-Jurisdictional Coalitions, Hardtech Incubators, Regulated Utility Alignment, and Frontline Equity Co-Design (2000-2026 Empirical Arc and 2026-2035 Strategic Roadmap)",
+        "subtitle": "The Definitive Retrospective and Forward Blueprint: Analyzing 25 Years of State-Level Energy Innovation Consortia, Multi-Jurisdictional Coalitions, Hardtech Incubators, Regulated Utility Alignment, and Frontline Equity Co-Design (2000-2026 Empirical Arc and 2026-2035 Strategic Roadmap)",
         "category": "Macro & Policy Strategy",
         "target_audience": "State Energy Leadership, Governors' Energy Cabinets, Incubator Directors, Utility Innovation Officers, Community Consortia Leads, National Labs",
         "badge": "Ecosystem Blueprint",
@@ -62,7 +62,7 @@ REPORT_PRESETS = [
         "pages": 21,
         "capital_tracked": "$98.98B Tracked",
         "awards_count": "54,313 Awards (25-Yr Arc)",
-        "key_focus": "25-year empirical retrospective of state clean energy consortia, incubator networks (NYSERDA CEI, MassCEC Greentown, CalSEED, ESD NY Ventures), 3.8x federal co-funding multiplier, utility regulatory sandboxes, Justice40 equity co-design, and 2026-2035 strategic blueprints."
+        "key_focus": "25-year empirical retrospective of state energy innovation consortia, incubator networks (NYSERDA CEI, MassCEC Greentown, CalSEED, ESD NY Ventures), 3.8x federal co-funding multiplier, utility regulatory sandboxes, Justice40 equity co-design, and 2026-2035 strategic blueprints."
     },
     {
         "id": "future_research_pathways_flagship",
@@ -92,7 +92,7 @@ REPORT_PRESETS = [
     },
     {
         "id": "programmatic_outcomes_roi_scorecard",
-        "title": "Clean Energy Outcomes, GHG Abatement & Programmatic ROI Scorecard",
+        "title": "Energy Innovation Outcomes, GHG Abatement & Programmatic ROI Scorecard",
         "subtitle": "Comprehensive Programmatic Evaluation Across 5,741 Solicitations: Return on Public Grant Dollar, Carbon Abatement Efficiency, Job Creation Multipliers, and Commercialization Rates",
         "category": "Macro & Policy Strategy",
         "target_audience": "Legislative Oversight Committees, Agency Evaluation Directors, Philanthropic Trustees, State Energy Officials",
@@ -144,7 +144,7 @@ REPORT_PRESETS = [
     },
     {
         "id": "state_innovation_evolution",
-        "title": "The Evolution of State Clean Energy Innovation: Governance, SBC Tariffs & 2035 Horizon",
+        "title": "The Evolution of State Energy Innovation Innovation: Governance, SBC Tariffs & 2035 Horizon",
         "subtitle": "Institutional history, statutory policy milestones, and 10-year forward strategic roadmaps for state energy authorities.",
         "category": "Macro & Policy Strategy",
         "target_audience": "Governors' Policy Advisors, State Energy Directors, Legislative Energy Chairs",
@@ -160,7 +160,7 @@ REPORT_PRESETS = [
     {
         "id": "state_commercialization_strategies",
         "title": "State Innovation Program Commercialization Strategies to Maximize Results",
-        "subtitle": "The Definitive Strategic Framework for State Clean Energy Agencies, Green Banks, and Regional Accelerators: Overcoming the Mid-TRL Valley of Death, Optimizing Stage-Gated Non-Dilutive Capital Stacks, Mobilizing Private Co-Investment, and Scaling Clean Technologies from Lab to Market",
+        "subtitle": "The Definitive Strategic Framework for State Energy Innovation Agencies, Green Banks, and Regional Accelerators: Overcoming the Mid-TRL Valley of Death, Optimizing Stage-Gated Non-Dilutive Capital Stacks, Mobilizing Private Co-Investment, and Scaling Clean Technologies from Lab to Market",
         "category": "Commercialization",
         "target_audience": "State Energy Directors (NYSERDA, CEC, MassCEC, NJEDA, ESD), Green Bank Investment Officers, Climate VCs, Accelerators, Clean Tech Project Developers",
         "badge": "Commercialization Strategy",
@@ -238,7 +238,7 @@ REPORT_PRESETS = [
     },
     {
         "id": "workforce_transition_report",
-        "title": "Clean Energy Workforce Transition & Green Labor Economics Briefing",
+        "title": "Energy Innovation Workforce Transition & Green Labor Economics Briefing",
         "subtitle": "Comprehensive Strategic Assessment of 1.2M Worker Demand, Union Registered Apprenticeships, and Gas Utility Labor Transition.",
         "category": "Commercialization",
         "target_audience": "Building Trade Unions, Community College Leadership, Workforce Policy Directors",
@@ -247,7 +247,7 @@ REPORT_PRESETS = [
         "pages": 21,
         "capital_tracked": "$14.10B",
         "awards_count": "Union & Non-Union",
-        "key_focus": "1.2M clean energy worker demand, union registered apprenticeships, prevailing wage multipliers, and gas utility labor transition."
+        "key_focus": "1.2M energy innovation worker demand, union registered apprenticeships, prevailing wage multipliers, and gas utility labor transition."
     },
 
     # 3. Project Strategy & Consortia (4 Actionable Playbooks)
@@ -320,7 +320,7 @@ REPORT_PRESETS = [
     },
     {
         "id": "clean_gen_dossier",
-        "title": "Clean Energy Generation & Offshore Systems Strategic Dossier",
+        "title": "Energy Innovation Generation & Offshore Systems Strategic Dossier",
         "subtitle": "Strategic analysis of 9 GW offshore wind staging, advanced agrivoltaics, perovskite tandem solar, and deep geothermal EGS.",
         "category": "Technology Domains",
         "target_audience": "Power Generation SVPs, Offshore Wind Developers, Solar Consortium Leads",
@@ -603,7 +603,7 @@ def export_executive_report_pdf(req: ReportGenerateRequest, db: Session = Depend
     pdf_buffer.seek(0)
     filename_slug = req.preset_id.replace("_", "-")
     timestamp_str = datetime.date.today().strftime("%Y-%m-%d")
-    filename = f"clean-energy-publication-{filename_slug}-{timestamp_str}.pdf"
+    filename = f"energy-innovation-publication-{filename_slug}-{timestamp_str}.pdf"
 
     return StreamingResponse(
         pdf_buffer,

@@ -43,9 +43,9 @@ export default function AdminEmailHub() {
   const [deliverableOnly, setDeliverableOnly] = useState<boolean>(true);
 
   // Compose State
-  const [campaignName, setCampaignName] = useState('Clean Energy Application Invitation');
+  const [campaignName, setCampaignName] = useState('Energy Innovation Application Invitation');
   const [selectedTemplateId, setSelectedTemplateId] = useState('application_invitation');
-  const [subject, setSubject] = useState('Invitation: Access the National Clean Energy Innovation Intelligence Terminal — {{name}}');
+  const [subject, setSubject] = useState('Invitation: Access the National Energy Innovation Innovation Intelligence Terminal — {{name}}');
   const [bodyText, setBodyText] = useState('');
   const [customFooter, setCustomFooter] = useState('');
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
@@ -256,7 +256,7 @@ export default function AdminEmailHub() {
       .replace(/{{name}}|{name}/g, sampleContact.name_display)
       .replace(/{{first_name}}|{first_name}/g, sampleContact.name_first || 'Colleague')
       .replace(/{{institution}}|{institution}/g, sampleContact.institution_name || 'your institution')
-      .replace(/{{technology_area}}|{technology_area}/g, sampleContact.technology_area || 'Clean Energy')
+      .replace(/{{technology_area}}|{technology_area}/g, sampleContact.technology_area || 'Energy Innovation')
       .replace(/{{sector}}|{sector}/g, sampleContact.sector || 'Energy');
   }, [subject, sampleContact]);
 
@@ -266,7 +266,7 @@ export default function AdminEmailHub() {
       .replace(/{{first_name}}|{first_name}/g, sampleContact.name_first || 'Colleague')
       .replace(/{{last_name}}|{last_name}/g, sampleContact.name_last || '')
       .replace(/{{institution}}|{institution}/g, sampleContact.institution_name || 'your institution')
-      .replace(/{{technology_area}}|{technology_area}/g, sampleContact.technology_area || 'Clean Energy')
+      .replace(/{{technology_area}}|{technology_area}/g, sampleContact.technology_area || 'Energy Innovation')
       .replace(/{{sector}}|{sector}/g, sampleContact.sector || 'Energy')
       .replace(/{{title}}|{title}/g, sampleContact.title || 'Innovator')
       .replace(/{{awards_count}}|{awards_count}/g, String(sampleContact.awards_count || 3))
@@ -316,7 +316,7 @@ export default function AdminEmailHub() {
             Executive Contact Intelligence &amp; CRM Hub
           </h1>
           <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
-            Manage clean energy contacts and institutions, review communication histories, draft AI correspondence, and maintain stakeholder records directly inside the terminal database ledger.
+            Manage energy innovation contacts and institutions, review communication histories, draft AI correspondence, and maintain stakeholder records directly inside the terminal database ledger.
           </p>
         </div>
 
@@ -665,7 +665,7 @@ export default function AdminEmailHub() {
                       <option value="funder_officers">🏛️ Agency Program Officers (DOE, CEC, MassCEC, NYSERDA)</option>
                       <option value="domain_experts">🔬 Technology &amp; Sector Domain Experts (PIs)</option>
                       <option value="institutional_gateways">🏢 National Lab &amp; Institutional Partner Desks</option>
-                      <option value="utilities">⚡ Utility Clean Energy POCs</option>
+                      <option value="utilities">⚡ Utility Energy Innovation POCs</option>
                     </select>
                   </div>
                 )}

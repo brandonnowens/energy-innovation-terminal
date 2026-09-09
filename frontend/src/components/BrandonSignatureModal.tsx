@@ -30,14 +30,14 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
 
   if (!isOpen) return null;
 
-  const citationApa = `Owens, B. N. (2026). U.S. Energy Innovation Database & Capital Intelligence Terminal (Version 3.5.0) [Software & Intelligence Corpus]. Clean Energy Research, LLC. https://energyinnovationterminal.com`;
+  const citationApa = `Owens, B. N. (2026). U.S. Energy Innovation Database & Capital Intelligence Terminal (Version 3.5.0) [Software & Intelligence Corpus]. Energy Innovation Research, LLC. https://energyinnovationterminal.com`;
   
   const citationBibtex = `@software{owens2026energyterminal,
   author = {Brandon N. Owens},
   title = {U.S. Energy Innovation Database & Capital Intelligence Terminal},
   version = {3.5.0},
   year = {2026},
-  publisher = {Clean Energy Research, LLC},
+  publisher = {Energy Innovation Research, LLC},
   url = {https://energyinnovationterminal.com},
   note = {Multi-agency cross-jurisdictional intelligence covering 56,413 awards, $104.16B capital, and 140+ federal & state utilities}
 }`;
@@ -119,7 +119,7 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
               </div>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">
-                  The Clean Energy Innovation Corpus
+                  The Energy Innovation Innovation Corpus
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
                   The <strong>U.S. Energy Innovation Database &amp; Capital Intelligence Terminal</strong> unifies, cleanses, and structures upstream funding data across <strong>140+ federal, state, and utility authorities</strong>. Engineered with deep domain ontologies to provide capital allocators, founders, and policymakers with unprecedented visibility into the energy transition.

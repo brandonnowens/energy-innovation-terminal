@@ -36,7 +36,7 @@ const SAMPLE_ENTITIES = [
   { type: 'recipient', id: 'Amogy Inc.', label: 'Amogy Inc.', org: 'Amogy' },
   { type: 'recipient', id: 'Sublime Systems, Inc.', label: 'Sublime Systems, Inc.', org: 'Sublime Systems' },
   { type: 'opportunity', id: 'PON 4830', label: 'NYSERDA Clean Transportation (PON 4830)', org: 'NYSERDA' },
-  { type: 'opportunity', id: 'DOE-COOPERATIVEA-2024', label: 'DOE Clean Energy Tech Demo', org: 'DOE' },
+  { type: 'opportunity', id: 'DOE-COOPERATIVEA-2024', label: 'DOE Energy Innovation Tech Demo', org: 'DOE' },
 ];
 
 export function LineageMatrixExplorer() {
@@ -98,7 +98,7 @@ export function LineageMatrixExplorer() {
           <div className="mt-1 text-lg font-bold text-slate-900">
             {overview?.dimensions?.fuels?.distinct_types || 10}
           </div>
-          <div className="text-[10px] text-slate-400">Clean Energy Carriers</div>
+          <div className="text-[10px] text-slate-400">Energy Innovation Carriers</div>
         </div>
 
         <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-2xs">
@@ -185,7 +185,7 @@ export function LineageMatrixExplorer() {
                 >
                   <option value="technology">Technology Area</option>
                   <option value="sector">Economic Sector</option>
-                  <option value="fuel">Clean Energy Fuel</option>
+                  <option value="fuel">Energy Innovation Fuel</option>
                   <option value="stage">Commercial Stage</option>
                   <option value="agency">Funding Agency</option>
                 </select>
@@ -202,7 +202,7 @@ export function LineageMatrixExplorer() {
                 >
                   <option value="stage">Commercial Stage</option>
                   <option value="sector">Economic Sector</option>
-                  <option value="fuel">Clean Energy Fuel</option>
+                  <option value="fuel">Energy Innovation Fuel</option>
                   <option value="agency">Funding Agency</option>
                   <option value="recipient_type">Recipient Type</option>
                 </select>

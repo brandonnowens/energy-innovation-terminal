@@ -182,7 +182,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       items.push({
         type: 'award',
         id: `award-${aw.id}`,
-        title: `${aw.recipient_name || 'Recipient'} · ${aw.project_title || 'Clean Energy Project'}`,
+        title: `${aw.recipient_name || 'Recipient'} · ${aw.project_title || 'Energy Innovation Project'}`,
         subtitle: `${aw.agency || 'Agency'} · ${aw.award_amount ? `$${(aw.award_amount / 1e6).toFixed(2)}M` : '$0'} · ${aw.state || 'US'}`,
         category: 'Awards & Precedents',
         badge: aw.agency,

@@ -145,7 +145,7 @@ export const AwardDossierDrawer: React.FC<AwardDossierDrawerProps> = ({
               <div className="bg-white/5 rounded p-2">
                 <span className="text-[10px] text-slate-300 block uppercase font-medium">Primary Tech</span>
                 <span className="text-xs font-semibold text-amber-300 truncate block">
-                  {recipientDetail?.primary_technology || award.technologies?.[0] || 'Clean Energy'}
+                  {recipientDetail?.primary_technology || award.technologies?.[0] || 'Energy Innovation'}
                 </span>
               </div>
             </div>

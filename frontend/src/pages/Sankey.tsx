@@ -125,7 +125,7 @@ const ALL_DIMENSIONS = [
 const ORG_TIER_TABS = [
   { id: 'all', label: 'All Organizations', short: 'All Ecosystem', icon: Globe, color: 'indigo', desc: 'Unified cross-tier view across all utilities, state agencies, foundations, and federal bodies' },
   { id: 'utility', label: 'Electric & Gas Utilities', short: 'Utilities', icon: Zap, color: 'amber', desc: '98+ Investor-Owned Utilities, Public Power Authorities, Co-ops, and NWA Programs' },
-  { id: 'state', label: 'State Energy Agencies', short: 'State Agencies', icon: Building2, color: 'blue', desc: 'State Clean Energy Authorities (NYSERDA, MassCEC, CEC, State Energy Offices)' },
+  { id: 'state', label: 'State Energy Agencies', short: 'State Agencies', icon: Building2, color: 'blue', desc: 'State Energy Innovation Authorities (NYSERDA, MassCEC, CEC, State Energy Offices)' },
   { id: 'foundation', label: 'Non-Profits & Foundations', short: 'Foundations', icon: HeartHandshake, color: 'emerald', desc: 'Philanthropic Climate Foundations & Non-profit Grantmakers' },
   { id: 'federal', label: 'Federal Agencies', short: 'Federal', icon: Landmark, color: 'indigo', desc: 'DOE, NSF, ARPA-E, DOD, EPA, USDA, NASA, DOT, DOC' },
   { id: 'national_lab', label: 'Research Institutions', short: 'Research', icon: FlaskConical, color: 'purple', desc: 'EPRI, National Laboratories, and Energy Research Consortia' },
@@ -133,10 +133,10 @@ const ORG_TIER_TABS = [
 
 export default function Sankey() {
   useSEO({
-    title: 'Clean Energy Capital Flows & Multi-Stage Sankey Visualization',
+    title: 'Energy Innovation Capital Flows & Multi-Stage Sankey Visualization',
     description: 'Interactive multi-dimensional Sankey diagrams tracking $104B+ in public energy funding from federal and state agencies through utilities, sectors, and clean technologies.',
     canonicalUrl: 'https://terminal.aixenergy.io/capital-flows',
-    keywords: ['clean energy capital flows', 'energy funding sankey diagram', 'DOE funding distribution', 'utility innovation capital flows'],
+    keywords: ['energy innovation capital flows', 'energy funding sankey diagram', 'DOE funding distribution', 'utility innovation capital flows'],
   });
 
   const { includeNyserda, isNyserda } = useNyserda();
@@ -420,7 +420,7 @@ export default function Sankey() {
             const currentPresetLabel = PRESET_OPTIONS.find(p => p.id === selectedPreset)?.label || metric.toUpperCase();
             ctx.font = 'bold 32px Georgia, "Playfair Display", "Times New Roman", serif';
             ctx.fillStyle = '#0F172A';
-            ctx.fillText(`Clean Energy Capital Flow: ${currentPresetLabel}`, padding, 105);
+            ctx.fillText(`Energy Innovation Capital Flow: ${currentPresetLabel}`, padding, 105);
 
             // Date & Meta
             const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -471,7 +471,7 @@ export default function Sankey() {
     { id: 'commercialization_9d', label: '🧬 9-D Commercialization Pipeline', desc: 'Agency → Program → Sector → Tech → Fuel → Stage', tier: 'all' },
     { id: 'patent_catalyst', label: '💡 Patent & Grant Catalyst', desc: 'Tier → Agency → Tech → Stage → Recipient', tier: 'all' },
     { id: 'utilities', label: '⚡ Utility Pipeline', desc: 'Structure → Utility → Program → Tech', tier: 'utility' },
-    { id: 'state_energy', label: '🗽 State Clean Energy', desc: 'State Funder → Program → Sector → Tech', tier: 'state' },
+    { id: 'state_energy', label: '🗽 State Energy Innovation', desc: 'State Funder → Program → Sector → Tech', tier: 'state' },
     { id: 'nonprofit_funds', label: '🌱 Non-Profit & Philanthropy', desc: 'Foundation → Stage → Sector → Tech', tier: 'foundation' },
     { id: 'capital_deployment', label: '🚀 Capital Deployment', desc: 'Funder → Stage → Recipient → State', tier: 'all' },
     { id: 'portfolio', label: '📁 Portfolio Stages', desc: 'Agency → Program → Activity → Status', tier: 'all' },
@@ -1307,7 +1307,7 @@ export default function Sankey() {
                     }}
                     className="p-2 rounded-lg border border-slate-200 text-left hover:border-blue-300 hover:bg-blue-50/30 transition-all text-xs"
                   >
-                    <div className="font-bold text-blue-900">🗽 State Clean Energy</div>
+                    <div className="font-bold text-blue-900">🗽 State Energy Innovation</div>
                     <div className="text-[10px] text-slate-400">State Agency → Program → Sector → Tech</div>
                   </button>
                   <button

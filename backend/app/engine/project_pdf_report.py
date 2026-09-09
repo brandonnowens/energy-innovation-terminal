@@ -34,10 +34,10 @@ from app.engine.ai_project_synthesizer import synthesize_project_executive_analy
 
 class ProjectReportNumberedCanvas(canvas.Canvas):
     """Two-pass canvas for total page count and professional running headers/footers."""
-    def __init__(self, *args, project_title: str = "INDEPENDENT CLEAN ENERGY MATCH REPORT", **kwargs):
+    def __init__(self, *args, project_title: str = "INDEPENDENT ENERGY INNOVATION MATCH REPORT", **kwargs):
         super().__init__(*args, **kwargs)
         self._saved_page_states = []
-        self.project_title = project_title or "INDEPENDENT CLEAN ENERGY MATCH REPORT"
+        self.project_title = project_title or "INDEPENDENT ENERGY INNOVATION MATCH REPORT"
 
     def showPage(self):
         self._saved_page_states.append(dict(self.__dict__))
@@ -100,7 +100,7 @@ def generate_project_pdf_report(analysis_data: Dict[str, Any]) -> io.BytesIO:
         profile.get("project_title")
         or profile.get("title")
         or analysis_data.get("project_title")
-        or "Clean Energy Innovation Project"
+        or "Energy Innovation Innovation Project"
     ).strip()
 
     summary_text = profile.get("summary") or analysis_data.get("summary") or "Project description not provided."
@@ -274,7 +274,7 @@ def generate_project_pdf_report(analysis_data: Dict[str, Any]) -> io.BytesIO:
         ],
         [
             Paragraph("<b>Technology Areas:</b>", style_table_cell_bold),
-            Paragraph(", ".join(tech_areas) if tech_areas else "Clean Energy Innovation", style_table_cell),
+            Paragraph(", ".join(tech_areas) if tech_areas else "Energy Innovation Innovation", style_table_cell),
             Paragraph("<b>Readiness Level (TRL):</b>", style_table_cell_bold),
             Paragraph(f"TRL {trl_val}", style_table_cell),
         ],

@@ -74,7 +74,7 @@ export const ORG_BRANDS: Record<string, OrgBrand> = {
   },
   'MassCEC': {
     name: 'MassCEC', abbr: 'MA', color: '#1D4ED8', bgColor: '#1D4ED8', textColor: '#FFFFFF',
-    fullName: 'Massachusetts Clean Energy Center',
+    fullName: 'Massachusetts Energy Innovation Center',
     domain: 'masscec.com',
   },
   'NJEDA': {
@@ -487,9 +487,9 @@ export const ORG_BRANDS: Record<string, OrgBrand> = {
     name: 'Lowercarbon Capital', abbr: 'LCC', color: '#16A34A', bgColor: '#16A34A', textColor: '#FFFFFF',
     fullName: 'Lowercarbon Capital', domain: 'lowercarboncapital.com',
   },
-  'Clean Energy Ventures': {
-    name: 'Clean Energy Ventures', abbr: 'CEV', color: '#059669', bgColor: '#059669', textColor: '#FFFFFF',
-    fullName: 'Clean Energy Ventures', domain: 'cleanenergyventures.com',
+  'Energy Innovation Ventures': {
+    name: 'Energy Innovation Ventures', abbr: 'CEV', color: '#059669', bgColor: '#059669', textColor: '#FFFFFF',
+    fullName: 'Energy Innovation Ventures', domain: 'cleanenergyventures.com',
   },
   'DCVC': {
     name: 'DCVC', abbr: 'DCVC', color: '#4F46E5', bgColor: '#4F46E5', textColor: '#FFFFFF',
@@ -675,8 +675,8 @@ const ORG_ALIASES: Record<string, string> = {
   'California Energy Commission': 'CEC',
   'California Energy Commission (CEC)': 'CEC',
   'Bill & Melinda Gates Foundation': 'Gates Foundation',
-  'Massachusetts Clean Energy Center': 'MassCEC',
-  'Massachusetts Clean Energy Center (MassCEC)': 'MassCEC',
+  'Massachusetts Energy Innovation Center': 'MassCEC',
+  'Massachusetts Energy Innovation Center (MassCEC)': 'MassCEC',
   'New York State Energy Research and Development Authority': 'NYSERDA',
   'New York State Energy Research and Development Authority (NYSERDA)': 'NYSERDA',
   'U.S. Department of Energy': 'DOE',
@@ -685,7 +685,7 @@ const ORG_ALIASES: Record<string, string> = {
   'DOE Hydrogen and Fuel Cell Technologies Office': 'DOE',
   'DOE Building Technologies Office': 'DOE',
   'DOE Vehicle Technologies Office': 'DOE',
-  'DOE Office of Clean Energy Demonstrations': 'DOE',
+  'DOE Office of Energy Innovation Demonstrations': 'DOE',
   'DOE Grid Deployment Office': 'DOE',
   'DOE Office of Fossil Energy and Carbon Management': 'DOE',
   'National Science Foundation': 'NSF',
@@ -751,7 +751,7 @@ const ORG_LOGO_FILES: Record<string, string> = {
   'MassCEC': 'masscec.jpg',
 };
 
-// Heuristic keyword-to-domain mapping for prominent clean energy entities
+// Heuristic keyword-to-domain mapping for prominent energy innovation entities
 const INFERRED_DOMAINS: [RegExp, string][] = [
   [/nyserda/i, 'nyserda.ny.gov'],
   [/energy\.gov|department of energy|\bdoe\b/i, 'energy.gov'],
