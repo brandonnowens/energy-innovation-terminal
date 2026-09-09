@@ -246,9 +246,11 @@ export default function Opportunities() {
     page_size: pageSize
   };
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: ['opportunities', params, includeNyserda],
-    queryFn: () => api.getOpportunities(params)
+    queryFn: () => api.getOpportunities(params),
+    retry: 2,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
   });
 
   const { data: oppDetail, isLoading: detailLoading } = useQuery<any>({
@@ -712,8 +714,19 @@ export default function Opportunities() {
         )}
 
         {isError && (
-          <div className="p-8 text-center text-[13px] text-rose-500 font-mono">
-            Failed to load opportunities. Ensure the API backend is running.
+          <div className="p-8 flex flex-col items-center justify-center text-center gap-3">
+            <div className="text-[13px] text-rose-500 font-mono flex items-center gap-2">
+              <AlertTriangle size={16} />
+              <span>Failed to load opportunities. Ensure the API backend is running.</span>
+            </div>
+            <button
+              onClick={() => refetch()}
+              disabled={isFetching}
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-cyan-600 hover:bg-cyan-500 active:bg-cyan-700 rounded-lg shadow transition disabled:opacity-50 cursor-pointer"
+            >
+              <RefreshCw size={13} className={isFetching ? 'animate-spin' : ''} />
+              {isFetching ? 'Connecting to Backend...' : 'Retry Connection'}
+            </button>
           </div>
         )}
 
