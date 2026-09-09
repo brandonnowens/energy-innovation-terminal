@@ -1,0 +1,10 @@
+{
+  "name": "nyserda-innovation-match",
+  "private": true,
+  "version": "3.5.0",
+  "scripts": {
+    "build": "npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev",
+    "lint": "npm --prefix frontend run lint"
+  }
+}
