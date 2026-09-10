@@ -570,23 +570,8 @@ def generate_project_pdf_report(analysis_data: Dict[str, Any]) -> io.BytesIO:
     story.append(Spacer(1, 12))
 
     # Concluding Statutory Independence & Non-Affiliation Declaration
-    closing_notice = Table([[
-        Paragraph(
-            "<b>STATUTORY INDEPENDENCE & NON-AFFILIATION DECLARATION:</b> "
-            "This independent analysis was authored strictly utilizing open government data, published statutory guidelines, "
-            "and public solicitation records. It does not represent the views or policies of any public agency or institution, "
-            "and no organizational resources were used in its creation. This report does not represent a promise, commitment, "
-            "or indicator of any organizational activity, formal evaluation, or funding event.",
-            style_callout
-        )
-    ]], colWidths=[530])
-    closing_notice.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, -1), COLOR_BRAND_BG_LIGHT),
-        ('BOX', (0, 0), (-1, -1), 0.8, COLOR_BRAND_SLATE),
-        ('PADDING', (0, 0), (-1, -1), 5),
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-    ]))
-    story.append(closing_notice)
+    from app.engine.legal_disclaimer import get_pdf_disclaimer_flowable
+    story.append(get_pdf_disclaimer_flowable(doc_width=530.0))
 
     # Build PDF with two-pass canvas
     doc.build(

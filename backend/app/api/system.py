@@ -490,3 +490,49 @@ def trigger_health_audit(sample_size: int = Query(25, le=100), db: Session = Dep
     from app.ingest.health_monitor import run_quick_url_health_audit
     return run_quick_url_health_audit(db=db, sample_size=sample_size)
 
+
+@router.get("/system/daily-usage-summary")
+def get_daily_usage_summary(
+    date: Optional[str] = Query(None, description="Date in YYYY-MM-DD format"),
+    db: Session = Depends(get_db)
+):
+    """Retrieve daily application usage data and corpus information summary."""
+    from datetime import datetime as dt
+    from app.services.daily_usage_summary import collect_usage_data, format_markdown_report
+    
+    target_dt = None
+    if date:
+        try:
+            target_dt = dt.strptime(date, "%Y-%m-%d")
+        except ValueError:
+            pass
+
+    data = collect_usage_data(db, target_date=target_dt)
+    markdown_content = format_markdown_report(data)
+    
+    return {
+        "report_date": data.get("report_date"),
+        "generated_at": data.get("generated_at"),
+        "metrics": data.get("metrics"),
+        "markdown": markdown_content
+    }
+
+
+@router.post("/system/daily-usage-summary/generate")
+def trigger_generate_daily_summary(
+    date: Optional[str] = Query(None, description="Date in YYYY-MM-DD format"),
+    db: Session = Depends(get_db)
+):
+    """Trigger generation and filesystem storage of daily usage summary MD file."""
+    from datetime import datetime as dt
+    from app.services.daily_usage_summary import generate_and_save_daily_summary
+    
+    target_dt = None
+    if date:
+        try:
+            target_dt = dt.strptime(date, "%Y-%m-%d")
+        except ValueError:
+            pass
+
+    return generate_and_save_daily_summary(db=db, target_date=target_dt)
+

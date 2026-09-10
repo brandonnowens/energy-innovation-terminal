@@ -630,12 +630,14 @@ def build_daily_digest_pdf(digest_data: Dict[str, Any], output_stream: io.BytesI
         story.append(Spacer(1, 6))
 
     # 11. Institutional Sign-Off & Subscription Advisory
+    from app.engine.legal_disclaimer import get_pdf_disclaimer_flowable
+
     signoff_data = [
         [
             Paragraph(
                 "<b>Institutional Advisory Note:</b> This intelligence dispatch is compiled daily by Clean Energy Research, LLC from the U.S. Energy Innovation Database. "
                 "All grant numbers, statutory stage gates, capital ledgers, and award histories are cross-verified against official Federal Register, Grants.gov, and State PUC dockets.<br/>"
-                "<b>Subscriber Access:</b> terminal.aixenergy.io &bull; <b>Publisher:</b> Clean Energy Research, LLC &bull; <b>Inquiries:</b> bowens@aixenergy.io &bull; <b>Enterprise Rate:</b> $1,500/seat/month",
+                "<b>Subscriber Access:</b> terminal.aixenergy.io &bull; <b>Publisher:</b> Clean Energy Research, LLC &bull; <b>Inquiries:</b> info@aixenergy.io &bull; <b>Enterprise Rate:</b> $1,500/seat/month",
                 cell_text
             )
         ]
@@ -647,6 +649,8 @@ def build_daily_digest_pdf(digest_data: Dict[str, Any], output_stream: io.BytesI
         ('PADDING', (0, 0), (-1, -1), 5),
     ]))
     story.append(signoff_table)
+    story.append(Spacer(1, 6))
+    story.append(get_pdf_disclaimer_flowable(doc_width=522.0))
 
     def on_page_end(c, d):
         c._edition_date = edition_date

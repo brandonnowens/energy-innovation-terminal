@@ -21,38 +21,38 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
     {
       icon: ShieldCheck,
       iconColor: 'text-emerald-500',
-      title: '1. Independent Platform & Non-Affiliation Notice',
-      content: 'The Energy Innovation Terminal and the U.S. Energy Innovation Database are independent, third-party research and computational analytics tools developed by Clean Energy Research, LLC outside of any official government capacity. This platform is NOT an official tool, publication, or product of the New York State Energy Research and Development Authority (NYSERDA), the State of New York, the United States Department of Energy (DOE), the Advanced Research Projects Agency-Energy (ARPA-E), the California Energy Commission (CEC), the Massachusetts Energy Innovation Center (MassCEC), the National Science Foundation (NSF), or any other federal, state, regional, or municipal governmental entity. No endorsement, partnership, sponsorship, or official affiliation by or with any government agency is stated or implied.'
+      title: '1. Independent Research Platform & Non-Affiliation Notice',
+      content: 'The Energy Innovation Terminal and the U.S. Energy Innovation Database are independent computational analytics and academic research tools published by Clean Energy Research, LLC outside of any official government capacity. This platform is NOT an official tool, publication, policy statement, or service of any federal, state, regional, or municipal governmental entity, public utility commission, or public energy authority. No endorsement, partnership, sponsorship, or official affiliation by or with any governmental agency is stated or implied.'
     },
     {
       icon: FileText,
       iconColor: 'text-cyan-500',
       title: '2. Sourced Exclusively from Public Open Records',
-      content: 'All opportunity solicitations, historical award disbursements, statutory regulatory dockets, patent references, recipient names, and program guidelines indexed within this platform are derived exclusively from publicly available open records, published government websites, public disclosure portals, and official open data repositories. Key public sources include New York Open Data (data.ny.gov), NYSERDA Published Solicitations Portal (nyserda.ny.gov/funding-opportunities), Grants.gov, USAspending.gov, ARPA-E eXCHANGE, CEC Solicitations, DOE EERE Exchange, US Patent & Trademark Office (USPTO), and state public utility commission dockets. All data collection conforms to applicable Freedom of Information (FOIL/FOIA) and Open Data statutory provisions.'
+      content: 'All opportunity solicitations, funding program guidelines, historical award disbursements, statutory regulatory dockets, patent references, recipient names, and financial attributions indexed within this platform are derived exclusively from publicly available open government records, published state disclosure portals, open data repositories, and official public notices. Key public sources include open data feeds (data.gov, state open data portals), Grants.gov, USAspending.gov, published agency solicitation directories, USPTO patent gazettes, and state public utility commission dockets. All data collection conforms to applicable Freedom of Information (FOIA/FOIL) and Open Data statutory frameworks.'
     },
     {
       icon: Lock,
       iconColor: 'text-blue-500',
       title: '3. Zero Non-Public, Proprietary, or Deliberative Information',
-      content: 'This platform strictly contains NO non-public, confidential, proprietary, deliberative, evaluator scoring, internal draft, or privileged agency information. All match algorithms, compatibility rankings, readiness indicators, probability indices, and synthesized briefs are independent computational estimates generated algorithmically from published public texts and historical award patterns. No internal agency scoring rubrics, evaluator deliberations, or pre-decisional intelligence are utilized or contained herein.'
+      content: 'This platform strictly contains NO confidential, non-public, proprietary, pre-decisional, evaluator scoring, internal draft, or privileged agency communications. All match scores, compatibility rankings, readiness indicators, probability indices, and synthesized briefs are independent computational estimates generated algorithmically from published public texts and historical award patterns. No internal scoring rubrics or evaluator deliberations from any funding body are utilized or contained herein.'
     },
     {
       icon: Scale,
       iconColor: 'text-purple-500',
-      title: '4. Independent Development & Resource Separation',
-      content: 'This platform and the U.S. Energy Innovation Database were conceived, developed, and engineered independently by Clean Energy Research, LLC. No official government agency equipment, facilities, official working hours, proprietary software, or public resources were used in the creation, hosting, or ongoing operation of this software platform. The perspectives, analyses, taxonomy structures, and algorithmic outputs expressed herein are solely those of Clean Energy Research, LLC and do not reflect the official policies, positions, or evaluations of any public authority or employer.'
+      title: '4. Public Sector Contributor & Safe Harbor Protection',
+      content: 'This platform and database were conceived, developed, and engineered independently by Clean Energy Research, LLC. Contributing researchers, developers, advisors, and data curators who may be employed by or affiliated with public sector entities, state energy organizations, national research laboratories, or academic institutions contribute strictly in an independent, personal research capacity outside of any official duties, working hours, or government resources. No official agency equipment, facilities, or non-public information were used in the creation or operation of this platform. No analyses, algorithms, taxonomies, opinions, forecasts, or data representations expressed herein reflect the official positions, findings, policies, or endorsements of their respective employers or any governmental agency.'
     },
     {
       icon: Building2,
       iconColor: 'text-amber-500',
       title: '5. Nominative Fair Use of Agency Names & Trademarks',
-      content: 'All organization names, agency acronyms, program titles, and logos (including but not limited to NYSERDA, DOE, ARPA-E, CEC, MassCEC, NSF, EPA, NYPA, ConEd, and National Grid) are the registered or unregistered trademarks of their respective owners. Their display on this platform is solely for descriptive, nominative identification and public-interest informational reference purposes under 15 U.S.C. § 1125 (Lanham Act Fair Use). Such identification does not indicate or imply endorsement, sponsorship, or affiliation.'
+      content: 'All organization names, agency acronyms, program titles, and logos referenced on this platform are the registered or unregistered trademarks of their respective owners. Their display is solely for descriptive, nominative identification and public-interest informational reference under 15 U.S.C. § 1125 (Lanham Act Fair Use). Such references do not indicate or imply endorsement, sponsorship, or official affiliation.'
     },
     {
       icon: AlertTriangle,
       iconColor: 'text-rose-500',
       title: '6. No Guarantee of Funding / Official Verification Requirement',
-      content: 'Use of this platform does not constitute an official proposal submission to NYSERDA, US DOE, or any other funding organization, nor does it confer any competitive advantage, scoring preference, or official consideration in any competitive solicitation process. Funding criteria, eligibility rules, deadlines, and funding envelopes are subject to change by issuing authorities at any time. Prospective applicants MUST consult the official, authoritative RFP, PON, FOA, or solicitation documents published directly on each agency\'s official website prior to preparing or submitting grant applications or executing contractual commitments.'
+      content: 'Use of this platform does not constitute an official proposal submission to any funding organization, nor does it confer any competitive advantage, scoring preference, or official consideration in any competitive solicitation process. Funding criteria, eligibility rules, deadlines, and funding envelopes are subject to change by issuing authorities at any time. Prospective applicants MUST consult the official, authoritative RFP, PON, FOA, or solicitation documents published directly on each issuing agency\'s official website prior to preparing or submitting grant applications or executing contractual commitments.'
     }
   ];
 
@@ -83,14 +83,14 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase">
-                    Legal, Ethics &amp; Compliance Statement
+                    Legal &amp; Compliance Statement
                   </span>
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    PUBLIC OPEN DATA
+                    PUBLIC OPEN RECORDS
                   </span>
                 </div>
                 <h3 className="text-lg font-black tracking-tight text-white flex items-center gap-1.5 mt-0.5">
-                  Public Records Provenance &amp; Non-Affiliation Notice
+                  Public Records Provenance &amp; Contributor Safe Harbor Notice
                 </h3>
               </div>
             </div>
@@ -98,7 +98,7 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             >
               <X size={18} />
             </button>
@@ -114,7 +114,7 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
           )}>
             <Info size={18} className="shrink-0 mt-0.5 text-cyan-400" />
             <p className="text-xs leading-relaxed font-medium">
-              <strong>Executive Notice:</strong> The Energy Innovation Terminal is an independent computational research tool built exclusively on <strong>publicly accessible open government records</strong>. It is not affiliated with, sponsored by, or an official product of NYSERDA, the State of New York, the US DOE, or any government body. No confidential, proprietary, or non-public data is used.
+              <strong>Executive Notice:</strong> The Energy Innovation Terminal is an independent computational research tool built strictly upon <strong>publicly accessible open government records</strong>. It is not affiliated with, sponsored by, or an official product of any state or federal governmental entity. Contributing researchers and analysts contribute solely in an independent, personal research capacity; no content reflects the official views or policies of any public employer or agency.
             </p>
           </div>
 
@@ -150,17 +150,17 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
             })}
           </div>
 
-          {/* Applicable Statutory Authorities Referenced */}
+          {/* Statutory References */}
           <div className={clsx(
             "p-3.5 rounded-xl border text-[11px] font-mono",
             isDark ? "bg-white/[0.01] border-white/[0.06] text-slate-400" : "bg-slate-100 border-slate-200 text-slate-600"
           )}>
             <div className="font-bold text-slate-300 mb-1 flex items-center gap-1.5">
               <ShieldAlert size={13} className="text-emerald-400" />
-              <span>Statutory Compliance &amp; Safe Harbor References</span>
+              <span>Statutory Compliance &amp; Safe Harbor Provisions</span>
             </div>
             <p className="text-[10px] leading-relaxed">
-              New York Public Officers Law §§ 73, 74 · New York Freedom of Information Law (FOIL, Public Officers Law art. 6) · New York State Open Data Executive Order No. 95 · Federal Freedom of Information Act (FOIA, 5 U.S.C. § 552) · Federal Financial Accountability and Transparency Act (FFATA) · 15 U.S.C. § 1125 (Lanham Act Nominative Fair Use).
+              Federal Freedom of Information Act (FOIA, 5 U.S.C. § 552) · State Freedom of Information &amp; Open Records Statutory Acts · Federal Financial Accountability and Transparency Act (FFATA) · 15 U.S.C. § 1125 (Lanham Act Nominative Fair Use). All public sector employee contributions conducted in personal academic research capacity under applicable ethics safe harbors.
             </p>
           </div>
         </div>
@@ -172,7 +172,7 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
         )}>
           <div className="text-[10.5px] font-mono text-slate-400 flex items-center gap-1.5">
             <ShieldCheck size={13} className="text-emerald-400" />
-            <span>Independent Research &amp; Open Data Compliant</span>
+            <span>Independent Research · Open Public Records Compliant</span>
           </div>
 
           <button

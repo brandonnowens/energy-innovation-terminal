@@ -54,4 +54,5 @@ from app.models.scaleup_capital import FederalScaleupAllocation
 from app.models.procurement import FederalProcurementContract
 from app.models.der_market import DerMarketDeployment
 from app.models.university_ip import UniversityLicensableTechnology
+from app.models.user_activity import UserActivityLog
 

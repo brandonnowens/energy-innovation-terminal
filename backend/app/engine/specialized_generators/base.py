@@ -30,6 +30,8 @@ from reportlab.platypus import (
 )
 from reportlab.pdfgen import canvas
 
+from app.engine.legal_disclaimer import get_pdf_disclaimer_flowable, PUBLIC_RECORDS_NOTICE_SHORT
+
 def format_currency(val: float) -> str:
     if val >= 1e9:
         return f"${val / 1e9:.2f}B"
@@ -39,7 +41,7 @@ def format_currency(val: float) -> str:
         return f"${val / 1e3:.1f}K"
     return f"${val:,.0f}"
 
-SOURCE_ATTRIBUTION = "U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io) · Public Open Records"
+SOURCE_ATTRIBUTION = "U.S. Energy Innovation Database · Clean Energy Research, LLC · Sourced from Public Open Records"
 
 # =============================================================================
 # BRAND DESIGN SYSTEM & COLOR PALETTE
@@ -819,6 +821,10 @@ def compile_specialized_pdf(
                 story.append(safe_paragraph(para.strip(), styles['body']))
         story.append(Spacer(1, 5))
         story.append(HRFlowable(width="100%", thickness=0.5, color=COLOR_BRAND_BORDER, spaceAfter=7, spaceBefore=3))
+
+    # Append Universal Legal Disclaimer Box
+    story.append(Spacer(1, 6))
+    story.append(get_pdf_disclaimer_flowable(doc_width=522.0))
 
     # Build document
     doc.build(story, canvasmaker=SpecializedNumberedCanvas)

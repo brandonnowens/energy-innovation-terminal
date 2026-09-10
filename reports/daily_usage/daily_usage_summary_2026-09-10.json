@@ -1,0 +1,567 @@
+{
+  "report_date": "2026-09-10",
+  "generated_at": "2026-09-10 20:19:05 UTC",
+  "metrics": {
+    "users": {
+      "total": 2,
+      "active": 2,
+      "verified": 2,
+      "tiers": {
+        "free_public_benefit": 1,
+        "enterprise": 1
+      },
+      "roles": {
+        "user": 1,
+        "admin": 1
+      },
+      "recent_logins": [
+        {
+          "email": "innovator@ny-cleanenergy.org",
+          "name": "Dr. Jordan Hayes, PhD",
+          "org": "Empire State Energy Innovation",
+          "tier": "free_public_benefit",
+          "last_login": "2026-09-09 04:12"
+        },
+        {
+          "email": "bowens@aixenergy.io",
+          "name": "Brandon Owens",
+          "org": "AIxEnergy / Energy Innovation Terminal",
+          "tier": "enterprise",
+          "last_login": "2026-09-02 18:36"
+        }
+      ]
+    },
+    "project_analyses": {
+      "total": 339,
+      "last_24h": 168,
+      "last_7d": 247,
+      "last_30d": 339,
+      "applicant_types": [
+        {
+          "type": "business",
+          "count": 107
+        },
+        {
+          "type": "unspecified",
+          "count": 55
+        },
+        {
+          "type": "company",
+          "count": 44
+        },
+        {
+          "type": "startup",
+          "count": 38
+        },
+        {
+          "type": "commercial",
+          "count": 36
+        },
+        {
+          "type": "university",
+          "count": 29
+        },
+        {
+          "type": "homeowner",
+          "count": 18
+        },
+        {
+          "type": "Startup / SME",
+          "count": 5
+        }
+      ],
+      "top_tech_areas": [
+        {
+          "area": "Energy Storage",
+          "count": 131
+        },
+        {
+          "area": "Building Electrification",
+          "count": 128
+        },
+        {
+          "area": "Solar",
+          "count": 102
+        },
+        {
+          "area": "Clean Transportation",
+          "count": 99
+        },
+        {
+          "area": "Grid Modernization",
+          "count": 94
+        },
+        {
+          "area": "Buildings",
+          "count": 92
+        },
+        {
+          "area": "Industrial Decarbonization",
+          "count": 73
+        },
+        {
+          "area": "Clean Energy Manufacturing",
+          "count": 60
+        },
+        {
+          "area": "Materials Science",
+          "count": 54
+        },
+        {
+          "area": "Carbon Management",
+          "count": 43
+        }
+      ],
+      "recent": [
+        {
+          "id": 341,
+          "applicant_type": "commercial",
+          "location": "New York, NY",
+          "trl": "TRL 7",
+          "cost": "$1.50M",
+          "created_at": "2026-09-10 03:32"
+        },
+        {
+          "id": 340,
+          "applicant_type": "business",
+          "location": "Queens, NY",
+          "trl": "TRL 7",
+          "cost": "$2.50M",
+          "created_at": "2026-09-10 03:32"
+        },
+        {
+          "id": 339,
+          "applicant_type": "General",
+          "location": "NYC",
+          "trl": "TRL 8",
+          "cost": "$1.00M",
+          "created_at": "2026-09-10 03:32"
+        },
+        {
+          "id": 338,
+          "applicant_type": "company",
+          "location": "Buffalo, NY",
+          "trl": "TRL 6",
+          "cost": "$6.00M",
+          "created_at": "2026-09-10 03:32"
+        },
+        {
+          "id": 337,
+          "applicant_type": "homeowner",
+          "location": "Syracuse, NY",
+          "trl": "TRL 9",
+          "cost": "$18.0K",
+          "created_at": "2026-09-10 03:32"
+        }
+      ]
+    },
+    "proposals": {
+      "total": 66,
+      "won_count": 60,
+      "total_target_funding": 80300000.0,
+      "total_budget": 86500000.0,
+      "avg_compliance_pct": 97.8,
+      "stages": [
+        {
+          "stage": "award_won",
+          "count": 60
+        },
+        {
+          "stage": "red_team",
+          "count": 5
+        },
+        {
+          "stage": "cbp_compliance",
+          "count": 1
+        }
+      ],
+      "top_agencies": [
+        {
+          "agency": "DOE",
+          "count": 42,
+          "funding": 42000000.0
+        },
+        {
+          "agency": "NSF",
+          "count": 14,
+          "funding": 14000000.0
+        },
+        {
+          "agency": "NYSERDA",
+          "count": 6,
+          "funding": 14000000.0
+        },
+        {
+          "agency": "Gates Foundation",
+          "count": 2,
+          "funding": 2000000.0
+        },
+        {
+          "agency": "California Energy Commission",
+          "count": 1,
+          "funding": 4800000.0
+        },
+        {
+          "agency": "DOE EERE",
+          "count": 1,
+          "funding": 3500000.0
+        }
+      ],
+      "recent": [
+        {
+          "title": "CLIMATE RESILIENT ENERGY CODES FOR MULTIFAMILY AFFORDABLE HO...",
+          "agency": "DOE",
+          "funding": "$1.00M",
+          "compliance": "100%",
+          "is_won": true,
+          "date": "2026-09-03"
+        },
+        {
+          "title": "VERMONT BUILDING ENERGY CODE ADMINISTRATION PROJECT",
+          "agency": "DOE",
+          "funding": "$1.00M",
+          "compliance": "100%",
+          "is_won": true,
+          "date": "2026-09-03"
+        },
+        {
+          "title": "BIL - THE ACTIVITIES TO BE FUNDED UNDER THIS FOA SUPPORT THE...",
+          "agency": "DOE",
+          "funding": "$1.00M",
+          "compliance": "100%",
+          "is_won": true,
+          "date": "2026-09-03"
+        },
+        {
+          "title": "THE OBJECTIVE OF THE SOLAR HOMES AND CAREERS FOR JUSTICE40 C...",
+          "agency": "DOE",
+          "funding": "$1.00M",
+          "compliance": "100%",
+          "is_won": true,
+          "date": "2026-09-03"
+        },
+        {
+          "title": "THE HAYWARD MUNICIPAL CRITICAL FACILITY RESILIENCE PROJECT W...",
+          "agency": "DOE",
+          "funding": "$1.00M",
+          "compliance": "100%",
+          "is_won": true,
+          "date": "2026-09-03"
+        }
+      ]
+    },
+    "foa_shredder": {
+      "total": 7,
+      "avg_cost_share_pct": 20.0,
+      "justice40_required_count": 6,
+      "domestic_mfg_required_count": 0,
+      "recent": [
+        {
+          "solicitation": "OPPD-PWP-SOLAR-2026",
+          "agency": "Omaha Public Power District",
+          "title": "OPPD Power with Purpose Utility Solar & Storage RFP",
+          "cost_share": "20%",
+          "trl_range": "TRL 1-9",
+          "date": "2026-09-09"
+        },
+        {
+          "solicitation": "PON 6121",
+          "agency": "NYSERDA",
+          "title": "Clean Energy Career Pathways Training",
+          "cost_share": "20%",
+          "trl_range": "TRL 1-9",
+          "date": "2026-09-09"
+        },
+        {
+          "solicitation": "PON 6141",
+          "agency": "NYSERDA",
+          "title": "Charge Ready NY - Large Public Sector Project Program",
+          "cost_share": "20%",
+          "trl_range": "TRL 1-9",
+          "date": "2026-09-09"
+        },
+        {
+          "solicitation": "PON 5437",
+          "agency": "NYSERDA",
+          "title": "Apprenticeship and Pre-apprenticeship Clean Energy Training",
+          "cost_share": "20%",
+          "trl_range": "TRL 1-9",
+          "date": "2026-09-09"
+        },
+        {
+          "solicitation": "PON 5859",
+          "agency": "NYSERDA",
+          "title": "Appliance Upgrade Program- Application for Retailer and Cont...",
+          "cost_share": "20%",
+          "trl_range": "TRL 1-9",
+          "date": "2026-09-09"
+        }
+      ]
+    },
+    "community_assets": {
+      "reports_total": 36,
+      "reports_public": 36,
+      "strategies_total": 14,
+      "strategies_public": 2,
+      "saved_charts": 1,
+      "saved_views": 11
+    },
+    "communications": {
+      "alert_subscriptions": 0,
+      "alert_triggers": 0,
+      "email_campaigns": 0,
+      "email_logs": 0,
+      "email_threads": 1,
+      "email_messages": 2
+    },
+    "corpus": {
+      "opportunities": {
+        "total": 3870,
+        "open": 292,
+        "closed": 2110,
+        "total_pipeline_funding": 74319081682.41,
+        "open_pipeline_funding": 7021018000.0,
+        "by_agency": [
+          {
+            "agency": "DOE",
+            "total": 1710,
+            "open": 22,
+            "funding": 38662796984.45
+          },
+          {
+            "agency": "NSF",
+            "total": 1487,
+            "open": 8,
+            "funding": 633101560.0
+          },
+          {
+            "agency": "ARPA-E",
+            "total": 207,
+            "open": 2,
+            "funding": 1224666794.96
+          },
+          {
+            "agency": "NYSERDA",
+            "total": 168,
+            "open": 40,
+            "funding": 1012101343.0
+          },
+          {
+            "agency": "Gates Foundation",
+            "total": 50,
+            "open": 0,
+            "funding": 0.0
+          },
+          {
+            "agency": "EPA",
+            "total": 21,
+            "open": 1,
+            "funding": 27180000000.0
+          },
+          {
+            "agency": "MassCEC",
+            "total": 20,
+            "open": 19,
+            "funding": 163915000.0
+          },
+          {
+            "agency": "CEC",
+            "total": 14,
+            "open": 12,
+            "funding": 375000000.0
+          },
+          {
+            "agency": "WI OEI",
+            "total": 11,
+            "open": 11,
+            "funding": 20000000.0
+          },
+          {
+            "agency": "Efficiency Maine",
+            "total": 10,
+            "open": 10,
+            "funding": 20000000.0
+          }
+        ]
+      },
+      "awards": {
+        "total_count": 29305,
+        "total_awarded_usd": 89065707709.14,
+        "unique_recipients": 8133,
+        "year_range": "1983 - 2027"
+      },
+      "organizations": {
+        "total": 185,
+        "recipients_directory": 8131,
+        "by_type": [
+          {
+            "type": "utility",
+            "count": 90
+          },
+          {
+            "type": "holding_company",
+            "count": 33
+          },
+          {
+            "type": "funder",
+            "count": 30
+          },
+          {
+            "type": "economic_development",
+            "count": 11
+          },
+          {
+            "type": "company",
+            "count": 9
+          },
+          {
+            "type": "foundation",
+            "count": 9
+          },
+          {
+            "type": "non_profit",
+            "count": 2
+          },
+          {
+            "type": "program_office",
+            "count": 1
+          }
+        ]
+      },
+      "commercialization": {
+        "patents_tracked": 29,
+        "vc_rounds": 31,
+        "vc_volume_usd": 5211000000.0,
+        "sec_form_d_filings": 40,
+        "sec_form_d_sold_usd": 8927000000.0
+      },
+      "policy_and_regulations": {
+        "standards_and_codes": 38,
+        "proceedings_and_dockets": 17
+      },
+      "domain_entities": {
+        "programs": 181,
+        "technologies": 36,
+        "contacts": 3090,
+        "interconnection_queue": 20,
+        "national_lab_facilities": 8,
+        "scaleup_allocations": 18,
+        "procurement_contracts": 22,
+        "der_market_deployments": 161,
+        "university_licensable_tech": 4
+      }
+    },
+    "pipeline": {
+      "total_runs": 232,
+      "recent_runs": [
+        {
+          "source": "Utility PSC Regulatory Docket Radar",
+          "status": "success",
+          "added": 0,
+          "updated": 2,
+          "unchanged": 0,
+          "errors": 0,
+          "started": "2026-09-10 06:00"
+        },
+        {
+          "source": "State Innovation Portals (NYSERDA/CEC/MassCEC)",
+          "status": "success",
+          "added": 0,
+          "updated": 3,
+          "unchanged": 0,
+          "errors": 0,
+          "started": "2026-09-10 06:00"
+        },
+        {
+          "source": "Grants.gov Federal Gateway",
+          "status": "success",
+          "added": 0,
+          "updated": 3,
+          "unchanged": 0,
+          "errors": 0,
+          "started": "2026-09-10 06:00"
+        },
+        {
+          "source": "Utility PSC Regulatory Docket Radar",
+          "status": "success",
+          "added": 0,
+          "updated": 2,
+          "unchanged": 0,
+          "errors": 0,
+          "started": "2026-09-09 06:01"
+        },
+        {
+          "source": "State Innovation Portals (NYSERDA/CEC/MassCEC)",
+          "status": "success",
+          "added": 0,
+          "updated": 3,
+          "unchanged": 0,
+          "errors": 0,
+          "started": "2026-09-09 06:01"
+        },
+        {
+          "source": "Grants.gov Federal Gateway",
+          "status": "success",
+          "added": 0,
+          "updated": 3,
+          "unchanged": 0,
+          "errors": 0,
+          "started": "2026-09-09 06:01"
+        }
+      ],
+      "total_changes": 365,
+      "recent_changes": [
+        {
+          "entity": "GRANTS SYSTEM USER'S GUIDE\u200b",
+          "change_type": "new",
+          "field": "status",
+          "old": "N/A",
+          "new": "N/A",
+          "detected_at": "2026-09-08 03:29"
+        },
+        {
+          "entity": "202\u200b1 Grant Awards",
+          "change_type": "new",
+          "field": "status",
+          "old": "N/A",
+          "new": "N/A",
+          "detected_at": "2026-09-08 03:29"
+        },
+        {
+          "entity": "PSC GRANTS SYSTEM LOGIN",
+          "change_type": "new",
+          "field": "status",
+          "old": "N/A",
+          "new": "N/A",
+          "detected_at": "2026-09-08 03:29"
+        },
+        {
+          "entity": "\u200b9709-FG-2026 EIGP Round 6 FAQs\u200b Version...",
+          "change_type": "new",
+          "field": "status",
+          "old": "N/A",
+          "new": "N/A",
+          "detected_at": "2026-09-08 03:29"
+        },
+        {
+          "entity": "2022 Grant Awards",
+          "change_type": "new",
+          "field": "status",
+          "old": "N/A",
+          "new": "N/A",
+          "detected_at": "2026-09-08 03:29"
+        },
+        {
+          "entity": "\u200b2020&#160;Grant Awards",
+          "change_type": "new",
+          "field": "status",
+          "old": "N/A",
+          "new": "N/A",
+          "detected_at": "2026-09-08 03:29"
+        }
+      ],
+      "unresolved_conflicts": 22,
+      "unresolved_quality_issues": 16
+    }
+  }
+}

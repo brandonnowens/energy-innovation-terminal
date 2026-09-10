@@ -30,18 +30,18 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
 
   if (!isOpen) return null;
 
-  const citationApa = `Owens, B. N. (2026). U.S. Energy Innovation Database (Version 3.5.0) [Data set and software]. Clean Energy Research, LLC. https://terminal.aixenergy.io`;
+  const citationApa = `Clean Energy Research, LLC. (2026). U.S. Energy Innovation Database (Version 3.5.0) [Data set and software]. Energy Innovation Terminal. https://terminal.aixenergy.io`;
   
-  const citationBibtex = `@misc{owens2026energyinnovation,
-  author = {Brandon N. Owens},
+  const citationBibtex = `@misc{energyinnovation2026database,
+  author = {{Clean Energy Research, LLC}},
   title = {U.S. Energy Innovation Database},
   year = {2026},
   publisher = {Clean Energy Research, LLC},
   url = {https://terminal.aixenergy.io},
-  note = {Multi-agency cross-jurisdictional intelligence covering 56,413 awards, $104.16B capital, and 140+ federal & state utilities}
+  note = {Multi-agency cross-jurisdictional open public records intelligence covering 56,000+ public disbursements and 140+ funding authorities}
 };`;
 
-  const citationChicago = `Owens, Brandon N. 2026. "U.S. Energy Innovation Database." Clean Energy Research, LLC. https://terminal.aixenergy.io.`;
+  const citationChicago = `Clean Energy Research, LLC. 2026. "U.S. Energy Innovation Database." Energy Innovation Terminal. https://terminal.aixenergy.io.`;
 
   const copyToClipboard = (text: string, format: string) => {
     navigator.clipboard.writeText(text);
@@ -81,14 +81,14 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase">
-                    Database Reference &amp; Provenance
+                    Database Reference &amp; Public Provenance
                   </span>
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    VERIFIED
+                    OPEN PUBLIC RECORDS
                   </span>
                 </div>
                 <h3 className="text-lg font-bold tracking-tight text-white flex items-center gap-1.5 mt-0.5">
-                  <span>Curated &amp; Engineered by Brandon N. Owens</span>
+                  <span>U.S. Energy Innovation Database · Clean Energy Research, LLC</span>
                 </h3>
               </div>
             </div>
@@ -116,10 +116,10 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
               </div>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">
-                  The U.S. Energy Innovation Database
+                  Public Open Records Compilation
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  The <strong>U.S. Energy Innovation Database</strong> unifies, cleanses, and structures upstream energy innovation funding data across <strong>140+ federal, state, and utility authorities</strong>. Published and engineered by <strong>Clean Energy Research, LLC</strong> to provide capital allocators, project sponsors, and researchers with structured visibility across the U.S. energy innovation ecosystem.
+                  The <strong>U.S. Energy Innovation Database</strong> structures and harmonizes publicly available energy innovation funding disclosures across <strong>140+ federal, state, and utility authorities</strong>. Published and maintained by <strong>Clean Energy Research, LLC</strong> to provide capital allocators, project sponsors, and researchers with transparent visibility across the U.S. clean energy innovation ecosystem.
                 </p>
               </div>
             </div>
@@ -128,7 +128,7 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
           {/* Verified Corpus Metrics Grid */}
           <div>
             <div className="text-[10.5px] font-mono uppercase tracking-wider text-slate-400 font-bold mb-2.5 flex items-center justify-between">
-              <span>Verified System Telemetry &amp; Coverage</span>
+              <span>Public Open Records Telemetry &amp; Coverage</span>
               <span className="text-emerald-400 flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Live Node
@@ -137,17 +137,17 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               <div className={clsx("p-3 rounded-xl border text-center", isDark ? "bg-white/[0.03] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
-                <div className="text-lg font-black text-cyan-400 font-mono">56,413</div>
+                <div className="text-lg font-black text-cyan-400 font-mono">56,000+</div>
                 <div className="text-[10px] text-slate-400 font-medium mt-0.5">Tracked Awards</div>
               </div>
 
               <div className={clsx("p-3 rounded-xl border text-center", isDark ? "bg-white/[0.03] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
-                <div className="text-lg font-black text-emerald-400 font-mono">$104.16B</div>
-                <div className="text-[10px] text-slate-400 font-medium mt-0.5">Capital Deployed</div>
+                <div className="text-lg font-black text-emerald-400 font-mono">$104B+</div>
+                <div className="text-[10px] text-slate-400 font-medium mt-0.5">Public Capital</div>
               </div>
 
               <div className={clsx("p-3 rounded-xl border text-center", isDark ? "bg-white/[0.03] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
-                <div className="text-lg font-black text-blue-400 font-mono">10,250</div>
+                <div className="text-lg font-black text-blue-400 font-mono">10,000+</div>
                 <div className="text-[10px] text-slate-400 font-medium mt-0.5">Grid Projects</div>
               </div>
 
@@ -218,17 +218,17 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
             </p>
           </div>
 
-          {/* Legal Non-Affiliation & Public Records Notice */}
+          {/* Legal Non-Affiliation & Contributor Safe Harbor Notice */}
           <div className={clsx(
             "p-3.5 rounded-xl border text-[11px] leading-relaxed",
             isDark ? "bg-amber-950/20 border-amber-500/30 text-amber-200/90" : "bg-amber-50 border-amber-200 text-amber-900"
           )}>
             <div className="font-bold mb-1 flex items-center gap-1.5 text-amber-400">
               <ShieldCheck size={14} className="text-amber-400 shrink-0" />
-              <span className="uppercase tracking-wider text-[10px] font-mono">Independent Public Research Notice</span>
+              <span className="uppercase tracking-wider text-[10px] font-mono">Independent Public Research Safe Harbor</span>
             </div>
             <p className="text-[11px]">
-              This terminal is an independent academic, computational, and decision-support project developed outside of any official government capacity. It is not affiliated with, sponsored by, or an official tool of NYSERDA, New York State, the US Department of Energy (DOE), or any government agency. All data is sourced exclusively from public open records, FOIL disclosures, and open government databases.
+              This terminal is an independent research, academic, and analytical initiative developed outside of any official government capacity. It is not an official tool, service, or publication of any state or federal governmental entity. All data is sourced exclusively from open public records, official disclosure filings, and public databases. Contributing researchers participate strictly in a personal research capacity without representing any public employer or agency.
             </p>
           </div>
 
@@ -261,25 +261,6 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
               <span>Visit aixenergy.io</span>
               <span>↗</span>
             </a>
-          </div>
-
-          {/* Cryptographic & Architecture Seals */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-mono">
-            <div className={clsx("p-3 rounded-xl border flex items-center gap-3", isDark ? "bg-white/[0.02] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
-              <Cpu size={18} className="text-cyan-400 shrink-0" />
-              <div>
-                <div className="font-bold text-slate-200">Architecture Engine</div>
-                <div className="text-[10px] text-slate-400">PostgreSQL 17 · Vector / FTS · FastAPI · React 19</div>
-              </div>
-            </div>
-
-            <div className={clsx("p-3 rounded-xl border flex items-center gap-3", isDark ? "bg-white/[0.02] border-white/[0.06]" : "bg-slate-50 border-slate-200")}>
-              <Lock size={18} className="text-emerald-400 shrink-0" />
-              <div>
-                <div className="font-bold text-slate-200">Integrity &amp; Cryptography</div>
-                <div className="text-[10px] text-slate-400">Deterministic Matching · Immutable Audit Trail</div>
-              </div>
-            </div>
           </div>
         </div>
 

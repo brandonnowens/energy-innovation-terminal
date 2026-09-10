@@ -400,6 +400,11 @@ def generate_recipient_dossier_pdf(dossier_data: Dict[str, Any]) -> io.BytesIO:
         if innov:
             story.append(Paragraph(f"<b>Core Engineering Innovations:</b> {innov}", style_body))
 
+    # Universal Legal Disclaimer Box
+    from app.engine.legal_disclaimer import get_pdf_disclaimer_flowable
+    story.append(Spacer(1, 8))
+    story.append(get_pdf_disclaimer_flowable(doc_width=536.0))
+
     # Build Document with two-pass numbered canvas
     doc.build(story, canvasmaker=lambda *args, **kwargs: RecipientDossierNumberedCanvas(*args, recipient_name=rec_name, **kwargs))
     buffer.seek(0)

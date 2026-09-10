@@ -875,10 +875,10 @@ export default function Layout() {
                   ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-300 border-white/[0.08]"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200"
               )}
-              title="Curated & Engineered by Brandon N. Owens (Click to view verified provenance & citation)"
+              title="Published by Clean Energy Research, LLC · Sourced from Public Open Records (Click to view provenance & citation)"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span>Curated &amp; Engineered by <strong className="text-cyan-400 group-hover:underline">Brandon N. Owens</strong></span>
+              <span>Published by <strong className="text-cyan-400 group-hover:underline">Clean Energy Research, LLC</strong></span>
             </button>
 
             <a

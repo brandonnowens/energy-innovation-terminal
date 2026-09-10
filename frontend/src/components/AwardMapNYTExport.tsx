@@ -395,7 +395,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
     );
 
     ctx.textAlign = 'right';
-    ctx.fillText('Public Open Records (Not Affiliated with NYSERDA or US DOE)', contentRight, footerY);
+    ctx.fillText('Sourced from Public Open Records · Independent Research Tool', contentRight, footerY);
     ctx.textAlign = 'left';
 
     return canvas;

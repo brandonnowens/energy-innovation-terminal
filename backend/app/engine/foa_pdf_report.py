@@ -394,6 +394,11 @@ def generate_foa_blueprint_pdf(shred_data: Dict[str, Any]) -> io.BytesIO:
     ]))
     story.append(split_strategy)
 
+    # Universal Legal Disclaimer Box
+    from app.engine.legal_disclaimer import get_pdf_disclaimer_flowable
+    story.append(Spacer(1, 8))
+    story.append(get_pdf_disclaimer_flowable(doc_width=536.0))
+
     doc.build(story, canvasmaker=lambda *args, **kwargs: FoaBlueprintNumberedCanvas(*args, sol_number=sol_num, **kwargs))
     buffer.seek(0)
     return buffer
