@@ -182,7 +182,7 @@ def build_capabilities_pdf() -> bytes:
     modules = [
         (
             "1. Funding Opportunity Deconstruction & Compliance Analysis",
-            "Automated parsing of multi-volume solicitations (DOE, ARPA-E, CEC, NYSERDA, EPA, USDA) into structured evaluation scoring rubrics, eligibility gates, submission volume checklists, and compliance requirements.",
+            "Automated parsing of multi-volume solicitations (DOE, ARPA-E, CEC, State Energy Offices, EPA, USDA) into structured evaluation scoring rubrics, eligibility gates, submission volume checklists, and compliance requirements.",
             "Eliminates manual review cycles; produces structured compliance matrices for proposal managers and review teams."
         ),
         (
@@ -270,7 +270,7 @@ def build_capabilities_pdf() -> bytes:
         ],
         [
             Paragraph("<b>Clean Energy &amp; Grant Data Scope</b>", style_bullet_bold),
-            Paragraph("<b>56,413 awards ($104.16B)</b> across 140+ federal &amp; state agencies (DOE, NYSERDA, CEC, MassCEC, ARPA-E, NSF, USDA).", style_bullet),
+            Paragraph("<b>56,413 awards ($104.16B)</b> across 140+ federal &amp; state agencies (DOE, State Energy Offices, CEC, MassCEC, ARPA-E, NSF, USDA).", style_bullet),
             Paragraph("Private venture/PE transactions only; no coverage of non-dilutive state or federal grants.", style_bullet),
             Paragraph("General defense and IT procurement; negligible coverage of state clean energy grant programs.", style_bullet)
         ],
@@ -331,7 +331,7 @@ def build_capabilities_pdf() -> bytes:
 
     card_arch_content = (
         "<b>DATA PROVENANCE &amp; TAXONOMY</b><br/>"
-        "&bull; <b>Primary Source Ingestion:</b> Continuous indexing across DOE (EERE, ARPA-E, OCED, FECM, LPO), Grants.gov, NYSERDA, CEC EPIC, MassCEC, NSF, USDA, SEC EDGAR, USPTO, and state utility commissions.<br/>"
+        "&bull; <b>Primary Source Ingestion:</b> Continuous indexing across DOE (EERE, ARPA-E, OCED, FECM, LPO), Grants.gov, State Energy Offices, CEC EPIC, MassCEC, NSF, USDA, SEC EDGAR, USPTO, and state utility commissions.<br/>"
         "&bull; <b>24 Energy Tech Taxonomies:</b> Standardized categorization across Energy Storage, Advanced Nuclear, Clean Hydrogen, Carbon Capture, Grid Modernization, Industrial Decarbonization, Solar/Wind, and Building Thermal.<br/>"
         "&bull; <b>Entity Resolution Graph:</b> Multi-stage normalization resolving parent corporations, subsidiaries, university labs, and research institutions into unified entity profiles."
     )

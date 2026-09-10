@@ -113,7 +113,7 @@ export function MembershipModal() {
             <div>
               <strong className="text-slate-800 font-semibold">Institutional Due Diligence Warrant:</strong>
               <span className="block mt-0.5">
-                Every dataset, patent linkage, recipient dossier, and financial metric in the Energy Innovation Terminal is grounded against authoritative public records (USAspending, US DOE, CEC, MassCEC, NYSERDA, USPTO, and FERC). All intelligence briefs are cleared for Board of Directors presentations and Investment Committee memos.
+                Every dataset, patent linkage, recipient dossier, and financial metric in the Energy Innovation Terminal is grounded against authoritative public records (USAspending, US DOE, CEC, MassCEC, State Energy Offices, USPTO, and FERC). All intelligence briefs are cleared for Board of Directors presentations and Investment Committee memos.
               </span>
             </div>
           </div>

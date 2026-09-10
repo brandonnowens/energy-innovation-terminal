@@ -188,7 +188,7 @@ export default function OpportunityDetail() {
       `${d.description || d.summary || 'Public non-dilutive grant opportunity for energy transition innovation.'}`,
       ``,
       `---`,
-      `*Source: Independent Research Compilation from Public Open Records (U.S. Energy Innovation Database by Clean Energy Research, LLC · https://terminal.aixenergy.io). Not affiliated with or endorsed by NYSERDA, US DOE, or any government entity.*`,
+      `*Source: Independent Research Compilation from Public Open Records (U.S. Energy Innovation Database by Clean Energy Research, LLC · https://terminal.aixenergy.io). Not affiliated with or endorsed by any state or federal government entity.*`,
       `*Official Solicitation Record: ${d.official_url || d.portal_url || 'Authoritative Ingestion Feed'}*`
     ];
 
