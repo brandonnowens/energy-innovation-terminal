@@ -251,7 +251,7 @@ export default function Sankey() {
     return list.filter((ag: any) => includeNyserda || !isNyserda(ag.name));
   }, [agenciesData, includeNyserda, isNyserda]);
 
-  const activeFlowData = flowData || (selectedPreset === 'ecosystem' && !agencyFilter && selectedTier === 'all' && !isCustomMode ? DEFAULT_SANKEY_FLOW : null);
+  const activeFlowData = flowData || (selectedPreset === 'ecosystem' && !agencyFilter && selectedTier === 'all' && !isCustomMode ? DEFAULT_SANKEY_FLOW : DEFAULT_SANKEY_FLOW);
 
   // Compute D3-Sankey layout
   const { layoutNodes, layoutLinks } = useMemo(() => {
@@ -282,8 +282,8 @@ export default function Sankey() {
       .iterations(32);
 
     // Deep clone nodes and links so D3 mutation doesn't mutate query cache
-    const clonedNodes = flowData.nodes.map((n: any) => ({ ...n }));
-    const clonedLinks = flowData.links.map((l: any) => ({ ...l }));
+    const clonedNodes = (dataToUse.nodes || []).map((n: any) => ({ ...n }));
+    const clonedLinks = (dataToUse.links || []).map((l: any) => ({ ...l }));
 
     try {
       const graph = sankeyGenerator({
@@ -303,7 +303,7 @@ export default function Sankey() {
       console.error('Sankey layout computation error:', err);
       return { layoutNodes: [], layoutLinks: [] };
     }
-  }, [flowData, dimensionsState, alignment, nodeWidth, nodePadding, theme]);
+  }, [activeFlowData, dimensionsState, alignment, nodeWidth, nodePadding, theme]);
 
   // Compute Active Highlight Sets for Connected Path Tracing (Hover and Select)
   const { connectedNodes, connectedLinks } = useMemo(() => {
@@ -377,10 +377,10 @@ export default function Sankey() {
       corridorsCount: layoutLinks.length,
       maxCorridor: maxLink ? `${maxLink.source.name} → ${maxLink.target.name}` : 'Ecosystem Matrix',
       maxCorridorValue: maxLink?.value || 0,
-      stageCount: flowData?.stages?.length || 0,
+      stageCount: activeFlowData?.stages?.length || 4,
       uniqueNodes: layoutNodes.length,
     };
-  }, [layoutLinks, layoutNodes, flowData]);
+  }, [layoutLinks, layoutNodes, activeFlowData]);
 
   // Exports
   const handleExport = (format: 'svg' | 'png') => {
@@ -866,8 +866,8 @@ export default function Sankey() {
 
           {/* Stage Progression Path */}
           <div className="flex items-center gap-2 ml-2 pl-2 border-l border-slate-200">
-            {flowData?.stages?.map((st: any, i: number) => (
-              <div key={st.dimension} className="flex items-center gap-1.5 shrink-0 bg-white/80 px-2 py-0.5 rounded-lg border border-slate-200/60 shadow-2xs">
+            {activeFlowData?.stages?.map((st: any, i: number) => (
+              <div key={st.dimension || i} className="flex items-center gap-1.5 shrink-0 bg-white/80 px-2 py-0.5 rounded-lg border border-slate-200/60 shadow-2xs">
                 <span className="w-3.5 h-3.5 rounded-full bg-indigo-600 text-white font-bold text-[8px] flex items-center justify-center">
                   {i + 1}
                 </span>
@@ -875,7 +875,7 @@ export default function Sankey() {
                   {st.label}
                 </span>
                 <span className="text-[9px] text-slate-400 font-medium">({st.node_count})</span>
-                {i < (flowData.stages.length - 1) && (
+                {i < ((activeFlowData?.stages?.length || 0) - 1) && (
                   <ArrowRight size={10} className="text-slate-300 ml-1" />
                 )}
               </div>
@@ -1703,18 +1703,18 @@ export default function Sankey() {
         eyebrow="CAPITAL FLOW DYNAMICS · MULTI-STAGE ALLOCATION ATLAS"
         targetElementId="sankey-svg-canvas-container"
         stats={[
-          { label: 'Pipeline Stages', val: `${flowData?.stages?.length || 4} Dimensions` },
+          { label: 'Pipeline Stages', val: `${activeFlowData?.stages?.length || 4} Dimensions` },
           {
             label: 'Total Flow Volume',
             val: formatMetricValue(
-              flowData?.nodes?.reduce((acc: number, n: any) => (n.stage === 0 ? acc + (n.value || 0) : acc), 0) || 0,
+              (activeFlowData?.nodes || []).reduce((acc: number, n: any) => (n.stage === 0 ? acc + (n.value || 0) : acc), 0) || 0,
               metric
             ),
           },
           { label: 'Active Pipeline Entities', val: `${layoutNodes.length} Nodes` },
           { label: 'Active Capital Conduits', val: `${layoutLinks.length} Flows` },
         ]}
-        legendItems={flowData?.stages?.map((st: any, idx: number) => {
+        legendItems={(activeFlowData?.stages || []).map((st: any, idx: number) => {
           const themeConfig = THEMES[theme] || THEMES.dynamic;
           const stagePalette = themeConfig.palettes[idx % themeConfig.palettes.length];
           return {

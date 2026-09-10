@@ -75,10 +75,11 @@ export default function DailyDigest() {
       }
       return getGuaranteedDailyDigest(dateParam);
     },
-    staleTime: 5 * 60 * 1000,
-    gcTime: 30 * 60 * 1000,
-    retry: 5,
-    retryDelay: (attemptIndex) => Math.min(1000 * Math.pow(1.6, attemptIndex), 6000),
+    staleTime: 10 * 60 * 1000,
+    gcTime: 60 * 60 * 1000,
+    initialDataUpdatedAt: () => Date.now(),
+    retry: 2,
+    retryDelay: (attemptIndex) => Math.min(1000 * Math.pow(1.6, attemptIndex), 4000),
     placeholderData: (previousData) => previousData || getGuaranteedDailyDigest(dateParam),
   });
 
@@ -160,32 +161,6 @@ export default function DailyDigest() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-20 px-4 sm:px-6">
-      {/* Real-time Status Sync Notification (Non-blocking) */}
-      {isFetching && (
-        <div className="flex items-center justify-between p-3 bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 rounded-xl text-emerald-800 dark:text-emerald-300 text-xs">
-          <div className="flex items-center gap-2">
-            <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-600 dark:text-emerald-400 shrink-0" />
-            <span>Connecting to live federal & state opportunity feeds...</span>
-          </div>
-          <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold hidden sm:inline">Streaming Updates</span>
-        </div>
-      )}
-
-      {isError && (
-        <div className="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 rounded-xl text-amber-800 dark:text-amber-300 text-xs">
-          <div className="flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-            <span>Serving instant cached briefing. Cloud API is reconnecting.</span>
-          </div>
-          <button
-            onClick={() => refetch()}
-            className="px-2.5 py-1 bg-amber-600 text-white rounded-md text-[11px] font-bold hover:bg-amber-700 transition"
-          >
-            Retry Connection
-          </button>
-        </div>
-      )}
-
       {/* Top Editorial Masthead Banner */}
       <div className="border-b border-slate-200 dark:border-slate-800 pb-6 pt-2">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -193,6 +168,10 @@ export default function DailyDigest() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60">
               <Newspaper size={13} className="text-cyan-600 dark:text-cyan-400" />
               <span>Investor &amp; Strategy Briefing</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/40">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Live Edition</span>
             </span>
             <span className="text-xs text-slate-400 dark:text-slate-600">|</span>
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">

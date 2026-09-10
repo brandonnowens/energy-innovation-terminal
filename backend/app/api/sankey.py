@@ -631,7 +631,7 @@ def get_sankey_insights(
 
     nyserda_sql_filter = "AND LOWER(o.agency) NOT LIKE '%nyserda%' AND LOWER(o.name) NOT LIKE '%nyserda%'" if should_exclude_nyserda else ""
 
-    # 1. Top Capital Conduits (Funder -> Sector -> Tech)
+    # 1. Macro Queries Execution with Full Fallback Protection
     try:
         top_conduits_raw = db.execute(text(f"""
             SELECT o.agency,
@@ -649,6 +649,78 @@ def get_sankey_insights(
             ORDER BY total_funding DESC
             LIMIT 10
         """)).fetchall()
+
+        top_conduits = [
+            {
+                "agency": r[0],
+                "sector": r[1],
+                "technology": r[2],
+                "funding": float(r[3]),
+                "opp_count": r[4],
+                "headline": f"{r[0]} → {r[1]} → {r[2]}",
+            }
+            for r in top_conduits_raw
+        ]
+
+        total_conduit_funding = sum(c["funding"] for c in top_conduits) or 1.0
+
+        # 2. Utility Innovation Share (Non-Wires & Grid Modernization vs Other)
+        util_stats = db.execute(text("""
+            SELECT o.agency,
+                   COUNT(o.id) as total_opps,
+                   SUM(CASE WHEN LOWER(o.name) LIKE '%non-wire%' OR LOWER(o.name) LIKE '%grid%' OR LOWER(o.name) LIKE '%storage%' OR LOWER(o.name) LIKE '%epic%' THEN 1 ELSE 0 END) as grid_storage_opps,
+                   COALESCE(SUM(o.total_funding), 0) as total_funding
+            FROM opportunities o
+            WHERE o.agency IN ('Con Edison', 'National Grid', 'NYSEG', 'RG&E', 'Central Hudson', 'Orange & Rockland', 'NYPA', 'LIPA', 'PSEG Long Island', 'Pacific Gas and Electric', 'Southern California Edison', 'San Diego Gas & Electric')
+            GROUP BY o.agency
+            ORDER BY total_funding DESC
+        """)).fetchall()
+
+        utility_breakdown = [
+            {
+                "utility": r[0],
+                "total_opps": r[1],
+                "grid_storage_opps": r[2],
+                "funding": float(r[3]),
+                "pct_grid_focused": round((r[2] / max(1, r[1])) * 100, 1),
+            }
+            for r in util_stats
+        ]
+
+        # 3. Technology Diversification (Which tech is funded by the most distinct agencies)
+        tech_diversity = db.execute(text(f"""
+            SELECT ct.category_value as technology,
+                   COUNT(DISTINCT o.agency) as agency_count,
+                   {agg_agency} as agencies,
+                   COUNT(DISTINCT o.id) as opp_count,
+                   SUM(COALESCE(o.total_funding, 0)) as total_funding
+            FROM opportunity_categories ct
+            JOIN opportunities o ON ct.opportunity_id = o.id
+            WHERE ct.category_type = 'technology' AND ct.category_value != '' AND ct.category_value NOT IN ('Unknown', 'Other')
+            GROUP BY ct.category_value
+            HAVING COUNT(DISTINCT o.agency) >= 3
+            ORDER BY total_funding DESC
+            LIMIT 10
+        """)).fetchall()
+
+        cross_agency_tech = [
+            {
+                "technology": r[0],
+                "agency_count": r[1],
+                "agencies": [x.strip() for x in r[2].split(",") if x.strip()] if r[2] else [],
+                "opp_count": r[3],
+                "funding": float(r[4]),
+            }
+            for r in tech_diversity
+        ]
+
+        # 4. Multi-Stage Pipeline Funneling Statistics
+        stage_funneling = {
+            "macro_conduits_count": len(top_conduits),
+            "multi_agency_tech_count": len(cross_agency_tech),
+            "total_conduit_capital": total_conduit_funding,
+            "dominant_conduit": top_conduits[0]["headline"] if top_conduits else "Federal → Grid → Storage",
+        }
     except Exception as db_err:
         import logging, json
         from pathlib import Path
@@ -661,78 +733,6 @@ def get_sankey_insights(
             except Exception:
                 pass
         return {"top_conduits": [], "utility_breakdown": [], "cross_agency_technologies": [], "stage_funneling": {}, "insights": []}
-
-    top_conduits = [
-        {
-            "agency": r[0],
-            "sector": r[1],
-            "technology": r[2],
-            "funding": float(r[3]),
-            "opp_count": r[4],
-            "headline": f"{r[0]} → {r[1]} → {r[2]}",
-        }
-        for r in top_conduits_raw
-    ]
-
-    total_conduit_funding = sum(c["funding"] for c in top_conduits) or 1.0
-
-    # 2. Utility Innovation Share (Non-Wires & Grid Modernization vs Other)
-    util_stats = db.execute(text("""
-        SELECT o.agency,
-               COUNT(o.id) as total_opps,
-               SUM(CASE WHEN LOWER(o.name) LIKE '%non-wire%' OR LOWER(o.name) LIKE '%grid%' OR LOWER(o.name) LIKE '%storage%' OR LOWER(o.name) LIKE '%epic%' THEN 1 ELSE 0 END) as grid_storage_opps,
-               COALESCE(SUM(o.total_funding), 0) as total_funding
-        FROM opportunities o
-        WHERE o.agency IN ('Con Edison', 'National Grid', 'NYSEG', 'RG&E', 'Central Hudson', 'Orange & Rockland', 'NYPA', 'LIPA', 'PSEG Long Island', 'Pacific Gas and Electric', 'Southern California Edison', 'San Diego Gas & Electric')
-        GROUP BY o.agency
-        ORDER BY total_funding DESC
-    """)).fetchall()
-
-    utility_breakdown = [
-        {
-            "utility": r[0],
-            "total_opps": r[1],
-            "grid_storage_opps": r[2],
-            "funding": float(r[3]),
-            "pct_grid_focused": round((r[2] / max(1, r[1])) * 100, 1),
-        }
-        for r in util_stats
-    ]
-
-    # 3. Technology Diversification (Which tech is funded by the most distinct agencies)
-    tech_diversity = db.execute(text(f"""
-        SELECT ct.category_value as technology,
-               COUNT(DISTINCT o.agency) as agency_count,
-               {agg_agency} as agencies,
-               COUNT(DISTINCT o.id) as opp_count,
-               SUM(COALESCE(o.total_funding, 0)) as total_funding
-        FROM opportunity_categories ct
-        JOIN opportunities o ON ct.opportunity_id = o.id
-        WHERE ct.category_type = 'technology' AND ct.category_value != '' AND ct.category_value NOT IN ('Unknown', 'Other')
-        GROUP BY ct.category_value
-        HAVING COUNT(DISTINCT o.agency) >= 3
-        ORDER BY total_funding DESC
-        LIMIT 10
-    """)).fetchall()
-
-    cross_agency_tech = [
-        {
-            "technology": r[0],
-            "agency_count": r[1],
-            "agencies": [x.strip() for x in r[2].split(",") if x.strip()] if r[2] else [],
-            "opp_count": r[3],
-            "funding": float(r[4]),
-        }
-        for r in tech_diversity
-    ]
-
-    # 4. Multi-Stage Pipeline Funneling Statistics
-    stage_funneling = {
-        "macro_conduits_count": len(top_conduits),
-        "multi_agency_tech_count": len(cross_agency_tech),
-        "total_conduit_capital": total_conduit_funding,
-        "dominant_conduit": top_conduits[0]["headline"] if top_conduits else "Federal → Grid → Storage",
-    }
 
     # 5. Automated Structured Ecosystem Flow Discoveries
     insights = []
