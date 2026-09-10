@@ -160,7 +160,7 @@ Please let me know if you have any questions or if you would welcome a brief 10-
 Warm regards,
 
 Brandon N. Owens
-Founder & Lead Principal | Energy Innovation Terminal
+Clean Energy Research, LLC | Energy Innovation Terminal
 bowens@aixenergy.io""",
             },
             {
@@ -181,7 +181,7 @@ Would you be open to a brief 15-minute introductory discussion next week to expl
 Best regards,
 
 Brandon N. Owens
-Founder & Lead Principal | Energy Innovation Terminal
+Clean Energy Research, LLC | Energy Innovation Terminal
 bowens@aixenergy.io""",
             },
             {
@@ -202,7 +202,7 @@ Looking forward to connecting.
 Sincerely,
 
 Brandon N. Owens
-Energy Innovation Terminal
+Clean Energy Research, LLC | Energy Innovation Terminal
 bowens@aixenergy.io""",
             },
             {
@@ -221,7 +221,7 @@ I am reaching out regarding clean energy technology developments and funding pro
 Best regards,
 
 Brandon N. Owens
-Energy Innovation Terminal
+Clean Energy Research, LLC | Energy Innovation Terminal
 bowens@aixenergy.io""",
             }
         ]

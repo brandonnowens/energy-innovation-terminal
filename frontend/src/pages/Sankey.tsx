@@ -448,10 +448,10 @@ export default function Sankey() {
             const footerY = height - 32;
             ctx.font = '500 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
             ctx.fillStyle = '#64748B';
-            ctx.fillText('U.S. Energy Innovation Database by Brandon N. Owens', padding, footerY);
+            ctx.fillText('U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io)', padding, footerY);
 
             ctx.textAlign = 'right';
-            ctx.fillText('U.S. Energy Innovation Database by Brandon N. Owens', width - padding, footerY);
+            ctx.fillText('U.S. Energy Innovation Database · Clean Energy Research, LLC', width - padding, footerY);
             ctx.textAlign = 'left';
 
             canvas.toBlob((blob) => {
@@ -1709,7 +1709,7 @@ export default function Sankey() {
           };
         })}
         legendTitle="FLOW PIPELINE STAGES"
-        sourceAttribution="U.S. Energy Innovation Database by Brandon N. Owens"
+        sourceAttribution="U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io)"
         filenamePrefix="energy-innovation-capital-flow"
       />
     </div>

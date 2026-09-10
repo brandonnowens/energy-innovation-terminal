@@ -274,7 +274,7 @@ def generate_pi_academic_leadership_benchmark_monograph(db: Session, output_stre
             "subheader": "Data Provenance, NSF/DOE Grant Database Extraction, and Integrity",
             "prose": [
                 "Principal Investigator names, institution titles, award amounts, and project classifications are extracted directly from audited federal and state grant disclosures (NSF, DOE, NYSERDA).",
-                "All metrics are verified against the U.S. Energy Innovation Database by Brandon N. Owens."
+                "All metrics are verified against the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io)."
             ]
         }
     ]

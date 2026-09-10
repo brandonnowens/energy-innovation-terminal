@@ -50,7 +50,7 @@ class MNCommerceAdapter(BaseAdapter):
                     "name": "Energy Conservation Research Grants",
                     "status": "open",
                     "detail_page_url": f"{self.base_url}/commerce/energy/research",
-                    "short_description": "Grants for energy conservation and U.S. Energy Innovation Database by Brandon N. Owens.",
+                    "short_description": "Grants for energy conservation and clean energy technology research.",
                     "due_date_display": "TBD",
                     "solicitation_type": "Grant",
                     "total_funding": 3000000.0,

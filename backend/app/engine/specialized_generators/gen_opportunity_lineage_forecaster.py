@@ -278,7 +278,7 @@ def generate_opportunity_lineage_forecaster_monograph(db: Session, output_stream
             "subheader": "Data Provenance, Natural Language Processing Linkage Algorithms, and Verification",
             "prose": [
                 "Opportunity relationships are identified through natural language processing of solicitation texts, CFDA catalog numbers, and audited agency budget ledgers.",
-                "All relationship classifications and confidence scores are verified by the U.S. Energy Innovation Database by Brandon N. Owens."
+                "All relationship classifications and confidence scores are verified by the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io)."
             ]
         }
     ]

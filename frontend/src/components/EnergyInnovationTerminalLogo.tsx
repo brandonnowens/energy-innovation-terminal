@@ -115,6 +115,3 @@ export function EnergyInnovationTerminalLogo({
 export const EnergySignalLogo = EnergyInnovationTerminalLogo;
 export type EnergySignalLogoProps = EnergyInnovationTerminalLogoProps;
 
-export const CleanGrantsLogo = EnergyInnovationTerminalLogo;
-export type CleanGrantsLogoProps = EnergyInnovationTerminalLogoProps;
-

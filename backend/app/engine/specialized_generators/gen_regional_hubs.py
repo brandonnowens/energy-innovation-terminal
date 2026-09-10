@@ -317,7 +317,7 @@ def generate_regional_hubs_monograph(db: Session, output_stream: io.BytesIO, nar
             "prose": [
                 "<b>Data Aggregation Methodology:</b> All statistics and geospatial coordinates in this monograph are synthesized from verified program records across State Clean Energy Innovation Authorities, the U.S. Department of Energy (DOE), ARPA-E, NSF, and census databases. The dataset comprises 50 states, 907 coordinate clusters, and 54,305 discrete awards.",
                 "<b>Strict Zero Synthetic Data Standard:</b> Every figure, percentage, company designation, award count, and trajectory curve published herein is synthesized directly from empirical transaction ledgers with zero artificial extrapolation.",
-                "<b>Citation Notice:</b> U.S. Energy Innovation Database by Brandon N. Owens · All Rights Reserved."
+                "<b>Citation Notice:</b> U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io) · All Rights Reserved."
             ]
         }
     ]

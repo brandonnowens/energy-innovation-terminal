@@ -382,7 +382,7 @@ def generate_transportation_ev_monograph(db: Session, output_stream: io.BytesIO,
             "header": "19. Methodological Appendix & Verification Notice",
             "subheader": "Data Provenance, TCO Modeling Assumptions & Verification Safeguards",
             "prose": [
-                "This publication synthesizes empirical grant awards, project abstracts, and recipient registries from the U.S. Energy Innovation Database by Brandon N. Owens. TCO models incorporate real-world fuel prices, vehicle maintenance ledgers, and utility tariff structures.",
+                "This publication synthesizes empirical grant awards, project abstracts, and recipient registries from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io). TCO models incorporate real-world fuel prices, vehicle maintenance ledgers, and utility tariff structures.",
                 "All metric calculations are derived directly from empirical project records. This document contains no synthetic or non-auditable claims. Official research publication curated by Brandon N. Owens."
             ]
         }

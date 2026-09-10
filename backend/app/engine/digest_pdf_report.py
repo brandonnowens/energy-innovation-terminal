@@ -70,8 +70,8 @@ class NumberedCanvas(canvas.Canvas):
         self.setLineWidth(0.75)
         self.line(45, 42, 612 - 45, 42)
 
-        self.drawString(45, 30, "CONFIDENTIAL & PROPRIETARY — ENERGY INNOVATION TERMINAL (terminal.aixenergy.io)")
-        self.drawCentredString(306, 30, "AIxENERGY RESEARCH & CAPITAL INTELLIGENCE DESK")
+        self.drawString(45, 30, "U.S. ENERGY INNOVATION DATABASE — CLEAN ENERGY RESEARCH, LLC (terminal.aixenergy.io)")
+        self.drawCentredString(306, 30, "CLEAN ENERGY RESEARCH & CAPITAL INTELLIGENCE")
         page_str = f"Page {self._pageNumber} of {page_count}"
         self.drawRightString(612 - 45, 30, page_str)
         self.restoreState()
@@ -633,9 +633,9 @@ def build_daily_digest_pdf(digest_data: Dict[str, Any], output_stream: io.BytesI
     signoff_data = [
         [
             Paragraph(
-                "<b>Institutional Advisory Note:</b> This intelligence dispatch is compiled daily by the Energy Innovation Terminal research desk. "
+                "<b>Institutional Advisory Note:</b> This intelligence dispatch is compiled daily by Clean Energy Research, LLC from the U.S. Energy Innovation Database. "
                 "All grant numbers, statutory stage gates, capital ledgers, and award histories are cross-verified against official Federal Register, Grants.gov, and State PUC dockets.<br/>"
-                "<b>Subscriber Access:</b> terminal.aixenergy.io &bull; <b>Parent Platform:</b> aixenergy.io &bull; <b>Inquiries:</b> bowens@aixenergy.io &bull; <b>Enterprise Rate:</b> $1,500/seat/month",
+                "<b>Subscriber Access:</b> terminal.aixenergy.io &bull; <b>Publisher:</b> Clean Energy Research, LLC &bull; <b>Inquiries:</b> bowens@aixenergy.io &bull; <b>Enterprise Rate:</b> $1,500/seat/month",
                 cell_text
             )
         ]

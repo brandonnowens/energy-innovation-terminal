@@ -388,7 +388,7 @@ def generate_private_capital_catalyst_monograph(db: Session, output_stream: io.B
             "header": "20. Methodological Appendix & Verification Notice",
             "subheader": "Data Provenance, Multiplier Formulations & Independent Verification Safeguards",
             "prose": [
-                "This monograph was authored by synthesizing empirical award records, recipient corporate data, and financial transactions from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This monograph was authored by synthesizing empirical award records, recipient corporate data, and financial transactions from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations, capital leverage multipliers, and institutional rankings are computed directly from verified database records with zero synthetic data. For customized diligence briefings or detailed project pipeline underwriting, contact the Energy Innovation Capital Markets Practice."
             ]
         }

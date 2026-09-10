@@ -88,7 +88,7 @@ class RecipientDossierNumberedCanvas(canvas.Canvas):
 
         self.setFont("Helvetica", 6.5)
         self.setFillColor(COLOR_BRAND_MUTED)
-        self.drawString(40, 34, "Energy Innovation Terminal by AIxEnergy · Curated by Brandon N. Owens · terminal.aixenergy.io · Open Public Records")
+        self.drawString(40, 34, "U.S. Energy Innovation Database · Clean Energy Research, LLC · https://terminal.aixenergy.io · Open Public Records")
 
         self.setFont("Helvetica-Bold", 7)
         self.setFillColor(COLOR_BRAND_NAVY)

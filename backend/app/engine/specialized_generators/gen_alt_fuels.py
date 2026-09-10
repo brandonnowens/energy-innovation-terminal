@@ -385,7 +385,7 @@ def generate_alt_fuels_monograph(db: Session, output_stream: io.BytesIO, narrati
             "header": "19. Methodological Appendix & Verification Notice",
             "subheader": "Data Provenance, Econometric Modeling Standards & Verification Safeguards",
             "prose": [
-                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Brandon N. Owens. Award totals, recipient records, and time-series distributions are derived directly from verified public reporting.",
+                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io). Award totals, recipient records, and time-series distributions are derived directly from verified public reporting.",
                 "All metric calculations, funding allocations, and institutional categorizations are subject to multi-stage database validation. This publication contains no synthetic data or unverified assumptions. For further briefings, econometric models, or bespoke dataset queries, contact U.S. Energy Innovation Database by Brandon N. Owens."
             ]
         }

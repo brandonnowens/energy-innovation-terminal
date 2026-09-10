@@ -162,7 +162,7 @@ export default function OpportunityDetail() {
   const copyCitation = () => {
     if (!opp) return;
     const d = opp as any;
-    const citation = `[Solicitation] ${d.agency || 'Agency'} ${d.solicitation_number || ''}: "${d.name || ''}". Funding: ${formatCurrency(d.total_funding)}. Verified: ${formatDate(d.last_verified)}. Energy Innovation Terminal Archive.`;
+    const citation = `[Solicitation] ${d.agency || 'Agency'} ${d.solicitation_number || ''}: "${d.name || ''}". Funding: ${formatCurrency(d.total_funding)}. Verified: ${formatDate(d.last_verified)}. U.S. Energy Innovation Database, Clean Energy Research, LLC (https://terminal.aixenergy.io).`;
     navigator.clipboard.writeText(citation);
     setCopiedCitation(true);
     setTimeout(() => setCopiedCitation(false), 2500);
@@ -188,7 +188,7 @@ export default function OpportunityDetail() {
       `${d.description || d.summary || 'Public non-dilutive grant opportunity for energy transition innovation.'}`,
       ``,
       `---`,
-      `*Source: Independent Research Compilation from Public Open Records (Energy Innovation Terminal · U.S. Energy Innovation Database by Brandon N. Owens). Not affiliated with or endorsed by NYSERDA, US DOE, or any government entity.*`,
+      `*Source: Independent Research Compilation from Public Open Records (U.S. Energy Innovation Database by Clean Energy Research, LLC · https://terminal.aixenergy.io). Not affiliated with or endorsed by NYSERDA, US DOE, or any government entity.*`,
       `*Official Solicitation Record: ${d.official_url || d.portal_url || 'Authoritative Ingestion Feed'}*`
     ];
 

@@ -456,7 +456,7 @@ class ArtifactsAdapter:
 **Principal Investigator:** {aw.pi_name or 'Research Project Director'}
 
 ### Project Abstract & Objective
-{aw.project_abstract or 'Comprehensive U.S. Energy Innovation Database by Brandon N. Owens and demonstration project delivering performance validation, carbon reduction, and scalable clean technology transition.'}
+{aw.project_abstract or 'Comprehensive clean energy research and demonstration project delivering performance validation, carbon reduction, and scalable technology transition.'}
 
 ### Statement of Project Objectives (SOPO) Milestones
 1. **Milestone 1.1:** Baseline engineering design and regulatory validation completed.
@@ -540,7 +540,7 @@ Generated:           {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
             for i, aw in enumerate(awards, 1):
                 opp_manifest += f"""
 {i}. {aw.recipient_name} - ${aw.award_amount:,.2f} ({aw.year or 'N/A'})
-   Project: {aw.project_title or 'U.S. Energy Innovation Database by Brandon N. Owens'}
+   Project: {aw.project_title or 'Clean Energy Innovation Project'}
    PI: {aw.pi_name or 'N/A'} | Type: {aw.recipient_type or 'Company'}
    City/State: {aw.recipient_city or 'N/A'}, {aw.recipient_state or 'N/A'}
 """

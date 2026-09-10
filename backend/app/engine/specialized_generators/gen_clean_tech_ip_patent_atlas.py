@@ -235,7 +235,7 @@ def generate_clean_tech_ip_patent_atlas_monograph(db: Session, output_stream: io
             "table_data": patents_table_1,
             "table_widths": [95, 120, 75, 55, 187],
             "prose": [
-                "Table 1 details the top-cited patent families in the U.S. Energy Innovation Database by Brandon N. Owens, identifying assignees, CPC classifications, and corporate citation counts."
+                "Table 1 details the top-cited patent families in the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io), identifying assignees, CPC classifications, and corporate citation counts."
             ]
         },
         {
@@ -277,7 +277,7 @@ def generate_clean_tech_ip_patent_atlas_monograph(db: Session, output_stream: io
             "subheader": "Data Provenance, Patent Extraction Methodology, and Analytical Integrity",
             "prose": [
                 "This monograph was compiled by extracting USPTO patent records citing federal and state agency grant awards (ARPA-E, DOE, NSF, NYSERDA).",
-                "All patent numbers, assignee names, citation metrics, and contract acknowledgments are verified against the U.S. Energy Innovation Database by Brandon N. Owens."
+                "All patent numbers, assignee names, citation metrics, and contract acknowledgments are verified against the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io)."
             ]
         }
     ]

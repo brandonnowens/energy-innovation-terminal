@@ -389,7 +389,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
     ctx.font = `500 ${footerFontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
     ctx.fillStyle = themeColors.textMuted;
     ctx.fillText(
-      'U.S. Energy Innovation Database by Brandon N. Owens',
+      'U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io)',
       contentLeft,
       footerY
     );
@@ -447,7 +447,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
                 </span>
               </h2>
               <p className="text-xs text-slate-500">
-                Download a high-resolution, publication-ready thematic map citing <strong>U.S. Energy Innovation Database by Brandon N. Owens</strong>.
+                Download a high-resolution, publication-ready thematic map citing <strong>U.S. Energy Innovation Database by Clean Energy Research, LLC</strong>.
               </p>
             </div>
           </div>
@@ -626,7 +626,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
               </div>
               <div className="flex items-center gap-1.5 text-[11px]">
                 <Check size={13} className="text-emerald-600 shrink-0" />
-                <span>U.S. Energy Innovation Database by Brandon N. Owens</span>
+                <span>U.S. Energy Innovation Database · Clean Energy Research, LLC</span>
               </div>
             </div>
           </div>
@@ -670,7 +670,7 @@ export const AwardMapNYTExport: React.FC<AwardMapNYTExportProps> = ({
           <span className="text-xs text-slate-500 flex items-center gap-2">
             <span>Resolution: <strong>{getDimensions().width}×{getDimensions().height}px (300 DPI Print Quality)</strong></span>
             <span>·</span>
-            <span>Source: <em>U.S. Energy Innovation Database by Brandon N. Owens</em></span>
+            <span>Source: <em>U.S. Energy Innovation Database by Clean Energy Research, LLC</em></span>
           </span>
           <div className="flex items-center gap-3">
             <button

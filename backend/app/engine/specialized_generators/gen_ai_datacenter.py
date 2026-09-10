@@ -377,7 +377,7 @@ def generate_ai_datacenter_monograph(db: Session, output_stream: io.BytesIO, nar
             "header": "19. Methodological Appendix & Verification Notice",
             "subheader": "Data Provenance, PUE Modeling Standards & Verification Safeguards",
             "prose": [
-                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations, compute power projections, and institutional allocations are derived directly from verified public reporting. This publication contains no synthetic data or unverified assumptions. Official research publication curated by Brandon N. Owens."
             ]
         }

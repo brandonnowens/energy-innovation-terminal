@@ -1217,7 +1217,7 @@ export default function Network() {
 
           ctx.textAlign = 'right';
           ctx.fillText(`Edition: ${today}`, width - padding, 65);
-          ctx.fillText('U.S. Energy Innovation Database by Brandon N. Owens', width - padding, 90);
+          ctx.fillText('U.S. Energy Innovation Database · Clean Energy Research, LLC', width - padding, 90);
           ctx.textAlign = 'left';
 
           // Divider
@@ -1240,10 +1240,10 @@ export default function Network() {
           const footerY = height - 32;
           ctx.font = '500 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
           ctx.fillStyle = '#94A3B8';
-          ctx.fillText('U.S. Energy Innovation Database by Brandon N. Owens', padding, footerY);
+          ctx.fillText('U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io)', padding, footerY);
 
           ctx.textAlign = 'right';
-          ctx.fillText('U.S. Energy Innovation Database by Brandon N. Owens', width - padding, footerY);
+          ctx.fillText('U.S. Energy Innovation Database · Clean Energy Research, LLC', width - padding, footerY);
           ctx.textAlign = 'left';
 
           compCanvas.toBlob((b) => {
@@ -1764,7 +1764,7 @@ export default function Network() {
           color: NODE_COLORS[k] || '#64748b',
         }))}
         legendTitle="NETWORK NODE TAXONOMY"
-        sourceAttribution="U.S. Energy Innovation Database by Brandon N. Owens"
+        sourceAttribution="U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io)"
         filenamePrefix="energy-innovation-knowledge-graph"
       />
     </div>

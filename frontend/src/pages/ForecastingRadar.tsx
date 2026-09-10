@@ -292,9 +292,6 @@ export function ForecastingRadar() {
     <div className="space-y-6 pb-16">
       {/* Flagship Header Banner */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-[#0c1220] border border-white/10 p-6 sm:p-8 text-white shadow-2xl">
-        <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-indigo-500/10 blur-3xl pointer-events-none" />
-        <div className="absolute right-32 bottom-0 w-60 h-60 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
-
         <div className="relative z-10 max-w-4xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-mono font-bold tracking-wide uppercase">
             <Radio size={14} className="animate-pulse text-indigo-400" />

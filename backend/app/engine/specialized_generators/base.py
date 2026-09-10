@@ -39,7 +39,7 @@ def format_currency(val: float) -> str:
         return f"${val / 1e3:.1f}K"
     return f"${val:,.0f}"
 
-SOURCE_ATTRIBUTION = "U.S. Energy Innovation Database by Brandon N. Owens · Public Open Records · Not affiliated with NYSERDA or any government agency"
+SOURCE_ATTRIBUTION = "U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io) · Public Open Records"
 
 # =============================================================================
 # BRAND DESIGN SYSTEM & COLOR PALETTE
@@ -527,6 +527,90 @@ def render_tech_trajectory_table_flowable(db: Session, category_ids: List[str], 
         return None
 
 
+import re
+
+def sanitize_reportlab_markup(text: Any) -> str:
+    """
+    Sanitizes arbitrary text/HTML strings into strictly valid XML markup accepted by ReportLab.
+    - Normalizes <br> variants to <br/>
+    - Strips invalid outer <para> wrappers
+    - Converts unsupported tags (p, div, section) to line breaks
+    - Escapes unescaped ampersands (& -> &amp;)
+    - Escapes mathematical symbols (<$100 -> &lt;$100, > -> &gt;)
+    - Validates allowed formatting tags (b, i, u, font, sub, sup, a, color)
+    - Balances unclosed open tags so paraparser never fails.
+    """
+    if text is None:
+        return ""
+    s = str(text)
+    
+    # Strip wrapping <para>...</para> if already present
+    s = re.sub(r'^\s*<para>(.*?)</para>\s*$', r'\1', s, flags=re.DOTALL | re.IGNORECASE)
+    
+    # Normalize br tags to <br/>
+    s = re.sub(r'<\s*br\s*/?\s*>', '<br/>', s, flags=re.IGNORECASE)
+    s = re.sub(r'<\s*/\s*br\s*>', '', s, flags=re.IGNORECASE)
+    
+    # Replace p/div/section/article tags with <br/><br/>
+    s = re.sub(r'<\s*/?\s*(?:p|div|section|article)\s*/?\s*>', '<br/>', s, flags=re.IGNORECASE)
+    
+    # Escape standalone ampersands not part of valid entities
+    s = re.sub(r'&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)', '&amp;', s)
+    
+    # Escape < not followed by an ascii letter or /
+    s = re.sub(r'<(?![a-zA-Z/])', '&lt;', s)
+    
+    allowed_tags = {'b', 'i', 'u', 'sub', 'sup', 'br', 'font', 'a', 'color'}
+    
+    def tag_replacer(match):
+        full = match.group(0)
+        tag_match = re.match(r'^</?([a-zA-Z][a-zA-Z0-9]*)(\s+[^>]*)?/?>$', full)
+        if tag_match:
+            tag_name = tag_match.group(1).lower()
+            if tag_name == 'br':
+                return '<br/>'
+            if tag_name in allowed_tags:
+                return full
+        return '&lt;' + full[1:-1] + '&gt;'
+
+    s = re.sub(r'</?[a-zA-Z][a-zA-Z0-9]*(\s+[^>]*)?/?>', tag_replacer, s)
+    
+    # Any remaining loose '<' that wasn't matched
+    s = re.sub(r'<(?![a-zA-Z/])', '&lt;', s)
+    
+    # Balance unclosed tags (b, i, u, font, sub, sup, a)
+    stack = []
+    tokens = re.finditer(r'<(/?)([a-zA-Z][a-zA-Z0-9]*)(\s+[^>]*)?/?>', s)
+    for t in tokens:
+        is_close = bool(t.group(1))
+        tag = t.group(2).lower()
+        if tag in {'b', 'i', 'u', 'font', 'sub', 'sup', 'a'}:
+            if not is_close:
+                stack.append(tag)
+            elif stack and stack[-1] == tag:
+                stack.pop()
+    
+    while stack:
+        unclosed = stack.pop()
+        s += f'</{unclosed}>'
+        
+    return s
+
+
+def safe_paragraph(text: Any, style: ParagraphStyle) -> Paragraph:
+    """
+    Safely instantiates a ReportLab Paragraph guaranteed never to throw XML parse errors.
+    Falls back to fully stripped plain text if any parser edge case occurs.
+    """
+    sanitized = sanitize_reportlab_markup(text)
+    try:
+        return Paragraph(sanitized, style)
+    except Exception:
+        clean_plain = re.sub(r'<[^>]*>', '', str(text or ''))
+        clean_plain = clean_plain.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        return Paragraph(clean_plain, style)
+
+
 def compile_specialized_pdf(
     output_stream: io.BytesIO,
     meta: Dict[str, Any],
@@ -551,17 +635,17 @@ def compile_specialized_pdf(
     # =========================================================================
     # EXECUTIVE HEADER & PUBLICATION TITLE
     # =========================================================================
-    story.append(Paragraph(f"Energy Innovation Terminal // {meta.get('category_tag', 'EXECUTIVE STRATEGIC MONOGRAPH').upper()}", styles['eyebrow']))
-    story.append(Paragraph(meta.get("title", "Executive Strategic Briefing"), styles['title']))
-    story.append(Paragraph(meta.get("subtitle", "Strategic Publication · Energy Innovation Terminal · Executive Research Edition"), styles['subtitle']))
+    story.append(safe_paragraph(f"Energy Innovation Terminal // {meta.get('category_tag', 'EXECUTIVE STRATEGIC MONOGRAPH').upper()}", styles['eyebrow']))
+    story.append(safe_paragraph(meta.get("title", "Executive Strategic Briefing"), styles['title']))
+    story.append(safe_paragraph(meta.get("subtitle", "Strategic Publication · Energy Innovation Terminal · Executive Research Edition"), styles['subtitle']))
     story.append(Spacer(1, 5))
 
     # Core Strategic Thesis Box (Styled with signature emerald & navy accent)
     thesis_text = meta.get("thesis", "Empirical capital deployment analysis confirms high-velocity expansion across this strategic vertical, requiring targeted co-funding and institutional de-risking.")
     tbox_content = [
-        Paragraph("<b>CORE STRATEGIC THESIS // EXECUTIVE INSIGHT:</b>", ParagraphStyle('TLabel', fontName='Helvetica-Bold', fontSize=7.5, leading=9.2, textColor=COLOR_BRAND_EMERALD)),
+        safe_paragraph("<b>CORE STRATEGIC THESIS // EXECUTIVE INSIGHT:</b>", ParagraphStyle('TLabel', fontName='Helvetica-Bold', fontSize=7.5, leading=9.2, textColor=COLOR_BRAND_EMERALD)),
         Spacer(1, 2),
-        Paragraph(thesis_text, styles['thesis_box'])
+        safe_paragraph(thesis_text, styles['thesis_box'])
     ]
     tbox = Table([[tbox_content]], colWidths=[536])
     tbox.setStyle(TableStyle([
@@ -578,11 +662,11 @@ def compile_specialized_pdf(
 
     # Publication Metadata Box
     meta_rows = [
-        [Paragraph("<b>Scope & Dataset:</b>", styles['th']), Paragraph(meta.get("dataset_scope", "54,305 Verified Awards ($98.98B Capital Tracked)"), styles['td'])],
-        [Paragraph("<b>Institutional Coverage:</b>", styles['th']), Paragraph(meta.get("institutions_scope", "13,706 Unique Recipient Entities Across 50 States"), styles['td'])],
-        [Paragraph("<b>Vertical Specialization:</b>", styles['th']), Paragraph(meta.get("vertical_specialization", "Energy Innovation & Technology Deployment"), styles['td'])],
-        [Paragraph("<b>Publication Format:</b>", styles['th']), Paragraph("Executive Strategic Monograph (300 DPI Vector Graphics & Maps)", styles['td'])],
-        [Paragraph("<b>Classification & Date:</b>", styles['th']), Paragraph(f"U.S. Energy Innovation Database by Brandon N. Owens · {datetime.date.today().strftime('%B %d, %Y')}", styles['td'])]
+        [safe_paragraph("<b>Scope & Dataset:</b>", styles['th']), safe_paragraph(meta.get("dataset_scope", "54,305 Verified Awards ($98.98B Capital Tracked)"), styles['td'])],
+        [safe_paragraph("<b>Institutional Coverage:</b>", styles['th']), safe_paragraph(meta.get("institutions_scope", "13,706 Unique Recipient Entities Across 50 States"), styles['td'])],
+        [safe_paragraph("<b>Vertical Specialization:</b>", styles['th']), safe_paragraph(meta.get("vertical_specialization", "Energy Innovation & Technology Deployment"), styles['td'])],
+        [safe_paragraph("<b>Publication Format:</b>", styles['th']), safe_paragraph("Executive Strategic Monograph (300 DPI Vector Graphics & Maps)", styles['td'])],
+        [safe_paragraph("<b>Classification & Date:</b>", styles['th']), safe_paragraph(f"U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io) · {datetime.date.today().strftime('%B %d, %Y')}", styles['td'])]
     ]
     meta_table = Table(meta_rows, colWidths=[130, 406])
     meta_table.setStyle(TableStyle([
@@ -605,11 +689,13 @@ def compile_specialized_pdf(
         exec_summary = meta["narrative"].get("executive_summary")
 
     if exec_summary:
-        story.append(Paragraph("Executive Summary // Strategic Synthesis &amp; Market Dynamics", styles['h1']))
-        story.append(Paragraph("Energy Innovation Terminal · Executive Strategic Synthesis", styles['h2']))
-        for para in str(exec_summary).split("\n\n"):
+        story.append(safe_paragraph("Executive Summary // Strategic Synthesis &amp; Market Dynamics", styles['h1']))
+        story.append(safe_paragraph("Energy Innovation Terminal · Executive Strategic Synthesis", styles['h2']))
+        # Split on paragraph breaks or br tags
+        summary_raw = str(exec_summary).replace('<br><br>', '\n\n').replace('<br/><br/>', '\n\n')
+        for para in summary_raw.split("\n\n"):
             if para.strip():
-                story.append(Paragraph(para.strip(), styles['body']))
+                story.append(safe_paragraph(para.strip(), styles['body']))
         story.append(Spacer(1, 5))
         story.append(HRFlowable(width="100%", thickness=0.5, color=COLOR_BRAND_BORDER, spaceAfter=7, spaceBefore=3))
 
@@ -618,20 +704,20 @@ def compile_specialized_pdf(
     # =========================================================================
     for idx, page in enumerate(pages_content):
         # Section Header
-        if "header" in page:
-            story.append(Paragraph(page["header"], styles['h1']))
+        if "header" in page and page["header"]:
+            story.append(safe_paragraph(page["header"], styles['h1']))
 
         # Subheader
-        if "subheader" in page:
-            story.append(Paragraph(page["subheader"], styles['h2']))
+        if "subheader" in page and page["subheader"]:
+            story.append(safe_paragraph(page["subheader"], styles['h2']))
 
         # Executive Callout Box (Strategic Implication / Key Takeaway)
         if "executive_callout" in page and page["executive_callout"]:
             callout_title = page.get("callout_title", "STRATEGIC IMPLICATION // KEY TAKEAWAY")
             c_content = [
-                Paragraph(f"<b>{callout_title}</b>", styles['callout_label']),
+                safe_paragraph(f"<b>{callout_title}</b>", styles['callout_label']),
                 Spacer(1, 2),
-                Paragraph(page["executive_callout"], styles['callout_body'])
+                safe_paragraph(page["executive_callout"], styles['callout_body'])
             ]
             c_table = Table([[c_content]], colWidths=[536])
             c_table.setStyle(TableStyle([
@@ -649,28 +735,44 @@ def compile_specialized_pdf(
         # Main Analytical Prose
         if "prose" in page and page["prose"]:
             for p_text in page["prose"]:
-                story.append(Paragraph(p_text, styles['body']))
+                if p_text and str(p_text).strip():
+                    story.append(safe_paragraph(str(p_text).strip(), styles['body']))
 
         # High-Resolution Chart / Diagram / Map Flowable
         if "chart_image" in page and page["chart_image"]:
             img_height = page.get("chart_height", 145)
             story.append(Image(page["chart_image"], width=536, height=img_height))
-            if "chart_caption" in page:
-                story.append(Paragraph(page["chart_caption"], styles['caption']))
+            if "chart_caption" in page and page["chart_caption"]:
+                story.append(safe_paragraph(page["chart_caption"], styles['caption']))
             story.append(Spacer(1, 2.5))
 
         # Secondary Chart / Diagram if present
         if "secondary_image" in page and page["secondary_image"]:
             sec_height = page.get("secondary_height", 130)
             story.append(Image(page["secondary_image"], width=536, height=sec_height))
-            if "secondary_caption" in page:
-                story.append(Paragraph(page["secondary_caption"], styles['caption']))
+            if "secondary_caption" in page and page["secondary_caption"]:
+                story.append(safe_paragraph(page["secondary_caption"], styles['caption']))
             story.append(Spacer(1, 2.5))
 
         # Data Table
         if "table_data" in page and page["table_data"]:
             col_widths = page.get("table_widths", [160, 110, 110, 60, 96])
-            t = Table(page["table_data"], colWidths=col_widths)
+            # Ensure all cells in table_data are safe flowables or strings
+            processed_table = []
+            for row_idx, row in enumerate(page["table_data"]):
+                processed_row = []
+                for cell in row:
+                    if isinstance(cell, Paragraph):
+                        # Re-wrap or use safe paragraph
+                        processed_row.append(safe_paragraph(cell.text, cell.style))
+                    elif isinstance(cell, str):
+                        cell_style = styles['th'] if row_idx == 0 else styles['td']
+                        processed_row.append(safe_paragraph(cell, cell_style))
+                    else:
+                        processed_row.append(cell)
+                processed_table.append(processed_row)
+
+            t = Table(processed_table, colWidths=col_widths)
             t_style = [
                 ('BACKGROUND', (0,0), (-1,0), colors.HexColor(page.get("table_header_bg", '#F1F5F9'))),
                 ('BOX', (0,0), (-1,-1), 0.75, COLOR_BRAND_BORDER),
@@ -692,7 +794,8 @@ def compile_specialized_pdf(
         # Bullets / Priorities / Roadmaps
         if "bullet_items" in page and page["bullet_items"]:
             for b in page["bullet_items"]:
-                story.append(Paragraph(f"• {b}", styles['body']))
+                if b and str(b).strip():
+                    story.append(safe_paragraph(f"• {str(b).strip()}", styles['body']))
 
         # Flowable Section Separator (without artificial page break)
         story.append(Spacer(1, 5))
@@ -707,11 +810,13 @@ def compile_specialized_pdf(
         conclusion = meta["narrative"].get("conclusion")
 
     if conclusion:
-        story.append(Paragraph("Strategic Conclusion // 2026–2035 Horizon Trajectory &amp; Execution Framework", styles['h1']))
-        story.append(Paragraph("Energy Innovation Terminal · Implementation &amp; Risk Governance Roadmap", styles['h2']))
-        for para in str(conclusion).split("\n\n"):
+        concl_title = meta.get("conclusion_title", "Strategic Synthesis &amp; Forward Horizon Roadmap")
+        story.append(safe_paragraph(concl_title, styles['h1']))
+        story.append(safe_paragraph("Energy Innovation Terminal · Executive Strategic Synthesis", styles['h2']))
+        conc_raw = str(conclusion).replace('<br><br>', '\n\n').replace('<br/><br/>', '\n\n')
+        for para in conc_raw.split("\n\n"):
             if para.strip():
-                story.append(Paragraph(para.strip(), styles['body']))
+                story.append(safe_paragraph(para.strip(), styles['body']))
         story.append(Spacer(1, 5))
         story.append(HRFlowable(width="100%", thickness=0.5, color=COLOR_BRAND_BORDER, spaceAfter=7, spaceBefore=3))
 
@@ -721,3 +826,4 @@ def compile_specialized_pdf(
 
 # Alias for backward compatibility
 compile_specialized_21_page_pdf = compile_specialized_pdf
+

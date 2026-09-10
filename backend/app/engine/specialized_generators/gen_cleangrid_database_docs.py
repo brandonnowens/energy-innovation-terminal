@@ -1,6 +1,6 @@
 """
 Specialized Technical Documentation Monograph Generator:
-CleanGrid IQ Database — Comprehensive Technical Data Architecture, Source Provenance,
+U.S. Energy Innovation Database — Comprehensive Technical Data Architecture, Source Provenance,
 Vintage Specifications, Relational Graph Topology, and Stakeholder Decision Utility Reference Manual.
 """
 
@@ -21,7 +21,7 @@ from .base import (
     get_monograph_styles, compile_specialized_pdf
 )
 
-def render_data_architecture_flowchart(title: str = "Exhibit 4: The CleanGrid IQ Multi-Stream Relational Connectivity Architecture") -> io.BytesIO:
+def render_data_architecture_flowchart(title: str = "Exhibit 4: The U.S. Energy Innovation Database Multi-Stream Relational Connectivity Architecture") -> io.BytesIO:
     """Render high-resolution data architecture and multi-stream integration pipeline flowchart."""
     fig, ax = plt.subplots(figsize=(6.8, 2.3), dpi=260)
     fig.patch.set_facecolor('#FFFFFF')
@@ -108,7 +108,7 @@ def generate_cleangrid_database_docs_monograph(
     output_stream: io.BytesIO,
     narrative: Optional[Dict[str, Any]] = None
 ) -> None:
-    """Generates the comprehensive technical database documentation monograph for CleanGrid IQ."""
+    """Generates the comprehensive technical database documentation monograph for the U.S. Energy Innovation Database."""
     styles = get_monograph_styles()
 
     # 1. Fetch live database summary metrics
@@ -136,10 +136,10 @@ def generate_cleangrid_database_docs_monograph(
         "executive_summary": narrative.get("executive_summary") if (narrative and isinstance(narrative, dict)) else None,
         "conclusion": narrative.get("conclusion") if (narrative and isinstance(narrative, dict)) else None,
         "narrative": narrative,
-        "title": "CleanGrid IQ Database",
+        "title": "U.S. Energy Innovation Database",
         "subtitle": "Comprehensive Technical Data Architecture, Source Provenance, Vintage Specifications, Relational Graph Topology, and Stakeholder Decision Utility Reference Manual",
         "category_tag": "Technical Database Documentation & Data Architecture Manual",
-        "thesis": "100% of the underlying transaction ledgers, solicitation filings, patent grants, and utility dockets integrated within the CleanGrid IQ platform are publicly available government records. The primary technological value and analytical power lies entirely in the unified ingestion, entity resolution, geocoding, multi-dimensional relational graph connectivity, and standardized programmatic benchmarking across previously isolated data silos.",
+        "thesis": "100% of the underlying transaction ledgers, solicitation filings, patent grants, and utility dockets integrated within the U.S. Energy Innovation Database platform are publicly available government records. The primary technological value and analytical power lies entirely in the unified ingestion, entity resolution, geocoding, multi-dimensional relational graph connectivity, and standardized programmatic benchmarking across previously isolated data silos.",
         "dataset_scope": f"{awards_count:,} Verified Awards ({format_currency(total_funding_amt)}), {opps_count:,} Solicitations ({format_currency(opps_funding)}), {unique_recipients:,} Operating Institutions, {tot_sources} Public Data Connectors",
         "institutions_scope": "State Energy Authorities, Federal Program Managers, Clean Tech Project Sponsors, Climate Tech VCs, Regulated Utilities, University Research VPs, and Community Consortia",
         "vertical_specialization": "Data Elements Dictionary, 31+ Source Provenances, 35-Year Longitudinal Vintage (1991–2026), 3-Tier Credibility Framework, Relational Graph Linkages, Stakeholder Utility Matrix"
@@ -160,7 +160,7 @@ def generate_cleangrid_database_docs_monograph(
     radar_rubric = render_technology_radar_chart(
         ["Data Completeness", "Temporal Depth", "Entity Resolution", "Geocoding Precision", "Lineage Linkage", "Credibility Verification"],
         [96, 98, 94, 92, 95, 99],
-        "Exhibit 3: CleanGrid IQ Data Quality & Multi-Stream Integration Benchmark Radar"
+        "Exhibit 3: U.S. Energy Innovation Database Quality & Multi-Stream Integration Benchmark Radar"
     )
 
     flowchart_arch = render_data_architecture_flowchart(
@@ -249,7 +249,7 @@ def generate_cleangrid_database_docs_monograph(
             Paragraph("<b>10. Standardized Taxonomies</b>", styles['td']),
             Paragraph("Controlled Vocabularies: 7 Physical Decarbonization Sectors, 15 Primary Technology Domains, Clean Fuel Classifications (H2, SAF, RNG, Bioenergy), Commercialization Stage Gates (TRL 1-9, MRL 1-10), Geographic Codes.", styles['td']),
             Paragraph("Cross-Platform Taxonomy Standard", styles['td']),
-            Paragraph("CleanGrid IQ Harmonized Classification Framework, DOE EERE & IEA Taxonomies.", styles['td']),
+            Paragraph("U.S. Energy Innovation Database Harmonized Classification Framework, DOE EERE & IEA Taxonomies.", styles['td']),
             Paragraph("Eliminates semantic ambiguity across disparate state and federal agency naming conventions.", styles['td'])
         ]
     ]
@@ -494,11 +494,11 @@ def generate_cleangrid_database_docs_monograph(
         {
             "header": "1. Architectural Overview & The Integration Imperative",
             "subheader": "Transforming Fragmented Public Energy Records into a Unified Relational Knowledge Graph",
-            "executive_callout": "Every data point in CleanGrid IQ originates from publicly accessible government and institutional records. However, in their native state, these records are trapped in disparate, incompatible silos—PDF solicitation attachments, state agency dockets, federal procurement APIs, and patent registers. The core innovation and value of CleanGrid IQ is the unified ingestion, disambiguation, geocoding, and multi-stream relational connectivity across these datasets.",
+            "executive_callout": "Every data point in the U.S. Energy Innovation Database originates from publicly accessible government and institutional records. However, in their native state, these records are trapped in disparate, incompatible silos—PDF solicitation attachments, state agency dockets, federal procurement APIs, and patent registers. The core innovation and value of the U.S. Energy Innovation Database is the unified ingestion, disambiguation, geocoding, and multi-stream relational connectivity across these datasets.",
             "prose": [
                 f"The modern clean energy transition is fueled by historic levels of public capital deployment, with over {format_currency(total_funding_amt)} tracked across {awards_count:,} verified awards and {opps_count:,} funding solicitations. Yet, navigating this landscape has historically been hindered by severe information fragmentation.",
                 "Public energy data exists in isolated repositories: state energy authorities (e.g., NYSERDA, CEC, MassCEC) maintain bespoke grant databases; federal agencies (DOE, EPA, NSF) report through separate procurement portals; regulated electric utilities post Non-Wires Alternative (NWA) solicitations on regulatory dockets; and intellectual property filings reside in federal patent rolls.",
-                "CleanGrid IQ solves this fragmentation by executing continuous, multi-protocol ingestion across 31+ public feeds, normalizing heterogeneous schemas into a unified relational architecture, and mapping multidimensional linkages between opportunities, awards, recipients, academic PIs, patents, venture capital, and environmental outcomes."
+                "The U.S. Energy Innovation Database solves this fragmentation by executing continuous, multi-protocol ingestion across 31+ public feeds, normalizing heterogeneous schemas into a unified relational architecture, and mapping multidimensional linkages between opportunities, awards, recipients, academic PIs, patents, venture capital, and environmental outcomes."
             ],
             "table_data": table_1_data[:6],  # First half of Table 1
             "table_widths": [110, 155, 75, 95, 101],
@@ -508,7 +508,7 @@ def generate_cleangrid_database_docs_monograph(
         {
             "header": "2. Comprehensive Conceptual Information Layers & Data Elements Dictionary (Part II)",
             "subheader": "Deep Technical Discussion of Intellectual Property, Private Capital, PIs, Utilities, and Outcomes",
-            "executive_callout": "The CleanGrid IQ database models the complete lifecycle of clean energy innovation—from basic research funding to patent filing, venture syndication, utility interconnection, and commercial carbon abatement. Each layer is structured with rich metadata and relational constraints.",
+            "executive_callout": "The U.S. Energy Innovation Database models the complete lifecycle of clean energy innovation—from basic research funding to patent filing, venture syndication, utility interconnection, and commercial carbon abatement. Each layer is structured with rich metadata and relational constraints.",
             "prose": [
                 "Beyond transactional award ledgers, the database incorporates specialized intelligence layers that provide 360-degree context on operating institutions and technology scale-up trajectories.",
                 "The Intellectual Property Layer tracks Bayh-Dole federal/state contract citations and patent classification velocity; the Private Capital Layer quantifies post-grant acceleration lag and venture leverage multiples; the Principal Investigator Layer benchmarks academic research leadership; the Utility Layer maps non-wires grid procurements; and the Programmatic Outcomes Layer standardizes carbon abatement and job creation efficiency.",
@@ -522,7 +522,7 @@ def generate_cleangrid_database_docs_monograph(
         {
             "header": "3. Data Provenance, 31+ Public Data Connectors & Ingestion Architecture",
             "subheader": "Multi-Protocol ETL Pipeline: Native REST APIs, Socrata Endpoints, HTML Scrapers, and Batch Feeds",
-            "executive_callout": "CleanGrid IQ maintains 31+ dedicated public data connectors operating across real-time, daily, weekly, and monthly ingestion cadences. The ingestion engine enforces strict cryptographic change detection and schema validation to ensure 100% data fidelity with zero hallucination.",
+            "executive_callout": "The U.S. Energy Innovation Database maintains 31+ dedicated public data connectors operating across real-time, daily, weekly, and monthly ingestion cadences. The ingestion engine enforces strict cryptographic change detection and schema validation to ensure 100% data fidelity with zero hallucination.",
             "prose": [
                 "The data ingestion pipeline utilizes four distinct architectural protocols to harvest publicly available energy records:",
                 "1. Direct REST APIs: High-frequency JSON endpoints connecting to native agency platforms, such as the NYSERDA Funding API and Grants.gov v1 API, providing hourly updates on new opportunity releases.",
@@ -538,9 +538,9 @@ def generate_cleangrid_database_docs_monograph(
         {
             "header": "4. Data Quality, Normalization & 3-Tier Credibility Framework",
             "subheader": "Entity Disambiguation, Geospatial Resolution, and Multi-Stage Quality Assurance Safeguards",
-            "executive_callout": "Raw public data contains extensive noise—misspelled institution names, inconsistent address formats, duplicated solicitation numbers, and missing category tags. CleanGrid IQ applies a rigorous 3-Tier Credibility Framework and automated entity disambiguation algorithms to guarantee pristine data integrity.",
+            "executive_callout": "Raw public data contains extensive noise—misspelled institution names, inconsistent address formats, duplicated solicitation numbers, and missing category tags. The U.S. Energy Innovation Database applies a rigorous 3-Tier Credibility Framework and automated entity disambiguation algorithms to guarantee pristine data integrity.",
             "prose": [
-                "To transform raw public filings into an institutional-grade knowledge base, the CleanGrid IQ processing pipeline executes four automated data cleansing stages:",
+                "To transform raw public filings into an institutional-grade knowledge base, the U.S. Energy Innovation Database processing pipeline executes four automated data cleansing stages:",
                 "1. Entity Disambiguation & Alias Mapping: Standardizes corporate and academic names using Jaro-Winkler string distance algorithms (>0.88 threshold) paired with SAM.gov UEI and DUNS registries, mapping multiple subsidiary names to canonical parent entities.",
                 "2. Geospatial Address Resolution: Geocodes recipient and project site addresses to precise latitude/longitude coordinates, assigning a confidence score and flagging municipal centroid approximations.",
                 "3. Financial & Fiscal Normalization: Converts multi-year disbursements and matching funds into normalized USD values, categorizing funding into primary grant, cost-share, and total estimated project amounts.",
@@ -554,9 +554,9 @@ def generate_cleangrid_database_docs_monograph(
         {
             "header": "5. The Relational Connectivity Graph (How Data Elements Interconnect)",
             "subheader": "Tracing the Complete Innovation Arc: From Solicitation to Award, Patent, VC Round, and Grid Scale",
-            "executive_callout": "The true intellectual property of CleanGrid IQ is not the individual data elements, but the relational topology connecting them. A single entity in the database is linked across multiple dimensions, allowing users to trace an innovation from early-stage grant funding through venture acceleration, utility deployment, and environmental impact.",
+            "executive_callout": "The true intellectual property of the U.S. Energy Innovation Database is not the individual data elements, but the relational topology connecting them. A single entity in the database is linked across multiple dimensions, allowing users to trace an innovation from early-stage grant funding through venture acceleration, utility deployment, and environmental impact.",
             "prose": [
-                "In traditional public databases, an award record exists in isolation from the solicitation that funded it, the patents it generated, and the venture capital it attracted. CleanGrid IQ bridges these silos through a dense relational knowledge graph:",
+                "In traditional public databases, an award record exists in isolation from the solicitation that funded it, the patents it generated, and the venture capital it attracted. The U.S. Energy Innovation Database bridges these silos through a dense relational knowledge graph:",
                 "• Solicitation-to-Award Lineage: Links 5,710 solicitations to 54,305 awarded projects, revealing win rates, cost-share splits, and historical selection patterns.",
                 "• Opportunity Predecessor-Successor Graph: Maps 2,751 historical lineages across funding programs, enabling predictive forecasting of recurring annual RFP releases.",
                 "• Recipient-to-IP & Venture Graph: Connects 13,720 operating companies to their government-backed Bayh-Dole patents and subsequent Series Seed/A/B venture rounds, tracking post-grant acceleration velocity.",
@@ -570,16 +570,16 @@ def generate_cleangrid_database_docs_monograph(
         {
             "header": "6. Temporal Vintage, Historical Depth & Lifecycle Governance",
             "subheader": "A 35-Year Longitudinal Arc (1991–2026) Capturing the Evolution of U.S. Clean Energy Policy",
-            "executive_callout": "The CleanGrid IQ database provides an unbroken 35-year longitudinal record spanning three major eras of clean energy policy: the ratepayer-funded SBC era (1991–2000), the post-ARRA Cleantech 1.0 era (2000–2020), and the modern industrial policy era under the IRA and BIL (2021–2026).",
+            "executive_callout": "The U.S. Energy Innovation Database provides an unbroken 35-year longitudinal record spanning three major eras of clean energy policy: the ratepayer-funded SBC era (1991–2000), the post-ARRA Cleantech 1.0 era (2000–2020), and the modern industrial policy era under the IRA and BIL (2021–2026).",
             "prose": [
-                "Understanding contemporary clean energy markets requires longitudinal historical context. By preserving transaction records across 35 years, CleanGrid IQ allows decision-makers to analyze multi-decade technology cost curves, long-term commercialization survival rates, and policy shift impacts.",
+                "Understanding contemporary clean energy markets requires longitudinal historical context. By preserving transaction records across 35 years, the U.S. Energy Innovation Database allows decision-makers to analyze multi-decade technology cost curves, long-term commercialization survival rates, and policy shift impacts.",
                 "Data lifecycle governance is managed through automated state engines: active opportunities are continuously updated until close date; closed solicitations transition into historical opportunity archives; and award ledgers undergo quarterly statutory reconciliations against state and federal spending audits.",
                 "This ensures that users have immediate access to current active RFPs while maintaining the full historical depth required for institutional research and predictive analytics."
             ]
         },
         {
             "header": "7. Stakeholder Decision-Maker Utility Matrix",
-            "subheader": "How 7 Core Decision-Maker Personas Leverage the CleanGrid IQ Integrated Database",
+            "subheader": "How 7 Core Decision-Maker Personas Leverage the U.S. Energy Innovation Database",
             "executive_callout": "The unified database is engineered to serve the distinct strategic requirements of seven core clean energy stakeholder personas: State Energy Directors, Federal Program Managers, Project Sponsors, Climate VCs, Regulated Utilities, University Research VPs, and Environmental Justice Advocates.",
             "prose": [
                 "Each stakeholder group interacts with the integrated database to solve specific operational, financial, and policy challenges:",
@@ -597,7 +597,7 @@ def generate_cleangrid_database_docs_monograph(
         {
             "header": "8. Technical Governance, Integrity Safeguards & Future Horizons",
             "subheader": "Public Data Compliance, Privacy Protections, API Governance, and 2026–2035 Roadmap",
-            "executive_callout": "CleanGrid IQ adheres to strict public records compliance, data privacy safeguards, and open data governance standards. The 2026–2035 roadmap expands ingestion into international innovation programs, municipal green bank facilities, and real-time grid interconnection queue telemetries.",
+            "executive_callout": "The U.S. Energy Innovation Database adheres to strict public records compliance, data privacy safeguards, and open data governance standards. The 2026–2035 roadmap expands ingestion into international innovation programs, municipal green bank facilities, and real-time grid interconnection queue telemetries.",
             "prose": [
                 "The database operates under rigorous data governance protocols:",
                 "• Public Records Compliance: All integrated data is harvested strictly from publicly available sources in compliance with the Freedom of Information Act (FOIA), state open records laws, and government API terms of service.",

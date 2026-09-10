@@ -202,7 +202,7 @@ ORGANIZATION_RESULTS_CORPUS: List[Dict[str, Any]] = [
                 "reported_name": "Multiday Dispatched Clean Storage Capacity",
                 "raw_str": "120,000 MWh/yr",
                 "provenance": "agency_verified",
-                "artifact_title": "CEC U.S. Energy Innovation Database by Brandon N. Owens Milestone Database",
+                "artifact_title": "CEC EPIC Clean Energy Milestone Database",
                 "source_url": "https://www.energy.ca.gov",
                 "notes": "100-hour continuous duration battery discharging across weather lulls."
             },

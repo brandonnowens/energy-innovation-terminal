@@ -370,7 +370,7 @@ def generate_state_innovation_evolution_monograph(db: Session, output_stream: io
             "header": "19. Methodological Appendix & Institutional Provenance Notice",
             "subheader": "Data Verification, Multi-Decade Program Analytics & Governance Safeguards",
             "prose": [
-                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations, multi-decade capital allocations, and institutional performance benchmarks are derived directly from verified public reporting across federal and state energy databases. This publication contains no synthetic data or non-auditable claims. Official research publication curated by Brandon N. Owens."
             ]
         }

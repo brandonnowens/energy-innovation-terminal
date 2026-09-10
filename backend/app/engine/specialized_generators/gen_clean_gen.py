@@ -382,7 +382,7 @@ def generate_clean_gen_monograph(db: Session, output_stream: io.BytesIO, narrati
             "header": "19. Methodological Appendix & Verification Notice",
             "subheader": "Data Provenance, Levelized Cost Modeling & Verification Safeguards",
             "prose": [
-                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations, levelized cost models, and institutional allocations are verified through multi-stage database validation. This document contains no synthetic or non-auditable claims. For additional briefings, contact U.S. Energy Innovation Database by Brandon N. Owens."
             ]
         }

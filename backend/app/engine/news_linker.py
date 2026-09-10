@@ -264,7 +264,7 @@ def check_energy_innovation_relevance(title: str, content: str = "") -> Tuple[bo
             total_matches += cat_matches
 
     if not matched_categories and total_matches == 0:
-        general_terms = ["clean energy", "renewable energy", "climate tech", "clean grant", "zero emission", "decarbonization", "energy transition"]
+        general_terms = ["clean energy", "renewable energy", "climate tech", "clean energy grant", "zero emission", "decarbonization", "energy transition"]
         gen_matches = sum(1 for gt in general_terms if gt in text)
         if gen_matches >= 1:
             return True, 0.70, "Clean Energy Innovation"

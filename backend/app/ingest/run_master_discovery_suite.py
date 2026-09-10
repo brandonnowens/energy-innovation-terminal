@@ -20,7 +20,7 @@ logger = logging.getLogger("DeepDiscoveryRunner")
 
 def run_master_suite():
     print("=================================================================")
-    print("CLEANGRANTS DEEP PATENT & VC DISCOVERY MASTER INGESTION SUITE")
+    print("U.S. ENERGY INNOVATION DATABASE DEEP PATENT & VC DISCOVERY MASTER INGESTION SUITE")
     print("=================================================================")
 
     init_db()

@@ -56,7 +56,7 @@ export const NYTGraphicExportModal: React.FC<NYTGraphicExportModalProps> = ({
   stats = [],
   legendItems = [],
   legendTitle = 'LEGEND & KEY',
-  sourceAttribution = 'U.S. Energy Innovation Database by Brandon N. Owens',
+  sourceAttribution = 'U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io)',
   filenamePrefix = 'energy-innovation-terminal-export',
 }) => {
   const [aspectRatio, setAspectRatio] = useState<NYTAspectRatio>('16:9');
@@ -472,7 +472,7 @@ export const NYTGraphicExportModal: React.FC<NYTGraphicExportModalProps> = ({
                 </span>
               </h2>
               <p className="text-xs text-slate-500">
-                Export museum-grade and social-ready infographics citing <strong>U.S. Energy Innovation Database by Brandon N. Owens</strong>.
+                Export museum-grade and social-ready infographics citing <strong>U.S. Energy Innovation Database by Clean Energy Research, LLC</strong>.
               </p>
             </div>
           </div>
@@ -651,7 +651,7 @@ export const NYTGraphicExportModal: React.FC<NYTGraphicExportModalProps> = ({
               </div>
               <div className="flex items-center gap-1.5 text-[11px]">
                 <Check size={13} className="text-emerald-600 shrink-0" />
-                <span>U.S. Energy Innovation Database by Brandon N. Owens</span>
+                <span>U.S. Energy Innovation Database · Clean Energy Research, LLC</span>
               </div>
             </div>
           </div>
@@ -695,7 +695,7 @@ export const NYTGraphicExportModal: React.FC<NYTGraphicExportModalProps> = ({
           <span className="text-xs text-slate-500 flex items-center gap-2">
             <span>Resolution: <strong>{getDimensions().width}×{getDimensions().height}px (300 DPI Print Quality)</strong></span>
             <span>·</span>
-            <span>Source: <em>U.S. Energy Innovation Database by Brandon N. Owens</em></span>
+            <span>Source: <em>U.S. Energy Innovation Database by Clean Energy Research, LLC</em></span>
           </span>
           <div className="flex items-center gap-3">
             <button

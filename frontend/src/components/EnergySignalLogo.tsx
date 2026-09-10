@@ -1,11 +1,10 @@
 export {
   EnergyInnovationTerminalLogo as EnergySignalLogo,
-  EnergyInnovationTerminalLogo,
-  EnergyInnovationTerminalLogo as CleanGrantsLogo
+  EnergyInnovationTerminalLogo
 } from './EnergyInnovationTerminalLogo';
 
 export type {
   EnergyInnovationTerminalLogoProps as EnergySignalLogoProps,
-  EnergyInnovationTerminalLogoProps,
-  EnergyInnovationTerminalLogoProps as CleanGrantsLogoProps
+  EnergyInnovationTerminalLogoProps
 } from './EnergyInnovationTerminalLogo';
+

@@ -390,7 +390,7 @@ def generate_critical_minerals_monograph(db: Session, output_stream: io.BytesIO,
             "header": "19. Methodological Appendix & Institutional Provenance Notice",
             "subheader": "Data Verification, Mineral Flow Economics & Analytical Integrity",
             "prose": [
-                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations, mineral volume flows, and institutional project awards are derived directly from verified public reporting across federal and state energy databases (DOE, DOD, USGS, EPA). This publication contains no synthetic data or non-auditable claims. Official research publication curated by Brandon N. Owens."
             ]
         }

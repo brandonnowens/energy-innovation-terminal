@@ -1,5 +1,5 @@
 """
-High-Performance Concurrent Batch Rerun of All CleanGrid IQ Strategic Reports.
+High-Performance Concurrent Batch Rerun of All U.S. Energy Innovation Database Strategic Reports.
 Extracts verified database context (including technology profiles, cost curves,
 fuel vectors, policy standards, and regulatory matrices), generates executive
 narratives, updates PostgreSQL reports table, and verifies PDF monograph generation.

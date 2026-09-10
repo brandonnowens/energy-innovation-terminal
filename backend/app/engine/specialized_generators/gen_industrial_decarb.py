@@ -381,7 +381,7 @@ def generate_industrial_decarb_monograph(db: Session, output_stream: io.BytesIO,
             "header": "19. Methodological Appendix & Verification Notice",
             "subheader": "Data Provenance, Thermodynamic Modeling Assumptions & Verification Safeguards",
             "prose": [
-                "This publication synthesizes empirical grant awards, recipient filings, and engineering thermodynamic benchmarks from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This publication synthesizes empirical grant awards, recipient filings, and engineering thermodynamic benchmarks from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations are derived directly from empirical project records. This document contains no synthetic or non-auditable claims. Official research publication curated by Brandon N. Owens."
             ]
         }

@@ -229,7 +229,7 @@ def fetch_external_feed_items(feed_config: Dict[str, Any], timeout_sec: float = 
     """Fetches and parses an RSS feed URL, returning candidate raw item dictionaries."""
     items: List[Dict[str, Any]] = []
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) EnergyInnovationTerminal/3.5 (Automated Energy News Ingest; contact: intelligence@aixenergy.io)",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) USEnergyInnovationDatabase/3.5 (Automated Energy News Ingest; contact: intelligence@aixenergy.io)",
         "Accept": "application/rss+xml, application/xml, text/xml, */*"
     }
     

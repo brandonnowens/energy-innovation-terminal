@@ -30,17 +30,18 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
 
   if (!isOpen) return null;
 
-  const citationApa = `Owens, B. N. (2026). U.S. Energy Innovation Database & Capital Intelligence Terminal (Version 3.5.0) [Software & Intelligence Corpus]. Energy Innovation Research, LLC. https://energyinnovationterminal.com`;
+  const citationApa = `Owens, B. N. (2026). U.S. Energy Innovation Database (Version 3.5.0) [Data set and software]. Clean Energy Research, LLC. https://terminal.aixenergy.io`;
   
-  const citationBibtex = `@software{owens2026energyterminal,
+  const citationBibtex = `@misc{owens2026energyinnovation,
   author = {Brandon N. Owens},
-  title = {U.S. Energy Innovation Database & Capital Intelligence Terminal},
-  version = {3.5.0},
+  title = {U.S. Energy Innovation Database},
   year = {2026},
-  publisher = {Energy Innovation Research, LLC},
-  url = {https://energyinnovationterminal.com},
+  publisher = {Clean Energy Research, LLC},
+  url = {https://terminal.aixenergy.io},
   note = {Multi-agency cross-jurisdictional intelligence covering 56,413 awards, $104.16B capital, and 140+ federal & state utilities}
-}`;
+};`;
+
+  const citationChicago = `Owens, Brandon N. 2026. "U.S. Energy Innovation Database." Clean Energy Research, LLC. https://terminal.aixenergy.io.`;
 
   const copyToClipboard = (text: string, format: string) => {
     navigator.clipboard.writeText(text);
@@ -66,31 +67,27 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
         className={clsx(
           "relative w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden border transition-all duration-200 z-10 my-auto",
           isDark
-            ? "bg-[#090e1a] border-cyan-500/30 text-slate-100 shadow-[0_0_50px_rgba(0,210,255,0.15)]"
-            : "bg-white border-slate-200 text-slate-900 shadow-2xl"
+            ? "bg-[#090e1a] border-cyan-500/30 text-slate-100 shadow-xl"
+            : "bg-white border-slate-200 text-slate-900 shadow-xl"
         )}
       >
-        {/* Holographic Header Banner */}
-        <div className="relative px-6 py-5 bg-gradient-to-r from-[#04101e] via-[#08182b] to-[#04101e] border-b border-cyan-500/30 overflow-hidden">
-          {/* Ambient Lighting */}
-          <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-cyan-400/20 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-emerald-400/20 blur-3xl pointer-events-none" />
-
+        {/* Header */}
+        <div className="relative px-6 py-5 bg-gradient-to-r from-[#04101e] via-[#08182b] to-[#04101e] border-b border-cyan-500/30">
           <div className="relative z-10 flex items-center justify-between">
             <div className="flex items-center gap-3.5">
-              <div className="relative p-2 rounded-xl bg-cyan-950/60 border border-cyan-500/40 shadow-[0_0_20px_rgba(0,210,255,0.3)]">
+              <div className="relative p-2 rounded-xl bg-cyan-950/60 border border-cyan-500/40">
                 <EnergyInnovationTerminalLogo size="sm" showText={false} />
               </div>
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase">
-                    Verified Executive Provenance
+                    Database Reference &amp; Provenance
                   </span>
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    VERIFIED SIGNATURE
+                    VERIFIED
                   </span>
                 </div>
-                <h3 className="text-lg font-black tracking-tight text-white flex items-center gap-1.5 mt-0.5">
+                <h3 className="text-lg font-bold tracking-tight text-white flex items-center gap-1.5 mt-0.5">
                   <span>Curated &amp; Engineered by Brandon N. Owens</span>
                 </h3>
               </div>
@@ -99,7 +96,7 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             >
               <X size={18} />
             </button>
@@ -119,10 +116,10 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
               </div>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">
-                  The Energy Innovation Innovation Corpus
+                  The U.S. Energy Innovation Database
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  The <strong>U.S. Energy Innovation Database &amp; Capital Intelligence Terminal</strong> unifies, cleanses, and structures upstream funding data across <strong>140+ federal, state, and utility authorities</strong>. Engineered with deep domain ontologies to provide capital allocators, founders, and policymakers with unprecedented visibility into the energy transition.
+                  The <strong>U.S. Energy Innovation Database</strong> unifies, cleanses, and structures upstream energy innovation funding data across <strong>140+ federal, state, and utility authorities</strong>. Published and engineered by <strong>Clean Energy Research, LLC</strong> to provide capital allocators, project sponsors, and researchers with structured visibility across the U.S. energy innovation ecosystem.
                 </p>
               </div>
             </div>
@@ -199,6 +196,20 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
                   {copiedFormat === 'bibtex' ? <Check size={11} /> : <Copy size={11} />}
                   <span>{copiedFormat === 'bibtex' ? 'Copied BibTeX' : 'BibTeX'}</span>
                 </button>
+
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(citationChicago, 'chicago')}
+                  className={clsx(
+                    "px-2 py-1 rounded text-[10px] font-mono font-semibold transition-all border flex items-center gap-1 cursor-pointer",
+                    copiedFormat === 'chicago'
+                      ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                      : isDark ? "bg-slate-800 text-slate-300 border-slate-700 hover:text-white" : "bg-white text-slate-700 border-slate-300"
+                  )}
+                >
+                  {copiedFormat === 'chicago' ? <Check size={11} /> : <Copy size={11} />}
+                  <span>{copiedFormat === 'chicago' ? 'Copied Chicago' : 'Chicago'}</span>
+                </button>
               </div>
             </div>
 
@@ -221,7 +232,7 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
             </p>
           </div>
 
-          {/* AIxEnergy Parent Platform & Ecosystem Card */}
+          {/* AIxEnergy Link Card */}
           <div className={clsx(
             "p-3.5 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3",
             isDark ? "bg-white/[0.02] border-cyan-500/25" : "bg-slate-50 border-slate-200"
@@ -230,14 +241,11 @@ export function BrandonSignatureModal({ isOpen, onClose }: BrandonSignatureModal
               <img
                 src="/aixenergy-logo.webp"
                 alt="AIxEnergy"
-                className="w-9 h-9 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 shadow-sm"
+                className="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 shadow-sm"
               />
               <div className="min-w-0">
                 <div className="text-xs font-bold text-slate-100 flex items-center gap-1.5">
-                  <span>AIxEnergy Ecosystem</span>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-950/80 text-cyan-400 border border-cyan-500/30">
-                    PARENT PLATFORM
-                  </span>
+                  <span>AIxEnergy</span>
                 </div>
                 <div className="text-[11px] text-slate-400 truncate">
                   AI-driven intelligence for clean energy transition &amp; infrastructure

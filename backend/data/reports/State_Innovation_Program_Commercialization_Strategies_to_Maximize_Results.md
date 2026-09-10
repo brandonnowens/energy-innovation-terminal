@@ -2,7 +2,7 @@
 
 **The Definitive Strategic Framework for State Clean Energy Agencies, Green Banks, and Regional Accelerators: Overcoming the Mid-TRL Valley of Death, Optimizing Stage-Gated Non-Dilutive Capital Stacks, Mobilizing Private Co-Investment, and Scaling Clean Technologies from Lab to Market**
 
-*Published by CleanGrants IQ // Strategic Practice Edition*  
+*Published by Clean Energy Research, LLC // U.S. Energy Innovation Database*  
 *Dataset Scope: 54,305 Verified Awards ($98.98B Capital Tracked across Federal & State Jurisdictions)*  
 *Target Audience: State Energy Directors (NYSERDA, CEC, MassCEC, NJEDA, Colorado CEO), Green Bank Investment Officers, Venture Capitalists, Regional Accelerators, and Clean Tech Project Developers*
 
@@ -39,7 +39,7 @@ This strategic monograph outlines the core pillars required to achieve top-decil
 
 Clean energy hardware innovation differs fundamentally from digital enterprise software. It is characterized by high capital expenditure, physical asset longevity (20–40 year operating lifespans), rigorous grid interconnect standards, and deep regulatory compliance. 
 
-Empirical tracking across the CleanGrants IQ platform identifies four distinct friction zones across the commercialization spectrum:
+Empirical tracking across the U.S. Energy Innovation Database platform identifies four distinct friction zones across the commercialization spectrum:
 
 | Stage | Readiness Band | Primary Technical & Commercial Friction | Typical Capital Requirement | Failure Rate / Attrition | Primary Capital Providers |
 | :--- | :--- | :--- | :--- | :--- | :--- |

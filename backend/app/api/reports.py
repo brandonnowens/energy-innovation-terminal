@@ -37,7 +37,7 @@ REPORT_PRESETS = [
     # 0. Core Technical Architecture & Database Reference (Hidden for now)
     # {
     #     "id": "cleangrid_database_docs",
-    #     "title": "CleanGrid IQ Database",
+    #     "title": "U.S. Energy Innovation Database",
     #     "subtitle": "Comprehensive Technical Data Architecture, Source Provenance, Vintage Specifications, Relational Graph Topology, and Stakeholder Decision Utility Reference Manual",
     #     "category": "Macro & Policy Strategy",
     #     "target_audience": "State Energy Directors, Federal Program Managers, Clean Tech Project Sponsors, Climate Tech VCs, Regulated Utilities, University Research VPs, and Community Consortia",
@@ -424,16 +424,16 @@ REPORT_PRESETS = [
     },
     {
         "id": "ai_critical_minerals_supply_chain",
-        "title": "AI Infrastructure & Critical Minerals: The Role, Limits, and Frontiers of Energy Innovation",
-        "subtitle": "An Empirical Investigation Using The CleanGrants Database: Quantifying Hyperscale Material Intensities ($3.55B in Tracked Grants), Upstream Refining Realities, and What Clean Tech Innovation CAN vs. CANNOT Alleviate",
+        "title": "The Limits of Energy Innovation & AI in Alleviating Critical Minerals Bottlenecks",
+        "subtitle": "An Empirical Investigation Using the U.S. Energy Innovation Database: Evaluating Material Substitution, AI-Driven Discovery, Efficiency Limits, Thermodynamic Baselines, and Upstream Extraction Realities",
         "category": "Technology Domains",
-        "target_audience": "Hyperscale Infrastructure Leaders, Energy & Minerals Policymakers, Climate Tech Investors, Semiconductor & Balance-of-Plant OEMs",
-        "badge": "AI & Minerals Frontier",
+        "target_audience": "Energy & Minerals Policymakers, Climate Tech Investors, Hyperscale Infrastructure Leads, Mining & Metallurgy Officers, Clean Tech R&D Directors",
+        "badge": "Limits of Innovation",
         "icon": "Cpu",
         "pages": 21,
-        "capital_tracked": "$3.55B Tracked",
-        "awards_count": "2,623 Awards",
-        "key_focus": "Empirical quantification of 100 MW hyperscale material intensities (copper, rare earths, gallium/germanium, lithium, HALEU), what clean tech CAN alleviate (380V DC, reluctance motors, closed-loop hydrometallurgy) vs. CANNOT alleviate (transformer physical mass, thermodynamics, 7-12 yr mine lead times)."
+        "capital_tracked": "$4.32B Tracked",
+        "awards_count": "2,444 Awards",
+        "key_focus": "A rigorous, hard-nosed empirical evaluation of what AI materials screening and energy engineering CAN alleviate (380V DC distribution, reluctance motors, closed-loop hydrometallurgy) vs. CANNOT alleviate (irreducible conductor resistivity, transformer steel saturation, rock comminution thermodynamics, Jevons paradox rebound, and 7-15 year mine development lead times)."
     },
     {
         "id": "advanced_nuclear_smr",
@@ -569,36 +569,45 @@ def clear_report_cache_get():
 def export_executive_report_pdf(req: ReportGenerateRequest, db: Session = Depends(get_db)):
     """
     Generates and streams high-resolution multi-page PDF executive monograph.
-    Always forces cache refresh and live AI synthesis when users download.
+    Uses cached/deterministic narrative by default for instant compilation,
+    or live AI synthesis when force_refresh is requested.
     """
+    import logging
+    import traceback
     pdf_buffer = io.BytesIO()
+    force_refresh = bool(req.force_refresh)
 
-    if req.preset_id in GENERATORS_MAP:
-        generate_specialized_monograph(
-            preset_id=req.preset_id,
-            db=db,
-            output_stream=pdf_buffer,
-            openai_api_key=req.openai_api_key,
-            model_name=req.model_name,
-            custom_prompt=req.custom_prompt,
-            force_refresh=True
-        )
-    else:
-        aggregator = ReportContextAggregator(db)
-        context_data = aggregator.aggregate_by_preset(req.preset_id, req.filters)
-        
-        if req.title:
-            context_data["report_title"] = req.title
+    try:
+        if req.preset_id in GENERATORS_MAP:
+            generate_specialized_monograph(
+                preset_id=req.preset_id,
+                db=db,
+                output_stream=pdf_buffer,
+                openai_api_key=req.openai_api_key,
+                model_name=req.model_name,
+                custom_prompt=req.custom_prompt,
+                force_refresh=force_refresh
+            )
+        else:
+            aggregator = ReportContextAggregator(db)
+            context_data = aggregator.aggregate_by_preset(req.preset_id, req.filters)
+            
+            if req.title:
+                context_data["report_title"] = req.title
 
-        narrative = author_report_with_openai(
-            preset_id=req.preset_id,
-            context=context_data,
-            custom_prompt=req.custom_prompt,
-            api_key=req.openai_api_key,
-            model_name=req.model_name or "gpt-4o-mini",
-            force_refresh=True
-        )
-        build_executive_pdf(context_data, narrative, pdf_buffer)
+            narrative = author_report_with_openai(
+                preset_id=req.preset_id,
+                context=context_data,
+                custom_prompt=req.custom_prompt,
+                api_key=req.openai_api_key,
+                model_name=req.model_name or "gpt-4o-mini",
+                force_refresh=force_refresh
+            )
+            build_executive_pdf(context_data, narrative, pdf_buffer, db=db)
+    except Exception as e:
+        err_msg = traceback.format_exc()
+        logging.getLogger("ReportsAPI").error(f"Error generating PDF for {req.preset_id}: {err_msg}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate report PDF: {str(e)}")
 
     pdf_buffer.seek(0)
     filename_slug = req.preset_id.replace("_", "-")

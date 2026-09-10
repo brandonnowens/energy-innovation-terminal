@@ -530,7 +530,7 @@ export default function TavusVideoConversation({
                 </div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-slate-200">
                   <Database size={13} className="text-emerald-400" />
-                  <span>Reference Database: <strong className="text-white">US Energy Innovation Database (56,413 Awards · $104.16B)</strong></span>
+                  <span>Reference Database: <strong className="text-white">U.S. Energy Innovation Database (56,413 Awards · $104.16B)</strong></span>
                 </div>
               </div>
 

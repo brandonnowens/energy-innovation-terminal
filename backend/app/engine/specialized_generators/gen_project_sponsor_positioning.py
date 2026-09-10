@@ -393,7 +393,7 @@ def generate_project_sponsor_positioning_monograph(db: Session, output_stream: i
             "header": "20. Methodological Appendix & Verification Notice",
             "subheader": "Data Provenance, Opportunity Ingestion Protocols & Independent Verification Notice",
             "prose": [
-                "This strategic playbook synthesizes empirical solicitation data, agency procurement records, and historical award ledgers from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This strategic playbook synthesizes empirical solicitation data, agency procurement records, and historical award ledgers from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All solicitation numbers, award limits, and recipient metrics are computed directly from verified database records. For customized opportunity capture briefings or full proposal red-team reviews, contact the Energy Innovation Project Strategy Practice."
             ]
         }

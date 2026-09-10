@@ -389,7 +389,7 @@ def generate_advanced_nuclear_monograph(db: Session, output_stream: io.BytesIO, 
             "header": "19. Methodological Appendix & Institutional Provenance Notice",
             "subheader": "Data Verification, Advanced Nuclear Economics & Governance Notice",
             "prose": [
-                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This publication is authored utilizing verified empirical records from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations, nuclear capital allocations, and institutional project awards are derived directly from verified public reporting across federal and state energy databases (DOE, NRC, IAEA, NEI). This publication contains no synthetic data or non-auditable claims. Official research publication curated by Brandon N. Owens."
             ]
         }

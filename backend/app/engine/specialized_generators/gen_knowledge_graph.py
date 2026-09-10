@@ -296,7 +296,7 @@ def generate_knowledge_graph_monograph(db: Session, output_stream: io.BytesIO, n
             "prose": [
                 "<b>Data Aggregation Methodology:</b> All statistics and network topology metrics in this monograph are synthesized from verified program records across State Clean Energy Innovation Authorities, the U.S. Department of Energy (DOE), ARPA-E, NSF, and patent repositories. The dataset comprises 13,706 mapped institutions and 54,305 relational links.",
                 "<b>Strict Zero Synthetic Data Standard:</b> Every figure, percentage, company designation, award count, and trajectory curve published herein is synthesized directly from empirical transaction ledgers with zero artificial extrapolation.",
-                "<b>Citation Notice:</b> U.S. Energy Innovation Database by Brandon N. Owens · All Rights Reserved."
+                "<b>Citation Notice:</b> U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io) · All Rights Reserved."
             ]
         }
     ]

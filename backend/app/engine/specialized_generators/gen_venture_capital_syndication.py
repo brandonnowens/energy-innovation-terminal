@@ -236,7 +236,7 @@ def generate_venture_capital_syndication_monograph(db: Session, output_stream: i
             "table_data": deals_table_1,
             "table_widths": [115, 65, 75, 75, 115, 52],
             "prose": [
-                "Table 1 details the largest verified equity financing rounds in the U.S. Energy Innovation Database by Brandon N. Owens, tracking investment amounts, lead investors, and months elapsed post-grant."
+                "Table 1 details the largest verified equity financing rounds in the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io), tracking investment amounts, lead investors, and months elapsed post-grant."
             ]
         },
         {

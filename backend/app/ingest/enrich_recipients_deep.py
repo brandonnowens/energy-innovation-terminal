@@ -315,7 +315,7 @@ def run_recipient_deep_enrichment():
                 "headquarters_city": hq_city,
                 "latitude": hq_lat,
                 "longitude": hq_lng,
-                "enrichment_source": "cleangrants_standardizer",
+                "enrichment_source": "useid_standardizer",
                 "last_enriched_at": datetime.utcnow()
             })
 

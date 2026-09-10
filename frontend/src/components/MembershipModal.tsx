@@ -207,7 +207,7 @@ export function MembershipModal() {
         {/* Modal Footer */}
         <div className="bg-slate-50 border-t border-slate-200 px-6 py-3 flex items-center justify-between text-xs text-slate-500 shrink-0">
           <div className="font-mono text-[11px]">
-            Energy Innovation Terminal · U.S. Energy Innovation Database by Brandon N. Owens
+            Energy Innovation Terminal · U.S. Energy Innovation Database by Clean Energy Research, LLC
           </div>
           <button
             onClick={closeMembershipModal}

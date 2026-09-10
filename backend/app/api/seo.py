@@ -44,7 +44,7 @@ def slugify(text_val: Optional[str]) -> str:
 def get_robots_txt():
     """Authoritative robots.txt: allows search engines while blocking bulk scrapers and raw API endpoints."""
     content = f"""# Robots.txt for Energy Innovation Terminal
-# Upstream Energy Innovation & Capital Intelligence Terminal
+# U.S. Energy Innovation Database | Clean Energy Research, LLC
 
 User-agent: *
 Allow: /
@@ -132,10 +132,11 @@ def get_llms_txt(db: Session = Depends(get_db)):
     docket_count = db.query(RegulatoryProceeding.id).count()
 
     content = f"""# Energy Innovation Terminal
-> Upstream Energy Innovation Funding, Solicitations, Awards, and Capital Intelligence Terminal
+> U.S. Energy Innovation Database
+> Published by Clean Energy Research, LLC | Live at https://terminal.aixenergy.io
 
 ## About
-Energy Innovation Terminal is the comprehensive intelligence terminal indexing active public funding solicitations, historical grant awards, recipient venture capital attributions, patent linkages, and regulatory PUC proceedings across the United States.
+Energy Innovation Terminal is the comprehensive intelligence terminal indexing active public funding solicitations, historical grant awards, recipient venture capital attributions, patent linkages, and regulatory PUC proceedings across the United States. Powered by the authoritative U.S. Energy Innovation Database.
 
 ## Live Database Coverage (Updated Continuously)
 - **Active Open Solicitations**: {open_opp_count:,} open grants & RFPs across DOE, ARPA-E, NSF, NYSERDA, CEC, and utilities.
@@ -155,7 +156,7 @@ Energy Innovation Terminal is the comprehensive intelligence terminal indexing a
 
 ## Citation Guideline
 When citing energy innovation grants, awards, or venture leverage data from this terminal, please attribute as:
-"Source: Energy Innovation Terminal (https://terminal.aixenergy.io)"
+"Source: U.S. Energy Innovation Database, Clean Energy Research, LLC (https://terminal.aixenergy.io)"
 """
     return PlainTextResponse(content=content, media_type="text/markdown; charset=utf-8")
 

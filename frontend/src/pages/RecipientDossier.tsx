@@ -223,8 +223,6 @@ export default function RecipientDossier() {
 
       {/* Hero Header Card */}
       <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-800 relative overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-        
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
             <div className="flex flex-wrap items-center gap-2.5">

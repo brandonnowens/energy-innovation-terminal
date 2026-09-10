@@ -129,7 +129,7 @@ def generate_programmatic_outcomes_roi_scorecard_monograph(db: Session, output_s
             "executive_callout": "EMPIRICAL BENCHMARKING: Normalizing metrics across agencies eliminates reporting bias, allowing direct efficiency comparisons between federal FOAs and state PONs.",
             "prose": [
                 "Funding agencies traditionally report program outputs using disparate, non-standardized units (e.g., annual kWh saved vs. lifetime MWh generated vs. BTU equivalent). This fragmentation obscures relative efficiency.",
-                "The U.S. Energy Innovation Database by Brandon N. Owens applies rigorous physical and financial normalization to convert all reported outputs into canonical metrics: MT CO2e avoided per $10k awarded, FTE jobs per $1M, and follow-on private capital leverage."
+                "The U.S. Energy Innovation Database by Clean Energy Research, LLC applies rigorous physical and financial normalization to convert all reported outputs into canonical metrics: MT CO2e avoided per $10k awarded, FTE jobs per $1M, and follow-on private capital leverage."
             ]
         },
         {
@@ -272,7 +272,7 @@ def generate_programmatic_outcomes_roi_scorecard_monograph(db: Session, output_s
             "subheader": "Mitigating Data Provenance Risks in Impact Reporting",
             "prose": [
                 "Statutory reporting discrepancies represent the primary risk in cross-agency program benchmarking.",
-                "The U.S. Energy Innovation Database by Brandon N. Owens verifies all reported outputs against audited agency filings and OSTI technical reports."
+                "The U.S. Energy Innovation Database by Clean Energy Research, LLC verifies all reported outputs against audited agency filings and OSTI technical reports."
             ]
         },
         {

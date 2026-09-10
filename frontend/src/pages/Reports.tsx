@@ -36,7 +36,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
   // 0. Core Technical Architecture & Database Reference Manual (Hidden for now)
   // {
   //   "id": "cleangrid_database_docs",
-  //   "title": "CleanGrid IQ Database",
+  //   "title": "U.S. Energy Innovation Database",
   //   "subtitle": "Comprehensive Technical Data Architecture, Source Provenance, Vintage Specifications, Relational Graph Topology, and Stakeholder Decision Utility Reference Manual",
   //   "category": "Macro & Policy Strategy",
   //   "target_audience": "State Energy Directors, Federal Program Managers, Clean Tech Project Sponsors, Climate Tech VCs, Regulated Utilities, University Research VPs, and Community Consortia",
@@ -422,16 +422,16 @@ const DEFAULT_PRESETS: ReportPreset[] = [
   },
   {
     "id": "ai_critical_minerals_supply_chain",
-    "title": "AI Infrastructure & Critical Minerals: The Role, Limits, and Frontiers of Energy Innovation",
-    "subtitle": "An Empirical Investigation Using The CleanGrants Database: Quantifying Hyperscale Material Intensities ($3.55B in Tracked Grants), Upstream Refining Realities, and What Clean Tech Innovation CAN vs. CANNOT Alleviate",
+    "title": "The Limits of Energy Innovation & AI in Alleviating Critical Minerals Bottlenecks",
+    "subtitle": "An Empirical Investigation Using the U.S. Energy Innovation Database: Evaluating Material Substitution, AI-Driven Discovery, Efficiency Limits, Thermodynamic Baselines, and Upstream Extraction Realities",
     "category": "Technology Domains",
-    "target_audience": "Hyperscale Infrastructure Leaders, Energy & Minerals Policymakers, Climate Tech Investors, Semiconductor & Balance-of-Plant OEMs",
-    "badge": "AI & Minerals Frontier",
+    "target_audience": "Energy & Minerals Policymakers, Climate Tech Investors, Hyperscale Infrastructure Leads, Mining & Metallurgy Officers, Clean Tech R&D Directors",
+    "badge": "Limits of Innovation",
     "icon": "Cpu",
     "pages": 21,
-    "capital_tracked": "$3.55B Tracked",
-    "awards_count": "2,623 Awards",
-    "key_focus": "Empirical quantification of 100 MW hyperscale material intensities (copper, rare earths, gallium/germanium, lithium, HALEU), what clean tech CAN alleviate (380V DC, reluctance motors, closed-loop hydrometallurgy) vs. CANNOT alleviate (transformer physical mass, thermodynamics, 7-12 yr mine lead times)."
+    "capital_tracked": "$4.32B Tracked",
+    "awards_count": "2,444 Awards",
+    "key_focus": "A rigorous, hard-nosed empirical evaluation of what AI materials screening and energy engineering CAN alleviate (380V DC distribution, reluctance motors, closed-loop hydrometallurgy) vs. CANNOT alleviate (irreducible conductor resistivity, transformer steel saturation, rock comminution thermodynamics, Jevons paradox rebound, and 7-15 year mine development lead times)."
   },
   {
     "id": "advanced_nuclear_smr",
@@ -475,6 +475,7 @@ export default function Reports() {
   const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini');
   const [isClearingCache, setIsClearingCache] = useState(false);
   const [keySavedToast, setKeySavedToast] = useState<string | null>(null);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
 
   // Preview Drawer Modal
   const [previewPreset, setPreviewPreset] = useState<any>(null);
@@ -536,18 +537,24 @@ export default function Reports() {
 
   // Direct PDF Download Handler
   const handleDownloadReportPdf = async (report: any) => {
+    if (!report || !report.id) return;
     setDownloadingId(report.id);
+    setDownloadError(null);
     try {
       const req: ReportGenerateRequest = {
         preset_id: report.id,
         model_name: selectedModel,
-        force_refresh: true,
+        force_refresh: false,
       };
       const blob = await api.exportExecutiveReportPdf(req);
       const timestamp = new Date().toISOString().slice(0, 10);
       saveAs(blob, `energy-innovation-publication-${report.id}-${timestamp}.pdf`);
-    } catch (e) {
+      setKeySavedToast(`Report PDF downloaded successfully: ${report.title || report.id}`);
+      setTimeout(() => setKeySavedToast(null), 4000);
+    } catch (e: any) {
       console.error('Failed to export PDF:', e);
+      setDownloadError(`Failed to download report PDF for "${report.title || report.id}". Please try again.`);
+      setTimeout(() => setDownloadError(null), 6000);
     } finally {
       setDownloadingId(null);
     }
@@ -638,59 +645,59 @@ export default function Reports() {
         </div>
       )}
 
-      {/* Hero Banner */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl border border-slate-800 relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      {/* Error Toast Notification */}
+      {downloadError && (
+        <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-medium flex items-center justify-between shadow-xs animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex items-center gap-2">
+            <AlertCircle size={16} className="text-rose-600 shrink-0" />
+            <span>{downloadError}</span>
+          </div>
+          <button
+            onClick={() => setDownloadError(null)}
+            className="p-1 text-rose-600 hover:text-rose-800 rounded-lg cursor-pointer"
+          >
+            <X size={14} />
+          </button>
+        </div>
+      )}
+
+      {/* Header Banner */}
+      <div className="p-6 rounded-2xl bg-slate-900 text-white shadow-md border border-slate-800">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-3xl">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-indigo-500/20 text-indigo-200 border border-indigo-500/30">
+            <div className="flex flex-wrap items-center gap-2 mb-2.5">
+              <span className="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase bg-indigo-500/20 text-indigo-200 border border-indigo-500/30">
                 {reportsList.length} Strategic Monographs
               </span>
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-slate-700/50 text-slate-300 border border-slate-600">
+              <span className="px-2.5 py-0.5 rounded text-[11px] font-medium text-slate-300 bg-slate-800 border border-slate-700">
                 Executive Publication Series
               </span>
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
-                <ShieldCheck size={12} className="text-emerald-300" />
-                <span>Curated &amp; Verified Precedents</span>
-              </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-              Executive Report Library
+            <h1 className="text-2xl font-bold tracking-tight text-white">
+              Executive Strategic Monographs
             </h1>
-            <p className="text-sm text-slate-300 mt-2 max-w-3xl leading-relaxed">
-              Download publication-grade strategic monographs synthesizing <strong>54,305 verified energy innovation awards</strong>, 
-              <strong> 13,706 nationwide recipient institutions</strong>, deep domain analyses across all energy vectors and industrial technologies, and forward-looking horizon roadmaps (2026–2035).
+            <p className="text-xs text-slate-300 mt-1.5 max-w-3xl leading-relaxed">
+              Download publication-grade strategic monographs synthesizing verified project awards, nationwide recipient institutions, domain analyses across clean energy vectors, and forward-looking strategic roadmaps.
             </p>
           </div>
 
           {/* Action / Configuration Controls */}
-          <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-3 shrink-0">
-            <div className="px-4 py-2.5 rounded-xl bg-slate-800/90 border border-emerald-500/30 text-slate-200 flex items-center gap-3 shadow-sm">
-              <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-300">
-                <FileText size={16} />
-              </div>
-              <div className="text-left">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-extrabold tracking-tight text-white">
-                    Research Publication Hub
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                </div>
-                <span className="text-[10px] text-slate-400 font-normal block mt-0.5">
-                  54,305 Verified Records Indexed
-                </span>
-              </div>
+          <div className="flex items-center gap-3 shrink-0">
+            <div className="px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <span className="text-xs font-medium text-slate-300">
+                54,305 Verified Records Indexed
+              </span>
             </div>
 
             {/* Clear Cache Button */}
             <button
               onClick={handleClearCache}
               disabled={isClearingCache}
-              className="px-3.5 py-3 rounded-xl text-xs font-bold bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-              title="Clear all cached report narratives and refresh"
+              className="px-3 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
+              title="Clear cached report narratives and refresh"
             >
-              <RefreshCw size={14} className={isClearingCache ? 'animate-spin text-cyan-400' : 'text-slate-400'} />
+              <RefreshCw size={13} className={isClearingCache ? 'animate-spin text-cyan-400' : 'text-slate-400'} />
               <span>{isClearingCache ? 'Clearing...' : 'Clear Cache'}</span>
             </button>
           </div>
@@ -1067,7 +1074,7 @@ export default function Reports() {
             {/* Modal Footer */}
             <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
               <span className="text-[10.5px] text-slate-500">
-                Source: <strong>U.S. Energy Innovation Database by Brandon N. Owens</strong> · <em>Independent research compilation from public open records. Not affiliated with NYSERDA or any government agency.</em>
+                Source: <strong>U.S. Energy Innovation Database by Clean Energy Research, LLC</strong> · <em>Independent research compilation from public open records. Not affiliated with NYSERDA or any government agency.</em>
               </span>
               <div className="flex flex-wrap items-center gap-2">
                 <button

@@ -765,7 +765,7 @@ export default function DailyDigest() {
       {/* Footer Citation & Attribution */}
       <div className="border-t border-slate-200 dark:border-slate-800 pt-6 text-center space-y-2">
         <p className="text-xs text-slate-400 dark:text-slate-500">
-          Source: Energy Innovation Terminal (<a href="https://terminal.aixenergy.io" className="underline hover:text-slate-600 dark:hover:text-slate-300">terminal.aixenergy.io</a>) • AIxEnergy Proprietary Intelligence Layer
+          Source: U.S. Energy Innovation Database (<a href="https://terminal.aixenergy.io" className="underline hover:text-slate-600 dark:hover:text-slate-300">terminal.aixenergy.io</a>) • Clean Energy Research, LLC
         </p>
         <p className="text-[11px] text-slate-400 dark:text-slate-600">
           Automated edition generated on {digest.generated_at ? new Date(digest.generated_at).toLocaleString() : digest.formatted_date}.

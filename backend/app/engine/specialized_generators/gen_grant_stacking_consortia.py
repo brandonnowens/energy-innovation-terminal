@@ -395,7 +395,7 @@ def generate_grant_stacking_consortia_monograph(db: Session, output_stream: io.B
             "header": "20. Methodological Appendix & Consortia Verification Notice",
             "subheader": "Data Provenance, Knowledge Graph Mapping & Verification Safeguards",
             "prose": [
-                "This monograph was authored by synthesizing empirical award records, recipient corporate profiles, and intergovernmental transaction ledgers from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This monograph was authored by synthesizing empirical award records, recipient corporate profiles, and intergovernmental transaction ledgers from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations, co-funding ratios, and institutional rankings are computed directly from verified database records. For customized consortia structuring or multi-agency grant stacking advisory, contact the Energy Innovation Project Strategy Practice."
             ]
         }

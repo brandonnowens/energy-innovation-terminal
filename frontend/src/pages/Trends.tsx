@@ -125,7 +125,7 @@ const CockpitCard: React.FC<CockpitCardProps> = ({
           { label: 'Data Points', val: `${exportCsvData?.length || 0} Records` },
           { label: 'Intelligence Source', val: 'U.S. Energy Innovation Database' },
         ]}
-        sourceAttribution="U.S. Energy Innovation Database by Brandon N. Owens"
+        sourceAttribution="U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io)"
         filenamePrefix={`macro-trends-${id}`}
       />
     </div>

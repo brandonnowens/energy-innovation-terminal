@@ -37,7 +37,7 @@ export const ROLES: RoleOption[] = [
     icon: Landmark,
     description: '5-year research agendas, center grants, issuing PONs, faculty clusters & F&A recovery',
     spokenStarters: [
-      'How should we structure our 5-year energy innovation research roadmap and internal PONs?',
+      'How should we structure our 5-year clean energy research roadmap and internal PONs?',
       'What strategies anchor a $50M regional energy innovation hub consortium?',
       'Which faculty clusters show the highest verified grant momentum in hydrogen and storage?',
       'How do we structure master industry agreements while protecting Bayh-Dole IP?'
@@ -282,13 +282,13 @@ export const ROLES: RoleOption[] = [
 
 export default function Chat() {
   const [advisoryMode, setAdvisoryMode] = useState<AdvisoryMode>(() => {
-    return ((localStorage.getItem('energysignal_advisory_mode') || localStorage.getItem('cleangrants_advisory_mode')) as AdvisoryMode) || 'chat';
+    return ((localStorage.getItem('terminal_advisory_mode') || localStorage.getItem('energysignal_advisory_mode')) as AdvisoryMode) || 'chat';
   });
   const [messages, setMessages] = useState<ChatMessageItem[]>([]);
   const [inputQuery, setInputQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [userRole, setUserRole] = useState<UserRole>(() => {
-    return ((localStorage.getItem('energysignal_user_role') || localStorage.getItem('cleangrants_user_role')) as UserRole) || 'institutional_leader';
+    return ((localStorage.getItem('terminal_user_role') || localStorage.getItem('energysignal_user_role')) as UserRole) || 'institutional_leader';
   });
   const [isRoleDropdownOpen, setIsRoleDropdownOpen] = useState(false);
   const [apiKey, setApiKey] = useState(() => localStorage.getItem('energysignal_openai_api_key') || localStorage.getItem('openai_api_key') || '');

@@ -22,7 +22,7 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
       icon: ShieldCheck,
       iconColor: 'text-emerald-500',
       title: '1. Independent Platform & Non-Affiliation Notice',
-      content: 'The Energy Innovation Terminal and the U.S. Energy Innovation Database are independent, third-party research and computational analytics tools developed outside of any official government capacity. This platform is NOT an official tool, publication, or product of the New York State Energy Research and Development Authority (NYSERDA), the State of New York, the United States Department of Energy (DOE), the Advanced Research Projects Agency-Energy (ARPA-E), the California Energy Commission (CEC), the Massachusetts Energy Innovation Center (MassCEC), the National Science Foundation (NSF), or any other federal, state, regional, or municipal governmental entity. No endorsement, partnership, sponsorship, or official affiliation by or with any government agency is stated or implied.'
+      content: 'The Energy Innovation Terminal and the U.S. Energy Innovation Database are independent, third-party research and computational analytics tools developed by Clean Energy Research, LLC outside of any official government capacity. This platform is NOT an official tool, publication, or product of the New York State Energy Research and Development Authority (NYSERDA), the State of New York, the United States Department of Energy (DOE), the Advanced Research Projects Agency-Energy (ARPA-E), the California Energy Commission (CEC), the Massachusetts Energy Innovation Center (MassCEC), the National Science Foundation (NSF), or any other federal, state, regional, or municipal governmental entity. No endorsement, partnership, sponsorship, or official affiliation by or with any government agency is stated or implied.'
     },
     {
       icon: FileText,
@@ -40,7 +40,7 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
       icon: Scale,
       iconColor: 'text-purple-500',
       title: '4. Independent Development & Resource Separation',
-      content: 'This platform was conceived, developed, and engineered independently. No official government agency equipment, facilities, official working hours, proprietary software, or public resources were used in the creation, hosting, or ongoing operation of this software platform. The perspectives, analyses, taxonomy structures, and algorithmic outputs expressed herein are solely those of the platform\'s independent creators and do not reflect the official policies, positions, or evaluations of any public authority or employer.'
+      content: 'This platform and the U.S. Energy Innovation Database were conceived, developed, and engineered independently by Clean Energy Research, LLC. No official government agency equipment, facilities, official working hours, proprietary software, or public resources were used in the creation, hosting, or ongoing operation of this software platform. The perspectives, analyses, taxonomy structures, and algorithmic outputs expressed herein are solely those of Clean Energy Research, LLC and do not reflect the official policies, positions, or evaluations of any public authority or employer.'
     },
     {
       icon: Building2,
@@ -75,9 +75,6 @@ export function LegalComplianceModal({ isOpen, onClose }: LegalComplianceModalPr
       >
         {/* Header */}
         <div className="relative px-6 py-5 bg-gradient-to-r from-[#04101e] via-[#08182b] to-[#04101e] border-b border-cyan-500/30 overflow-hidden">
-          <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-cyan-400/20 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-emerald-400/20 blur-3xl pointer-events-none" />
-
           <div className="relative z-10 flex items-center justify-between">
             <div className="flex items-center gap-3.5">
               <div className="p-2 rounded-xl bg-cyan-950/60 border border-cyan-500/40 shadow-[0_0_20px_rgba(0,210,255,0.3)]">

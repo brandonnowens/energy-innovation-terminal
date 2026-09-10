@@ -83,6 +83,21 @@ class Settings(BaseSettings):
     ghost_admin_api_key: str = ""
     ghost_webhook_secret: str = ""
 
+    # Platform Brand, Publisher & Citation Constants
+    platform_name: str = "Energy Innovation Terminal"
+    database_name: str = "U.S. Energy Innovation Database"
+    company_name: str = "Clean Energy Research, LLC"
+    platform_url: str = "https://terminal.aixenergy.io"
+    citation_apa: str = "Owens, B. N. (2026). U.S. Energy Innovation Database (Version 3.5.0) [Data set and software]. Clean Energy Research, LLC. https://terminal.aixenergy.io"
+    citation_bibtex: str = """@misc{owens2026energyinnovation,
+  author = {Brandon N. Owens},
+  title = {U.S. Energy Innovation Database},
+  year = {2026},
+  publisher = {Clean Energy Research, LLC},
+  url = {https://terminal.aixenergy.io},
+  note = {Multi-agency cross-jurisdictional intelligence covering 56,413 awards, $104.16B capital, and 140+ federal & state utilities}
+}"""
+
     # System Admin & Gmail Outreach Integration
     admin_primary_email: str = "bowens@aixenergy.io"
     admin_primary_name: str = "Brandon Owens"
@@ -94,13 +109,13 @@ class Settings(BaseSettings):
     admin_imap_host: str = "imap.gmail.com"
     admin_imap_port: int = 993
     admin_imap_use_ssl: bool = True
-    admin_email_display_name: str = "Brandon Owens | Energy Innovation Terminal"
+    admin_email_display_name: str = "Brandon Owens | Clean Energy Research, LLC"
     admin_email_default_footer: str = (
         "--\n"
         "Brandon N. Owens\n"
-        "Founder & Lead Principal | Energy Innovation Terminal\n"
+        "Clean Energy Research, LLC | Energy Innovation Terminal\n"
         "bowens@aixenergy.io | https://terminal.aixenergy.io\n"
-        "Confidential Clean Energy Research & Ecosystem Communications"
+        "U.S. Energy Innovation Database"
     )
 
     # Server

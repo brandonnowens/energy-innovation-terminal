@@ -305,7 +305,7 @@ def generate_multistage_sankey_monograph(db: Session, output_stream: io.BytesIO,
             "prose": [
                 "<b>Data Aggregation Methodology:</b> All statistics and financial metrics in this monograph are synthesized from verified program records across State Clean Energy Innovation Authorities, the U.S. Department of Energy (DOE), ARPA-E, NSF, and commercial project filings. The dataset comprises 13,706 institutions tracked across TRL 1-9 commercialization stages.",
                 "<b>Strict Zero Synthetic Data Standard:</b> Every figure, percentage, company designation, award count, and trajectory curve published herein is synthesized directly from empirical transaction ledgers with zero artificial extrapolation.",
-                "<b>Citation Notice:</b> U.S. Energy Innovation Database by Brandon N. Owens · All Rights Reserved."
+                "<b>Citation Notice:</b> U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io) · All Rights Reserved."
             ]
         }
     ]

@@ -352,7 +352,7 @@ def generate_climate_justice_monograph(db: Session, output_stream: io.BytesIO, n
             "header": "19. Methodological Appendix & Verification Notice",
             "subheader": "Data Provenance, DAC Geospatial Mapping Criteria & Verification Safeguards",
             "prose": [
-                "This publication synthesizes empirical grant awards, census tract demographic overlays, and recipient registries from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This publication synthesizes empirical grant awards, census tract demographic overlays, and recipient registries from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations are derived directly from empirical project records. This document contains no synthetic or non-auditable claims. Official research publication curated by Brandon N. Owens."
             ]
         }

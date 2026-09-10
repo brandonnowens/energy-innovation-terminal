@@ -24,7 +24,7 @@ def run_verification():
     db = SessionLocal()
     results = {}
 
-    print("\n================ CLEANGRANTS KNOWLEDGE BASE VERIFICATION ================\n")
+    print("\n================ U.S. ENERGY INNOVATION DATABASE VERIFICATION ================\n")
 
     # 1. Database Volume & Scale Verification
     with engine.connect() as conn:

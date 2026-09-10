@@ -43,7 +43,7 @@ export default function Awards() {
     title: '$104B+ Energy Innovation Grant Awards & Map 2026',
     description: 'Explore 29,300+ energy innovation awards, geospatial recipient mappings, winning proposal details, and research grant allocations across US states and agencies.',
     canonicalUrl: 'https://terminal.aixenergy.io/awards',
-    keywords: ['energy innovation grant awards', 'cleantech award database', 'DOE grant recipients', 'ARPA-E awardees', 'energy innovation research funding map'],
+    keywords: ['energy innovation grant awards', 'cleantech award database', 'DOE grant recipients', 'ARPA-E awardees', 'energy innovation funding map'],
   });
 
   const [searchParams] = useSearchParams();

@@ -830,7 +830,7 @@ def run_master_enrichment(db: Optional[Session] = None) -> Dict[str, Any]:
                     session.add(ResultArtifact(
                         title=preset["title"],
                         artifact_type="evaluation_report",
-                        agency="U.S. Energy Innovation Database by Brandon N. Owens",
+                        agency="Clean Energy Research, LLC",
                         source_url=f"/api/reports/{rep.id}",
                         publication_date=datetime.utcnow().strftime("%Y-%m-%d"),
                         page_count=preset["pages"],

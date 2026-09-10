@@ -352,7 +352,7 @@ def generate_macro_state_of_innovation_monograph(db: Session, output_stream: io.
             "prose": [
                 "<b>Data Aggregation Methodology:</b> All quantitative findings in this strategic monograph are derived from verified program records across State Clean Energy Innovation Authorities, the U.S. Department of Energy (DOE), ARPA-E, NSF, EPA, and regional utility filings. The dataset comprises 54,305 discrete program awards totaling $97.50B in capital deployed across 13,706 recipient institutions.",
                 "<b>Strict Zero Synthetic Data Standard:</b> Every figure, percentage, company designation, award count, and trajectory curve published herein is synthesized directly from empirical transaction ledgers with zero artificial extrapolation.",
-                "<b>Citation Notice:</b> U.S. Energy Innovation Database by Brandon N. Owens · All Rights Reserved."
+                "<b>Citation Notice:</b> U.S. Energy Innovation Database · Clean Energy Research, LLC (https://terminal.aixenergy.io) · All Rights Reserved."
             ]
         }
     ]

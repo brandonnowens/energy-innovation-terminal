@@ -394,10 +394,6 @@ export const CapitalContinuumTimeline: React.FC<CapitalContinuumTimelineProps> =
 
   return (
     <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-7 shadow-2xl border border-slate-800 relative overflow-hidden space-y-5">
-      {/* Decorative background glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
-
       {/* Header bar */}
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-white/10">
         <div>

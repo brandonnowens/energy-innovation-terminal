@@ -2,6 +2,9 @@
 
 **Document Version:** 4.0.0-PROPRIETARY  
 **System Designation:** Energy Innovation Terminal Matching Engine (`EIT-MatchEngine`)  
+**Publisher:** Clean Energy Research, LLC  
+**Platform URL:** [https://terminal.aixenergy.io](https://terminal.aixenergy.io)  
+**Database Reference:** U.S. Energy Innovation Database  
 **Target Environment:** PostgreSQL 16+ with `pgvector`, FastAPI Core, OpenAI GPT-4o / Google Gemini Enterprise  
 **Classification:** Proprietary Technical Architecture & Algorithm Specification  
 

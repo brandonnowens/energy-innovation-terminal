@@ -2,7 +2,7 @@
 
 **The Network Science of Clean Energy Transformation: Leveraging Graph Centrality, 31 Thematic Communities, Keystone Innovation Anchors, and Multi-Agency Bridges to Position State Agencies at the Center of the National Innovation Architecture**
 
-*Published by CleanGrants IQ // Strategic Practice Edition*  
+*Published by Clean Energy Research, LLC // U.S. Energy Innovation Database*  
 *Dataset Scope: 54,305 Verified Awards across 13,706 Recipient Institutions ($98.98B Capital Tracked)*  
 *Network Dimensions: 13,706 Entity Nodes, 54,305 Relational Edges, 31 Thematic Communities, 10 Cross-Domain Bridge Connectors*  
 *Target Audience: State Energy Directors (NYSERDA, CEC, MassCEC, NJEDA, Colorado CEO), Governors' Energy Cabinets, Incubator Executives, Utility Innovation VPs, University VPs of Research, and National Lab Directors*
@@ -125,7 +125,7 @@ Network visualization indicates that while **Clusters 1 (Batteries)** and **Clus
 
 In network graph analysis, **Betweenness Centrality** measures the frequency with which a node falls on the shortest path between other nodes. Nodes with high betweenness centrality act as **structural bridges** or translators across institutional silos.
 
-The CleanGrants IQ datastore reveals a distinct cohort of **10 Master Cross-Domain Bridge Connectors** that hold prime multi-agency awards across $\ge 6$ distinct state and federal agencies:
+The U.S. Energy Innovation Database datastore reveals a distinct cohort of **10 Master Cross-Domain Bridge Connectors** that hold prime multi-agency awards across $\ge 6$ distinct state and federal agencies:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐

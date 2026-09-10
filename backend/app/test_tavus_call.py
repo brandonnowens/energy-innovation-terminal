@@ -8,7 +8,7 @@ key = "b6c16583ce4c44ec970137dc7d142036"
 payload = {
     "persona_id": "p2fbd605",
     "replica_id": "rcb937aad536",
-    "conversation_name": "CleanGrants Test"
+    "conversation_name": "U.S. Energy Innovation Database Test"
 }
 
 req = urllib.request.Request(

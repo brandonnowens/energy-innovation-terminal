@@ -351,7 +351,7 @@ def generate_workforce_transition_monograph(db: Session, output_stream: io.Bytes
             "header": "19. Methodological Appendix, Wage Modeling & Verification Notice",
             "subheader": "Data Provenance, Labor Economic Assumptions & Verification Safeguards",
             "prose": [
-                "This publication synthesizes empirical grant awards, Department of Labor Registered Apprenticeship database metrics, and recipient registries from the U.S. Energy Innovation Database by Brandon N. Owens.",
+                "This publication synthesizes empirical grant awards, Department of Labor Registered Apprenticeship database metrics, and recipient registries from the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io).",
                 "All metric calculations are derived directly from empirical project records. This document contains no synthetic or non-auditable claims. Official research publication curated by Brandon N. Owens."
             ]
         }

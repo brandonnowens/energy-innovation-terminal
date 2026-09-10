@@ -92,7 +92,7 @@ GENERATORS_MAP: Dict[str, Callable[[Session, io.BytesIO], None]] = {
     "nuclear_fusion_dossier": generate_nuclear_fusion_monograph,
 }
 
-from app.engine.ai_report_author import author_report_with_openai
+from app.engine.ai_report_author import author_report_with_openai, generate_deterministic_narrative
 from app.engine.report_aggregator import ReportContextAggregator
 
 def generate_specialized_monograph(
@@ -102,27 +102,32 @@ def generate_specialized_monograph(
     openai_api_key: Optional[str] = None,
     model_name: Optional[str] = None,
     custom_prompt: Optional[str] = None,
-    force_refresh: bool = True
+    force_refresh: bool = False
 ) -> None:
-    """Routes generation request to the dedicated generator function with live OpenAI narrative injection."""
+    """Routes generation request to the dedicated generator function with live or bespoke narrative injection."""
     generator = GENERATORS_MAP.get(preset_id, generate_macro_state_of_innovation_monograph)
     
-    # 1. Aggregate context and author narrative (live OpenAI if key provided, or rich deterministic engine)
+    # 1. Author or retrieve narrative
     narrative = None
-    try:
-        aggregator = ReportContextAggregator(db)
-        context = aggregator.aggregate_by_preset(preset_id)
-        narrative = author_report_with_openai(
-            preset_id=preset_id,
-            context=context,
-            custom_prompt=custom_prompt,
-            api_key=openai_api_key,
-            model_name=model_name or "gpt-4o-mini",
-            force_refresh=force_refresh
-        )
-    except Exception as e:
-        import logging
-        logging.getLogger("Dispatcher").warning(f"Error pre-authoring narrative for {preset_id}: {e}")
+    if custom_prompt or (force_refresh and openai_api_key):
+        try:
+            aggregator = ReportContextAggregator(db)
+            context = aggregator.aggregate_by_preset(preset_id)
+            narrative = author_report_with_openai(
+                preset_id=preset_id,
+                context=context,
+                custom_prompt=custom_prompt,
+                api_key=openai_api_key,
+                model_name=model_name or "gpt-4o-mini",
+                force_refresh=force_refresh
+            )
+        except Exception as e:
+            import logging
+            logging.getLogger("Dispatcher").warning(f"Error pre-authoring narrative for {preset_id}: {e}")
+            narrative = generate_deterministic_narrative(preset_id, {})
+    else:
+        # Fast path: instant bespoke domain-specific deterministic narrative (0.000s execution)
+        narrative = generate_deterministic_narrative(preset_id, {})
 
     # 2. Invoke generator passing narrative
     try:
@@ -135,4 +140,7 @@ def generate_specialized_monograph(
         else:
             generator(db, output_stream)
     except Exception as e:
+        import logging
+        logging.getLogger("Dispatcher").error(f"Generator execution failed for {preset_id} with narrative: {e}. Retrying with default fallback.")
         generator(db, output_stream)
+

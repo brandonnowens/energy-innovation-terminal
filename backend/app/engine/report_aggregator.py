@@ -1776,7 +1776,7 @@ class ReportContextAggregator:
 
     def get_cleangrid_database_docs(self, filters: Dict[str, Any] = None) -> Dict[str, Any]:
         """
-        Aggregate comprehensive data metrics across all tables and sources for the CleanGrid IQ Database Documentation report.
+        Aggregate comprehensive data metrics across all tables and sources for the U.S. Energy Innovation Database Documentation report.
         """
         macro_metrics, time_series = self._get_base_macro_metrics(filters)
         strategic_domains = self.get_strategic_technology_domains()
@@ -1806,7 +1806,7 @@ class ReportContextAggregator:
 
         return {
             "preset_id": "cleangrid_database_docs",
-            "report_title": "CleanGrid IQ Database",
+            "report_title": "U.S. Energy Innovation Database",
             "subtitle": "Comprehensive Technical Data Architecture, Source Provenance, Vintage Specifications, Relational Graph Topology, and Stakeholder Decision Utility Reference Manual",
             "macro_metrics": macro_metrics,
             "platform_stats": {
@@ -1936,9 +1936,13 @@ class ReportContextAggregator:
             f = dict(filters or {})
             f.update({"technology": "Industrial Decarbonization & Clean Heat", "preset_id": "industrial_decarb_dossier", "report_title": "Industrial Decarbonization & Clean Process Heat Strategic Dossier"})
             res = self.get_technology_deep_dive(f)
-        elif preset_id in ("critical_minerals_dossier", "ai_critical_minerals_supply_chain"):
+        elif preset_id == "critical_minerals_dossier":
             f = dict(filters or {})
             f.update({"technology": "Critical Minerals & Supply Chain Security", "preset_id": "critical_minerals_dossier", "report_title": "Critical Minerals, Rare Earth Elements & Supply Chain Security Strategic Dossier"})
+            res = self.get_technology_deep_dive(f)
+        elif preset_id == "ai_critical_minerals_supply_chain":
+            f = dict(filters or {})
+            f.update({"technology": "Critical Minerals & Supply Chain Security", "preset_id": "ai_critical_minerals_supply_chain", "report_title": "The Limits of Energy Innovation & AI in Alleviating Critical Minerals Bottlenecks"})
             res = self.get_technology_deep_dive(f)
         elif preset_id == "advanced_nuclear_smr":
             f = dict(filters or {})

@@ -86,7 +86,7 @@ class FoaBlueprintNumberedCanvas(canvas.Canvas):
 
         self.setFont("Helvetica", 6.5)
         self.setFillColor(COLOR_BRAND_MUTED)
-        self.drawString(40, 34, "Energy Innovation Terminal by AIxEnergy · terminal.aixenergy.io · Institutional Grant Intelligence")
+        self.drawString(40, 34, "U.S. Energy Innovation Database · Clean Energy Research, LLC · https://terminal.aixenergy.io · Institutional Grant Intelligence")
 
         self.setFont("Helvetica-Bold", 7)
         self.setFillColor(COLOR_BRAND_NAVY)
