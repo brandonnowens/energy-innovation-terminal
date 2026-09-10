@@ -86,11 +86,13 @@ function App() {
               <Suspense fallback={<PageLoadingFallback />}>
                 <Routes>
                   <Route path="/" element={<Layout />}>
-                    <Route index element={<DailyDigest />} />
-                    <Route path="digest" element={<DailyDigest />} />
-                    <Route path="daily-digest" element={<DailyDigest />} />
+                    <Route index element={<AnalyzeProject />} />
                     <Route path="analyze" element={<AnalyzeProject />} />
                     <Route path="match" element={<AnalyzeProject />} />
+                    <Route path="digest" element={<DailyDigest />} />
+                    <Route path="daily-digest" element={<DailyDigest />} />
+                    <Route path="daily-brief" element={<DailyDigest />} />
+                    <Route path="brief" element={<DailyDigest />} />
                     <Route path="radar" element={<ForecastingRadar />} />
                     <Route path="forecasting" element={<ForecastingRadar />} />
                     <Route path="chat" element={<Chat />} />

@@ -44,7 +44,7 @@ export default function Layout() {
       const saved = localStorage.getItem('energy_terminal_persona_v1');
       if (saved === 'investor' || saved === 'innovator' || saved === 'all') return saved;
     } catch {}
-    return 'investor';
+    return 'innovator';
   });
 
   const handlePersonaChange = (newPersona: 'investor' | 'innovator' | 'all') => {
@@ -55,25 +55,25 @@ export default function Layout() {
     window.dispatchEvent(new CustomEvent('persona-changed', { detail: newPersona }));
 
     // Contextual front door routing: if switching persona while on a primary landing page
-    if (newPersona === 'innovator' && (location.pathname === '/' || location.pathname === '/digest' || location.pathname === '/daily-digest')) {
-      navigate('/analyze');
-    } else if (newPersona === 'investor' && (location.pathname === '/analyze' || location.pathname === '/match')) {
+    if (newPersona === 'innovator' && (location.pathname === '/digest' || location.pathname === '/daily-digest' || location.pathname === '/daily-brief' || location.pathname === '/brief')) {
+      navigate('/');
+    } else if (newPersona === 'investor' && (location.pathname === '/' || location.pathname === '/analyze' || location.pathname === '/match')) {
       navigate('/digest');
     }
   };
 
   // Dynamic home destination matching active persona
-  const homeRoute = persona === 'innovator' ? '/analyze' : '/';
+  const homeRoute = '/';
 
   // Comprehensive active route matcher ensuring zero de-synchronization across aliases & deep links
   const isItemActive = (itemTo: string): boolean => {
     if (itemTo === '__api_modal__') return apiModalOpen;
     const p = location.pathname;
-    if (itemTo === '/' || itemTo === '/digest') {
-      return p === '/' || p === '/digest' || p.startsWith('/digest') || p.startsWith('/daily-digest');
+    if (itemTo === '/digest') {
+      return p === '/digest' || p.startsWith('/digest') || p.startsWith('/daily-digest') || p.startsWith('/daily-brief') || p === '/brief';
     }
-    if (itemTo === '/analyze') {
-      return p === '/analyze' || p.startsWith('/analyze') || p === '/match' || p.startsWith('/match');
+    if (itemTo === '/' || itemTo === '/analyze') {
+      return p === '/' || p === '/analyze' || p.startsWith('/analyze') || p === '/match' || p.startsWith('/match');
     }
     if (itemTo === '/radar') {
       return p === '/radar' || p.startsWith('/radar') || p.startsWith('/forecasting');
