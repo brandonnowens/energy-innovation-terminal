@@ -95,7 +95,7 @@ def generate_opportunity_lineage_forecaster_monograph(db: Session, output_stream
             "executive_callout": f"CORE TAKEAWAY: Funding solicitations do not exist in isolation. Across {tot_rels:,} mapped relational edges, the Energy Innovation Terminal engine tracks multi-year reauthorization lineages, enabling predictive capital capture.",
             "prose": [
                 f"This executive project strategy monograph decodes the relational architecture connecting {tot_rels:,} funding opportunities across federal and state agencies. It maps recurring annual funding rounds, direct successor solicitations, and inter-agency stackable co-funding conduits.",
-                "By understanding the historical predecessor-to-successor lineages of major programs (e.g., ARPA-E OPEN iterations, USDA REAP cycles, NYSERDA PON renewals), project sponsors can transition from reactive proposal writing to proactive, 12-month advance consortia engineering."
+                "By understanding the historical predecessor-to-successor lineages of major programs (e.g., ARPA-E OPEN iterations, USDA REAP cycles, State Energy Office PON renewals), project sponsors can transition from reactive proposal writing to proactive, 12-month advance consortia engineering."
             ],
             "table_data": [
                 [Paragraph("<b>Document Section</b>", styles['th']), Paragraph("<b>Page</b>", styles['th'])],
@@ -107,7 +107,7 @@ def generate_opportunity_lineage_forecaster_monograph(db: Session, output_stream
                 [Paragraph("6. Stackable Multi-Agency Conduits (State Seed -> Federal Match)", styles['td']), Paragraph("Page 8", styles['td'])],
                 [Paragraph("7. Complementary Feeder Grants Across Technology Domains", styles['td']), Paragraph("Page 9", styles['td'])],
                 [Paragraph("8. Federal Statutory Reauthorization Cycles (BIL, IRA, Energy Act)", styles['td']), Paragraph("Page 10", styles['td'])],
-                [Paragraph("9. State Energy Authority RFP Renewal Patterns (NYSERDA, CEC, MassCEC)", styles['td']), Paragraph("Page 11", styles['td'])],
+                [Paragraph("9. State Energy Authority RFP Renewal Patterns (State Energy Offices, CEC, MassCEC)", styles['td']), Paragraph("Page 11", styles['td'])],
                 [Paragraph("10. Knowledge Graph: Inter-Agency Opportunity Lineage Network", styles['td']), Paragraph("Page 12", styles['td'])],
                 [Paragraph("11. Geospatial Siting of Recurring Funding Programs", styles['td']), Paragraph("Page 13", styles['td'])],
                 [Paragraph("12. Advance Concept Paper Engineering & Lead Time Optimization", styles['td']), Paragraph("Page 14", styles['td'])],
@@ -176,7 +176,7 @@ def generate_opportunity_lineage_forecaster_monograph(db: Session, output_stream
             "header": "7. Complementary Feeder Grants Across Domains",
             "subheader": "Cross-Pillar Technology Integration Conduits",
             "prose": [
-                "Complementary relationships link foundational materials research (NSF, ARPA-E) with commercial scale-up solicitations (DOE OCED, NYSERDA).",
+                "Complementary relationships link foundational materials research (NSF, ARPA-E) with commercial scale-up solicitations (DOE OCED, State Energy Offices).",
                 "Tracking complementary feeder programs allows prime contractors to recruit winning subcontractors with proven laboratory IP."
             ]
         },
@@ -190,7 +190,7 @@ def generate_opportunity_lineage_forecaster_monograph(db: Session, output_stream
         },
         {
             "header": "9. State Energy Authority RFP Renewal Patterns",
-            "subheader": "Forecasting Solicitations from NYSERDA, CEC, and MassCEC",
+            "subheader": "Forecasting Solicitations from State Energy Offices, CEC, and MassCEC",
             "prose": [
                 "State authorities utilize multi-round Programme Opportunity Notices (PONs) that open sequential submission cut-offs over 24-36 months.",
                 "Submitting into Round 1 or Round 2 yields a 28% higher funding capture probability than submitting into final rounds due to budget exhaustion."

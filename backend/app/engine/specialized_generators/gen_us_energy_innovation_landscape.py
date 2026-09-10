@@ -100,7 +100,7 @@ def generate_us_energy_innovation_landscape_monograph(
         [
             Paragraph("<b>Era 2: Cleantech 1.0 & Scale Testing (2000–2020)</b>", styles['td']),
             Paragraph("ARRA stimulus appropriations; early venture capital syndication; state RPS targets", styles['td']),
-            Paragraph("ARPA-E, DOE Loan Programs Office (LPO), NYSERDA, CEC EPIC", styles['td']),
+            Paragraph("ARPA-E, DOE Loan Programs Office (LPO), State Energy Offices, CEC EPIC", styles['td']),
             Paragraph("Utility-scale solar, lithium-ion battery chemistries, early LED lighting", styles['td']),
             Paragraph("85%+ cost reductions in solar and wind; battery scale validation.", styles['td'])
         ],

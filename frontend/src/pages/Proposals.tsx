@@ -482,7 +482,7 @@ export default function Proposals() {
             >
               <option value="">All Funding Agencies</option>
               <option value="DOE">DOE (EERE / OCED / ARPA-E)</option>
-              {includeNyserda && <option value="NYSERDA">NYSERDA</option>}
+              {includeNyserda && <option value="NYSERDA">State Energy Office (NY)</option>}
               <option value="CEC">California Energy Commission (CEC)</option>
               <option value="MassCEC">MassCEC</option>
               <option value="NSF">National Science Foundation (NSF)</option>

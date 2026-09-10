@@ -112,7 +112,7 @@ def generate_programmatic_outcomes_roi_scorecard_monograph(db: Session, output_s
                 [Paragraph("9. Clean Power Generation & Offshore Wind Programmatic Outcomes", styles['td']), Paragraph("Page 11", styles['td'])],
                 [Paragraph("10. Multi-Agency Impact Network Topology & Capital Allocation Flow", styles['td']), Paragraph("Page 12", styles['td'])],
                 [Paragraph("11. Geospatial Distribution of Verified Decarbonization Outcomes", styles['td']), Paragraph("Page 13", styles['td'])],
-                [Paragraph("12. Comparative Agency Benchmarking: DOE vs. NYSERDA vs. CEC vs. EPA", styles['td']), Paragraph("Page 14", styles['td'])],
+                [Paragraph("12. Comparative Agency Benchmarking: DOE vs. State Energy Offices vs. CEC vs. EPA", styles['td']), Paragraph("Page 14", styles['td'])],
                 [Paragraph("13. Cost-Share Structuring and Its Impact on Commercialization Success", styles['td']), Paragraph("Page 15", styles['td'])],
                 [Paragraph("14. Master Programmatic Benchmark Scorecard (Part 1: Large Solicitations)", styles['td']), Paragraph("Page 16", styles['td'])],
                 [Paragraph("15. Master Programmatic Benchmark Scorecard (Part 2: Domain Efficiency)", styles['td']), Paragraph("Page 17", styles['td'])],
@@ -155,7 +155,7 @@ def generate_programmatic_outcomes_roi_scorecard_monograph(db: Session, output_s
             "subheader": "Quantifying Follow-On Private Co-Investment Generated per Grant Dollar",
             "prose": [
                 "Empirical leverage ratios range from 1.5x in early-stage laboratory R&D to over 8.3x in commercial demonstration programs.",
-                "State energy authorities (NYSERDA, CEC) achieve top-tier leverage multiples by structuring solicitations that require commercial cost-share matching."
+                "State energy authorities (State Energy Offices, CEC) achieve top-tier leverage multiples by structuring solicitations that require commercial cost-share matching."
             ]
         },
         {
@@ -218,7 +218,7 @@ def generate_programmatic_outcomes_roi_scorecard_monograph(db: Session, output_s
         },
         {
             "header": "12. Comparative Agency Benchmarking",
-            "subheader": "Benchmarking DOE EERE, ARPA-E, NYSERDA, CEC, and EPA Solicitations",
+            "subheader": "Benchmarking DOE EERE, ARPA-E, State Energy Offices, CEC, and EPA Solicitations",
             "prose": [
                 "ARPA-E solicitations lead the nation in IP velocity (1.8 patents/$1M), while DOE OCED leads in total capital mobilized per award.",
                 "State agencies demonstrate superior speed in contracting turnaround (avg 90 days vs. 240 days for federal FOAs)."

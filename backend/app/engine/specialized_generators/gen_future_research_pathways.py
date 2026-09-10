@@ -54,7 +54,7 @@ def generate_future_research_pathways_monograph(
         "category_tag": "Flagship Institutional Blueprint · R&D Strategy",
         "thesis": "To maximize public return on capital and avoid stranded technology investments across the 2026–2035 horizon, funding institutions must transcend traditional grant administration by adopting differentiated organizational funding mandates, milestone-gated Go/No-Go contracting frameworks, multi-agency co-funding syndication, and disciplined off-take integration.",
         "dataset_scope": "54,305 Verified Project Awards ($98.98B Tracked), 5,699 Solicitations ($3.14T Authorizations), 143 Programs, 13,706 Unique Institutions",
-        "institutions_scope": "State Energy Directors (NYSERDA, CEC, MassCEC), Federal Program Leads (DOE ARPA-E, EERE, OCED, FECM), National Lab Directors, Philanthropic Program Officers, Utility R&D VPs",
+        "institutions_scope": "State Energy Directors (State Energy Offices, CEC, MassCEC), Federal Program Leads (DOE ARPA-E, EERE, OCED, FECM), National Lab Directors, Philanthropic Program Officers, Utility R&D VPs",
         "vertical_specialization": "Institutional Program Design, Solicitation Architecture, Technology & Fuel Pathways, Stage-Gate Contracts, Multi-Tiered Capital Stacks"
     }
 
@@ -98,7 +98,7 @@ def generate_future_research_pathways_monograph(
             Paragraph("De-risk disruptive scientific concepts; eliminate unviable physics early.", styles['td'])
         ],
         [
-            Paragraph("<b>State Innovation Agencies (NYSERDA, CEC)</b>", styles['td']),
+            Paragraph("<b>State Innovation Agencies (State Energy Offices, CEC)</b>", styles['td']),
             Paragraph("TRL 3–6", styles['td']),
             Paragraph("Challenge RFPs, FEED grants, Open Enrollment vouchers", styles['td']),
             Paragraph("1,000-hr testbed validation, utility interconnection study, 20% non-state cost-share", styles['td']),

@@ -139,7 +139,7 @@ def get_llms_txt(db: Session = Depends(get_db)):
 Energy Innovation Terminal is the comprehensive intelligence terminal indexing active public funding solicitations, historical grant awards, recipient venture capital attributions, patent linkages, and regulatory PUC proceedings across the United States. Powered by the authoritative U.S. Energy Innovation Database.
 
 ## Live Database Coverage (Updated Continuously)
-- **Active Open Solicitations**: {open_opp_count:,} open grants & RFPs across DOE, ARPA-E, NSF, NYSERDA, CEC, and utilities.
+- **Active Open Solicitations**: {open_opp_count:,} open grants & RFPs across DOE, ARPA-E, NSF, State Energy Offices, CEC, and utilities.
 - **Total Opportunities Indexed**: {opp_count:,} solicitations.
 - **Tracked Clean Tech Recipients**: {rec_count:,} venture-backed startups, university research labs, utilities, and corporate innovators.
 - **Technology Focus Areas**: {tech_count} energy innovation and decarbonization domains.

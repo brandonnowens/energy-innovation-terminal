@@ -74,14 +74,14 @@ REPORT_PRESETS = [
         "pages": 21,
         "capital_tracked": "$98.98B Tracked",
         "awards_count": "54,313 Awards (25-Yr Arc)",
-        "key_focus": "25-year empirical retrospective of state energy innovation consortia, incubator networks (NYSERDA CEI, MassCEC Greentown, CalSEED, ESD NY Ventures), 3.8x federal co-funding multiplier, utility regulatory sandboxes, Justice40 equity co-design, and 2026-2035 strategic blueprints."
+        "key_focus": "25-year empirical retrospective of state energy innovation consortia, regional clean energy incubator networks (MassCEC Greentown, CalSEED, ESD NY Ventures), 3.8x federal co-funding multiplier, utility regulatory sandboxes, Justice40 equity co-design, and 2026-2035 strategic blueprints."
     },
     {
         "id": "future_research_pathways_flagship",
         "title": "Future Research Pathways for Funding Institutions Across Technology & Fuel Domains",
         "subtitle": "The Definitive Programmatic Blueprint for State & Federal Energy Agencies, National Laboratories, Philanthropies, and Utility R&D Directors: Designing High-Impact Solicitations, Stage-Gated Milestone Architectures, and Multi-Tiered Capital Stacks for the 2026–2035 Horizon",
         "category": "Macro & Policy Strategy",
-        "target_audience": "State Energy Directors (NYSERDA, CEC, MassCEC, ESD), Federal Program Leads (DOE ARPA-E, EERE, OCED, FECM), Philanthropies (Rockefeller, Bloomberg, Bezos), Utility R&D VPs",
+        "target_audience": "State Energy Directors (CEC, MassCEC, ESD, State Energy Offices), Federal Program Leads (DOE ARPA-E, EERE, OCED, FECM), Philanthropies (Rockefeller, Bloomberg, Bezos), Utility R&D VPs",
         "badge": "Institutional Blueprint",
         "icon": "Layers",
         "pages": 21,
@@ -174,7 +174,7 @@ REPORT_PRESETS = [
         "title": "State Innovation Program Commercialization Strategies to Maximize Results",
         "subtitle": "The Definitive Strategic Framework for State Energy Innovation Agencies, Green Banks, and Regional Accelerators: Overcoming the Mid-TRL Valley of Death, Optimizing Stage-Gated Non-Dilutive Capital Stacks, Mobilizing Private Co-Investment, and Scaling Clean Technologies from Lab to Market",
         "category": "Commercialization",
-        "target_audience": "State Energy Directors (NYSERDA, CEC, MassCEC, NJEDA, ESD), Green Bank Investment Officers, Climate VCs, Accelerators, Clean Tech Project Developers",
+        "target_audience": "State Energy Directors (CEC, MassCEC, NJEDA, ESD, State Energy Offices), Green Bank Investment Officers, Climate VCs, Accelerators, Clean Tech Project Developers",
         "badge": "Commercialization Strategy",
         "icon": "TrendingUp",
         "pages": 21,

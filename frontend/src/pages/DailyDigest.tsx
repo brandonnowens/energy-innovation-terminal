@@ -297,7 +297,7 @@ export default function DailyDigest() {
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
             <span>Published by AIxEnergy Intelligence Control Layer</span>
             <span>•</span>
-            <span>Continuous Ingestion Feed: Grants.gov, NYSERDA, CEC, Utility Dockets</span>
+            <span>Continuous Ingestion Feed: Grants.gov, State Innovation Portals, CEC, Utility Dockets</span>
           </p>
         </div>
       </div>

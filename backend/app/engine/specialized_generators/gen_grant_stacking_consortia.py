@@ -62,7 +62,7 @@ def generate_grant_stacking_consortia_monograph(db: Session, output_stream: io.B
     )
 
     bar_chart = render_vector_bar_chart(
-        ["State Seed (NYSERDA/CEC)", "Federal Demonstration (DOE/ARPA-E)", "Federal FOAK (OCED/EPA GGRF)", "Green Bank Debt (NYGB/LPO)", "Private Syndicated Match"],
+        ["State Seed (State Energy Offices / CEC)", "Federal Demonstration (DOE/ARPA-E)", "Federal FOAK (OCED/EPA GGRF)", "Green Bank Debt (NYGB/LPO)", "Private Syndicated Match"],
         [850.0, 3400.0, 6800.0, 4200.0, 8900.0],
         "Exhibit 2: Sequential Capital Stack Volume Across Innovation Stages ($ Millions)"
     )
@@ -209,7 +209,7 @@ def generate_grant_stacking_consortia_monograph(db: Session, output_stream: io.B
         {
             "header": "5. State-to-Federal Grant Stacking Feeder Mechanisms",
             "subheader": "Leveraging State Seed Grants to Win Multi-Million Dollar Federal Demonstrations",
-            "executive_callout": "FEEDER ADVANTAGE: Entities with prior NYSERDA, CEC, or MassCEC awards achieve a 3.8x higher win rate when competing for DOE, ARPA-E, and EPA solicitations.",
+            "executive_callout": "FEEDER ADVANTAGE: Entities with prior state innovation, CEC, or MassCEC awards achieve a 3.8x higher win rate when competing for DOE, ARPA-E, and EPA solicitations.",
             "prose": [
                 "Federal peer review panels prioritize applicants who can demonstrate verified physical pilot data and institutional state backing.",
                 "A prior state grant provides three decisive advantages: (1) Verified third-party milestone performance data, (2) Established state cost-share matching commitments, and (3) Pre-existing relationships with state utility regulators and testing facilities."
@@ -323,7 +323,7 @@ def generate_grant_stacking_consortia_monograph(db: Session, output_stream: io.B
             "table_data": stacking_table_1,
             "table_widths": [130, 95, 75, 75, 85, 76],
             "prose": [
-                "The ledger below profiles verified organizations that have secured both state (NYSERDA) and federal funding awards, showcasing their funding leverage multipliers and cumulative capital capture."
+                "The ledger below profiles verified organizations that have secured both state energy office and federal funding awards, showcasing their funding leverage multipliers and cumulative capital capture."
             ]
         },
 
@@ -345,7 +345,7 @@ def generate_grant_stacking_consortia_monograph(db: Session, output_stream: io.B
             "table_data": agency_stack_table,
             "table_widths": [140, 75, 205, 116],
             "prose": [
-                "The following portfolio ledger catalogues the diverse agency funding combinations (NSF, DOE, DOD, NYSERDA, EPA, Gates Foundation) leveraged by top-performing clean technology consortia."
+                "The following portfolio ledger catalogues the diverse agency funding combinations (NSF, DOE, DOD, State Energy Offices, EPA, Gates Foundation) leveraged by top-performing clean technology consortia."
             ]
         },
 

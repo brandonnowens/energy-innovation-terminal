@@ -68,7 +68,7 @@ def generate_state_commercialization_strategies_monograph(db: Session, output_st
         "category_tag": "Commercialization & Strategy",
         "thesis": "Empirical tracking of 54,305 awards demonstrates that state clean energy agencies employing proactive stage-gated contracting, milestone tranche disbursements, structured private match syndication, and pre-negotiated utility testbeds achieve 3.8x higher follow-on funding and over 5.2x private capital co-investment relative to passive grantmaking models.",
         "dataset_scope": "54,305 Verified Awards & 13,706 Recipient Institutions ($98.98B Tracked)",
-        "institutions_scope": "State Energy Directors (NYSERDA, CEC, MassCEC, NJEDA), Green Banks, Climate VCs, Accelerators & Clean Tech Primes",
+        "institutions_scope": "State Energy Directors (State Energy Offices, CEC, MassCEC, NJEDA), Green Banks, Climate VCs, Accelerators & Clean Tech Primes",
         "vertical_specialization": "TRL 4-7 Valley of Death De-Risking, Milestone Contracting, Private Syndication & FOAK Project Finance"
     }
 
@@ -195,7 +195,7 @@ def generate_state_commercialization_strategies_monograph(db: Session, output_st
             "executive_callout": "Lump-sum grant distributions fail to insulate public capital from early project deviations. Leading state programs disburse funds across 4 structured phases contingent upon verified TEA parity, LCA validation, and third-party engineering audits.",
             "callout_title": "PROGRAMMATIC DESIGN PRINCIPLE // MILESTONE-CONTINGENT CONTRACTING",
             "prose": [
-                "To maximize return on ratepayer and public grant dollars, premier state agencies (including NYSERDA, CEC, and MassCEC) have structured solicitations into four distinct phases: (1) Feasibility & TEA Validation ($100k-$250k), (2) Applied Demonstration & Pilot Engineering ($750k-$3M), (3) FOAK Commercial Demonstration ($3M-$12M), and (4) Scale & Green Bank Refinancing ($10M+).",
+                "To maximize return on ratepayer and public grant dollars, premier state agencies (including State Energy Offices, CEC, and MassCEC) have structured solicitations into four distinct phases: (1) Feasibility & TEA Validation ($100k-$250k), (2) Applied Demonstration & Pilot Engineering ($750k-$3M), (3) FOAK Commercial Demonstration ($3M-$12M), and (4) Scale & Green Bank Refinancing ($10M+).",
                 "Each phase terminates in an objective Go/No-Go gate evaluated by independent technical review panels. Milestone deliverables include continuous-operation run-time hours, round-trip efficiency targets, UL/IEEE safety pre-certifications, and executed host site agreements. Projects failing to satisfy technical gates are terminated or restructured, preserving state capital for high-yield technologies."
             ],
             "chart_image": ts_chart,

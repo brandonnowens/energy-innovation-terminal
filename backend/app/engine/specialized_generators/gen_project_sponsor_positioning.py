@@ -210,7 +210,7 @@ def generate_project_sponsor_positioning_monograph(db: Session, output_stream: i
             "executive_callout": "COST-SHARE ARCHITECTURE: Federal rules strictly require 20% cost share for R&D/demonstration and 50% for commercial deployment. Winning sponsors utilize state grants, vendor in-kind engineering, and university facility access as allowable non-federal match.",
             "prose": [
                 "Cost-share non-compliance is the leading cause of administrative disqualification in federal solicitations. Sponsors must demonstrate verifiable, auditable funding sources committed in formal Letters of Commitment.",
-                "Allowable cost-share components include: (a) State agency matching grants (e.g. NYSERDA or MassCEC co-funding), (b) Project sponsor unrecovered indirect costs, (c) Industrial partner donated equipment and testing rig fabrication, and (d) Third-party foundation grants."
+                "Allowable cost-share components include: (a) State agency matching grants (e.g. state energy office or MassCEC co-funding), (b) Project sponsor unrecovered indirect costs, (c) Industrial partner donated equipment and testing rig fabrication, and (d) Third-party foundation grants."
             ]
         },
 

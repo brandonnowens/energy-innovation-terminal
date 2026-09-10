@@ -73,14 +73,14 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "pages": 21,
     "capital_tracked": "$104.16B Tracked",
     "awards_count": "56,413 Awards (25-Yr Arc)",
-    "key_focus": "25-year empirical retrospective of state energy innovation consortia, incubator networks (NYSERDA CEI, MassCEC Greentown, CalSEED, ESD NY Ventures), 3.8x federal co-funding multiplier, utility regulatory sandboxes, Justice40 equity co-design, and 2026-2035 strategic blueprints."
+    "key_focus": "25-year empirical retrospective of state energy innovation consortia, regional clean energy incubator networks (MassCEC Greentown, CalSEED, ESD NY Ventures), 3.8x federal co-funding multiplier, utility regulatory sandboxes, Justice40 equity co-design, and 2026-2035 strategic blueprints."
   },
   {
     "id": "future_research_pathways_flagship",
     "title": "Future Research Pathways for Funding Institutions Across Technology & Fuel Domains",
     "subtitle": "The Definitive Programmatic Blueprint for State & Federal Energy Agencies, National Laboratories, Philanthropies, and Utility R&D Directors: Designing High-Impact Solicitations, Stage-Gated Milestone Architectures, and Multi-Tiered Capital Stacks for the 2026–2035 Horizon",
     "category": "Macro & Policy Strategy",
-    "target_audience": "State Energy Directors (NYSERDA, CEC, MassCEC, ESD), Federal Program Leads (DOE ARPA-E, EERE, OCED, FECM), Philanthropies (Rockefeller, Bloomberg, Bezos), Utility R&D VPs",
+    "target_audience": "State Energy Directors (CEC, MassCEC, ESD, State Energy Offices), Federal Program Leads (DOE ARPA-E, EERE, OCED, FECM), Philanthropies (Rockefeller, Bloomberg, Bezos), Utility R&D VPs",
     "badge": "Institutional Blueprint",
     "icon": "Layers",
     "pages": 21,
@@ -173,7 +173,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "title": "State Innovation Program Commercialization Strategies to Maximize Results",
     "subtitle": "The Definitive Strategic Framework for State Energy Innovation Agencies, Green Banks, and Regional Accelerators: Overcoming the Mid-TRL Valley of Death, Optimizing Stage-Gated Non-Dilutive Capital Stacks, Mobilizing Private Co-Investment, and Scaling Clean Technologies from Lab to Market",
     "category": "Commercialization",
-    "target_audience": "State Energy Directors (NYSERDA, CEC, MassCEC, NJEDA, ESD), Green Bank Investment Officers, Climate VCs, Accelerators, Clean Tech Project Developers",
+    "target_audience": "State Energy Directors (CEC, MassCEC, NJEDA, ESD, State Energy Offices), Green Bank Investment Officers, Climate VCs, Accelerators, Clean Tech Project Developers",
     "badge": "Commercialization Strategy",
     "icon": "TrendingUp",
     "pages": 21,
@@ -814,7 +814,7 @@ export default function Reports() {
                     <span className="truncate">{report.target_audience}</span>
                   </div>
                   <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
-                    {['NYSERDA', 'DOE', 'CEC', 'MassCEC', 'EPA', 'ARPA-E', 'NSF', 'NASA', 'USDA', 'DOD'].filter(
+                    {['DOE', 'CEC', 'MassCEC', 'EPA', 'ARPA-E', 'NSF', 'NASA', 'USDA', 'DOD', 'State Energy Authorities'].filter(
                       (a) => (report.target_audience && report.target_audience.includes(a)) || report.title.includes(a) || (report.subtitle && report.subtitle.includes(a))
                     ).slice(0, 4).map((a) => (
                       <div key={a} className="flex items-center gap-1 bg-slate-50 border border-slate-200/60 rounded px-1.5 py-0.5" title={`Target Agency: ${a}`}>
@@ -1087,7 +1087,7 @@ export default function Reports() {
             {/* Modal Footer */}
             <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
               <span className="text-[10.5px] text-slate-500">
-                Source: <strong>U.S. Energy Innovation Database by Clean Energy Research, LLC</strong> · <em>Independent research compilation from public open records. Not affiliated with NYSERDA or any government agency.</em>
+                Source: <strong>U.S. Energy Innovation Database by Clean Energy Research, LLC</strong> · <em>Independent research compilation from public open records. Not affiliated with any state or federal government agency.</em>
               </span>
               <div className="flex flex-wrap items-center gap-2">
                 <button

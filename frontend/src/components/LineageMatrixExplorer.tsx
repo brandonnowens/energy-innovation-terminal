@@ -34,7 +34,7 @@ const SAMPLE_ENTITIES = [
   { type: 'recipient', id: 'FORM ENERGY, INC.', label: 'Form Energy, Inc.', org: 'Form Energy' },
   { type: 'recipient', id: 'Amogy Inc.', label: 'Amogy Inc.', org: 'Amogy' },
   { type: 'recipient', id: 'Sublime Systems, Inc.', label: 'Sublime Systems, Inc.', org: 'Sublime Systems' },
-  { type: 'opportunity', id: 'PON 4830', label: 'NYSERDA Clean Transportation (PON 4830)', org: 'NYSERDA' },
+  { type: 'opportunity', id: 'PON 4830', label: 'State Clean Transportation Grant', org: 'State Energy Office' },
   { type: 'opportunity', id: 'DOE-COOPERATIVEA-2024', label: 'DOE Energy Innovation Tech Demo', org: 'DOE' },
 ];
 

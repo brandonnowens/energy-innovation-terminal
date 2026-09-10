@@ -186,14 +186,14 @@ def generate_cleangrid_database_docs_monograph(
             Paragraph("<b>1. Financial Project Awards</b>", styles['td']),
             Paragraph("Award ID, Solicitation Linkage, CFDA/ALN Code, Dollar Amounts (Primary, Estimated, Cost-Share), Start/End/Award Dates, Project Title, Abstract, Program Office, Award Phase (I/II/III, FEED, Demo), Geocoding (Lat/Long, Confidence), Disadvantaged / HUBZone / WOSB flags.", styles['td']),
             Paragraph(f"<b>{awards_count:,}</b> Records<br/>{format_currency(total_funding_amt)} Tracked<br/>99 Agencies", styles['td']),
-            Paragraph("State Energy Authority Ledgers (NYSERDA API, Open NY), USASpending.gov, Grants.gov API, NSF Awards API.", styles['td']),
+            Paragraph("State Energy Authority Ledgers (state open data portals, agency APIs), USASpending.gov, Grants.gov API, NSF Awards API.", styles['td']),
             Paragraph("Tracks historical capital deployment velocity, cost-share splits, regional allocation, and recipient track records.", styles['td'])
         ],
         [
             Paragraph("<b>2. Funding Solicitations</b>", styles['td']),
             Paragraph("Solicitation Number, Title, Category (RFP, PON, FOA, NOFO, RFI, BAA, Open Enrollment, NWA), Authorized Budget, Award Caps (Min/Typical/Max), Cost-Share Mandates, Concept Paper Requirement, TRL Bounds (Min/Max), Scoring Criteria, Submission Channel.", styles['td']),
             Paragraph(f"<b>{opps_count:,}</b> Records<br/>{format_currency(opps_funding)} Auth.<br/>121 Agencies/Utilities", styles['td']),
-            Paragraph("Grants.gov, NYSERDA Solicitations Portal, CEC Portal, MassCEC, NJEDA, Utility RFP Dockets.", styles['td']),
+            Paragraph("Grants.gov, state procurement portals, CEC Portal, MassCEC, NJEDA, Utility RFP Dockets.", styles['td']),
             Paragraph("Provides advance visibility into upcoming RFP deadlines, cost-share hurdles, and scoring rubrics.", styles['td'])
         ],
         [
@@ -268,7 +268,7 @@ def generate_cleangrid_database_docs_monograph(
             Paragraph("<b>COVERAGE &amp; SCOPE</b>", styles['th'])
         ],
         [
-            Paragraph("<b>NYSERDA Funding API</b>", styles['td']),
+            Paragraph("<b>State Open Energy APIs</b>", styles['td']),
             Paragraph("NY State Energy R&amp;D Authority", styles['td']),
             Paragraph("Native JSON REST API", styles['td']),
             Paragraph("Real-Time (Hourly)", styles['td']),
@@ -446,7 +446,7 @@ def generate_cleangrid_database_docs_monograph(
             Paragraph("<b>CONCRETE VALUE &amp; STRATEGIC IMPACT</b>", styles['th'])
         ],
         [
-            Paragraph("<b>1. State Energy Agency Leadership</b><br/>(NYSERDA, CEC, MassCEC, NJEDA)", styles['td']),
+            Paragraph("<b>1. State Energy Agency Leadership</b><br/>(State Energy Offices, CEC, MassCEC, NJEDA)", styles['td']),
             Paragraph("• Benchmark state grant leverage against federal co-funding (DOE, EPA).<br/>• Design high-impact solicitations avoiding duplicated research.<br/>• Track statutory climate justice targets (35–40% DAC deployment).", styles['td']),
             Paragraph("Awards Ledger, Solicitations Catalog, Programmatic ROI Benchmarks, Geocoding Coordinates.", styles['td']),
             Paragraph("Maximizes ratepayer dollar efficiency, achieves a 3.8x federal co-funding multiplier, and verifies statutory decarbonization targets.", styles['td'])
@@ -497,7 +497,7 @@ def generate_cleangrid_database_docs_monograph(
             "executive_callout": "Every data point in the U.S. Energy Innovation Database originates from publicly accessible government and institutional records. However, in their native state, these records are trapped in disparate, incompatible silos—PDF solicitation attachments, state agency dockets, federal procurement APIs, and patent registers. The core innovation and value of the U.S. Energy Innovation Database is the unified ingestion, disambiguation, geocoding, and multi-stream relational connectivity across these datasets.",
             "prose": [
                 f"The modern clean energy transition is fueled by historic levels of public capital deployment, with over {format_currency(total_funding_amt)} tracked across {awards_count:,} verified awards and {opps_count:,} funding solicitations. Yet, navigating this landscape has historically been hindered by severe information fragmentation.",
-                "Public energy data exists in isolated repositories: state energy authorities (e.g., NYSERDA, CEC, MassCEC) maintain bespoke grant databases; federal agencies (DOE, EPA, NSF) report through separate procurement portals; regulated electric utilities post Non-Wires Alternative (NWA) solicitations on regulatory dockets; and intellectual property filings reside in federal patent rolls.",
+                "Public energy data exists in isolated repositories: state energy authorities (e.g., state energy offices, CEC, MassCEC) maintain bespoke grant databases; federal agencies (DOE, EPA, NSF) report through separate procurement portals; regulated electric utilities post Non-Wires Alternative (NWA) solicitations on regulatory dockets; and intellectual property filings reside in federal patent rolls.",
                 "The U.S. Energy Innovation Database solves this fragmentation by executing continuous, multi-protocol ingestion across 31+ public feeds, normalizing heterogeneous schemas into a unified relational architecture, and mapping multidimensional linkages between opportunities, awards, recipients, academic PIs, patents, venture capital, and environmental outcomes."
             ],
             "table_data": table_1_data[:6],  # First half of Table 1
@@ -525,7 +525,7 @@ def generate_cleangrid_database_docs_monograph(
             "executive_callout": "The U.S. Energy Innovation Database maintains 31+ dedicated public data connectors operating across real-time, daily, weekly, and monthly ingestion cadences. The ingestion engine enforces strict cryptographic change detection and schema validation to ensure 100% data fidelity with zero hallucination.",
             "prose": [
                 "The data ingestion pipeline utilizes four distinct architectural protocols to harvest publicly available energy records:",
-                "1. Direct REST APIs: High-frequency JSON endpoints connecting to native agency platforms, such as the NYSERDA Funding API and Grants.gov v1 API, providing hourly updates on new opportunity releases.",
+                "1. Direct REST APIs: High-frequency JSON endpoints connecting to native agency platforms, such as state open data APIs and Grants.gov v1 API, providing hourly updates on new opportunity releases.",
                 "2. Open Data Socrata Endpoints: Structured tabular datasets, such as the Open NY 7xzk-zyk5 portfolio ledger, providing comprehensive historical award transactions dating back to 1991.",
                 "3. Resilient HTML Parsers: Intelligent scrapers monitoring state energy office portals (CEC, MassCEC, NJEDA, Colorado, Washington) and 11 regulated utility procurement sites, detecting changes in RFP documents and deadlines.",
                 "4. Batch XML/CSV Feeds: Periodic synchronization with USPTO bulk patent grants and philanthropic databases."

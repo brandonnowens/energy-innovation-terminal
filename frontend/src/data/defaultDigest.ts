@@ -5,7 +5,7 @@ const STATIC_DIGEST_BASE: DailyDigest = {
   "formatted_date": "September 09, 2026",
   "edition_number": "Vol. 2, Issue 252",
   "headline": "Daily Energy Innovation Intelligence Briefing \u2014 September 09, 2026",
-  "editorial_narrative": "Public energy innovation funding markets open today with 292 active competitive solicitations representing $7.02B in unallocated non-dilutive capital across 140+ federal, state, and utility funding authorities. Federal appropriations under the Inflation Reduction Act (IRA) and Bipartisan Infrastructure Law (BIL) are entering peak execution velocity, driving high-velocity capital stacking opportunities.\n\nA primary structural trend across today's solicitations is the aggressive expansion of strict statutory stage gates\u2014most notably mandatory 20% to 50% non-federal cost-share matching, Build America Buy America (BABA) domestic content covenants, and 20-point Community Benefits Plan (CBP) evaluation weightings. Consultancies and proposal teams that pre-assemble their academic-utility consortia and secure third-party cost-share commitment letters prior to FOA release are capturing over 78% of merit review awards.\n\nIn the capital markets, private climate tech seed and Series A rounds are increasingly syndicating alongside multi-stage state grants (NYSERDA, MassCEC, California CEC EPIC). This public-private capital convergence enables deep tech founders to achieve commercial validation (TRL 7+) while preserving 20% to 35% more founder equity compared to purely dilutive venture financing.",
+  "editorial_narrative": "Public energy innovation funding markets open today with 292 active competitive solicitations representing $7.02B in unallocated non-dilutive capital across 140+ federal, state, and utility funding authorities. Federal appropriations under the Inflation Reduction Act (IRA) and Bipartisan Infrastructure Law (BIL) are entering peak execution velocity, driving high-velocity capital stacking opportunities.\n\nA primary structural trend across today's solicitations is the aggressive expansion of strict statutory stage gates\u2014most notably mandatory 20% to 50% non-federal cost-share matching, Build America Buy America (BABA) domestic content covenants, and 20-point Community Benefits Plan (CBP) evaluation weightings. Consultancies and proposal teams that pre-assemble their academic-utility consortia and secure third-party cost-share commitment letters prior to FOA release are capturing over 78% of merit review awards.\n\nIn the capital markets, private climate tech seed and Series A rounds are increasingly syndicating alongside multi-stage state grants (State Energy Offices, MassCEC, California CEC EPIC). This public-private capital convergence enables deep tech founders to achieve commercial validation (TRL 7+) while preserving 20% to 35% more founder equity compared to purely dilutive venture financing.",
   "macro_metrics": {
     "open_solicitations_count": 292,
     "total_active_capital": 7021018000.0,
@@ -452,7 +452,7 @@ const STATIC_DIGEST_BASE: DailyDigest = {
       "partner_name": "National Renewable Energy Laboratory (NREL) - ESIF Testbed",
       "role_type": "National Lab Validation Facility",
       "focus_area": "Multi-megawatt inverter testing, grid-forming controls, and hardware-in-the-loop (PHIL) simulation.",
-      "target_foas": "DOE OE Grid Modernization \u00b7 NYSERDA High-Density Storage"
+      "target_foas": "DOE OE Grid Modernization \u00b7 State High-Density Storage Demonstration"
     },
     {
       "partner_name": "EPRI (Electric Power Research Institute) Consortia",
@@ -470,7 +470,7 @@ const STATIC_DIGEST_BASE: DailyDigest = {
       "partner_name": "New York Power Authority (NYPA) / National Grid Tech Demo",
       "role_type": "Investor-Owned Utility Host Site",
       "focus_area": "Substation co-location, 138kV direct interconnection, and localized capacity relief demonstration.",
-      "target_foas": "NYSERDA PON 5600 \u00b7 DOE OCED Regional Clean Grid"
+      "target_foas": "State Clean Energy Storage \u00b7 DOE OCED Regional Clean Grid"
     }
   ],
   "generated_at": "2026-09-09T20:58:16.122359+00:00"

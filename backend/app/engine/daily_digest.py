@@ -291,7 +291,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
             "partner_name": "National Renewable Energy Laboratory (NREL) - ESIF Testbed",
             "role_type": "National Lab Validation Facility",
             "focus_area": "Multi-megawatt inverter testing, grid-forming controls, and hardware-in-the-loop (PHIL) simulation.",
-            "target_foas": "DOE OE Grid Modernization · NYSERDA High-Density Storage"
+            "target_foas": "DOE OE Grid Modernization · State High-Density Storage Demonstration"
         },
         {
             "partner_name": "EPRI (Electric Power Research Institute) Consortia",
@@ -309,7 +309,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
             "partner_name": "New York Power Authority (NYPA) / National Grid Tech Demo",
             "role_type": "Investor-Owned Utility Host Site",
             "focus_area": "Substation co-location, 138kV direct interconnection, and localized capacity relief demonstration.",
-            "target_foas": "NYSERDA PON 5600 · DOE OCED Regional Clean Grid"
+            "target_foas": "State Clean Energy Storage · DOE OCED Regional Clean Grid"
         }
     ]
 
@@ -324,7 +324,7 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
         f"Community Benefits Plan (CBP) evaluation weightings. Consultancies and proposal teams that pre-assemble their academic-utility "
         f"consortia and secure third-party cost-share commitment letters prior to FOA release are capturing over 78% of merit review awards.\n\n"
         f"In the capital markets, private climate tech seed and Series A rounds are increasingly syndicating alongside multi-stage state grants "
-        f"(NYSERDA, MassCEC, California CEC EPIC). This public-private capital convergence enables deep tech founders to achieve commercial "
+        f"(State Energy Offices, MassCEC, California CEC EPIC). This public-private capital convergence enables deep tech founders to achieve commercial "
         f"validation (TRL 7+) while preserving 20% to 35% more founder equity compared to purely dilutive venture financing."
     )
 

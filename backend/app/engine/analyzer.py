@@ -751,9 +751,9 @@ def analyze_project(
         "funding_stacks": funding_stacks,
         "disclaimer": (
             "INDEPENDENT RESEARCH & PUBLIC INFORMATION NOTICE: This analysis was created entirely using publicly available information, "
-            "open government databases (NY Open Data, Grants.gov, USAspending, USPTO, and published agency portals), and public solicitation filings. "
-            "This document does not represent the official views, policies, endorsements, or determinations of NYSERDA, New York State, the US Department of Energy (DOE), "
-            "or any other government agency, utility, or funding organization. Zero non-public, draft, internal, or confidential agency data is utilized or contained herein. "
+            "open government databases (state open data portals, Grants.gov, USAspending, USPTO, and published agency portals), and public solicitation filings. "
+            "This document does not represent the official views, policies, endorsements, or determinations of any federal, state, regional, "
+            "or municipal government agency, public utility commission, or state energy authority. Zero non-public, draft, internal, or confidential agency data is utilized or contained herein. "
             "No organizational resources, equipment, or official hours of any public agency were used in the creation or generation of this tool or report. "
             "This analysis is an independent computational research study for informational and planning purposes only; it does not constitute an official proposal submission, "
             "nor does it confer any guarantee, evaluation preference, or indicator of award selection."
@@ -981,7 +981,7 @@ def _assess_competitiveness(opp, elig_result, fit_result, profile, db=None, matc
                 concerns.append(
                     f"{sol} funds technology demonstrations (proving a technology works), "
                     f"but this project at TRL {profile.estimated_trl} is deploying already-proven "
-                    f"systems. NYSERDA I&R demonstrations typically test novel or pre-commercial "
+                    f"systems. State and federal innovation demonstrations typically test novel or pre-commercial "
                     f"technologies, not standard installations of mature products."
                 )
         elif profile.estimated_trl <= 4 and is_deploy_scope and not is_rd_scope:
@@ -1285,7 +1285,7 @@ def _enrich_match_details(m: dict, opp: Opportunity, profile: ProjectProfile, db
         })
     if opp.detail_page_url:
         evidence.append({
-            "source": "NYSERDA Portal",
+            "source": opp.source_name or "Official Procurement Portal",
             "url": opp.detail_page_url,
         })
     m["evidence"] = evidence
@@ -1311,7 +1311,7 @@ def _build_match(db, analysis, opp, elig_result, fit_result, profile, detailed: 
             })
         if opp.detail_page_url:
             evidence.append({
-                "source": "NYSERDA Portal",
+                "source": opp.source_name or "Official Procurement Portal",
                 "url": opp.detail_page_url,
             })
         blockers = [

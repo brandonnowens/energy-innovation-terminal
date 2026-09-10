@@ -208,7 +208,7 @@ def generate_private_capital_catalyst_monograph(db: Session, output_stream: io.B
         {
             "header": "5. The Non-Dilutive Grant Multiplier Effect",
             "subheader": "Quantifying the Catalytic Multiplier: Turning $1 of Public Grant into $3.80+ Private Match",
-            "executive_callout": "MULTIPLIER BENCHMARK: Every $1.00 of state seed funding (NYSERDA/MassCEC/CEC) unlocks an average of $2.40 in federal demonstration grants and $3.80 in private co-investment, delivering a cumulative 6.2x capital leverage ratio.",
+            "executive_callout": "MULTIPLIER BENCHMARK: Every $1.00 of state seed funding (State Energy Offices/MassCEC/CEC) unlocks an average of $2.40 in federal demonstration grants and $3.80 in private co-investment, delivering a cumulative 6.2x capital leverage ratio.",
             "prose": [
                 "A central insight from the database is the quantifiable feeder effect of state-level innovation funding. Early-stage grants ($250K-$1M) awarded for proof-of-concept and pilot feasibility validate key technical milestones without diluting founder equity.",
                 "When these validated ventures subsequently apply for federal solicitations (DOE OCED, ARPA-E, EERE) or institutional Series-A/B rounds, their win rates and valuation premiums are 3.4x higher than un-vetted peers."

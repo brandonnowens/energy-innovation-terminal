@@ -123,7 +123,7 @@ def generate_clean_tech_ip_patent_atlas_monograph(db: Session, output_stream: io
         {
             "header": "1. Bayh-Dole Act Framework & Government-Backed IP Rights",
             "subheader": "Legal Mechanics of Publicly Funded Technology Transfer",
-            "executive_callout": "IP PROVENANCE: Citing federal grant numbers (e.g., ARPA-E, DOE EERE, NYSERDA) creates clear title while ensuring compliance with 35 U.S.C. § 200-212.",
+            "executive_callout": "IP PROVENANCE: Citing federal grant numbers (e.g., ARPA-E, DOE EERE, state innovation grants) creates clear title while ensuring compliance with 35 U.S.C. § 200-212.",
             "prose": [
                 "The Bayh-Dole Act of 1980 fundamentally reshaped the American innovation landscape by granting universities, non-profits, and small businesses the right to retain commercial title to inventions created with federal grant support.",
                 "In return, funding agencies retain a non-exclusive, non-transferable, paid-up license to practice the invention for government purposes, subject to substantial domestic manufacturing preferences under 35 U.S.C. § 204."
@@ -151,7 +151,7 @@ def generate_clean_tech_ip_patent_atlas_monograph(db: Session, output_stream: io
             "header": "4. Energy Storage & Solid-State Battery Patent Moats",
             "subheader": "Garnet Separators, Silicon Nanocomposites, and Iron-Air Chemistries",
             "prose": [
-                "Public grant awards from ARPA-E and NYSERDA funded foundational research for solid-state electrolyte separators (QuantumScape, US11217828B2) and multi-day iron-air storage batteries (Form Energy, US11843102B2).",
+                "Public grant awards from ARPA-E and state energy innovation programs funded foundational research for solid-state electrolyte separators (QuantumScape, US11217828B2) and multi-day iron-air storage batteries (Form Energy, US11843102B2).",
                 "These patents establish broad claims around chemical formulations, sintering processes, and cell architectures, creating impenetrable barriers to entry for foreign competitors."
             ]
         },
@@ -276,7 +276,7 @@ def generate_clean_tech_ip_patent_atlas_monograph(db: Session, output_stream: io
             "header": "19. Methodological Appendix & USPTO Verification Notice",
             "subheader": "Data Provenance, Patent Extraction Methodology, and Analytical Integrity",
             "prose": [
-                "This monograph was compiled by extracting USPTO patent records citing federal and state agency grant awards (ARPA-E, DOE, NSF, NYSERDA).",
+                "This monograph was compiled by extracting USPTO patent records citing federal and state agency grant awards (ARPA-E, DOE, NSF, state innovation authorities).",
                 "All patent numbers, assignee names, citation metrics, and contract acknowledgments are verified against the U.S. Energy Innovation Database by Clean Energy Research, LLC (https://terminal.aixenergy.io)."
             ]
         }

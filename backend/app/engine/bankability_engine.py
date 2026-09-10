@@ -215,7 +215,7 @@ def calculate_technology_bankability(
             "step": 3,
             "stage": "Commercial Scale Pilot",
             "entity": "State Energy Office / Venture Syndicate",
-            "mechanism": "NYSERDA PON / CEC EPIC Demonstration ($4.5M)",
+            "mechanism": "State Clean Energy / CEC EPIC Demonstration ($4.5M)",
             "output": "Substation field test & UL 9540 safety certification",
             "icon": "Zap",
             "completed": current_trl >= 6

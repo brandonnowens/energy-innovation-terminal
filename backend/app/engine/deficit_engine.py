@@ -32,7 +32,7 @@ MANDATE_DEFINITIONS = [
         "pipeline_technologies": ["Iron-Air Long-Duration Storage", "Lithium-Iron-Phosphate (LFP)", "Vanadium Redox Flow", "Thermal Energy Storage"],
         "strategic_implication": (
             "NYPSC mandates 6 GW by 2030. Tracked state and federal awards cover only a fraction of required capacity, "
-            "forcing NYSERDA and electric utilities to deploy multi-hundred million dollar procurement rounds (Index Storage Credits)."
+            "forcing state energy authorities and electric utilities to deploy multi-hundred million dollar procurement rounds (Index Storage Credits)."
         ),
         "official_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=18-E-0130"
     },

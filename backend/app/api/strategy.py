@@ -96,7 +96,7 @@ def get_strategy_templates():
                 "id": "nyserda_grid_flex_pon",
                 "name": "Statewide Grid Flexibility & Long-Duration Storage Commercialization PON",
                 "org_name": "NYSERDA",
-                "org_type": "State Energy Office (NYSERDA, CEC, MassCEC)",
+                "org_type": "State Energy Office (State Energy Offices, CEC, MassCEC)",
                 "mandate": "Achieve 6 GW storage by 2030 and 100% zero-emission electricity by 2040 under NY CLCPA",
                 "tech_focus": ["Energy Storage & Long-Duration Chemistries (LDES)", "Grid Modernization, Dynamic Line Rating & Transmission"],
                 "program_length_years": "5 Years (Standard Multi-Phase Pathway)",

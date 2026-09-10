@@ -13,8 +13,8 @@ export interface OrgBrand {
 // Official brand colors sourced from organizational style guides
 export const ORG_BRANDS: Record<string, OrgBrand> = {
   'NYSERDA': {
-    name: 'NYSERDA', abbr: 'NY', color: '#005D95', bgColor: '#005D95', textColor: '#FFFFFF',
-    fullName: 'New York State Energy Research and Development Authority',
+    name: 'State Energy Authority (NY)', abbr: 'NY', color: '#005D95', bgColor: '#005D95', textColor: '#FFFFFF',
+    fullName: 'State Clean Energy Research & Development Authority',
     domain: 'nyserda.ny.gov',
   },
   'DOE': {

@@ -35,7 +35,7 @@ NYT_GRAPHICS_REGISTRY: Dict[str, Dict[str, Any]] = {
             ("Cornell Atkinson", 0.45, 0.32, 440, '#0284C7', 'University R&D Anchor'),
             ("GE Vernova OSW", 0.38, -0.38, 460, '#059669', 'Turbine Equipment OEM'),
             ("Fervo Energy", -0.48, -0.32, 450, '#059669', 'Deep EGS Scaleup'),
-            ("NYSERDA OSW Team", 0.0, 0.58, 420, '#0F172A', 'State Energy Authority'),
+            ("State Clean Energy Team", 0.0, 0.58, 420, '#0F172A', 'State Energy Authority'),
             ("NREL Wind Center", -0.58, 0.05, 390, '#0284C7', 'National Laboratory'),
             ("ConEd Interconnects", 0.56, -0.08, 380, '#D97706', 'Subsea Grid Utility')
         ],
@@ -216,7 +216,7 @@ NYT_GRAPHICS_REGISTRY: Dict[str, Dict[str, Any]] = {
         ],
         "network_title": "Building Thermal Network: Utilities, Heat Pump OEMs & Labor",
         "nodes": [
-            ("NYSERDA Clean Heat", 0.0, 0.0, 560, '#0F172A', 'State Program Authority'),
+            ("State Clean Heat Program", 0.0, 0.0, 560, '#0F172A', 'State Program Authority'),
             ("ConEd & Eversource", -0.42, 0.35, 500, '#D97706', 'Utility TENs Operators'),
             ("BE-Ex Resource Ctr", 0.45, 0.32, 450, '#0F172A', 'Building Decarb Hub'),
             ("Steven Winter Assoc.", 0.38, -0.38, 460, '#0284C7', 'Building Science Eng.'),

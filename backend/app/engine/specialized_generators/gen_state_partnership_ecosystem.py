@@ -256,7 +256,7 @@ def generate_state_partnership_ecosystem_monograph(db: Session, output_stream: i
                 "Pillar 1: Pre-commit sovereign matching capital to secure governance seats on major federal project boards.",
                 "Pillar 2: Connect isolated thematic communities (e.g. thermal networks, clean cement) to corporate off-takers.",
                 "Pillar 3: Retain top 10 cross-domain bridge connectors as technical integration partners in state regional hubs.",
-                "Pillar 4: Establish Interstate Testing Reciprocity MOUs across leading state authorities (NYSERDA, CEC, MassCEC, NJEDA).",
+                "Pillar 4: Establish Interstate Testing Reciprocity MOUs across leading state authorities (State Energy Offices, CEC, MassCEC, NJEDA).",
                 "Pillar 5: Institutionalize Seed-to-Green-Bank concessional debt escalators to bridge the FOAK financing gap."
             ]
         }

@@ -241,11 +241,11 @@ export default function AdminEmailHub() {
     name_display: 'Dr. Pamela Miller',
     name_first: 'Pamela',
     name_last: 'Miller',
-    institution_name: 'NYSERDA Clean Transportation & Storage',
+    institution_name: 'State Clean Transportation & Storage Office',
     technology_area: 'Energy Storage & Advanced Batteries',
     sector: 'Electric Grid & Utility',
     title: 'Senior Program Manager',
-    email: 'pamela.miller@nyserda.ny.gov',
+    email: 'pamela.miller@energyagency.state.gov',
     awards_count: 4,
     total_funding: 8500000,
   };
@@ -662,7 +662,7 @@ export default function AdminEmailHub() {
                       onChange={e => setFilterCategory(e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
                     >
-                      <option value="funder_officers">Agency Program Officers (DOE, CEC, MassCEC, NYSERDA)</option>
+                      <option value="funder_officers">Agency Program Officers (DOE, CEC, MassCEC, State Energy Offices)</option>
                       <option value="domain_experts">Technology &amp; Sector Domain Experts (PIs)</option>
                       <option value="institutional_gateways">National Lab &amp; Institutional Partner Desks</option>
                       <option value="utilities">Utility Energy Innovation POCs</option>

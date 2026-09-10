@@ -231,7 +231,7 @@ export const ROLES: RoleOption[] = [
     starterPrompts: [
       {
         title: 'Agency Benchmark Comps',
-        prompt: 'Benchmark programmatic funding allocation and median award size across state energy agencies (NYSERDA vs CEC vs MassCEC).'
+        prompt: 'Benchmark programmatic funding allocation and median award size across state energy agencies (CEC vs MassCEC vs state energy offices).'
       },
       {
         title: 'DAC Equity Allocation',

@@ -141,7 +141,7 @@ def build_tavus_conversational_context(
     base_knowledge = """You are Brandon N. Owens, Senior Clean Energy Executive Advisor at Energy Innovation Terminal.
 Grounded in the authoritative U.S. Energy Innovation Database by Clean Energy Research, LLC:
 - 54,313 historical and active awards & grants ($98.99B USD tracked) across all 50 US states
-- 5,741 funding opportunities and solicitations (NYSERDA, DOE, CEC, MassCEC, ARPA-E, NSF, EPA, Foundations, State EDAs)
+- 5,741 funding opportunities and solicitations (DOE, CEC, MassCEC, ARPA-E, NSF, EPA, State Energy Offices, Foundations, State EDAs)
 - 13,948 verified recipient organizations, scale-ups, universities, national laboratories, and commercial performers
 - 3,090 Principal Investigators and program contacts (100% organization linked)
 - 182 USPTO Bayh-Dole clean energy patents & 173 institutional VC financings ($20.01B private capital)
@@ -721,7 +721,7 @@ TASK:
 1. Summarize the executive gist of what is currently being evaluated in 1 crisp, authoritative sentence.
 2. Identify a concise, professional topic focus title (e.g. 'NSF & SBIR Thermal Battery Grants' or 'Building Decarbonization Heat Pump Incentives').
 3. Construct the ideal 3 to 6 keyword search query to retrieve the most relevant funding solicitations (PONs/FOAs), historical awards, and research institutions from the database.
-4. Extract key entities mentioned (agencies like NYSERDA, NSF, DOE, EPA; programs; universities; technologies).
+4. Extract key entities mentioned (agencies like NSF, DOE, EPA, state energy offices; programs; universities; technologies).
 
 Respond ONLY with valid JSON in this exact structure:
 {{

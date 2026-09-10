@@ -126,7 +126,7 @@ const ALL_DIMENSIONS = [
 const ORG_TIER_TABS = [
   { id: 'all', label: 'All Organizations', short: 'All Ecosystem', icon: Globe, color: 'indigo', desc: 'Unified cross-tier view across all utilities, state agencies, foundations, and federal bodies' },
   { id: 'utility', label: 'Electric & Gas Utilities', short: 'Utilities', icon: Zap, color: 'amber', desc: '98+ Investor-Owned Utilities, Public Power Authorities, Co-ops, and NWA Programs' },
-  { id: 'state', label: 'State Energy Agencies', short: 'State Agencies', icon: Building2, color: 'blue', desc: 'State Energy Innovation Authorities (NYSERDA, MassCEC, CEC, State Energy Offices)' },
+  { id: 'state', label: 'State Energy Agencies', short: 'State Agencies', icon: Building2, color: 'blue', desc: 'State Energy Innovation Authorities (MassCEC, CEC, State Energy Offices)' },
   { id: 'foundation', label: 'Non-Profits & Foundations', short: 'Foundations', icon: HeartHandshake, color: 'emerald', desc: 'Philanthropic Climate Foundations & Non-profit Grantmakers' },
   { id: 'federal', label: 'Federal Agencies', short: 'Federal', icon: Landmark, color: 'indigo', desc: 'DOE, NSF, ARPA-E, DOD, EPA, USDA, NASA, DOT, DOC' },
   { id: 'national_lab', label: 'Research Institutions', short: 'Research', icon: FlaskConical, color: 'purple', desc: 'EPRI, National Laboratories, and Energy Research Consortia' },

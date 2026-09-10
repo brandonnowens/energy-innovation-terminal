@@ -95,7 +95,7 @@ def generate_venture_capital_syndication_monograph(db: Session, output_stream: i
             "executive_callout": f"CORE TAKEAWAY: Non-dilutive public grants catalyze private equity. Across {tot_deals} verified deals, companies raised {format_currency(tot_vc_volume)} within an average of 38 months following their initial public grant award.",
             "prose": [
                 f"This executive strategic publication presents an empirical analysis of {tot_deals} private equity and venture capital financing rounds completed by recipients in the U.S. Energy Innovation Database by Brandon N. Owens. It quantifies the speed, valuation step-ups, and syndicate structures mobilizing private capital.",
-                "Non-dilutive grant awards from state agencies (NYSERDA, MassCEC, CEC) and federal programs (ARPA-E, DOE OCED) de-risk core technical physics during TRL 3-6, enabling tier-1 institutional investors to underwrite First-of-a-Kind (FOAK) commercial demonstration and scale-up facilities."
+                "Non-dilutive grant awards from state agencies (State Energy Offices, MassCEC, CEC) and federal programs (ARPA-E, DOE OCED) de-risk core technical physics during TRL 3-6, enabling tier-1 institutional investors to underwrite First-of-a-Kind (FOAK) commercial demonstration and scale-up facilities."
             ],
             "table_data": [
                 [Paragraph("<b>Document Section</b>", styles['th']), Paragraph("<b>Page</b>", styles['th'])],

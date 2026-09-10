@@ -71,7 +71,7 @@ const POPULAR_ORGANIZATIONS: OrgConfig[] = [
     id: 'cec',
     name: 'California Energy Commission (CEC)',
     shortName: 'CEC',
-    orgType: 'State Energy Office (CEC, MassCEC, NYSERDA)',
+    orgType: 'State Energy Office (CEC, MassCEC, State Energy Offices)',
     defaultMandate: 'California SB 100 & EPIC IV: 100% clean electricity by 2045 and aggressive clean transportation targets',
     defaultPool: '$30,000,000',
     defaultAwardCap: '$5,000,000',
@@ -81,9 +81,9 @@ const POPULAR_ORGANIZATIONS: OrgConfig[] = [
   },
   {
     id: 'nyserda',
-    name: 'NYSERDA (New York State)',
-    shortName: 'NYSERDA',
-    orgType: 'State Energy Office (CEC, MassCEC, NYSERDA)',
+    name: 'State Energy Research Authority (NY)',
+    shortName: 'State Energy Authority',
+    orgType: 'State Energy Office (CEC, MassCEC, State Energy Offices)',
     defaultMandate: 'NY CLCPA: 6 GW storage by 2030, 70% renewable electricity by 2030, and 100% zero-emission electricity by 2040',
     defaultPool: '$25,000,000',
     defaultAwardCap: '$4,000,000',
@@ -95,7 +95,7 @@ const POPULAR_ORGANIZATIONS: OrgConfig[] = [
     id: 'masscec',
     name: 'Massachusetts Energy Innovation Center (MassCEC)',
     shortName: 'MassCEC',
-    orgType: 'State Energy Office (NYSERDA, CEC, MassCEC)',
+    orgType: 'State Energy Office (State Energy Offices, CEC, MassCEC)',
     defaultMandate: 'Massachusetts Energy Innovation and Climate Plan for 2030: Offshore wind, clean heat, and grid equity',
     defaultPool: '$15,000,000',
     defaultAwardCap: '$2,500,000',
@@ -352,7 +352,7 @@ const SPONSOR_TYPES = [
 
 const FUNDER_TYPES = [
   'Federal Advanced Research Agency (DOE, ARPA-E, NSF)',
-  'State Energy Office (CEC, MassCEC, NYSERDA)',
+  'State Energy Office (CEC, MassCEC, State Energy Offices)',
   'Regulated Electric & Gas Utility (ConEd, National Grid)',
   'Corporate R&D / Corporate Venture (GE Vernova, Siemens Energy)',
   'Municipal Power Authority / Regional Transmission Org (NYPA, NYISO)'
@@ -834,7 +834,7 @@ export default function Strategy() {
                   value={funderOrgName}
                   onChange={handleSelectOrg}
                   options={popularOrgs.map(o => o.name)}
-                  placeholder="e.g. US Department of Energy (DOE), California Energy Commission (CEC), NYSERDA..."
+                  placeholder="e.g. US Department of Energy (DOE), California Energy Commission (CEC), State Energy Offices..."
                 />
 
                 {/* Institution Type */}
@@ -1050,13 +1050,13 @@ export default function Strategy() {
                   subLabel="Target institutional funder for solicitation alignment &amp; win-rate optimization"
                   value={sponsorAgency}
                   onChange={setSponsorAgency}
-                  options={['DOE', 'ARPA-E', 'CEC', 'NYSERDA', 'MassCEC', 'Regulated Electric & Gas Utility (ConEd / National Grid)', 'GE Vernova / Corporate OEM', 'New York Power Authority (NYPA)', 'National Science Foundation (NSF)', 'DOD / ESTCP / DARPA']}
-                  placeholder="e.g. DOE, ARPA-E, CEC, NYSERDA, MassCEC..."
+                  options={['DOE', 'ARPA-E', 'CEC', 'MassCEC', 'State Energy Authorities', 'Regulated Electric & Gas Utility (ConEd / National Grid)', 'GE Vernova / Corporate OEM', 'New York Power Authority (NYPA)', 'National Science Foundation (NSF)', 'DOD / ESTCP / DARPA']}
+                  placeholder="e.g. DOE, ARPA-E, CEC, MassCEC, State Energy Authorities..."
                 />
                 {/* 1-Click Popular Agency Quick Selectors */}
                 <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
                   <span className="text-[10px] text-slate-500 font-semibold">Quick select:</span>
-                  {['DOE', 'ARPA-E', 'CEC', 'NYSERDA', 'MassCEC', 'Con Edison', 'National Grid', 'GE Vernova'].map(ag => (
+                  {['DOE', 'ARPA-E', 'CEC', 'MassCEC', 'State Energy Authorities', 'Con Edison', 'National Grid', 'GE Vernova'].map(ag => (
                     <button
                       key={ag}
                       type="button"

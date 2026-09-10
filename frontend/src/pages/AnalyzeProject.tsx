@@ -130,7 +130,7 @@ export const ORGANIZATIONS: OrgMeta[] = [
   { code: 'ARPA-E', label: 'ARPA-E', desc: 'Advanced Research Projects Agency – Energy', category: 'federal', category_label: 'Federal Agency' },
   { code: 'NSF', label: 'NSF', desc: 'National Science Foundation', category: 'federal', category_label: 'Federal Agency' },
   { code: 'EPA', label: 'EPA', desc: 'U.S. Environmental Protection Agency', category: 'federal', category_label: 'Federal Agency' },
-  { code: 'NYSERDA', label: 'NYSERDA', desc: 'New York State Energy Research and Development Authority', category: 'state', category_label: 'State Energy Agency', state: 'NY' },
+  { code: 'NYSERDA', label: 'State Energy Authority (NY)', desc: 'New York State Clean Energy Research & Development', category: 'state', category_label: 'State Energy Agency', state: 'NY' },
   { code: 'Empire State Development', label: 'Empire State Development', desc: 'Empire State Development (ESD & NY Ventures)', category: 'state', category_label: 'State Agency', state: 'NY' },
   { code: 'CEC', label: 'CEC', desc: 'California Energy Commission', category: 'state', category_label: 'State Energy Agency', state: 'CA' },
   { code: 'California GO-Biz', label: 'California GO-Biz', desc: 'California Governor\'s Office of Business and Economic Development', category: 'state', category_label: 'State Agency', state: 'CA' },

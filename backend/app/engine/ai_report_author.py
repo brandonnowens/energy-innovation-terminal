@@ -351,7 +351,7 @@ def generate_deterministic_narrative(preset_id: str, context: Dict[str, Any]) ->
             "macro_context": (
                 f"The historical fragmentation of public energy innovation data has imposed significant transaction friction on the U.S. clean tech ecosystem. "
                 f"With over {aw_f} deployed across 35 years (1991–2026), capital allocators and developers have historically operated in information silos. "
-                f"The U.S. Energy Innovation Database bridges these silos by integrating 31+ public connectors across real-time APIs (NYSERDA, Grants.gov), state energy office scrapers (CEC, MassCEC, NJEDA), "
+                f"The U.S. Energy Innovation Database bridges these silos by integrating 31+ public connectors across real-time APIs (state open data portals, Grants.gov), state energy office scrapers (CEC, MassCEC, NJEDA), "
                 f"regulated utility procurement portals (ConEd, National Grid), and USPTO patent rolls.\n\n"
                 f"By preserving an unbroken 35-year longitudinal record, the database enables multi-decade trend analysis, tracking the evolution from 1990s ratepayer SBC funds "
                 f"through ARRA stimulus validation to the modern multi-hundred-billion-dollar IRA and BIL statutory industrial policy era."
@@ -658,7 +658,7 @@ def generate_deterministic_narrative(preset_id: str, context: Dict[str, Any]) ->
             "<b>3. Future Roadmap:</b> Continued expansion of the graph topology—incorporating high-resolution interconnection queues, patent citation lineage, and localized community impact metrics—will provide an uncompromised evidence base for nationwide infrastructure transition planning."
         ),
         "state_partnership_ecosystem": (
-            "<b>1. The Multi-Jurisdictional Multiplier:</b> 25 years of state innovation program data demonstrates that state-level incubation networks (such as NYSERDA CEI, MassCEC Greentown, and CalSEED) function as primary de-risking engines for federal awards. Entities receiving initial state seed funding capture a 3.8x federal co-funding multiplier, confirming that state due diligence serves as a trusted quality signal for national funding bodies.\n\n"
+            "<b>1. The Multi-Jurisdictional Multiplier:</b> 25 years of state innovation program data demonstrates that state-level incubation networks (such as regional clean energy incubators, MassCEC Greentown, and CalSEED) function as primary de-risking engines for federal awards. Entities receiving initial state seed funding capture a 3.8x federal co-funding multiplier, confirming that state due diligence serves as a trusted quality signal for national funding bodies.\n\n"
             "<b>2. Regulatory Sandboxes & Utility Alignment:</b> State energy leadership must bridge the gap between hardtech incubators and regulated electric utilities. Establishing formal regulatory testing sandboxes enables demonstration hardware—including thermal energy networks and microgrid inverters—to achieve operational certification under live grid conditions without penalizing utility reliability metrics.\n\n"
             "<b>3. 2026–2035 Strategic Blueprint:</b> Forward state strategy requires inter-state consortia to aggregate regional supply chains. Linking Northeast software and offshore engineering with Midwest battery manufacturing creates integrated economic corridors capable of sustaining multi-billion-dollar federal demonstration hubs."
         ),

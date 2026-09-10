@@ -63,8 +63,8 @@ export default function System() {
       title: 'State Energy Innovation & Economic Development Authorities',
       scope: '50-state statutory energy authorities, economic development agencies, green banks, and clean tech matching funds',
       authorities:
-        'CEC (California), MassCEC & MassVentures (Massachusetts), NYSERDA (New York), Empire State Development (ESD), GO-Biz, JobsOhio, MEDC, Ben Franklin Tech Partners, CT Innovations, TEDCO, VIPC, OEDIT, DEED',
-      authorityLogos: ['CEC', 'MassCEC', 'NYSERDA', 'Empire State Development', 'NJEDA'],
+        'CEC (California), MassCEC & MassVentures (Massachusetts), State Energy Offices (New York), Empire State Development (ESD), GO-Biz, JobsOhio, MEDC, Ben Franklin Tech Partners, CT Innovations, TEDCO, VIPC, OEDIT, DEED',
+      authorityLogos: ['CEC', 'MassCEC', 'Empire State Development', 'NJEDA'],
       refresh: 'Synchronous State Feeds',
       status: 'Active & Verified',
       recordsCount: '5,800+ Records',
@@ -365,7 +365,7 @@ export default function System() {
               <span>Independent Research Classification</span>
             </div>
             <p>
-              This terminal is an independent software tool developed outside of any official government capacity. It is not affiliated with, operated by, sponsored by, or an official tool of NYSERDA, New York State, the US Department of Energy (DOE), or any public agency.
+              This terminal is an independent software tool developed outside of any official government capacity. It is not affiliated with, operated by, sponsored by, or an official tool of any state energy authority, New York State, the US Department of Energy (DOE), or any public agency.
             </p>
           </div>
 
@@ -375,7 +375,7 @@ export default function System() {
               <span>Zero Non-Public Information</span>
             </div>
             <p>
-              100% of indexed solicitations, award amounts, recipients, and dockets are gathered exclusively from publicly published portals (Grants.gov, NY Open Data, published agency websites, USPTO). No internal, draft, deliberative, or confidential agency data is utilized.
+              100% of indexed solicitations, award amounts, recipients, and dockets are gathered exclusively from publicly published portals (Grants.gov, state open data portals, published agency websites, USPTO). No internal, draft, deliberative, or confidential agency data is utilized.
             </p>
           </div>
         </div>

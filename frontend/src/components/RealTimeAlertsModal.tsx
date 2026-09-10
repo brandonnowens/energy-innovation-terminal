@@ -82,7 +82,7 @@ export const RealTimeAlertsModal: React.FC<RealTimeAlertsModalProps> = ({ isOpen
     });
   };
 
-  const agenciesList = ['DOE', 'ARPA-E', 'CEC', 'MassCEC', 'NYSERDA', 'NSF', 'EPA'];
+  const agenciesList = ['DOE', 'ARPA-E', 'CEC', 'MassCEC', 'State Energy Authorities', 'NSF', 'EPA'];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">

@@ -57,7 +57,7 @@ def generate_top5_breakthrough_innovations_monograph(
         "category_tag": "Flagship Technology Foresight · 2026–2035 Commercialization Forecast",
         "thesis": "To reach abundant, low-cost, decarbonized energy by 2035, capital and policy must concentrate on the 5 breakthrough technologies with verified thermodynamic leverage, mineral supply-chain independence, and sub-36-month permitting velocity: Autonomous Grid GETs, Multi-Day Iron-Air Storage, Supercritical Directional EGS, Steam-Integrated Solid Oxide SOEC, and Factory-Built HTGR SMRs.",
         "dataset_scope": "54,305 Verified Project Awards ($98.98B Tracked), 5,741 Solicitations, 174 Programs, 13,781 Institutions (1991–2026 Longitudinal Vintage)",
-        "institutions_scope": "Chief Innovation Officers, C-Suite Energy Executives, Infrastructure Investment Committees, State Energy Directors (NYSERDA, CEC, MassCEC), Federal Program Directors (DOE ARPA-E, OCED, EERE), Regulated Utilities",
+        "institutions_scope": "Chief Innovation Officers, C-Suite Energy Executives, Infrastructure Investment Committees, State Energy Directors (State Energy Offices, CEC, MassCEC), Federal Program Directors (DOE ARPA-E, OCED, EERE), Regulated Utilities",
         "vertical_specialization": "Decadal Technology Forecasting, Commercial Readiness Probability, Unit Economic Parity, AI Enablers vs Physical Thermodynamic Constraints, Stage-Gated FOAK Financing"
     }
 

@@ -274,7 +274,7 @@ print(f"Active Capital: {digest['macro_metrics']['total_active_capital_display']
                   {
                     title: 'RSS 2.0 Grants Syndication Feed',
                     url: `${API_HOST}/feed/rss/opportunities.xml`,
-                    desc: 'Real-time syndication feed for newly posted grants and RFPs across DOE, NYSERDA, and CEC.',
+                    desc: 'Real-time syndication feed for newly posted grants and RFPs across DOE, State Energy Offices, and CEC.',
                   },
                   {
                     title: 'Master XML Sitemap Index',
