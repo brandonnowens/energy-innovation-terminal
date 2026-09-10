@@ -1,6 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "energy-innovation-terminal",
+  "account_id": "b7bea83cf4a2996bb334090cb0ae521d",
+  "pages_build_output_dir": "./frontend/dist",
   "compatibility_date": "2026-09-08",
   "assets": {
     "directory": "./frontend/dist",
