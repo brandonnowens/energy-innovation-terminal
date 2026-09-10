@@ -25,6 +25,8 @@ export const sanitizeNyserdaInObject = (obj: any): any => {
   return obj;
 };
 
+const inFlightRequests = new Map<string, Promise<Response>>();
+
 export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
   let target = typeof input === 'string' ? input : (input instanceof URL ? input.toString() : input.url);
   if (target.startsWith('/api/') || target.startsWith('/api?') || target === '/api') {
@@ -33,41 +35,63 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
 
   const method = (init?.method || (input instanceof Request ? input.method : 'GET')).toUpperCase();
   const isRetryableMethod = method === 'GET' || method === 'HEAD';
-  const maxRetries = isRetryableMethod ? 8 : 1;
+  const isDeduplicatable = isRetryableMethod && (!init || Object.keys(init).length === 0 || (Object.keys(init).length === 1 && init.method));
 
-  let lastError: any = null;
-  for (let attempt = 0; attempt < maxRetries; attempt++) {
+  // If identical GET is already in flight, clone and share the response
+  if (isDeduplicatable && inFlightRequests.has(target)) {
     try {
-      const req = input instanceof Request ? new Request(target, input) : target;
-      const res = await fetch(req, init);
-
-      // If Render backend is sleeping or spinning up, status is 502/503/504
-      if (isRetryableMethod && (res.status === 502 || res.status === 503 || res.status === 504) && attempt < maxRetries - 1) {
-        const delay = Math.min(1000 * Math.pow(1.5, attempt), 6000);
-        await new Promise(resolve => setTimeout(resolve, delay));
-        continue;
-      }
-
-      // Universal UI protection: sanitize any literal NYSERDA mentions from JSON payloads
-      const origJson = res.json.bind(res);
-      res.json = async () => {
-        const raw = await origJson();
-        return sanitizeNyserdaInObject(raw);
-      };
-
-      return res;
-    } catch (err: any) {
-      lastError = err;
-      if (err.name === 'AbortError') throw err;
-      if (isRetryableMethod && attempt < maxRetries - 1) {
-        const delay = Math.min(1000 * Math.pow(1.5, attempt), 6000);
-        await new Promise(resolve => setTimeout(resolve, delay));
-        continue;
-      }
-      throw err;
+      const ongoing = await inFlightRequests.get(target)!;
+      return ongoing.clone();
+    } catch {
+      // Fall through to normal execution if failed
     }
   }
-  throw lastError || new Error('Network connection failed');
+
+  const fetchPromise = (async () => {
+    const maxRetries = isRetryableMethod ? 8 : 1;
+    let lastError: any = null;
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+      try {
+        const req = input instanceof Request ? new Request(target, input) : target;
+        const res = await fetch(req, init);
+
+        // If Render backend is sleeping or spinning up, status is 502/503/504
+        if (isRetryableMethod && (res.status === 502 || res.status === 503 || res.status === 504) && attempt < maxRetries - 1) {
+          const delay = Math.min(1000 * Math.pow(1.5, attempt), 6000);
+          await new Promise(resolve => setTimeout(resolve, delay));
+          continue;
+        }
+
+        // Universal UI protection: sanitize any literal NYSERDA mentions from JSON payloads
+        const origJson = res.json.bind(res);
+        res.json = async () => {
+          const raw = await origJson();
+          return sanitizeNyserdaInObject(raw);
+        };
+
+        return res;
+      } catch (err: any) {
+        lastError = err;
+        if (err.name === 'AbortError') throw err;
+        if (isRetryableMethod && attempt < maxRetries - 1) {
+          const delay = Math.min(1000 * Math.pow(1.5, attempt), 6000);
+          await new Promise(resolve => setTimeout(resolve, delay));
+          continue;
+        }
+        throw err;
+      }
+    }
+    throw lastError || new Error('Network connection failed');
+  })();
+
+  if (isDeduplicatable) {
+    inFlightRequests.set(target, fetchPromise);
+    fetchPromise.finally(() => {
+      inFlightRequests.delete(target);
+    });
+  }
+
+  return fetchPromise;
 };
 
 export interface DocumentMetadata {

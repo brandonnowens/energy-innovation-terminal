@@ -871,7 +871,7 @@ def author_report_with_openai(
     context: Dict[str, Any],
     custom_prompt: Optional[str] = None,
     api_key: Optional[str] = None,
-    model_name: str = "gpt-4o",
+    model_name: str = "gpt-4o-mini",
     force_refresh: bool = False
 ) -> Dict[str, Any]:
     """

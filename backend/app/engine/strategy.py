@@ -446,7 +446,7 @@ Please synthesize the comprehensive Strategy Blueprint in the following exact JS
 """
                 logger.info("Executing OpenAI Strategy Synthesis...")
                 completion = openai_client.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4o-mini",
                     messages=[
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt}
@@ -902,7 +902,7 @@ Please synthesize the Program Architecture Blueprint in the following exact JSON
 """
                 logger.info("Executing OpenAI Funding Org Strategy Synthesis...")
                 completion = openai_client.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4o-mini",
                     messages=[
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt}

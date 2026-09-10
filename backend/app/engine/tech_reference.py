@@ -3159,7 +3159,7 @@ def get_or_generate_tech_insights(
         raise ValueError(f"Technology ID '{tech_id}' not found in master registry.")
 
     key_to_use = api_key or getattr(settings, "openai_api_key", None) or os.environ.get("OPENAI_API_KEY", "")
-    model_to_use = model_name or getattr(settings, "default_llm_model", "gpt-4o")
+    model_to_use = model_name or getattr(settings, "default_llm_model", "gpt-4o-mini")
 
     q_text = custom_question.strip() if custom_question else "Executive Technology Diligence & Frontier Synthesis"
     cache_key = hashlib.sha256(f"{tech_id}:{q_text}:{model_to_use}".encode("utf-8")).hexdigest()

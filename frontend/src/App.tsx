@@ -47,7 +47,7 @@ const queryClient = new QueryClient({
       retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 8000),
       refetchOnWindowFocus: false,
       staleTime: 5 * 60 * 1000, // 5 minutes cache freshness
-      gcTime: 15 * 60 * 1000,   // 15 minutes garbage collection retention
+      gcTime: 30 * 60 * 1000,   // 30 minutes garbage collection retention
     },
   },
 });
@@ -64,15 +64,14 @@ function PageLoadingFallback() {
 function App() {
   // Keep-alive heartbeat to prevent cloud backend container from sleeping
   React.useEffect(() => {
-    // Immediate ping on initial mount
-    apiFetch('/api/health').catch(() => {});
-
-    // Periodic heartbeat every 3.5 minutes
-    const interval = setInterval(() => {
+    const pingBackend = () => {
       if (document.visibilityState === 'visible') {
         apiFetch('/api/health').catch(() => {});
       }
-    }, 210000);
+    };
+
+    pingBackend();
+    const interval = setInterval(pingBackend, 240000); // 4 minutes
 
     return () => clearInterval(interval);
   }, []);

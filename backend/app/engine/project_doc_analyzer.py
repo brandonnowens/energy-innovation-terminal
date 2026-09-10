@@ -422,14 +422,14 @@ def _analyze_with_gemini(document_corpus: str, api_key: str, model_name: str = "
         return None
 
 
-def _analyze_with_openai(document_corpus: str, api_key: str, model_name: str = "gpt-4o") -> Optional[Dict[str, Any]]:
-    """Analyzes documents using OpenAI GPT-4o / GPT-4o-mini."""
+def _analyze_with_openai(document_corpus: str, api_key: str, model_name: str = "gpt-4o-mini") -> Optional[Dict[str, Any]]:
+    """Analyzes documents using OpenAI GPT-4o-mini / GPT-4o."""
     try:
         from openai import OpenAI
         client = OpenAI(api_key=api_key)
 
         prompt = ANALYSIS_PROMPT_TEMPLATE.format(
-            document_corpus=document_corpus[:60000],
+            document_corpus=document_corpus[:50000],
             valid_tech_areas=", ".join(VALID_TECHNOLOGY_AREAS),
             valid_activity_types=", ".join(VALID_ACTIVITY_TYPES),
             valid_sectors=", ".join(VALID_SECTORS),
@@ -437,7 +437,7 @@ def _analyze_with_openai(document_corpus: str, api_key: str, model_name: str = "
             valid_agencies=", ".join(VALID_AGENCIES),
         )
 
-        target_model = model_name if model_name in ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo", "o1-mini", "o3-mini"] else "gpt-4o"
+        target_model = model_name if model_name in ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo", "o1-mini", "o3-mini"] else "gpt-4o-mini"
 
         response = client.chat.completions.create(
             model=target_model,
@@ -559,26 +559,29 @@ def analyze_project_documents(
 
     # 1. Primary: OpenAI (if selected or default)
     if prov in ["openai", "default", ""] and openai_key:
-        logger.info(f"Analyzing documents with OpenAI ({preferred_model or 'gpt-4o'})...")
-        result = _analyze_with_openai(document_corpus, openai_key, preferred_model or "gpt-4o")
+        chosen_model = preferred_model or "gpt-4o-mini"
+        logger.info(f"Analyzing documents with OpenAI ({chosen_model})...")
+        result = _analyze_with_openai(document_corpus, openai_key, chosen_model)
         if result:
-            result["engine_used"] = f"OpenAI {preferred_model or 'GPT-4o'} (Live AI)"
+            result["engine_used"] = f"OpenAI {chosen_model} (Live AI)"
             result["is_live_llm"] = True
             return result
 
     # 2. Gemini (if selected)
     if prov == "gemini" and gemini_key:
-        logger.info(f"Analyzing documents with Gemini ({preferred_model or 'gemini-2.5-flash'})...")
-        result = _analyze_with_gemini(document_corpus, gemini_key, preferred_model or "gemini-2.5-flash")
+        chosen_model = preferred_model or "gemini-2.5-flash"
+        logger.info(f"Analyzing documents with Gemini ({chosen_model})...")
+        result = _analyze_with_gemini(document_corpus, gemini_key, chosen_model)
         if result:
-            result["engine_used"] = f"Google Gemini {preferred_model or '2.5 Flash'} (Live AI)"
+            result["engine_used"] = f"Google Gemini {chosen_model} (Live AI)"
             result["is_live_llm"] = True
             return result
 
     # 3. Anthropic (if selected)
     if prov == "anthropic" and anthropic_key:
-        logger.info(f"Analyzing documents with Anthropic ({preferred_model or 'claude-3-5-sonnet'})...")
-        result = _analyze_with_anthropic(document_corpus, anthropic_key, preferred_model or "claude-3-5-sonnet-20241022")
+        chosen_model = preferred_model or "claude-3-5-sonnet-20241022"
+        logger.info(f"Analyzing documents with Anthropic ({chosen_model})...")
+        result = _analyze_with_anthropic(document_corpus, anthropic_key, chosen_model)
         if result:
             result["engine_used"] = "Anthropic Claude 3.5 Sonnet (Live AI)"
             result["is_live_llm"] = True
@@ -586,10 +589,10 @@ def analyze_project_documents(
 
     # 4. Fallback across any other available keys
     if openai_key:
-        logger.info("Falling back to OpenAI GPT-4o...")
-        result = _analyze_with_openai(document_corpus, openai_key, "gpt-4o")
+        logger.info("Falling back to OpenAI GPT-4o-mini...")
+        result = _analyze_with_openai(document_corpus, openai_key, "gpt-4o-mini")
         if result:
-            result["engine_used"] = "OpenAI GPT-4o (Live AI)"
+            result["engine_used"] = "OpenAI GPT-4o-mini (Live AI)"
             result["is_live_llm"] = True
             return result
 

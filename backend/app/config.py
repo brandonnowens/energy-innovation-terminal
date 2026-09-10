@@ -60,6 +60,7 @@ class Settings(BaseSettings):
 
     # LLM Provider - Default to OpenAI for full intelligent synthesis across all features
     llm_provider: str = "openai"  # gemini, openai, anthropic, none
+    default_llm_model: str = "gpt-4o-mini"
     gemini_api_key: str = ""
     openai_api_key: str = ""
     anthropic_api_key: str = ""

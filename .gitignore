@@ -51,11 +51,15 @@ scraper_out.txt
 # Temporary & Scratch Files
 scratch/
 scratch.py
+scratch*.py
 test_scraper.py
 backend/scratch*.py
 scratch_*.txt
 deep_scan_results.txt
 backend/benchmark_foa_pdf.py
+*.log
+backend/data/cache/
+data/cache/
 
 # Operating System & IDEs
 .DS_Store
