@@ -3,6 +3,28 @@ export const API_BASE_URL = (
   (import.meta.env.DEV ? '' : 'https://energy-innovation-api.onrender.com')
 ).replace(/\/+$/, '');
 
+export const sanitizeNyserdaInObject = (obj: any): any => {
+  if (obj === null || obj === undefined) return obj;
+  if (typeof obj === 'string') {
+    return obj
+      .replace(/New York State Energy Research and Development Authority/gi, 'State Clean Energy Research & Development Authority')
+      .replace(/NYSERDA\s*\((New York State|New York)\)/gi, 'State Energy Authority (NY)')
+      .replace(/\bNYSERDA\b/g, 'State Energy Authority (NY)');
+  }
+  if (Array.isArray(obj)) {
+    return obj.map(sanitizeNyserdaInObject);
+  }
+  if (typeof obj === 'object') {
+    if (obj instanceof Blob || obj instanceof Date || obj instanceof RegExp) return obj;
+    const res: any = {};
+    for (const key of Object.keys(obj)) {
+      res[key] = sanitizeNyserdaInObject(obj[key]);
+    }
+    return res;
+  }
+  return obj;
+};
+
 export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
   let target = typeof input === 'string' ? input : (input instanceof URL ? input.toString() : input.url);
   if (target.startsWith('/api/') || target.startsWith('/api?') || target === '/api') {
@@ -25,6 +47,14 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
         await new Promise(resolve => setTimeout(resolve, delay));
         continue;
       }
+
+      // Universal UI protection: sanitize any literal NYSERDA mentions from JSON payloads
+      const origJson = res.json.bind(res);
+      res.json = async () => {
+        const raw = await origJson();
+        return sanitizeNyserdaInObject(raw);
+      };
+
       return res;
     } catch (err: any) {
       lastError = err;
