@@ -27,7 +27,7 @@ def get_knowledge_graph(
     should_exclude_nyserda = False
     if exclude_nyserda is True:
         should_exclude_nyserda = True
-    elif x_include_nyserda is not None and x_include_nyserda.lower() in ("false", "0", "no"):
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
         should_exclude_nyserda = True
 
     cache_key = f"{entity_types}:{agency}:{search}:{year_min}:{year_max}:{status}:{node_limit}:{should_exclude_nyserda}"
@@ -579,7 +579,7 @@ def get_network_analytics(
     should_exclude_nyserda = False
     if exclude_nyserda is True:
         should_exclude_nyserda = True
-    elif x_include_nyserda is not None and x_include_nyserda.lower() in ("false", "0", "no"):
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
         should_exclude_nyserda = True
 
     cache_key = f"{agency}_{year_min}_{year_max}_{should_exclude_nyserda}"

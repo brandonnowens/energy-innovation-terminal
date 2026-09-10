@@ -166,7 +166,7 @@ def get_sankey_flow(
     should_exclude_nyserda = False
     if exclude_nyserda is True:
         should_exclude_nyserda = True
-    elif x_include_nyserda is not None and x_include_nyserda.lower() in ("false", "0", "no"):
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
         should_exclude_nyserda = True
 
     cache_key = f"{preset}:{dimensions}:{metric}:{agency}:{org_type}:{year_min}:{year_max}:{status}:{sector}:{technology}:{top_n_per_stage}:{min_value}:{should_exclude_nyserda}"
@@ -216,14 +216,27 @@ def get_sankey_flow(
 
     where_sql = " AND ".join(where_clauses)
 
-    opp_rows = db.execute(text(f"""
-        SELECT o.id, o.agency, o.solicitation_number, o.name, o.status,
-               COALESCE(o.total_funding, 0) as total_funding,
-               p.name as program_name, p.program_type
-        FROM opportunities o
-        LEFT JOIN programs p ON o.program_id = p.id
-        WHERE {where_sql}
-    """), sql_params).fetchall()
+    try:
+        opp_rows = db.execute(text(f"""
+            SELECT o.id, o.agency, o.solicitation_number, o.name, o.status,
+                   COALESCE(o.total_funding, 0) as total_funding,
+                   p.name as program_name, p.program_type
+            FROM opportunities o
+            LEFT JOIN programs p ON o.program_id = p.id
+            WHERE {where_sql}
+        """), sql_params).fetchall()
+    except Exception as db_err:
+        import logging, json
+        from pathlib import Path
+        logging.getLogger("SankeyAPI").warning(f"Database error in get_sankey_flow: {db_err}, loading fallback disk cache", exc_info=True)
+        fallback_file = Path(__file__).parent.parent.parent / "data" / "sankey_cache" / "default_flow.json"
+        if fallback_file.exists():
+            try:
+                with open(fallback_file, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+        return {"nodes": [], "links": [], "stages": dim_list, "meta": {"total_value": 0, "node_count": 0, "link_count": 0}}
 
     if not opp_rows:
         return {"nodes": [], "links": [], "stages": dim_list, "meta": {"total_value": 0, "node_count": 0, "link_count": 0}}
@@ -605,7 +618,7 @@ def get_sankey_insights(
     should_exclude_nyserda = False
     if exclude_nyserda is True:
         should_exclude_nyserda = True
-    elif x_include_nyserda is not None and x_include_nyserda.lower() in ("false", "0", "no"):
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
         should_exclude_nyserda = True
 
     cache_key = f"insights:{should_exclude_nyserda}"
@@ -619,22 +632,35 @@ def get_sankey_insights(
     nyserda_sql_filter = "AND LOWER(o.agency) NOT LIKE '%nyserda%' AND LOWER(o.name) NOT LIKE '%nyserda%'" if should_exclude_nyserda else ""
 
     # 1. Top Capital Conduits (Funder -> Sector -> Tech)
-    top_conduits_raw = db.execute(text(f"""
-        SELECT o.agency,
-               COALESCE(cs.category_value, 'Power & Grid') as sector,
-               COALESCE(ct.category_value, 'Energy Storage') as technology,
-               SUM(COALESCE(o.total_funding, 0)) as total_funding,
-               COUNT(DISTINCT o.id) as opp_count
-        FROM opportunities o
-        LEFT JOIN opportunity_categories cs ON o.id = cs.opportunity_id AND cs.category_type = 'sector'
-        LEFT JOIN opportunity_categories ct ON o.id = ct.opportunity_id AND ct.category_type = 'technology'
-        WHERE o.agency IS NOT NULL {nyserda_sql_filter}
-          AND cs.category_value IS NOT NULL AND cs.category_value NOT IN ('Unknown', 'Other', '')
-          AND ct.category_value IS NOT NULL AND ct.category_value NOT IN ('Unknown', 'Other', '')
-        GROUP BY o.agency, cs.category_value, ct.category_value
-        ORDER BY total_funding DESC
-        LIMIT 10
-    """)).fetchall()
+    try:
+        top_conduits_raw = db.execute(text(f"""
+            SELECT o.agency,
+                   COALESCE(cs.category_value, 'Power & Grid') as sector,
+                   COALESCE(ct.category_value, 'Energy Storage') as technology,
+                   SUM(COALESCE(o.total_funding, 0)) as total_funding,
+                   COUNT(DISTINCT o.id) as opp_count
+            FROM opportunities o
+            LEFT JOIN opportunity_categories cs ON o.id = cs.opportunity_id AND cs.category_type = 'sector'
+            LEFT JOIN opportunity_categories ct ON o.id = ct.opportunity_id AND ct.category_type = 'technology'
+            WHERE o.agency IS NOT NULL {nyserda_sql_filter}
+              AND cs.category_value IS NOT NULL AND cs.category_value NOT IN ('Unknown', 'Other', '')
+              AND ct.category_value IS NOT NULL AND ct.category_value NOT IN ('Unknown', 'Other', '')
+            GROUP BY o.agency, cs.category_value, ct.category_value
+            ORDER BY total_funding DESC
+            LIMIT 10
+        """)).fetchall()
+    except Exception as db_err:
+        import logging, json
+        from pathlib import Path
+        logging.getLogger("SankeyAPI").warning(f"Database error in get_sankey_insights: {db_err}, loading fallback disk cache", exc_info=True)
+        fallback_file = Path(__file__).parent.parent.parent / "data" / "sankey_cache" / "default_insights.json"
+        if fallback_file.exists():
+            try:
+                with open(fallback_file, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+        return {"top_conduits": [], "utility_breakdown": [], "cross_agency_technologies": [], "stage_funneling": {}, "insights": []}
 
     top_conduits = [
         {

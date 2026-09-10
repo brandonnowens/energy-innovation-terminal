@@ -49,6 +49,7 @@ import { OrgLogo } from '../components/OrgLogo';
 import { NYTGraphicExportModal } from '../components/NYTGraphicExportModal';
 import { useNyserda } from '../context/NyserdaContext';
 import { useSEO } from '../utils/seo';
+import { DEFAULT_SANKEY_FLOW, DEFAULT_SANKEY_INSIGHTS } from '../data/defaultSankey';
 
 // ── FORMATTERS ──
 function formatSmartCurrency(val: number): string {
@@ -218,15 +219,26 @@ export default function Sankey() {
     };
   }, [selectedPreset, customDimensions, isCustomMode, metric, agencyFilter, selectedTier, topN, includeNyserda]);
 
-  const { data: flowData, isLoading, isError, refetch } = useQuery<any>({
+  const { data: flowData, isLoading, isError, isFetching, refetch } = useQuery<any>({
     queryKey: ['sankey-flow', flowParams],
     queryFn: () => api.getSankeyFlow(flowParams),
+    initialData: () => {
+      if (selectedPreset === 'ecosystem' && !agencyFilter && selectedTier === 'all' && !isCustomMode) {
+        return DEFAULT_SANKEY_FLOW;
+      }
+      return undefined;
+    },
+    placeholderData: (prev: any) => prev || (selectedPreset === 'ecosystem' && !agencyFilter && selectedTier === 'all' ? DEFAULT_SANKEY_FLOW : undefined),
+    staleTime: 5 * 60 * 1000,
   });
 
   // Fetch Insights Data
   const { data: insightsData } = useQuery<any>({
     queryKey: ['sankey-insights', includeNyserda],
     queryFn: () => api.getSankeyInsights({ exclude_nyserda: !includeNyserda }),
+    initialData: DEFAULT_SANKEY_INSIGHTS,
+    placeholderData: DEFAULT_SANKEY_INSIGHTS,
+    staleTime: 5 * 60 * 1000,
   });
 
   // Fetch Agencies for Filter
@@ -239,9 +251,12 @@ export default function Sankey() {
     return list.filter((ag: any) => includeNyserda || !isNyserda(ag.name));
   }, [agenciesData, includeNyserda, isNyserda]);
 
+  const activeFlowData = flowData || (selectedPreset === 'ecosystem' && !agencyFilter && selectedTier === 'all' && !isCustomMode ? DEFAULT_SANKEY_FLOW : null);
+
   // Compute D3-Sankey layout
   const { layoutNodes, layoutLinks } = useMemo(() => {
-    if (!flowData || !flowData.nodes || flowData.nodes.length === 0 || !flowData.links) {
+    const dataToUse = activeFlowData;
+    if (!dataToUse || !dataToUse.nodes || dataToUse.nodes.length === 0 || !dataToUse.links) {
       return { layoutNodes: [], layoutLinks: [] };
     }
 

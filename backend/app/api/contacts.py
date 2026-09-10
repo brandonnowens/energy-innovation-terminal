@@ -122,7 +122,7 @@ def list_contacts(
     should_exclude_nyserda = False
     if exclude_nyserda is True:
         should_exclude_nyserda = True
-    elif x_include_nyserda is not None and x_include_nyserda.lower() in ("false", "0", "no"):
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
         should_exclude_nyserda = True
 
     if should_exclude_nyserda:
