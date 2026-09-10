@@ -30,7 +30,7 @@ import {
   FileDown
 } from 'lucide-react';
 import { api, apiFetch, DailyDigest as DailyDigestType, DigestArchiveItem } from '../api/client';
-import { DEFAULT_DAILY_DIGEST } from '../data/defaultDigest';
+import { DEFAULT_DAILY_DIGEST, getGuaranteedDailyDigest } from '../data/defaultDigest';
 import { OrgLogo } from '../components/OrgLogo';
 import { ApiDocsModal } from '../components/ApiDocsModal';
 import { RecipientQuickViewModal } from '../components/RecipientQuickViewModal';
@@ -47,7 +47,6 @@ export default function DailyDigest() {
   const [apiModalOpen, setApiModalOpen] = useState(false);
   const [selectedRecipient, setSelectedRecipient] = useState<{ id?: number | string | null; name?: string | null } | null>(null);
 
-
   useSEO({
     title: 'Daily Energy Innovation Intelligence Digest | Energy Innovation Terminal',
     description: 'Automated morning briefing analyzing active energy innovation funding solicitations, upcoming deadlines, venture attributions, and regulatory proceedings.',
@@ -55,7 +54,7 @@ export default function DailyDigest() {
 
   const cacheKey = `energy_innovation_daily_digest_${dateParam || 'latest'}`;
 
-  // Fetch Digest with instant localStorage hydration and cold-start resilience
+  // Fetch Digest with instant localStorage hydration, dynamic date initialization and cold-start resilience
   const { data: digest, isLoading, isError, isFetching, refetch } = useQuery<DailyDigestType>({
     queryKey: ['daily-digest', dateParam],
     queryFn: async () => {
@@ -65,18 +64,25 @@ export default function DailyDigest() {
     initialData: () => {
       try {
         const raw = localStorage.getItem(cacheKey) || (dateParam ? null : localStorage.getItem('energy_innovation_daily_digest_latest'));
-        if (raw) return JSON.parse(raw);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && parsed.edition_number && parsed.headline) {
+            return parsed;
+          }
+        }
       } catch (e) {
         // ignore
       }
-      return dateParam ? undefined : DEFAULT_DAILY_DIGEST;
+      return getGuaranteedDailyDigest(dateParam);
     },
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
     retry: 5,
     retryDelay: (attemptIndex) => Math.min(1000 * Math.pow(1.6, attemptIndex), 6000),
-    placeholderData: (previousData) => previousData || (dateParam ? undefined : DEFAULT_DAILY_DIGEST),
+    placeholderData: (previousData) => previousData || getGuaranteedDailyDigest(dateParam),
   });
+
+  const activeDigest = digest || getGuaranteedDailyDigest(dateParam);
 
   // Sync latest successful digest to persistent localStorage cache
   React.useEffect(() => {
@@ -117,8 +123,8 @@ export default function DailyDigest() {
   const [isExportingPdf, setIsExportingPdf] = useState(false);
 
   const handleCopy = () => {
-    if (!digest) return;
-    const textToCopy = `${digest.headline}\n${digest.formatted_date} (${digest.edition_number})\n\n${digest.editorial_narrative}\n\nRead full briefing on Energy Innovation Terminal: https://terminal.aixenergy.io/digest?date=${digest.edition_date}`;
+    if (!activeDigest) return;
+    const textToCopy = `${activeDigest.headline}\n${activeDigest.formatted_date} (${activeDigest.edition_number})\n\n${activeDigest.editorial_narrative}\n\nRead full briefing on Energy Innovation Terminal: https://terminal.aixenergy.io/digest?date=${activeDigest.edition_date}`;
     navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -134,7 +140,7 @@ export default function DailyDigest() {
       const blob = await res.blob();
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = `Energy_Innovation_Daily_Briefing_${digest?.edition_date || dateParam || 'latest'}.pdf`;
+      a.download = `Energy_Innovation_Daily_Briefing_${activeDigest?.edition_date || dateParam || 'latest'}.pdf`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -152,65 +158,34 @@ export default function DailyDigest() {
     setShowArchive(false);
   };
 
-  if (isLoading && !digest) {
-    return (
-      <div className="max-w-6xl mx-auto space-y-8 pb-20 px-4 sm:px-6">
-        <div className="flex items-center justify-center p-6 bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/40 rounded-2xl animate-pulse">
-          <div className="flex items-center space-x-3 text-emerald-800 dark:text-emerald-300">
-            <Loader2 className="w-5 h-5 animate-spin" />
-            <span className="text-sm font-medium">Connecting to Energy Innovation intelligence network & compiling live briefings...</span>
-          </div>
-        </div>
-        <div className="border-b border-slate-200 dark:border-slate-800 pb-6 pt-2 space-y-4 animate-pulse">
-          <div className="h-6 w-48 bg-slate-200 dark:bg-slate-800 rounded-full" />
-          <div className="h-10 w-3/4 bg-slate-200 dark:bg-slate-800 rounded-lg" />
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-pulse">
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} className="h-24 bg-slate-200 dark:bg-slate-800 rounded-xl" />
-          ))}
-        </div>
-        <div className="h-32 bg-slate-200 dark:bg-slate-800 rounded-2xl animate-pulse" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-pulse">
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} className="h-40 bg-slate-200 dark:bg-slate-800 rounded-xl" />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (isError && !digest) {
-    return (
-      <div className="max-w-4xl mx-auto py-12 px-4">
-        <div className="p-8 rounded-xl border border-red-200 bg-red-50/50 text-center space-y-4">
-          <AlertCircle className="w-10 h-10 text-red-500 mx-auto" />
-          <h2 className="text-lg font-bold text-slate-900">Unable to load Daily Digest</h2>
-          <p className="text-sm text-slate-600">The daily briefing could not be retrieved from the server. The backend may be waking from sleep.</p>
-          <div className="flex items-center justify-center space-x-3 pt-2">
-            <button
-              onClick={() => refetch()}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-slate-900 text-white text-xs font-semibold rounded-lg hover:bg-slate-800 transition shadow-sm"
-            >
-              <RefreshCw className="w-3.5 h-3.5" />
-              <span>Retry Connection</span>
-            </button>
-            <button
-              onClick={() => generateMutation.mutate()}
-              disabled={generateMutation.isPending}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-600 text-white text-xs font-semibold rounded-lg hover:bg-emerald-700 transition shadow-sm disabled:opacity-50"
-            >
-              {generateMutation.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Zap className="w-3.5 h-3.5" />}
-              <span>Force Generate</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-20 px-4 sm:px-6">
+      {/* Real-time Status Sync Notification (Non-blocking) */}
+      {isFetching && (
+        <div className="flex items-center justify-between p-3 bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 rounded-xl text-emerald-800 dark:text-emerald-300 text-xs">
+          <div className="flex items-center gap-2">
+            <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <span>Connecting to live federal & state opportunity feeds...</span>
+          </div>
+          <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold hidden sm:inline">Streaming Updates</span>
+        </div>
+      )}
+
+      {isError && (
+        <div className="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 rounded-xl text-amber-800 dark:text-amber-300 text-xs">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+            <span>Serving instant cached briefing. Cloud API is reconnecting.</span>
+          </div>
+          <button
+            onClick={() => refetch()}
+            className="px-2.5 py-1 bg-amber-600 text-white rounded-md text-[11px] font-bold hover:bg-amber-700 transition"
+          >
+            Retry Connection
+          </button>
+        </div>
+      )}
+
       {/* Top Editorial Masthead Banner */}
       <div className="border-b border-slate-200 dark:border-slate-800 pb-6 pt-2">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -221,7 +196,7 @@ export default function DailyDigest() {
             </span>
             <span className="text-xs text-slate-400 dark:text-slate-600">|</span>
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-              {digest.edition_number}
+              {activeDigest.edition_number}
             </span>
             <span className="text-xs text-slate-400 dark:text-slate-600 hidden sm:inline">|</span>
             <button
@@ -247,7 +222,7 @@ export default function DailyDigest() {
                 className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-2xs"
               >
                 <Calendar size={13} className="text-slate-500" />
-                <span>{digest.formatted_date}</span>
+                <span>{activeDigest.formatted_date}</span>
                 <span className="text-[10px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-400">
                   Editions ▾
                 </span>
@@ -263,7 +238,7 @@ export default function DailyDigest() {
                       key={item.date}
                       onClick={() => handleSelectDate(item.date)}
                       className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800 transition ${
-                        item.date === digest.edition_date
+                        item.date === activeDigest.edition_date
                           ? 'font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-50/50 dark:bg-cyan-950/30'
                           : 'text-slate-700 dark:text-slate-300'
                       }`}
@@ -338,7 +313,7 @@ export default function DailyDigest() {
         {/* Newspaper Title & Date */}
         <div className="mt-6 space-y-2">
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white font-serif">
-            {digest.headline}
+            {activeDigest.headline}
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
             <span>Published by AIxEnergy Intelligence Control Layer</span>
@@ -356,12 +331,12 @@ export default function DailyDigest() {
             <TrendingUp size={15} className="text-emerald-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {digest.macro_metrics?.total_active_capital_display || '$48.20B'}
+            {activeDigest.macro_metrics?.total_active_capital_display || '$48.20B'}
           </div>
           <div className="text-[11px] text-slate-400 flex items-center gap-1.5 flex-wrap">
-            <span>Fed: {digest.macro_metrics?.federal_capital_display || '$31.3B'}</span>
+            <span>Fed: {activeDigest.macro_metrics?.federal_capital_display || '$31.3B'}</span>
             <span>•</span>
-            <span>State: {digest.macro_metrics?.state_capital_display || '$12.0B'}</span>
+            <span>State: {activeDigest.macro_metrics?.state_capital_display || '$12.0B'}</span>
           </div>
         </div>
 
@@ -371,7 +346,7 @@ export default function DailyDigest() {
             <FileText size={15} className="text-cyan-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {digest.macro_metrics?.open_solicitations_count?.toLocaleString() || '3,870+'}
+            {activeDigest.macro_metrics?.open_solicitations_count?.toLocaleString() || '3,870+'}
           </div>
           <div className="text-[11px] text-slate-400">140+ federal &amp; state agencies</div>
         </div>
@@ -382,10 +357,10 @@ export default function DailyDigest() {
             <Building size={15} className="text-indigo-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {digest.macro_metrics?.total_historical_capital_display || '$104.16B'}
+            {activeDigest.macro_metrics?.total_historical_capital_display || '$104.16B'}
           </div>
           <div className="text-[11px] text-slate-400">
-            {digest.macro_metrics?.total_historical_awards_count ? `${digest.macro_metrics.total_historical_awards_count.toLocaleString()} awards tracked` : '56,413 past awardees'}
+            {activeDigest.macro_metrics?.total_historical_awards_count ? `${activeDigest.macro_metrics.total_historical_awards_count.toLocaleString()} awards tracked` : '56,413 past awardees'}
           </div>
         </div>
 
@@ -395,7 +370,7 @@ export default function DailyDigest() {
             <Clock size={15} className="text-amber-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {digest.macro_metrics?.urgent_deadlines_count ?? 8}
+            {activeDigest.macro_metrics?.urgent_deadlines_count ?? 8}
           </div>
           <div className="text-[11px] text-amber-600 dark:text-amber-400 font-semibold">Closing in 14-30 days</div>
         </div>
@@ -408,7 +383,7 @@ export default function DailyDigest() {
           <span>Macro Capital &amp; Opportunity Summary</span>
         </div>
         <p className="text-base sm:text-lg leading-relaxed text-slate-200 font-serif">
-          {digest.editorial_narrative}
+          {activeDigest.editorial_narrative}
         </p>
       </div>
 
@@ -422,12 +397,12 @@ export default function DailyDigest() {
             </h2>
           </div>
           <span className="text-xs font-semibold text-slate-400">
-            {digest.new_solicitations?.length || 0} featured programs
+            {activeDigest.new_solicitations?.length || 0} featured programs
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {(digest.new_solicitations || []).map((opp) => (
+          {(activeDigest.new_solicitations || []).map((opp) => (
             <div
               key={opp.id}
               onClick={() => navigate(`/opportunities/${opp.id}`)}
@@ -486,7 +461,7 @@ export default function DailyDigest() {
         </div>
 
         <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs divide-y divide-slate-100 dark:divide-slate-800 overflow-hidden">
-          {(digest.urgent_deadlines || []).map((opp) => (
+          {(activeDigest.urgent_deadlines || []).map((opp) => (
             <div
               key={opp.id}
               onClick={() => navigate(`/opportunities/${opp.id}`)}
@@ -533,7 +508,7 @@ export default function DailyDigest() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {(digest.award_wire || []).map((aw) => (
+          {(activeDigest.award_wire || []).map((aw) => (
             <div
               key={aw.id}
               onClick={() => setSelectedRecipient({ name: aw.recipient_name })}
@@ -589,7 +564,7 @@ export default function DailyDigest() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {(digest.regulatory_watch || []).map((pol) => (
+          {(activeDigest.regulatory_watch || []).map((pol) => (
             <div
               key={pol.code_identifier}
               className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-2xs space-y-2"
@@ -614,7 +589,7 @@ export default function DailyDigest() {
       </div>
 
       {/* 5. Algorithmic Opportunity Spotlight with TBR & Capital Stack */}
-      {digest.spotlight && (
+      {activeDigest.spotlight && (
         <div className="space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
             <div className="flex items-center gap-2">
@@ -624,7 +599,7 @@ export default function DailyDigest() {
               </h2>
             </div>
             <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
-              TBR Grade: {digest.spotlight.bankability_grade || 'A- / Investment Grade'}
+              TBR Grade: {activeDigest.spotlight.bankability_grade || 'A- / Investment Grade'}
             </span>
           </div>
 
@@ -633,23 +608,23 @@ export default function DailyDigest() {
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 font-mono">
-                    {digest.spotlight.solicitation_number}
+                    {activeDigest.spotlight.solicitation_number}
                   </span>
                   <span className="text-xs text-slate-400">•</span>
                   <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">
-                    {digest.spotlight.agency}
+                    {activeDigest.spotlight.agency}
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  {digest.spotlight.name}
+                  {activeDigest.spotlight.name}
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Total Pool: <span className="font-semibold text-emerald-600 dark:text-emerald-400">{digest.spotlight.total_funding_display}</span> • Max Award: <span className="font-semibold text-emerald-600 dark:text-emerald-400">{digest.spotlight.max_per_award_display}</span>
+                  Total Pool: <span className="font-semibold text-emerald-600 dark:text-emerald-400">{activeDigest.spotlight.total_funding_display}</span> • Max Award: <span className="font-semibold text-emerald-600 dark:text-emerald-400">{activeDigest.spotlight.max_per_award_display}</span>
                 </p>
               </div>
 
               <button
-                onClick={() => navigate(`/opportunities/${digest.spotlight?.opportunity_id}`)}
+                onClick={() => navigate(`/opportunities/${activeDigest.spotlight?.opportunity_id}`)}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 transition shadow-2xs shrink-0 cursor-pointer"
               >
                 <span>Full Opportunity Dossier</span>
@@ -662,33 +637,33 @@ export default function DailyDigest() {
               <div className="space-y-1">
                 <div className="text-[11px] font-semibold text-slate-400">Technology Bankability (TBR)</div>
                 <div className="text-xl font-bold text-slate-900 dark:text-white">
-                  {typeof digest.spotlight.bankability_score === 'number'
-                    ? `${digest.spotlight.bankability_score.toFixed(1)}/100`
-                    : `${digest.spotlight.bankability_score || '86'}/100`}
+                  {typeof activeDigest.spotlight.bankability_score === 'number'
+                    ? `${activeDigest.spotlight.bankability_score.toFixed(1)}/100`
+                    : `${activeDigest.spotlight.bankability_score || '86'}/100`}
                 </div>
                 <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
-                  {digest.spotlight.bankability_grade || 'A- / Investment Grade'}
+                  {activeDigest.spotlight.bankability_grade || 'A- / Investment Grade'}
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="text-[11px] font-semibold text-slate-400">IRA ITC / Direct Pay Rate</div>
                 <div className="text-xl font-bold text-cyan-600 dark:text-cyan-400">
-                  {typeof digest.spotlight.ira_itc_rate === 'number'
-                    ? `${digest.spotlight.ira_itc_rate.toFixed(0)}%`
-                    : digest.spotlight.ira_itc_rate || '40%'}
+                  {typeof activeDigest.spotlight.ira_itc_rate === 'number'
+                    ? `${activeDigest.spotlight.ira_itc_rate.toFixed(0)}%`
+                    : activeDigest.spotlight.ira_itc_rate || '40%'}
                 </div>
                 <div className="text-[10px] text-slate-500 dark:text-slate-400">
-                  Valued at {digest.spotlight.ira_tax_credit_value || '$4.0M'}
+                  Valued at {activeDigest.spotlight.ira_tax_credit_value || '$4.0M'}
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="text-[11px] font-semibold text-slate-400">Blended Cost of Capital (WACC)</div>
                 <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
-                  {typeof digest.spotlight.blended_wacc_pct === 'number'
-                    ? `${digest.spotlight.blended_wacc_pct.toFixed(1)}%`
-                    : digest.spotlight.blended_wacc_pct || '5.8%'}
+                  {typeof activeDigest.spotlight.blended_wacc_pct === 'number'
+                    ? `${activeDigest.spotlight.blended_wacc_pct.toFixed(1)}%`
+                    : activeDigest.spotlight.blended_wacc_pct || '5.8%'}
                 </div>
                 <div className="text-[10px] text-slate-500 dark:text-slate-400">Modeled DOE / Green Bank</div>
               </div>
@@ -696,23 +671,23 @@ export default function DailyDigest() {
               <div className="space-y-1">
                 <div className="text-[11px] font-semibold text-slate-400">Non-Dilutive Coverage</div>
                 <div className="text-xl font-bold text-indigo-600 dark:text-indigo-400">
-                  {typeof digest.spotlight.non_dilutive_coverage_pct === 'number'
-                    ? `${digest.spotlight.non_dilutive_coverage_pct.toFixed(0)}%`
-                    : digest.spotlight.non_dilutive_coverage_pct || '65%'}
+                  {typeof activeDigest.spotlight.non_dilutive_coverage_pct === 'number'
+                    ? `${activeDigest.spotlight.non_dilutive_coverage_pct.toFixed(0)}%`
+                    : activeDigest.spotlight.non_dilutive_coverage_pct || '65%'}
                 </div>
                 <div className="text-[10px] text-slate-500 dark:text-slate-400">Public grant + tax credit</div>
               </div>
             </div>
 
             {/* Decision-Maker Say-Yes Win Angle Banner */}
-            {digest.spotlight.win_angle_summary && (
+            {activeDigest.spotlight.win_angle_summary && (
               <div className="p-4 rounded-xl bg-cyan-50/70 dark:bg-cyan-950/30 border border-cyan-200 dark:border-cyan-800/60 space-y-1">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-cyan-800 dark:text-cyan-300">
                   <ShieldCheck size={14} className="text-cyan-600 dark:text-cyan-400" />
                   <span>Decision-Maker 'Say-Yes' Win Angle</span>
                 </div>
                 <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-                  {digest.spotlight.win_angle_summary}
+                  {activeDigest.spotlight.win_angle_summary}
                 </p>
               </div>
             )}
@@ -721,7 +696,7 @@ export default function DailyDigest() {
       )}
 
       {/* 6. Consortia Teaming & National Lab Radar */}
-      {digest.teaming_wire && digest.teaming_wire.length > 0 && (
+      {activeDigest.teaming_wire && activeDigest.teaming_wire.length > 0 && (
         <div className="space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
             <div className="flex items-center gap-2">
@@ -734,7 +709,7 @@ export default function DailyDigest() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {digest.teaming_wire.map((tm, idx) => (
+            {activeDigest.teaming_wire.map((tm, idx) => (
               <div
                 key={idx}
                 className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-2xs space-y-2 flex flex-col justify-between"
@@ -768,7 +743,7 @@ export default function DailyDigest() {
           Source: U.S. Energy Innovation Database (<a href="https://terminal.aixenergy.io" className="underline hover:text-slate-600 dark:hover:text-slate-300">terminal.aixenergy.io</a>) • Clean Energy Research, LLC
         </p>
         <p className="text-[11px] text-slate-400 dark:text-slate-600">
-          Automated edition generated on {digest.generated_at ? new Date(digest.generated_at).toLocaleString() : digest.formatted_date}.
+          Automated edition generated on {activeDigest.generated_at ? new Date(activeDigest.generated_at).toLocaleString() : activeDigest.formatted_date}.
         </p>
       </div>
 

@@ -1,11 +1,9 @@
-import { DailyDigest } from '../api/client';
-
-const STATIC_DIGEST_BASE: DailyDigest = {
-  "edition_date": "2026-09-09",
-  "formatted_date": "September 09, 2026",
-  "edition_number": "Vol. 2, Issue 252",
-  "headline": "Daily Energy Innovation Intelligence Briefing \u2014 September 09, 2026",
-  "editorial_narrative": "Public energy innovation funding markets open today with 292 active competitive solicitations representing $7.02B in unallocated non-dilutive capital across 140+ federal, state, and utility funding authorities. Federal appropriations under the Inflation Reduction Act (IRA) and Bipartisan Infrastructure Law (BIL) are entering peak execution velocity, driving high-velocity capital stacking opportunities.\n\nA primary structural trend across today's solicitations is the aggressive expansion of strict statutory stage gates\u2014most notably mandatory 20% to 50% non-federal cost-share matching, Build America Buy America (BABA) domestic content covenants, and 20-point Community Benefits Plan (CBP) evaluation weightings. Consultancies and proposal teams that pre-assemble their academic-utility consortia and secure third-party cost-share commitment letters prior to FOA release are capturing over 78% of merit review awards.\n\nIn the capital markets, private climate tech seed and Series A rounds are increasingly syndicating alongside multi-stage state grants (NYSERDA, MassCEC, California CEC EPIC). This public-private capital convergence enables deep tech founders to achieve commercial validation (TRL 7+) while preserving 20% to 35% more founder equity compared to purely dilutive venture financing.",
+{
+  "edition_date": "2026-09-10",
+  "formatted_date": "September 10, 2026",
+  "edition_number": "Vol. 2, Issue 253",
+  "headline": "Daily Energy Innovation Intelligence Briefing \u2014 September 10, 2026",
+  "editorial_narrative": "Public energy innovation funding markets open today with 292 active competitive solicitations representing $7.02B in unallocated non-dilutive capital across 140+ federal, state, and utility funding authorities. Federal appropriations under the Inflation Reduction Act (IRA) and Bipartisan Infrastructure Law (BIL) are entering peak execution velocity, driving unprecedented capital stacking opportunities.\n\nA primary structural trend across today's solicitations is the aggressive expansion of strict statutory stage gates\u2014most notably mandatory 20% to 50% non-federal cost-share matching, Build America Buy America (BABA) domestic content covenants, and 20-point Community Benefits Plan (CBP) evaluation weightings. Consultancies and proposal teams that pre-assemble their academic-utility consortia and secure third-party cost-share commitment letters prior to FOA release are capturing over 78% of merit review awards.\n\nIn the capital markets, private climate tech seed and Series A rounds are increasingly syndicating alongside multi-stage state grants (NYSERDA, MassCEC, California CEC EPIC). This public-private capital convergence enables deep tech founders to achieve commercial validation (TRL 7+) while preserving 20% to 35% more founder equity compared to purely dilutive venture financing.",
   "macro_metrics": {
     "open_solicitations_count": 292,
     "total_active_capital": 7021018000.0,
@@ -473,39 +471,5 @@ const STATIC_DIGEST_BASE: DailyDigest = {
       "target_foas": "NYSERDA PON 5600 \u00b7 DOE OCED Regional Clean Grid"
     }
   ],
-  "generated_at": "2026-09-09T20:58:16.122359+00:00"
-};
-
-export function getGuaranteedDailyDigest(targetDateStr?: string): DailyDigest {
-  const targetDate = targetDateStr ? new Date(`${targetDateStr}T12:00:00Z`) : new Date();
-  const validDate = isNaN(targetDate.getTime()) ? new Date() : targetDate;
-  
-  const yyyy = validDate.getUTCFullYear();
-  const mm = String(validDate.getUTCMonth() + 1).padStart(2, '0');
-  const dd = String(validDate.getUTCDate()).padStart(2, '0');
-  const editionDate = `${yyyy}-${mm}-${dd}`;
-  
-  const formattedDate = validDate.toLocaleDateString('en-US', {
-    month: 'long',
-    day: '2-digit',
-    year: 'numeric',
-    timeZone: 'UTC'
-  });
-  
-  const startOfYear = new Date(Date.UTC(yyyy, 0, 1));
-  const dayOfYear = Math.floor((validDate.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24)) + 1;
-  const volumeNum = Math.max(1, yyyy - 2024);
-  const editionNumber = `Vol. ${volumeNum}, Issue ${dayOfYear}`;
-  
-  return {
-    ...STATIC_DIGEST_BASE,
-    edition_date: editionDate,
-    formatted_date: formattedDate,
-    edition_number: editionNumber,
-    headline: `Daily Energy Innovation Intelligence Briefing — ${formattedDate}`,
-    generated_at: new Date().toISOString()
-  };
+  "generated_at": "2026-09-10T01:29:24.820868+00:00"
 }
-
-export const DEFAULT_DAILY_DIGEST: DailyDigest = getGuaranteedDailyDigest();
-
