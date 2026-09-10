@@ -871,7 +871,7 @@ def author_report_with_openai(
     context: Dict[str, Any],
     custom_prompt: Optional[str] = None,
     api_key: Optional[str] = None,
-    model_name: str = "gpt-4o-mini",
+    model_name: str = "gpt-4o",
     force_refresh: bool = False
 ) -> Dict[str, Any]:
     """
@@ -894,7 +894,7 @@ def author_report_with_openai(
 
     try:
         from openai import OpenAI
-        client = OpenAI(api_key=resolved_api_key, timeout=12.0)
+        client = OpenAI(api_key=resolved_api_key, timeout=45.0)
 
         compact_context = compact_context_for_llm(context)
 
@@ -939,7 +939,7 @@ REQUIRED JSON OUTPUT SCHEMA:
 """
 
         response = client.chat.completions.create(
-            model=model_name or "gpt-4o-mini",
+            model=model_name or "gpt-4o",
             messages=[
                 {"role": "system", "content": EXECUTIVE_SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt}

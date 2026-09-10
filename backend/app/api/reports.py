@@ -24,7 +24,7 @@ class ReportGenerateRequest(BaseModel):
     filters: Optional[Dict[str, Any]] = None
     custom_prompt: Optional[str] = None
     openai_api_key: Optional[str] = None
-    model_name: Optional[str] = "gpt-4o-mini"
+    model_name: Optional[str] = "gpt-4o"
     title: Optional[str] = None
     force_refresh: Optional[bool] = False
 
@@ -51,7 +51,19 @@ REPORT_PRESETS = [
 
     # 1. Macro & Policy Strategy (Flagship Strategic Briefings & Institutional Blueprints)
     {
-
+        "id": "top5_breakthrough_innovations",
+        "title": "Predicting the Top 5 Clean Energy Breakthroughs: Which Technologies Will Actually Commercialize by 2035",
+        "subtitle": "The Definitive Decadal Technology Foresight: Evaluating 54,305 Historical Projects to Predict the 5 Winning Energy Innovations That Will Achieve Commercial Scale, Unit Parity, and Decarbonization by 2035",
+        "category": "Macro & Policy Strategy",
+        "target_audience": "Chief Innovation Officers, C-Suite Energy Executives, Infrastructure Investment Committees, State Energy Directors, Federal Program Leads, Regulated Utilities",
+        "badge": "Flagship Technology Foresight",
+        "icon": "TrendingUp",
+        "pages": 21,
+        "capital_tracked": "$98.98B Evaluated",
+        "awards_count": "54,305 Historical Awards",
+        "key_focus": "Empirical decadal technology forecasting across 54,305 projects: Predicting the 5 winning breakthroughs (Autonomous Grid GETs, Iron-Air Storage, Supercritical EGS, Steam-Integrated SOEC, Factory HTGR SMRs); AI reality check; failure-mode analysis of delayed candidates."
+    },
+    {
         "id": "state_partnership_ecosystem",
         "title": "State Innovation Program Partnership & Ecosystem Expansion Lessons Learned and Future Strategies",
         "subtitle": "The Definitive Retrospective and Forward Blueprint: Analyzing 25 Years of State-Level Energy Innovation Consortia, Multi-Jurisdictional Coalitions, Hardtech Incubators, Regulated Utility Alignment, and Frontline Equity Co-Design (2000-2026 Empirical Arc and 2026-2035 Strategic Roadmap)",
@@ -600,7 +612,7 @@ def export_executive_report_pdf(req: ReportGenerateRequest, db: Session = Depend
                 context=context_data,
                 custom_prompt=req.custom_prompt,
                 api_key=req.openai_api_key,
-                model_name=req.model_name or "gpt-4o-mini",
+                model_name=req.model_name or "gpt-4o",
                 force_refresh=force_refresh
             )
             build_executive_pdf(context_data, narrative, pdf_buffer, db=db)
@@ -625,7 +637,7 @@ def export_executive_report_pdf(req: ReportGenerateRequest, db: Session = Depend
 
 class PipelineRunRequest(BaseModel):
     openai_api_key: Optional[str] = None
-    model_name: Optional[str] = "gpt-4o-mini"
+    model_name: Optional[str] = "gpt-4o"
 
 @router.post("/reports/run-pipeline")
 def trigger_pipeline_update(req: Optional[PipelineRunRequest] = None):
@@ -634,7 +646,7 @@ def trigger_pipeline_update(req: Optional[PipelineRunRequest] = None):
     """
     from app.ingest.pipeline_runner import run_data_refresh_and_report_pipeline
     key = req.openai_api_key if req else None
-    model = (req.model_name if req and req.model_name else "gpt-4o-mini")
+    model = (req.model_name if req and req.model_name else "gpt-4o")
     manifest = run_data_refresh_and_report_pipeline(openai_api_key=key, model_name=model)
     return manifest
 

@@ -43,12 +43,14 @@ from .gen_state_commercialization_strategies import generate_state_commercializa
 from .gen_state_partnership_ecosystem import generate_state_partnership_ecosystem_monograph
 from .gen_cleangrid_database_docs import generate_cleangrid_database_docs_monograph
 from .gen_nuclear_fusion import generate_nuclear_fusion_monograph
+from .gen_top5_breakthrough_innovations import generate_top5_breakthrough_innovations_monograph
 
 GENERATORS_MAP: Dict[str, Callable[[Session, io.BytesIO], None]] = {
     # 0. Core Technical Architecture & Database Reference
     "cleangrid_database_docs": generate_cleangrid_database_docs_monograph,
 
     # 1. Macro & Policy Strategy (Flagship Strategic Briefings & Institutional Blueprints)
+    "top5_breakthrough_innovations": generate_top5_breakthrough_innovations_monograph,
     "state_partnership_ecosystem": generate_state_partnership_ecosystem_monograph,
     "future_research_pathways_flagship": generate_future_research_pathways_monograph,
     "us_energy_innovation_landscape_flagship": generate_us_energy_innovation_landscape_monograph,
@@ -118,7 +120,7 @@ def generate_specialized_monograph(
                 context=context,
                 custom_prompt=custom_prompt,
                 api_key=openai_api_key,
-                model_name=model_name or "gpt-4o-mini",
+                model_name=model_name or "gpt-4o",
                 force_refresh=force_refresh
             )
         except Exception as e:

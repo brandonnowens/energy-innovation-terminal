@@ -50,6 +50,19 @@ const DEFAULT_PRESETS: ReportPreset[] = [
 
   // 1. Macro & Policy Strategy (Flagship Strategic Briefings & Institutional Blueprints)
   {
+    "id": "top5_breakthrough_innovations",
+    "title": "Predicting the Top 5 Clean Energy Breakthroughs: Which Technologies Will Actually Commercialize by 2035",
+    "subtitle": "The Definitive Decadal Technology Foresight: Evaluating 54,305 Historical Projects to Predict the 5 Winning Energy Innovations That Will Achieve Commercial Scale, Unit Parity, and Decarbonization by 2035",
+    "category": "Macro & Policy Strategy",
+    "target_audience": "Chief Innovation Officers, C-Suite Energy Executives, Infrastructure Investment Committees, State Energy Directors, Federal Program Leads, Regulated Utilities",
+    "badge": "Flagship Technology Foresight",
+    "icon": "TrendingUp",
+    "pages": 21,
+    "capital_tracked": "$98.98B Evaluated",
+    "awards_count": "54,305 Historical Awards",
+    "key_focus": "Empirical decadal technology forecasting across 54,305 projects: Predicting the 5 winning breakthroughs (Autonomous Grid GETs, Iron-Air Storage, Supercritical EGS, Steam-Integrated SOEC, Factory HTGR SMRs); AI reality check; failure-mode analysis of delayed candidates."
+  },
+  {
     "id": "state_partnership_ecosystem",
     "title": "State Innovation Program Partnership & Ecosystem Expansion Lessons Learned and Future Strategies",
     "subtitle": "The Definitive Retrospective and Forward Blueprint: Analyzing 25 Years of State-Level Energy Innovation Consortia, Multi-Jurisdictional Coalitions, Hardtech Incubators, Regulated Utility Alignment, and Frontline Equity Co-Design (2000–2026 Empirical Arc and 2026–2035 Strategic Roadmap)",
@@ -472,7 +485,7 @@ export default function Reports() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
-  const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini');
+  const [selectedModel, setSelectedModel] = useState<string>('gpt-4o');
   const [isClearingCache, setIsClearingCache] = useState(false);
   const [keySavedToast, setKeySavedToast] = useState<string | null>(null);
   const [downloadError, setDownloadError] = useState<string | null>(null);
