@@ -2,7 +2,8 @@
 Observability and User Activity Telemetry Middleware.
 
 Measures endpoint latency, attaches `X-Response-Time-Ms` header,
-logs slow queries/responses, and logs user usage events into `user_activity_logs`.
+logs slow queries/responses, and asynchronously records rich user/anonymous telemetry
+into `user_activity_logs`.
 """
 
 import time
@@ -10,7 +11,9 @@ import hashlib
 import logging
 import threading
 import queue
+import re
 from datetime import datetime
+from typing import Dict, Any, Tuple
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
@@ -19,18 +22,65 @@ logger = logging.getLogger("Observability")
 SLOW_REQUEST_THRESHOLD_MS = 1500.0
 
 # Asynchronous background worker queue for non-blocking telemetry logging
-_ACTIVITY_QUEUE: queue.Queue = queue.Queue(maxsize=10000)
+_ACTIVITY_QUEUE: queue.Queue = queue.Queue(maxsize=20000)
 _WORKER_THREAD: threading.Thread | None = None
 _WORKER_RUNNING = False
 
 
-def _detect_device_type(user_agent: str) -> str:
+def parse_user_agent_details(user_agent: str) -> Tuple[str, str, str]:
+    """Parse User-Agent into (browser, os, device_type)."""
+    if not user_agent:
+        return ("Unknown", "Unknown", "desktop")
+
     ua = user_agent.lower()
-    if any(bot in ua for bot in ["bot", "spider", "crawl", "curl", "wget", "headless"]):
-        return "bot"
-    if any(m in ua for m in ["mobi", "iphone", "android", "ipad", "tablet"]):
-        return "mobile"
-    return "desktop"
+    
+    # 1. Device Type
+    if any(bot in ua for bot in ["bot", "spider", "crawl", "curl", "wget", "headless", "postman", "python", "http"]):
+        device_type = "bot"
+    elif any(tab in ua for tab in ["ipad", "tablet", "playbook", "silk"]):
+        device_type = "tablet"
+    elif any(mob in ua for mob in ["mobi", "iphone", "android", "touch", "windows phone"]):
+        device_type = "mobile"
+    else:
+        device_type = "desktop"
+
+    # 2. Operating System
+    if "windows nt 10.0" in ua:
+        os_name = "Windows 10/11"
+    elif "windows nt 6.3" in ua:
+        os_name = "Windows 8.1"
+    elif "windows nt 6.1" in ua:
+        os_name = "Windows 7"
+    elif "mac os x" in ua:
+        os_name = "macOS"
+    elif "iphone" in ua or "ipad" in ua or "ipod" in ua:
+        os_name = "iOS"
+    elif "android" in ua:
+        os_name = "Android"
+    elif "linux" in ua:
+        os_name = "Linux"
+    elif "cros" in ua:
+        os_name = "Chrome OS"
+    else:
+        os_name = "Other OS"
+
+    # 3. Browser
+    if "edg/" in ua or "edge/" in ua:
+        browser = "Microsoft Edge"
+    elif "chrome/" in ua and "safari/" in ua and "edg/" not in ua and "opr/" not in ua:
+        browser = "Google Chrome"
+    elif "safari/" in ua and "chrome/" not in ua and "android" not in ua:
+        browser = "Apple Safari"
+    elif "firefox/" in ua:
+        browser = "Mozilla Firefox"
+    elif "opr/" in ua or "opera/" in ua:
+        browser = "Opera"
+    elif "trident/" in ua or "msie" in ua:
+        browser = "Internet Explorer"
+    else:
+        browser = "Other Browser"
+
+    return (browser, os_name, device_type)
 
 
 def _categorize_action(path: str, method: str) -> str:
@@ -55,11 +105,22 @@ def _categorize_action(path: str, method: str) -> str:
         return "user_login"
     elif "/auth/register" in p:
         return "user_register"
+    elif "/telemetry" in p:
+        return "client_telemetry"
     elif p.startswith("/api/"):
         return "api_request"
     elif p in ("/", "/index.html") or not p.startswith("/api"):
         return "page_view"
     return "general_request"
+
+
+def enqueue_telemetry_event(payload: Dict[str, Any]):
+    """Public helper to enqueue a telemetry event safely into the background batch worker."""
+    _ensure_worker_started()
+    try:
+        _ACTIVITY_QUEUE.put_nowait(payload)
+    except queue.Full:
+        pass
 
 
 def _telemetry_worker():
@@ -75,8 +136,8 @@ def _telemetry_worker():
             batch.append(item)
             _ACTIVITY_QUEUE.task_done()
             
-            # Drain up to 50 more items from the queue
-            while len(batch) < 50:
+            # Drain up to 100 more items from the queue
+            while len(batch) < 100:
                 try:
                     next_item = _ACTIVITY_QUEUE.get_nowait()
                     batch.append(next_item)
@@ -92,24 +153,66 @@ def _telemetry_worker():
         if batch:
             try:
                 with SessionLocal() as db:
-                    objs = [
-                        UserActivityLog(
+                    objs = []
+                    for b in batch:
+                        lat = b.get("latitude")
+                        lon = b.get("longitude")
+                        try:
+                            lat = float(lat) if lat is not None else None
+                        except Exception:
+                            lat = None
+                        try:
+                            lon = float(lon) if lon is not None else None
+                        except Exception:
+                            lon = None
+
+                        objs.append(UserActivityLog(
                             user_id=b.get("user_id"),
                             user_email=b.get("user_email"),
-                            ip_hash=b.get("ip_hash", "unknown"),
+                            anon_id=b.get("anon_id"),
                             session_id=b.get("session_id"),
+                            ip_hash=b.get("ip_hash", "unknown"),
+                            
+                            # Geolocation
+                            country=b.get("country"),
+                            region=b.get("region"),
+                            city=b.get("city"),
+                            postal_code=b.get("postal_code"),
+                            latitude=lat,
+                            longitude=lon,
+                            cf_ray=b.get("cf_ray"),
+                            
+                            # Request Details
                             endpoint=b.get("endpoint", "")[:255],
                             method=b.get("method", "GET")[:10],
                             action_type=b.get("action_type", "api_request")[:50],
                             status_code=b.get("status_code", 200),
                             duration_ms=b.get("duration_ms", 0.0),
+                            
+                            # Client Demographics
                             user_agent=b.get("user_agent", "")[:255],
                             device_type=b.get("device_type", "desktop")[:50],
+                            browser=b.get("browser")[:50] if b.get("browser") else None,
+                            os=b.get("os")[:50] if b.get("os") else None,
+                            screen_resolution=b.get("screen_resolution")[:50] if b.get("screen_resolution") else None,
+                            viewport_size=b.get("viewport_size")[:50] if b.get("viewport_size") else None,
+                            client_timezone=b.get("client_timezone")[:100] if b.get("client_timezone") else None,
+                            language=b.get("language")[:50] if b.get("language") else None,
+                            
+                            # Attribution
                             referrer=b.get("referrer", "")[:255],
+                            initial_referrer=b.get("initial_referrer", "")[:255] if b.get("initial_referrer") else None,
+                            utm_source=b.get("utm_source")[:100] if b.get("utm_source") else None,
+                            utm_medium=b.get("utm_medium")[:100] if b.get("utm_medium") else None,
+                            utm_campaign=b.get("utm_campaign")[:100] if b.get("utm_campaign") else None,
+                            utm_term=b.get("utm_term")[:100] if b.get("utm_term") else None,
+                            utm_content=b.get("utm_content")[:100] if b.get("utm_content") else None,
+                            
+                            # Event Details
+                            page_title=b.get("page_title")[:255] if b.get("page_title") else None,
+                            event_data=b.get("event_data"),
                             created_at=b.get("created_at", datetime.utcnow())
-                        )
-                        for b in batch
-                    ]
+                        ))
                     db.add_all(objs)
                     db.commit()
             except Exception as e:
@@ -162,22 +265,58 @@ class ObservabilityMiddleware(BaseHTTPMiddleware):
                 f"took {duration_ms:.2f}ms (status: {response.status_code})"
             )
 
-        # Skip noise: health probes and favicon/assets
+        # Skip noise: health probes, static assets, and telemetry beacon itself (telemetry endpoint logs itself)
         if not (
             path in ("/health", "/api/health", "/favicon.ico", "/favicon.png", "/favicon.svg")
             or path.startswith("/assets/")
             or path.startswith("/logos/")
+            or path.startswith("/api/telemetry/event")
             or request.method == "OPTIONS"
         ):
             user_agent = request.headers.get("user-agent") or ""
             ip_hash = self._get_ip_hash(request)
-            device_type = _detect_device_type(user_agent)
+            browser, os_name, device_type = parse_user_agent_details(user_agent)
             action_type = _categorize_action(path, request.method)
+            
+            # Extract anonymous and session identifiers
+            anon_id = request.headers.get("X-Anonymous-ID") or request.query_params.get("anon_id")
             session_id = request.headers.get("X-Session-ID") or request.cookies.get("session_id")
             
+            # Extract Cloudflare edge geolocation headers
+            country = request.headers.get("CF-IPCountry")
+            region = request.headers.get("CF-Region") or request.headers.get("CF-Region-Code")
+            city = request.headers.get("CF-IPCity")
+            postal_code = request.headers.get("CF-Postal-Code")
+            latitude = request.headers.get("CF-IPLatitude")
+            longitude = request.headers.get("CF-IPLongitude")
+            cf_ray = request.headers.get("CF-RAY")
+            
+            # Extract client dimensions and locale
+            screen_resolution = request.headers.get("X-Screen-Resolution")
+            viewport_size = request.headers.get("X-Viewport-Size")
+            client_timezone = request.headers.get("X-Client-Timezone")
+            language = (request.headers.get("accept-language") or "").split(",")[0].strip()
+            
+            # Extract attribution
+            referrer = request.headers.get("referer") or ""
+            initial_referrer = request.headers.get("X-Initial-Referrer")
+            utm_source = request.query_params.get("utm_source") or request.headers.get("X-UTM-Source")
+            utm_medium = request.query_params.get("utm_medium") or request.headers.get("X-UTM-Medium")
+            utm_campaign = request.query_params.get("utm_campaign") or request.headers.get("X-UTM-Campaign")
+            utm_term = request.query_params.get("utm_term") or request.headers.get("X-UTM-Term")
+            utm_content = request.query_params.get("utm_content") or request.headers.get("X-UTM-Content")
+
             payload = {
                 "ip_hash": ip_hash,
+                "anon_id": anon_id,
                 "session_id": session_id,
+                "country": country,
+                "region": region,
+                "city": city,
+                "postal_code": postal_code,
+                "latitude": latitude,
+                "longitude": longitude,
+                "cf_ray": cf_ray,
                 "endpoint": path,
                 "method": request.method,
                 "action_type": action_type,
@@ -185,12 +324,22 @@ class ObservabilityMiddleware(BaseHTTPMiddleware):
                 "duration_ms": round(duration_ms, 2),
                 "user_agent": user_agent[:250],
                 "device_type": device_type,
-                "referrer": (request.headers.get("referer") or "")[:250],
+                "browser": browser,
+                "os": os_name,
+                "screen_resolution": screen_resolution,
+                "viewport_size": viewport_size,
+                "client_timezone": client_timezone,
+                "language": language,
+                "referrer": referrer[:250],
+                "initial_referrer": initial_referrer[:250] if initial_referrer else None,
+                "utm_source": utm_source,
+                "utm_medium": utm_medium,
+                "utm_campaign": utm_campaign,
+                "utm_term": utm_term,
+                "utm_content": utm_content,
                 "created_at": datetime.utcnow()
             }
-            try:
-                _ACTIVITY_QUEUE.put_nowait(payload)
-            except queue.Full:
-                pass
+            enqueue_telemetry_event(payload)
             
         return response
+

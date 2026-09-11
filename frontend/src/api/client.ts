@@ -1,3 +1,7 @@
+import { tracker } from '../telemetry/tracker';
+
+export { tracker };
+
 export const API_BASE_URL = (
   import.meta.env.VITE_API_URL || 
   (import.meta.env.DEV ? '' : 'https://energy-innovation-api.onrender.com')
@@ -33,7 +37,21 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
     target = `${API_BASE_URL}${target}`;
   }
 
-  const method = (init?.method || (input instanceof Request ? input.method : 'GET')).toUpperCase();
+  // Automatically attach anonymous visitor and session telemetry headers
+  const telemetryHeaders = tracker.getTelemetryHeaders();
+  const mergedHeaders = new Headers(init?.headers || (input instanceof Request ? input.headers : undefined));
+  for (const [k, v] of Object.entries(telemetryHeaders)) {
+    if (v && !mergedHeaders.has(k)) {
+      mergedHeaders.set(k, v);
+    }
+  }
+
+  const effectiveInit: RequestInit = {
+    ...init,
+    headers: mergedHeaders
+  };
+
+  const method = (effectiveInit.method || (input instanceof Request ? input.method : 'GET')).toUpperCase();
   const isRetryableMethod = method === 'GET' || method === 'HEAD';
   const isDeduplicatable = isRetryableMethod && (!init || Object.keys(init).length === 0 || (Object.keys(init).length === 1 && init.method));
 
@@ -52,8 +70,8 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
     let lastError: any = null;
     for (let attempt = 0; attempt < maxRetries; attempt++) {
       try {
-        const req = input instanceof Request ? new Request(target, input) : target;
-        const res = await fetch(req, init);
+        const req = input instanceof Request ? new Request(target, { ...effectiveInit, body: input.body }) : target;
+        const res = await fetch(req, effectiveInit);
 
         // If Render backend is sleeping or spinning up, status is 502/503/504
         if (isRetryableMethod && (res.status === 502 || res.status === 503 || res.status === 504) && attempt < maxRetries - 1) {

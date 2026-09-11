@@ -4,7 +4,8 @@ import {
   ArrowUp, Plus, Copy, Check, Key, ShieldCheck,
   ChevronDown, ChevronUp, ExternalLink, RefreshCw, FileText,
   Building2, TrendingUp, BookOpen, Zap, User, Award, CheckCircle2,
-  Landmark, Rocket, Video, MessageSquare, Compass, Sliders
+  Landmark, Rocket, Video, MessageSquare, Compass, Sliders,
+  Newspaper, Radio
 } from 'lucide-react';
 import { 
   api,
@@ -281,9 +282,7 @@ export const ROLES: RoleOption[] = [
 ];
 
 export default function Chat() {
-  const [advisoryMode, setAdvisoryMode] = useState<AdvisoryMode>(() => {
-    return ((localStorage.getItem('terminal_advisory_mode') || localStorage.getItem('energysignal_advisory_mode')) as AdvisoryMode) || 'chat';
-  });
+  const [advisoryMode, setAdvisoryMode] = useState<AdvisoryMode>('chat');
   const [messages, setMessages] = useState<ChatMessageItem[]>([]);
   const [inputQuery, setInputQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -303,13 +302,19 @@ export default function Chat() {
 
   const handleRoleSelect = (role: UserRole) => {
     setUserRole(role);
-    localStorage.setItem('energysignal_user_role', role);
+    try {
+      localStorage.setItem('terminal_user_role', role);
+      localStorage.setItem('energysignal_user_role', role);
+    } catch {}
     setIsRoleDropdownOpen(false);
   };
 
   const handleSwitchMode = (mode: AdvisoryMode) => {
     setAdvisoryMode(mode);
-    localStorage.setItem('energysignal_advisory_mode', mode);
+    try {
+      localStorage.setItem('terminal_advisory_mode', mode);
+      localStorage.setItem('energysignal_advisory_mode', mode);
+    } catch {}
   };
 
   // Auto-scroll to bottom on new tokens
@@ -694,7 +699,7 @@ export default function Chat() {
           onRoleChange={handleRoleSelect}
           roles={ROLES}
           onSwitchToChat={() => handleSwitchMode('chat')}
-          onBackToHub={() => handleSwitchMode('landing')}
+          onBackToHub={() => handleSwitchMode('chat')}
         />
       </div>
     );
@@ -903,12 +908,12 @@ export default function Chat() {
       {/* Top Header Bar with Mode Switcher, Role Selector & Controls */}
       <header className="h-13 border-b border-slate-200 dark:border-slate-800 px-4 flex items-center justify-between shrink-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm z-20">
         <div className="flex items-center gap-3">
-          {/* Back to Advisor Hub Link */}
+          {/* Perspective Dropdown Toggle */}
           <button
             type="button"
-            onClick={() => handleSwitchMode('landing')}
+            onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[12px] font-semibold transition-colors cursor-pointer"
-            title="Return to Advisor Perspectives"
+            title="Switch Operational Perspective"
           >
             <Compass size={13} className="text-slate-500 dark:text-slate-400" />
             <span>Perspectives</span>
@@ -1014,13 +1019,53 @@ export default function Chat() {
                   Strategic intelligence across 56,413 awards, 5,757 solicitations, and innovation networks.
                 </p>
 
+                {/* Fast-Jump Capability Navigation Bar */}
+                <div className="flex items-center justify-center gap-1.5 flex-wrap pt-2 max-w-xl mx-auto">
+                  <Link
+                    to="/digest"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 hover:bg-emerald-100 transition shadow-2xs"
+                  >
+                    <Newspaper size={12} className="text-emerald-600 dark:text-emerald-400" />
+                    <span>Daily Digest</span>
+                  </Link>
+                  <Link
+                    to="/analyze"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 transition shadow-2xs"
+                  >
+                    <Sliders size={12} className="text-indigo-600 dark:text-indigo-400" />
+                    <span>Match Screener</span>
+                  </Link>
+                  <Link
+                    to="/radar"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 hover:bg-amber-100 transition shadow-2xs"
+                  >
+                    <Radio size={12} className="text-amber-600 dark:text-amber-400" />
+                    <span>Predictive Radar</span>
+                  </Link>
+                  <Link
+                    to="/sankey"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-cyan-50 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60 hover:bg-cyan-100 transition shadow-2xs"
+                  >
+                    <TrendingUp size={12} className="text-cyan-600 dark:text-cyan-400" />
+                    <span>Capital Flows</span>
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => window.dispatchEvent(new CustomEvent('open-quick-start-guide'))}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition shadow-2xs cursor-pointer"
+                  >
+                    <Compass size={12} className="text-slate-500 dark:text-slate-400" />
+                    <span>Platform Guide</span>
+                  </button>
+                </div>
+
                 {/* Perspective & Spoken Prompt Starters */}
-                <div className="pt-4 max-w-xl mx-auto space-y-3">
+                <div className="pt-3 max-w-xl mx-auto space-y-3">
                   <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1">
-                    <span>Perspective: <strong className="text-slate-800 dark:text-slate-200">{currentRoleConfig.badge}</strong></span>
+                    <span>Active Perspective: <strong className="text-slate-800 dark:text-slate-200">{currentRoleConfig.badge}</strong></span>
                     <button
                       type="button"
-                      onClick={() => handleSwitchMode('landing')}
+                      onClick={() => setIsRoleDropdownOpen(true)}
                       className="text-blue-600 dark:text-blue-400 hover:underline font-semibold cursor-pointer"
                     >
                       Change Perspective &rarr;
@@ -1041,6 +1086,26 @@ export default function Chat() {
                         <div className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 mt-1">
                           {sp.prompt}
                         </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* High-Frequency Universal Topic Chips */}
+                  <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-center gap-1.5 flex-wrap">
+                    <span className="text-[10.5px] font-mono text-slate-400 dark:text-slate-500">Popular queries:</span>
+                    {[
+                      { label: '⚡ Next 90-Day Deadlines', prompt: 'List all open clean energy solicitations closing in the next 90 days with funding over $1M.' },
+                      { label: '💰 Grant Stacking Guide', prompt: 'How can developers stack federal DOE demonstration grants with state clean energy matching funds?' },
+                      { label: '📜 IRA §45/§48 Tax Monetization', prompt: 'Explain the elective direct pay cash monetization rules for clean energy tax credits under IRA §45/§48.' },
+                      { label: '🏢 Top Storage Performers', prompt: 'Who are the top repeat winning companies and universities in energy storage and grid modernization?' },
+                    ].map((chip, cIdx) => (
+                      <button
+                        key={cIdx}
+                        type="button"
+                        onClick={() => handleSend(chip.prompt)}
+                        className="text-[10.5px] px-2 py-0.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-medium transition cursor-pointer border border-slate-200 dark:border-slate-700"
+                      >
+                        {chip.label}
                       </button>
                     ))}
                   </div>

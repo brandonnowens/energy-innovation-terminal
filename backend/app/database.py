@@ -83,82 +83,113 @@ def init_db():
         recipient, organization, community, user, result, proposal,
         contact, relationship, attribution, technology, opportunity_organization,
         policy, admin_email, news, interconnection, lab_facility, sec_form_d,
-        scaleup_capital, procurement, der_market, university_ip
+        scaleup_capital, procurement, der_market, university_ip, user_activity
     )  # noqa: F401
     Base.metadata.create_all(bind=engine)
     
-    # Ensure any new columns exist in PostgreSQL or SQLite
-    try:
-        with engine.begin() as conn:
-            if engine.dialect.name == "postgresql":
-                conn.execute(text("ALTER TABLE recipients ADD COLUMN IF NOT EXISTS enrichment_source VARCHAR(200);"))
-                conn.execute(text("ALTER TABLE recipients ADD COLUMN IF NOT EXISTS last_enriched_at TIMESTAMP;"))
-                conn.execute(text("ALTER TABLE recipients ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;"))
-                conn.execute(text("ALTER TABLE recipients ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;"))
-                conn.execute(text("ALTER TABLE technologies ADD COLUMN IF NOT EXISTS vector_type VARCHAR(32) DEFAULT 'hardware';"))
-                conn.execute(text("ALTER TABLE technologies ADD COLUMN IF NOT EXISTS fuel_profile_json TEXT;"))
-                conn.execute(text("ALTER TABLE policy_standards ALTER COLUMN latest_revision TYPE VARCHAR(255);"))
-                conn.execute(text("ALTER TABLE policy_standards ALTER COLUMN code_identifier TYPE VARCHAR(255);"))
-                conn.execute(text("ALTER TABLE contacts ADD COLUMN IF NOT EXISTS address_line1 VARCHAR(300);"))
-                conn.execute(text("ALTER TABLE contacts ADD COLUMN IF NOT EXISTS address_line2 VARCHAR(200);"))
-                conn.execute(text("ALTER TABLE contacts ADD COLUMN IF NOT EXISTS postal_code VARCHAR(30);"))
-                conn.execute(text("ALTER TABLE contacts ADD COLUMN IF NOT EXISTS formatted_address VARCHAR(500);"))
-                conn.execute(text("ALTER TABLE contacts ADD COLUMN IF NOT EXISTS address_verification_status VARCHAR(50) DEFAULT 'verified';"))
-                conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS ghost_member_id VARCHAR(100);"))
-                conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS ghost_subscription_tier VARCHAR(100);"))
-                conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS ghost_status VARCHAR(50) DEFAULT 'free';"))
-            else:
-                for col, typ in [
-                    ("ghost_member_id", "TEXT"),
-                    ("ghost_subscription_tier", "TEXT"),
-                    ("ghost_status", "TEXT DEFAULT 'free'")
-                ]:
-                    try:
-                        conn.execute(text(f"ALTER TABLE users ADD COLUMN {col} {typ};"))
-                    except Exception:
-                        pass
+    # Ensure any new columns exist in PostgreSQL or SQLite safely without failing the entire batch
+    def _safe_migration(stmt: str):
+        try:
+            with engine.connect() as conn:
+                conn.execute(text(stmt))
+                conn.commit()
+        except Exception:
+            pass
 
-                for col, typ in [
-                    ("address_line1", "TEXT"),
-                    ("address_line2", "TEXT"),
-                    ("postal_code", "TEXT"),
-                    ("formatted_address", "TEXT"),
-                    ("address_verification_status", "TEXT DEFAULT 'verified'")
-                ]:
-                    try:
-                        conn.execute(text(f"ALTER TABLE contacts ADD COLUMN {col} {typ};"))
-                    except Exception:
-                        pass
-                
-                for col, typ in [
-                    ("eligible_applicant_types", "TEXT"),
-                    ("eligible_technology_areas", "TEXT"),
-                    ("eligible_sectors", "TEXT"),
-                    ("eligible_activity_types", "TEXT"),
-                    ("project_cost_min", "REAL"),
-                    ("project_cost_max", "REAL"),
-                    ("cost_share_mandatory", "INTEGER DEFAULT 0"),
-                    ("statutory_mandates", "TEXT"),
-                    ("priority_problem_statements", "TEXT"),
-                    ("scoring_rubric_weights", "TEXT"),
-                    ("proposal_requirements_summary", "TEXT"),
-                    ("teaming_partner_types_sought", "TEXT"),
-                    ("disadvantaged_community_priority", "INTEGER DEFAULT 0"),
-                    ("total_awarded", "REAL"),
-                    ("award_count_actual", "INTEGER"),
-                    ("funding_provenance", "TEXT")
-                ]:
-                    try:
-                        conn.execute(text(f"ALTER TABLE opportunities ADD COLUMN {col} {typ};"))
-                    except Exception:
-                        pass
-
-                try:
-                    conn.execute(text("ALTER TABLE programs ADD COLUMN organization_id INTEGER;"))
-                except Exception:
-                    pass
-    except Exception as e:
-        print(f"Schema migration note: {e}")
+    if engine.dialect.name == "postgresql":
+        pg_stmts = [
+            "ALTER TABLE recipients ADD COLUMN IF NOT EXISTS enrichment_source VARCHAR(200);",
+            "ALTER TABLE recipients ADD COLUMN IF NOT EXISTS last_enriched_at TIMESTAMP;",
+            "ALTER TABLE recipients ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;",
+            "ALTER TABLE recipients ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;",
+            "ALTER TABLE technologies ADD COLUMN IF NOT EXISTS vector_type VARCHAR(32) DEFAULT 'hardware';",
+            "ALTER TABLE technologies ADD COLUMN IF NOT EXISTS fuel_profile_json TEXT;",
+            "ALTER TABLE contacts ADD COLUMN IF NOT EXISTS address_line1 VARCHAR(300);",
+            "ALTER TABLE contacts ADD COLUMN IF NOT EXISTS address_line2 VARCHAR(200);",
+            "ALTER TABLE contacts ADD COLUMN IF NOT EXISTS postal_code VARCHAR(30);",
+            "ALTER TABLE contacts ADD COLUMN IF NOT EXISTS formatted_address VARCHAR(500);",
+            "ALTER TABLE contacts ADD COLUMN IF NOT EXISTS address_verification_status VARCHAR(50) DEFAULT 'verified';",
+            "ALTER TABLE users ADD COLUMN IF NOT EXISTS ghost_member_id VARCHAR(100);",
+            "ALTER TABLE users ADD COLUMN IF NOT EXISTS ghost_subscription_tier VARCHAR(100);",
+            "ALTER TABLE users ADD COLUMN IF NOT EXISTS ghost_status VARCHAR(50) DEFAULT 'free';",
+            # user_activity_logs expanded telemetry columns
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS anon_id VARCHAR(64);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS country VARCHAR(10);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS region VARCHAR(50);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS city VARCHAR(100);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS postal_code VARCHAR(20);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS latitude DOUBLE PRECISION;",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS longitude DOUBLE PRECISION;",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS cf_ray VARCHAR(50);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS screen_resolution VARCHAR(50);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS viewport_size VARCHAR(50);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS client_timezone VARCHAR(100);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS language VARCHAR(50);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS browser VARCHAR(50);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS os VARCHAR(50);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS initial_referrer VARCHAR(255);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS utm_source VARCHAR(100);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS utm_medium VARCHAR(100);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS utm_campaign VARCHAR(100);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS utm_term VARCHAR(100);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS utm_content VARCHAR(100);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS page_title VARCHAR(255);",
+            "ALTER TABLE user_activity_logs ADD COLUMN IF NOT EXISTS event_data TEXT;",
+        ]
+        for s in pg_stmts:
+            _safe_migration(s)
+    else:
+        sqlite_cols = [
+            ("users", "ghost_member_id", "TEXT"),
+            ("users", "ghost_subscription_tier", "TEXT"),
+            ("users", "ghost_status", "TEXT DEFAULT 'free'"),
+            ("contacts", "address_line1", "TEXT"),
+            ("contacts", "address_line2", "TEXT"),
+            ("contacts", "postal_code", "TEXT"),
+            ("contacts", "formatted_address", "TEXT"),
+            ("contacts", "address_verification_status", "TEXT DEFAULT 'verified'"),
+            ("opportunities", "eligible_applicant_types", "TEXT"),
+            ("opportunities", "eligible_technology_areas", "TEXT"),
+            ("opportunities", "eligible_sectors", "TEXT"),
+            ("opportunities", "eligible_activity_types", "TEXT"),
+            ("opportunities", "project_cost_min", "REAL"),
+            ("opportunities", "project_cost_max", "REAL"),
+            ("opportunities", "cost_share_mandatory", "INTEGER DEFAULT 0"),
+            ("opportunities", "statutory_mandates", "TEXT"),
+            ("opportunities", "priority_problem_statements", "TEXT"),
+            ("opportunities", "scoring_rubric_weights", "TEXT"),
+            ("opportunities", "proposal_requirements_summary", "TEXT"),
+            ("opportunities", "teaming_partner_types_sought", "TEXT"),
+            ("opportunities", "disadvantaged_community_priority", "INTEGER DEFAULT 0"),
+            ("opportunities", "total_awarded", "REAL"),
+            ("opportunities", "award_count_actual", "INTEGER"),
+            ("opportunities", "funding_provenance", "TEXT"),
+            ("user_activity_logs", "anon_id", "TEXT"),
+            ("user_activity_logs", "country", "TEXT"),
+            ("user_activity_logs", "region", "TEXT"),
+            ("user_activity_logs", "city", "TEXT"),
+            ("user_activity_logs", "postal_code", "TEXT"),
+            ("user_activity_logs", "latitude", "REAL"),
+            ("user_activity_logs", "longitude", "REAL"),
+            ("user_activity_logs", "cf_ray", "TEXT"),
+            ("user_activity_logs", "screen_resolution", "TEXT"),
+            ("user_activity_logs", "viewport_size", "TEXT"),
+            ("user_activity_logs", "client_timezone", "TEXT"),
+            ("user_activity_logs", "language", "TEXT"),
+            ("user_activity_logs", "browser", "TEXT"),
+            ("user_activity_logs", "os", "TEXT"),
+            ("user_activity_logs", "initial_referrer", "TEXT"),
+            ("user_activity_logs", "utm_source", "TEXT"),
+            ("user_activity_logs", "utm_medium", "TEXT"),
+            ("user_activity_logs", "utm_campaign", "TEXT"),
+            ("user_activity_logs", "utm_term", "TEXT"),
+            ("user_activity_logs", "utm_content", "TEXT"),
+            ("user_activity_logs", "page_title", "TEXT"),
+            ("user_activity_logs", "event_data", "TEXT"),
+        ]
+        for tbl, col, typ in sqlite_cols:
+            _safe_migration(f"ALTER TABLE {tbl} ADD COLUMN {col} {typ};")
+        _safe_migration("ALTER TABLE programs ADD COLUMN organization_id INTEGER;")
     
     # Auto-seed primary system administrator
 

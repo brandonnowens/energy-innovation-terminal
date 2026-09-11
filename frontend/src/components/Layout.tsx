@@ -20,9 +20,11 @@ import { NyserdaToggle } from './NyserdaToggle';
 import { BrandonSignatureModal } from './BrandonSignatureModal';
 import { LegalComplianceModal } from './LegalComplianceModal';
 import { ApiDocsModal } from './ApiDocsModal';
+import { QuickStartModal } from './QuickStartModal';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNyserda } from '../context/NyserdaContext';
+import { tracker } from '../telemetry/tracker';
 
 export default function Layout() {
   const { user } = useAuth();
@@ -34,9 +36,15 @@ export default function Layout() {
   const [signatureModalOpen, setSignatureModalOpen] = useState(false);
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [apiModalOpen, setApiModalOpen] = useState(false);
+  const [quickStartModalOpen, setQuickStartModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Automatic anonymous & user page view telemetry recording on every route change
+  useEffect(() => {
+    tracker.trackPageView(location.pathname + location.search);
+  }, [location.pathname, location.search]);
 
   // Persona Front Door Selection: 'investor' | 'innovator' | 'all'
   const [persona, setPersona] = useState<'investor' | 'innovator' | 'all'>(() => {
@@ -53,27 +61,23 @@ export default function Layout() {
       localStorage.setItem('energy_terminal_persona_v1', newPersona);
     } catch {}
     window.dispatchEvent(new CustomEvent('persona-changed', { detail: newPersona }));
-
-    // Contextual front door routing: if switching persona while on a primary landing page
-    if (newPersona === 'innovator' && (location.pathname === '/digest' || location.pathname === '/daily-digest' || location.pathname === '/daily-brief' || location.pathname === '/brief')) {
-      navigate('/');
-    } else if (newPersona === 'investor' && (location.pathname === '/' || location.pathname === '/analyze' || location.pathname === '/match')) {
-      navigate('/digest');
-    }
   };
 
-  // Dynamic home destination matching active persona
+  // Dynamic home destination matching active persona: always Strategic Advisory
   const homeRoute = '/';
 
   // Comprehensive active route matcher ensuring zero de-synchronization across aliases & deep links
   const isItemActive = (itemTo: string): boolean => {
     if (itemTo === '__api_modal__') return apiModalOpen;
     const p = location.pathname;
+    if (itemTo === '/' || itemTo === '/chat') {
+      return p === '/' || p === '/chat' || p.startsWith('/chat') || p === '/advisory' || p === '/strategic-advisory' || p === '/advisor';
+    }
     if (itemTo === '/digest') {
       return p === '/digest' || p.startsWith('/digest') || p.startsWith('/daily-digest') || p.startsWith('/daily-brief') || p === '/brief';
     }
-    if (itemTo === '/' || itemTo === '/analyze') {
-      return p === '/' || p === '/analyze' || p.startsWith('/analyze') || p === '/match' || p.startsWith('/match');
+    if (itemTo === '/analyze' || itemTo === '/match') {
+      return p === '/analyze' || p.startsWith('/analyze') || p === '/match' || p.startsWith('/match');
     }
     if (itemTo === '/radar') {
       return p === '/radar' || p.startsWith('/radar') || p.startsWith('/forecasting');
@@ -216,10 +220,13 @@ export default function Layout() {
     };
     window.addEventListener('keydown', handleKeyDown);
     const handleOpenApiDocs = () => setApiModalOpen(true);
+    const handleOpenGuide = () => setQuickStartModalOpen(true);
     window.addEventListener('open-api-docs-modal', handleOpenApiDocs);
+    window.addEventListener('open-quick-start-guide', handleOpenGuide);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('open-api-docs-modal', handleOpenApiDocs);
+      window.removeEventListener('open-quick-start-guide', handleOpenGuide);
     };
   }, []);
 
@@ -473,7 +480,7 @@ export default function Layout() {
           {/* Top Primary Item: Strategic Advisory */}
           <div className="space-y-1 mb-2">
             <NavLink
-              to="/chat"
+              to="/"
               onClick={() => isMobile && setMobileMenuOpen(false)}
               className={clsx(
                 'flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border',
@@ -825,6 +832,21 @@ export default function Layout() {
             <ThemeToggle />
             <button
               type="button"
+              onClick={() => setQuickStartModalOpen(true)}
+              className={clsx(
+                "inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border shadow-2xs cursor-pointer",
+                isDark
+                  ? "bg-cyan-500/10 hover:bg-cyan-500/20 text-[#00E5FF] border-cyan-500/30 hover:border-cyan-400/50"
+                  : "bg-cyan-50 hover:bg-cyan-100 text-cyan-800 border-cyan-200"
+              )}
+              title="Open Platform Quick Start Guide & Capabilities Tour"
+            >
+              <Compass size={13} className="text-[#00E5FF] dark:text-[#00E5FF]" />
+              <span className="hidden sm:inline">Guide</span>
+            </button>
+
+            <button
+              type="button"
               onClick={() => setCommandPaletteOpen(true)}
               className={clsx(
                 "inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all border shadow-2xs cursor-pointer",
@@ -844,13 +866,14 @@ export default function Layout() {
           </div>
         </header>
 
-        {/* Auth, Membership, Account, Brandon Signature & Legal Compliance Modals */}
+        {/* Auth, Membership, Account, Brandon Signature, Legal Compliance & Quick Start Modals */}
         <AuthModal />
         <MembershipModal />
         <AccountModal />
         <BrandonSignatureModal isOpen={signatureModalOpen} onClose={() => setSignatureModalOpen(false)} />
         <LegalComplianceModal isOpen={legalModalOpen} onClose={() => setLegalModalOpen(false)} />
         <ApiDocsModal isOpen={apiModalOpen} onClose={() => setApiModalOpen(false)} />
+        <QuickStartModal isOpen={quickStartModalOpen} onClose={() => setQuickStartModalOpen(false)} />
 
 
         {/* Page Content */}

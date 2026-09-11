@@ -42,6 +42,7 @@ const STATIC_ACTIONS = [
   { id: 'nav-dockets', label: 'Dockets', sub: 'Public Utility Commission dockets, large load interconnection & VPP tariffs', to: '/dockets', icon: Scale, category: 'References' },
   { id: 'nav-updates', label: 'Feeds', sub: 'Real-time telemetry and audit feed of detected dataset updates', to: '/updates', icon: Activity, category: 'Data & Audit' },
   { id: 'nav-sources', label: 'Provenance', sub: 'Source authority ranking, audit metrics, and database status', to: '/sources', icon: Database, category: 'Data & Audit' },
+  { id: 'nav-quick-start', label: 'Platform Quick Start Guide & Tour', sub: 'Interactive guide explaining core pillars, recommended workflows, and shortcuts', to: '__quick_start_guide__', icon: Compass, category: 'System' },
   { id: 'nav-api-docs', label: 'Developers & API Docs', sub: 'Interactive OpenAPI docs, developer tools, and Python/cURL endpoints', to: '__api_modal__', icon: Terminal, category: 'Data & Audit' },
   { id: 'nav-splash', label: 'Replay Splash', sub: 'Interactive launch sequence and telemetry indexing animation', to: '__splash__', icon: Compass, category: 'System' },
 ];
@@ -396,7 +397,10 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
 
   const handleSelectItem = (item: any) => {
     if (!item) return;
-    if (item.to === '__splash__') {
+    if (item.to === '__quick_start_guide__') {
+      onClose();
+      window.dispatchEvent(new CustomEvent('open-quick-start-guide'));
+    } else if (item.to === '__splash__') {
       onClose();
       window.dispatchEvent(new CustomEvent('replay-splash-screen'));
     } else if (item.to === '__api_modal__') {

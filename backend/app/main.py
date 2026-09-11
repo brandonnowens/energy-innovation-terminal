@@ -156,7 +156,9 @@ from app.api.ira_calculator import router as ira_calculator_router
 from app.api.ingestion import router as ingestion_router
 from app.api.v1.digest import router as digest_router
 from app.api.search import router as search_router
+from app.api.telemetry import router as telemetry_router
 
+app.include_router(telemetry_router, prefix="/api", tags=["Telemetry & Anonymous Visitor Analytics"])
 app.include_router(search_router, prefix="/api", tags=["Universal Search"])
 app.include_router(digest_router, prefix="/api", tags=["Daily Digest"])
 app.include_router(analyze_router, prefix="/api", tags=["Analysis"])

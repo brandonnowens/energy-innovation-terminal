@@ -1172,6 +1172,16 @@ export default function AnalyzeProject() {
         <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
           <button
             type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-quick-start-guide'))}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 transition shadow-2xs cursor-pointer"
+            title="Open Platform Quick Start Guide"
+          >
+            <Compass size={13} className="text-cyan-400" />
+            <span>Guide</span>
+          </button>
+
+          <button
+            type="button"
             onClick={() => {
               window.dispatchEvent(new CustomEvent('switch-persona', { detail: 'investor' }));
               navigate('/digest');
@@ -1183,6 +1193,31 @@ export default function AnalyzeProject() {
             <span>Investor View</span>
             <ArrowRight size={12} className="text-slate-400" />
           </button>
+        </div>
+      </div>
+
+      {/* 3-Step Match Workflow Ribbon */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="p-3 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-500/30 flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center shrink-0">1</div>
+          <div className="min-w-0">
+            <div className="text-xs font-bold text-indigo-950 dark:text-indigo-200 truncate">Load Scope or Preset</div>
+            <div className="text-[10.5px] text-slate-500 dark:text-slate-400 truncate">Upload doc or select 1-click sample</div>
+          </div>
+        </div>
+        <div className="p-3 rounded-xl bg-cyan-50/70 dark:bg-cyan-950/30 border border-cyan-200/80 dark:border-cyan-500/30 flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded-full bg-cyan-600 text-white font-bold text-xs flex items-center justify-center shrink-0">2</div>
+          <div className="min-w-0">
+            <div className="text-xs font-bold text-cyan-950 dark:text-cyan-200 truncate">Select Target Agencies</div>
+            <div className="text-[10.5px] text-slate-500 dark:text-slate-400 truncate">Federal, State &amp; Utility entities</div>
+          </div>
+        </div>
+        <div className="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-500/30 flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center shrink-0">3</div>
+          <div className="min-w-0">
+            <div className="text-xs font-bold text-emerald-950 dark:text-emerald-200 truncate">Generate Matches &amp; Brief</div>
+            <div className="text-[10.5px] text-slate-500 dark:text-slate-400 truncate">Say-Yes Matrix, TBR &amp; PDF Report</div>
+          </div>
         </div>
       </div>
 
