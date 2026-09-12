@@ -31,17 +31,19 @@ def _build_engine():
         pg_engine = create_engine(
             db_url,
             echo=False,
-            pool_size=getattr(settings, "db_pool_size", 5),
-            max_overflow=getattr(settings, "db_max_overflow", 5),
-            pool_timeout=getattr(settings, "db_pool_timeout", 15),
+            pool_size=getattr(settings, "db_pool_size", 15),
+            max_overflow=getattr(settings, "db_max_overflow", 10),
+            pool_timeout=getattr(settings, "db_pool_timeout", 30),
             pool_pre_ping=True,
-            pool_recycle=getattr(settings, "db_pool_recycle", 120),
+            pool_recycle=getattr(settings, "db_pool_recycle", 300),
             connect_args=connect_args
         )
         try:
             with pg_engine.connect() as conn:
                 conn.execute(text("SELECT 1"))
-            print(f"[Database] Successfully connected to PostgreSQL cluster ({db_url.split('@')[-1] if '@' in db_url else 'localhost'})")
+            conn_target = db_url.split('@')[-1] if '@' in db_url else 'localhost'
+            mode_label = "Direct (Dedicated Port 5432)" if "db." in db_url else ("Transaction Pooler (Port 6543)" if ":6543" in db_url else "Session Pooler (Port 5432)")
+            print(f"[Database] Successfully connected to Supabase Pro PostgreSQL: {mode_label} -> {conn_target}")
         except Exception as e:
             print(f"[Database Warning] Initial PostgreSQL ping had exception ({e}), pool_pre_ping will retry on demand.")
         return pg_engine

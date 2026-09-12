@@ -1,6 +1,7 @@
 {
-  "report_date": "2026-09-11",
-  "generated_at": "2026-09-11 23:37:02 UTC",
+  "report_date": "2026-09-12",
+  "yesterday_date": "2026-09-11",
+  "generated_at": "2026-09-12 17:52:57 UTC",
   "user_metrics": {
     "accounts": {
       "total_registered": 2,
@@ -33,7 +34,8 @@
     },
     "grant_matching": {
       "total_lifetime_analyses": 379,
-      "today_analyses": 13,
+      "today_analyses": 0,
+      "yesterday_analyses": 13,
       "last_24h_analyses": 13,
       "last_7d_analyses": 279,
       "last_30d_analyses": 379,
@@ -168,6 +170,7 @@
     "proposals": {
       "total_proposals": 66,
       "today_proposals": 0,
+      "yesterday_proposals": 0,
       "won_proposals": 60,
       "total_requested_funding_usd": 80300000.0,
       "total_project_budget_usd": 86500000.0,
@@ -263,6 +266,8 @@
     },
     "feature_tools": {
       "foa_shreds_total": 7,
+      "foa_shreds_today": 0,
+      "foa_shreds_yesterday": 0,
       "foa_avg_cost_share_pct": 20.0,
       "foa_justice40_mandated": 6,
       "custom_reports_created": 36,
@@ -271,42 +276,52 @@
       "saved_custom_views": 12
     },
     "traffic_telemetry": {
-      "total_requests_recorded": 397,
-      "today_requests": 233,
-      "today_unique_visitors": 26,
-      "wau_unique_visitors": 49,
-      "mau_unique_visitors": 49,
-      "today_sessions": 1,
-      "today_avg_latency_ms": 2493.7,
+      "total_requests_recorded": 528,
+      "today_requests": 128,
+      "yesterday_requests": 236,
+      "today_unique_visitors": 15,
+      "yesterday_unique_visitors": 27,
+      "wau_unique_visitors": 65,
+      "mau_unique_visitors": 65,
+      "today_sessions": 0,
+      "yesterday_sessions": 1,
+      "today_avg_latency_ms": 1823.1,
+      "yesterday_avg_latency_ms": 2567.2,
       "actions_breakdown": [
         {
           "action": "api_request",
-          "count_today": 207,
-          "count_7d": 351
+          "count_today": 124,
+          "count_yesterday": 210,
+          "count_7d": 478
         },
         {
           "action": "page_view",
-          "count_today": 9,
+          "count_today": 0,
+          "count_yesterday": 9,
           "count_7d": 18
         },
         {
           "action": "copilot_chat",
-          "count_today": 10,
-          "count_7d": 14
+          "count_today": 1,
+          "count_yesterday": 10,
+          "count_7d": 15
         },
         {
           "action": "grant_match_analysis",
-          "count_today": 5,
-          "count_7d": 8
+          "count_today": 1,
+          "count_yesterday": 5,
+          "count_7d": 9
         },
         {
           "action": "proposal_generator",
           "count_today": 2,
-          "count_7d": 5
+          "count_yesterday": 2,
+          "count_7d": 7
         },
         {
           "action": "report_create",
           "count_today": 0,
+          "count_yesterday": 0,
           "count_7d": 1
         }
       ],
@@ -325,7 +340,7 @@
       "device_breakdown": [
         {
           "device": "desktop",
-          "count": 359
+          "count": 490
         },
         {
           "device": "mobile",
@@ -338,6 +353,10 @@
       ],
       "browser_breakdown": [
         {
+          "browser": "Google Chrome",
+          "count": 140
+        },
+        {
           "browser": "Apple Safari",
           "count": 28
         },
@@ -348,16 +367,12 @@
         {
           "browser": "Microsoft Edge",
           "count": 13
-        },
-        {
-          "browser": "Google Chrome",
-          "count": 9
         }
       ],
       "traffic_sources": [
         {
           "source": "https://terminal.aixenergy.io/",
-          "count": 332
+          "count": 463
         },
         {
           "source": "",
@@ -376,164 +391,202 @@
         {
           "endpoint": "/api/v1/digest/latest",
           "workspace": "Daily Intelligence Digest",
-          "today_hits": 24,
-          "hits_7d": 70,
-          "unique_visitors": 28,
-          "share_pct": 17.6,
-          "avg_latency_ms": 151.7
+          "today_hits": 2,
+          "yesterday_hits": 24,
+          "hits_7d": 72,
+          "unique_visitors": 29,
+          "share_pct": 13.6,
+          "avg_latency_ms": 150.4
         },
         {
           "endpoint": "/api/v1/digest/archive",
           "workspace": "Daily Intelligence Digest",
-          "today_hits": 23,
-          "hits_7d": 65,
-          "unique_visitors": 26,
-          "share_pct": 16.4,
-          "avg_latency_ms": 225.0
+          "today_hits": 2,
+          "yesterday_hits": 23,
+          "hits_7d": 67,
+          "unique_visitors": 27,
+          "share_pct": 12.7,
+          "avg_latency_ms": 221.3
         },
         {
           "endpoint": "/api/tavus/synthesize-and-sync",
           "workspace": "Multimodal Video Advisor",
-          "today_hits": 37,
+          "today_hits": 0,
+          "yesterday_hits": 37,
           "hits_7d": 37,
           "unique_visitors": 1,
-          "share_pct": 9.3,
+          "share_pct": 7.0,
           "avg_latency_ms": 11424.4
         },
         {
           "endpoint": "/api/chat/status",
           "workspace": "Platform Service",
-          "today_hits": 10,
-          "hits_7d": 14,
-          "unique_visitors": 6,
-          "share_pct": 3.5,
-          "avg_latency_ms": 9.7
+          "today_hits": 1,
+          "yesterday_hits": 10,
+          "hits_7d": 15,
+          "unique_visitors": 7,
+          "share_pct": 2.8,
+          "avg_latency_ms": 9.2
         },
         {
-          "endpoint": "/",
-          "workspace": "Strategic Advisory Hub",
-          "today_hits": 4,
-          "hits_7d": 12,
-          "unique_visitors": 6,
-          "share_pct": 3.0,
-          "avg_latency_ms": 785.2
+          "endpoint": "/api/network/teaming-recommendations",
+          "workspace": "Ecosystem Knowledge Graph",
+          "today_hits": 13,
+          "yesterday_hits": 1,
+          "hits_7d": 14,
+          "unique_visitors": 14,
+          "share_pct": 2.7,
+          "avg_latency_ms": 11011.9
         },
         {
           "endpoint": "/api/agencies",
           "workspace": "Organizations Directory",
-          "today_hits": 7,
-          "hits_7d": 10,
-          "unique_visitors": 4,
+          "today_hits": 3,
+          "yesterday_hits": 7,
+          "hits_7d": 13,
+          "unique_visitors": 5,
           "share_pct": 2.5,
-          "avg_latency_ms": 550.8
+          "avg_latency_ms": 484.3
+        },
+        {
+          "endpoint": "/",
+          "workspace": "Strategic Advisory Hub",
+          "today_hits": 0,
+          "yesterday_hits": 4,
+          "hits_7d": 12,
+          "unique_visitors": 6,
+          "share_pct": 2.3,
+          "avg_latency_ms": 785.2
+        },
+        {
+          "endpoint": "/api/linkages/trace",
+          "workspace": "Ecosystem Linkage Tracer",
+          "today_hits": 7,
+          "yesterday_hits": 4,
+          "hits_7d": 11,
+          "unique_visitors": 8,
+          "share_pct": 2.1,
+          "avg_latency_ms": 373.3
+        },
+        {
+          "endpoint": "/api/artifacts",
+          "workspace": "Artifacts & Export Hub",
+          "today_hits": 10,
+          "yesterday_hits": 0,
+          "hits_7d": 10,
+          "unique_visitors": 9,
+          "share_pct": 1.9,
+          "avg_latency_ms": 165.9
         },
         {
           "endpoint": "/api/sankey/flow",
           "workspace": "Capital Continuum Sankey",
-          "today_hits": 3,
+          "today_hits": 1,
+          "yesterday_hits": 3,
+          "hits_7d": 8,
+          "unique_visitors": 3,
+          "share_pct": 1.5,
+          "avg_latency_ms": 813.2
+        },
+        {
+          "endpoint": "/api/forecasting/radar",
+          "workspace": "Forecasting Radar",
+          "today_hits": 1,
+          "yesterday_hits": 2,
           "hits_7d": 7,
           "unique_visitors": 2,
-          "share_pct": 1.8,
-          "avg_latency_ms": 771.8
+          "share_pct": 1.3,
+          "avg_latency_ms": 3848.5
+        },
+        {
+          "endpoint": "/api/attributions/recipients",
+          "workspace": "Recipient Dossiers",
+          "today_hits": 1,
+          "yesterday_hits": 5,
+          "hits_7d": 7,
+          "unique_visitors": 2,
+          "share_pct": 1.3,
+          "avg_latency_ms": 207.4
         },
         {
           "endpoint": "/api/sankey/insights",
           "workspace": "Capital Continuum Sankey",
-          "today_hits": 3,
-          "hits_7d": 6,
+          "today_hits": 1,
+          "yesterday_hits": 3,
+          "hits_7d": 7,
+          "unique_visitors": 3,
+          "share_pct": 1.3,
+          "avg_latency_ms": 606.8
+        },
+        {
+          "endpoint": "/api/attributions/overview",
+          "workspace": "Recipient Dossiers",
+          "today_hits": 1,
+          "yesterday_hits": 5,
+          "hits_7d": 7,
           "unique_visitors": 2,
-          "share_pct": 1.5,
-          "avg_latency_ms": 623.8
+          "share_pct": 1.3,
+          "avg_latency_ms": 255.5
+        },
+        {
+          "endpoint": "/api/auth/ghost/webhook",
+          "workspace": "Platform Service",
+          "today_hits": 0,
+          "yesterday_hits": 2,
+          "hits_7d": 6,
+          "unique_visitors": 1,
+          "share_pct": 1.1,
+          "avg_latency_ms": 461.9
+        },
+        {
+          "endpoint": "/api/policies/proceedings",
+          "workspace": "Regulatory Dockets",
+          "today_hits": 2,
+          "yesterday_hits": 1,
+          "hits_7d": 6,
+          "unique_visitors": 6,
+          "share_pct": 1.1,
+          "avg_latency_ms": 280.3
         },
         {
           "endpoint": "/api/forecasting/stats",
           "workspace": "Forecasting Radar",
-          "today_hits": 2,
+          "today_hits": 0,
+          "yesterday_hits": 2,
           "hits_7d": 6,
           "unique_visitors": 1,
-          "share_pct": 1.5,
+          "share_pct": 1.1,
           "avg_latency_ms": 2094.6
         },
         {
           "endpoint": "/api/forecasting/project-radar",
           "workspace": "Forecasting Radar",
-          "today_hits": 2,
+          "today_hits": 0,
+          "yesterday_hits": 2,
           "hits_7d": 6,
           "unique_visitors": 1,
-          "share_pct": 1.5,
+          "share_pct": 1.1,
           "avg_latency_ms": 1569.7
-        },
-        {
-          "endpoint": "/api/attributions/recipients",
-          "workspace": "Recipient Dossiers",
-          "today_hits": 5,
-          "hits_7d": 6,
-          "unique_visitors": 1,
-          "share_pct": 1.5,
-          "avg_latency_ms": 158.3
-        },
-        {
-          "endpoint": "/api/forecasting/radar",
-          "workspace": "Forecasting Radar",
-          "today_hits": 2,
-          "hits_7d": 6,
-          "unique_visitors": 1,
-          "share_pct": 1.5,
-          "avg_latency_ms": 2983.3
-        },
-        {
-          "endpoint": "/api/auth/ghost/webhook",
-          "workspace": "Platform Service",
-          "today_hits": 2,
-          "hits_7d": 6,
-          "unique_visitors": 1,
-          "share_pct": 1.5,
-          "avg_latency_ms": 461.9
-        },
-        {
-          "endpoint": "/api/attributions/overview",
-          "workspace": "Recipient Dossiers",
-          "today_hits": 5,
-          "hits_7d": 6,
-          "unique_visitors": 1,
-          "share_pct": 1.5,
-          "avg_latency_ms": 164.6
         },
         {
           "endpoint": "/api/tavus/conversations/create",
           "workspace": "Multimodal Video Advisor",
-          "today_hits": 6,
+          "today_hits": 0,
+          "yesterday_hits": 6,
           "hits_7d": 6,
           "unique_visitors": 1,
-          "share_pct": 1.5,
+          "share_pct": 1.1,
           "avg_latency_ms": 7367.8
         },
         {
-          "endpoint": "/api/awards",
-          "workspace": "Historical Awards Map",
-          "today_hits": 4,
-          "hits_7d": 4,
-          "unique_visitors": 2,
-          "share_pct": 1.0,
-          "avg_latency_ms": 1643.7
-        },
-        {
-          "endpoint": "/api/linkages/trace",
-          "workspace": "Platform Service",
-          "today_hits": 4,
-          "hits_7d": 4,
-          "unique_visitors": 1,
-          "share_pct": 1.0,
-          "avg_latency_ms": 115.3
-        },
-        {
-          "endpoint": "/api/policies/proceedings",
+          "endpoint": "/api/policies/proceedings/stats",
           "workspace": "Regulatory Dockets",
           "today_hits": 1,
-          "hits_7d": 4,
-          "unique_visitors": 4,
-          "share_pct": 1.0,
-          "avg_latency_ms": 294.0
+          "yesterday_hits": 1,
+          "hits_7d": 5,
+          "unique_visitors": 5,
+          "share_pct": 0.9,
+          "avg_latency_ms": 117.0
         }
       ],
       "core_capabilities": [
@@ -543,11 +596,13 @@
           "category": "Market Intelligence",
           "workspace": "/digest",
           "utility": "Curated clean tech news, solicitations, policy dockets & daily executive briefings",
-          "today_requests": 47,
-          "hits_7d": 135,
-          "visitors_7d": 29,
-          "visitors_today": 8,
-          "avg_latency_ms": 187.0
+          "today_requests": 4,
+          "yesterday_requests": 47,
+          "hits_7d": 139,
+          "visitors_7d": 30,
+          "visitors_today": 1,
+          "visitors_yesterday": 8,
+          "avg_latency_ms": 184.5
         },
         {
           "name": "Platform Services (/docs)",
@@ -555,11 +610,13 @@
           "category": "General Platform",
           "workspace": "/docs",
           "utility": "Platform operational API endpoints and core routes",
-          "today_requests": 36,
-          "hits_7d": 47,
-          "visitors_7d": 3,
-          "visitors_today": 3,
-          "avg_latency_ms": 973.4
+          "today_requests": 34,
+          "yesterday_requests": 36,
+          "hits_7d": 81,
+          "visitors_7d": 13,
+          "visitors_today": 10,
+          "visitors_yesterday": 3,
+          "avg_latency_ms": 918.3
         },
         {
           "name": "Interactive Multimodal Video Advisory",
@@ -567,11 +624,27 @@
           "category": "AI Advisory & Strategy",
           "workspace": "/chat (Video Advisor)",
           "utility": "Real-time AI video avatar dialogue, conversational reasoning & strategic synthesis",
-          "today_requests": 45,
+          "today_requests": 0,
+          "yesterday_requests": 45,
           "hits_7d": 45,
           "visitors_7d": 1,
-          "visitors_today": 1,
+          "visitors_today": 0,
+          "visitors_yesterday": 1,
           "avg_latency_ms": 10442.4
+        },
+        {
+          "name": "Solicitation Radar & Active Solicitations",
+          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
+          "category": "Capital Matching",
+          "workspace": "/opportunities",
+          "utility": "Active funding solicitations, deadlines, eligibility criteria & application links",
+          "today_requests": 36,
+          "yesterday_requests": 4,
+          "hits_7d": 40,
+          "visitors_7d": 17,
+          "visitors_today": 14,
+          "visitors_yesterday": 3,
+          "avg_latency_ms": 1020.7
         },
         {
           "name": "Strategic AI Advisory & Research Counsel",
@@ -579,11 +652,13 @@
           "category": "AI Advisory & Strategy",
           "workspace": "/",
           "utility": "Executive multimodal chat, interactive research counsel, citations & Mermaid diagrams",
-          "today_requests": 14,
-          "hits_7d": 26,
-          "visitors_7d": 12,
-          "visitors_today": 7,
-          "avg_latency_ms": 367.6
+          "today_requests": 1,
+          "yesterday_requests": 14,
+          "hits_7d": 27,
+          "visitors_7d": 13,
+          "visitors_today": 1,
+          "visitors_yesterday": 7,
+          "avg_latency_ms": 354.1
         },
         {
           "name": "Forecasting Radar & Predictive Solicitations",
@@ -591,11 +666,13 @@
           "category": "Market Intelligence",
           "workspace": "/forecasting",
           "utility": "Upcoming capital releases, budget allocations & predictive funding horizons",
-          "today_requests": 8,
-          "hits_7d": 24,
-          "visitors_7d": 1,
+          "today_requests": 2,
+          "yesterday_requests": 8,
+          "hits_7d": 26,
+          "visitors_7d": 2,
           "visitors_today": 1,
-          "avg_latency_ms": 1782.7
+          "visitors_yesterday": 1,
+          "avg_latency_ms": 2244.2
         },
         {
           "name": "Organization Directory & Ecosystem Profiles",
@@ -603,35 +680,13 @@
           "category": "Ecosystem Intelligence",
           "workspace": "/organizations",
           "utility": "Comprehensive directory of clean energy companies, universities & institutions",
-          "today_requests": 15,
-          "hits_7d": 18,
-          "visitors_7d": 4,
-          "visitors_today": 4,
-          "avg_latency_ms": 520.1
-        },
-        {
-          "name": "Capital Continuum & Capital Flow Sankey",
-          "tier": "Tier 2: Core Analytical & Sourcing Engine",
-          "category": "Ecosystem Intelligence",
-          "workspace": "/sankey",
-          "utility": "Multi-stage capital flows from early R&D and demonstration to commercial deployment",
-          "today_requests": 10,
-          "hits_7d": 17,
-          "visitors_7d": 2,
-          "visitors_today": 2,
-          "avg_latency_ms": 841.5
-        },
-        {
-          "name": "Recipient Dossiers & Attribution Index",
-          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
-          "category": "Historical Awards",
-          "workspace": "/attributions",
-          "utility": "Granular recipient profiles, historical win rates & co-funding track records",
-          "today_requests": 14,
-          "hits_7d": 16,
-          "visitors_7d": 1,
+          "today_requests": 5,
+          "yesterday_requests": 15,
+          "hits_7d": 23,
+          "visitors_7d": 5,
           "visitors_today": 1,
-          "avg_latency_ms": 132.4
+          "visitors_yesterday": 4,
+          "avg_latency_ms": 495.0
         },
         {
           "name": "Regulatory Dockets & Policy Proceedings",
@@ -640,106 +695,40 @@
           "workspace": "/dockets",
           "utility": "Public service commission filings & clean energy standard proceeding dockets",
           "today_requests": 7,
-          "hits_7d": 13,
-          "visitors_7d": 5,
+          "yesterday_requests": 7,
+          "hits_7d": 20,
+          "visitors_7d": 7,
           "visitors_today": 2,
-          "avg_latency_ms": 164.9
+          "visitors_yesterday": 2,
+          "avg_latency_ms": 180.5
         },
         {
-          "name": "Award History Intelligence & Spatial GIS Map",
+          "name": "Capital Continuum & Capital Flow Sankey",
+          "tier": "Tier 2: Core Analytical & Sourcing Engine",
+          "category": "Ecosystem Intelligence",
+          "workspace": "/sankey",
+          "utility": "Multi-stage capital flows from early R&D and demonstration to commercial deployment",
+          "today_requests": 2,
+          "yesterday_requests": 10,
+          "hits_7d": 19,
+          "visitors_7d": 3,
+          "visitors_today": 1,
+          "visitors_yesterday": 2,
+          "avg_latency_ms": 837.5
+        },
+        {
+          "name": "Recipient Dossiers & Attribution Index",
           "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
           "category": "Historical Awards",
-          "workspace": "/awards",
-          "utility": "56k+ historical clean energy awards, geospatial GIS mapping & funding records",
-          "today_requests": 12,
-          "hits_7d": 12,
-          "visitors_7d": 2,
-          "visitors_today": 2,
-          "avg_latency_ms": 1767.4
-        },
-        {
-          "name": "Custom Reporting & Saved Visualizations",
-          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
-          "category": "Reporting & Analytics",
-          "workspace": "/reports",
-          "utility": "Saved analytical filters, custom reports & exportable executive briefs",
-          "today_requests": 5,
-          "hits_7d": 10,
-          "visitors_7d": 4,
-          "visitors_today": 3,
-          "avg_latency_ms": 3704.7
-        },
-        {
-          "name": "Authentication & Member Management",
-          "tier": "Supporting: User Operations",
-          "category": "User Platform",
-          "workspace": "/login",
-          "utility": "Account sign-on, authentication & membership tier management",
-          "today_requests": 3,
-          "hits_7d": 9,
-          "visitors_7d": 1,
-          "visitors_today": 1,
-          "avg_latency_ms": 308.9
-        },
-        {
-          "name": "AI Grant Match Engine & Project Screener",
-          "tier": "Tier 2: Core Analytical & Sourcing Engine",
-          "category": "Capital Matching",
-          "workspace": "/analyze",
-          "utility": "Clean tech project eligibility scoring across 5.7k+ opportunities & winning angles",
-          "today_requests": 5,
-          "hits_7d": 8,
-          "visitors_7d": 4,
-          "visitors_today": 4,
-          "avg_latency_ms": 3753.1
-        },
-        {
-          "name": "Winning Proposal Studio & Grant Generator",
-          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
-          "category": "Grant Execution",
-          "workspace": "/proposals",
-          "utility": "Compliance red-teaming, narrative drafting & Justice40 alignment generator",
+          "workspace": "/attributions",
+          "utility": "Granular recipient profiles, historical win rates & co-funding track records",
           "today_requests": 2,
-          "hits_7d": 5,
+          "yesterday_requests": 14,
+          "hits_7d": 18,
           "visitors_7d": 2,
           "visitors_today": 1,
-          "avg_latency_ms": 3964.2
-        },
-        {
-          "name": "Search Engine Indexing & Bot Discovery",
-          "tier": "Supporting: System Infrastructure",
-          "category": "Infrastructure",
-          "workspace": "Sitemaps / SEO",
-          "utility": "Automated crawler discovery, indexing & open data distribution",
-          "today_requests": 5,
-          "hits_7d": 5,
-          "visitors_7d": 3,
-          "visitors_today": 3,
-          "avg_latency_ms": 416.1
-        },
-        {
-          "name": "Strategic Roadmaps & Execution Pipeline",
-          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
-          "category": "AI Advisory & Strategy",
-          "workspace": "/reports",
-          "utility": "Strategic roadmaps, milestone tracking & portfolio execution plans",
-          "today_requests": 2,
-          "hits_7d": 4,
-          "visitors_7d": 3,
-          "visitors_today": 2,
-          "avg_latency_ms": 6374.0
-        },
-        {
-          "name": "Solicitation Radar & Active Solicitations",
-          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
-          "category": "Capital Matching",
-          "workspace": "/opportunities",
-          "utility": "Active funding solicitations, deadlines, eligibility criteria & application links",
-          "today_requests": 2,
-          "hits_7d": 2,
-          "visitors_7d": 2,
-          "visitors_today": 2,
-          "avg_latency_ms": 387.4
+          "visitors_yesterday": 1,
+          "avg_latency_ms": 190.1
         },
         {
           "name": "Ecosystem Knowledge Graph & Entity Network",
@@ -747,18 +736,129 @@
           "category": "Ecosystem Intelligence",
           "workspace": "/network",
           "utility": "Interactive graph of 26k+ recipients, prime contractors & institutional co-funding links",
-          "today_requests": 1,
-          "hits_7d": 1,
-          "visitors_7d": 1,
+          "today_requests": 16,
+          "yesterday_requests": 2,
+          "hits_7d": 18,
+          "visitors_7d": 16,
+          "visitors_today": 14,
+          "visitors_yesterday": 2,
+          "avg_latency_ms": 8737.6
+        },
+        {
+          "name": "Winning Proposal Studio & Grant Generator",
+          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
+          "category": "Grant Execution",
+          "workspace": "/proposals",
+          "utility": "Compliance red-teaming, narrative drafting & Justice40 alignment generator",
+          "today_requests": 11,
+          "yesterday_requests": 2,
+          "hits_7d": 16,
+          "visitors_7d": 12,
+          "visitors_today": 10,
+          "visitors_yesterday": 1,
+          "avg_latency_ms": 1656.4
+        },
+        {
+          "name": "Award History Intelligence & Spatial GIS Map",
+          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
+          "category": "Historical Awards",
+          "workspace": "/awards",
+          "utility": "56k+ historical clean energy awards, geospatial GIS mapping & funding records",
+          "today_requests": 3,
+          "yesterday_requests": 12,
+          "hits_7d": 15,
+          "visitors_7d": 3,
           "visitors_today": 1,
-          "avg_latency_ms": 21.0
+          "visitors_yesterday": 2,
+          "avg_latency_ms": 1478.8
+        },
+        {
+          "name": "Custom Reporting & Saved Visualizations",
+          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
+          "category": "Reporting & Analytics",
+          "workspace": "/reports",
+          "utility": "Saved analytical filters, custom reports & exportable executive briefs",
+          "today_requests": 3,
+          "yesterday_requests": 5,
+          "hits_7d": 13,
+          "visitors_7d": 5,
+          "visitors_today": 1,
+          "visitors_yesterday": 3,
+          "avg_latency_ms": 3019.3
+        },
+        {
+          "name": "AI Grant Match Engine & Project Screener",
+          "tier": "Tier 2: Core Analytical & Sourcing Engine",
+          "category": "Capital Matching",
+          "workspace": "/analyze",
+          "utility": "Clean tech project eligibility scoring across 5.7k+ opportunities & winning angles",
+          "today_requests": 1,
+          "yesterday_requests": 5,
+          "hits_7d": 9,
+          "visitors_7d": 5,
+          "visitors_today": 1,
+          "visitors_yesterday": 4,
+          "avg_latency_ms": 3336.4
+        },
+        {
+          "name": "Authentication & Member Management",
+          "tier": "Supporting: User Operations",
+          "category": "User Platform",
+          "workspace": "/login",
+          "utility": "Account sign-on, authentication & membership tier management",
+          "today_requests": 0,
+          "yesterday_requests": 3,
+          "hits_7d": 9,
+          "visitors_7d": 1,
+          "visitors_today": 0,
+          "visitors_yesterday": 1,
+          "avg_latency_ms": 308.9
+        },
+        {
+          "name": "Strategic Roadmaps & Execution Pipeline",
+          "tier": "Tier 3: Execution, Diligence & Ecosystem Suite",
+          "category": "AI Advisory & Strategy",
+          "workspace": "/reports",
+          "utility": "Strategic roadmaps, milestone tracking & portfolio execution plans",
+          "today_requests": 1,
+          "yesterday_requests": 2,
+          "hits_7d": 5,
+          "visitors_7d": 4,
+          "visitors_today": 1,
+          "visitors_yesterday": 2,
+          "avg_latency_ms": 5099.6
+        },
+        {
+          "name": "Search Engine Indexing & Bot Discovery",
+          "tier": "Supporting: System Infrastructure",
+          "category": "Infrastructure",
+          "workspace": "Sitemaps / SEO",
+          "utility": "Automated crawler discovery, indexing & open data distribution",
+          "today_requests": 0,
+          "yesterday_requests": 5,
+          "hits_7d": 5,
+          "visitors_7d": 3,
+          "visitors_today": 0,
+          "visitors_yesterday": 3,
+          "avg_latency_ms": 416.1
         }
       ]
     },
     "history_14d": [
       {
+        "date": "2026-09-12",
+        "unique_visitors": 15,
+        "requests": 128,
+        "analyses": 0,
+        "proposals": 0,
+        "shreds": 0,
+        "reports": 0,
+        "total_actions": 0
+      },
+      {
         "date": "2026-09-11",
-        "unique_visitors": 26,
+        "unique_visitors": 27,
+        "requests": 236,
         "analyses": 13,
         "proposals": 0,
         "shreds": 0,
@@ -768,6 +868,7 @@
       {
         "date": "2026-09-10",
         "unique_visitors": 27,
+        "requests": 164,
         "analyses": 104,
         "proposals": 0,
         "shreds": 0,
@@ -777,6 +878,7 @@
       {
         "date": "2026-09-09",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 110,
         "proposals": 0,
         "shreds": 7,
@@ -786,6 +888,7 @@
       {
         "date": "2026-09-08",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 13,
         "proposals": 0,
         "shreds": 0,
@@ -795,6 +898,7 @@
       {
         "date": "2026-09-07",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 0,
         "proposals": 0,
         "shreds": 0,
@@ -804,6 +908,7 @@
       {
         "date": "2026-09-06",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 39,
         "proposals": 0,
         "shreds": 0,
@@ -813,6 +918,7 @@
       {
         "date": "2026-09-05",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 0,
         "proposals": 0,
         "shreds": 0,
@@ -822,6 +928,7 @@
       {
         "date": "2026-09-04",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 0,
         "proposals": 0,
         "shreds": 0,
@@ -831,6 +938,7 @@
       {
         "date": "2026-09-03",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 26,
         "proposals": 10,
         "shreds": 0,
@@ -840,6 +948,7 @@
       {
         "date": "2026-09-02",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 16,
         "proposals": 1,
         "shreds": 0,
@@ -849,6 +958,7 @@
       {
         "date": "2026-09-01",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 18,
         "proposals": 55,
         "shreds": 0,
@@ -858,6 +968,7 @@
       {
         "date": "2026-08-31",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 11,
         "proposals": 0,
         "shreds": 0,
@@ -867,20 +978,12 @@
       {
         "date": "2026-08-30",
         "unique_visitors": 0,
+        "requests": 0,
         "analyses": 3,
         "proposals": 0,
         "shreds": 0,
         "reports": 0,
         "total_actions": 3
-      },
-      {
-        "date": "2026-08-29",
-        "unique_visitors": 0,
-        "analyses": 11,
-        "proposals": 0,
-        "shreds": 0,
-        "reports": 0,
-        "total_actions": 11
       }
     ]
   }

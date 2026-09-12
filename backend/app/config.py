@@ -8,8 +8,9 @@ from pydantic_settings import BaseSettings
 _BACKEND_DIR = Path(__file__).parent.parent.resolve()
 _DEFAULT_DATA_DIR = _BACKEND_DIR / "data"
 _DEFAULT_DATA_DIR.mkdir(parents=True, exist_ok=True)
-_DEFAULT_POSTGRES_URL = "postgresql+psycopg2://postgres.muihufwteznnncvwqovz:AtWkDzYsICn5axnw@aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require"
-
+_DEFAULT_POSTGRES_URL = "postgresql+psycopg2://postgres:AtWkDzYsICn5axnw@db.muihufwteznnncvwqovz.supabase.co:5432/postgres?sslmode=require"
+_SUPABASE_TRANSACTION_POOLER_URL = "postgresql+psycopg2://postgres.muihufwteznnncvwqovz:AtWkDzYsICn5axnw@aws-0-us-west-2.pooler.supabase.com:6543/postgres?sslmode=require"
+_SUPABASE_SESSION_POOLER_URL = "postgresql+psycopg2://postgres.muihufwteznnncvwqovz:AtWkDzYsICn5axnw@aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require"
 
 
 from pydantic import field_validator
@@ -23,12 +24,13 @@ class Settings(BaseSettings):
     environment: str = "production"  # development, staging, production
     log_level: str = "INFO"
 
-    # Database: Dedicated PostgreSQL cluster
+    # Database: Supabase Pro Dedicated PostgreSQL
     database_url: str = _DEFAULT_POSTGRES_URL
-    db_pool_size: int = 5
-    db_max_overflow: int = 5
-    db_pool_timeout: int = 15
-    db_pool_recycle: int = 120
+    supabase_connection_type: str = "direct"  # direct (port 5432), transaction_pooler (port 6543), session_pooler (port 5432)
+    db_pool_size: int = 15
+    db_max_overflow: int = 10
+    db_pool_timeout: int = 30
+    db_pool_recycle: int = 300
     db_ssl_mode: str = "require"  # disable, allow, prefer, require, verify-ca, verify-full
 
     # Background automated data pipelines & schedulers
