@@ -1,5 +1,5 @@
 # Energy Innovation Terminal — Daily User Usage & Engagement Summary
-**Report Date**: 2026-09-12 (Comparing with Yesterday: 2026-09-11) | **Generated At**: 2026-09-12 17:52:57 UTC
+**Report Date**: 2026-09-12 (Comparing with Yesterday: 2026-09-11) | **Generated At**: 2026-09-12 18:08:35 UTC
 **Scope**: Today vs. Yesterday Engagement, Anonymous Visitor Telemetry, Most Visited Pages & Capability Utilization
 
 > [!NOTE]
@@ -9,10 +9,10 @@
 
 | User Usage Metric | Today (2026-09-12) | Yesterday (2026-09-11) | 7-Day Window (WAU) | Total Lifetime Volume | Key Status & Velocity Context |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **Active Unique Visitors** | **15** DAU | **27** DAU | **65** WAU | **65** MAU | Anonymous visitor fingerprinting & edge telemetry |
-| **Total Platform Requests** | **128** reqs | **236** reqs | **528** reqs | **528** total | 1823.1ms average platform latency today |
+| **Active Unique Visitors** | **16** DAU | **27** DAU | **65** WAU | **65** MAU | Anonymous visitor fingerprinting & edge telemetry |
+| **Total Platform Requests** | **140** reqs | **236** reqs | **540** reqs | **540** total | 1738.4ms average platform latency today |
 | **Active Sessions** | **0** sessions | **1** sessions | **65** active | **65** total | Measured via user session tokens & touchpoints |
-| **AI Grant Match Analyses** | **0** runs | **13** runs | **279** runs | **379** runs | Matching across 5.7k+ opportunities & winning angles |
+| **AI Grant Match Analyses** | **13** runs | **13** runs | **292** runs | **392** runs | Matching across 5.7k+ opportunities & winning angles |
 | **Winning Proposal Drafts** | **0** drafts | **0** drafts | **66** drafts | **66** drafts | **$80.30M** total capital requested (60 won) |
 | **Proposal Quality Readiness** | **97.8%** | **97.8%** | **97.8%** | **97.8%** compliance rate | High quality submission readiness & red-team score |
 | **AI FOA Solicitations Shredded** | **0** shreds | **0** shreds | **7** shreds | **7** total | 20.0% avg cost-share, 6 Justice40/CBP checks |
@@ -23,17 +23,17 @@
 
 | Engagement Category | Today (2026-09-12) | Yesterday (2026-09-11) | Day-over-Day Delta | Percentage Change | Velocity Assessment |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **Unique Visitors (DAU)** | **15** | **27** | **-12** | **-44.4%** | Consistent daily reach |
-| **Total Platform Requests** | **128** | **236** | **-108** | **-45.8%** | High query volume active |
-| **AI Grant Match Analyses** | **0** | **13** | **-13** | **-100.0%** | Prior day batch analysis volume |
-| **Average System Latency** | **1823.1ms** | **2567.2ms** | — | — | Sub-second responsiveness across cached routes |
+| **Unique Visitors (DAU)** | **16** | **27** | **-11** | **-40.7%** | Consistent daily reach |
+| **Total Platform Requests** | **140** | **236** | **-96** | **-40.7%** | High query volume active |
+| **AI Grant Match Analyses** | **13** | **13** | **+0** | **+0.0%** | Active project screening |
+| **Average System Latency** | **1738.4ms** | **2567.2ms** | — | — | Sub-second responsiveness across cached routes |
 
 ## 3. Anonymous Visitor Reach, Geolocation & Demographics
-- **Today's Unique Visitors (DAU)**: **15**
+- **Today's Unique Visitors (DAU)**: **16**
 - **Yesterday's Unique Visitors (DAU)**: **27**
 - **Weekly Active Reach (WAU)**: **65**
 - **Monthly Active Reach (MAU)**: **65**
-- **Total Platform Requests (Today)**: **128**
+- **Total Platform Requests (Today)**: **140**
 
 ### Zero-PII Edge Geolocation Distribution
 | Geographic State / Region | 7-Day Visitor Requests | Top Monitored Cities / Clusters |
@@ -44,38 +44,38 @@
 | Referral / Campaign Source | 7-Day Request Volume |
 | :--- | :--- |
 | `https://terminal.aixenergy.io/` | 463 |
-| `` | 63 |
+| `` | 75 |
 | `https://www.baidu.com` | 1 |
 | `linkedin` | 1 |
 
 ### Device & Browser Demographics
-- **Device Form Factors**: **Desktop**: 490, **Mobile**: 35, **Bot**: 3
-- **Browser Engines**: **Google Chrome**: 140, **Apple Safari**: 28, **Other Browser**: 14, **Microsoft Edge**: 13
+- **Device Form Factors**: **Desktop**: 502, **Mobile**: 35, **Bot**: 3
+- **Browser Engines**: **Google Chrome**: 140, **Apple Safari**: 28, **Other Browser**: 26, **Microsoft Edge**: 13
 
 ## 4. Most Visited Pages & Core Capability Utilization Rankings
 
 ### 4A. Top Visited Application Pages & Route Views (Today vs. Yesterday)
 | Rank | Page / Route Path | Primary Workspace | Today Views | Yesterday Views | 7-Day Total Views | 7-Day Unique Visitors | Traffic Share | Avg Latency |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **#1** | `/api/v1/digest/latest` | **Daily Intelligence Digest** | 2 | 24 | **72** | 29 | 13.6% | 150.4ms |
-| **#2** | `/api/v1/digest/archive` | **Daily Intelligence Digest** | 2 | 23 | **67** | 27 | 12.7% | 221.3ms |
-| **#3** | `/api/tavus/synthesize-and-sync` | **Multimodal Video Advisor** | 0 | 37 | **37** | 1 | 7.0% | 11424.4ms |
+| **#1** | `/api/v1/digest/latest` | **Daily Intelligence Digest** | 2 | 24 | **72** | 29 | 13.3% | 150.4ms |
+| **#2** | `/api/v1/digest/archive` | **Daily Intelligence Digest** | 2 | 23 | **67** | 27 | 12.4% | 221.3ms |
+| **#3** | `/api/tavus/synthesize-and-sync` | **Multimodal Video Advisor** | 0 | 37 | **37** | 1 | 6.9% | 11424.4ms |
 | **#4** | `/api/chat/status` | **Platform Service** | 1 | 10 | **15** | 7 | 2.8% | 9.2ms |
-| **#5** | `/api/network/teaming-recommendations` | **Ecosystem Knowledge Graph** | 13 | 1 | **14** | 14 | 2.7% | 11011.9ms |
-| **#6** | `/api/agencies` | **Organizations Directory** | 3 | 7 | **13** | 5 | 2.5% | 484.3ms |
-| **#7** | `/` | **Strategic Advisory Hub** | 0 | 4 | **12** | 6 | 2.3% | 785.2ms |
-| **#8** | `/api/linkages/trace` | **Ecosystem Linkage Tracer** | 7 | 4 | **11** | 8 | 2.1% | 373.3ms |
+| **#5** | `/api/network/teaming-recommendations` | **Ecosystem Knowledge Graph** | 13 | 1 | **14** | 14 | 2.6% | 11011.9ms |
+| **#6** | `/api/agencies` | **Organizations Directory** | 3 | 7 | **13** | 5 | 2.4% | 484.3ms |
+| **#7** | `/` | **Strategic Advisory Hub** | 0 | 4 | **12** | 6 | 2.2% | 785.2ms |
+| **#8** | `/api/linkages/trace` | **Ecosystem Linkage Tracer** | 7 | 4 | **11** | 8 | 2.0% | 373.3ms |
 | **#9** | `/api/artifacts` | **Artifacts & Export Hub** | 10 | 0 | **10** | 9 | 1.9% | 165.9ms |
-| **#10** | `/api/sankey/flow` | **Capital Continuum Sankey** | 1 | 3 | **8** | 3 | 1.5% | 813.2ms |
-| **#11** | `/api/forecasting/radar` | **Forecasting Radar** | 1 | 2 | **7** | 2 | 1.3% | 3848.5ms |
-| **#12** | `/api/attributions/recipients` | **Recipient Dossiers** | 1 | 5 | **7** | 2 | 1.3% | 207.4ms |
-| **#13** | `/api/sankey/insights` | **Capital Continuum Sankey** | 1 | 3 | **7** | 3 | 1.3% | 606.8ms |
-| **#14** | `/api/attributions/overview` | **Recipient Dossiers** | 1 | 5 | **7** | 2 | 1.3% | 255.5ms |
-| **#15** | `/api/auth/ghost/webhook` | **Platform Service** | 0 | 2 | **6** | 1 | 1.1% | 461.9ms |
-| **#16** | `/api/policies/proceedings` | **Regulatory Dockets** | 2 | 1 | **6** | 6 | 1.1% | 280.3ms |
-| **#17** | `/api/forecasting/stats` | **Forecasting Radar** | 0 | 2 | **6** | 1 | 1.1% | 2094.6ms |
-| **#18** | `/api/forecasting/project-radar` | **Forecasting Radar** | 0 | 2 | **6** | 1 | 1.1% | 1569.7ms |
-| **#19** | `/api/tavus/conversations/create` | **Multimodal Video Advisor** | 0 | 6 | **6** | 1 | 1.1% | 7367.8ms |
+| **#10** | `/api/forecasting/radar` | **Forecasting Radar** | 3 | 2 | **9** | 2 | 1.7% | 3429.1ms |
+| **#11** | `/api/auth/ghost/webhook` | **Platform Service** | 2 | 2 | **8** | 1 | 1.5% | 450.6ms |
+| **#12** | `/api/forecasting/stats` | **Forecasting Radar** | 2 | 2 | **8** | 1 | 1.5% | 1852.0ms |
+| **#13** | `/api/forecasting/project-radar` | **Forecasting Radar** | 2 | 2 | **8** | 1 | 1.5% | 1404.7ms |
+| **#14** | `/api/sankey/flow` | **Capital Continuum Sankey** | 1 | 3 | **8** | 3 | 1.5% | 813.2ms |
+| **#15** | `/api/attributions/recipients` | **Recipient Dossiers** | 1 | 5 | **7** | 2 | 1.3% | 207.4ms |
+| **#16** | `/api/attributions/overview` | **Recipient Dossiers** | 1 | 5 | **7** | 2 | 1.3% | 255.5ms |
+| **#17** | `/api/sankey/insights` | **Capital Continuum Sankey** | 1 | 3 | **7** | 3 | 1.3% | 606.8ms |
+| **#18** | `/api/tavus/conversations/create` | **Multimodal Video Advisor** | 0 | 6 | **6** | 1 | 1.1% | 7367.8ms |
+| **#19** | `/api/policies/proceedings` | **Regulatory Dockets** | 2 | 1 | **6** | 6 | 1.1% | 280.3ms |
 | **#20** | `/api/policies/proceedings/stats` | **Regulatory Dockets** | 1 | 1 | **5** | 5 | 0.9% | 117.0ms |
 
 ### 4B. Core Platform Capabilities Ranked by User Engagement & Adoption Tiers
@@ -85,8 +85,8 @@
 | **#2** | **Platform Services (/docs)** | Supporting: Core Services | General Platform | `/docs` | 34 | 36 | **81** | 13 | 918.3ms | Platform operational API endpoints and core routes |
 | **#3** | **Interactive Multimodal Video Advisory** | Tier 1: High Velocity & Daily Active Driver | AI Advisory & Strategy | `/chat (Video Advisor)` | 0 | 45 | **45** | 1 | 10442.4ms | Real-time AI video avatar dialogue, conversational reasoning & strategic synthesis |
 | **#4** | **Solicitation Radar & Active Solicitations** | Tier 3: Execution, Diligence & Ecosystem Suite | Capital Matching | `/opportunities` | 36 | 4 | **40** | 17 | 1020.7ms | Active funding solicitations, deadlines, eligibility criteria & application links |
-| **#5** | **Strategic AI Advisory & Research Counsel** | Tier 1: High Velocity & Daily Active Driver | AI Advisory & Strategy | `/` | 1 | 14 | **27** | 13 | 354.1ms | Executive multimodal chat, interactive research counsel, citations & Mermaid diagrams |
-| **#6** | **Forecasting Radar & Predictive Solicitations** | Tier 2: Core Analytical & Sourcing Engine | Market Intelligence | `/forecasting` | 2 | 8 | **26** | 2 | 2244.2ms | Upcoming capital releases, budget allocations & predictive funding horizons |
+| **#5** | **Forecasting Radar & Predictive Solicitations** | Tier 2: Core Analytical & Sourcing Engine | Market Intelligence | `/forecasting` | 10 | 8 | **34** | 2 | 1982.7ms | Upcoming capital releases, budget allocations & predictive funding horizons |
+| **#6** | **Strategic AI Advisory & Research Counsel** | Tier 1: High Velocity & Daily Active Driver | AI Advisory & Strategy | `/` | 1 | 14 | **27** | 13 | 354.1ms | Executive multimodal chat, interactive research counsel, citations & Mermaid diagrams |
 | **#7** | **Organization Directory & Ecosystem Profiles** | Tier 2: Core Analytical & Sourcing Engine | Ecosystem Intelligence | `/organizations` | 5 | 15 | **23** | 5 | 495.0ms | Comprehensive directory of clean energy companies, universities & institutions |
 | **#8** | **Regulatory Dockets & Policy Proceedings** | Tier 2: Core Analytical & Sourcing Engine | Policy Intelligence | `/dockets` | 7 | 7 | **20** | 7 | 180.5ms | Public service commission filings & clean energy standard proceeding dockets |
 | **#9** | **Capital Continuum & Capital Flow Sankey** | Tier 2: Core Analytical & Sourcing Engine | Ecosystem Intelligence | `/sankey` | 2 | 10 | **19** | 3 | 837.5ms | Multi-stage capital flows from early R&D and demonstration to commercial deployment |
@@ -95,49 +95,49 @@
 | **#12** | **Winning Proposal Studio & Grant Generator** | Tier 3: Execution, Diligence & Ecosystem Suite | Grant Execution | `/proposals` | 11 | 2 | **16** | 12 | 1656.4ms | Compliance red-teaming, narrative drafting & Justice40 alignment generator |
 | **#13** | **Award History Intelligence & Spatial GIS Map** | Tier 3: Execution, Diligence & Ecosystem Suite | Historical Awards | `/awards` | 3 | 12 | **15** | 3 | 1478.8ms | 56k+ historical clean energy awards, geospatial GIS mapping & funding records |
 | **#14** | **Custom Reporting & Saved Visualizations** | Tier 3: Execution, Diligence & Ecosystem Suite | Reporting & Analytics | `/reports` | 3 | 5 | **13** | 5 | 3019.3ms | Saved analytical filters, custom reports & exportable executive briefs |
-| **#15** | **AI Grant Match Engine & Project Screener** | Tier 2: Core Analytical & Sourcing Engine | Capital Matching | `/analyze` | 1 | 5 | **9** | 5 | 3336.4ms | Clean tech project eligibility scoring across 5.7k+ opportunities & winning angles |
-| **#16** | **Authentication & Member Management** | Supporting: User Operations | User Platform | `/login` | 0 | 3 | **9** | 1 | 308.9ms | Account sign-on, authentication & membership tier management |
+| **#15** | **Authentication & Member Management** | Supporting: User Operations | User Platform | `/login` | 3 | 3 | **12** | 1 | 301.3ms | Account sign-on, authentication & membership tier management |
+| **#16** | **AI Grant Match Engine & Project Screener** | Tier 2: Core Analytical & Sourcing Engine | Capital Matching | `/analyze` | 2 | 5 | **10** | 5 | 3015.3ms | Clean tech project eligibility scoring across 5.7k+ opportunities & winning angles |
 | **#17** | **Strategic Roadmaps & Execution Pipeline** | Tier 3: Execution, Diligence & Ecosystem Suite | AI Advisory & Strategy | `/reports` | 1 | 2 | **5** | 4 | 5099.6ms | Strategic roadmaps, milestone tracking & portfolio execution plans |
 | **#18** | **Search Engine Indexing & Bot Discovery** | Supporting: System Infrastructure | Infrastructure | `Sitemaps / SEO` | 0 | 5 | **5** | 3 | 416.1ms | Automated crawler discovery, indexing & open data distribution |
 
 ### 4C. User Action Types & Interactive Engagement Modalities
 | User Action Modality | Today Actions | Yesterday Actions | 7-Day Actions | Key Platform Touchpoint & Behavior |
 | :--- | :---: | :---: | :---: | :--- |
-| **Api Request** (`api_request`) | 124 | 210 | **478** | Interactive user event & API execution |
+| **Api Request** (`api_request`) | 135 | 210 | **489** | Interactive user event & API execution |
 | **Page View** (`page_view`) | 0 | 9 | **18** | Interactive user event & API execution |
 | **Copilot Chat** (`copilot_chat`) | 1 | 10 | **15** | Interactive user event & API execution |
-| **Grant Match Analysis** (`grant_match_analysis`) | 1 | 5 | **9** | Interactive user event & API execution |
+| **Grant Match Analysis** (`grant_match_analysis`) | 2 | 5 | **10** | Interactive user event & API execution |
 | **Proposal Generator** (`proposal_generator`) | 2 | 2 | **7** | Interactive user event & API execution |
 | **Report Create** (`report_create`) | 0 | 0 | **1** | Interactive user event & API execution |
 
 ## 5. AI Grant Match & Project Analyses (`project_analyses`)
-Users have executed **379** matching analyses on the platform.
-- **Today's Analyses**: **0**
+Users have executed **392** matching analyses on the platform.
+- **Today's Analyses**: **13**
 - **Yesterday's Analyses**: **13**
-- **Past 7 Days**: **279**
-- **Past 30 Days**: **379**
+- **Past 7 Days**: **292**
+- **Past 30 Days**: **392**
 
 ### Clean Tech Domains Evaluated by Users
 | Technology Sector / Vector Domain | Total Queries Run by Users |
 | :--- | :--- |
-| Energy Storage | 141 |
-| Building Electrification | 141 |
-| Solar | 111 |
-| Clean Transportation | 106 |
-| Grid Modernization | 101 |
-| Buildings | 101 |
-| Industrial Decarbonization | 82 |
-| Clean Energy Manufacturing | 69 |
+| Building Electrification | 145 |
+| Energy Storage | 144 |
+| Solar | 114 |
+| Clean Transportation | 108 |
+| Buildings | 104 |
+| Grid Modernization | 103 |
+| Industrial Decarbonization | 85 |
+| Clean Energy Manufacturing | 72 |
 
 ### User Applicant Personas
 | Applicant Persona | Query Volume | Share of Inquiries |
 | :--- | :--- |
-| `business` | 119 | 31.4% |
-| `unspecified` | 61 | 16.1% |
-| `company` | 51 | 13.5% |
-| `startup` | 44 | 11.6% |
-| `commercial` | 42 | 11.1% |
-| `university` | 29 | 7.7% |
+| `business` | 123 | 31.4% |
+| `unspecified` | 63 | 16.1% |
+| `company` | 53 | 13.5% |
+| `startup` | 46 | 11.7% |
+| `commercial` | 44 | 11.2% |
+| `university` | 29 | 7.4% |
 
 ## 6. Winning Proposals & Grant Application Generator (`proposals`)
 Users have created **66** proposal drafts seeking a total of **$80.30M** across **$86.50M** in total proposed project budgets.
@@ -163,7 +163,7 @@ Users have created **66** proposal drafts seeking a total of **$80.30M** across 
 
 | Date | Unique Visitors | Platform Requests | Match Analyses | Proposals Drafted | FOA Shreds | Research Reports | Total User Actions |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **2026-09-12** **(Today)** | 15 | 128 | 0 | 0 | 0 | 0 | **0** |
+| **2026-09-12** **(Today)** | 16 | 140 | 13 | 0 | 0 | 0 | **13** |
 | **2026-09-11** *(Yesterday)* | 27 | 236 | 13 | 0 | 0 | 0 | **13** |
 | **2026-09-10** | 27 | 164 | 104 | 0 | 0 | 0 | **104** |
 | **2026-09-09** | 0 | 0 | 110 | 0 | 7 | 1 | **118** |

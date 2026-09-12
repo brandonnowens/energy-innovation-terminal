@@ -47,8 +47,15 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         print(f"[Lifespan Startup Warning] Opportunity & Digest Cache Warm: {e}")
 
-    # Background automated data schedulers (opt-in for dedicated worker nodes)
-    if getattr(settings, "enable_background_schedulers", False):
+    # Background automated data schedulers
+    if getattr(settings, "enable_background_schedulers", True):
+        try:
+            from app.cron.in_app_scheduler import start_daily_automation_scheduler
+            start_daily_automation_scheduler(target_hour_utc=6)
+            print("[Lifespan] In-App Daily Automation Scheduler started (06:00 UTC cycle).")
+        except Exception as e:
+            print(f"[Lifespan Startup Warning] Daily Automation Scheduler: {e}")
+
         try:
             start_daily_news_scheduler()
             print("[Lifespan] Daily News Scheduler started.")
@@ -61,11 +68,17 @@ async def lifespan(app: FastAPI):
         except Exception as e:
             print(f"[Lifespan Startup Warning] Ingestion Scheduler: {e}")
     else:
-        print("[Lifespan] Background schedulers disabled on API web node to conserve memory (ENABLE_BACKGROUND_SCHEDULERS=false).")
+        print("[Lifespan] Background schedulers disabled (ENABLE_BACKGROUND_SCHEDULERS=false).")
 
     yield
 
     # ── Shutdown Phase ──
+    try:
+        from app.cron.in_app_scheduler import stop_daily_automation_scheduler
+        stop_daily_automation_scheduler()
+    except Exception:
+        pass
+
     try:
         engine.dispose()
     except Exception:

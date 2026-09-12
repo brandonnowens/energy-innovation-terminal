@@ -76,3 +76,62 @@ def submit_ingestion_job(payload: IngestionJobRequest):
         "job_id": job.id,
         "job_status": job.status.value
     }
+
+
+async def _async_daily_automation_wrapper(skip_ingestion: bool = False, force_news_seed: bool = False):
+    from app.cron.daily_routine import run_full_daily_automation
+    return await asyncio.to_thread(
+        run_full_daily_automation,
+        skip_ingestion=skip_ingestion,
+        force_news_seed=force_news_seed
+    )
+
+
+@router.post("/daily-automation")
+def trigger_daily_automation(
+    skip_ingestion: bool = Query(False, description="Skip external feed ingestion"),
+    force_news_seed: bool = Query(False, description="Force news seeding"),
+    sync: bool = Query(False, description="Execute synchronously and wait for results")
+):
+    """
+    Trigger the unified daily automation routine:
+    1. News Ingestion & Linkages
+    2. Multi-Agency Feed Ingestion
+    3. Daily Intelligence Digest Generation
+    4. User Telemetry & Daily Usage Summary Reports
+    5. Data Quality Scorecard & Readiness Gate Audit
+    """
+    if sync:
+        from app.cron.daily_routine import run_full_daily_automation
+        res = run_full_daily_automation(skip_ingestion=skip_ingestion, force_news_seed=force_news_seed)
+        return {
+            "status": "success",
+            "execution": "sync",
+            "result": res
+        }
+
+    job = default_job_runner.submit_job(
+        job_type="daily_automation",
+        coroutine_func=_async_daily_automation_wrapper,
+        skip_ingestion=skip_ingestion,
+        force_news_seed=force_news_seed,
+        metadata={"skip_ingestion": skip_ingestion, "force_news_seed": force_news_seed}
+    )
+
+    return {
+        "status": "success",
+        "execution": "async",
+        "message": "Unified daily automation routine queued successfully.",
+        "job_id": job.id,
+        "job_status": job.status.value
+    }
+
+
+@router.get("/daily-automation/status")
+def get_daily_automation_status():
+    """Retrieve the latest automated daily operations execution status and telemetry."""
+    from app.cron.daily_routine import get_latest_daily_routine_status
+    return {
+        "status": "success",
+        "telemetry": get_latest_daily_routine_status()
+    }

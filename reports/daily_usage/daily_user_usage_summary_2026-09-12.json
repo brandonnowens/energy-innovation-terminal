@@ -1,7 +1,7 @@
 {
   "report_date": "2026-09-12",
   "yesterday_date": "2026-09-11",
-  "generated_at": "2026-09-12 17:52:57 UTC",
+  "generated_at": "2026-09-12 18:08:35 UTC",
   "user_metrics": {
     "accounts": {
       "total_registered": 2,
@@ -33,66 +33,66 @@
       ]
     },
     "grant_matching": {
-      "total_lifetime_analyses": 379,
-      "today_analyses": 0,
+      "total_lifetime_analyses": 392,
+      "today_analyses": 13,
       "yesterday_analyses": 13,
-      "last_24h_analyses": 13,
-      "last_7d_analyses": 279,
-      "last_30d_analyses": 379,
+      "last_24h_analyses": 26,
+      "last_7d_analyses": 292,
+      "last_30d_analyses": 392,
       "top_sectors": [
         {
-          "sector": "Energy Storage",
-          "queries": 141
+          "sector": "Building Electrification",
+          "queries": 145
         },
         {
-          "sector": "Building Electrification",
-          "queries": 141
+          "sector": "Energy Storage",
+          "queries": 144
         },
         {
           "sector": "Solar",
-          "queries": 111
+          "queries": 114
         },
         {
           "sector": "Clean Transportation",
-          "queries": 106
-        },
-        {
-          "sector": "Grid Modernization",
-          "queries": 101
+          "queries": 108
         },
         {
           "sector": "Buildings",
-          "queries": 101
+          "queries": 104
+        },
+        {
+          "sector": "Grid Modernization",
+          "queries": 103
         },
         {
           "sector": "Industrial Decarbonization",
-          "queries": 82
+          "queries": 85
         },
         {
           "sector": "Clean Energy Manufacturing",
-          "queries": 69
+          "queries": 72
         }
       ],
       "applicant_personas": [
         {
           "persona": "business",
-          "count": 119
+          "count": 123
         },
         {
           "persona": "unspecified",
-          "count": 61
+          "count": 63
         },
         {
           "persona": "company",
-          "count": 51
+          "count": 53
         },
         {
           "persona": "startup",
-          "count": 44
+          "count": 46
         },
         {
           "persona": "commercial",
-          "count": 42
+          "count": 44
         },
         {
           "persona": "university",
@@ -102,7 +102,7 @@
       "trl_distribution": [
         {
           "trl": "TRL 3",
-          "count": 21
+          "count": 22
         },
         {
           "trl": "TRL 4",
@@ -110,23 +110,23 @@
         },
         {
           "trl": "TRL 5",
-          "count": 89
+          "count": 91
         },
         {
           "trl": "TRL 6",
-          "count": 94
+          "count": 97
         },
         {
           "trl": "TRL 7",
-          "count": 90
+          "count": 94
         },
         {
           "trl": "TRL 8",
-          "count": 43
+          "count": 45
         },
         {
           "trl": "TRL 9",
-          "count": 26
+          "count": 27
         }
       ],
       "recent_queries": [
@@ -135,35 +135,35 @@
           "location": "New York, NY",
           "trl": "TRL 7",
           "cost": "$1.50M",
-          "timestamp": "2026-09-11 18:51 UTC"
+          "timestamp": "2026-09-12 18:06 UTC"
         },
         {
           "persona": "business",
           "location": "Queens, NY",
           "trl": "TRL 7",
           "cost": "$2.50M",
-          "timestamp": "2026-09-11 18:51 UTC"
+          "timestamp": "2026-09-12 18:06 UTC"
         },
         {
           "persona": "General",
           "location": "NYC",
           "trl": "TRL 8",
           "cost": "$1.00M",
-          "timestamp": "2026-09-11 18:51 UTC"
+          "timestamp": "2026-09-12 18:06 UTC"
         },
         {
           "persona": "company",
           "location": "Buffalo, NY",
           "trl": "TRL 6",
           "cost": "$6.00M",
-          "timestamp": "2026-09-11 18:51 UTC"
+          "timestamp": "2026-09-12 18:06 UTC"
         },
         {
           "persona": "homeowner",
           "location": "Syracuse, NY",
           "trl": "TRL 9",
           "cost": "$18.0K",
-          "timestamp": "2026-09-11 18:51 UTC"
+          "timestamp": "2026-09-12 18:06 UTC"
         }
       ]
     },
@@ -276,23 +276,23 @@
       "saved_custom_views": 12
     },
     "traffic_telemetry": {
-      "total_requests_recorded": 528,
-      "today_requests": 128,
+      "total_requests_recorded": 540,
+      "today_requests": 140,
       "yesterday_requests": 236,
-      "today_unique_visitors": 15,
+      "today_unique_visitors": 16,
       "yesterday_unique_visitors": 27,
       "wau_unique_visitors": 65,
       "mau_unique_visitors": 65,
       "today_sessions": 0,
       "yesterday_sessions": 1,
-      "today_avg_latency_ms": 1823.1,
+      "today_avg_latency_ms": 1738.4,
       "yesterday_avg_latency_ms": 2567.2,
       "actions_breakdown": [
         {
           "action": "api_request",
-          "count_today": 124,
+          "count_today": 135,
           "count_yesterday": 210,
-          "count_7d": 478
+          "count_7d": 489
         },
         {
           "action": "page_view",
@@ -308,9 +308,9 @@
         },
         {
           "action": "grant_match_analysis",
-          "count_today": 1,
+          "count_today": 2,
           "count_yesterday": 5,
-          "count_7d": 9
+          "count_7d": 10
         },
         {
           "action": "proposal_generator",
@@ -340,7 +340,7 @@
       "device_breakdown": [
         {
           "device": "desktop",
-          "count": 490
+          "count": 502
         },
         {
           "device": "mobile",
@@ -362,7 +362,7 @@
         },
         {
           "browser": "Other Browser",
-          "count": 14
+          "count": 26
         },
         {
           "browser": "Microsoft Edge",
@@ -376,7 +376,7 @@
         },
         {
           "source": "",
-          "count": 63
+          "count": 75
         },
         {
           "source": "https://www.baidu.com",
@@ -395,7 +395,7 @@
           "yesterday_hits": 24,
           "hits_7d": 72,
           "unique_visitors": 29,
-          "share_pct": 13.6,
+          "share_pct": 13.3,
           "avg_latency_ms": 150.4
         },
         {
@@ -405,7 +405,7 @@
           "yesterday_hits": 23,
           "hits_7d": 67,
           "unique_visitors": 27,
-          "share_pct": 12.7,
+          "share_pct": 12.4,
           "avg_latency_ms": 221.3
         },
         {
@@ -415,7 +415,7 @@
           "yesterday_hits": 37,
           "hits_7d": 37,
           "unique_visitors": 1,
-          "share_pct": 7.0,
+          "share_pct": 6.9,
           "avg_latency_ms": 11424.4
         },
         {
@@ -435,7 +435,7 @@
           "yesterday_hits": 1,
           "hits_7d": 14,
           "unique_visitors": 14,
-          "share_pct": 2.7,
+          "share_pct": 2.6,
           "avg_latency_ms": 11011.9
         },
         {
@@ -445,7 +445,7 @@
           "yesterday_hits": 7,
           "hits_7d": 13,
           "unique_visitors": 5,
-          "share_pct": 2.5,
+          "share_pct": 2.4,
           "avg_latency_ms": 484.3
         },
         {
@@ -455,7 +455,7 @@
           "yesterday_hits": 4,
           "hits_7d": 12,
           "unique_visitors": 6,
-          "share_pct": 2.3,
+          "share_pct": 2.2,
           "avg_latency_ms": 785.2
         },
         {
@@ -465,7 +465,7 @@
           "yesterday_hits": 4,
           "hits_7d": 11,
           "unique_visitors": 8,
-          "share_pct": 2.1,
+          "share_pct": 2.0,
           "avg_latency_ms": 373.3
         },
         {
@@ -479,6 +479,46 @@
           "avg_latency_ms": 165.9
         },
         {
+          "endpoint": "/api/forecasting/radar",
+          "workspace": "Forecasting Radar",
+          "today_hits": 3,
+          "yesterday_hits": 2,
+          "hits_7d": 9,
+          "unique_visitors": 2,
+          "share_pct": 1.7,
+          "avg_latency_ms": 3429.1
+        },
+        {
+          "endpoint": "/api/auth/ghost/webhook",
+          "workspace": "Platform Service",
+          "today_hits": 2,
+          "yesterday_hits": 2,
+          "hits_7d": 8,
+          "unique_visitors": 1,
+          "share_pct": 1.5,
+          "avg_latency_ms": 450.6
+        },
+        {
+          "endpoint": "/api/forecasting/stats",
+          "workspace": "Forecasting Radar",
+          "today_hits": 2,
+          "yesterday_hits": 2,
+          "hits_7d": 8,
+          "unique_visitors": 1,
+          "share_pct": 1.5,
+          "avg_latency_ms": 1852.0
+        },
+        {
+          "endpoint": "/api/forecasting/project-radar",
+          "workspace": "Forecasting Radar",
+          "today_hits": 2,
+          "yesterday_hits": 2,
+          "hits_7d": 8,
+          "unique_visitors": 1,
+          "share_pct": 1.5,
+          "avg_latency_ms": 1404.7
+        },
+        {
           "endpoint": "/api/sankey/flow",
           "workspace": "Capital Continuum Sankey",
           "today_hits": 1,
@@ -487,16 +527,6 @@
           "unique_visitors": 3,
           "share_pct": 1.5,
           "avg_latency_ms": 813.2
-        },
-        {
-          "endpoint": "/api/forecasting/radar",
-          "workspace": "Forecasting Radar",
-          "today_hits": 1,
-          "yesterday_hits": 2,
-          "hits_7d": 7,
-          "unique_visitors": 2,
-          "share_pct": 1.3,
-          "avg_latency_ms": 3848.5
         },
         {
           "endpoint": "/api/attributions/recipients",
@@ -509,16 +539,6 @@
           "avg_latency_ms": 207.4
         },
         {
-          "endpoint": "/api/sankey/insights",
-          "workspace": "Capital Continuum Sankey",
-          "today_hits": 1,
-          "yesterday_hits": 3,
-          "hits_7d": 7,
-          "unique_visitors": 3,
-          "share_pct": 1.3,
-          "avg_latency_ms": 606.8
-        },
-        {
           "endpoint": "/api/attributions/overview",
           "workspace": "Recipient Dossiers",
           "today_hits": 1,
@@ -529,44 +549,14 @@
           "avg_latency_ms": 255.5
         },
         {
-          "endpoint": "/api/auth/ghost/webhook",
-          "workspace": "Platform Service",
-          "today_hits": 0,
-          "yesterday_hits": 2,
-          "hits_7d": 6,
-          "unique_visitors": 1,
-          "share_pct": 1.1,
-          "avg_latency_ms": 461.9
-        },
-        {
-          "endpoint": "/api/policies/proceedings",
-          "workspace": "Regulatory Dockets",
-          "today_hits": 2,
-          "yesterday_hits": 1,
-          "hits_7d": 6,
-          "unique_visitors": 6,
-          "share_pct": 1.1,
-          "avg_latency_ms": 280.3
-        },
-        {
-          "endpoint": "/api/forecasting/stats",
-          "workspace": "Forecasting Radar",
-          "today_hits": 0,
-          "yesterday_hits": 2,
-          "hits_7d": 6,
-          "unique_visitors": 1,
-          "share_pct": 1.1,
-          "avg_latency_ms": 2094.6
-        },
-        {
-          "endpoint": "/api/forecasting/project-radar",
-          "workspace": "Forecasting Radar",
-          "today_hits": 0,
-          "yesterday_hits": 2,
-          "hits_7d": 6,
-          "unique_visitors": 1,
-          "share_pct": 1.1,
-          "avg_latency_ms": 1569.7
+          "endpoint": "/api/sankey/insights",
+          "workspace": "Capital Continuum Sankey",
+          "today_hits": 1,
+          "yesterday_hits": 3,
+          "hits_7d": 7,
+          "unique_visitors": 3,
+          "share_pct": 1.3,
+          "avg_latency_ms": 606.8
         },
         {
           "endpoint": "/api/tavus/conversations/create",
@@ -577,6 +567,16 @@
           "unique_visitors": 1,
           "share_pct": 1.1,
           "avg_latency_ms": 7367.8
+        },
+        {
+          "endpoint": "/api/policies/proceedings",
+          "workspace": "Regulatory Dockets",
+          "today_hits": 2,
+          "yesterday_hits": 1,
+          "hits_7d": 6,
+          "unique_visitors": 6,
+          "share_pct": 1.1,
+          "avg_latency_ms": 280.3
         },
         {
           "endpoint": "/api/policies/proceedings/stats",
@@ -647,6 +647,20 @@
           "avg_latency_ms": 1020.7
         },
         {
+          "name": "Forecasting Radar & Predictive Solicitations",
+          "tier": "Tier 2: Core Analytical & Sourcing Engine",
+          "category": "Market Intelligence",
+          "workspace": "/forecasting",
+          "utility": "Upcoming capital releases, budget allocations & predictive funding horizons",
+          "today_requests": 10,
+          "yesterday_requests": 8,
+          "hits_7d": 34,
+          "visitors_7d": 2,
+          "visitors_today": 2,
+          "visitors_yesterday": 1,
+          "avg_latency_ms": 1982.7
+        },
+        {
           "name": "Strategic AI Advisory & Research Counsel",
           "tier": "Tier 1: High Velocity & Daily Active Driver",
           "category": "AI Advisory & Strategy",
@@ -659,20 +673,6 @@
           "visitors_today": 1,
           "visitors_yesterday": 7,
           "avg_latency_ms": 354.1
-        },
-        {
-          "name": "Forecasting Radar & Predictive Solicitations",
-          "tier": "Tier 2: Core Analytical & Sourcing Engine",
-          "category": "Market Intelligence",
-          "workspace": "/forecasting",
-          "utility": "Upcoming capital releases, budget allocations & predictive funding horizons",
-          "today_requests": 2,
-          "yesterday_requests": 8,
-          "hits_7d": 26,
-          "visitors_7d": 2,
-          "visitors_today": 1,
-          "visitors_yesterday": 1,
-          "avg_latency_ms": 2244.2
         },
         {
           "name": "Organization Directory & Ecosystem Profiles",
@@ -787,32 +787,32 @@
           "avg_latency_ms": 3019.3
         },
         {
-          "name": "AI Grant Match Engine & Project Screener",
-          "tier": "Tier 2: Core Analytical & Sourcing Engine",
-          "category": "Capital Matching",
-          "workspace": "/analyze",
-          "utility": "Clean tech project eligibility scoring across 5.7k+ opportunities & winning angles",
-          "today_requests": 1,
-          "yesterday_requests": 5,
-          "hits_7d": 9,
-          "visitors_7d": 5,
-          "visitors_today": 1,
-          "visitors_yesterday": 4,
-          "avg_latency_ms": 3336.4
-        },
-        {
           "name": "Authentication & Member Management",
           "tier": "Supporting: User Operations",
           "category": "User Platform",
           "workspace": "/login",
           "utility": "Account sign-on, authentication & membership tier management",
-          "today_requests": 0,
+          "today_requests": 3,
           "yesterday_requests": 3,
-          "hits_7d": 9,
+          "hits_7d": 12,
           "visitors_7d": 1,
-          "visitors_today": 0,
+          "visitors_today": 1,
           "visitors_yesterday": 1,
-          "avg_latency_ms": 308.9
+          "avg_latency_ms": 301.3
+        },
+        {
+          "name": "AI Grant Match Engine & Project Screener",
+          "tier": "Tier 2: Core Analytical & Sourcing Engine",
+          "category": "Capital Matching",
+          "workspace": "/analyze",
+          "utility": "Clean tech project eligibility scoring across 5.7k+ opportunities & winning angles",
+          "today_requests": 2,
+          "yesterday_requests": 5,
+          "hits_7d": 10,
+          "visitors_7d": 5,
+          "visitors_today": 2,
+          "visitors_yesterday": 4,
+          "avg_latency_ms": 3015.3
         },
         {
           "name": "Strategic Roadmaps & Execution Pipeline",
@@ -847,13 +847,13 @@
     "history_14d": [
       {
         "date": "2026-09-12",
-        "unique_visitors": 15,
-        "requests": 128,
-        "analyses": 0,
+        "unique_visitors": 16,
+        "requests": 140,
+        "analyses": 13,
         "proposals": 0,
         "shreds": 0,
         "reports": 0,
-        "total_actions": 0
+        "total_actions": 13
       },
       {
         "date": "2026-09-11",
