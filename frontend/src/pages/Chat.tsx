@@ -4,7 +4,7 @@ import {
   ArrowUp, Plus, Copy, Check, Key, ShieldCheck,
   ChevronDown, ChevronUp, ExternalLink, RefreshCw, FileText,
   Building2, TrendingUp, BookOpen, Zap, User, Award, CheckCircle2,
-  Landmark, Rocket, Video, MessageSquare, Compass, Sliders,
+  Landmark, Rocket, MessageSquare, Compass, Sliders,
   Newspaper, Radio
 } from 'lucide-react';
 import { 
@@ -15,7 +15,8 @@ import {
 , apiFetch } from '../api/client';
 
 import { MermaidDiagram } from '../components/MermaidDiagram';
-import TavusVideoConversation from '../components/TavusVideoConversation';
+// TavusVideoConversation component is preserved for later re-activation
+// import TavusVideoConversation from '../components/TavusVideoConversation';
 
 export type UserRole = 'institutional_leader' | 'startup_entrepreneur' | 'developer' | 'investor' | 'researcher' | 'utility' | 'policy' | 'grant_writer';
 export type AdvisoryMode = 'landing' | 'chat' | 'video';
@@ -321,6 +322,17 @@ export default function Chat() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
+
+  // Ensure mode defaults to chat
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('terminal_advisory_mode') || localStorage.getItem('energysignal_advisory_mode');
+      if (stored === 'video' || stored === 'landing') {
+        localStorage.setItem('terminal_advisory_mode', 'chat');
+        localStorage.setItem('energysignal_advisory_mode', 'chat');
+      }
+    } catch {}
+  }, []);
 
   const isMountedRef = useRef(true);
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -691,6 +703,7 @@ export default function Chat() {
     return formatted;
   };
 
+  /* NOTE: Tavus Video Advisory and Multi-modality Landing are preserved below and can be re-enabled later
   if (advisoryMode === 'video') {
     return (
       <div className="flex flex-col h-[calc(100vh-6rem)] -mt-2 -mx-2 bg-slate-900 relative">
@@ -704,239 +717,17 @@ export default function Chat() {
       </div>
     );
   }
-
-  if (advisoryMode === 'landing') {
-    return (
-      <div className="flex flex-col h-[calc(100vh-6rem)] -mt-2 -mx-2 bg-slate-50 overflow-y-auto">
-        <div className="max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
-          {/* Landing Header */}
-          <div className="text-center space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-100 border border-cyan-200 text-cyan-900 text-xs font-semibold shadow-2xs">
-              <Compass size={14} className="text-cyan-600" />
-              <span>Strategic Advisory · Interactive Research Counsel</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Advisory Hub
-            </h1>
-            <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-              Select your operational perspective below, then choose whether to interact via deep text chat or launch directly into a live face-to-face video session with Brandon Owens, grounded in the US Energy Innovation Database by Brandon N. Owens.
-            </p>
-          </div>
-
-          {/* Step 1: Perspective Selector */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <div className="flex items-center gap-2">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-cyan-600 text-white text-xs font-bold">1</span>
-                <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
-                  Select Your Operational Perspective
-                </h2>
-              </div>
-              <span className="text-xs text-slate-500 font-medium">
-                Active: <strong className="text-cyan-700">{currentRoleConfig.badge}</strong>
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {ROLES.map(r => {
-                const isSelected = userRole === r.id;
-                return (
-                  <button
-                    key={r.id}
-                    type="button"
-                    onClick={() => handleRoleSelect(r.id)}
-                    className={`p-3.5 rounded-xl text-left transition-all cursor-pointer border flex flex-col justify-between group relative ${
-                      isSelected
-                        ? 'bg-cyan-50/70 border-2 border-cyan-600 shadow-sm ring-2 ring-cyan-500/20'
-                        : 'bg-white hover:bg-slate-50 border-slate-200 shadow-2xs hover:border-slate-300'
-                    }`}
-                  >
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <div className={`p-2 rounded-lg ${isSelected ? 'bg-cyan-600 text-white' : 'bg-slate-100 text-slate-700 group-hover:bg-slate-200'}`}>
-                          <r.icon size={16} />
-                        </div>
-                        {isSelected && (
-                          <span className="flex items-center gap-1 text-[11px] font-bold text-cyan-700 bg-cyan-100 px-1.5 py-0.5 rounded-md">
-                            <Check size={12} strokeWidth={3} />
-                            <span>Selected</span>
-                          </span>
-                        )}
-                      </div>
-                      <div>
-                        <div className={`font-bold text-[13px] leading-snug ${isSelected ? 'text-cyan-950' : 'text-slate-900'}`}>
-                          {r.title}
-                        </div>
-                        <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                          {r.description}
-                        </p>
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Active Perspective Strategic Insight Pill */}
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider">
-                <currentRoleConfig.icon size={14} className="text-cyan-600" />
-                <span>Advisory Focus for {currentRoleConfig.badge}:</span>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {currentRoleConfig.description}
-              </p>
-            </div>
-          </div>
-
-          {/* Step 2: Choose Advisory Modality & Launch */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-            <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-cyan-600 text-white text-xs font-bold">2</span>
-              <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
-                Choose Your Advisory Modality &amp; Launch
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {/* Option A: Advisory Chat */}
-              <div className="rounded-2xl border-2 border-slate-200 hover:border-cyan-500 p-6 flex flex-col justify-between bg-white hover:bg-cyan-50/20 transition-all group shadow-2xs">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-600">
-                      <MessageSquare size={24} />
-                    </div>
-                    <span className="text-[10px] font-bold font-mono uppercase bg-slate-100 text-slate-700 px-2 py-0.5 rounded">
-                      Grounded RAG
-                    </span>
-                  </div>
-
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-cyan-900">
-                      Advisory Chat
-                    </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      Deep reasoning text conversation with citation badges, Mermaid charts, proposal WBS drafting, and monograph exports.
-                    </p>
-                  </div>
-
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2 border-t border-slate-100">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 size={14} className="text-cyan-600 shrink-0 mt-0.5" />
-                      <span>Instant citations across 56,413 awards &amp; 5,757 solicitations</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 size={14} className="text-cyan-600 shrink-0 mt-0.5" />
-                      <span>Interactive Mermaid system diagrams &amp; proposal matrices</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 size={14} className="text-cyan-600 shrink-0 mt-0.5" />
-                      <span>Adopts {currentRoleConfig.badge} strategic directives</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="pt-6">
-                  <button
-                    type="button"
-                    onClick={() => handleSwitchMode('chat')}
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
-                  >
-                    <span>Launch Advisory Chat</span>
-                    <ArrowUp size={15} className="rotate-90" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Option B: Live Video Advisor (Direct Launch) */}
-              <div className="rounded-2xl border-2 border-cyan-500 p-6 flex flex-col justify-between bg-gradient-to-b from-cyan-50/40 to-emerald-50/30 transition-all shadow-md relative overflow-hidden group">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="p-3 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-500 text-white shadow-sm">
-                      <Video size={24} />
-                    </div>
-                    <span className="text-[10px] font-bold font-mono uppercase bg-cyan-600 text-white px-2 py-0.5 rounded shadow-2xs">
-                      Video Advisory · Live Session
-                    </span>
-                  </div>
-
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-bold text-slate-900">
-                      Live Video Advisor
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Bidirectional face-to-face video advisory session with Brandon Owens (April 14 2026), grounded in the US Energy Innovation Database by Brandon N. Owens.
-                    </p>
-                  </div>
-
-                  <ul className="space-y-2 text-xs text-slate-700 pt-2 border-t border-cyan-100">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 size={14} className="text-emerald-600 shrink-0 mt-0.5" />
-                      <span>Sub-second real-time conversational streaming</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 size={14} className="text-emerald-600 shrink-0 mt-0.5" />
-                      <span>Grounded in 56,413 energy innovation awards &amp; 5,757 solicitations</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 size={14} className="text-emerald-600 shrink-0 mt-0.5" />
-                      <span><strong className="text-slate-900">Zero waiting room:</strong> Launches directly into live session</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="pt-6">
-                  <button
-                    type="button"
-                    onClick={() => handleSwitchMode('video')}
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
-                  >
-                    <Video size={16} />
-                    <span>Launch Live Video Advisor</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  */
 
   return (
     <div className="flex flex-col h-[calc(100vh-6rem)] -mt-2 -mx-2 bg-white dark:bg-slate-900 relative">
-      {/* Top Header Bar with Mode Switcher, Role Selector & Controls */}
+      {/* Top Header Bar with Perspective Selector & Controls */}
       <header className="h-13 border-b border-slate-200 dark:border-slate-800 px-4 flex items-center justify-between shrink-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm z-20">
         <div className="flex items-center gap-3">
-          {/* Perspective Dropdown Toggle */}
-          <button
-            type="button"
-            onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[12px] font-semibold transition-colors cursor-pointer"
-            title="Switch Operational Perspective"
-          >
-            <Compass size={13} className="text-slate-500 dark:text-slate-400" />
-            <span>Perspectives</span>
-          </button>
-
-          {/* Segmented Control for Chat vs Video Mode */}
-          <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
-            <button
-              type="button"
-              onClick={() => handleSwitchMode('chat')}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11.5px] font-bold bg-[#00E5FF] text-slate-950 shadow-glow-cyan-sm transition-all cursor-pointer"
-            >
-              <MessageSquare size={13} className="text-slate-950 font-bold" />
-              <span>Advisory Chat</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSwitchMode('video')}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11.5px] font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-all cursor-pointer"
-            >
-              <Video size={13} className="text-slate-500 dark:text-slate-400" />
-              <span>Video Advisor</span>
-            </button>
+          {/* Advisory Title Badge */}
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-cyan-50 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60 text-[12px] font-semibold">
+            <MessageSquare size={13} className="text-cyan-600 dark:text-cyan-400" />
+            <span>Strategic Advisory</span>
           </div>
 
           {/* Active Role Selector Dropdown */}
@@ -945,6 +736,7 @@ export default function Chat() {
               type="button"
               onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
               className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-[12px] font-medium text-slate-700 dark:text-slate-300 transition-colors shadow-2xs cursor-pointer"
+              title="Change Advisory Perspective"
             >
               <currentRoleConfig.icon size={13} className="text-slate-500 dark:text-slate-400" />
               <span>Perspective: <strong className="font-semibold text-slate-900 dark:text-slate-100">{currentRoleConfig.badge}</strong></span>
