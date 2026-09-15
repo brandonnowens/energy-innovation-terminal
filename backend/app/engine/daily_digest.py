@@ -26,6 +26,7 @@ from app.models.award import Award
 from app.models.policy import PolicyStandard, RegulatoryProceeding
 from app.models.technology import Technology
 from app.database import SessionLocal
+from app.config import settings
 from app.intelligence.bankability import evaluate_technology_bankability
 from app.intelligence.capital_stack import solve_capital_stack
 
@@ -72,8 +73,9 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
     edition_number = f"Vol. {volume_num}, Issue {day_of_year}"
 
     # 1. Macro Summary Metrics (Consolidated single-query execution)
+    _nyserda_sql = "" if settings.include_nyserda else "AND LOWER(agency) NOT LIKE '%nyserda%'"
     try:
-        macro_stats = db.execute(text("""
+        macro_stats = db.execute(text(f"""
             SELECT 
                 COUNT(CASE WHEN status = 'open' THEN 1 END) as open_opps_count,
                 COALESCE(SUM(CASE WHEN status = 'open' THEN total_funding END), 0.0) as total_active_capital,
@@ -81,7 +83,8 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
                 COALESCE(SUM(CASE WHEN status = 'open' AND jurisdiction LIKE 'state%' THEN total_funding END), 0.0) as state_capital,
                 (SELECT COUNT(*) FROM recipients) as total_recipients,
                 (SELECT COUNT(*) FROM awards) as total_awards_count
-            FROM opportunities;
+            FROM opportunities
+            WHERE 1=1 {_nyserda_sql};
         """)).mappings().one()
 
         open_opps_count = macro_stats["open_opps_count"] or 1420
@@ -104,9 +107,15 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
         utility_capital = total_active_capital * 0.10
 
     # 2. Top New & Priority Solicitations (Top 10)
+    _opp_base = db.query(Opportunity).filter(Opportunity.status == "open")
+    if not settings.include_nyserda:
+        _opp_base = _opp_base.filter(
+            ~Opportunity.agency.ilike("%nyserda%"),
+            ~Opportunity.source_name.ilike("%nyserda%"),
+        )
+
     new_opps_rows = (
-        db.query(Opportunity)
-        .filter(Opportunity.status == "open")
+        _opp_base
         .order_by(desc(Opportunity.total_funding), desc(Opportunity.id))
         .limit(10)
         .all()
@@ -131,10 +140,19 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
         })
 
     # 3. Critical Upcoming Deadlines (Next 14–45 Days)
-    deadline_opps_rows = (
+    _deadline_base = (
         db.query(Opportunity)
         .filter(Opportunity.status == "open")
         .filter(Opportunity.due_date_display != None)
+    )
+    if not settings.include_nyserda:
+        _deadline_base = _deadline_base.filter(
+            ~Opportunity.agency.ilike("%nyserda%"),
+            ~Opportunity.source_name.ilike("%nyserda%"),
+        )
+
+    deadline_opps_rows = (
+        _deadline_base
         .order_by(Opportunity.id.asc())
         .limit(8)
         .all()
@@ -159,13 +177,17 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
         })
 
     # 4. Major Recent Awards & Capital Deals Wire (Top 8)
+    _awards_base = db.query(Award).filter(Award.award_amount != None)
+    if not settings.include_nyserda:
+        _awards_base = _awards_base.filter(~Award.agency.ilike("%nyserda%"))
+
     recent_awards_rows = (
-        db.query(Award)
-        .filter(Award.award_amount != None)
+        _awards_base
         .order_by(desc(Award.award_amount))
         .limit(8)
         .all()
     )
+
 
     award_wire = []
     for aw in recent_awards_rows:
