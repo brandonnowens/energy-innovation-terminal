@@ -1,10 +1,11 @@
-"""Charts API endpoints."""
+﻿"""Charts API endpoints."""
 
 from typing import Optional, Dict, Any, List
 from fastapi import APIRouter, Depends, HTTPException, Query, Header
 from fastapi.responses import Response
 from sqlalchemy.orm import Session
 from sqlalchemy import text
+from app.config import settings
 from app.database import get_db
 from app.models.community import SavedChart
 from app.api.community import require_creator_hash
@@ -36,7 +37,7 @@ def get_chart_data(req: ChartDataRequest, x_include_nyserda: Optional[str] = Hea
     group_by = req.group_by or "year"
     limit = req.limit or 100
     # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    is_ex = not (x_include_nyserda == "true" or (req.filters and req.filters.get("exclude_nyserda") is False))
+    is_ex = not settings.include_nyserda is False))
 
 
     # If querying award metrics

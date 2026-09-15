@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Header
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc, asc, or_
 
+from app.config import settings
 from app.database import get_db
 from app.models.opportunity import Opportunity
 from app.models.award import Award
@@ -152,7 +153,7 @@ def list_results(
     db: Session = Depends(get_db),
 ):
     """List paginated, filterable verified outcome metrics across all opportunities."""
-    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
+    should_exclude_nyserda = not settings.include_nyserda
     query = db.query(OpportunityResult)
 
     if should_exclude_nyserda:
@@ -215,7 +216,7 @@ def list_benchmarks(
     db: Session = Depends(get_db),
 ):
     """Apples-to-apples benchmarking table comparing return on grant dollar across opportunities."""
-    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
+    should_exclude_nyserda = not settings.include_nyserda
     query = db.query(ResultBenchmark)
 
     if should_exclude_nyserda:
@@ -279,7 +280,7 @@ def get_metrics_summary(
     db: Session = Depends(get_db),
 ):
     """High-level summary of aggregate impact and return on public investment."""
-    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
+    should_exclude_nyserda = not settings.include_nyserda
     bm_query = db.query(ResultBenchmark)
     res_query = db.query(OpportunityResult)
 
@@ -386,7 +387,7 @@ def list_success_stories(
     db: Session = Depends(get_db),
 ):
     """List rich case studies and organizational success stories."""
-    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
+    should_exclude_nyserda = not settings.include_nyserda
     query = db.query(SuccessStory)
 
     if should_exclude_nyserda:
@@ -439,7 +440,7 @@ def list_artifacts(
     db: Session = Depends(get_db),
 ):
     """List scraped/cited PDF reports, OSTI deliverables, and evaluation filings."""
-    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
+    should_exclude_nyserda = not settings.include_nyserda
     query = db.query(ResultArtifact)
 
     if should_exclude_nyserda:
@@ -608,7 +609,7 @@ def list_organization_results(
     """List only organizations where actual verified results and report artifacts were found.
     Excludes all organizations where returned results are zero.
     """
-    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
+    should_exclude_nyserda = not settings.include_nyserda
     res_query = db.query(OpportunityResult.recipient_name).filter(
         OpportunityResult.recipient_name.isnot(None),
         OpportunityResult.recipient_name != ""

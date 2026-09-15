@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import func, text
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.database import get_db
 from app.models.opportunity import Opportunity
 from app.models.program import Program, ProgramFocusArea
@@ -67,6 +68,13 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
     Returns programs with focus areas, opportunity counts, and funding stats."""
     from sqlalchemy import text as sa_text
 
+    nyserda_clause = "" if settings.include_nyserda else "AND LOWER(o.agency) NOT LIKE '%nyserda%'"
+    nyserda_clause_bare = "" if settings.include_nyserda else "AND LOWER(agency) NOT LIKE '%nyserda%'"
+
+    # Block NYSERDA organization filter even if somehow passed
+    if organization and not settings.include_nyserda and "nyserda" in organization.lower():
+        return []
+
     if organization and organization != "ALL":
         rows = db.execute(sa_text("""
             WITH opp_stats AS (
@@ -85,7 +93,7 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
                         END
                     ), 0) as total_funding
                 FROM opportunities o
-                WHERE o.agency = :org AND o.program_id IS NOT NULL
+                WHERE o.agency = :org AND o.program_id IS NOT NULL {nyserda_clause}
                 GROUP BY o.program_id
             ),
             aw_stats AS (
@@ -95,7 +103,7 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
                     COALESCE(SUM(a.award_amount), 0) as total_awarded
                 FROM awards a
                 JOIN opportunities o ON o.id = a.opportunity_id
-                WHERE o.agency = :org AND o.program_id IS NOT NULL
+                WHERE o.agency = :org AND o.program_id IS NOT NULL {nyserda_clause}
                 GROUP BY o.program_id
             )
             SELECT 
@@ -112,7 +120,7 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
             LEFT JOIN aw_stats a ON a.program_id = p.id
             WHERE p.active = TRUE
             ORDER BY s.opp_count DESC, p.name
-        """), {"org": organization}).fetchall()
+        """.format(nyserda_clause=nyserda_clause)), {"org": organization}).fetchall()
     else:
         rows = db.execute(sa_text("""
             WITH opp_stats AS (
@@ -131,7 +139,7 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
                         END
                     ), 0) as total_funding
                 FROM opportunities
-                WHERE program_id IS NOT NULL
+                WHERE program_id IS NOT NULL {nyserda_clause_bare}
                 GROUP BY program_id
             ),
             aw_stats AS (
@@ -141,7 +149,7 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
                     COALESCE(SUM(a.award_amount), 0) as total_awarded
                 FROM awards a
                 JOIN opportunities o ON o.id = a.opportunity_id
-                WHERE o.program_id IS NOT NULL
+                WHERE o.program_id IS NOT NULL {nyserda_clause}
                 GROUP BY o.program_id
             )
             SELECT 
@@ -158,7 +166,7 @@ def get_programs(organization: Optional[str] = Query(None), db: Session = Depend
             LEFT JOIN aw_stats a ON a.program_id = p.id
             WHERE p.active = TRUE
             ORDER BY p.program_type, p.name
-        """)).fetchall()
+        """.format(nyserda_clause=nyserda_clause, nyserda_clause_bare=nyserda_clause_bare))).fetchall()
 
     # Batch load all program focus areas in 1 query
     all_fas = db.execute(sa_text(
@@ -337,7 +345,9 @@ def search_precedents(
                 | (Award.project_abstract.ilike(f"%{technology}%"))
             )
 
-        supplemental = award_query.limit(limit - len(results)).all()
+        supplemental = award_query.filter(
+            ~Award.agency.ilike("%nyserda%") if not settings.include_nyserda else True
+        ).limit(limit - len(results)).all()
         for a in supplemental:
             results.append({
                 "id": a.id,

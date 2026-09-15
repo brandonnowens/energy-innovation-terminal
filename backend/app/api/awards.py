@@ -1,4 +1,4 @@
-"""Awards & Results API endpoints."""
+﻿"""Awards & Results API endpoints."""
 
 import json
 from typing import Optional
@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, Query, Response, Header
 from sqlalchemy import func, text
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.database import get_db
 from app.core.cache_utils import TTLCache
 
@@ -72,8 +73,7 @@ def list_awards(
     base_where = []
     params = {}
 
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    if x_include_nyserda != "true" and exclude_nyserda is not False:
+    if not settings.include_nyserda:
         base_where.append("(a.agency NOT LIKE '%NYSERDA%' AND a.source_name NOT LIKE '%NYSERDA%')")
 
     if agency:
@@ -285,8 +285,7 @@ def list_recipients(
     where_parts = []
     params = {}
 
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    if x_include_nyserda != "true" and exclude_nyserda is not False:
+    if not settings.include_nyserda:
         where_parts.append("(r.name NOT LIKE '%NYSERDA%' AND (r.funded_agencies NOT LIKE '%NYSERDA%' OR r.funded_agencies IS NULL))")
 
     if search:
@@ -747,7 +746,7 @@ def get_map_filters(db: Session = Depends(get_db)):
         elif ctype == "activity":
             stages.append(item)
 
-    # Agency counts — PUBLIC VERSION: exclude NYSERDA
+    # Agency counts â€” PUBLIC VERSION: exclude NYSERDA
     agency_rows = db.execute(text("""
         SELECT agency, COUNT(*), COALESCE(SUM(award_amount), 0)
         FROM awards WHERE latitude IS NOT NULL

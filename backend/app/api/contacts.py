@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Header
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import or_, and_, desc, asc, func, text
+from app.config import settings
 from app.database import get_db
 from app.core.cache_utils import TTLCache
 from app.models.contact import Contact, OpportunityContactLink
@@ -118,12 +119,8 @@ def list_contacts(
 ):
     query = db.query(Contact)
 
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    should_exclude_nyserda = True
-    if exclude_nyserda is False:
-        should_exclude_nyserda = False
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
-        should_exclude_nyserda = False
+    # PUBLIC VERSION: exclude NYSERDA by default; set INCLUDE_NYSERDA=true env var to re-enable
+    should_exclude_nyserda = not settings.include_nyserda
 
     if should_exclude_nyserda:
         query = query.filter(

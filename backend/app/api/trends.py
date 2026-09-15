@@ -1,10 +1,11 @@
-from typing import Optional, List, Dict, Any, Tuple
+﻿from typing import Optional, List, Dict, Any, Tuple
 from datetime import datetime, date, timedelta
 from collections import defaultdict
 from fastapi import APIRouter, Depends, Query, Header
 from sqlalchemy import func, case, text as sa_text
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.database import get_db
 from app.models.opportunity import Opportunity, OpportunityCategory
 from app.models.award import Award
@@ -71,7 +72,7 @@ def trends_overview(
 ):
     """Year-over-year: {year, count, total_funding} supporting both Executed Awards and Solicitation Pipeline."""
     # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    is_ex = not (x_include_nyserda == "true" or exclude_nyserda is False)
+    is_ex = not settings.include_nyserda
 
     cache_key = f"overview:{year_min}:{year_max}:{agency}:{org_type}:{status}:{data_source}:ex_{is_ex}"
     cached = _get_cached_trends(cache_key)
@@ -198,7 +199,7 @@ def trends_by_agency(
 ):
     """Agency breakdown: {agency, count, total_funding}"""
     # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    is_ex = not (x_include_nyserda == "true" or exclude_nyserda is False)
+    is_ex = not settings.include_nyserda
 
     cache_key = f"by_agency:{year_min}:{year_max}:{org_type}:{status}:{data_source}:{top_n}:ex_{is_ex}"
     cached = _get_cached_trends(cache_key)
@@ -380,7 +381,7 @@ def trends_heatmap(
     top_n: int = 15,
     db: Session = Depends(get_db)
 ):
-    """Configurable cross-tab correlation matrix: rows × cols with count or verified funding value.
+    """Configurable cross-tab correlation matrix: rows Ã— cols with count or verified funding value.
     rows/cols: agency, technology, sector, fuel, year
     metric: count, funding, total_funding
     data_source: awards, sanitized, pipeline
@@ -726,7 +727,7 @@ def trends_analytics(
     insights.append({
         "category": "Capital Realization",
         "type": "capital_realization",
-        "title": "Direct Cashflow Realization: $39.8B (2024) → $12.95B (2025) → $1.08B (2026)",
+        "title": "Direct Cashflow Realization: $39.8B (2024) â†’ $12.95B (2025) â†’ $1.08B (2026)",
         "description": "Verified grant disbursements peaked in 2024 ($39.8B across 2,320 awards) with historic IRA/BIL infrastructure grants, followed by $12.95B in 2025 for advanced R&D scaling, and $1.08B in active 2026 early-cohort funding.",
         "impact": "high",
         "badge": "$58.1B Realized",

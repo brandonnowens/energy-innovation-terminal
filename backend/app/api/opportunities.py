@@ -9,6 +9,7 @@ from sqlalchemy import text, func, case, not_
 from sqlalchemy.orm import Session, selectinload
 
 
+from app.config import settings
 from app.database import get_db
 from app.models.opportunity import (
     Opportunity,
@@ -269,8 +270,7 @@ def list_opportunities(
 
     query = db.query(Opportunity)
 
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    if x_include_nyserda != "true" and exclude_nyserda is not False:
+    if not settings.include_nyserda:
         query = query.filter(
             ~Opportunity.agency.ilike("%NYSERDA%"),
             ~Opportunity.source_name.ilike("%NYSERDA%"),
@@ -556,6 +556,13 @@ def get_opportunity(opp_id: int, db: Session = Depends(get_db)):
     if not opp:
         raise HTTPException(status_code=404, detail="Opportunity not found")
 
+    # PUBLIC VERSION: hide NYSERDA opportunities
+    if not settings.include_nyserda:
+        agency_str = (getattr(opp, "agency", "") or "").lower()
+        source_str = (getattr(opp, "source_name", "") or "").lower()
+        if "nyserda" in agency_str or "nyserda" in source_str:
+            raise HTTPException(status_code=404, detail="Opportunity not found")
+
     result = _opp_to_dict(opp)
 
     # Extra fields the modal needs
@@ -650,7 +657,12 @@ def get_opportunity_win_rate_benchmark(opp_id: int, db: Session = Depends(get_db
     opp = db.query(Opportunity).filter(Opportunity.id == opp_id).first()
     if not opp:
         raise HTTPException(status_code=404, detail="Opportunity not found")
-        
+
+    # PUBLIC VERSION: hide NYSERDA opportunities
+    if not settings.include_nyserda:
+        if "nyserda" in (getattr(opp, "agency", "") or "").lower() or "nyserda" in (getattr(opp, "source_name", "") or "").lower():
+            raise HTTPException(status_code=404, detail="Opportunity not found")
+
     return calculate_win_rate_analytics(
         db=db,
         opp=opp,

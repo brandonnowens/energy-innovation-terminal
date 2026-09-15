@@ -81,6 +81,10 @@ class Settings(BaseSettings):
     jwt_access_token_expire_minutes: int = 60 * 24 * 7  # 7 days
     public_benefit_mode: bool = True  # All users have 100% full free access to all intelligence features
 
+    # PUBLIC VERSION: Set INCLUDE_NYSERDA=true in environment to re-enable NYSERDA data across the entire app.
+    # When False (default), all NYSERDA opportunities, awards, contacts, and agency references are hidden.
+    include_nyserda: bool = False
+
     # Ghost.org Membership & Subscription Integration
     ghost_api_url: str = "https://aixenergy.io"
     ghost_admin_api_key: str = ""

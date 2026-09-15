@@ -1,7 +1,8 @@
-from typing import Optional, Dict, Tuple, Any
+﻿from typing import Optional, Dict, Tuple, Any
 from fastapi import APIRouter, Depends, Query, Header
 from sqlalchemy.orm import Session
 from sqlalchemy import text
+from app.config import settings
 from app.database import get_db
 from app.core.cache_utils import TTLCache
 
@@ -24,12 +25,8 @@ def get_knowledge_graph(
     db: Session = Depends(get_db),
 ):
     """Build comprehensive knowledge graph from all database entities with TTL in-memory caching."""
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    should_exclude_nyserda = True
-    if exclude_nyserda is False:
-        should_exclude_nyserda = False
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
-        should_exclude_nyserda = False
+    # PUBLIC VERSION: exclude NYSERDA by default; set INCLUDE_NYSERDA=true env var to re-enable
+    should_exclude_nyserda = not settings.include_nyserda
 
 
     cache_key = f"{entity_types}:{agency}:{search}:{year_min}:{year_max}:{status}:{node_limit}:{should_exclude_nyserda}"
@@ -79,7 +76,7 @@ def get_knowledge_graph(
                     e.update(data)
                 edges.append(e)
 
-    # ── ORGANIZATIONS ──
+    # Ã¢â€â‚¬Ã¢â€â‚¬ ORGANIZATIONS Ã¢â€â‚¬Ã¢â€â‚¬
     if "organization" in types:
         org_where = "WHERE 1=1"
         if should_exclude_nyserda:
@@ -98,7 +95,7 @@ def get_knowledge_graph(
             if r[8]:  # parent org
                 add_edge(nid, f"org_{r[8]}", "part_of")
 
-    # ── PROGRAMS ──
+    # Ã¢â€â‚¬Ã¢â€â‚¬ PROGRAMS Ã¢â€â‚¬Ã¢â€â‚¬
     if "program" in types:
         prog_where = "WHERE 1=1"
         if should_exclude_nyserda:
@@ -125,7 +122,7 @@ def get_knowledge_graph(
                 add_node(tech_key, {"id": tech_key, "type": "technology", "name": fa_name, "keywords": fa[2]})
                 add_edge(prog_key, tech_key, "focuses_on")
 
-    # ── OPPORTUNITIES ──
+    # Ã¢â€â‚¬Ã¢â€â‚¬ OPPORTUNITIES Ã¢â€â‚¬Ã¢â€â‚¬
     opp_where = ["1=1"]
     opp_params = {}
     if should_exclude_nyserda:
@@ -194,7 +191,7 @@ def get_knowledge_graph(
                     "is_inferred": r[7],
                 })
 
-    # ── TECHNOLOGIES / SECTORS / FUELS from opportunity_categories ──
+    # Ã¢â€â‚¬Ã¢â€â‚¬ TECHNOLOGIES / SECTORS / FUELS from opportunity_categories Ã¢â€â‚¬Ã¢â€â‚¬
     opp_ids = [n["db_id"] for k, n in nodes.items() if n["type"] == "opportunity"]
     if opp_ids and ("technology" in types or "sector" in types or "fuel" in types):
         placeholders = ",".join(str(i) for i in opp_ids)
@@ -215,7 +212,7 @@ def get_knowledge_graph(
                 edge_type = {"technology": "has_technology", "sector": "in_sector", "fuel": "uses_fuel"}.get(cat_type, "classified")
                 add_edge(opp_key, cat_key, edge_type)
 
-    # ── AWARDEES ──
+    # Ã¢â€â‚¬Ã¢â€â‚¬ AWARDEES Ã¢â€â‚¬Ã¢â€â‚¬
     if "awardee" in types:
         award_where = ["1=1"]
         award_params = {}
@@ -288,7 +285,7 @@ def get_knowledge_graph(
                     opp_key = f"opp_{award['opp_id']}"
                     add_edge(opp_key, akey, "awarded_to", {"amount": award["amount"]})
 
-    # ── PATENTS & INVESTORS ──
+    # Ã¢â€â‚¬Ã¢â€â‚¬ PATENTS & INVESTORS Ã¢â€â‚¬Ã¢â€â‚¬
     if "patent" in types or "all" in types or not entity_types:
         try:
             pat_rows = db.execute(text("""
@@ -336,7 +333,7 @@ def get_knowledge_graph(
     # to avoid massive star topology. Org-opp relationship is conveyed by agency color.
     # Non-funder roles (admin, partner) would be included if they existed.
 
-    # ── Summary ──
+    # Ã¢â€â‚¬Ã¢â€â‚¬ Summary Ã¢â€â‚¬Ã¢â€â‚¬
     type_counts = {}
     for n in nodes.values():
         t = n["type"]
@@ -578,12 +575,8 @@ def get_network_analytics(
 ):
     """Compute network analytics, centrality rankings, bridge nodes, and expanded ecosystem discoveries with TTL cache."""
     import time
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    should_exclude_nyserda = True
-    if exclude_nyserda is False:
-        should_exclude_nyserda = False
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
-        should_exclude_nyserda = False
+    # PUBLIC VERSION: exclude NYSERDA by default; set INCLUDE_NYSERDA=true env var to re-enable
+    should_exclude_nyserda = not settings.include_nyserda
 
 
     cache_key = f"{agency}_{year_min}_{year_max}_{should_exclude_nyserda}"
@@ -749,7 +742,7 @@ def get_network_analytics(
     insights.append({
         "category": "Consortium Evolution",
         "type": "ecosystem_transition",
-        "title": "Consortium Paradigm Shift: Federal Lab Centralization (2024) → 70+ Utility Deployments (2026)",
+        "title": "Consortium Paradigm Shift: Federal Lab Centralization (2024) Ã¢â€ â€™ 70+ Utility Deployments (2026)",
         "description": "Graph topology reveals an evolution from centralized federal research hubs (NREL, MIT, Stanford, Berkeley) in 2024 toward decentralized co-development partnerships spanning 70+ investor-owned and municipal utilities (TVA, LADWP, Rocky Mountain Power, ConEd) in 2026.",
         "impact": "high",
         "badge": "Paradigm Shift",

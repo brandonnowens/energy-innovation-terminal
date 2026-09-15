@@ -1,4 +1,4 @@
-"""Venture & Patent Attributions API endpoints."""
+﻿"""Venture & Patent Attributions API endpoints."""
 
 import json
 from datetime import datetime
@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func, desc, asc, text
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.database import get_db
 from app.core.cache_utils import TTLCache
 from app.models.attribution import RecipientPatent, RecipientInvestment

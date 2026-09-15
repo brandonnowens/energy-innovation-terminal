@@ -228,7 +228,7 @@ def test_connection_endpoint(req: TestConnectionRequest):
 
 @router.post("/analyze")
 def analyze(request: AnalyzeRequest, db: Session = Depends(get_db)):
-    """Analyze a project description and match against multi-agency opportunities (CEC, MassCEC, DOE, ARPA-E, NSF, NYSERDA, utilities)."""
+    """Analyze a project description and match against multi-agency opportunities (DOE, CEC, MassCEC, ARPA-E, NSF, state energy authorities)."""
     result = analyze_project(
         db=db,
         text=request.text,
@@ -244,7 +244,20 @@ def analyze(request: AnalyzeRequest, db: Session = Depends(get_db)):
         fuel_types=request.fuel_types,
         target_agencies=request.agencies,
     )
+
+    # PUBLIC VERSION: strip NYSERDA opportunities from match results
+    if not settings.include_nyserda and isinstance(result, dict):
+        for key in ("matches", "top_matches", "opportunities", "results"):
+            if key in result and isinstance(result[key], list):
+                result[key] = [
+                    m for m in result[key]
+                    if "nyserda" not in str(m.get("agency", "")).lower()
+                    and "nyserda" not in str(m.get("source_name", "")).lower()
+                    and "nyserda" not in str(m.get("name", "")).lower()
+                ]
+
     return result
+
 
 
 class ExtractTextRequest(BaseModel):
@@ -319,6 +332,14 @@ def get_say_yes_matrix(req: SayYesMatrixRequest, db: Session = Depends(get_db)):
         target_agencies=req.agencies,
         limit=req.limit or 25
     )
+
+    # PUBLIC VERSION: strip NYSERDA opportunities from results
+    if not settings.include_nyserda and isinstance(ranked_matrix, list):
+        ranked_matrix = [
+            m for m in ranked_matrix
+            if "nyserda" not in str(m.get("agency", "")).lower()
+            and "nyserda" not in str(m.get("source_name", "")).lower()
+        ]
 
     return {
         "success": True,

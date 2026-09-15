@@ -1,4 +1,4 @@
-"""Universal Database Search API Engine.
+﻿"""Universal Database Search API Engine.
 Exhaustively queries across all 12 database domains with case-insensitive token and substring matching.
 """
 
@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, Query, Header
 from sqlalchemy.orm import Session
 from sqlalchemy import or_, func, text, desc
 
+from app.config import settings
 from app.database import get_db
 from app.models.award import Award
 from app.models.opportunity import Opportunity
@@ -42,7 +43,7 @@ def universal_search(
     - Bayh-Dole Act Patents & IP Citations
     - Private Venture Capital Rounds & SEC Form D Filings
     - Technology Reference Architectures
-    - Policies, Tax Credits & Safety Codes (IRA §45/§48, NFPA/UL)
+    - Policies, Tax Credits & Safety Codes (IRA Â§45/Â§48, NFPA/UL)
     - Public Utility Commission Regulatory Dockets
     - Grid Interconnection Queues (10,250 projects)
     - National Lab Facilities & Testbeds (NREL, EPRI, etc.)
@@ -51,12 +52,8 @@ def universal_search(
     term = q.strip()
     pattern = f"%{term}%"
 
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    should_exclude_nyserda = True
-    if exclude_nyserda is False:
-        should_exclude_nyserda = False
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.lower() in ("true", "1", "yes"):
-        should_exclude_nyserda = False
+    # PUBLIC VERSION: exclude NYSERDA by default; set INCLUDE_NYSERDA=true env var to re-enable
+    should_exclude_nyserda = not settings.include_nyserda
 
     results: Dict[str, List[Dict[str, Any]]] = {
         "awards": [],

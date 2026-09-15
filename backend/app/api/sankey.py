@@ -1,4 +1,4 @@
-"""Sankey Diagram and Multi-Stage Capital Flow Intelligence API."""
+﻿"""Sankey Diagram and Multi-Stage Capital Flow Intelligence API."""
 
 from typing import Optional, List, Dict, Any, Tuple
 from collections import defaultdict
@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, Query, HTTPException, Header
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 
+from app.config import settings
 from app.database import get_db
 from app.core.cache_utils import TTLCache
 from app.ingest.organization_taxonomy import get_organization_profile
@@ -163,12 +164,8 @@ def get_sankey_flow(
     """Dynamically generate multi-stage Sankey directed flow data (nodes & links)
     across arbitrary dimension sequences with full organization tier flexibility."""
 
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    should_exclude_nyserda = True
-    if exclude_nyserda is False:
-        should_exclude_nyserda = False
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
-        should_exclude_nyserda = False
+    # PUBLIC VERSION: exclude NYSERDA by default; set INCLUDE_NYSERDA=true env var to re-enable
+    should_exclude_nyserda = not settings.include_nyserda
 
 
     cache_key = f"{preset}:{dimensions}:{metric}:{agency}:{org_type}:{year_min}:{year_max}:{status}:{sector}:{technology}:{top_n_per_stage}:{min_value}:{should_exclude_nyserda}"
@@ -617,12 +614,8 @@ def get_sankey_insights(
 ):
     """Compute automated macro funding insights, major capital conduits,
     funneling dynamics, and cross-sector technology deployment patterns with TTL caching."""
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    should_exclude_nyserda = True
-    if exclude_nyserda is False:
-        should_exclude_nyserda = False
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
-        should_exclude_nyserda = False
+    # PUBLIC VERSION: exclude NYSERDA by default; set INCLUDE_NYSERDA=true env var to re-enable
+    should_exclude_nyserda = not settings.include_nyserda
 
     cache_key = f"insights:{should_exclude_nyserda}"
     cached = _sankey_insights_cache.get(cache_key)
@@ -660,7 +653,7 @@ def get_sankey_insights(
                 "technology": r[2],
                 "funding": float(r[3]),
                 "opp_count": r[4],
-                "headline": f"{r[0]} → {r[1]} → {r[2]}",
+                "headline": f"{r[0]} â†’ {r[1]} â†’ {r[2]}",
             }
             for r in top_conduits_raw
         ]
@@ -722,7 +715,7 @@ def get_sankey_insights(
             "macro_conduits_count": len(top_conduits),
             "multi_agency_tech_count": len(cross_agency_tech),
             "total_conduit_capital": total_conduit_funding,
-            "dominant_conduit": top_conduits[0]["headline"] if top_conduits else "Federal → Grid → Storage",
+            "dominant_conduit": top_conduits[0]["headline"] if top_conduits else "Federal â†’ Grid â†’ Storage",
         }
     except Exception as db_err:
         import logging, json

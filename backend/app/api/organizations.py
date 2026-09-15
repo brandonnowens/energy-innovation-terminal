@@ -5,6 +5,7 @@ from typing import Optional, List, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, Query, Header
 from sqlalchemy import func
 from sqlalchemy.orm import Session
+from app.config import settings
 from app.database import get_db
 from app.core.cache_utils import TTLCache
 from app.models.organization import Organization
@@ -109,7 +110,7 @@ def list_organizations(
     x_include_nyserda: Optional[str] = Header(None, alias="X-Include-NYSERDA"),
     db: Session = Depends(get_db),
 ):
-    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
+    should_exclude_nyserda = not settings.include_nyserda
     try:
         query = db.query(Organization)
         
@@ -192,7 +193,7 @@ def search_organizations(
     x_include_nyserda: Optional[str] = Header(None, alias="X-Include-NYSERDA"),
     db: Session = Depends(get_db)
 ):
-    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
+    should_exclude_nyserda = not settings.include_nyserda
     try:
         search_lower = f"%{q.lower()}%"
         sq = db.query(Organization).filter(

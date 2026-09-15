@@ -1036,9 +1036,9 @@ export function getAuthHeaders(extraHeaders: Record<string, string> = {}): Recor
   if (creatorToken) {
     headers['X-Creator-Token'] = creatorToken;
   }
-  // PUBLIC VERSION: always send false — default to excluded even for new visitors
-  // To re-enable, restore: if (includeNyserda !== null) { headers['X-Include-NYSERDA'] = includeNyserda; }
-  headers['X-Include-NYSERDA'] = includeNyserda ?? 'false';
+  // PUBLIC VERSION: always send false — NYSERDA is hidden from the public app.
+  // To re-enable: change 'false' to 'true', or restore dynamic: headers['X-Include-NYSERDA'] = includeNyserda ?? 'false';
+  headers['X-Include-NYSERDA'] = 'false';
   return headers;
 }
 

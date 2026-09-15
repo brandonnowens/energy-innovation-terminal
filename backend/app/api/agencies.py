@@ -1,10 +1,11 @@
-"""Agencies & Organizations structured taxonomy API endpoint."""
+﻿"""Agencies & Organizations structured taxonomy API endpoint."""
 
 from typing import Optional, List, Dict, Any
 from fastapi import APIRouter, Depends, Query, Header
 from sqlalchemy.orm import Session
 from sqlalchemy import func, text
 
+from app.config import settings
 from app.database import get_db
 from app.models.opportunity import Opportunity
 from app.ingest.organization_taxonomy import get_organization_profile, ORGANIZATION_TAXONOMY
@@ -62,7 +63,7 @@ def list_agencies(
     """List all available organizations and utilities with structured categorization,
     opportunity counts, program counts, and category summaries with TTL cache."""
     # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    is_excluded = not (x_include_nyserda == "true" or exclude_nyserda is False)
+    is_excluded = not settings.include_nyserda
 
     import time
     cache_key = f"{category or 'all'}:ex_{is_excluded}"
