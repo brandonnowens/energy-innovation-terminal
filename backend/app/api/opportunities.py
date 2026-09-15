@@ -269,7 +269,8 @@ def list_opportunities(
 
     query = db.query(Opportunity)
 
-    if exclude_nyserda is True or x_include_nyserda == "false":
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    if x_include_nyserda != "true" and exclude_nyserda is not False:
         query = query.filter(
             ~Opportunity.agency.ilike("%NYSERDA%"),
             ~Opportunity.source_name.ilike("%NYSERDA%"),

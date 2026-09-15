@@ -1,4 +1,4 @@
-"""Results, Outcomes, Success Stories, and Apples-to-Apples Benchmarking API endpoints."""
+﻿"""Results, Outcomes, Success Stories, and Apples-to-Apples Benchmarking API endpoints."""
 
 from typing import List, Optional, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, Query, Header
@@ -152,7 +152,7 @@ def list_results(
     db: Session = Depends(get_db),
 ):
     """List paginated, filterable verified outcome metrics across all opportunities."""
-    should_exclude_nyserda = exclude_nyserda is True or (x_include_nyserda is not None and x_include_nyserda.strip().lower() in ("false", "0", "no"))
+    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
     query = db.query(OpportunityResult)
 
     if should_exclude_nyserda:
@@ -215,7 +215,7 @@ def list_benchmarks(
     db: Session = Depends(get_db),
 ):
     """Apples-to-apples benchmarking table comparing return on grant dollar across opportunities."""
-    should_exclude_nyserda = exclude_nyserda is True or (x_include_nyserda is not None and x_include_nyserda.strip().lower() in ("false", "0", "no"))
+    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
     query = db.query(ResultBenchmark)
 
     if should_exclude_nyserda:
@@ -279,7 +279,7 @@ def get_metrics_summary(
     db: Session = Depends(get_db),
 ):
     """High-level summary of aggregate impact and return on public investment."""
-    should_exclude_nyserda = exclude_nyserda is True or (x_include_nyserda is not None and x_include_nyserda.strip().lower() in ("false", "0", "no"))
+    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
     bm_query = db.query(ResultBenchmark)
     res_query = db.query(OpportunityResult)
 
@@ -386,7 +386,7 @@ def list_success_stories(
     db: Session = Depends(get_db),
 ):
     """List rich case studies and organizational success stories."""
-    should_exclude_nyserda = exclude_nyserda is True or (x_include_nyserda is not None and x_include_nyserda.strip().lower() in ("false", "0", "no"))
+    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
     query = db.query(SuccessStory)
 
     if should_exclude_nyserda:
@@ -439,7 +439,7 @@ def list_artifacts(
     db: Session = Depends(get_db),
 ):
     """List scraped/cited PDF reports, OSTI deliverables, and evaluation filings."""
-    should_exclude_nyserda = exclude_nyserda is True or (x_include_nyserda is not None and x_include_nyserda.strip().lower() in ("false", "0", "no"))
+    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
     query = db.query(ResultArtifact)
 
     if should_exclude_nyserda:
@@ -608,7 +608,7 @@ def list_organization_results(
     """List only organizations where actual verified results and report artifacts were found.
     Excludes all organizations where returned results are zero.
     """
-    should_exclude_nyserda = exclude_nyserda is True or (x_include_nyserda is not None and x_include_nyserda.strip().lower() in ("false", "0", "no"))
+    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
     res_query = db.query(OpportunityResult.recipient_name).filter(
         OpportunityResult.recipient_name.isnot(None),
         OpportunityResult.recipient_name != ""
@@ -718,3 +718,4 @@ def list_organization_results(
         "total_organizations": len(org_dossiers),
         "organizations": org_dossiers,
     }
+

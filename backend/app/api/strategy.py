@@ -43,7 +43,7 @@ def get_strategy_templates():
                 "target_trl": 8,
                 "sponsor_type": "Early-Stage Hardtech Developer",
                 "state": "New York",
-                "target_agency": "NYSERDA",
+                "target_agency": "State Energy Authority (NY)",
                 "budget": "$10,000,000",
                 "cost_share_pct": "20%",
                 "technical_bottlenecks": [
@@ -93,9 +93,9 @@ def get_strategy_templates():
         ],
         "funding_org_templates": [
             {
-                "id": "nyserda_grid_flex_pon",
+                "id": "state_energy_grid_flex_pon",
                 "name": "Statewide Grid Flexibility & Long-Duration Storage Commercialization PON",
-                "org_name": "NYSERDA",
+                "org_name": "State Energy Authority (NY)",
                 "org_type": "State Energy Office (State Energy Offices, CEC, MassCEC)",
                 "mandate": "Achieve 6 GW storage by 2030 and 100% zero-emission electricity by 2040 under NY CLCPA",
                 "tech_focus": ["Energy Storage & Long-Duration Chemistries (LDES)", "Grid Modernization, Dynamic Line Rating & Transmission"],

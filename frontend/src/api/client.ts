@@ -1036,9 +1036,9 @@ export function getAuthHeaders(extraHeaders: Record<string, string> = {}): Recor
   if (creatorToken) {
     headers['X-Creator-Token'] = creatorToken;
   }
-  if (includeNyserda !== null) {
-    headers['X-Include-NYSERDA'] = includeNyserda;
-  }
+  // PUBLIC VERSION: always send false — default to excluded even for new visitors
+  // To re-enable, restore: if (includeNyserda !== null) { headers['X-Include-NYSERDA'] = includeNyserda; }
+  headers['X-Include-NYSERDA'] = includeNyserda ?? 'false';
   return headers;
 }
 
@@ -2310,105 +2310,6 @@ export const api = {
     return res.json();
   },
 
-  // Tavus.io Conversational Video AI
-  getTavusStatus: async (): Promise<TavusStatus> => {
-    const res = await apiFetch('/api/tavus/status', { headers: getAuthHeaders() });
-    if (!res.ok) throw new Error('Failed to fetch Tavus status');
-    return res.json();
-  },
-
-  setTavusApiKey: async (payload: TavusSetKeyPayload): Promise<{ success: boolean; message: string }> => {
-    const res = await apiFetch('/api/tavus/set-api-key', {
-      method: 'POST',
-      headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error('Failed to save Tavus settings');
-    return res.json();
-  },
-
-  createTavusConversation: async (payload: TavusCreateConversationPayload): Promise<TavusConversationResponse> => {
-    const res = await apiFetch('/api/tavus/conversations/create', {
-      method: 'POST',
-      headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({ detail: res.statusText }));
-      throw new Error(err.detail || 'Failed to create Tavus video conversation');
-    }
-    return res.json();
-  },
-
-  endTavusConversation: async (conversationId: string, apiKey?: string): Promise<{ success: boolean; status?: number }> => {
-    const res = await apiFetch(`/api/tavus/conversations/${encodeURIComponent(conversationId)}/end`, {
-      method: 'POST',
-      headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
-      body: JSON.stringify({ api_key: apiKey }),
-    });
-    if (!res.ok) return { success: false };
-    return res.json();
-  },
-
-  getTavusConversationStatus: async (conversationId: string, apiKey?: string): Promise<any> => {
-    const query = apiKey ? `?api_key=${encodeURIComponent(apiKey)}` : '';
-    const res = await apiFetch(`/api/tavus/conversations/${encodeURIComponent(conversationId)}${query}`, {
-      headers: getAuthHeaders(),
-    });
-    if (!res.ok) throw new Error('Failed to fetch Tavus conversation status');
-    return res.json();
-  },
-
-  getTavusReplicas: async (apiKey?: string): Promise<{ data: Array<{ replica_id: string; replica_name: string; status: string; thumbnail_url?: string }> }> => {
-    const query = apiKey ? `?api_key=${encodeURIComponent(apiKey)}` : '';
-    const res = await apiFetch(`/api/tavus/replicas${query}`, { headers: getAuthHeaders() });
-    if (!res.ok) return { data: [] };
-    return res.json();
-  },
-
-  getTavusPersonas: async (apiKey?: string): Promise<{ data: Array<{ persona_id: string; persona_name: string; persona_description?: string }> }> => {
-    const query = apiKey ? `?api_key=${encodeURIComponent(apiKey)}` : '';
-    const res = await apiFetch(`/api/tavus/personas${query}`, { headers: getAuthHeaders() });
-    if (!res.ok) return { data: [] };
-    return res.json();
-  },
-
-  reviewTavusSession: async (payload: { transcript_or_notes: string; user_role?: string; api_key?: string }): Promise<{ reviewed_text: string; citations: ChatCitationsMetadata; referenced_entities: Record<string, any> }> => {
-    const res = await apiFetch('/api/tavus/review-session', {
-      method: 'POST',
-      headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error('Failed to review video session notes');
-    return res.json();
-  },
-
-  syncTavusIntelligence: async (payload: { query_or_transcript: string; user_role?: string; conversation_id?: string; api_key?: string }): Promise<TavusSyncIntelligenceResponse> => {
-    const res = await apiFetch('/api/tavus/sync-intelligence', {
-      method: 'POST',
-      headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error('Failed to synchronize live intelligence');
-    return res.json();
-  },
-
-  synthesizeAndSyncTavusSession: async (payload: {
-    recent_transcript_buffer: string;
-    cumulative_transcript?: string;
-    user_role?: string;
-    conversation_id?: string;
-    api_key?: string;
-  }): Promise<TavusSynthesizeAndSyncResponse> => {
-    const res = await apiFetch('/api/tavus/synthesize-and-sync', {
-      method: 'POST',
-      headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error('Failed to synthesize and synchronize conversation intelligence');
-    return res.json();
-  },
-
   // -------------------------------------------------------------
   // System Administration: Email Hub, Campaigns & Correspondence
   // -------------------------------------------------------------
@@ -3038,20 +2939,6 @@ export interface RecipientCapitalContinuumResponse {
 }
 
 
-export interface TavusSynthesizeAndSyncResponse {
-  executive_gist: string;
-  detected_topic: string;
-  search_query: string;
-  key_entities: string[];
-  citations: ChatCitationsMetadata;
-  summary: string;
-  stats: {
-    total_funding: number;
-    awards_count: number;
-    opportunities_count: number;
-    organizations_count: number;
-  };
-}
 
 export interface ReportPreset {
   id: string;
@@ -4155,62 +4042,6 @@ export interface ChatMessageItem {
   timestamp: string;
 }
 
-export interface TavusStatus {
-  tavus_configured: boolean;
-  persona_id: string | null;
-  replica_id: string | null;
-  supported_features: string[];
-}
-
-export interface TavusSetKeyPayload {
-  api_key?: string;
-  persona_id?: string;
-  replica_id?: string;
-}
-
-export interface TavusCreateConversationPayload {
-  user_role?: string;
-  conversation_name?: string;
-  persona_id?: string;
-  replica_id?: string;
-  custom_greeting?: string;
-  conversational_context?: string;
-  api_key?: string;
-}
-
-export interface TavusConversationResponse {
-  conversation_id: string;
-  conversation_url: string;
-  status: string;
-  greeting?: string;
-  user_role?: string;
-  created_at?: string;
-  citations?: ChatCitationsMetadata;
-  context_summary?: string;
-}
-
-export interface TavusTechBreakdownItem {
-  name: string;
-  domain_id: string;
-  total_funding: number;
-  awards_count: number;
-  formatted_funding?: string;
-}
-
-export interface TavusSyncIntelligenceResponse {
-  detected_topic: string;
-  active_query: string;
-  detected_agency?: string;
-  technology_breakdown?: TavusTechBreakdownItem[];
-  citations: ChatCitationsMetadata;
-  summary?: string;
-  stats: {
-    total_funding: number;
-    awards_count: number;
-    opportunities_count: number;
-    organizations_count: number;
-  };
-}
 
 export async function* streamChatCompletion(
   query: string,

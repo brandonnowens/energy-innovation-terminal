@@ -1,4 +1,4 @@
-"""Organizations API endpoints with PostgreSQL querying and taxonomy fallback."""
+﻿"""Organizations API endpoints with PostgreSQL querying and taxonomy fallback."""
 
 import logging
 from typing import Optional, List, Dict, Any
@@ -109,7 +109,7 @@ def list_organizations(
     x_include_nyserda: Optional[str] = Header(None, alias="X-Include-NYSERDA"),
     db: Session = Depends(get_db),
 ):
-    should_exclude_nyserda = exclude_nyserda is True or (x_include_nyserda is not None and x_include_nyserda.strip().lower() in ("false", "0", "no"))
+    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
     try:
         query = db.query(Organization)
         
@@ -192,7 +192,7 @@ def search_organizations(
     x_include_nyserda: Optional[str] = Header(None, alias="X-Include-NYSERDA"),
     db: Session = Depends(get_db)
 ):
-    should_exclude_nyserda = exclude_nyserda is True or (x_include_nyserda is not None and x_include_nyserda.strip().lower() in ("false", "0", "no"))
+    # PUBLIC VERSION: exclude NYSERDA by default`r`n    should_exclude_nyserda = not (isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes")) and exclude_nyserda is not False
     try:
         search_lower = f"%{q.lower()}%"
         sq = db.query(Organization).filter(
@@ -305,3 +305,4 @@ def get_organization_contacts(org_id: int, db: Session = Depends(get_db)):
         } for c in contacts]
     except Exception:
         return []
+

@@ -51,6 +51,7 @@ export function NyserdaProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
+  // isAdmin preserved for future re-enablement
   const isAdmin = Boolean(
     user && (
       user.role === 'admin' ||
@@ -59,13 +60,15 @@ export function NyserdaProvider({ children }: { children: ReactNode }) {
     )
   );
 
+  // PUBLIC VERSION: NYSERDA data is hidden. Set to false and lock localStorage.
+  // To re-enable, change `false` → `true` here and restore the storage read below.
   const [includeNyserda, setIncludeNyserdaState] = useState<boolean>(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, 'true');
+      localStorage.setItem(STORAGE_KEY, 'false');
     } catch {
       // ignore
     }
-    return true; // Permanently included in scope
+    return false; // NYSERDA excluded in public version
   });
 
   const setIncludeNyserda = useCallback((val: boolean | ((prev: boolean) => boolean)) => {

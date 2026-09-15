@@ -35,7 +35,9 @@ def get_chart_data(req: ChartDataRequest, x_include_nyserda: Optional[str] = Hea
     metric = req.metric or "funding"
     group_by = req.group_by or "year"
     limit = req.limit or 100
-    is_ex = (req.filters and req.filters.get("exclude_nyserda") is True) or x_include_nyserda == "false"
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    is_ex = not (x_include_nyserda == "true" or (req.filters and req.filters.get("exclude_nyserda") is False))
+
 
     # If querying award metrics
     if metric in ("award_amount", "awards_count", "recipients"):

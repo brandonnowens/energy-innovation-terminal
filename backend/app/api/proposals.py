@@ -298,8 +298,8 @@ def _generate_agency_sopo_and_rubric(
             {"criterion": "Project Team & Facilities", "max_pts": 15, "score": 14, "feedback": f"Demonstrated capability of {recip} and PI team."},
             {"criterion": "Budget & Match Funding", "max_pts": 10, "score": 9, "feedback": "Match funding and statutory cost-share fully satisfied."}
         ]
-    elif "NYSERDA" in ag_upper or "NEW YORK" in ag_upper:
-        # NYSERDA (PON / RFP) Rubric & WBS (CLCPA Aligned)
+    elif "NEW YORK" in ag_upper or "NY STATE" in ag_upper or "STATE ENERGY" in ag_upper:
+        # State Energy Authority (NY) (PON / RFP) Rubric & WBS (CLCPA Aligned)
         sopo_tasks = [
             {
                 "task": "Task 1.0: System Engineering, Interconnection Modeling & Site Permitting",

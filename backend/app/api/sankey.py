@@ -35,7 +35,7 @@ PRESETS: Dict[str, Dict[str, Any]] = {
     "state_energy": {
         "id": "state_energy",
         "title": "State Clean Energy Innovation Corridors",
-        "description": "State clean energy authorities and energy offices (NYSERDA, MassCEC, CEC, etc.) funding clean tech commercialization.",
+        "description": "State clean energy authorities and energy offices (MassCEC, CEC, NY Green Bank, etc.) funding clean tech commercialization.",
         "dimensions": ["agency", "program", "sector", "technology"],
         "default_metric": "funding",
         "default_org_type": "state",
@@ -163,11 +163,13 @@ def get_sankey_flow(
     """Dynamically generate multi-stage Sankey directed flow data (nodes & links)
     across arbitrary dimension sequences with full organization tier flexibility."""
 
-    should_exclude_nyserda = False
-    if exclude_nyserda is True:
-        should_exclude_nyserda = True
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
-        should_exclude_nyserda = True
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    should_exclude_nyserda = True
+    if exclude_nyserda is False:
+        should_exclude_nyserda = False
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
+        should_exclude_nyserda = False
+
 
     cache_key = f"{preset}:{dimensions}:{metric}:{agency}:{org_type}:{year_min}:{year_max}:{status}:{sector}:{technology}:{top_n_per_stage}:{min_value}:{should_exclude_nyserda}"
     cached = _sankey_flow_cache.get(cache_key)
@@ -615,11 +617,12 @@ def get_sankey_insights(
 ):
     """Compute automated macro funding insights, major capital conduits,
     funneling dynamics, and cross-sector technology deployment patterns with TTL caching."""
-    should_exclude_nyserda = False
-    if exclude_nyserda is True:
-        should_exclude_nyserda = True
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
-        should_exclude_nyserda = True
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    should_exclude_nyserda = True
+    if exclude_nyserda is False:
+        should_exclude_nyserda = False
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
+        should_exclude_nyserda = False
 
     cache_key = f"insights:{should_exclude_nyserda}"
     cached = _sankey_insights_cache.get(cache_key)

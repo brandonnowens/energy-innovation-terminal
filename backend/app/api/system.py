@@ -258,7 +258,7 @@ def search_precedents(
     limit: int = Query(50, le=200),
     db: Session = Depends(get_db),
 ):
-    """Search historical NYSERDA-funded projects."""
+    """Search historical state-funded clean energy projects."""
     if q:
         is_postgres = db.bind.dialect.name == "postgresql" if db.bind else False
         if not is_postgres:

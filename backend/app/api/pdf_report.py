@@ -68,7 +68,7 @@ def export_pdf(analysis_id: int, db: Session = Depends(get_db)):
     # Compute Capital Stack
     cost_val = analysis.project_cost or structured_profile.get("estimated_cost") or 10_000_000.0
     top_grant = match_list[0].get("max_per_award") if match_list else None
-    top_agency = match_list[0].get("agency") if match_list else "NYSERDA / DOE"
+    top_agency = match_list[0].get("agency") if match_list else "State Energy / DOE"
     top_sol = match_list[0].get("name") if match_list else "Clean Energy Grant"
 
     capital_stack = calculate_capital_stack(

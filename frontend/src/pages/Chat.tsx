@@ -15,11 +15,9 @@ import {
 , apiFetch } from '../api/client';
 
 import { MermaidDiagram } from '../components/MermaidDiagram';
-// TavusVideoConversation component is preserved for later re-activation
-// import TavusVideoConversation from '../components/TavusVideoConversation';
 
 export type UserRole = 'institutional_leader' | 'startup_entrepreneur' | 'developer' | 'investor' | 'researcher' | 'utility' | 'policy' | 'grant_writer';
-export type AdvisoryMode = 'landing' | 'chat' | 'video';
+export type AdvisoryMode = 'chat';
 
 export interface RoleOption {
   id: UserRole;
@@ -283,7 +281,6 @@ export const ROLES: RoleOption[] = [
 ];
 
 export default function Chat() {
-  const [advisoryMode, setAdvisoryMode] = useState<AdvisoryMode>('chat');
   const [messages, setMessages] = useState<ChatMessageItem[]>([]);
   const [inputQuery, setInputQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -310,34 +307,16 @@ export default function Chat() {
     setIsRoleDropdownOpen(false);
   };
 
-  const handleSwitchMode = (mode: AdvisoryMode) => {
-    setAdvisoryMode(mode);
-    try {
-      localStorage.setItem('terminal_advisory_mode', mode);
-      localStorage.setItem('energysignal_advisory_mode', mode);
-    } catch {}
-  };
-
   // Auto-scroll to bottom on new tokens
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
-  // Ensure mode defaults to chat
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('terminal_advisory_mode') || localStorage.getItem('energysignal_advisory_mode');
-      if (stored === 'video' || stored === 'landing') {
-        localStorage.setItem('terminal_advisory_mode', 'chat');
-        localStorage.setItem('energysignal_advisory_mode', 'chat');
-      }
-    } catch {}
-  }, []);
-
   const isMountedRef = useRef(true);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
+
     isMountedRef.current = true;
     return () => {
       isMountedRef.current = false;
@@ -703,21 +682,6 @@ export default function Chat() {
     return formatted;
   };
 
-  /* NOTE: Tavus Video Advisory and Multi-modality Landing are preserved below and can be re-enabled later
-  if (advisoryMode === 'video') {
-    return (
-      <div className="flex flex-col h-[calc(100vh-6rem)] -mt-2 -mx-2 bg-slate-900 relative">
-        <TavusVideoConversation
-          userRole={userRole}
-          onRoleChange={handleRoleSelect}
-          roles={ROLES}
-          onSwitchToChat={() => handleSwitchMode('chat')}
-          onBackToHub={() => handleSwitchMode('chat')}
-        />
-      </div>
-    );
-  }
-  */
 
   return (
     <div className="flex flex-col h-[calc(100vh-6rem)] -mt-2 -mx-2 bg-white dark:bg-slate-900 relative">

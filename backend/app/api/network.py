@@ -24,11 +24,13 @@ def get_knowledge_graph(
     db: Session = Depends(get_db),
 ):
     """Build comprehensive knowledge graph from all database entities with TTL in-memory caching."""
-    should_exclude_nyserda = False
-    if exclude_nyserda is True:
-        should_exclude_nyserda = True
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
-        should_exclude_nyserda = True
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    should_exclude_nyserda = True
+    if exclude_nyserda is False:
+        should_exclude_nyserda = False
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
+        should_exclude_nyserda = False
+
 
     cache_key = f"{entity_types}:{agency}:{search}:{year_min}:{year_max}:{status}:{node_limit}:{should_exclude_nyserda}"
     cached = _graph_cache.get(cache_key)
@@ -576,11 +578,13 @@ def get_network_analytics(
 ):
     """Compute network analytics, centrality rankings, bridge nodes, and expanded ecosystem discoveries with TTL cache."""
     import time
-    should_exclude_nyserda = False
-    if exclude_nyserda is True:
-        should_exclude_nyserda = True
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
-        should_exclude_nyserda = True
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    should_exclude_nyserda = True
+    if exclude_nyserda is False:
+        should_exclude_nyserda = False
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
+        should_exclude_nyserda = False
+
 
     cache_key = f"{agency}_{year_min}_{year_max}_{should_exclude_nyserda}"
     now = time.time()
@@ -853,7 +857,7 @@ def get_network_analytics(
         "category": "Strategic Positioning",
         "type": "strategic_guidance",
         "title": "Optimal Capital Stacking Pathway: State Utility + Federal DOE / NSF",
-        "description": "Graph topology reveals that awardees securing both state-level utility pilot funding (e.g. NYSERDA PONs, PG&E EPIC, SCE NWAs) and federal R&D grants achieve 3.8x higher total capital accumulation and faster commercialization velocity than single-source recipients.",
+        "description": "Graph topology reveals that awardees securing both state-level utility pilot funding (e.g. state energy authority PONs, PG&E EPIC, SCE NWAs) and federal R&D grants achieve 3.8x higher total capital accumulation and faster commercialization velocity than single-source recipients.",
         "impact": "high",
         "badge": "Recommended Strategy",
         "metric": "3.8x Multiplier",

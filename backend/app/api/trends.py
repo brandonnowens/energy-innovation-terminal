@@ -70,7 +70,9 @@ def trends_overview(
     db: Session = Depends(get_db)
 ):
     """Year-over-year: {year, count, total_funding} supporting both Executed Awards and Solicitation Pipeline."""
-    is_ex = exclude_nyserda is True or x_include_nyserda == "false"
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    is_ex = not (x_include_nyserda == "true" or exclude_nyserda is False)
+
     cache_key = f"overview:{year_min}:{year_max}:{agency}:{org_type}:{status}:{data_source}:ex_{is_ex}"
     cached = _get_cached_trends(cache_key)
     if cached is not None:
@@ -195,7 +197,9 @@ def trends_by_agency(
     db: Session = Depends(get_db)
 ):
     """Agency breakdown: {agency, count, total_funding}"""
-    is_ex = exclude_nyserda is True or x_include_nyserda == "false"
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    is_ex = not (x_include_nyserda == "true" or exclude_nyserda is False)
+
     cache_key = f"by_agency:{year_min}:{year_max}:{org_type}:{status}:{data_source}:{top_n}:ex_{is_ex}"
     cached = _get_cached_trends(cache_key)
     if cached is not None:
@@ -734,7 +738,8 @@ def trends_analytics(
         "category": "Market Structure",
         "type": "utility_decentralization",
         "title": "2026 Utility Decentralization: 1,398 Solicitations Across 70+ Utilities",
-        "description": "While 2024-2025 centered on multi-billion dollar federal hub grants, 2026 shows deep dispersion into project-level utility solicitations (LADWP $60M H2, TVA $150M SMR, Rocky Mountain Power $180M SMR, NYSERDA PONs).",
+        "description": "While 2024-2025 centered on multi-billion dollar federal hub grants, 2026 shows deep dispersion into project-level utility solicitations (LADWP $60M H2, TVA $150M SMR, Rocky Mountain Power $180M SMR, state energy authority PONs).",
+
         "impact": "high",
         "badge": "70+ Utilities",
         "metric": "1,398 Active Solicitations",
@@ -1152,7 +1157,7 @@ def get_corpus_daily_activity(
                     "id": o.id,
                     "solicitation_number": o.solicitation_number,
                     "name": o.name,
-                    "agency": o.agency or "NYSERDA",
+                    "agency": o.agency or "State Energy Authority",
                     "jurisdiction": getattr(o, "jurisdiction", "state_ny"),
                     "total_funding": funding,
                     "funding_formatted": _format_short_currency(funding),

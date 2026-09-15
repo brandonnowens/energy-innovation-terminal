@@ -72,7 +72,8 @@ def list_awards(
     base_where = []
     params = {}
 
-    if exclude_nyserda is True or x_include_nyserda == "false":
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    if x_include_nyserda != "true" and exclude_nyserda is not False:
         base_where.append("(a.agency NOT LIKE '%NYSERDA%' AND a.source_name NOT LIKE '%NYSERDA%')")
 
     if agency:
@@ -284,7 +285,8 @@ def list_recipients(
     where_parts = []
     params = {}
 
-    if exclude_nyserda is True or x_include_nyserda == "false":
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    if x_include_nyserda != "true" and exclude_nyserda is not False:
         where_parts.append("(r.name NOT LIKE '%NYSERDA%' AND (r.funded_agencies NOT LIKE '%NYSERDA%' OR r.funded_agencies IS NULL))")
 
     if search:
@@ -499,6 +501,9 @@ def recipients_map(
     if is_ny_only or (state and state.upper() == 'NY'):
         where_parts.append("(r.is_ny_based = TRUE OR r.headquarters_state = 'NY')")
 
+    # PUBLIC VERSION: exclude NYSERDA-primarily-funded recipients by default
+    if not nyserda_only:
+        where_parts.append("(r.name NOT LIKE '%NYSERDA%')")
 
     if nyserda_only:
         where_parts.append("r.total_nyserda_funding > 0")
@@ -540,7 +545,7 @@ def recipients_map(
         total_funding += funding
 
         agencies = [a.strip() for a in r[17].split(",") if a.strip()] if r[17] else []
-        main_agency = "NYSERDA" if nyserda_funding > 0 else (agencies[0] if agencies else "Federal")
+        main_agency = "State Energy" if nyserda_funding > 0 and not agencies else (agencies[0] if agencies else "Federal")
 
         markers.append({
             "id": r[0],
@@ -742,13 +747,15 @@ def get_map_filters(db: Session = Depends(get_db)):
         elif ctype == "activity":
             stages.append(item)
 
-    # Agency counts
+    # Agency counts — PUBLIC VERSION: exclude NYSERDA
     agency_rows = db.execute(text("""
         SELECT agency, COUNT(*), COALESCE(SUM(award_amount), 0)
         FROM awards WHERE latitude IS NOT NULL
+        AND agency NOT LIKE '%NYSERDA%'
         GROUP BY agency ORDER BY COUNT(*) DESC
     """)).fetchall()
     agencies = [{"agency": r[0], "count": r[1], "total_funding": r[2]} for r in agency_rows]
+
 
     # Recipient types
     rtype_rows = db.execute(text("""
@@ -895,6 +902,10 @@ def awards_map(
 
     where_parts = ["a.latitude IS NOT NULL", "a.longitude IS NOT NULL"]
     params: dict = {}
+
+    # PUBLIC VERSION: exclude NYSERDA by default
+    if not nyserda_only:
+        where_parts.append("a.agency NOT LIKE '%NYSERDA%'")
 
     if is_ny_only or (state and state.upper() == 'NY'):
         where_parts.append("(a.recipient_state = 'NY' OR a.recipient_state = 'New York')")

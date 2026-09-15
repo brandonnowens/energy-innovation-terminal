@@ -619,8 +619,8 @@ def sync_tavus_intelligence(
     # Detect Agency Focus
     q_lower = q_str.lower()
     detected_agency = None
-    if any(k in q_lower for k in ["nyserda", "new york state energy research", "nys energy"]):
-        detected_agency = "NYSERDA"
+    if any(k in q_lower for k in ["nyserda", "new york state energy research", "nys energy", "state energy authority"]):
+        detected_agency = "State Energy Authority (NY)"
     elif any(k in q_lower for k in ["nsf", "national science foundation"]):
         detected_agency = "NSF"
     elif any(k in q_lower for k in ["doe", "department of energy", "arpa-e", "eere", "oced"]):

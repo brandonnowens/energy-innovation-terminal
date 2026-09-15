@@ -61,7 +61,9 @@ def list_agencies(
 ):
     """List all available organizations and utilities with structured categorization,
     opportunity counts, program counts, and category summaries with TTL cache."""
-    is_excluded = exclude_nyserda is True or x_include_nyserda == "false"
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    is_excluded = not (x_include_nyserda == "true" or exclude_nyserda is False)
+
     import time
     cache_key = f"{category or 'all'}:ex_{is_excluded}"
     now = time.time()

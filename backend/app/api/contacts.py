@@ -118,12 +118,12 @@ def list_contacts(
 ):
     query = db.query(Contact)
 
-    # Check NYSERDA exclusion
-    should_exclude_nyserda = False
-    if exclude_nyserda is True:
-        should_exclude_nyserda = True
-    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("false", "0", "no"):
-        should_exclude_nyserda = True
+    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
+    should_exclude_nyserda = True
+    if exclude_nyserda is False:
+        should_exclude_nyserda = False
+    elif isinstance(x_include_nyserda, str) and x_include_nyserda.strip().lower() in ("true", "1", "yes"):
+        should_exclude_nyserda = False
 
     if should_exclude_nyserda:
         query = query.filter(

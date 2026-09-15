@@ -253,7 +253,7 @@ def get_recipient_attribution_dossier(recipient_id: int, db: Session = Depends(g
     # Add grant nodes
     ego_nodes.append({
         "id": "funder_gov",
-        "name": "Federal / State Grant Programs (DOE, ARPA-E, NYSERDA)",
+        "name": "Federal / State Grant Programs (DOE, ARPA-E, CEC, MassCEC)",
         "type": "grant_funder",
         "category": "Public Grants",
         "size": 22
@@ -350,7 +350,7 @@ def get_attributions_lineage_graph(
             
     # Add Agencies
     agencies = [
-        "DOE", "ARPA-E", "NYSERDA", "Empire State Development", "CEC", "MassCEC",
+        "DOE", "ARPA-E", "Empire State Development", "CEC", "MassCEC",
         "MassVentures", "JobsOhio", "MEDC", "Ben Franklin Tech Partners",
         "Connecticut Innovations", "TEDCO", "VIPC", "Colorado OEDIT", "MN DEED", "NSF"
     ]
@@ -375,9 +375,7 @@ def get_attributions_lineage_graph(
             "color": "#0ea5e9",
             "size": 20
         })
-        # Connect to relevant agencies
-        if r.nyserda_award_count and r.nyserda_award_count > 0:
-            add_edge("ag_NYSERDA", f"rec_{r.id}", "Funds Award", "funds", "#6366f1")
+        # Connect to relevant agencies (PUBLIC VERSION: NYSERDA edge omitted)
         if "DOE" in (r.funded_agencies or "") or r.total_federal_funding > 0:
             add_edge("ag_DOE", f"rec_{r.id}", "Federal Grant", "funds", "#6366f1")
         if "ARPA-E" in (r.funded_agencies or ""):
