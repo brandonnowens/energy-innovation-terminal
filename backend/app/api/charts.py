@@ -1,4 +1,4 @@
-﻿"""Charts API endpoints."""
+"""Charts API endpoints."""
 
 from typing import Optional, Dict, Any, List
 from fastapi import APIRouter, Depends, HTTPException, Query, Header
@@ -36,8 +36,8 @@ def get_chart_data(req: ChartDataRequest, x_include_nyserda: Optional[str] = Hea
     metric = req.metric or "funding"
     group_by = req.group_by or "year"
     limit = req.limit or 100
-    # PUBLIC VERSION: exclude NYSERDA by default; only include when explicitly requested
-    is_ex = not settings.include_nyserda is False))
+    # PUBLIC VERSION: exclude NYSERDA by default; set INCLUDE_NYSERDA=true env var to re-enable
+    is_ex = not settings.include_nyserda
 
 
     # If querying award metrics
