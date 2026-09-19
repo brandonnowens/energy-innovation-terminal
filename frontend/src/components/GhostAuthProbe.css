@@ -1,0 +1,9 @@
+/* Ghost auth-probe iframe — always zero-size and invisible */
+.ghost-auth-probe {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}

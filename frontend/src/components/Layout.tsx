@@ -21,13 +21,16 @@ import { BrandonSignatureModal } from './BrandonSignatureModal';
 import { LegalComplianceModal } from './LegalComplianceModal';
 import { ApiDocsModal } from './ApiDocsModal';
 import { QuickStartModal } from './QuickStartModal';
+import { GhostAuthProbe } from './GhostAuthProbe';
+import { GhostAccessGate } from './GhostAccessGate';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNyserda } from '../context/NyserdaContext';
 import { tracker } from '../telemetry/tracker';
+import { TERMINAL_GATE_DISMISSED_KEY } from '../config/ghostAuth';
 
 export default function Layout() {
-  const { user } = useAuth();
+  const { user, ghostStatus, ghostProbeKey } = useAuth();
   const { theme } = useTheme();
   const { includeNyserda } = useNyserda();
   const isDark = theme === 'dark';
@@ -38,6 +41,42 @@ export default function Layout() {
   const [apiModalOpen, setApiModalOpen] = useState(false);
   const [quickStartModalOpen, setQuickStartModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Ghost access gate — shown when the visitor has no Ghost session.
+  // Dismissed flag is stored in sessionStorage so it only persists for the tab session.
+  const [gateDismissed, setGateDismissed] = useState<boolean>(() => {
+    try {
+      return window.sessionStorage.getItem(TERMINAL_GATE_DISMISSED_KEY) === '1';
+    } catch {
+      return false;
+    }
+  });
+
+  const handleDismissGate = () => {
+    try {
+      window.sessionStorage.setItem(TERMINAL_GATE_DISMISSED_KEY, '1');
+    } catch {
+      // ignore
+    }
+    setGateDismissed(true);
+  };
+
+  // When Ghost auth resolves to authenticated, clear the dismissed flag
+  // so the gate won't show on next visit if the session expires.
+  useEffect(() => {
+    if (ghostStatus === 'authenticated') {
+      try {
+        window.sessionStorage.removeItem(TERMINAL_GATE_DISMISSED_KEY);
+      } catch {
+        // ignore
+      }
+      setGateDismissed(false);
+    }
+  }, [ghostStatus]);
+
+  // Show the gate only after Ghost resolution confirms no session,
+  // and only if the user hasn't dismissed it this session.
+  const showGhostGate = ghostStatus === 'guest' && !gateDismissed;
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -869,6 +908,12 @@ export default function Layout() {
         <LegalComplianceModal isOpen={legalModalOpen} onClose={() => setLegalModalOpen(false)} />
         <ApiDocsModal isOpen={apiModalOpen} onClose={() => setApiModalOpen(false)} />
         <QuickStartModal isOpen={quickStartModalOpen} onClose={() => setQuickStartModalOpen(false)} />
+
+        {/* Ghost.org session probe — invisible zero-size iframe, always mounted */}
+        <GhostAuthProbe active={ghostStatus !== 'authenticated'} refreshKey={ghostProbeKey} />
+
+        {/* Ghost access gate — shown once to visitors with no Ghost session */}
+        <GhostAccessGate open={showGhostGate} onClose={handleDismissGate} />
 
 
         {/* Page Content */}

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { api, User, MembershipManifest } from '../api/client';
+import { useGhostAuth, type GhostAuthStatus } from '../hooks/useGhostAuth';
 
 interface AuthContextType {
   user: User | null;
@@ -22,6 +23,12 @@ interface AuthContextType {
   closeMembershipModal: () => void;
   openAccountModal: () => void;
   closeAccountModal: () => void;
+  // Ghost.org session detection
+  ghostStatus: GhostAuthStatus;
+  ghostMemberEmail: string | null;
+  ghostMemberName: string | null;
+  ghostProbeKey: number;
+  ghostRetry: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -35,6 +42,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [authModalTab, setAuthModalTab] = useState<'login' | 'register' | 'forgot'>('login');
   const [membershipModalOpen, setMembershipModalOpen] = useState(false);
   const [accountModalOpen, setAccountModalOpen] = useState(false);
+
+  // Ghost.org session detection (parallel to email/password auth)
+  const {
+    status: ghostStatus,
+    memberEmail: ghostMemberEmail,
+    memberName: ghostMemberName,
+    probeKey: ghostProbeKey,
+    retry: ghostRetry,
+  } = useGhostAuth();
 
   const refreshUser = async () => {
     const currentToken = localStorage.getItem('auth_token');
@@ -141,6 +157,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         closeMembershipModal,
         openAccountModal,
         closeAccountModal,
+        // Ghost.org session state
+        ghostStatus,
+        ghostMemberEmail,
+        ghostMemberName,
+        ghostProbeKey,
+        ghostRetry,
       }}
     >
       {children}
