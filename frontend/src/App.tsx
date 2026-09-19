@@ -36,7 +36,7 @@ const AdminEmailHub = lazy(() => import('./pages/AdminEmailHub'));
 const ForecastingRadar = lazy(() => import('./pages/ForecastingRadar').then(m => ({ default: m.ForecastingRadar })));
 const DailyDigest = lazy(() => import('./pages/DailyDigest'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-
+const FoaFitSnapshot = lazy(() => import('./pages/FoaFitSnapshot'));
 
 import { apiFetch } from './api/client';
 
@@ -92,6 +92,9 @@ function App() {
                     <Route path="advisor" element={<Chat />} />
                     <Route path="analyze" element={<AnalyzeProject />} />
                     <Route path="match" element={<AnalyzeProject />} />
+                    <Route path="fit" element={<FoaFitSnapshot />} />
+                    <Route path="company-fit" element={<FoaFitSnapshot />} />
+                    <Route path="foa-fit" element={<FoaFitSnapshot />} />
                     <Route path="digest" element={<DailyDigest />} />
                     <Route path="daily-digest" element={<DailyDigest />} />
                     <Route path="daily-brief" element={<DailyDigest />} />

@@ -366,6 +366,43 @@ export default function DailyDigest() {
         </p>
       </div>
 
+      {/* Closing Window Risk Callout */}
+      {activeDigest.urgent_deadlines && activeDigest.urgent_deadlines.length > 0 && (
+        <div className="border-2 border-amber-500/50 dark:border-red-500/50 bg-amber-50/50 dark:bg-red-950/20 rounded-xl p-5 space-y-4">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <h3 className="text-sm font-bold text-amber-800 dark:text-red-400 flex items-center gap-2 uppercase tracking-wider">
+              <AlertCircle size={18} className="text-amber-600 dark:text-red-500" />
+              ⚠ Closing Window Risk
+            </h3>
+            <button
+              onClick={() => navigate('/opportunities?status=open&sort=deadline')}
+              className="text-xs font-semibold px-4 py-2 bg-amber-100 hover:bg-amber-200 dark:bg-red-900/40 dark:hover:bg-red-900/60 text-amber-900 dark:text-red-200 rounded-lg transition shadow-sm"
+            >
+              View Expiring Opportunities →
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {activeDigest.urgent_deadlines.map(deadline => (
+              <div key={deadline.id} className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-amber-200/50 dark:border-red-900/30 flex justify-between items-start gap-4">
+                <div className="space-y-1 min-w-0">
+                  <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 truncate flex items-center gap-1.5">
+                    <OrgLogo org={deadline.agency} size="xs" /> {deadline.agency}
+                  </div>
+                  <div className="text-sm font-bold text-slate-900 dark:text-white line-clamp-1" title={deadline.name}>
+                    {deadline.name}
+                  </div>
+                </div>
+                <div className="flex-shrink-0 text-right">
+                  <div className="text-[11px] font-bold px-2 py-1 rounded bg-amber-100 text-amber-800 dark:bg-red-900/40 dark:text-red-300">
+                    {deadline.days_remaining || deadline.due_date_display}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* 1. Top New Solicitations */}
       <div className="space-y-4">
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">

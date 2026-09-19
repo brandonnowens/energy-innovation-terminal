@@ -164,6 +164,7 @@ from app.api.news import router as news_router
 from app.api.capital_intelligence import router as capital_intelligence_router
 from app.api.forecasting import router as forecasting_router
 from app.api.foa_shredder import router as foa_shredder_router
+from app.api.company_fit import router as company_fit_router
 from app.api.alerts import router as alerts_router
 from app.api.ira_calculator import router as ira_calculator_router
 from app.api.ingestion import router as ingestion_router
@@ -206,6 +207,7 @@ app.include_router(news_router, prefix="/api", tags=["Energy Innovation News Tic
 app.include_router(capital_intelligence_router, prefix="/api", tags=["Capital Intelligence & Infrastructure"])
 app.include_router(forecasting_router, prefix="/api/forecasting", tags=["Predictive Release Forecasting"])
 app.include_router(foa_shredder_router, prefix="/api", tags=["AI FOA Shredder"])
+app.include_router(company_fit_router, prefix="/api", tags=["Company FOA Fit Snapshot"])
 app.include_router(alerts_router, prefix="/api", tags=["Real-Time Alerts & Radar"])
 app.include_router(ira_calculator_router, prefix="/api", tags=["IRA Calculator"])
 app.include_router(ingestion_router, prefix="/api", tags=["Data Ingestion & Orchestration"])

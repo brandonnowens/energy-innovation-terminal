@@ -5,7 +5,7 @@ import {
   TrendingUp, Database, GitMerge, FileText, Search, ShieldCheck,
   Zap, Command, FileEdit, Scale, Lightbulb, Clock, Activity, BookUser, BookOpen,
   ChevronDown, ChevronRight, ChevronsUpDown, Mail, Compass, Radio, Menu, X, Newspaper, Terminal,
-  Sliders, MessageSquare, Target
+  Sliders, MessageSquare, Target, Crosshair
 } from 'lucide-react';
 
 import clsx from 'clsx';
@@ -78,6 +78,9 @@ export default function Layout() {
     }
     if (itemTo === '/analyze' || itemTo === '/match') {
       return p === '/analyze' || p.startsWith('/analyze') || p === '/match' || p.startsWith('/match');
+    }
+    if (itemTo === '/fit') {
+      return p === '/fit' || p.startsWith('/fit') || p === '/company-fit' || p.startsWith('/company-fit') || p === '/foa-fit' || p.startsWith('/foa-fit');
     }
     if (itemTo === '/radar') {
       return p === '/radar' || p.startsWith('/radar') || p.startsWith('/forecasting');
@@ -248,6 +251,7 @@ export default function Layout() {
         {
           title: 'Grant Seeking Suite',
           items: [
+            { to: '/fit', icon: Crosshair, label: 'FOA Fit Snapshot', badge: 'new' },
             { to: '/analyze', icon: Sliders, label: 'Match & Sponsoring' },
             { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
             { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
@@ -330,6 +334,7 @@ export default function Layout() {
       {
         title: 'Opportunities & Studio',
         items: [
+          { to: '/fit', icon: Crosshair, label: 'FOA Fit Snapshot', badge: 'new' },
           { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
           { to: '/analyze', icon: Sliders, label: 'Match Engine' },
           { to: '/radar', icon: Radio, label: 'Predictive Radar' },

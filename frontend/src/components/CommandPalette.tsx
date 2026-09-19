@@ -6,7 +6,7 @@ import {
   Search, FileSearch, Layers, Trophy, Network, GitMerge, TrendingUp,
   FileText, Database, Building2, ArrowRight, X, Loader2,
   ExternalLink, Globe, MapPin, Zap, ChevronRight, FileEdit, Scale, Lightbulb, BookUser, BookOpen, ShieldCheck, Compass, Newspaper, Terminal,
-  Sliders, MessageSquare, Activity
+  Sliders, MessageSquare, Activity, Crosshair
 } from 'lucide-react';
 import clsx from 'clsx';
 import { OrgLogo } from './OrgLogo';
@@ -21,6 +21,7 @@ const STATIC_ACTIONS = [
   { id: 'persona-investors', label: 'Switch Front Door: Investors & Strategists', sub: 'Curated view spotlighting Daily Digest, Capital Flows (Sankey), Venture & IP, and Strategic Reports', to: '__persona_investor__', icon: TrendingUp, category: 'Front Doors' },
   { id: 'persona-innovators', label: 'Switch Front Door: Innovators & Grant Seekers', sub: 'Curated view spotlighting Match Engine, Solicitations, and Application Studio', to: '__persona_innovator__', icon: Lightbulb, category: 'Front Doors' },
   { id: 'persona-all', label: 'Switch Front Door: All Modules (Master View)', sub: 'Display all modules, directories, intelligence suites, and reference databases', to: '__persona_all__', icon: Layers, category: 'Front Doors' },
+  { id: 'nav-fit', label: 'FOA Fit Snapshot', sub: 'Generate a one-page FOA/company fit snapshot — which solicitation classes match your tech and which to avoid', to: '/fit', icon: Crosshair, category: 'Opportunities' },
   { id: 'nav-digest', label: 'Daily Digest', sub: 'Morning intelligence briefing analyzing new solicitations, deadlines, and venture wire', to: '/digest', icon: Newspaper, category: 'Opportunities' },
   { id: 'nav-chat', label: 'Strategic Advisory', sub: 'Interactive research query tool with direct access to all 56k+ awards & 5.7k+ opportunities', to: '/chat', icon: MessageSquare, category: 'Research' },
   { id: 'nav-match', label: 'Match Engine', sub: 'Eligibility and capital stacking analysis engine', to: '/analyze', icon: Sliders, category: 'Opportunities' },
