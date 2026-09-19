@@ -1,7 +1,8 @@
 import React from 'react';
 import { User, LogIn } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { ghostSignIn } from '../lib/ghostSignIn';
+import { handleGhostSignInClick } from '../lib/ghostSignIn';
+import { GHOST_SIGNIN_URL } from '../config/ghostAuth';
 import clsx from 'clsx';
 
 export function UserMenu() {
@@ -29,7 +30,7 @@ export function UserMenu() {
   return (
     <button
       type="button"
-      onClick={ghostSignIn}
+      onClick={(e) => handleGhostSignInClick(e, GHOST_SIGNIN_URL)}
       className={clsx(
         "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border shadow-2xs cursor-pointer",
         "bg-cyan-600 hover:bg-cyan-500 text-white border-cyan-500 hover:border-cyan-400"
