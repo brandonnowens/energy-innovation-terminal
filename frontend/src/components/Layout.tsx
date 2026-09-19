@@ -165,27 +165,21 @@ export default function Layout() {
     return () => window.removeEventListener('switch-persona' as any, onSwitchPersona);
   }, []);
 
-  // Collapsed state for navigation sections
   const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>(() => {
     try {
-      const saved = localStorage.getItem('energy_terminal_nav_collapsed_v6');
+      const saved = localStorage.getItem('energy_terminal_nav_collapsed_v7');
       if (saved) return JSON.parse(saved);
     } catch {
       // ignore
     }
     return {
-      'Opportunities & Studio': false,
-      'Awards & Precedents': false,
-      'Directories & Ecosystem': true,
-      'Market Intelligence': false,
-      'Regulatory & References': true,
-      'Data & Audit': true,
-      'Grant Seeking Suite': false,
-      'Ecosystem & Partners': false,
-      'Intelligence & Reference': true,
-      'Due Diligence & Benchmarks': false,
-      'Project & Deal Sourcing': false,
-      'Data & Developer API': true,
+      'Sourcing': false,
+      'Network': false,
+      'Intelligence': false,
+      'Data': true,
+      'Diligence': false,
+      'Awards': false,
+      'References': true,
     };
   });
 
@@ -208,7 +202,7 @@ export default function Layout() {
     });
     setCollapsedSections(updated);
     try {
-      localStorage.setItem('energy_terminal_nav_collapsed_v6', JSON.stringify(updated));
+      localStorage.setItem('energy_terminal_nav_collapsed_v7', JSON.stringify(updated));
     } catch (e) {
       // ignore
     }
@@ -253,38 +247,38 @@ export default function Layout() {
     if (persona === 'innovator') {
       return [
         {
-          title: 'Grant Seeking Suite',
+          title: 'Sourcing',
           items: [
-            { to: '/fit', icon: Crosshair, label: 'FOA Fit Snapshot', badge: 'new' },
-            { to: '/analyze', icon: Sliders, label: 'Match & Sponsoring' },
+            { to: '/fit', icon: Crosshair, label: 'FOA Fit', badge: 'new' },
+            { to: '/analyze', icon: Sliders, label: 'Match Engine' },
             { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
-            { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
-            { to: '/radar', icon: Radio, label: 'Predictive Radar' },
+            { to: '/proposals', icon: FileEdit, label: 'Studio' },
+            { to: '/radar', icon: Radio, label: 'Radar' },
           ]
         },
         {
-          title: 'Ecosystem & Partners',
+          title: 'Network',
           items: [
-            { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
-            { to: '/organizations', icon: Building2, label: 'Funding Organizations' },
-            { to: '/network', icon: Network, label: 'Teaming & Network' },
+            { to: '/contacts', icon: BookUser, label: 'Key Contacts' },
+            { to: '/organizations', icon: Building2, label: 'Organizations' },
+            { to: '/network', icon: Network, label: 'Teaming' },
             { to: '/programs', icon: Layers, label: 'Programs' },
           ]
         },
         {
-          title: 'Intelligence & Reference',
+          title: 'Intelligence',
           items: [
-            { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
-            { to: '/policies', icon: ShieldCheck, label: 'IRA §45/§48 Credits' },
-            { to: '/technologies', icon: BookOpen, label: 'Technology Reference' },
-            { to: '/awards', icon: Trophy, label: 'Award Precedents' },
+            { to: '/digest', icon: Newspaper, label: 'Digest' },
+            { to: '/policies', icon: ShieldCheck, label: 'IRA Credits' },
+            { to: '/technologies', icon: BookOpen, label: 'Tech Ref' },
+            { to: '/awards', icon: Trophy, label: 'Awards' },
           ]
         },
         {
-          title: 'Data & Developer API',
+          title: 'Data',
           items: [
-            { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
-            { to: '__api_modal__', icon: Terminal, label: 'Developers & API' },
+            { to: '/updates', icon: Activity, label: 'Feeds' },
+            { to: '__api_modal__', icon: Terminal, label: 'API' },
           ]
         }
       ];
@@ -293,41 +287,41 @@ export default function Layout() {
     if (persona === 'investor') {
       return [
         {
-          title: 'Market Intelligence',
-          items: [
-            { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
-            { to: '/sankey', icon: GitMerge, label: 'Capital Flows (Sankey)' },
-            { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Bayh-Dole IP' },
-            { to: '/reports', icon: FileText, label: 'Reports & Blueprints' },
-            { to: '/trends', icon: TrendingUp, label: 'Capital Velocity & Trends' },
-            { to: '/strategy', icon: Compass, label: 'Portfolio Strategy' },
-          ]
-        },
-        {
-          title: 'Due Diligence & Benchmarks',
-          items: [
-            { to: '/awards', icon: Trophy, label: 'Awards Ledger' },
-            { to: '/results', icon: Scale, label: 'Outcomes & Benchmarks' },
-            { to: '/dockets', icon: FileText, label: 'Utility Dockets & Tariffs' },
-            { to: '/organizations', icon: Building2, label: 'Agencies & Utilities' },
-            { to: '/programs', icon: Layers, label: 'Programs & Initiatives' },
-          ]
-        },
-        {
-          title: 'Project & Deal Sourcing',
+          title: 'Sourcing',
           items: [
             { to: '/analyze', icon: Sliders, label: 'Match Engine' },
-            { to: '/opportunities', icon: FileSearch, label: 'Active Solicitations' },
-            { to: '/technologies', icon: BookOpen, label: 'Frontier Tech Taxonomy' },
-            { to: '/network', icon: Network, label: 'Ecosystem & Syndicates' },
+            { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
+            { to: '/technologies', icon: BookOpen, label: 'Taxonomy' },
+            { to: '/network', icon: Network, label: 'Syndicates' },
           ]
         },
         {
-          title: 'Data & Developer API',
+          title: 'Diligence',
           items: [
-            { to: '/sources', icon: Database, label: 'Data Provenance' },
-            { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
-            { to: '__api_modal__', icon: Terminal, label: 'Developers & API' },
+            { to: '/awards', icon: Trophy, label: 'Awards Ledger' },
+            { to: '/results', icon: Scale, label: 'Outcomes' },
+            { to: '/dockets', icon: FileText, label: 'Dockets' },
+            { to: '/organizations', icon: Building2, label: 'Agencies' },
+            { to: '/programs', icon: Layers, label: 'Programs' },
+          ]
+        },
+        {
+          title: 'Intelligence',
+          items: [
+            { to: '/digest', icon: Newspaper, label: 'Digest' },
+            { to: '/sankey', icon: GitMerge, label: 'Capital Flows' },
+            { to: '/venture-patents', icon: Lightbulb, label: 'Venture IP' },
+            { to: '/reports', icon: FileText, label: 'Reports' },
+            { to: '/trends', icon: TrendingUp, label: 'Trends' },
+            { to: '/strategy', icon: Compass, label: 'Strategy' },
+          ]
+        },
+        {
+          title: 'Data',
+          items: [
+            { to: '/sources', icon: Database, label: 'Provenance' },
+            { to: '/updates', icon: Activity, label: 'Feeds' },
+            { to: '__api_modal__', icon: Terminal, label: 'API' },
           ]
         }
       ];
@@ -336,56 +330,56 @@ export default function Layout() {
     // Master / All Modules View
     return [
       {
-        title: 'Opportunities & Studio',
+        title: 'Sourcing',
         items: [
-          { to: '/fit', icon: Crosshair, label: 'FOA Fit Snapshot', badge: 'new' },
-          { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
+          { to: '/fit', icon: Crosshair, label: 'FOA Fit', badge: 'new' },
+          { to: '/digest', icon: Newspaper, label: 'Digest' },
           { to: '/analyze', icon: Sliders, label: 'Match Engine' },
-          { to: '/radar', icon: Radio, label: 'Predictive Radar' },
+          { to: '/radar', icon: Radio, label: 'Radar' },
           { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
-          { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
+          { to: '/proposals', icon: FileEdit, label: 'Studio' },
         ]
       },
       {
-        title: 'Awards & Precedents',
+        title: 'Awards',
         items: [
           { to: '/awards', icon: Trophy, label: 'Awards Ledger' },
-          { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Bayh-Dole IP' },
-          { to: '/results', icon: Scale, label: 'Outcomes & Benchmarks' },
+          { to: '/venture-patents', icon: Lightbulb, label: 'Venture IP' },
+          { to: '/results', icon: Scale, label: 'Outcomes' },
         ]
       },
       {
-        title: 'Directories & Ecosystem',
+        title: 'Network',
         items: [
-          { to: '/organizations', icon: Building2, label: 'Organizations & Utilities' },
+          { to: '/organizations', icon: Building2, label: 'Organizations' },
           { to: '/programs', icon: Layers, label: 'Programs' },
-          { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
-          { to: '/network', icon: Network, label: 'Teaming & Syndicates' },
+          { to: '/contacts', icon: BookUser, label: 'Contacts' },
+          { to: '/network', icon: Network, label: 'Teaming' },
         ]
       },
       {
-        title: 'Market Intelligence',
+        title: 'Intelligence',
         items: [
-          { to: '/strategy', icon: Compass, label: 'Portfolio Strategy' },
-          { to: '/sankey', icon: GitMerge, label: 'Capital Flows (Sankey)' },
-          { to: '/trends', icon: TrendingUp, label: 'Capital Velocity & Trends' },
-          { to: '/reports', icon: FileText, label: 'Reports & Blueprints' },
+          { to: '/strategy', icon: Compass, label: 'Strategy' },
+          { to: '/sankey', icon: GitMerge, label: 'Capital Flows' },
+          { to: '/trends', icon: TrendingUp, label: 'Trends' },
+          { to: '/reports', icon: FileText, label: 'Reports' },
         ]
       },
       {
-        title: 'Regulatory & References',
+        title: 'References',
         items: [
-          { to: '/technologies', icon: BookOpen, label: 'Technology Reference' },
-          { to: '/policies', icon: ShieldCheck, label: 'IRA §45/§48 Tax Credits' },
-          { to: '/dockets', icon: FileText, label: 'Utility Dockets & Tariffs' },
+          { to: '/technologies', icon: BookOpen, label: 'Tech Ref' },
+          { to: '/policies', icon: ShieldCheck, label: 'IRA Credits' },
+          { to: '/dockets', icon: FileText, label: 'Dockets' },
         ]
       },
       {
-        title: 'Data & Developer API',
+        title: 'Data',
         items: [
-          { to: '/updates', icon: Activity, label: 'Feeds & Telemetry' },
-          { to: '/sources', icon: Database, label: 'Data Provenance' },
-          { to: '__api_modal__', icon: Terminal, label: 'Developers & API' },
+          { to: '/updates', icon: Activity, label: 'Feeds' },
+          { to: '/sources', icon: Database, label: 'Provenance' },
+          { to: '__api_modal__', icon: Terminal, label: 'API' },
         ]
       }
     ];
@@ -399,7 +393,7 @@ export default function Layout() {
           if (prev[section.title]) {
             const updated = { ...prev, [section.title]: false };
             try {
-              localStorage.setItem('energy_terminal_nav_collapsed_v6', JSON.stringify(updated));
+              localStorage.setItem('energy_terminal_nav_collapsed_v7', JSON.stringify(updated));
             } catch {}
             return updated;
           }
