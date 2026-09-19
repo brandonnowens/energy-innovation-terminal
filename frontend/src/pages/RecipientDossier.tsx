@@ -127,6 +127,38 @@ export default function RecipientDossier() {
     setTimeout(() => setCopiedLink(false), 3000);
   };
 
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
+
+  const handleExportPdf = async () => {
+    const targetId = recipient?.id || id;
+    if (!targetId && !recipient?.name) return;
+    try {
+      setIsExportingPdf(true);
+      const isNum = targetId && !isNaN(Number(targetId));
+      const targetUrl = isNum
+        ? `/api/recipients/${targetId}/export-pdf`
+        : `/api/recipients/by-name/${encodeURIComponent(recipient?.name || String(targetId))}/export-pdf`;
+      const res = await apiFetch(targetUrl);
+      if (!res.ok) throw new Error('Failed to generate PDF executive brief');
+      const blob = await res.blob();
+      const safeName = recipient?.name ? recipient.name.replace(/[^a-zA-Z0-9]/g, '_') : `Recipient_${targetId}`;
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${safeName}_Executive_Brief_EnergyInnovation.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error('PDF Export Error:', err);
+      const fallbackUrl = `/api/recipients/${targetId}/export-pdf`;
+      window.open(fallbackUrl, '_blank');
+    } finally {
+      setIsExportingPdf(false);
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="flex h-96 items-center justify-center">
@@ -163,6 +195,15 @@ export default function RecipientDossier() {
           <ArrowLeft className="h-4 w-4" /> Back to Awards Database
         </Link>
         <div className="flex items-center gap-2">
+          <button 
+            onClick={handleExportPdf}
+            disabled={isExportingPdf}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 shadow-sm transition-all cursor-pointer"
+            title="Export Institutional PDF Executive Brief"
+          >
+            {isExportingPdf ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />}
+            <span>{isExportingPdf ? 'Compiling PDF...' : 'Download Executive Brief (PDF)'}</span>
+          </button>
           <button 
             onClick={copyShareLink}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 shadow-sm transition-all"

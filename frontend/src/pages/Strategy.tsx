@@ -15,6 +15,7 @@ import { EditableComboBox, ComboBoxOption } from '../components/EditableComboBox
 import {
   quickExecuteStrategy,
   fetchStrategyTemplates,
+  downloadStrategyPdf,
   StrategyResultPayload,
   StrategyTemplatesResponse
 } from '../api/client';
@@ -400,6 +401,7 @@ export default function Strategy() {
   const [mode, setMode] = useState<'project_sponsor' | 'funding_organization'>('project_sponsor');
   const [activeTab, setActiveTab] = useState<'thesis' | 'pathway' | 'workstreams' | 'capital_stack' | 'awards_comps'>('thesis');
   const [isExecuting, setIsExecuting] = useState(false);
+  const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>('');
   const [showAdvanced, setShowAdvanced] = useState(false);
 
@@ -593,7 +595,23 @@ export default function Strategy() {
     }
   };
 
-
+  // Download PDF Handler
+  const handleDownloadPdf = async () => {
+    if (!strategyResults) return;
+    setIsDownloadingPdf(true);
+    try {
+      await downloadStrategyPdf(
+        strategyResults,
+        strategyResults.title || 'Strategic_Research_Plan',
+        mode
+      );
+    } catch (err: any) {
+      console.error('PDF error:', err);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      setIsDownloadingPdf(false);
+    }
+  };
 
   // Push to Proposal Copilot
   const handlePushToProposalCopilot = () => {
@@ -1190,6 +1208,19 @@ export default function Strategy() {
 
             {/* PDF & Proposal Copilot Actions */}
             <div className="flex items-center gap-2.5 shrink-0">
+              <button
+                onClick={handleDownloadPdf}
+                disabled={isDownloadingPdf}
+                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+              >
+                {isDownloadingPdf ? (
+                  <Loader2 size={14} className="animate-spin" />
+                ) : (
+                  <FileDown size={14} className="text-indigo-300" />
+                )}
+                <span>Download PDF Strategic Report</span>
+              </button>
+
               {mode === 'project_sponsor' && (
                 <button
                   onClick={handlePushToProposalCopilot}

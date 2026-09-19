@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import {
   FileText, Search, Download, Layers, MapPin, Share2, Activity,
@@ -548,6 +548,31 @@ export default function Reports() {
     pipelineMutation.mutate();
   };
 
+  // Direct PDF Download Handler
+  const handleDownloadReportPdf = async (report: any) => {
+    if (!report || !report.id) return;
+    setDownloadingId(report.id);
+    setDownloadError(null);
+    try {
+      const req: ReportGenerateRequest = {
+        preset_id: report.id,
+        model_name: selectedModel,
+        force_refresh: false,
+      };
+      const blob = await api.exportExecutiveReportPdf(req);
+      const timestamp = new Date().toISOString().slice(0, 10);
+      saveAs(blob, `energy-innovation-publication-${report.id}-${timestamp}.pdf`);
+      setKeySavedToast(`Report PDF downloaded successfully: ${report.title || report.id}`);
+      setTimeout(() => setKeySavedToast(null), 4000);
+    } catch (e: any) {
+      console.error('Failed to export PDF:', e);
+      setDownloadError(`Failed to download report PDF for "${report.title || report.id}". Please try again.`);
+      setTimeout(() => setDownloadError(null), 6000);
+    } finally {
+      setDownloadingId(null);
+    }
+  };
+
   // Preview Report Handler (with optional forceRefresh to bypass cache and author live)
   const handlePreviewReport = async (report: any, forceRefresh: boolean = false) => {
     setPreviewPreset(report);
@@ -805,11 +830,25 @@ export default function Reports() {
               <div className="pt-4 border-t border-slate-100 flex items-center gap-2">
                 <button
                   onClick={() => handlePreviewReport(report)}
-                  className="w-full py-2 px-3 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="flex-1 py-2 px-3 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   title="View Executive Summary & Key Insights Preview"
                 >
                   <Eye size={14} className="text-slate-600" />
                   <span>Preview</span>
+                </button>
+
+                <button
+                  onClick={() => handleDownloadReportPdf(report)}
+                  disabled={isDownloading}
+                  className="flex-1 py-2 px-3 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  title="Download Publication PDF"
+                >
+                  {isDownloading ? (
+                    <Loader2 size={14} className="animate-spin" />
+                  ) : (
+                    <Download size={14} />
+                  )}
+                  <span>Download PDF</span>
                 </button>
               </div>
             </div>
@@ -1068,6 +1107,18 @@ export default function Reports() {
                 >
                   <RotateCw size={13} className={isPreviewLoading ? 'animate-spin text-indigo-600' : 'text-indigo-600'} />
                   <span>Refresh Narrative</span>
+                </button>
+                <button
+                  onClick={() => handleDownloadReportPdf(previewPreset)}
+                  disabled={downloadingId === previewPreset.id}
+                  className="px-5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                >
+                  {downloadingId === previewPreset.id ? (
+                    <Loader2 size={14} className="animate-spin" />
+                  ) : (
+                    <Download size={14} />
+                  )}
+                  <span>Download Executive Publication (PDF)</span>
                 </button>
               </div>
             </div>

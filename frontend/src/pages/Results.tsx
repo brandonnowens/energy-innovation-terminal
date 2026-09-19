@@ -399,10 +399,10 @@ export default function Results() {
                             type="button"
                             onClick={() => setQuickViewRecipient({ name: org.recipient_name })}
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 text-xs font-bold transition-all border border-emerald-200/80 cursor-pointer shadow-2xs"
-                            title="Quick view intelligence executive brief"
+                            title="Quick view intelligence & download executive brief PDF"
                           >
                             <FileDown size={12} />
-                            <span>Executive Brief</span>
+                            <span>Executive Brief (PDF)</span>
                           </button>
 
                           {org.artifacts.length > 0 && (
