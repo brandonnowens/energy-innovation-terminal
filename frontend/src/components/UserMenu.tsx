@@ -26,6 +26,15 @@ export function UserMenu() {
     );
   }
 
+  if (ghostStatus === 'loading') {
+    return (
+      <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/70 border border-slate-200 dark:border-white/10 shadow-2xs opacity-50 animate-pulse">
+        <div className="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-700" />
+        <div className="w-16 h-4 bg-slate-300 dark:bg-slate-700 rounded-sm hidden sm:block" />
+      </div>
+    );
+  }
+
   // Guest / Logged out state
   return (
     <button
