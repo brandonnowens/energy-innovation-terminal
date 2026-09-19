@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { NyserdaProvider } from './context/NyserdaContext';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Loader2 } from 'lucide-react';
 
 // Route-based dynamic lazy loading for performant initial bundle loading
@@ -82,76 +83,78 @@ function App() {
         <AuthProvider>
           <NyserdaProvider>
             <BrowserRouter>
-              <Suspense fallback={<PageLoadingFallback />}>
-                <Routes>
-                  <Route path="/" element={<Layout />}>
-                    <Route index element={<Chat />} />
-                    <Route path="chat" element={<Chat />} />
-                    <Route path="advisory" element={<Chat />} />
-                    <Route path="strategic-advisory" element={<Chat />} />
-                    <Route path="advisor" element={<Chat />} />
-                    <Route path="analyze" element={<AnalyzeProject />} />
-                    <Route path="match" element={<AnalyzeProject />} />
-                    <Route path="fit" element={<FoaFitSnapshot />} />
-                    <Route path="company-fit" element={<FoaFitSnapshot />} />
-                    <Route path="foa-fit" element={<FoaFitSnapshot />} />
-                    <Route path="digest" element={<DailyDigest />} />
-                    <Route path="daily-digest" element={<DailyDigest />} />
-                    <Route path="daily-brief" element={<DailyDigest />} />
-                    <Route path="brief" element={<DailyDigest />} />
-                    <Route path="radar" element={<ForecastingRadar />} />
-                    <Route path="forecasting" element={<ForecastingRadar />} />
+              <ErrorBoundary>
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <Routes>
+                    <Route path="/" element={<Layout />}>
+                      <Route index element={<Chat />} />
+                      <Route path="chat" element={<Chat />} />
+                      <Route path="advisory" element={<Chat />} />
+                      <Route path="strategic-advisory" element={<Chat />} />
+                      <Route path="advisor" element={<Chat />} />
+                      <Route path="analyze" element={<AnalyzeProject />} />
+                      <Route path="match" element={<AnalyzeProject />} />
+                      <Route path="fit" element={<FoaFitSnapshot />} />
+                      <Route path="company-fit" element={<FoaFitSnapshot />} />
+                      <Route path="foa-fit" element={<FoaFitSnapshot />} />
+                      <Route path="digest" element={<DailyDigest />} />
+                      <Route path="daily-digest" element={<DailyDigest />} />
+                      <Route path="daily-brief" element={<DailyDigest />} />
+                      <Route path="brief" element={<DailyDigest />} />
+                      <Route path="radar" element={<ForecastingRadar />} />
+                      <Route path="forecasting" element={<ForecastingRadar />} />
 
-                  <Route path="opportunities" element={<Opportunities />} />
-                  <Route path="opportunities/:id" element={<OpportunityDetail />} />
-                  {/* Programmatic SEO Hubs */}
-                  <Route path="recipients/:id" element={<RecipientDossier />} />
-                  <Route path="recipients/:id/:slug" element={<RecipientDossier />} />
-                  <Route path="agencies/:id" element={<AgencyHub />} />
-                  <Route path="tech-hub/:slug" element={<TechnologyHub />} />
+                    <Route path="opportunities" element={<Opportunities />} />
+                    <Route path="opportunities/:id" element={<OpportunityDetail />} />
+                    {/* Programmatic SEO Hubs */}
+                    <Route path="recipients/:id" element={<RecipientDossier />} />
+                    <Route path="recipients/:id/:slug" element={<RecipientDossier />} />
+                    <Route path="agencies/:id" element={<AgencyHub />} />
+                    <Route path="tech-hub/:slug" element={<TechnologyHub />} />
 
-                  {/* Primary Technology & Fuels Innovation Reference */}
-                  <Route path="technologies" element={<TechReference />} />
-                  <Route path="technologies/:id" element={<TechReference />} />
-                  <Route path="tech-reference" element={<TechReference />} />
-                  <Route path="tech-reference/:id" element={<TechReference />} />
+                    {/* Primary Technology & Fuels Innovation Reference */}
+                    <Route path="technologies" element={<TechReference />} />
+                    <Route path="technologies/:id" element={<TechReference />} />
+                    <Route path="tech-reference" element={<TechReference />} />
+                    <Route path="tech-reference/:id" element={<TechReference />} />
 
-                  {/* Policy, Codes & IRA Incentives Reference */}
-                  <Route path="policies" element={<PolicyReference />} />
-                  <Route path="policies/:id" element={<PolicyReference />} />
-                  <Route path="policy-reference" element={<PolicyReference />} />
-                  <Route path="policy-reference/:id" element={<PolicyReference />} />
+                    {/* Policy, Codes & IRA Incentives Reference */}
+                    <Route path="policies" element={<PolicyReference />} />
+                    <Route path="policies/:id" element={<PolicyReference />} />
+                    <Route path="policy-reference" element={<PolicyReference />} />
+                    <Route path="policy-reference/:id" element={<PolicyReference />} />
 
-                  <Route path="proposals" element={<Proposals />} />
-                  <Route path="programs" element={<Programs />} />
-                  <Route path="organizations" element={<Organizations />} />
-                  <Route path="contacts" element={<KeyContacts />} />
-                  <Route path="key-contacts" element={<KeyContacts />} />
-                  <Route path="awards" element={<Awards />} />
-                  <Route path="dockets" element={<Dockets />} />
-                  <Route path="proceedings" element={<Dockets />} />
-                  <Route path="regulatory-reference" element={<Dockets />} />
-                  <Route path="venture-patents" element={<VenturePatentsPage />} />
-                  <Route path="results" element={<Results />} />
-                  <Route path="network" element={<Network />} />
-                  <Route path="sankey" element={<Sankey />} />
-                  <Route path="trends" element={<Trends />} />
-                  <Route path="updates" element={<Updates />} />
-                  <Route path="sources" element={<System />} />
-                  {/* System Admin Email & Outreach Hub */}
-                  <Route path="admin/email-hub" element={<AdminEmailHub />} />
-                  <Route path="admin/outreach" element={<AdminEmailHub />} />
-                  <Route path="admin" element={<AdminEmailHub />} />
-                  {/* Hidden but preserved */}
-                  <Route path="strategy" element={<Strategy />} />
-                  <Route path="strategy/:id" element={<Strategy />} />
-                  <Route path="reports" element={<Reports />} />
-                  <Route path="reports/:id" element={<Reports />} />
-                  {/* Catch-all Not Found Route */}
-                  <Route path="*" element={<Chat />} />
-                </Route>
-              </Routes>
-            </Suspense>
+                    <Route path="proposals" element={<Proposals />} />
+                    <Route path="programs" element={<Programs />} />
+                    <Route path="organizations" element={<Organizations />} />
+                    <Route path="contacts" element={<KeyContacts />} />
+                    <Route path="key-contacts" element={<KeyContacts />} />
+                    <Route path="awards" element={<Awards />} />
+                    <Route path="dockets" element={<Dockets />} />
+                    <Route path="proceedings" element={<Dockets />} />
+                    <Route path="regulatory-reference" element={<Dockets />} />
+                    <Route path="venture-patents" element={<VenturePatentsPage />} />
+                    <Route path="results" element={<Results />} />
+                    <Route path="network" element={<Network />} />
+                    <Route path="sankey" element={<Sankey />} />
+                    <Route path="trends" element={<Trends />} />
+                    <Route path="updates" element={<Updates />} />
+                    <Route path="sources" element={<System />} />
+                    {/* System Admin Email & Outreach Hub */}
+                    <Route path="admin/email-hub" element={<AdminEmailHub />} />
+                    <Route path="admin/outreach" element={<AdminEmailHub />} />
+                    <Route path="admin" element={<AdminEmailHub />} />
+                    {/* Hidden but preserved */}
+                    <Route path="strategy" element={<Strategy />} />
+                    <Route path="strategy/:id" element={<Strategy />} />
+                    <Route path="reports" element={<Reports />} />
+                    <Route path="reports/:id" element={<Reports />} />
+                    {/* Catch-all Not Found Route */}
+                    <Route path="*" element={<Chat />} />
+                  </Route>
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
           </BrowserRouter>
         </NyserdaProvider>
       </AuthProvider>
