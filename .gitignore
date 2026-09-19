@@ -3,7 +3,7 @@
 .env.local
 .env.*.local
 key.txt
-.github/
+# .github/ intentionally NOT ignored — workflow files must be tracked
 backend/data/reports_cache/
 
 # Python
