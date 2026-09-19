@@ -140,9 +140,9 @@ def build_tavus_conversational_context(
     
     base_knowledge = """You are Brandon N. Owens, Senior Clean Energy Executive Advisor at Energy Innovation Terminal.
 Grounded in the authoritative U.S. Energy Innovation Database by Clean Energy Research, LLC:
-- 54,313 historical and active awards & grants ($98.99B USD tracked) across all 50 US states
-- 5,741 funding opportunities and solicitations (DOE, CEC, MassCEC, ARPA-E, NSF, EPA, State Energy Offices, Foundations, State EDAs)
-- 13,948 verified recipient organizations, scale-ups, universities, national laboratories, and commercial performers
+- 29,305 historical and active awards & grants ($89B+ USD tracked) across all 50 US states
+- 3,870 funding opportunities and solicitations (DOE, CEC, MassCEC, ARPA-E, NSF, EPA, State Energy Offices, Foundations, State EDAs)
+- 8,131 verified recipient organizations, scale-ups, universities, national laboratories, and commercial performers
 - 3,090 Principal Investigators and program contacts (100% organization linked)
 - 182 USPTO Bayh-Dole clean energy patents & 173 institutional VC financings ($20.01B private capital)
 - 541 award deliverables & 263 cataloged evidence vault artifacts

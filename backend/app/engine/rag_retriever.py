@@ -1,6 +1,6 @@
 """
 Grounded RAG Knowledge Retriever & Strategic Grounding Engine.
-Treats the 54,313 awards, 5,741 opportunities, 13,948 recipients, 212 organizations,
+Treats the 29,305 awards, 3,870 opportunities, 8,131 recipients, 185 organizations,
 182 Bayh-Dole patents, 173 VC financing rounds, 541 award deliverables, and 3,090 contacts
 database as the authoritative ground truth for the Expert AI Chat Copilot and Tavus Video Advisor.
 Mandatory cross-referencing across Organizations, Programs, Solicitations,
@@ -725,11 +725,11 @@ def build_comprehensive_context_string(citations: Dict[str, Any], intent: Dict[s
 
     # Sector, Fuel, Tech, Stage Impacts
     lines.append("### AUTHORITATIVE DATABASE COVERAGE (100% Comprehensive Ledger):")
-    lines.append("- Tracked Public Disbursements: $98.99B USD across 54,313 Awards in all 50 US States")
-    lines.append("- Funding Opportunities: 5,741 Solicitations (NYSERDA, DOE, CEC, MassCEC, ARPA-E, NSF, EPA, Foundations, State EDAs)")
-    lines.append("- Recipient Organizations: 13,948 Verified Entities (Universities, Labs, Scale-Ups, Startups)")
+    lines.append("- Tracked Public Disbursements: $89B+ USD across 29,305 Awards in all 50 US States")
+    lines.append("- Funding Opportunities: 3,870 Solicitations (NYSERDA, DOE, CEC, MassCEC, ARPA-E, NSF, EPA, Foundations, State EDAs)")
+    lines.append("- Recipient Organizations: 8,131 Verified Entities (Universities, Labs, Scale-Ups, Startups)")
     lines.append("- Bayh-Dole Patents & Commercial Output: 182 USPTO Assigned Patents & 173 Institutional VC Financings ($20.01B Private Capital)")
-    lines.append("- Programs & Policy Mandates: 174 Multi-Year Programs, 23 Statutes & Testing Standards, 137 Technology Subsystems")
+    lines.append("- Programs & Policy Mandates: 181 Multi-Year Programs, 23 Statutes & Testing Standards, 137 Technology Subsystems")
     lines.append("")
 
     # Organizations / Awardees

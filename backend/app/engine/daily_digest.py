@@ -365,8 +365,8 @@ def generate_daily_digest(db: Session, target_date_str: Optional[str] = None) ->
             "utility_capital_display": format_currency(utility_capital),
             "tracked_recipients_count": total_recipients,
             "total_historical_awards_count": total_awards_count,
-            "total_historical_capital_display": "$104.16B",
-            "indexed_authorities_count": "140+",
+            "total_historical_capital_display": "$89.1B",
+            "indexed_authorities_count": "185+",
             "grid_projects_tracked": "10,250 Projects",
             "new_solicitations_today": len(new_solicitations),
             "urgent_deadlines_count": len(urgent_deadlines)

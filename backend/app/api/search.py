@@ -1,4 +1,4 @@
-﻿"""Universal Database Search API Engine.
+"""Universal Database Search API Engine.
 Exhaustively queries across all 12 database domains with case-insensitive token and substring matching.
 """
 
@@ -36,14 +36,14 @@ def universal_search(
 ) -> Dict[str, Any]:
     """
     Comprehensive, case-insensitive universal search across all clean energy database entities:
-    - Awards & Past Precedents ($104.16B capital tracked)
-    - Funding Opportunities & Solicitations (5,757 FOAs)
-    - Organizations & Ecosystem Partners (140+ agencies, state offices, utilities)
-    - Key Contacts & Principal Investigators (3,090+ experts)
+    - Awards & Past Precedents ($89B+ capital tracked, 29,305 awards)
+    - Funding Opportunities & Solicitations (3,870 FOAs)
+    - Organizations & Ecosystem Partners (185 agencies, state offices, utilities)
+    - Key Contacts & Principal Investigators (3,090 experts)
     - Bayh-Dole Act Patents & IP Citations
     - Private Venture Capital Rounds & SEC Form D Filings
     - Technology Reference Architectures
-    - Policies, Tax Credits & Safety Codes (IRA Â§45/Â§48, NFPA/UL)
+    - Policies, Tax Credits & Safety Codes (IRA §45/§48, NFPA/UL)
     - Public Utility Commission Regulatory Dockets
     - Grid Interconnection Queues (10,250 projects)
     - National Lab Facilities & Testbeds (NREL, EPRI, etc.)

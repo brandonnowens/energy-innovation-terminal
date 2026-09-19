@@ -1,0 +1,362 @@
+contact_id,name_display,name_first,name_last,email,email_status,awards_count,role_type,institution_name,flags
+109,Neeraj Sinha,Neeraj,Sinha,sinha@gmail.com,verified_valid,50,pi,Combustion Research & Flow Technology Inc.,personal_email:domain=gmail.com awards=50
+131,Sivaram Gogineni,Sivaram,Gogineni,spgogineni@gmail.com,verified_valid,42,pi,SPECTRAL ENERGIES LLC,personal_email:domain=gmail.com awards=42
+654,Marthinus van Schoor,Marthinus,Schoor,tienie@mide.com,syntax_valid,15,pi,MIDE TECHNOLOGY CORP,name_mismatch:display='Marthinus van Schoor' vs 'Marthinus'+'Schoor'
+206,Danko van der Laan,Danko,Laan,danko@advancedconductor.com,verified_valid,14,pi,ADVANCED CONDUCTOR TECHNOLOGIES LLC,name_mismatch:display='Danko van der Laan' vs 'Danko'+'Laan'
+1161,Patrick Hu,Patrick,Hu,patrick.g.hu@gmail.com,verified_valid,12,pi,"Advanced Dynamics, Inc.",personal_email:domain=gmail.com awards=12
+344,Peter Friedman,Peter,Friedman,psfriedman3@yahoo.com,verified_valid,11,pi,"Integrated Sensors, LLC",personal_email:domain=yahoo.com awards=11
+396,Gerard Andonian,Gerard,Andonian,gerard.andonian@gmail.com,verified_valid,10,pi,"RADIABEAM TECHNOLOGIES, LLC",personal_email:domain=gmail.com awards=10
+784,Naibo Jiang,Naibo,Jiang,naiboj@yahoo.com,verified_valid,9,pi,SPECTRAL ENERGIES LLC,personal_email:domain=yahoo.com awards=9
+479,Daan Hein Alsem,Daan,Alsem,daan_alsem@hummingbirdscientific.com,verified_valid,9,pi,HUMMINGBIRD PRECISION MACHINE CO.,name_mismatch:display='Daan Hein Alsem' vs 'Daan'+'Alsem'
+399,Joshua Buettner-Garrett,Joshua,Buettner-Garrett,joshrgarrett@gmail.com,verified_valid,9,pi,"Soild Power, Inc.",personal_email:domain=gmail.com awards=9
+395,Sudhir Trivedi,Sudhir,Trivedi,sudhir.b.trivedi@gmail.com,verified_valid,8,pi,BRIMROSE TECHNOLOGY CORP,personal_email:domain=gmail.com awards=8
+2371,Robert S. Kennedy,Robert,Kennedy,,gateway_required,8,pi,"Epic Sales, Inc. Dba Epic Systems","name_mismatch:display='Robert S. Kennedy' vs 'Robert'+'Kennedy' | gateway_required:institution='Epic Sales, Inc. Dba Epic Systems'"
+2617,R. Lawrence Ives,R.,Ives,rlives@calcreek.com,verified_valid,8,pi,"CALABAZAS CREEK RESEARCH, INC.",name_mismatch:display='R. Lawrence Ives' vs 'R.'+'Ives'
+685,Anagi Balachandra,Anagi,Balachandra,metnaco12@gmail.com,verified_valid,8,pi,METNA CO,personal_email:domain=gmail.com awards=8
+1694,Jessie Bonner,Jessie,Bonner,jes_bonner@yahoo.com,verified_valid,7,pi,Weston Geophysical Corp.,personal_email:domain=yahoo.com awards=7
+299,Felipe Gomez del Campo,Felipe,Campo,felipe.gomez@fgcplasma.com,verified_valid,7,pi,"FGC Plasma Solutions, Inc.",name_mismatch:display='Felipe Gomez del Campo' vs 'Felipe'+'Campo'
+1906,Dr Robert P Scaringe,Dr,Scaringe,,gateway_required,7,pi,Mainstream Engineering Corp.,name_mismatch:display='Dr Robert P Scaringe' vs 'Dr'+'Scaringe' | gateway_required:institution='Mainstream Engineering Corp.'
+1937,James B Mcneely,James,Mcneely,,gateway_required,7,pi,"ASTROPOWER, INC.","name_mismatch:display='James B Mcneely' vs 'James'+'Mcneely' | gateway_required:institution='ASTROPOWER, INC.'"
+1938,D. Scott Crocker,D.,Crocker,jls@cfdrc.com,verified_valid,7,pi,CFD Research Corporation,name_mismatch:display='D. Scott Crocker' vs 'D.'+'Crocker'
+2054,Devon McIntosh,Devon,McIntosh,dv_mcintosh@hotmail.com,verified_valid,7,pi,SONSIGHT INC,personal_email:domain=hotmail.com awards=7
+2345,Bamidele Omotowa,Bamidele,Omotowa,bomotowa@yahoo.com,verified_valid,6,pi,PEARLHILL TECHNOLOGIES LLC,personal_email:domain=yahoo.com awards=6
+1126,Roger van Boeyen,Roger,Boeyen,roger.vanboyen@lynntech.com,verified_valid,6,pi,Lynntech Inc.,name_mismatch:display='Roger van Boeyen' vs 'Roger'+'Boeyen'
+355,Wanhuk Brian Choi,Wanhuk,Choi,brian.choi@reliacoat.com,verified_valid,6,pi,"RELIACOAT TECHNOLOGIES, LLC",name_mismatch:display='Wanhuk Brian Choi' vs 'Wanhuk'+'Choi'
+1825,R. David Rauh,R.,Rauh,,gateway_required,6,pi,"EIC Laboratories, Inc.","name_mismatch:display='R. David Rauh' vs 'R.'+'Rauh' | gateway_required:institution='EIC Laboratories, Inc.'"
+1020,Jesus Delgado Alonso,Jesus,Alonso,sbirproposals@intopsys.com,verified_valid,6,pi,"INTELLIGENT OPTICAL SYSTEMS, INC.",name_mismatch:display='Jesus Delgado Alonso' vs 'Jesus'+'Alonso'
+1656,Robert Boyle,Robert,Boyle,rbrjboyle@gmail.com,verified_valid,6,pi,N&R ENGNERING MGT SUPPORT SVCS,personal_email:domain=gmail.com awards=6
+1438,Castro S.T. Laicer,Castro,Laicer,claicer@ginerinc.com,verified_valid,6,pi,Giner Inc.,name_mismatch:display='Castro S.T. Laicer' vs 'Castro'+'Laicer'
+2207,Richard Epstein,Richard,Epstein,richard.epstein@gmail.com,verified_valid,6,pi,ThermoDynamic Films LLC,personal_email:domain=gmail.com awards=6
+1920,Dr Moshe Lavid,Dr,Lavid,,gateway_required,6,pi,"M.L. ENERGIA, INC.","name_mismatch:display='Dr Moshe Lavid' vs 'Dr'+'Lavid' | gateway_required:institution='M.L. ENERGIA, INC.'"
+940,Ronald Weidenbach,Ronald,Weidenbach,hawaiifish@gmail.com,verified_valid,6,pi,HAWAII FISH COMPANY INC.,personal_email:domain=gmail.com awards=6
+2231,Z.J. Wang,Z.J.,Wang,,gateway_required,6,pi,CFD Research Corporation,gateway_required:institution='CFD Research Corporation'
+1932,K M Abraham,K,Abraham,,gateway_required,6,pi,"EIC Laboratories, Inc.","name_mismatch:display='K M Abraham' vs 'K'+'Abraham' | gateway_required:institution='EIC Laboratories, Inc.'"
+1751,Amy Gong,Amy,Gong,inventwood@gmail.com,verified_valid,5,pi,INVENTWOOD Inc.,personal_email:domain=gmail.com awards=5
+1559,Stephen Horowitz,Stephen,Horowitz,steveh23@gmail.com,verified_valid,5,pi,INTERDISCIPLINARY CONSULTING CORP,personal_email:domain=gmail.com awards=5
+2507,George J. Valentino,George,Valentino,,gateway_required,5,pi,SYSTRAN FEDERAL CORP.,name_mismatch:display='George J. Valentino' vs 'George'+'Valentino' | gateway_required:institution='SYSTRAN FEDERAL CORP.'
+510,J. Robert Pence,J.,Pence,rpence@lakota-tsi.com,verified_valid,5,pi,"LAKOTA TECHNICAL SOLUTIONS, INC.",name_mismatch:display='J. Robert Pence' vs 'J.'+'Pence'
+560,Mr. Stephen Cordova,Mr.,Cordova,stephenc@adatech.com,verified_valid,5,pi,"ADA TECHNOLOGIES, INC.",name_mismatch:display='Mr. Stephen Cordova' vs 'Mr.'+'Cordova'
+576,Lakshmi Soundara Pandian,Lakshmi,Pandian,lspandian@rmdinc.com,verified_valid,5,pi,"Radiation Monitoring Devices, Inc.",name_mismatch:display='Lakshmi Soundara Pandian' vs 'Lakshmi'+'Pandian'
+3040,Till W. Liepmann,Till,Liepmann,,gateway_required,5,pi,Pacific-sierra Research Corp.,name_mismatch:display='Till W. Liepmann' vs 'Till'+'Liepmann' | gateway_required:institution='Pacific-sierra Research Corp.'
+2878,Mark Kozubal,Mark,Kozubal,mkozubal@gmail.com,verified_valid,5,pi,SUSTAINABLE BIOPRODUCTS LLC,personal_email:domain=gmail.com awards=5
+2851,Dr Michael R Squillante,Dr,Squillante,,gateway_required,5,pi,"Radiation Monitoring Devices, Inc.","name_mismatch:display='Dr Michael R Squillante' vs 'Dr'+'Squillante' | gateway_required:institution='Radiation Monitoring Devices, Inc.'"
+2788,Nadia Adam,Nadia,Adam,nadia.k.adam@gmail.com,verified_valid,5,pi,Biomineral Systems LLC,personal_email:domain=gmail.com awards=5
+1153,Chuni Ghosh,Chuni,Ghosh,,gateway_required,5,pi,Princeton Optronics,gateway_required:institution='Princeton Optronics'
+2720,Roger Lenard,Roger,Lenard,rxlenard@gmail.com,verified_valid,5,pi,Little Prairie Services,personal_email:domain=gmail.com awards=5
+2703,Dr Jon M Bass,Dr,Bass,,gateway_required,5,pi,Computational Mechan,name_mismatch:display='Dr Jon M Bass' vs 'Dr'+'Bass' | gateway_required:institution='Computational Mechan'
+1260,Paul A. Gierow,Paul,Gierow,,gateway_required,5,pi,SRS Technologies,name_mismatch:display='Paul A. Gierow' vs 'Paul'+'Gierow' | gateway_required:institution='SRS Technologies'
+1919,Ashok Damle,Ashok,Damle,techverse@hotmail.com,verified_valid,5,pi,TECHVERSE INC,personal_email:domain=hotmail.com awards=5
+1291,Stephen M. Hannon,Stephen,Hannon,,gateway_required,5,pi,"COHERENT TECHNOLOGIES, INC.","name_mismatch:display='Stephen M. Hannon' vs 'Stephen'+'Hannon' | gateway_required:institution='COHERENT TECHNOLOGIES, INC.'"
+1303,Dr. Freddie Lin,Dr.,Lin,,gateway_required,5,pi,Physical Optics Corporation,name_mismatch:display='Dr. Freddie Lin' vs 'Dr.'+'Lin' | gateway_required:institution='Physical Optics Corporation'
+1367,Richard Pehl,Richard,Pehl,dickpehl@yahoo.com,verified_valid,5,pi,Phds Co.,personal_email:domain=yahoo.com awards=5
+1379,Ryan McClintock,Ryan,McClintock,rmcclin@gmail.com,verified_valid,5,pi,"MP Technologies, LLC",personal_email:domain=gmail.com awards=5
+1441,Sivaram P Gogineni,Sivaram,Gogineni,sivaram.gogineni@spectralenergies.com,verified_valid,5,pi,SPECTRAL ENERGIES LLC,name_mismatch:display='Sivaram P Gogineni' vs 'Sivaram'+'Gogineni'
+2009,Dr. Muren Chu,Dr.,Chu,,gateway_required,5,pi,FERMIONICS CORP.,name_mismatch:display='Dr. Muren Chu' vs 'Dr.'+'Chu' | gateway_required:institution='FERMIONICS CORP.'
+2785,Jeremy Minty,Jeremy,Minty,jeremy.minty@gmail.com,verified_valid,4,pi,ECOVIA RENEWABLES INC.,personal_email:domain=gmail.com awards=4
+1140,Gary Mikaelian,Gary,Mikaelian,grmikaelian@gmail.com,verified_valid,4,pi,HEDGEFOG RESEARCH INC.,personal_email:domain=gmail.com awards=4
+1595,Richard W Lusignea,Richard,Lusignea,,gateway_required,4,pi,"FOSTER-MILLER, INC.","name_mismatch:display='Richard W Lusignea' vs 'Richard'+'Lusignea' | gateway_required:institution='FOSTER-MILLER, INC.'"
+2719,Kristina Hugar,Kristina,Hugar,kristinahugar22@gmail.com,verified_valid,4,pi,Ecolectro Inc.,personal_email:domain=gmail.com awards=4
+1192,John F Justak,John,Justak,jjustak@atgi.us,verified_valid,4,pi,"ADVANCED TECHNOLOGIES GROUP, INC.",name_mismatch:display='John F Justak' vs 'John'+'Justak'
+1936,Everett G. Farr,Everett,Farr,,gateway_required,4,pi,"FARR RESEARCH, INC.","name_mismatch:display='Everett G. Farr' vs 'Everett'+'Farr' | gateway_required:institution='FARR RESEARCH, INC.'"
+1217,Dr. Brian Henslee,Dr.,Henslee,hensleeb@crgrp.com,verified_valid,4,pi,Cornerstone Research Group Inc.,name_mismatch:display='Dr. Brian Henslee' vs 'Dr.'+'Henslee'
+2548,BHARGAV GAJJAR,BHARGAV,GAJJAR,mitscientist@gmail.com,verified_valid,4,pi,VISHWA ROBOTICS AND AUTOMATION LLC,personal_email:domain=gmail.com awards=4
+2692,"Nikolai Kislov, PhD",Nikolai,PhD,nick@insytecorp.com,syntax_valid,4,pi,"ECLIPSE ENERGY SYSTEMS, INC.","name_mismatch:display='Nikolai Kislov, PhD' vs 'Nikolai'+'PhD'"
+672,Darin A Knaus,Darin,Knaus,dak@creare.com,verified_valid,4,pi,Creare LLC,name_mismatch:display='Darin A Knaus' vs 'Darin'+'Knaus'
+91,Mateo Jaramillo,Mateo,Jaramillo,,gateway_required,4,pi,"Form Energy, Inc.","gateway_required:institution='Form Energy, Inc.'"
+1925,"Paul A. Gierow, P.e.",Paul,P.e.,,gateway_required,4,pi,SRS Technologies,"name_mismatch:display='Paul A. Gierow, P.e.' vs 'Paul'+'P.e.' | gateway_required:institution='SRS Technologies'"
+2222,Douglas J. Bamford,Douglas,Bamford,,gateway_required,4,pi,Deacon Research,name_mismatch:display='Douglas J. Bamford' vs 'Douglas'+'Bamford' | gateway_required:institution='Deacon Research'
+2275,Soumen Kar,Soumen,Kar,soumen123@gmail.com,verified_valid,4,pi,AMPEERS LLC,personal_email:domain=gmail.com awards=4
+460,Tom Tumolillo Jr.,Tom,Jr.,tom@optonicus.com,verified_valid,4,pi,"MV INNOVATIVE TECHNOLOGIES, LLC",name_mismatch:display='Tom Tumolillo Jr.' vs 'Tom'+'Jr.'
+1547,Pankaj Topiwala,Pankaj,Topiwala,pankajtva@gmail.com,verified_valid,4,pi,FASTVDO LLC,personal_email:domain=gmail.com awards=4
+2394,Jack L. Jewell,Jack,Jewell,,gateway_required,4,pi,"PICOLIGHT, INC.","name_mismatch:display='Jack L. Jewell' vs 'Jack'+'Jewell' | gateway_required:institution='PICOLIGHT, INC.'"
+1757,John Scott O'Dell,John,O'Dell,scottodell@plasmapros.com,verified_valid,4,pi,"Plasma Processes, LLC","name_mismatch:display=""John Scott O'Dell"" vs 'John'+""O'Dell"""
+2397,Christopher J. Crowley,Christopher,Crowley,,gateway_required,4,pi,Creare LLC,name_mismatch:display='Christopher J. Crowley' vs 'Christopher'+'Crowley' | gateway_required:institution='Creare LLC'
+1789,Damoder Reddy,Damoder,Reddy,dreddy40@gmail.com,verified_valid,4,pi,"ARGIL, INC.",personal_email:domain=gmail.com awards=4
+2420,Link C. Jaw,Link,Jaw,,gateway_required,4,pi,"Scientific Monitoring, Inc.","name_mismatch:display='Link C. Jaw' vs 'Link'+'Jaw' | gateway_required:institution='Scientific Monitoring, Inc.'"
+1317,Venkata S Reddy Channu,Venkata,Channu,sbir@socom.mil,verified_valid,4,pi,BHAWIN LLC,name_mismatch:display='Venkata S Reddy Channu' vs 'Venkata'+'Channu'
+1903,Markus Novak,Markus,Novak,markushnovak@gmail.com,verified_valid,4,pi,NOVAA LTD,personal_email:domain=gmail.com awards=4
+1807,Peter S. Guilfoyle,Peter,Guilfoyle,,gateway_required,4,pi,OPTICOMP CORP.,name_mismatch:display='Peter S. Guilfoyle' vs 'Peter'+'Guilfoyle' | gateway_required:institution='OPTICOMP CORP.'
+1336,Svetlana Oard,Svetlana,Oard,svoard@gmail.com,verified_valid,4,pi,"BHO Technology, LLC",personal_email:domain=gmail.com awards=4
+2581,E. Jennings Taylor,E.,Taylor,jenningstaylor@faradaytechnology.com,verified_valid,4,pi,"Faraday Technology, Inc.",name_mismatch:display='E. Jennings Taylor' vs 'E.'+'Taylor'
+1347,R. Glenn Wright,R.,Wright,glenn@gmai.com,verified_valid,4,pi,"GMA INDUSTRIES, INC.",name_mismatch:display='R. Glenn Wright' vs 'R.'+'Wright'
+2575,Daniel Oldham,Daniel,Oldham,mahour.parast@gmail.com,verified_valid,4,pi,"BIO-ADHESIVE ALLIANCE, INC",personal_email:domain=gmail.com awards=4
+2472,Dr. Seng C. Tan,Dr.,Tan,,gateway_required,4,pi,WRIGHT MATERIALS RESEARCH CO.,name_mismatch:display='Dr. Seng C. Tan' vs 'Dr.'+'Tan' | gateway_required:institution='WRIGHT MATERIALS RESEARCH CO.'
+2485,Dr Gajendra Savant,Dr,Savant,,gateway_required,4,pi,Physical Optics Corporation,name_mismatch:display='Dr Gajendra Savant' vs 'Dr'+'Savant' | gateway_required:institution='Physical Optics Corporation'
+1370,Dr Eric Gregory,Dr,Gregory,,gateway_required,4,pi,Intermagnetics General Corp,name_mismatch:display='Dr Eric Gregory' vs 'Dr'+'Gregory' | gateway_required:institution='Intermagnetics General Corp'
+1885,Dr. Jennifer Lalli,Dr.,Lalli,jlalli@nanosonic.com,verified_valid,4,pi,NanoSonic Inc.,name_mismatch:display='Dr. Jennifer Lalli' vs 'Dr.'+'Lalli'
+1786,Michael Crouse,Michael,Crouse,crousem238@gmail.com,verified_valid,4,pi,PHOEBUS OPTOELECTRONICS LLC,personal_email:domain=gmail.com awards=4
+2536,Dr Anthony F Sammells,Dr,Sammells,,gateway_required,4,pi,"ELTRON RESEARCH & DEVELOPMENT, INCORPORATED","name_mismatch:display='Dr Anthony F Sammells' vs 'Dr'+'Sammells' | gateway_required:institution='ELTRON RESEARCH & DEVELOPMENT, INCORPORATED'"
+1662,Hamed Soroush,Hamed,Soroush,hmdsoroush173@gmail.com,verified_valid,4,pi,Teverra LLC,personal_email:domain=gmail.com awards=4
+1643,Thomas Schultheiss,Thomas,Schultheiss,tjstechnologies@outlook.com,verified_valid,4,pi,TJS TECHNOLOGIES LLC,personal_email:domain=outlook.com awards=4
+1976,William J. Marinelli,William,Marinelli,,gateway_required,4,pi,Physical Sciences Inc.,name_mismatch:display='William J. Marinelli' vs 'William'+'Marinelli' | gateway_required:institution='Physical Sciences Inc.'
+1874,Paul Hsu,Paul,Hsu,phsu4031@yahoo.com,verified_valid,4,pi,SPECTRAL ENERGIES LLC,personal_email:domain=yahoo.com awards=4
+1715,Taylor Pryor,Taylor,Pryor,pryor.tap@gmail.com,verified_valid,4,pi,RAS Corporation,personal_email:domain=gmail.com awards=4
+2891,R. Paul Lawson,R.,Lawson,plawson@specinc.com,verified_valid,4,pi,"STRATTON PARK ENGINEERING CO., INC.",name_mismatch:display='R. Paul Lawson' vs 'R.'+'Lawson'
+1110,Dr. Sukesh Roy,Dr.,Roy,sukesh.roy@spectralenergies.com,verified_valid,4,pi,SPECTRAL ENERGIES LLC,name_mismatch:display='Dr. Sukesh Roy' vs 'Dr.'+'Roy'
+2029,Sidney G. Nelson,Sidney,Nelson,,gateway_required,4,pi,Sorbent Technologies Corp,name_mismatch:display='Sidney G. Nelson' vs 'Sidney'+'Nelson' | gateway_required:institution='Sorbent Technologies Corp'
+2034,Jonathan Greene,Jonathan,Greene,,gateway_required,4,pi,Luna Innovations Incorporated,gateway_required:institution='Luna Innovations Incorporated'
+101,Rebecca Kujawa,Rebecca,Kujawa,,gateway_required,3,pi,NextEra Energy Resources,gateway_required:institution='NextEra Energy Resources'
+102,Mike Snyder,Mike,Snyder,,gateway_required,3,pi,Tesla Energy Operations,gateway_required:institution='Tesla Energy Operations'
+901,Christopher M Lang,Christopher,Lang,lang@psicorp.com,verified_valid,3,pi,Physical Sciences Inc.,name_mismatch:display='Christopher M Lang' vs 'Christopher'+'Lang'
+981,Kevin Hurlbutt,Kevin,Hurlbutt,khurlbutt@gmail.com,verified_valid,3,pi,"Project K Energy, Inc.",personal_email:domain=gmail.com awards=3
+1072,Julie Fouquet,Julie,Fouquet,jefouquet@outlook.com,verified_valid,3,pi,3NEWABLE LLC,personal_email:domain=outlook.com awards=3
+1123,Paul Opgenorth,Paul,Opgenorth,phopgenorth@gmail.com,verified_valid,3,pi,INVIZYNE TECHNOLOGIES INC,personal_email:domain=gmail.com awards=3
+1203,Philip Stuckey,Philip,Stuckey,philip.stuckey@gmail.com,verified_valid,3,pi,"FC RENEW, LLC",personal_email:domain=gmail.com awards=3
+1236,Bryan McLaughlin,Bryan,McLaughlin,mclaugb@gmail.com,verified_valid,3,pi,MICRO-LEADS INC,personal_email:domain=gmail.com awards=3
+1274,Arul Arjunan,Arul,Arjunan,aarul.smi@gmail.com,verified_valid,3,pi,"STRUCTURED MATERIALS INDUSTRIES, INC.",personal_email:domain=gmail.com awards=3
+1287,Dr. Igor Barsukov,Dr.,Barsukov,IBarsukov@usaenergytech.com,verified_valid,3,pi,AMERICAN ENERGY TECHNOLOGIES CO,name_mismatch:display='Dr. Igor Barsukov' vs 'Dr.'+'Barsukov'
+1417,Robert De Saro,Robert,Saro,rdesaro@er-co.com,verified_valid,3,pi,Energy Research Company,name_mismatch:display='Robert De Saro' vs 'Robert'+'Saro'
+1466,Xiangrong (Sean) Zhou,Xiangrong,Zhou,xzhou@i-a-i.com,verified_valid,3,pi,"Intelligent Automation, Inc.",name_mismatch:display='Xiangrong (Sean) Zhou' vs 'Xiangrong'+'Zhou'
+860,Gerardo Jose la O,Gerardo,O,gj@tyfast.energy,verified_valid,3,pi,TYFAST ENERGY CORP.,name_mismatch:display='Gerardo Jose la O' vs 'Gerardo'+'O'
+1498,A. Matt Francis,A.,Francis,francis@ozarkic.com,verified_valid,3,pi,OZARK INTEGRATED CIRCUITS INC,name_mismatch:display='A. Matt Francis' vs 'A.'+'Francis'
+1556,Mr. Adam Goff,Mr.,Goff,goffa@lunainc.com,verified_valid,3,pi,Luna Innovations Incorporated,name_mismatch:display='Mr. Adam Goff' vs 'Mr.'+'Goff'
+1573,Mostapha Sadeghipour Roudsari,Mostapha,Roudsari,mostapha@ladybug.tools,verified_valid,3,pi,LADYBUG TOOLS LLC,name_mismatch:display='Mostapha Sadeghipour Roudsari' vs 'Mostapha'+'Roudsari'
+1589,"James Dayton, Jr.",James,Jr.,dayton@genvac.com,verified_valid,3,pi,"GENVAC HOLDINGS, LTD., DBA: TERAPHYSICS","name_mismatch:display='James Dayton, Jr.' vs 'James'+'Jr.'"
+1657,Ayyoub M. Momen,Ayyoub,Momen,ayyoubmomen@ultratechsol.com,verified_valid,3,pi,"Ultrasonic Technology Solutions, LLC",name_mismatch:display='Ayyoub M. Momen' vs 'Ayyoub'+'Momen'
+1737,Yongxin (Ben) Tang,Yongxin,Tang,bentang@kentoptronics.com,verified_valid,3,pi,"Kent Optronics, Inc.",name_mismatch:display='Yongxin (Ben) Tang' vs 'Yongxin'+'Tang'
+1782,"Thomas Rahmlow, Jr.",Thomas,Jr.,trahmlow@rugate.com,verified_valid,3,pi,"RUGATE TECHNOLOGIES, INC.","name_mismatch:display='Thomas Rahmlow, Jr.' vs 'Thomas'+'Jr.'"
+1836,Andreas von Flotow,Andreas,Flotow,andy@hoodtech.com,verified_valid,3,pi,HOOD TECHNOLOGY CORP,name_mismatch:display='Andreas von Flotow' vs 'Andreas'+'Flotow'
+1993,Bono Wasistho Bono Wasistho,Bono,Wasistho,bono.wasistho@kordtechnologies.com,verified_valid,3,pi,"Kord Technologies, Inc.",name_mismatch:display='Bono Wasistho Bono Wasistho' vs 'Bono'+'Wasistho'
+2033,Mark Notcutt,Mark,Notcutt,mnotcutt@gmail.com,verified_valid,3,pi,Boulder Precision Electro-optics,personal_email:domain=gmail.com awards=3
+2072,Ping Chih Chen,Ping,Chen,pc@zonatech.com,verified_valid,3,pi,ZONA TECHNOLOGY INC,name_mismatch:display='Ping Chih Chen' vs 'Ping'+'Chen'
+2095,Dr. Clifton C. Courtney,Dr.,Courtney,,gateway_required,3,pi,VOSS SCIENTIFIC LLC,name_mismatch:display='Dr. Clifton C. Courtney' vs 'Dr.'+'Courtney' | gateway_required:institution='VOSS SCIENTIFIC LLC'
+2116,Dr. Martin W. Rupich,Dr.,Rupich,,gateway_required,3,pi,AMERICAN SUPERCONDUCTOR CORPORATION,name_mismatch:display='Dr. Martin W. Rupich' vs 'Dr.'+'Rupich' | gateway_required:institution='AMERICAN SUPERCONDUCTOR CORPORATION'
+2119,William C. Pfefferle,William,Pfefferle,,gateway_required,3,pi,"PRECISION COMBUSTION, INC.","name_mismatch:display='William C. Pfefferle' vs 'William'+'Pfefferle' | gateway_required:institution='PRECISION COMBUSTION, INC.'"
+2128,Dr Allen Flusberg,Dr,Flusberg,,gateway_required,3,pi,"Science Research Laboratory, Inc","name_mismatch:display='Dr Allen Flusberg' vs 'Dr'+'Flusberg' | gateway_required:institution='Science Research Laboratory, Inc'"
+2143,Mitchell Minarick,Mitchell,Minarick,minarick@gmail.com,verified_valid,3,pi,"FARMAFIELD LABS, LLC",personal_email:domain=gmail.com awards=3
+2154,Qiwen Sheng,Qiwen,Sheng,shengqiwen1988@gmail.com,verified_valid,3,pi,"NUSENICS, LLC",personal_email:domain=gmail.com awards=3
+2203,Rongrong Chen,Rongrong,Chen,tremonttechceo@gmail.com,verified_valid,3,pi,Tremont Technology LLC,personal_email:domain=gmail.com awards=3
+2204,Cory Perkins,Cory,Perkins,corykperkins@gmail.com,verified_valid,3,pi,NEXTC CORP,personal_email:domain=gmail.com awards=3
+2278,Kristin Di Bona,Kristin,Bona,krdibona@wyonics.com,verified_valid,3,pi,WYONICS LLC,name_mismatch:display='Kristin Di Bona' vs 'Kristin'+'Bona'
+2436,Peter Solomon,Peter,Solomon,,gateway_required,3,pi,"ADVANCED FUEL RESEARCH, INC.","gateway_required:institution='ADVANCED FUEL RESEARCH, INC.'"
+2457,P. K. Menon,P.,Menon,menon@optisyn.com,verified_valid,3,pi,OPTIMAL SYNTHESIS INC.,name_mismatch:display='P. K. Menon' vs 'P.'+'Menon'
+2459,Edgar van Loef,Edgar,Loef,evanloef@rmdinc.com,verified_valid,3,pi,"Radiation Monitoring Devices, Inc.",name_mismatch:display='Edgar van Loef' vs 'Edgar'+'Loef'
+2492,Kevin Marr,Kevin,Marr,marrkc@gmail.com,verified_valid,3,pi,ALTECT INC,personal_email:domain=gmail.com awards=3
+2500,G. Newton Freeman,G.,Freeman,gnf@aero-optics.com,syntax_valid,3,pi,"AERO OPTICS, INC.",name_mismatch:display='G. Newton Freeman' vs 'G.'+'Freeman'
+2508,Cheng Li,Cheng,Li,nanodesal17@gmail.com,verified_valid,3,pi,NANOSEPEX INC,personal_email:domain=gmail.com awards=3
+2520,Dr Gerald Entine,Dr,Entine,,gateway_required,3,pi,"Radiation Monitoring Devices, Inc.","name_mismatch:display='Dr Gerald Entine' vs 'Dr'+'Entine' | gateway_required:institution='Radiation Monitoring Devices, Inc.'"
+2547,Darren Magda,Darren,Magda,magda.darren@gmail.com,verified_valid,3,pi,"Lumiphore, Inc.",personal_email:domain=gmail.com awards=3
+2551,Joseph Batta-Mpouma,Joseph,Batta-Mpouma,josephbmp19@gmail.com,verified_valid,3,pi,Celludot LLC,personal_email:domain=gmail.com awards=3
+2572,Steve Van Dyke,Steve,Dyke,stvandyke@magsmx.com,verified_valid,3,pi,MICROWAVE APPLICATIONS GROUP,name_mismatch:display='Steve Van Dyke' vs 'Steve'+'Dyke'
+2668,Yingjie Qin,Yingjie,Qin,yjqin1@yahoo.com,verified_valid,3,pi,Chembrane,personal_email:domain=yahoo.com awards=3
+2744,Dr R David Rauh,Dr,Rauh,,gateway_required,3,pi,"EIC Laboratories, Inc.","name_mismatch:display='Dr R David Rauh' vs 'Dr'+'Rauh' | gateway_required:institution='EIC Laboratories, Inc.'"
+2781,Daniel Van der Laan,Daniel,Laan,danko@advancedconductor.com,verified_valid,3,pi,ADVANCED CONDUCTOR TECHNOLOGIES LLC,name_mismatch:display='Daniel Van der Laan' vs 'Daniel'+'Laan'
+2880,Nicholas Davy,Nicholas,Davy,nickcdavy@gmail.com,verified_valid,3,pi,ANDLUCA TECHNOLOGIES INC.,personal_email:domain=gmail.com awards=3
+1961,Jacob Baranski,Jacob,Baranski,jacobbaranski@gmail.com,verified_valid,2,pi,INNOVATIVE SCIENTIFIC SOLUTIONS INC,personal_email:domain=gmail.com awards=2
+1087,Paul L. White,Paul,White,,gateway_required,2,pi,NOVA SCIENTIFIC INCORPORATED,name_mismatch:display='Paul L. White' vs 'Paul'+'White' | gateway_required:institution='NOVA SCIENTIFIC INCORPORATED'
+1050,David B Oakes,David,Oakes,oakes@psicorp.com,verified_valid,2,pi,Physical Sciences Inc.,name_mismatch:display='David B Oakes' vs 'David'+'Oakes'
+1983,Steve Slivken,Steve,Slivken,s_slivken@hotmail.com,verified_valid,2,pi,NOUR LLC,personal_email:domain=hotmail.com awards=2
+3073,Surendra Singh,Surendra,Singh,surendra1111@hotmail.com,verified_valid,2,pi,"BELMONT SCIENTIFIC, INC.",personal_email:domain=hotmail.com awards=2
+1995,Dr. Peter Cabauy,Dr.,Cabauy,peter.cabauy@citylabs.net,verified_valid,2,pi,"CITY LABS, INC.",name_mismatch:display='Dr. Peter Cabauy' vs 'Dr.'+'Cabauy'
+914,J. Todd Reinking,J.,Reinking,todd.reinking@welkinsciences.com,verified_valid,2,pi,"WELKIN SCIENCES, LLC",name_mismatch:display='J. Todd Reinking' vs 'J.'+'Reinking'
+2024,Christopher M. Lang Christopher M. Lang,Christopher,Lang,lang@psicorp.com,verified_valid,2,pi,Physical Sciences Inc.,name_mismatch:display='Christopher M. Lang Christopher M. Lang' vs 'Christopher'+'Lang'
+3078,HOSSAIN FAHAD,HOSSAIN,FAHAD,serinuslabs.inc@gmail.com,verified_valid,2,pi,"Serinus Labs, Inc.",personal_email:domain=gmail.com awards=2
+2899,Jonathan M Hager,Jonathan,Hager,,gateway_required,2,pi,Vatell Corporation,name_mismatch:display='Jonathan M Hager' vs 'Jonathan'+'Hager' | gateway_required:institution='Vatell Corporation'
+2906,John Costa,John,Costa,john.costa511@gmail.com,verified_valid,2,pi,SUNTHRU LLC,personal_email:domain=gmail.com awards=2
+2909,Ritobrata Sur,Ritobrata,Sur,rsur86@gmail.com,verified_valid,2,pi,INDRIO TECHNOLOGIES INC,personal_email:domain=gmail.com awards=2
+2910,Ross Davison,Ross,Davison,rhdaviso@gmail.com,verified_valid,2,pi,COMON SOLUTIONS LLC,personal_email:domain=gmail.com awards=2
+2914,Michelle Lu,Michelle,Lu,michelleseikolu@gmail.com,verified_valid,2,pi,"NOVEL FARMS, INC.",personal_email:domain=gmail.com awards=2
+764,Jack Chin,Jack,Chin,,gateway_required,2,pi,"Energy Science Laboratories, Inc.","gateway_required:institution='Energy Science Laboratories, Inc.'"
+2933,Dr. Timothy R. Knowles,Dr.,Knowles,,gateway_required,2,pi,"Energy Science Laboratories, Inc.","name_mismatch:display='Dr. Timothy R. Knowles' vs 'Dr.'+'Knowles' | gateway_required:institution='Energy Science Laboratories, Inc.'"
+689,G. Scott  Valentine,G.,Valentine,scott.valentine@impact-tek.com,verified_valid,2,pi,Impact Technologies,name_mismatch:display='G. Scott  Valentine' vs 'G.'+'Valentine'
+669,Ross W Bird,Ross,Bird,rbird@qortek.com,verified_valid,2,pi,QorTek Inc.,name_mismatch:display='Ross W Bird' vs 'Ross'+'Bird'
+2191,Mark V Parish,Mark,Parish,mparish@ceranova.com,verified_valid,2,pi,CERANOVA CORP,name_mismatch:display='Mark V Parish' vs 'Mark'+'Parish'
+2210,Virginia Irwin Klausmeier,Virginia,Klausmeier,vklausmeier@sylvatex.com,verified_valid,2,pi,"SYLVATEX, INC.",name_mismatch:display='Virginia Irwin Klausmeier' vs 'Virginia'+'Klausmeier'
+548,Tom Tumolillo Jr,Tom,Jr,tom@optonicus.com,verified_valid,2,pi,"MV INNOVATIVE TECHNOLOGIES, LLC",name_mismatch:display='Tom Tumolillo Jr' vs 'Tom'+'Jr'
+2285,Dr. Xuguang Li Dr. Xuguang Li,Dr.,Li,xuguang.li@lynntech.com,verified_valid,2,pi,Lynntech Inc.,name_mismatch:display='Dr. Xuguang Li Dr. Xuguang Li' vs 'Dr.'+'Li'
+472,William D Bachalo,William,Bachalo,wbachalo@artium.com,verified_valid,2,pi,"ARTIUM TECHNOLOGIES, INC.",name_mismatch:display='William D Bachalo' vs 'William'+'Bachalo'
+2348,Freeman Rufus Jr,Freeman,Jr,frufus@globaltechinc.com,verified_valid,2,pi,"GLOBAL TECHNOLOGY CONNECTION, INC.",name_mismatch:display='Freeman Rufus Jr' vs 'Freeman'+'Jr'
+2364,Michael E. Karpuk,Michael,Karpuk,,gateway_required,2,pi,"TDA Research, Inc.","name_mismatch:display='Michael E. Karpuk' vs 'Michael'+'Karpuk' | gateway_required:institution='TDA Research, Inc.'"
+400,Matthew R Whiteley,Matthew,Whiteley,matthew.whiteley@mza.com,verified_valid,2,pi,MZA ASSOCIATES CORPORATION,name_mismatch:display='Matthew R Whiteley' vs 'Matthew'+'Whiteley'
+2398,Gustavo Santander,Gustavo,Santander,GreenMagicHomes_Grants@outlook.com,verified_valid,2,pi,"GREEN MAGIC HOMES, INC.",personal_email:domain=outlook.com awards=2
+2964,Alfredo Vazquez Carazo,Alfredo,Carazo,avc@mmech.com,verified_valid,2,pi,"M-MECH DEFENSE, INC.",name_mismatch:display='Alfredo Vazquez Carazo' vs 'Alfredo'+'Carazo'
+3087,Graeme Housser,Graeme,Housser,ghousser@outlook.com,verified_valid,2,pi,Lux Semiconductors Inc,personal_email:domain=outlook.com awards=2
+2977,Milan Mashanovitch Milan Mashanovitch,Milan,Mashanovitch,info@freedomphotonics.com,verified_valid,2,pi,FREEDOM PHOTONICS LLC,name_mismatch:display='Milan Mashanovitch Milan Mashanovitch' vs 'Milan'+'Mashanovitch'
+166,Eric Dupont,Eric,Dupont,,gateway_required,2,pi,"PowerSecure, Inc.","gateway_required:institution='PowerSecure, Inc.'"
+142,Hudson Gilmer,Hudson,Gilmer,,gateway_required,2,pi,"LineVision, Inc.","gateway_required:institution='LineVision, Inc.'"
+2562,John P Carlson,John,Carlson,john.carlson@echoridgenet.com,verified_valid,2,pi,"Echo Ridge, LLC",name_mismatch:display='John P Carlson' vs 'John'+'Carlson'
+128,Anders Sjoelin,Anders,Sjoelin,,gateway_required,2,pi,S&C Electric Company,gateway_required:institution='S&C Electric Company'
+2905,Gordon Jarvinen,Gordon,Jarvinen,gdjarvinen@gmail.com,verified_valid,2,pi,"MOLTEN SALT SOLUTIONS, INC.",personal_email:domain=gmail.com awards=2
+2607,Caleb Alexander,Caleb,Alexander,calebta107@gmail.com,verified_valid,2,pi,"DAYLYTE, INC.",personal_email:domain=gmail.com awards=2
+2611,Henry Freund,Henry,Freund,hpf_anon@yahoo.com,verified_valid,2,pi,"CALABAZAS CREEK RESEARCH, INC.",personal_email:domain=yahoo.com awards=2
+100,Michael Polsky,Michael,Polsky,,gateway_required,2,pi,Invenergy LLC,gateway_required:institution='Invenergy LLC'
+2624,James Bechtel,James,Bechtel,,gateway_required,2,pi,Tacan Corp,gateway_required:institution='Tacan Corp'
+2635,Xiaofang Yang,Xiaofang,Yang,xiaofangyang2011@gmail.com,verified_valid,2,pi,PRINCETON NUENERGY INC,personal_email:domain=gmail.com awards=2
+98,Julian Nebreda,Julian,Nebreda,,gateway_required,2,pi,"Fluence Energy, Inc.","gateway_required:institution='Fluence Energy, Inc.'"
+2644,James McKinion,James,McKinion,helicalsolar@gmail.com,verified_valid,2,pi,"HELICAL SOLAR SOLUTIONS, LLC",personal_email:domain=gmail.com awards=2
+2646,Kyu Bum Han,Kyu,Han,khan@advmatersci.com,verified_valid,2,pi,ADVANCED MATERIALS SCIENTIA LLC,name_mismatch:display='Kyu Bum Han' vs 'Kyu'+'Han'
+97,Jeff Waters,Jeff,Waters,,gateway_required,2,pi,Powin Energy Corporation,gateway_required:institution='Powin Energy Corporation'
+2652,Christopher Abram,Christopher,Abram,christopher.abram@hotmail.com,verified_valid,2,pi,HIT NANO INC,personal_email:domain=hotmail.com awards=2
+95,Brandon Keefe,Brandon,Keefe,,gateway_required,2,pi,Plus Power LLC,gateway_required:institution='Plus Power LLC'
+2673,Wiley Kirk,Wiley,Kirk,wpkirk@icloud.com,verified_valid,2,pi,3D EPITAXIAL TECHNOLOGIES LLC,personal_email:domain=icloud.com awards=2
+2676,Sivakumar Vasireddy,Sivakumar,Vasireddy,sivakumar.vasireddy@gmail.com,verified_valid,2,pi,ADVANCED ENERGY MATERIALS LLC,personal_email:domain=gmail.com awards=2
+92,Bill Newsom,Bill,Newsom,,gateway_required,2,pi,Massachusetts Institute of Technology (MIT),gateway_required:institution='Massachusetts Institute of Technology (MIT)'
+2683,Richard J. Mell,Richard,Mell,,gateway_required,2,pi,AZ Technology Inc,name_mismatch:display='Richard J. Mell' vs 'Richard'+'Mell' | gateway_required:institution='AZ Technology Inc'
+3029,Brendan O'Connor,Brendan,O'Connor,polymerPV@gmail.com,verified_valid,2,pi,"PolyPV, LLC",personal_email:domain=gmail.com awards=2
+2727,William Arnold,William,Arnold,oceanspacesensors@gmail.com,verified_valid,2,pi,OCEANSPACE LLC,personal_email:domain=gmail.com awards=2
+3049,Reza Tayrani,Reza,Tayrani,,gateway_required,2,pi,"Compact Software, Inc.","gateway_required:institution='Compact Software, Inc.'"
+3055,G.m. Loiacono,G.m.,Loiacono,,gateway_required,2,pi,Crystal Associates Inc,gateway_required:institution='Crystal Associates Inc'
+3060,Jay Harman,Jay,Harman,paxscientific_grants@outlook.com,verified_valid,2,pi,PAX SCIENTIFIC INC,personal_email:domain=outlook.com awards=2
+2818,Cynthia Burzell,Cynthia,Burzell,Aequor_grants@outlook.com,verified_valid,2,pi,AEQUOR INC.,personal_email:domain=outlook.com awards=2
+3066,Aanindeeta Banerjee,Aanindeeta,Banerjee,banerjee.guddie@gmail.com,verified_valid,2,pi,RESOURCE CHEMICAL CORP,personal_email:domain=gmail.com awards=2
+1718,Yu Sun,Yu,Sun,sunrisetechnology001@gmail.com,verified_valid,2,pi,SUNRISE TECHNOLOGY INC,personal_email:domain=gmail.com awards=2
+1761,Dr. Jung Yoon,Dr.,Yoon,jyoon@agiltron.com,verified_valid,2,pi,"AGILTRON, INC.",name_mismatch:display='Dr. Jung Yoon' vs 'Dr.'+'Yoon'
+1541,Xiansen Li,Xiansen,Li,xxsli2014@gmail.com,verified_valid,2,pi,"THERMISOLN, LLC",personal_email:domain=gmail.com awards=2
+1527,Carlos R Aguayo Gonzalez,Carlos,Gonzalez,caguayog@pfpcyber.com,verified_valid,2,pi,"Power Fingerprinting, Inc",name_mismatch:display='Carlos R Aguayo Gonzalez' vs 'Carlos'+'Gonzalez'
+1804,Anantha Krishnan,Anantha,Krishnan,,gateway_required,2,pi,CFD Research Corporation,gateway_required:institution='CFD Research Corporation'
+1829,Ryan Mcclintock,Ryan,Mcclintock,rmcclin@gmail.com,verified_valid,2,pi,NOUR LLC,personal_email:domain=gmail.com awards=2
+3068,John Klein,John,Klein,john.klein.5@gmail.com,verified_valid,2,pi,Generate LLC,personal_email:domain=gmail.com awards=2
+1428,Dr. George Lewis,Dr.,Lewis,george@zetroz.com,verified_valid,2,pi,ZETROZ SYSTEMS LLC,name_mismatch:display='Dr. George Lewis' vs 'Dr.'+'Lewis'
+1398,Carl S Kirkconnell,Carl,Kirkconnell,carlk@wecoso.com,verified_valid,2,pi,"WECOSO, INC.",name_mismatch:display='Carl S Kirkconnell' vs 'Carl'+'Kirkconnell'
+1351,Qi (Peter) Li,Qi,Li,li@licreativetech.com,verified_valid,2,pi,LI CREATIVE TECHNOLOGIES INC,name_mismatch:display='Qi (Peter) Li' vs 'Qi'+'Li'
+1311,Lin-Feng Li Lin-Feng Li,Lin-Feng,Li,linfengli@bettergy.com,verified_valid,2,pi,BETTERGY CORP.,name_mismatch:display='Lin-Feng Li Lin-Feng Li' vs 'Lin-Feng'+'Li'
+1910,Edward W Taylor,Edward,Taylor,Intphoton@aol.com,verified_valid,2,pi,"INTERNATIONAL PHOTONICS CONSULTANTS, INC",name_mismatch:display='Edward W Taylor' vs 'Edward'+'Taylor'
+1282,"John Matthews, Ph.D.",John,Ph.D.,ATProposals@poc.com,verified_valid,2,pi,Physical Optics Corporation,"name_mismatch:display='John Matthews, Ph.D.' vs 'John'+'Ph.D.'"
+1207,Siu Dick Cheng,Siu,Cheng,dcheng@aeromatpro.com,syntax_valid,2,pi,Aerospace Materials Processing LLC,name_mismatch:display='Siu Dick Cheng' vs 'Siu'+'Cheng'
+1953,James Y.B. Kim,James,Kim,james.kim@enig.com,verified_valid,2,pi,"ENIG ASSOCIATES, INC.",name_mismatch:display='James Y.B. Kim' vs 'James'+'Kim'
+196,David Bebrin,David,Bebrin,,gateway_required,1,pi,Agitas Energy,gateway_required:institution='Agitas Energy'
+2390,Bruce R Pilvelait,Bruce,Pilvelait,brp@creare.com,verified_valid,1,pi,Creare LLC,name_mismatch:display='Bruce R Pilvelait' vs 'Bruce'+'Pilvelait'
+381,Pasquale Romano,Pasquale,Romano,,gateway_required,1,pi,"ChargePoint Holdings, Inc.","gateway_required:institution='ChargePoint Holdings, Inc.'"
+2861,Dr. H.Q. Yang,Dr.,Yang,proposals-contract@cfdrc.com,verified_valid,1,pi,CFD Research Corporation,name_mismatch:display='Dr. H.Q. Yang' vs 'Dr.'+'Yang'
+2407,Bruce Snider,Bruce,Snider,bruceesnider@gmail.com,verified_valid,1,pi,MUSTANG OPTICS LLC,personal_email:domain=gmail.com awards=1
+1150,Kathryn Doughty,Kathryn,Doughty,5thgait@gmail.com,verified_valid,1,pi,"FIFTH GAIT TECHNOLOGIES, INC.",personal_email:domain=gmail.com awards=1
+2411,Thomas C Cantey,Thomas,Cantey,cantey@opticalsciences.com,verified_valid,1,pi,OPTICAL SCIENCES CORPORATION,name_mismatch:display='Thomas C Cantey' vs 'Thomas'+'Cantey'
+350,Mike Longman,Mike,Longman,,gateway_required,1,pi,Eaton Corporation,gateway_required:institution='Eaton Corporation'
+340,Gregory Poilasne,Gregory,Poilasne,,gateway_required,1,pi,Nuvve Holding Corp.,gateway_required:institution='Nuvve Holding Corp.'
+339,Fortunat Mueller,Fortunat,Mueller,,gateway_required,1,pi,ReVision Energy,gateway_required:institution='ReVision Energy'
+325,Duncan Earl,Duncan,Earl,,gateway_required,1,pi,"Qubitekk, Inc.","gateway_required:institution='Qubitekk, Inc.'"
+326,Leslie Richards,Leslie,Richards,,gateway_required,1,pi,Southeastern Pennsylvania Transportation Authority (SEPTA),gateway_required:institution='Southeastern Pennsylvania Transportation Authority (SEPTA)'
+2963,"Paul Gierow, PE",Paul,PE,pgierow@gatr.com,verified_valid,1,pi,"Gatr Technologies, Inc.","name_mismatch:display='Paul Gierow, PE' vs 'Paul'+'PE'"
+306,John Mueller,John,Mueller,,gateway_required,1,pi,G&W Electric Company,gateway_required:institution='G&W Electric Company'
+292,Woody Rubin,Woody,Rubin,,gateway_required,1,pi,AES Distributed Energy,gateway_required:institution='AES Distributed Energy'
+291,Stanley Kocon,Stanley,Kocon,,gateway_required,1,pi,Voith Hydro Inc.,gateway_required:institution='Voith Hydro Inc.'
+290,George Sakellaris,George,Sakellaris,,gateway_required,1,pi,"Ameresco, Inc.","gateway_required:institution='Ameresco, Inc.'"
+289,Bill Eddie,Bill,Eddie,,gateway_required,1,pi,OneEnergy Renewables,gateway_required:institution='OneEnergy Renewables'
+288,Anthony Allard,Anthony,Allard,,gateway_required,1,pi,Hitachi Energy USA,gateway_required:institution='Hitachi Energy USA'
+280,Juan Macias,Juan,Macias,,gateway_required,1,pi,AlphaStruxure (Schneider / Carlyle JV),gateway_required:institution='AlphaStruxure (Schneider / Carlyle JV)'
+2453,Daniel Pruzan Daniel Pruzan,Daniel,Pruzan,daniel.a.pruzan@ama-inc.com,verified_valid,1,pi,"ANALYTICAL MECHANICS ASSOCIATES, INC.",name_mismatch:display='Daniel Pruzan Daniel Pruzan' vs 'Daniel'+'Pruzan'
+2456,David V Rose,David,Rose,david.rose@vosssci.com,verified_valid,1,pi,VOSS SCIENTIFIC LLC,name_mismatch:display='David V Rose' vs 'David'+'Rose'
+2458,Timothy B Hurley,Timothy,Hurley,thurley@diapedia.com,verified_valid,1,pi,"Diapedia, LLC",name_mismatch:display='Timothy B Hurley' vs 'Timothy'+'Hurley'
+251,Jim Walsh,Jim,Walsh,,gateway_required,1,pi,GE Digital Energy (Grid Solutions),gateway_required:institution='GE Digital Energy (Grid Solutions)'
+239,Massimo Danieli,Massimo,Danieli,,gateway_required,1,pi,ABB Inc.,gateway_required:institution='ABB Inc.'
+2468,Dr. Kevin Farinholt,Dr.,Farinholt,farinholtk@lunainc.com,verified_valid,1,pi,Luna Innovations Incorporated,name_mismatch:display='Dr. Kevin Farinholt' vs 'Dr.'+'Farinholt'
+250,Aamir Paul,Aamir,Paul,,gateway_required,1,pi,Schneider Electric USA,gateway_required:institution='Schneider Electric USA'
+1168,Dr. Matthew Whiteley,Dr.,Whiteley,matthew.whiteley@mza.com,verified_valid,1,pi,MZA ASSOCIATES CORPORATION,name_mismatch:display='Dr. Matthew Whiteley' vs 'Dr.'+'Whiteley'
+1434,Dr. Steven J. Visco / Dr. Eugene Nimon Dr. Steven J. Visco / Dr. Eugene Nimon,Dr.,Nimon,svisco@polyplus.com,verified_valid,1,pi,Polyplus Battery Company,name_mismatch:display='Dr. Steven J. Visco / Dr. Eugene Nimon Dr. Steven J. Visco / Dr. Eugene Nimon' vs 'Dr.'+'Nimon'
+233,Allan Connolly,Allan,Connolly,,gateway_required,1,pi,Hubbell Power Systems,gateway_required:institution='Hubbell Power Systems'
+223,James Taiclet,James,Taiclet,,gateway_required,1,pi,Lockheed Martin Energy,gateway_required:institution='Lockheed Martin Energy'
+212,Kumi Premathilake,Kumi,Premathilake,,gateway_required,1,pi,Aclara Technologies LLC (Hubbell),gateway_required:institution='Aclara Technologies LLC (Hubbell)'
+209,Dave Sterlace,Dave,Sterlace,,gateway_required,1,pi,ABB Inc.,gateway_required:institution='ABB Inc.'
+202,Dr. Jim Crafton,Dr.,Crafton,jwcrafton@innssi.com,verified_valid,1,pi,INNOVATIVE SCIENTIFIC SOLUTIONS INC,name_mismatch:display='Dr. Jim Crafton' vs 'Dr.'+'Crafton'
+2484,Eric K Jones,Eric,Jones,eric.jones@STResearch.com,verified_valid,1,pi,Systems & Technology Research LLC,name_mismatch:display='Eric K Jones' vs 'Eric'+'Jones'
+194,Blake Richetta,Blake,Richetta,,gateway_required,1,pi,"Sonnen, Inc.","gateway_required:institution='Sonnen, Inc.'"
+184,Dave Whitehead,Dave,Whitehead,,gateway_required,1,pi,Schweitzer Engineering Laboratories (SEL),gateway_required:institution='Schweitzer Engineering Laboratories (SEL)'
+183,Darren Hammell,Darren,Hammell,,gateway_required,1,pi,Princeton Power Systems,gateway_required:institution='Princeton Power Systems'
+252,Paula Gant,Paula,Gant,,gateway_required,1,pi,GTI Energy,gateway_required:institution='GTI Energy'
+173,Peter Wells,Peter,Wells,,gateway_required,1,pi,Smart Wires Inc.,gateway_required:institution='Smart Wires Inc.'
+221,Klaus Preyler,Klaus,Preyler,,gateway_required,1,pi,Andritz Hydro Corp.,gateway_required:institution='Andritz Hydro Corp.'
+165,Dr. Arshad Mansoor,Dr.,Mansoor,,gateway_required,1,pi,Electric Power Research Institute (EPRI),name_mismatch:display='Dr. Arshad Mansoor' vs 'Dr.'+'Mansoor' | gateway_required:institution='Electric Power Research Institute (EPRI)'
+2512,Benjamin D Goldman,Benjamin,Goldman,benjamin.d.goldman@gaerospace.com,verified_valid,1,pi,GLOBAL AEROSPACE CORPORATION,name_mismatch:display='Benjamin D Goldman' vs 'Benjamin'+'Goldman'
+158,Reagan Farr,Reagan,Farr,,gateway_required,1,pi,Silicon Ranch Corporation,gateway_required:institution='Silicon Ranch Corporation'
+2519,Charlie Kuznia Charlie Kuznia,Charlie,Kuznia,ckuznia@ultracomm-inc.com,verified_valid,1,pi,"ULTRA COMMUNICATIONS, INC.",name_mismatch:display='Charlie Kuznia Charlie Kuznia' vs 'Charlie'+'Kuznia'
+162,Nick Lincon,Nick,Lincon,,gateway_required,1,pi,"Savion, LLC","gateway_required:institution='Savion, LLC'"
+161,Dr. Rodney Andrews,Dr.,Andrews,,gateway_required,1,pi,University of Kentucky Center for Applied Energy Research (CAER),name_mismatch:display='Dr. Rodney Andrews' vs 'Dr.'+'Andrews' | gateway_required:institution='University of Kentucky Center for Applied Energy Research (CAER)'
+146,Michael Martin,Michael,Martin,,gateway_required,1,pi,Juwi Inc.,gateway_required:institution='Juwi Inc.'
+145,Dr. Shannon Bragg-Sitton,Dr.,Bragg-Sitton,,gateway_required,1,pi,Idaho National Laboratory (INL),name_mismatch:display='Dr. Shannon Bragg-Sitton' vs 'Dr.'+'Bragg-Sitton' | gateway_required:institution='Idaho National Laboratory (INL)'
+141,Joe Mastrangelo,Joe,Mastrangelo,,gateway_required,1,pi,Eos Energy Enterprises,gateway_required:institution='Eos Energy Enterprises'
+140,David Hardy,David,Hardy,,gateway_required,1,pi,Ørsted North America,gateway_required:institution='Ørsted North America'
+137,Robert Piconi,Robert,Piconi,,gateway_required,1,pi,"Energy Vault, Inc.","gateway_required:institution='Energy Vault, Inc.'"
+136,Victor Der,Victor,Der,,gateway_required,1,pi,Sargent & Lundy LLC,gateway_required:institution='Sargent & Lundy LLC'
+134,Thomas McAndrew,Thomas,McAndrew,,gateway_required,1,pi,"Enchanted Rock, LLC","gateway_required:institution='Enchanted Rock, LLC'"
+2553,Julie Blumreiter,Julie,Blumreiter,julieblumie@gmail.com,verified_valid,1,pi,"ClearFlame Engines, Inc.",personal_email:domain=gmail.com awards=1
+133,Stephen Streiffer,Stephen,Streiffer,,gateway_required,1,pi,Oak Ridge National Laboratory (ORNL),gateway_required:institution='Oak Ridge National Laboratory (ORNL)'
+132,Jeff Bishop,Jeff,Bishop,,gateway_required,1,pi,Key Capture Energy,gateway_required:institution='Key Capture Energy'
+130,Charles Gorecki,Charles,Gorecki,,gateway_required,1,pi,University of North Dakota Energy & Environmental Research Center (EERC),gateway_required:institution='University of North Dakota Energy & Environmental Research Center (EERC)'
+1785,Daliborka Stanojevic Stavrou,Daliborka,Stavrou,DStanojevic@ThinkSense.com,verified_valid,1,pi,THINKSENSE INC.,name_mismatch:display='Daliborka Stanojevic Stavrou' vs 'Daliborka'+'Stavrou'
+126,Drew Baglino,Drew,Baglino,,gateway_required,1,pi,Tesla Energy Operations,gateway_required:institution='Tesla Energy Operations'
+123,Kelcy Pegler,Kelcy,Pegler,,gateway_required,1,pi,FlexGen Power Systems,gateway_required:institution='FlexGen Power Systems'
+121,John Carrington,John,Carrington,,gateway_required,1,pi,"Stem, Inc.","gateway_required:institution='Stem, Inc.'"
+119,Rob Hanson,Rob,Hanson,,gateway_required,1,pi,"Monolith Materials, Inc.","gateway_required:institution='Monolith Materials, Inc.'"
+116,Robin Weisman,Robin,Weisman,,gateway_required,1,pi,Photosol US,gateway_required:institution='Photosol US'
+111,Henry Yun,Henry,Yun,,gateway_required,1,pi,174 Power Global,gateway_required:institution='174 Power Global'
+1962,Xiaonao Liu,Xiaonao,Liu,nanobiofab@gmail.com,verified_valid,1,pi,"TAO TREASURES, LLC",personal_email:domain=gmail.com awards=1
+110,Craig Albert,Craig,Albert,,gateway_required,1,pi,Bechtel Power Corporation,gateway_required:institution='Bechtel Power Corporation'
+108,Christian Bruch,Christian,Bruch,,gateway_required,1,pi,Siemens Energy Inc.,gateway_required:institution='Siemens Energy Inc.'
+106,Tim Latimer,Tim,Latimer,,gateway_required,1,pi,Fervo Energy R&D Labs,gateway_required:institution='Fervo Energy R&D Labs'
+105,Andy Marsh,Andy,Marsh,,gateway_required,1,pi,Plug Power Inc.,gateway_required:institution='Plug Power Inc.'
+104,Håkan Agnevall,Håkan,Agnevall,,gateway_required,1,pi,Wärtsilä North America,gateway_required:institution='Wärtsilä North America'
+1019,Dr. Hulya Demiryont,Dr.,Demiryont,hdemiryont@eclipsethinfilms.com,verified_valid,1,pi,"ECLIPSE ENERGY SYSTEMS, INC.",name_mismatch:display='Dr. Hulya Demiryont' vs 'Dr.'+'Demiryont'
+103,Austin Knight,Austin,Knight,,gateway_required,1,pi,Chevron New Energies / ACES Delta,gateway_required:institution='Chevron New Energies / ACES Delta'
+928,David Graham David Graham,David,Graham,graham@accipitersystems.com,verified_valid,1,pi,ACCIPITER SYSTEMS INC,name_mismatch:display='David Graham David Graham' vs 'David'+'Graham'
+1678,Jonathan Slocum,Jonathan,Slocum,ltag.systems@gmail.com,verified_valid,1,pi,"LTAG Systems, LLC",personal_email:domain=gmail.com awards=1
+1476,Kenneth C Shannon III,Kenneth,III,kshannon@eclipsethinfilms.com,verified_valid,1,pi,"ECLIPSE ENERGY SYSTEMS, INC.",name_mismatch:display='Kenneth C Shannon III' vs 'Kenneth'+'III'
+1675,Y. Jin Lee,Y.,Lee,yjlee@fenixr.com,verified_valid,1,pi,Fenix Research Corporation,name_mismatch:display='Y. Jin Lee' vs 'Y.'+'Lee'
+2887,Matthew Cusack,Matthew,Cusack,cusackmatthewj@gmail.com,verified_valid,1,pi,"Mobius Labs, Inc.",personal_email:domain=gmail.com awards=1
+2064,R Glenn Wright,R,Wright,glenn@gmatek.com,verified_valid,1,pi,GMATEK,name_mismatch:display='R Glenn Wright' vs 'R'+'Wright'
+2895,Larisza Krista,Larisza,Krista,larisza.krista@gmail.com,verified_valid,1,pi,University of Colorado at Boulder,personal_email:domain=gmail.com awards=1
+96,Jay Wileman,Jay,Wileman,,gateway_required,1,pi,GE Hitachi Nuclear Energy,gateway_required:institution='GE Hitachi Nuclear Energy'
+94,Chris Levesque,Chris,Levesque,,gateway_required,1,pi,"TerraPower, LLC","gateway_required:institution='TerraPower, LLC'"
+1429,Michael B Porter,Michael,Porter,porter@hlsresearch.com,verified_valid,1,pi,"HEAT, LIGHT, AND SOUND RESEARCH, INC.",name_mismatch:display='Michael B Porter' vs 'Michael'+'Porter'
+2213,Eric Materniak,Eric,Materniak,ermaterniak@gmail.com,verified_valid,1,pi,COMPACT POWER INC,personal_email:domain=gmail.com awards=1
+1373,Guillaume Bres Guillaume Bres,Guillaume,Bres,gbres@cascadetechnologies.com,verified_valid,1,pi,CASCADE TECHNOLOGIES INC,name_mismatch:display='Guillaume Bres Guillaume Bres' vs 'Guillaume'+'Bres'
+1731,Michael Dingus/Mr. Chip Beebe,Michael,Beebe,mdingus@tri-austin.com,verified_valid,1,pi,"TEXAS RESEARCH INSTITUTE , AUSTIN, INC.",name_mismatch:display='Michael Dingus/Mr. Chip Beebe' vs 'Michael'+'Beebe'
+2687,Marthinus van Scho,Marthinus,Scho,tienie@mide.com,syntax_valid,1,pi,MIDE TECHNOLOGY CORP,name_mismatch:display='Marthinus van Scho' vs 'Marthinus'+'Scho'
+761,Alexi Charalambides,Alexi,Charalambides,alexigc1@gmail.com,verified_valid,1,pi,"Stancil Technologies, LLC",personal_email:domain=gmail.com awards=1
+2152,Alexandra Wilson de Andrade,Alexandra,Andrade,acwilson@miami.edu,verified_valid,1,pi,University of Miami,name_mismatch:display='Alexandra Wilson de Andrade' vs 'Alexandra'+'Andrade'
+743,Dr. Giri Venkataramanan,Dr.,Venkataramanan,,gateway_required,1,pi,University of Wisconsin-Madison,name_mismatch:display='Dr. Giri Venkataramanan' vs 'Dr.'+'Venkataramanan' | gateway_required:institution='University of Wisconsin-Madison'
+2159,Nicholas J Gaul,Nicholas,Gaul,nicholas-gaul@ramdosolutions.com,verified_valid,1,pi,"RAMDO Solutions, LLC",name_mismatch:display='Nicholas J Gaul' vs 'Nicholas'+'Gaul'
+720,Zeyneb Magavi,Zeyneb,Magavi,,gateway_required,1,pi,HEET (Home Energy Efficiency Team),gateway_required:institution='HEET (Home Energy Efficiency Team)'
+716,John J. Dignam,John,Dignam,dignam@mentissciences.com,verified_valid,1,pi,MENTIS SCIENCES INC,name_mismatch:display='John J. Dignam' vs 'John'+'Dignam'
+660,Adam Knudsen,Adam,Knudsen,,gateway_required,1,pi,Dynapower Company LLC,gateway_required:institution='Dynapower Company LLC'
+2181,Kimberly Marion Suiseeya,Kimberly,Suiseeya,k.suiseeya@duke.edu,verified_valid,1,pi,Duke University,name_mismatch:display='Kimberly Marion Suiseeya' vs 'Kimberly'+'Suiseeya'
+2182,L. John Otten Iii,L.,Iii,,gateway_required,1,pi,KESTREL CORP,name_mismatch:display='L. John Otten Iii' vs 'L.'+'Iii' | gateway_required:institution='KESTREL CORP'
+1918,John E Garnier,John,Garnier,jgarnier@acfibers.com,verified_valid,1,pi,"ADVANCED CERAMIC FIBERS, L.L.C.",name_mismatch:display='John E Garnier' vs 'John'+'Garnier'
+651,Dr. Frank A. Mcloughlin,Dr.,Mcloughlin,,gateway_required,1,pi,"AEROASTRO, INC.","name_mismatch:display='Dr. Frank A. Mcloughlin' vs 'Dr.'+'Mcloughlin' | gateway_required:institution='AEROASTRO, INC.'"
+575,Dr. Edward R. Niple,Dr.,Niple,,gateway_required,1,pi,Aerodyne Research Inc.,name_mismatch:display='Dr. Edward R. Niple' vs 'Dr.'+'Niple' | gateway_required:institution='Aerodyne Research Inc.'
+2338,christopher magee,christopher,magee,cmageetechnext@gmail.com,verified_valid,1,pi,TECHNEXT INC.,personal_email:domain=gmail.com awards=1
+564,Suzanne Russo,Suzanne,Russo,,gateway_required,1,pi,Pecan Street Inc.,gateway_required:institution='Pecan Street Inc.'
+2941,Maya Gates,Maya,Gates,mgates.hbar@gmail.com,verified_valid,1,pi,"H-BAR INSTRUMENTS, LLC",personal_email:domain=gmail.com awards=1
+629,Astrid Atkinson,Astrid,Atkinson,,gateway_required,1,pi,Camus Energy,gateway_required:institution='Camus Energy'
+2229,Jennifer H Lalli,Jennifer,Lalli,jhlalli@nanosonic.com,verified_valid,1,pi,NanoSonic Inc.,name_mismatch:display='Jennifer H Lalli' vs 'Jennifer'+'Lalli'
+2230,Aaron T Dossey,Aaron,Dossey,Aaron.T.Dossey@allthingsbugs.com,verified_valid,1,pi,ALL THINGS BUGS LLC,name_mismatch:display='Aaron T Dossey' vs 'Aaron'+'Dossey'
+2232,Alan Cain,Alan,Cain,abcain1@gmail.com,verified_valid,1,pi,INNOVATIVE TECH APPLICATIONS LLC,personal_email:domain=gmail.com awards=1
+1747,Michael G. Izenson Michael G. Izenson,Michael,Izenson,mgi@creare.com,verified_valid,1,pi,Creare LLC,name_mismatch:display='Michael G. Izenson Michael G. Izenson' vs 'Michael'+'Izenson'
+2245,Danko Van Der Laan,Danko,Laan,danko@advancedconductor.com,verified_valid,1,pi,ADVANCED CONDUCTOR TECHNOLOGIES LLC,name_mismatch:display='Danko Van Der Laan' vs 'Danko'+'Laan'
+2254,Ralph Tapphorn Ralph Tapphorn,Ralph,Tapphorn,rtapphorn@inovati.com,verified_valid,1,pi,INNOVATIVE TECHNOLOGY INC,name_mismatch:display='Ralph Tapphorn Ralph Tapphorn' vs 'Ralph'+'Tapphorn'
+2263,"Michael McGaw, Ph.D.",Michael,Ph.D.,mike@mcgawtech.com,verified_valid,1,pi,MCGAW TECHNOLOGY INC,"name_mismatch:display='Michael McGaw, Ph.D.' vs 'Michael'+'Ph.D.'"
+2264,Dr. Timothy Onasch,Dr.,Onasch,onasch@aerodyne.com,verified_valid,1,pi,Aerodyne Research Inc.,name_mismatch:display='Dr. Timothy Onasch' vs 'Dr.'+'Onasch'
+2268,Kristopher St. Sauveur,Kristopher,Sauveur,kstsauveur@seacorp.com,verified_valid,1,pi,"SEACORP, LLC",name_mismatch:display='Kristopher St. Sauveur' vs 'Kristopher'+'Sauveur'
+2269,Dr. Andrew Portune,Dr.,Portune,aportune@nokomisinc.com,verified_valid,1,pi,NOKOMIS INC,name_mismatch:display='Dr. Andrew Portune' vs 'Dr.'+'Portune'
+2270,Jonathan M Zook,Jonathan,Zook,jzook@qortek.com,verified_valid,1,pi,QorTek Inc.,name_mismatch:display='Jonathan M Zook' vs 'Jonathan'+'Zook'
+2274,Christian W Smith,Christian,Smith,cwsmith@psicorp.com,verified_valid,1,pi,Physical Sciences Inc.,name_mismatch:display='Christian W Smith' vs 'Christian'+'Smith'
+2280,Mr. Rock Rushing,Mr.,Rushing,rrushing@tri-austin.com,verified_valid,1,pi,"TEXAS RESEARCH INSTITUTE , AUSTIN, INC.",name_mismatch:display='Mr. Rock Rushing' vs 'Mr.'+'Rushing'
+2735,RAY O.K. OZDEMIR,RAY,OZDEMIR,sbir@socom.mil,verified_valid,1,pi,FRAMERGY INC,name_mismatch:display='RAY O.K. OZDEMIR' vs 'RAY'+'OZDEMIR'
+483,Forest Frizzell,Forest,Frizzell,,gateway_required,1,pi,"Shifted Energy, Inc.","gateway_required:institution='Shifted Energy, Inc.'"
+2292,Dr. Michael Graul,Dr.,Graul,mgraul@kbsi.com,verified_valid,1,pi,KNOWLEDGE BASED SYSTEMS INC,name_mismatch:display='Dr. Michael Graul' vs 'Dr.'+'Graul'
+482,Dr. Kiruba Haran,Dr.,Haran,,gateway_required,1,pi,University of Illinois Urbana-Champaign,name_mismatch:display='Dr. Kiruba Haran' vs 'Dr.'+'Haran' | gateway_required:institution='University of Illinois Urbana-Champaign'
+2300,Carl Schalansky Carl Schalansky,Carl,Schalansky,carl@vpei.com,verified_valid,1,pi,"Vacuum Process Engineering, Inc.",name_mismatch:display='Carl Schalansky Carl Schalansky' vs 'Carl'+'Schalansky'
+2316,Bruce D Macleod,Bruce,Macleod,bdmacleod@telaztec.com,verified_valid,1,pi,TELAZTEC LLC,name_mismatch:display='Bruce D Macleod' vs 'Bruce'+'Macleod'
+2317,Kirill N Shokhirev,Kirill,Shokhirev,shokhirev@psicorp.com,verified_valid,1,pi,Physical Sciences Inc.,name_mismatch:display='Kirill N Shokhirev' vs 'Kirill'+'Shokhirev'
+481,Dr. James Fenton,Dr.,Fenton,,gateway_required,1,pi,University of Central Florida (UCF FSEC),name_mismatch:display='Dr. James Fenton' vs 'Dr.'+'Fenton' | gateway_required:institution='University of Central Florida (UCF FSEC)'
+477,Danny Filipovich,Danny,Filipovich,,gateway_required,1,pi,Night Vision Corp,gateway_required:institution='Night Vision Corp'
+2325,H S Udaykumar,H,Udaykumar,hs-kumar@uiowa.edu,verified_valid,1,pi,"STREAMLINE NUMERICS, INC.",name_mismatch:display='H S Udaykumar' vs 'H'+'Udaykumar'
+2745,Fernando Giannella Fernando Giannella,Fernando,Giannella,fernando.giannella@tsc.com,verified_valid,1,pi,TECHNOLOGY SERVICE CORP,name_mismatch:display='Fernando Giannella Fernando Giannella' vs 'Fernando'+'Giannella'
+501,Tom Butler,Tom,Butler,,gateway_required,1,pi,Butler Farms / Tideland EMC,gateway_required:institution='Butler Farms / Tideland EMC'
+435,Ron MacDonald,Ron,MacDonald,,gateway_required,1,pi,Zinc8 Energy Solutions,gateway_required:institution='Zinc8 Energy Solutions'
+434,Dr. Willett Kempton,Dr.,Kempton,,gateway_required,1,pi,University of Delaware (Center for Composite Materials & V2G Lab),name_mismatch:display='Dr. Willett Kempton' vs 'Dr.'+'Kempton' | gateway_required:institution='University of Delaware (Center for Composite Materials & V2G Lab)'
+2351,Dr. Kenneth Falcone,Dr.,Falcone,falconeka@bedfordsignals.com,verified_valid,1,pi,BEDFORD SIGNALS CORPORATION,name_mismatch:display='Dr. Kenneth Falcone' vs 'Dr.'+'Falcone'
+418,Surya Panditi,Surya,Panditi,,gateway_required,1,pi,Enel X North America,gateway_required:institution='Enel X North America'
+2353,John McKelvey/Project Manager,John,Manager,jmck@caseinc.com,verified_valid,1,pi,"CASE ENGINEERING, INC.",name_mismatch:display='John McKelvey/Project Manager' vs 'John'+'Manager'
+433,Daejin Choi,Daejin,Choi,,gateway_required,1,pi,Doosan GridTech,gateway_required:institution='Doosan GridTech'
+2355,Mr. Chris Hemmelgarn,Mr.,Hemmelgarn,hemmelgarncd@crgrp.com,verified_valid,1,pi,Cornerstone Research Group Inc.,name_mismatch:display='Mr. Chris Hemmelgarn' vs 'Mr.'+'Hemmelgarn'
+2362,Viatcheslav Tatarskii,Viatcheslav,Tatarskii,vvtatarskii@gmail.com,verified_valid,1,pi,Radio-Hydro-Physics LLC,personal_email:domain=gmail.com awards=1
+2363,Dr. Dani Goldberg,Dr.,Goldberg,Dani@RiptideAS.com,verified_valid,1,pi,"Riptide Autonomous Solutions, LLC",name_mismatch:display='Dr. Dani Goldberg' vs 'Dr.'+'Goldberg'
+2366,David N Woolf,David,Woolf,dwoolf@psicorp.com,verified_valid,1,pi,Physical Sciences Inc.,name_mismatch:display='David N Woolf' vs 'David'+'Woolf'
+2367,Richard P. Torti,Richard,Torti,,gateway_required,1,pi,"Rct Systems, Inc.","name_mismatch:display='Richard P. Torti' vs 'Richard'+'Torti' | gateway_required:institution='Rct Systems, Inc.'"
+2379,Ron Ho Ni,Ron,Ni,nirr@adscfd.com,verified_valid,1,pi,"AERODYNAMIC SOLUTIONS, INC.",name_mismatch:display='Ron Ho Ni' vs 'Ron'+'Ni'
+405,Dr. Roderick Jackson,Dr.,Jackson,,gateway_required,1,pi,Oak Ridge National Laboratory (ORNL),name_mismatch:display='Dr. Roderick Jackson' vs 'Dr.'+'Jackson' | gateway_required:institution='Oak Ridge National Laboratory (ORNL)'
+2373,Dr. Michael Hertz,Dr.,Hertz,mhertz@progeny.net,verified_valid,1,pi,"PROGENY SYSTEMS, LLC",name_mismatch:display='Dr. Michael Hertz' vs 'Dr.'+'Hertz'
+394,Jason Few,Jason,Few,,gateway_required,1,pi,"FuelCell Energy, Inc.","gateway_required:institution='FuelCell Energy, Inc.'"
+393,Dr. Christopher Niezrecki,Dr.,Niezrecki,,gateway_required,1,pi,University of Massachusetts Lowell,name_mismatch:display='Dr. Christopher Niezrecki' vs 'Dr.'+'Niezrecki' | gateway_required:institution='University of Massachusetts Lowell'
+392,Cisco DeVries,Cisco,DeVries,,gateway_required,1,pi,"OhmConnect, Inc.","gateway_required:institution='OhmConnect, Inc.'"
+2384,Dr. William T. Ellison Dr. William T. Ellison,Dr.,Ellison,bill.ellison@marineacoustics.com,verified_valid,1,pi,MARINE ACOUSTICS INC,name_mismatch:display='Dr. William T. Ellison Dr. William T. Ellison' vs 'Dr.'+'Ellison'

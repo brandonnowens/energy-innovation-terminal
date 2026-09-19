@@ -102,7 +102,7 @@ class Settings(BaseSettings):
   year = {2026},
   publisher = {Clean Energy Research, LLC},
   url = {https://terminal.aixenergy.io},
-  note = {Multi-agency cross-jurisdictional intelligence covering 56,413 awards, $104.16B capital, and 140+ federal & state utilities}
+  note = {Multi-agency cross-jurisdictional intelligence covering 29,305 awards, $89B+ capital, and 185 federal & state utilities}
 }"""
 
     # System Admin & Gmail Outreach Integration

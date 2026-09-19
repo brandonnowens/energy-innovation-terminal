@@ -200,8 +200,8 @@ def get_tier_scaffolding_manifest() -> Dict[str, Any]:
                 "is_current_default": True,
                 "badge": "Research Pilot",
                 "features": [
-                    "Multi-Agency Solicitations Index (5,757+ Active & Historical Grants)",
-                    "Historical Awards & Recipient Ledger (56,413 Awards · $104.16B Tracked)",
+                    "Multi-Agency Solicitations Index (3,870+ Active & Historical Grants)",
+                    "Historical Awards & Recipient Ledger (29,305 Awards · $89B+ Tracked)",
                     "Basic Technology & Fuels Reference Profiles",
                     "Public Domain Citation & Standard Data Views",
                     "Community Support & Online Documentation"
@@ -210,14 +210,14 @@ def get_tier_scaffolding_manifest() -> Dict[str, Any]:
             {
                 "id": MembershipTier.PRO.value,
                 "name": "Energy Innovation Terminal Seat",
-                "tagline": "Full institutional license: AI FOA Shredder, 56,400+ Teaming Network, Decision-Maker Say-Yes Matrix & Vector PDFs",
+                "tagline": "Full institutional license: AI FOA Shredder, 29,305 Award Teaming Network, Decision-Maker Matrix & Vector PDFs",
                 "price": "$1,500 / seat / month (Flat Rate)",
                 "is_current_default": False,
                 "badge": "Institutional ($1,500/mo)",
                 "features": [
                     "Instant AI FOA Shredder & 4-Part Proposal Blueprint Engine",
-                    "56,413 Awardee & Multi-Agency Consortia Teaming Network",
-                    "Decision-Maker Say-Yes Matrix & Program Manager Intelligence",
+                    "29,305 Awardee & Multi-Agency Consortia Teaming Network",
+                    "Decision-Maker Matrix & Program Manager Intelligence",
                     "5-Stage Non-Dilutive Capital Stack & Precedent Continuum Solver",
                     "Predictive Solicitation Release Forecasting Radar",
                     "DOE National Lab Testbed & User Facility Directory",

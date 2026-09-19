@@ -14,6 +14,8 @@ from app.models.project import HistoricalOpportunity, HistoricalProject
 from app.models.award import Award
 from app.models.organization import Organization
 from app.models.attribution import RecipientInvestment, RecipientPatent
+from app.models.contact import Contact
+from app.models.recipient import Recipient
 from app.models.source import (
     ChangeEvent,
     DataQualityIssue,
@@ -401,7 +403,11 @@ def get_audit(db: Session = Depends(get_db)):
 
 @router.get("/system/stats")
 def get_stats(db: Session = Depends(get_db)):
-    """Get system statistics."""
+    """Get system statistics — live counts from Supabase."""
+    awards_count = db.query(Award).count()
+    award_amount_total = float(
+        db.execute(text("SELECT COALESCE(SUM(award_amount), 0) FROM awards")).scalar() or 0
+    )
     return {
         "opportunities": {
             "total": db.query(Opportunity).count(),
@@ -424,7 +430,10 @@ def get_stats(db: Session = Depends(get_db)):
         },
         "historical_opportunities": db.query(HistoricalOpportunity).count(),
         "historical_projects": db.query(HistoricalProject).count(),
-        "awards": db.query(Award).count(),
+        "awards": awards_count,
+        "award_amount_total_usd": award_amount_total,
+        "contacts": db.query(Contact).count(),
+        "recipients": db.query(Recipient).count(),
         "programs": db.query(Program).filter_by(active=True).count(),
         "sources": db.query(Source).count(),
         "change_events": db.query(ChangeEvent).count(),
