@@ -157,8 +157,6 @@ from app.api.attributions import router as attributions_router
 from app.api.linkages import router as linkages_router
 from app.api.tech_reference import router as tech_reference_router
 from app.api.policies import router as policies_router
-from app.api.chat import router as chat_router
-from app.api.tavus import router as tavus_router
 from app.api.admin_email import router as admin_email_router
 from app.api.news import router as news_router
 from app.api.capital_intelligence import router as capital_intelligence_router
@@ -200,8 +198,6 @@ app.include_router(attributions_router, prefix="/api", tags=["Venture & Patents"
 app.include_router(linkages_router, prefix="/api", tags=["Innovation Linkages"])
 app.include_router(tech_reference_router, prefix="/api", tags=["Technology Reference"])
 app.include_router(policies_router, prefix="/api", tags=["Policy, Codes & Standards"])
-app.include_router(chat_router, prefix="/api", tags=["VP of Innovation Chat"])
-app.include_router(tavus_router, prefix="/api", tags=["Tavus Video Advisor"])
 app.include_router(admin_email_router, prefix="/api", tags=["Admin Email Hub"])
 app.include_router(news_router, prefix="/api", tags=["Energy Innovation News Ticker"])
 app.include_router(capital_intelligence_router, prefix="/api", tags=["Capital Intelligence & Infrastructure"])
