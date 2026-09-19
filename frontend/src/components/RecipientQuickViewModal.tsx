@@ -51,7 +51,6 @@ export function RecipientQuickViewModal({
   recipientName,
 }: RecipientQuickViewModalProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'grants' | 'patents' | 'vc' | 'timeline'>('overview');
-  const [isExportingPdf, setIsExportingPdf] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
 
   // Close on Escape key
@@ -154,32 +153,7 @@ export function RecipientQuickViewModal({
   const secFilings = continuum?.sec_form_d_filings || [];
   const contacts = continuum?.contacts || [];
 
-  const handleDownloadPdf = async () => {
-    if (isExportingPdf) return;
-    try {
-      setIsExportingPdf(true);
-      const targetUrl = resolvedId
-        ? `/api/recipients/${resolvedId}/export-pdf`
-        : `/api/recipients/by-name/${encodeURIComponent(resolvedName)}/export-pdf`;
-      const res = await apiFetch(targetUrl);
-      if (!res.ok) throw new Error('Failed to generate PDF briefing');
-      const blob = await res.blob();
-      const safeName = resolvedName.replace(/[^a-zA-Z0-9]/g, '_');
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${safeName}_Executive_Brief_EnergyInnovation.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error('Download PDF error:', err);
-      alert('Failed to generate executive brief PDF. Please try again.');
-    } finally {
-      setIsExportingPdf(false);
-    }
-  };
+    // PDF export removed for stability
 
   const handleCopyLink = () => {
     const url = resolvedId
@@ -247,21 +221,6 @@ export function RecipientQuickViewModal({
 
             {/* Header Actions */}
             <div className="flex items-center gap-2 shrink-0">
-              <button
-                onClick={handleDownloadPdf}
-                disabled={isExportingPdf}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-bold shadow-md hover:shadow-lg transition-all disabled:opacity-50"
-                title="Download publication-grade executive brief PDF"
-              >
-                {isExportingPdf ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                ) : (
-                  <FileDown className="w-4 h-4" />
-                )}
-                <span className="hidden sm:inline">Download Executive Brief (PDF)</span>
-                <span className="sm:hidden">PDF</span>
-              </button>
-
               {resolvedId && (
                 <Link
                   to={`/recipients/${resolvedId}`}
@@ -676,15 +635,6 @@ export function RecipientQuickViewModal({
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={handleDownloadPdf}
-              disabled={isExportingPdf}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold shadow-sm transition disabled:opacity-50"
-            >
-              {isExportingPdf ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
-              <span>Download PDF</span>
-            </button>
-
             <button
               onClick={onClose}
               className="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition"
