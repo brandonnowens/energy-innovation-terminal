@@ -22,12 +22,11 @@ import { LegalComplianceModal } from './LegalComplianceModal';
 import { ApiDocsModal } from './ApiDocsModal';
 import { QuickStartModal } from './QuickStartModal';
 import { GhostAuthProbe } from './GhostAuthProbe';
-import { GhostAccessGate } from './GhostAccessGate';
+import { GhostSplashScreen } from './GhostSplashScreen';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNyserda } from '../context/NyserdaContext';
 import { tracker } from '../telemetry/tracker';
-import { TERMINAL_GATE_DISMISSED_KEY } from '../config/ghostAuth';
 
 export default function Layout() {
   const { user, ghostStatus, ghostProbeKey } = useAuth();
@@ -42,41 +41,7 @@ export default function Layout() {
   const [quickStartModalOpen, setQuickStartModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Ghost access gate — shown when the visitor has no Ghost session.
-  // Dismissed flag is stored in sessionStorage so it only persists for the tab session.
-  const [gateDismissed, setGateDismissed] = useState<boolean>(() => {
-    try {
-      return window.sessionStorage.getItem(TERMINAL_GATE_DISMISSED_KEY) === '1';
-    } catch {
-      return false;
-    }
-  });
-
-  const handleDismissGate = () => {
-    try {
-      window.sessionStorage.setItem(TERMINAL_GATE_DISMISSED_KEY, '1');
-    } catch {
-      // ignore
-    }
-    setGateDismissed(true);
-  };
-
-  // When Ghost auth resolves to authenticated, clear the dismissed flag
-  // so the gate won't show on next visit if the session expires.
-  useEffect(() => {
-    if (ghostStatus === 'authenticated') {
-      try {
-        window.sessionStorage.removeItem(TERMINAL_GATE_DISMISSED_KEY);
-      } catch {
-        // ignore
-      }
-      setGateDismissed(false);
-    }
-  }, [ghostStatus]);
-
-  // Show the gate only after Ghost resolution confirms no session,
-  // and only if the user hasn't dismissed it this session.
-  const showGhostGate = ghostStatus === 'guest' && !gateDismissed;
+  const [splashComplete, setSplashComplete] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -600,19 +565,28 @@ export default function Layout() {
                     <div className="space-y-0.5 pl-0.5 animate-in fade-in-50 duration-100">
                       {section.items.map((item) => {
                         const active = isItemActive(item.to);
+                        const isRestricted = ghostStatus !== 'authenticated';
+                        
                         return item.to === '__api_modal__' ? (
                           <button
                             key={item.label}
                             type="button"
-                            onClick={() => {
+                            onClick={(e) => {
+                              if (isRestricted) {
+                                e.preventDefault();
+                                return;
+                              }
                               if (isMobile) setMobileMenuOpen(false);
                               setApiModalOpen(true);
                             }}
                             className={clsx(
-                              "w-full relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer group text-left",
-                              apiModalOpen
+                              "w-full relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all group text-left",
+                              isRestricted 
+                                ? "opacity-40 cursor-not-allowed" 
+                                : "cursor-pointer",
+                              !isRestricted && apiModalOpen
                                 ? "bg-cyan-500/15 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs"
-                                : "text-slate-400 hover:bg-white/[0.04] hover:text-slate-200"
+                                : !isRestricted && "text-slate-400 hover:bg-white/[0.04] hover:text-slate-200"
                             )}
                           >
                             <div className="flex items-center gap-2.5 min-w-0">
@@ -621,7 +595,8 @@ export default function Layout() {
                                 strokeWidth={1.8}
                                 className={clsx(
                                   "shrink-0 transition-colors",
-                                  apiModalOpen ? "text-[#00E5FF]" : "text-slate-400 group-hover:text-[#00E5FF]"
+                                  !isRestricted && apiModalOpen ? "text-[#00E5FF]" : "text-slate-400",
+                                  !isRestricted && !apiModalOpen && "group-hover:text-[#00E5FF]"
                                 )}
                               />
                               <span className="truncate">{item.label}</span>
@@ -635,13 +610,22 @@ export default function Layout() {
                         ) : (
                           <NavLink
                             key={`${section.title}-${item.to}-${item.label}`}
-                            to={item.to}
-                            onClick={() => isMobile && setMobileMenuOpen(false)}
+                            to={isRestricted ? "#" : item.to}
+                            onClick={(e) => {
+                              if (isRestricted) {
+                                e.preventDefault();
+                                return;
+                              }
+                              if (isMobile) setMobileMenuOpen(false);
+                            }}
                             className={clsx(
-                              'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer',
-                              active
+                              'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all',
+                              isRestricted 
+                                ? "opacity-40 cursor-not-allowed" 
+                                : "cursor-pointer",
+                              !isRestricted && active
                                 ? 'bg-cyan-500/15 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs'
-                                : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
+                                : !isRestricted && 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
                             )}
                           >
                             <div className="flex items-center gap-2.5 min-w-0">
@@ -650,15 +634,15 @@ export default function Layout() {
                                 strokeWidth={1.8}
                                 className={clsx(
                                   'shrink-0 transition-colors',
-                                  active ? 'text-[#00E5FF]' : 'text-slate-400'
+                                  !isRestricted && active ? 'text-[#00E5FF]' : 'text-slate-400'
                                 )}
                               />
-                              <span className={clsx("truncate", active && "text-white font-semibold")}>{item.label}</span>
+                              <span className={clsx("truncate", !isRestricted && active && "text-white font-semibold")}>{item.label}</span>
                             </div>
                             {item.badge && (
                               <span className={clsx(
                                 "text-[9px] font-semibold px-1.5 py-0.2 rounded border shrink-0 font-mono",
-                                active ? "bg-cyan-950/80 text-[#00E5FF] border-cyan-500/40" : "bg-slate-800 text-slate-300 border-white/10"
+                                !isRestricted && active ? "bg-cyan-950/80 text-[#00E5FF] border-cyan-500/40" : "bg-slate-800 text-slate-300 border-white/10"
                               )}>
                                 {item.badge}
                               </span>
@@ -912,9 +896,10 @@ export default function Layout() {
         {/* Ghost.org session probe — invisible zero-size iframe, always mounted */}
         <GhostAuthProbe active={ghostStatus !== 'authenticated'} refreshKey={ghostProbeKey} />
 
-        {/* Ghost access gate — shown once to visitors with no Ghost session */}
-        <GhostAccessGate open={showGhostGate} onClose={handleDismissGate} />
-
+        {/* Ghost Splash Screen - shows on initial load */}
+        {(!splashComplete || ghostStatus === 'loading') && (
+          <GhostSplashScreen onComplete={() => setSplashComplete(true)} />
+        )}
 
         {/* Page Content */}
         <main className="flex-1 overflow-auto px-3 sm:px-6 py-4 sm:py-6 min-w-0">

@@ -102,7 +102,6 @@ function App() {
                     <Route path="radar" element={<ForecastingRadar />} />
                     <Route path="forecasting" element={<ForecastingRadar />} />
 
-
                   <Route path="opportunities" element={<Opportunities />} />
                   <Route path="opportunities/:id" element={<OpportunityDetail />} />
                   {/* Programmatic SEO Hubs */}
@@ -149,7 +148,7 @@ function App() {
                   <Route path="reports" element={<Reports />} />
                   <Route path="reports/:id" element={<Reports />} />
                   {/* Catch-all Not Found Route */}
-                  <Route path="*" element={<NotFound />} />
+                  <Route path="*" element={<Chat />} />
                 </Route>
               </Routes>
             </Suspense>
