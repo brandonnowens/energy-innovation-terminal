@@ -336,10 +336,10 @@ export default function DailyDigest() {
             <Building size={15} className="text-indigo-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            {activeDigest.macro_metrics?.total_historical_capital_display || '$104.16B'}
+            {activeDigest.macro_metrics?.total_historical_capital_display || '$89B+'}
           </div>
           <div className="text-[11px] text-slate-400">
-            {activeDigest.macro_metrics?.total_historical_awards_count ? `${activeDigest.macro_metrics.total_historical_awards_count.toLocaleString()} awards tracked` : '56,413 past awardees'}
+            {activeDigest.macro_metrics?.total_historical_awards_count ? `${activeDigest.macro_metrics.total_historical_awards_count.toLocaleString()} awards tracked` : '29,305 awards tracked'}
           </div>
         </div>
 

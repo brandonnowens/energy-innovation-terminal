@@ -37,7 +37,7 @@ export function QuickStartModal({ isOpen, onClose }: QuickStartModalProps) {
       path: '/',
       icon: MessageSquare,
       color: 'cyan',
-      description: 'Consult a domain-trained AI advisor tailored to your operational perspective (Founder, Investor, Researcher, Utility, or Policy Lead), grounded in 56,413 historical awards and 5,757 active solicitations.',
+      description: 'Consult a domain-trained AI advisor tailored to your role (Founder, Investor, Researcher, Utility, or Policy Lead), grounded in 29,305 historical awards and 3,870 solicitations.',
       actionText: 'Open Chat Advisor',
       samplePrompt: 'How can our deep tech startup stack SBIR Phase I/II with state matching funds?'
     },
@@ -59,7 +59,7 @@ export function QuickStartModal({ isOpen, onClose }: QuickStartModalProps) {
       path: '/analyze',
       icon: Sliders,
       color: 'indigo',
-      description: 'Screen any clean tech project against 140+ federal, state, and utility funding organizations. Receive instant eligibility scoring, bankability metrics (TBR), and winning proposal angles.',
+      description: 'Screen any clean tech project against 185 federal, state, and utility funding organizations. Receive instant eligibility scoring and matching solicitations.',
       actionText: 'Launch Match Screener',
       samplePrompt: 'Test a 10 MW iron-air battery storage demonstration project.'
     },
@@ -70,7 +70,7 @@ export function QuickStartModal({ isOpen, onClose }: QuickStartModalProps) {
       path: '/forecasting',
       icon: Radio,
       color: 'amber',
-      description: 'Anticipate upcoming funding releases 30 days to 18 months ahead based on statutory cadence models and trace multi-stage capital flows from R&D to commercial deployment.',
+      description: 'Anticipate upcoming funding releases 30 days to 18 months ahead and trace multi-stage capital flows from R&D to commercial deployment.',
       actionText: 'Explore Release Radar',
       samplePrompt: 'Forecast upcoming clean hydrogen and grid modernization releases.'
     }
@@ -85,7 +85,7 @@ export function QuickStartModal({ isOpen, onClose }: QuickStartModalProps) {
       summary: 'Find non-dilutive capital, assess grant eligibility, and draft winning proposals.',
       steps: [
         'Open Match & Sponsoring (/analyze) to screen your technology profile.',
-        'Filter 5,757 active solicitations (/opportunities) by cost-share and deadline.',
+        'Filter 3,870 solicitations (/opportunities) by cost-share and deadline.',
         'Use Proposal Studio (/proposals) to draft compliant statements of objectives.',
         'Connect with potential PIs and partner organizations (/network).'
       ]

@@ -135,7 +135,7 @@ const ORG_TIER_TABS = [
 export default function Sankey() {
   useSEO({
     title: 'Energy Innovation Capital Flows & Multi-Stage Sankey Visualization',
-    description: 'Interactive multi-dimensional Sankey diagrams tracking $104B+ in public energy funding from federal and state agencies through utilities, sectors, and clean technologies.',
+    description: 'Interactive multi-dimensional Sankey diagrams tracking $89B+ in public energy funding from federal and state agencies through utilities, sectors, and clean technologies.',
     canonicalUrl: 'https://terminal.aixenergy.io/capital-flows',
     keywords: ['energy innovation capital flows', 'energy funding sankey diagram', 'DOE funding distribution', 'utility innovation capital flows'],
   });

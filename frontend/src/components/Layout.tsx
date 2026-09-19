@@ -253,7 +253,7 @@ export default function Layout() {
           items: [
             { to: '/fit', icon: Crosshair, label: 'FOA Fit Snapshot', badge: 'new' },
             { to: '/analyze', icon: Sliders, label: 'Match & Sponsoring' },
-            { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
+            { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
             { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
             { to: '/radar', icon: Radio, label: 'Predictive Radar' },
           ]
@@ -264,7 +264,7 @@ export default function Layout() {
             { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
             { to: '/organizations', icon: Building2, label: 'Funding Organizations' },
             { to: '/network', icon: Network, label: 'Teaming & Network' },
-            { to: '/programs', icon: Layers, label: 'Programs (143)' },
+            { to: '/programs', icon: Layers, label: 'Programs' },
           ]
         },
         {
@@ -302,9 +302,9 @@ export default function Layout() {
         {
           title: 'Due Diligence & Benchmarks',
           items: [
-            { to: '/awards', icon: Trophy, label: 'Awards Ledger ($104B)' },
+            { to: '/awards', icon: Trophy, label: 'Awards Ledger' },
             { to: '/results', icon: Scale, label: 'Outcomes & Benchmarks' },
-            { to: '/dockets', icon: Scale, label: 'Utility Dockets & Tariffs' },
+            { to: '/dockets', icon: FileText, label: 'Utility Dockets & Tariffs' },
             { to: '/organizations', icon: Building2, label: 'Agencies & Utilities' },
             { to: '/programs', icon: Layers, label: 'Programs & Initiatives' },
           ]
@@ -312,7 +312,7 @@ export default function Layout() {
         {
           title: 'Project & Deal Sourcing',
           items: [
-            { to: '/analyze', icon: Sliders, label: 'Project Bankability (TBR)' },
+            { to: '/analyze', icon: Sliders, label: 'Match Engine' },
             { to: '/opportunities', icon: FileSearch, label: 'Active Solicitations' },
             { to: '/technologies', icon: BookOpen, label: 'Frontier Tech Taxonomy' },
             { to: '/network', icon: Network, label: 'Ecosystem & Syndicates' },
@@ -338,14 +338,14 @@ export default function Layout() {
           { to: '/digest', icon: Newspaper, label: 'Daily Digest' },
           { to: '/analyze', icon: Sliders, label: 'Match Engine' },
           { to: '/radar', icon: Radio, label: 'Predictive Radar' },
-          { to: '/opportunities', icon: FileSearch, label: 'Solicitations (5,757)' },
+          { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
           { to: '/proposals', icon: FileEdit, label: 'Application Studio' },
         ]
       },
       {
         title: 'Awards & Precedents',
         items: [
-          { to: '/awards', icon: Trophy, label: 'Awards Ledger ($104B)' },
+          { to: '/awards', icon: Trophy, label: 'Awards Ledger' },
           { to: '/venture-patents', icon: Lightbulb, label: 'Venture & Bayh-Dole IP' },
           { to: '/results', icon: Scale, label: 'Outcomes & Benchmarks' },
         ]
@@ -354,7 +354,7 @@ export default function Layout() {
         title: 'Directories & Ecosystem',
         items: [
           { to: '/organizations', icon: Building2, label: 'Organizations & Utilities' },
-          { to: '/programs', icon: Layers, label: 'Programs (143)' },
+          { to: '/programs', icon: Layers, label: 'Programs' },
           { to: '/contacts', icon: BookUser, label: 'Key Contacts & PIs' },
           { to: '/network', icon: Network, label: 'Teaming & Syndicates' },
         ]
@@ -373,7 +373,7 @@ export default function Layout() {
         items: [
           { to: '/technologies', icon: BookOpen, label: 'Technology Reference' },
           { to: '/policies', icon: ShieldCheck, label: 'IRA §45/§48 Tax Credits' },
-          { to: '/dockets', icon: Scale, label: 'Utility Dockets & Tariffs' },
+          { to: '/dockets', icon: FileText, label: 'Utility Dockets & Tariffs' },
         ]
       },
       {
@@ -670,17 +670,7 @@ export default function Layout() {
           <ShieldCheck size={13} className="text-cyan-400 group-hover:scale-110 transition-transform shrink-0" />
           <span className="text-slate-300 font-medium tracking-wide group-hover:text-white truncate">Energy Terminal</span>
         </button>
-        <button
-          type="button"
-          onClick={() => {
-            if (isMobile) setMobileMenuOpen(false);
-            setSignatureModalOpen(true);
-          }}
-          className="font-mono text-slate-400 text-[9.5px] hover:text-cyan-300 transition-colors cursor-pointer px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] shrink-0"
-          title="Version 3.5.0 - Click for Author Dossier"
-        >
-          v3.5
-        </button>
+        <span className="font-mono text-slate-500 text-[9.5px] px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] shrink-0">v3.5</span>
       </div>
     </>
   );
@@ -757,8 +747,8 @@ export default function Layout() {
                   : "bg-emerald-50 text-emerald-800 border border-emerald-200"
               )}>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                <span className="hidden sm:inline">56,413 Awards · $104.16B Capital Tracked</span>
-                <span className="sm:hidden">56k+ Awards · $104B+</span>
+                <span className="hidden sm:inline">29,305 Awards · $89B+ Tracked</span>
+                <span className="sm:hidden">29k+ Awards · $89B+</span>
               </span>
             </div>
           </div>

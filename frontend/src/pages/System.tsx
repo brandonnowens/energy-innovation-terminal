@@ -137,12 +137,12 @@ export default function System() {
       {/* Stats Grid */}
       {s && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
-          <StatCard label="Total Awards" value={(s.awards || 56413).toLocaleString()} sub="$104.16B Realized Funding" />
-          <StatCard label="Total Opportunities" value={(s.opportunities?.total || 5757).toLocaleString()} sub={`${s.opportunities?.open || 0} active open`} />
-          <StatCard label="Total Programs" value={(s.programs || 182).toString()} sub="State & Federal" />
-          <StatCard label="Organizations Mapped" value={(s.organizations?.total || 249).toString()} sub="Federal, State, Foundations & VC" />
-          <StatCard label="VC Follow-On Deployed" value="$58.22B" sub={`${s.recipient_investments?.total_rounds || 636} Equity Rounds`} />
-          <StatCard label="Bayh-Dole Clean Patents" value={(s.recipient_patents?.total || 1664).toString()} sub="1,489 Award-Linked" />
+          <StatCard label="Total Awards" value={(s.awards || 29305).toLocaleString()} sub="$89B+ in tracked award capital" />
+          <StatCard label="Total Opportunities" value={(s.opportunities?.total || 3870).toLocaleString()} sub={`${s.opportunities?.open || 0} open`} />
+          <StatCard label="Total Programs" value={(s.programs || 181).toString()} sub="State & Federal" />
+          <StatCard label="Organizations Mapped" value={(s.organizations?.total || 185).toString()} sub="Federal, State, Foundations & VC" />
+          <StatCard label="VC Follow-On Deployed" value={s.recipient_investments?.total_volume_usd ? `$${(s.recipient_investments.total_volume_usd / 1e9).toFixed(1)}B` : '—'} sub={`${s.recipient_investments?.total_rounds || 0} Equity Rounds`} />
+          <StatCard label="Bayh-Dole Clean Patents" value={(s.recipient_patents?.total || 0).toString()} sub="Award-Linked" />
         </div>
       )}
 
@@ -155,7 +155,7 @@ export default function System() {
             <h3 className="text-[14px] font-bold text-slate-900">Ingested Authority Feeds & Ingestion Tiers</h3>
           </div>
           <span className="text-[11px] font-medium text-slate-500">
-            Proprietary Ingestion Engine • 100% Automated Harmonization
+            Authority feeds indexed and harmonized across 185 organizations
           </span>
         </div>
 
@@ -275,17 +275,17 @@ export default function System() {
             <span className="text-[13px] font-bold text-slate-900">Deterministic Classification</span>
           </div>
           <p className="text-[12px] text-slate-600 leading-relaxed">
-            15 canonical energy innovation technologies, 8 sectors, 10 fuels, and 6 innovation stages disambiguated via deterministic multi-keyword boundaries with zero hallucination.
+            15 canonical energy innovation technologies, 8 sectors, 10 fuels, and 6 innovation stages classified via deterministic multi-keyword rules without AI inference.
           </p>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs">
           <div className="flex items-center gap-2 text-emerald-600 mb-2">
             <Globe2 size={16} />
-            <span className="text-[13px] font-bold text-slate-900">100% Geospatial Geocoding</span>
+            <span className="text-[13px] font-bold text-slate-900">Geospatial Geocoding</span>
           </div>
           <p className="text-[12px] text-slate-600 leading-relaxed">
-            56,413 out of 56,413 realized award records (100.0%) precisely geocoded across all 50 states, tribal nations, and US territories.
+            29,305 realized award records geocoded across all 50 states, tribal nations, and US territories.
           </p>
         </div>
 
@@ -295,7 +295,7 @@ export default function System() {
             <span className="text-[13px] font-bold text-slate-900">Integrity & Linkage Verification</span>
           </div>
           <p className="text-[12px] text-slate-600 leading-relaxed">
-            Every transaction is linked to an issuing organization, opportunity, and energy innovation category with zero broken foreign keys or duplicate category tuples.
+            Each transaction is linked to an issuing organization, opportunity, and energy innovation category. Referential integrity is validated on ingest.
           </p>
         </div>
       </div>
@@ -326,7 +326,7 @@ export default function System() {
                 <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">Schema Warnings</div>
               </div>
               <div className="text-center p-3.5 bg-slate-50 rounded-xl border border-slate-200/80">
-                <div className="text-xl font-bold text-indigo-600">56,413</div>
+                <div className="text-xl font-bold text-indigo-600">{(s?.awards || 29305).toLocaleString()}</div>
                 <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">Verified Records</div>
               </div>
             </div>

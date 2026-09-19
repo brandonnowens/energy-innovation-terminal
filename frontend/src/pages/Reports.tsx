@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import {
   FileText, Search, Download, Layers, MapPin, Share2, Activity,
@@ -45,7 +45,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
   //   "pages": 24,
   //   "capital_tracked": "$104.16B Tracked",
   //   "awards_count": "54,305 Awards (35-Yr Arc)",
-  //   "key_focus": "Exhaustive technical documentation of all 10 data layers, 31+ public source connectors, 35-year longitudinal vintage (1991–2026), 3-tier credibility framework, relational knowledge graph topology, and 7-persona stakeholder decision-maker utility matrix."
+  //   "key_focus": "Exhaustive technical documentation of all 10 data layers, 31+ public source connectors, 35-year longitudinal vintage (1991â€“2026), 3-tier credibility framework, relational knowledge graph topology, and 7-persona stakeholder decision-maker utility matrix."
   // },
 
   // 1. Macro & Policy Strategy (Flagship Strategic Briefings & Institutional Blueprints)
@@ -59,46 +59,46 @@ const DEFAULT_PRESETS: ReportPreset[] = [
     "icon": "TrendingUp",
     "pages": 21,
     "capital_tracked": "$98.98B Evaluated",
-    "awards_count": "54,305 Historical Awards",
+    "awards_count": "29,305 Historical Awards",
     "key_focus": "Empirical decadal technology forecasting across 54,305 projects: Predicting the 5 winning breakthroughs (Autonomous Grid GETs, Iron-Air Storage, Supercritical EGS, Steam-Integrated SOEC, Factory HTGR SMRs); AI reality check; failure-mode analysis of delayed candidates."
   },
   {
     "id": "state_partnership_ecosystem",
     "title": "State Innovation Program Partnership & Ecosystem Expansion Lessons Learned and Future Strategies",
-    "subtitle": "The Definitive Retrospective and Forward Blueprint: Analyzing 25 Years of State-Level Energy Innovation Consortia, Multi-Jurisdictional Coalitions, Hardtech Incubators, Regulated Utility Alignment, and Frontline Equity Co-Design (2000–2026 Empirical Arc and 2026–2035 Strategic Roadmap)",
+    "subtitle": "The Definitive Retrospective and Forward Blueprint: Analyzing 25 Years of State-Level Energy Innovation Consortia, Multi-Jurisdictional Coalitions, Hardtech Incubators, Regulated Utility Alignment, and Frontline Equity Co-Design (2000â€“2026 Empirical Arc and 2026â€“2035 Strategic Roadmap)",
     "category": "Macro & Policy Strategy",
     "target_audience": "State Energy Leadership, Governors' Energy Cabinets, Incubator Directors, Utility Innovation Officers, Community Consortia Leads, National Labs",
     "badge": "Ecosystem Blueprint",
     "icon": "Share2",
     "pages": 21,
     "capital_tracked": "$104.16B Tracked",
-    "awards_count": "56,413 Awards (25-Yr Arc)",
+    "awards_count": "29,305 Awards (25-Yr Arc)",
     "key_focus": "25-year empirical retrospective of state energy innovation consortia, regional clean energy incubator networks (MassCEC Greentown, CalSEED, ESD NY Ventures), 3.8x federal co-funding multiplier, utility regulatory sandboxes, Justice40 equity co-design, and 2026-2035 strategic blueprints."
   },
   {
     "id": "future_research_pathways_flagship",
     "title": "Future Research Pathways for Funding Institutions Across Technology & Fuel Domains",
-    "subtitle": "The Definitive Programmatic Blueprint for State & Federal Energy Agencies, National Laboratories, Philanthropies, and Utility R&D Directors: Designing High-Impact Solicitations, Stage-Gated Milestone Architectures, and Multi-Tiered Capital Stacks for the 2026–2035 Horizon",
+    "subtitle": "The Definitive Programmatic Blueprint for State & Federal Energy Agencies, National Laboratories, Philanthropies, and Utility R&D Directors: Designing High-Impact Solicitations, Stage-Gated Milestone Architectures, and Multi-Tiered Capital Stacks for the 2026â€“2035 Horizon",
     "category": "Macro & Policy Strategy",
     "target_audience": "State Energy Directors (CEC, MassCEC, ESD, State Energy Offices), Federal Program Leads (DOE ARPA-E, EERE, OCED, FECM), Philanthropies (Rockefeller, Bloomberg, Bezos), Utility R&D VPs",
     "badge": "Institutional Blueprint",
     "icon": "Layers",
     "pages": 21,
     "capital_tracked": "$104.16B Tracked",
-    "awards_count": "56,413 Awards (All Sectors)",
-    "key_focus": "Optimal programmatic funding strategies by institution type (Federal, State, Labs, Philanthropy, Utility), high-yield research pathways vs. stranded risks across 8 technology domains, open enrollment vs. phased RFP mechanics, 4-stage Go/No-Go contracting gates, and 2026–2035 institutional execution playbooks."
+    "awards_count": "29,305 Awards (All Sectors)",
+    "key_focus": "Optimal programmatic funding strategies by institution type (Federal, State, Labs, Philanthropy, Utility), high-yield research pathways vs. stranded risks across 8 technology domains, open enrollment vs. phased RFP mechanics, 4-stage Go/No-Go contracting gates, and 2026â€“2035 institutional execution playbooks."
   },
   {
     "id": "us_energy_innovation_landscape_flagship",
     "title": "Understanding the U.S. Energy Innovation Landscape: Past, Present and Future",
-    "subtitle": "The Definitive Nationwide Meta-Synthesis: Evaluating 56,413 Project Awards, 5,741 Solicitations, 174 Programs, and 13,781 Institutions Across 50 Years of Policy, Physical Deployment Friction, and 2026–2035 Horizon Realities",
+    "subtitle": "The Definitive Nationwide Meta-Synthesis: Evaluating 29,305 Project Awards, 3,870 Solicitations, 174 Programs, and 13,781 Institutions Across 50 Years of Policy, Physical Deployment Friction, and 2026â€“2035 Horizon Realities",
     "category": "Macro & Policy Strategy",
     "target_audience": "Cabinet Secretaries, Governors' Energy Cabinets, Corporate C-Suite Leadership, Infrastructure Funds, Utility Executives",
     "badge": "Flagship Meta-Report",
     "icon": "Compass",
     "pages": 21,
     "capital_tracked": "$104.16B Tracked",
-    "awards_count": "56,413 Awards (50-Yr Arc)",
+    "awards_count": "29,305 Awards (50-Yr Arc)",
     "key_focus": "Comprehensive meta-synthesis integrating findings across all strategic monographs: 50-year policy evolution, cross-sector capital stacks, TRL 4-7 Valley of Death bottlenecks, institutional broker centrality, and 2026-2035 executive roadmaps."
   },
   {
@@ -155,14 +155,14 @@ const DEFAULT_PRESETS: ReportPreset[] = [
   },
   {
     "id": "state_innovation_evolution",
-    "title": "The Evolution of State Energy Innovation Innovation: Governance, SBC Tariffs & 2035 Horizon",
+    "title": "The Evolution of State Energy Innovation: Governance, SBC Tariffs & 2035 Horizon",
     "subtitle": "Institutional history, statutory policy milestones, and 10-year forward strategic roadmaps for state energy authorities.",
     "category": "Macro & Policy Strategy",
     "target_audience": "Governors' Policy Advisors, State Energy Directors, Legislative Energy Chairs",
     "badge": "State Evolution",
     "icon": "Layers",
     "pages": 21,
-    "capital_tracked": "$104.16B",
+    "capital_tracked": "$89B+",
     "awards_count": "50-Year Arc",
     "key_focus": "Historical policy mandates (1975-2026), institutional governance models, ratepayer SBC funding mechanisms, and 2026-2035 zero-emission milestones."
   },
@@ -265,14 +265,14 @@ const DEFAULT_PRESETS: ReportPreset[] = [
   {
     "id": "winning_proposals_meta_strategy",
     "title": "Winning Proposal Architectures & Scoring Criteria: Nationwide Meta-Analysis",
-    "subtitle": "Data-driven cross-sector meta-analysis of winning proposals across 54,305 awards and 5,699 opportunities spanning 100-point scoring mechanics, concept papers, cost-share splits, and submission timing.",
+    "subtitle": "Data-driven cross-sector meta-analysis of winning proposals across 29,305 awards and 3,870 opportunities spanning 100-point scoring mechanics, concept papers, cost-share splits, and submission timing.",
     "category": "Project Strategy",
     "target_audience": "Project Sponsors, Energy Transition Developers, Proposal Directors, Infrastructure Funds, Clean Tech Primes",
     "badge": "Winning Proposals Meta-Analysis",
     "icon": "Target",
     "pages": 21,
     "capital_tracked": "$104.16B Tracked",
-    "awards_count": "54,305 Winning Awards",
+    "awards_count": "29,305 Winning Awards",
     "key_focus": "Empirical win-rate factors, 100-point scoring rubric mechanics, open vs rolling enrollment capture timing, 20-50% cost-share syndication, concept paper de-risking, and actionable C-Suite execution playbooks."
   },
   {
@@ -410,7 +410,7 @@ const DEFAULT_PRESETS: ReportPreset[] = [
   {
     "id": "industrial_decarb_dossier",
     "title": "Industrial Decarbonization & Clean Process Heat Strategic Dossier",
-    "subtitle": "High-temperature thermal energy storage (1,500°C), industrial high-lift heat pumps (150-200°C steam), green steel, and low-carbon cement.",
+    "subtitle": "High-temperature thermal energy storage (1,500Â°C), industrial high-lift heat pumps (150-200Â°C steam), green steel, and low-carbon cement.",
     "category": "Technology Domains",
     "target_audience": "Plant Operations VPs, Heavy Industry OEMs, Chemical Engineering Leaders",
     "badge": "Industrial Heat",
@@ -699,7 +699,7 @@ export default function Reports() {
             <div className="px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 flex items-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <span className="text-xs font-medium text-slate-300">
-                54,305 Verified Records Indexed
+                29,305 Verified Records Indexed
               </span>
             </div>
 
@@ -781,7 +781,7 @@ export default function Reports() {
                     <span>{report.badge}</span>
                   </span>
                   <span className="text-[11px] font-semibold text-slate-400 bg-slate-50 px-2 py-0.5 rounded border border-slate-100">
-                    Vector Publication · 300 DPI
+                    Vector Publication Â· 300 DPI
                   </span>
                 </div>
 
@@ -1025,7 +1025,7 @@ export default function Reports() {
                     <div className="space-y-3">
                       <h4 className="text-xs font-bold text-slate-900 font-serif uppercase tracking-wider flex items-center gap-1.5">
                         <Compass size={14} className="text-indigo-600" />
-                        <span>Strategic Future Outlook &amp; Horizon Roadmap (2026–2035)</span>
+                        <span>Strategic Future Outlook &amp; Horizon Roadmap (2026â€“2035)</span>
                       </h4>
                       <div className="space-y-2">
                         {previewData.narrative.future_outlook.inflection_points.map((item: any, idx: number) => (
@@ -1049,11 +1049,11 @@ export default function Reports() {
                           IMPLEMENTATION &amp; RISK GOVERNANCE ROADMAP
                         </span>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-300 bg-emerald-500/20 px-2.5 py-0.5 rounded border border-emerald-500/30">
-                          2026–2035 Horizon
+                          2026â€“2035 Horizon
                         </span>
                       </div>
                       <h4 className="text-sm font-bold text-white font-serif">
-                        Strategic Conclusion // 2026–2035 Horizon Trajectory &amp; Execution Framework
+                        Strategic Conclusion // 2026â€“2035 Horizon Trajectory &amp; Execution Framework
                       </h4>
                       <div 
                         className="text-xs text-slate-300 leading-relaxed space-y-2.5 font-sans whitespace-pre-line"
@@ -1087,7 +1087,7 @@ export default function Reports() {
             {/* Modal Footer */}
             <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
               <span className="text-[10.5px] text-slate-500">
-                Source: <strong>U.S. Energy Innovation Database by Clean Energy Research, LLC</strong> · <em>Independent research compilation from public open records. Not affiliated with any state or federal government agency.</em>
+                Source: <strong>U.S. Energy Innovation Database by Clean Energy Research, LLC</strong> Â· <em>Independent research compilation from public open records. Not affiliated with any state or federal government agency.</em>
               </span>
               <div className="flex flex-wrap items-center gap-2">
                 <button
@@ -1174,7 +1174,7 @@ export default function Reports() {
                     <div key={idx} className="pt-2 flex items-center justify-between text-xs">
                       <div>
                         <span className="font-bold text-slate-800 block">{r.title}</span>
-                        <span className="text-[10px] text-slate-400">{r.pdf_filename} · {(r.size_bytes / 1024).toFixed(0)} KB</span>
+                        <span className="text-[10px] text-slate-400">{r.pdf_filename} Â· {(r.size_bytes / 1024).toFixed(0)} KB</span>
                       </div>
                       <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-mono text-[10px]">
                         {r.duration_sec}s
@@ -1211,3 +1211,4 @@ export default function Reports() {
     </div>
   );
 }
+

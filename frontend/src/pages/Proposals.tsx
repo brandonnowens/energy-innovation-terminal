@@ -270,7 +270,7 @@ export default function Proposals() {
               <span>Application Studio &amp; Precedents</span>
             </span>
             <span className="text-xs text-slate-300">|</span>
-            <span className="text-xs font-semibold text-slate-500">56,413 Award Precedents · $104.16B</span>
+            <span className="text-xs font-semibold text-slate-500">29,305 Award Records · $89B+ Tracked</span>
             <span className="text-xs text-slate-300">|</span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -281,7 +281,7 @@ export default function Proposals() {
             Winning Proposals &amp; Application Studio
           </h1>
           <p className="text-[13px] sm:text-sm text-slate-500 max-w-3xl mt-1 leading-relaxed">
-            Connect and explore won proposals, awarded projects, solicitations, and downloadable technical deliverables across 56,000+ public energy innovation awards. Inspect work breakdown structures (SOPO), Justice40 Community Benefits Plans (CBP), and evaluator scoring rubrics.
+            Connect and explore won proposals, awarded projects, solicitations, and downloadable technical deliverables across 29,000+ public energy innovation awards. Inspect work breakdown structures (SOPO), Justice40 Community Benefits Plans (CBP), and evaluator scoring rubrics.
           </p>
         </div>
 
@@ -334,35 +334,30 @@ export default function Proposals() {
 
         <div className="flex items-center gap-2 px-2 text-xs text-slate-500">
           <span className="font-semibold text-slate-700">
-            {proposalsData?.total?.toLocaleString() || '56,400+'}
+            {proposalsData?.total?.toLocaleString() || '29,305+'}
           </span>
           <span>{mainView === 'won_repository' ? 'funded proposal records linked' : 'proposals in active pipeline'}</span>
         </div>
       </div>
 
       {/* Key Metrics Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
           <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Funded Proposals Linked</div>
-          <div className="text-2xl font-extrabold text-slate-900 mt-1 font-mono">56,413 Records</div>
+          <div className="text-2xl font-extrabold text-slate-900 mt-1 font-mono">29,305 Records</div>
           <div className="text-[11px] text-slate-500 mt-0.5">
             DOE · ARPA-E · CEC · MassCEC · NSF · State Agencies
           </div>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
           <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total Awarded Capital</div>
-          <div className="text-2xl font-extrabold text-emerald-600 mt-1 font-mono">$104.16B Deployed</div>
+          <div className="text-2xl font-extrabold text-emerald-600 mt-1 font-mono">$89B+ Tracked</div>
           <div className="text-[11px] text-slate-500 mt-0.5">Non-dilutive public research grants</div>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
           <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Discovered Deliverables</div>
           <div className="text-2xl font-extrabold text-indigo-600 mt-1 font-mono">220+ Artifacts</div>
           <div className="text-[11px] text-indigo-600 font-semibold mt-0.5">OSTI · CEF · EPIC · DOIs Available</div>
-        </div>
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Average Evaluator Score</div>
-          <div className="text-2xl font-extrabold text-purple-600 mt-1 font-mono">91.4 / 100 Pts</div>
-          <div className="text-[11px] text-slate-500 mt-0.5">Top 5% competitive tier</div>
         </div>
       </div>
 

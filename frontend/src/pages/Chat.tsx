@@ -741,7 +741,7 @@ export default function Chat() {
         <div className="flex items-center gap-2">
           <div
             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-[11.5px] font-medium"
-            title="Database Connected (56,413 Awards · 5,757 Solicitations)"
+            title="Database Connected (29,305 Awards · 3,870 Solicitations)"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
             <span>Database Connected</span>
@@ -772,7 +772,7 @@ export default function Chat() {
                   What can I help you evaluate today?
                 </h1>
                 <p className="text-[13.5px] text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
-                  Strategic intelligence across 56,413 awards, 5,757 solicitations, and innovation networks.
+                  Strategic intelligence across 29,305 awards, 3,870 solicitations, and innovation networks.
                 </p>
 
                 {/* Fast-Jump Capability Navigation Bar */}

@@ -281,7 +281,7 @@ export default function Trends() {
     if (overview && overview.length > 0) {
       return overview.reduce((acc: number, curr: any) => acc + (curr.count || 0), 0);
     }
-    return 56413;
+    return 29305;
   }, [overview]);
 
   const topTech = byTech?.[0] || { technology: 'Energy Storage & Grid', total_funding: 22_400_000_000, count: 4200 };

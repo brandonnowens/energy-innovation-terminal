@@ -395,7 +395,7 @@ export default function OpportunityDetail() {
                       </span>
                     </h2>
                     <p className="text-[11.5px] text-indigo-200/70 mt-0.5">
-                      Empirical selection probability calibrated against 56,413 historical awards
+                      Based on 29,305 historical award records
                     </p>
                   </div>
                 </div>

@@ -505,7 +505,7 @@ export default function TechReference() {
                 <DollarSign size={14} className="text-emerald-400" />
                 <div>
                   <div className="text-[10px] text-slate-400 font-mono uppercase">Tracked Grants</div>
-                  <div className="text-xs font-bold text-emerald-300">$104.16B USD</div>
+                  <div className="text-xs font-bold text-emerald-300">$89B+ USD</div>
                 </div>
               </div>
               <div className="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center gap-2 shrink-0">
