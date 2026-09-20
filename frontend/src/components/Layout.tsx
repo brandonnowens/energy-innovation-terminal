@@ -249,7 +249,7 @@ export default function Layout() {
         {
           title: 'Sourcing',
           items: [
-            { to: '/fit', icon: Crosshair, label: 'FOA Fit', badge: 'new' },
+            { to: '/fit', icon: Crosshair, label: 'FOA Fit' },
             { to: '/analyze', icon: Sliders, label: 'Match Engine' },
             { to: '/opportunities', icon: FileSearch, label: 'Solicitations' },
             { to: '/proposals', icon: FileEdit, label: 'Studio' },
@@ -332,7 +332,7 @@ export default function Layout() {
       {
         title: 'Sourcing',
         items: [
-          { to: '/fit', icon: Crosshair, label: 'FOA Fit', badge: 'new' },
+          { to: '/fit', icon: Crosshair, label: 'FOA Fit' },
           { to: '/digest', icon: Newspaper, label: 'Digest' },
           { to: '/analyze', icon: Sliders, label: 'Match Engine' },
           { to: '/radar', icon: Radio, label: 'Radar' },
@@ -414,7 +414,7 @@ export default function Layout() {
     return (
       <>
         {/* Brand Header */}
-        <div className="px-5 py-4 border-b border-white/[0.06] flex items-center justify-between">
+        <div className="px-5 py-4 border-b border-transparent flex items-center justify-between">
           <NavLink to={homeRoute} onClick={() => isMobile && setMobileMenuOpen(false)} className="cursor-pointer" title="Energy Innovation Terminal Home">
             <EnergyInnovationTerminalLogo size="md" showText={true} />
           </NavLink>
@@ -431,41 +431,41 @@ export default function Layout() {
         </div>
 
         {/* Persona Front Door Selector */}
-        <div className="px-3 pt-3 pb-2 border-b border-white/[0.06] space-y-1.5">
-          <div className="flex items-center justify-between text-[10px] font-semibold text-slate-400 px-0.5">
-            <span className="uppercase tracking-wider text-[9px] text-slate-400">Front Door Mode</span>
+        <div className="px-3 pt-3 pb-2 border-b border-transparent space-y-1.5">
+          <div className="flex items-center justify-between text-sm font-semibold text-slate-400 px-0.5">
+            <span className=" text-sm text-slate-400">Front Door Mode</span>
             {persona !== 'all' ? (
               <button
                 type="button"
                 onClick={() => handlePersonaChange('all')}
-                className="text-[9.5px] text-slate-400 hover:text-[#00E5FF] transition-colors cursor-pointer"
+                className="text-sm text-slate-400 hover:text-cyan-600 dark:text-cyan-400 transition-colors cursor-pointer"
               >
                 All Modules
               </button>
             ) : (
-              <span className="text-[9px] text-[#00E5FF] font-mono">Master</span>
+              <span className="text-sm text-cyan-600 dark:text-cyan-400 font-mono">Master</span>
             )}
           </div>
-          <div className="grid grid-cols-2 p-0.5 bg-white/[0.03] border border-white/[0.06] rounded-lg gap-0.5">
+          <div className="grid grid-cols-2 p-0.5 bg-white/[0.03] border border-transparent rounded-lg gap-0.5">
             <button
               type="button"
               onClick={() => handlePersonaChange('investor')}
               className={clsx(
-                "px-1.5 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
+                "px-1.5 py-1 rounded-md text-sm font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
                 persona === 'investor'
-                  ? "bg-cyan-500/20 text-[#00E5FF] border border-cyan-500/40 shadow-2xs"
+                  ? "bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/40 shadow-2xs"
                   : "text-slate-400 hover:text-slate-200"
               )}
               title="Spotlight: Daily Digest, Capital Flows (Sankey), Venture & IP, Reports, Trends"
             >
-              <TrendingUp size={11} className={persona === 'investor' ? "text-[#00E5FF]" : "text-slate-400"} />
+              <TrendingUp size={11} className={persona === 'investor' ? "text-cyan-600 dark:text-cyan-400" : "text-slate-400"} />
               <span className="truncate">Investors</span>
             </button>
             <button
               type="button"
               onClick={() => handlePersonaChange('innovator')}
               className={clsx(
-                "px-1.5 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
+                "px-1.5 py-1 rounded-md text-sm font-bold transition-all flex items-center justify-center gap-1 cursor-pointer",
                 persona === 'innovator'
                   ? "bg-indigo-500/25 text-indigo-300 border border-indigo-500/40 shadow-2xs"
                   : "text-slate-400 hover:text-slate-200"
@@ -486,10 +486,10 @@ export default function Layout() {
               to="/"
               onClick={() => isMobile && setMobileMenuOpen(false)}
               className={clsx(
-                'flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border',
+                'flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer border',
                 isChatActive
-                  ? 'bg-cyan-500/15 text-white border-l-2 border-[#00E5FF] font-bold shadow-2xs'
-                  : 'bg-white/[0.03] hover:bg-white/[0.06] text-slate-300 border-white/[0.06] hover:text-white'
+                  ? 'bg-cyan-900/20 text-white border-l-2 border-cyan-600 dark:border-cyan-400 font-bold shadow-2xs'
+                  : 'bg-white/[0.03] hover:bg-white/[0.06] text-slate-300 border-transparent hover:text-white'
               )}
             >
               <div className="flex items-center gap-2.5 min-w-0">
@@ -498,27 +498,22 @@ export default function Layout() {
                   strokeWidth={1.8}
                   className={clsx(
                     'shrink-0 transition-colors',
-                    isChatActive ? 'text-[#00E5FF]' : 'text-slate-400'
+                    isChatActive ? 'text-cyan-600 dark:text-cyan-400' : 'text-slate-400'
                   )}
                 />
                 <span className="truncate">Strategic Advisory</span>
               </div>
-              <span className={clsx(
-                "text-[9.5px] font-bold px-1.5 py-0.2 rounded font-mono",
-                isChatActive ? "bg-cyan-500/20 text-[#00E5FF] border border-cyan-400/30" : "bg-white/[0.05] text-slate-400 border border-white/10"
-              )}>
-                LIVE
-              </span>
+              
             </NavLink>
           </div>
 
           {/* Sidebar Nav Category Header / Collapse Toggle */}
-          <div className="pt-2 pb-1 flex items-center justify-between text-[10px] text-slate-400 px-1 border-t border-white/[0.06]">
-            <span className="font-semibold uppercase tracking-wider text-[9px] text-slate-400">Navigation</span>
+          <div className="pt-2 pb-1 flex items-center justify-between text-sm text-slate-400 px-1 border-t border-transparent">
+            <span className="font-semibold  text-sm text-slate-400">Navigation</span>
             <button
               type="button"
               onClick={() => toggleAll(!allCollapsed)}
-              className="flex items-center gap-1 hover:text-slate-200 transition-colors text-[10px] font-medium cursor-pointer"
+              className="flex items-center gap-1 hover:text-slate-200 transition-colors text-sm font-medium cursor-pointer"
               title={allCollapsed ? "Expand all categories" : "Collapse all categories"}
             >
               <ChevronsUpDown size={11} className="text-slate-400" />
@@ -537,14 +532,14 @@ export default function Layout() {
                   <button
                     type="button"
                     onClick={() => toggleSection(section.title)}
-                    className="w-full px-2.5 py-1 rounded-md hover:bg-white/[0.04] text-[9.5px] font-bold uppercase tracking-[0.14em] text-slate-400 flex items-center justify-between group cursor-pointer transition-colors"
+                    className="w-full px-2.5 py-1 rounded-md hover:bg-white/[0.04] text-sm font-bold  text-slate-400 flex items-center justify-between group cursor-pointer transition-colors"
                   >
                     <span className="group-hover:text-slate-200 transition-colors text-left truncate">{section.title}</span>
                     <div className="flex items-center gap-1.5 shrink-0">
                       {hasActiveChild && isCollapsed && (
                         <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_6px_#00E5FF]" />
                       )}
-                      <span className="text-[9px] font-mono text-slate-400 font-normal">
+                      <span className="text-sm font-mono text-slate-400 font-normal">
                         {section.items.length}
                       </span>
                       {isCollapsed ? (
@@ -574,12 +569,12 @@ export default function Layout() {
                               setApiModalOpen(true);
                             }}
                             className={clsx(
-                              "w-full relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all group text-left",
+                              "w-full relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all group text-left",
                               isRestricted 
                                 ? "opacity-40 cursor-not-allowed" 
                                 : "cursor-pointer",
                               !isRestricted && apiModalOpen
-                                ? "bg-cyan-500/15 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs"
+                                ? "bg-cyan-900/20 text-white font-semibold border-l-2 border-cyan-600 dark:border-cyan-400 shadow-2xs"
                                 : !isRestricted && "text-slate-400 hover:bg-white/[0.04] hover:text-slate-200"
                             )}
                           >
@@ -589,14 +584,14 @@ export default function Layout() {
                                 strokeWidth={1.8}
                                 className={clsx(
                                   "shrink-0 transition-colors",
-                                  !isRestricted && apiModalOpen ? "text-[#00E5FF]" : "text-slate-400",
-                                  !isRestricted && !apiModalOpen && "group-hover:text-[#00E5FF]"
+                                  !isRestricted && apiModalOpen ? "text-cyan-600 dark:text-cyan-400" : "text-slate-400",
+                                  !isRestricted && !apiModalOpen && "group-hover:text-cyan-600 dark:text-cyan-400"
                                 )}
                               />
                               <span className="truncate">{item.label}</span>
                             </div>
                             {item.badge && (
-                              <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded bg-cyan-950/60 text-[#00E5FF] border border-cyan-500/30 shrink-0 font-mono">
+                              <span className="text-sm font-semibold px-1.5 py-0.2 rounded bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 shrink-0 font-mono">
                                 {item.badge}
                               </span>
                             )}
@@ -613,12 +608,12 @@ export default function Layout() {
                               if (isMobile) setMobileMenuOpen(false);
                             }}
                             className={clsx(
-                              'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all',
+                              'relative flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all',
                               isRestricted 
                                 ? "opacity-40 cursor-not-allowed" 
                                 : "cursor-pointer",
                               !isRestricted && active
-                                ? 'bg-cyan-500/15 text-white font-semibold border-l-2 border-[#00E5FF] shadow-2xs'
+                                ? 'bg-cyan-900/20 text-white font-semibold border-l-2 border-cyan-600 dark:border-cyan-400 shadow-2xs'
                                 : !isRestricted && 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
                             )}
                           >
@@ -628,15 +623,15 @@ export default function Layout() {
                                 strokeWidth={1.8}
                                 className={clsx(
                                   'shrink-0 transition-colors',
-                                  !isRestricted && active ? 'text-[#00E5FF]' : 'text-slate-400'
+                                  !isRestricted && active ? 'text-cyan-600 dark:text-cyan-400' : 'text-slate-400'
                                 )}
                               />
                               <span className={clsx("truncate", !isRestricted && active && "text-white font-semibold")}>{item.label}</span>
                             </div>
                             {item.badge && (
                               <span className={clsx(
-                                "text-[9px] font-semibold px-1.5 py-0.2 rounded border shrink-0 font-mono",
-                                !isRestricted && active ? "bg-cyan-950/80 text-[#00E5FF] border-cyan-500/40" : "bg-slate-800 text-slate-300 border-white/10"
+                                "text-sm font-semibold px-1.5 py-0.2 rounded border shrink-0 font-mono",
+                                !isRestricted && active ? "bg-cyan-950/80 text-cyan-600 dark:text-cyan-400 border-cyan-500/40" : "bg-slate-800 text-slate-300 border-white/10"
                               )}>
                                 {item.badge}
                               </span>
@@ -653,28 +648,28 @@ export default function Layout() {
         </nav>
 
       {/* AIxEnergy Link */}
-      <div className="px-3 py-2 border-t border-white/[0.06] bg-white/[0.01]">
+      <div className="px-3 py-2 border-t border-transparent bg-white/[0.01]">
         <a
           href="https://aixenergy.io"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-gradient-to-r from-slate-900/90 to-slate-800/80 hover:from-cyan-950/40 hover:to-slate-900 border border-white/[0.08] hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all shadow-xs group"
+          className="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-gradient-to-r from-slate-900/90 to-slate-800/80 hover:from-cyan-950/40 hover:to-slate-900 border border-transparent hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all shadow-xs group"
           title="AIxEnergy (aixenergy.io)"
         >
           <img
             src="/aixenergy-logo.webp"
             alt="AIxEnergy Logo"
-            className="w-5 h-5 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 group-hover:ring-cyan-400/80 group-hover:scale-105 transition-all shadow-sm"
+            className="w-5 h-5 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 group-hover:ring-cyan-400/80 group- transition-all shadow-sm"
           />
           <div className="flex items-center justify-between gap-1 flex-1 min-w-0">
-            <span className="text-[11.5px] font-bold text-white leading-tight">AIxEnergy</span>
-            <span className="text-[10px] text-cyan-400 group-hover:translate-x-0.5 transition-transform font-mono">↗</span>
+            <span className="text-sm font-bold text-white leading-tight">AIxEnergy</span>
+            <span className="text-sm text-cyan-400  transition-transform font-mono">↗</span>
           </div>
         </a>
       </div>
 
       {/* Sidebar Footer */}
-      <div className="px-4 py-2.5 border-t border-white/[0.06] flex items-center justify-between text-[10px] text-slate-400">
+      <div className="px-4 py-2.5 border-t border-transparent flex items-center justify-between text-sm text-slate-400">
         <button
           type="button"
           onClick={() => {
@@ -684,10 +679,10 @@ export default function Layout() {
           className="flex items-center gap-1.5 hover:text-cyan-300 transition-colors cursor-pointer group text-left min-w-0"
           title="View Executive Provenance & Author Briefing"
         >
-          <ShieldCheck size={13} className="text-cyan-400 group-hover:scale-110 transition-transform shrink-0" />
+          <ShieldCheck size={13} className="text-cyan-400 group- transition-transform shrink-0" />
           <span className="text-slate-300 font-medium tracking-wide group-hover:text-white truncate">Energy Terminal</span>
         </button>
-        <span className="font-mono text-slate-500 text-[9.5px] px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] shrink-0">v3.5</span>
+        <span className="font-mono text-slate-500 text-sm px-1.5 py-0.5 rounded bg-white/[0.04] border border-transparent shrink-0">v3.5</span>
       </div>
     </>
   );
@@ -712,7 +707,7 @@ export default function Layout() {
       {/* Mobile Slide-Over Drawer */}
       <div
         className={clsx(
-          "fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-[#090d16] text-slate-300 flex flex-col border-r border-white/[0.08] shadow-2xl transition-transform duration-200 md:hidden select-none",
+          "fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-[#090d16] text-slate-300 flex flex-col border-r border-transparent shadow-2xl transition-transform duration-200 md:hidden select-none",
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
@@ -720,7 +715,7 @@ export default function Layout() {
       </div>
 
       {/* Desktop Executive Sidebar */}
-      <aside className="hidden md:flex md:w-64 bg-[#090d16] text-slate-300 flex-col border-r border-white/[0.08] z-20 shrink-0 select-none">
+      <aside className="hidden md:flex md:w-64 bg-[#090d16] text-slate-300 flex-col border-r border-transparent z-20 shrink-0 select-none">
         {renderSidebar(false)}
       </aside>
 
@@ -733,7 +728,7 @@ export default function Layout() {
         <header className={clsx(
           "h-13 px-3 sm:px-6 flex items-center justify-between shrink-0 z-10 transition-colors duration-150 border-b gap-2",
           isDark
-            ? "bg-[#0b101c] border-white/[0.08] text-slate-100"
+            ? "bg-[#0b101c] border-transparent text-slate-100"
             : "bg-white border-slate-200 text-slate-900 shadow-2xs"
         )}>
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -756,9 +751,9 @@ export default function Layout() {
             </NavLink>
 
 
-            <div className="flex items-center gap-2.5 text-xs font-medium min-w-0">
+            <div className="flex items-center gap-2.5 text-sm font-medium min-w-0">
               <span className={clsx(
-                "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-semibold text-[11px] font-mono shrink-0",
+                "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-semibold text-sm font-mono shrink-0",
                 isDark
                   ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
                   : "bg-emerald-50 text-emerald-800 border border-emerald-200"
@@ -773,28 +768,28 @@ export default function Layout() {
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             {/* Front Door Quick Switcher in Header */}
             <div className={clsx(
-              "hidden md:flex items-center p-0.5 rounded-lg border text-xs font-semibold select-none shrink-0",
-              isDark ? "bg-white/[0.04] border-white/[0.08]" : "bg-slate-100 border-slate-200"
+              "hidden md:flex items-center p-0.5 rounded-lg border text-sm font-semibold select-none shrink-0",
+              isDark ? "bg-white/[0.04] border-transparent" : "bg-slate-100 border-slate-200"
             )}>
               <button
                 type="button"
                 onClick={() => handlePersonaChange('investor')}
                 className={clsx(
-                  "px-2 py-0.5 rounded-md text-[10.5px] font-bold transition-all flex items-center gap-1 cursor-pointer",
+                  "px-2 py-0.5 rounded-md text-sm font-bold transition-all flex items-center gap-1 cursor-pointer",
                   persona === 'investor'
-                    ? (isDark ? "bg-cyan-500/25 text-[#00E5FF] border border-cyan-500/40 shadow-2xs" : "bg-white text-cyan-700 shadow-2xs border border-cyan-200")
+                    ? (isDark ? "bg-cyan-500/25 text-cyan-600 dark:text-cyan-400 border border-cyan-500/40 shadow-2xs" : "bg-white text-cyan-700 shadow-2xs border border-cyan-200")
                     : (isDark ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
                 )}
                 title="Investor & Strategist Front Door: Daily Digest, Capital Flows, Venture & IP, Reports"
               >
-                <TrendingUp size={11} className={persona === 'investor' ? (isDark ? "text-[#00E5FF]" : "text-cyan-600") : "opacity-60"} />
+                <TrendingUp size={11} className={persona === 'investor' ? (isDark ? "text-cyan-600 dark:text-cyan-400" : "text-cyan-600") : "opacity-60"} />
                 <span>Investors</span>
               </button>
               <button
                 type="button"
                 onClick={() => handlePersonaChange('innovator')}
                 className={clsx(
-                  "px-2 py-0.5 rounded-md text-[10.5px] font-bold transition-all flex items-center gap-1 cursor-pointer",
+                  "px-2 py-0.5 rounded-md text-sm font-bold transition-all flex items-center gap-1 cursor-pointer",
                   persona === 'innovator'
                     ? (isDark ? "bg-indigo-500/25 text-indigo-300 border border-indigo-500/40 shadow-2xs" : "bg-white text-indigo-700 shadow-2xs border border-indigo-200")
                     : (isDark ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
@@ -808,7 +803,7 @@ export default function Layout() {
                 type="button"
                 onClick={() => handlePersonaChange('all')}
                 className={clsx(
-                  "px-1.5 py-0.5 rounded-md text-[10px] font-semibold transition-all cursor-pointer font-mono",
+                  "px-1.5 py-0.5 rounded-md text-sm font-semibold transition-all cursor-pointer font-mono",
                   persona === 'all'
                     ? (isDark ? "bg-white/10 text-white shadow-2xs" : "bg-white text-slate-900 shadow-2xs border border-slate-300")
                     : (isDark ? "text-slate-500 hover:text-slate-300" : "text-slate-400 hover:text-slate-700")
@@ -825,7 +820,7 @@ export default function Layout() {
               target="_blank"
               rel="noopener noreferrer"
               className={clsx(
-                "inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border shrink-0 group shadow-2xs",
+                "inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-semibold transition-all border shrink-0 group shadow-2xs",
                 isDark
                   ? "bg-slate-800/70 hover:bg-slate-800 text-slate-200 border-white/10 hover:border-cyan-500/40 hover:text-white"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-200 hover:border-cyan-500/40 hover:text-slate-950"
@@ -835,10 +830,10 @@ export default function Layout() {
               <img
                 src="/aixenergy-logo.webp"
                 alt="AIxEnergy"
-                className="w-4 h-4 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 group-hover:scale-110 transition-transform"
+                className="w-4 h-4 rounded-full object-cover shrink-0 ring-1 ring-cyan-500/40 group- transition-transform"
               />
               <span className="hidden sm:inline font-bold">AIxEnergy.io</span>
-              <span className="text-[10px] text-cyan-400 group-hover:translate-x-0.5 transition-transform">↗</span>
+              <span className="text-sm text-cyan-400  transition-transform">↗</span>
             </a>
 
             <ThemeToggle />
@@ -846,14 +841,14 @@ export default function Layout() {
               type="button"
               onClick={() => setQuickStartModalOpen(true)}
               className={clsx(
-                "inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border shadow-2xs cursor-pointer",
+                "inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-sm font-semibold transition-all border shadow-2xs cursor-pointer",
                 isDark
-                  ? "bg-cyan-500/10 hover:bg-cyan-500/20 text-[#00E5FF] border-cyan-500/30 hover:border-cyan-400/50"
+                  ? "bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border-cyan-500/30 hover:border-cyan-400/50"
                   : "bg-cyan-50 hover:bg-cyan-100 text-cyan-800 border-cyan-200"
               )}
               title="Open Platform Quick Start Guide & Capabilities Tour"
             >
-              <Compass size={13} className="text-[#00E5FF] dark:text-[#00E5FF]" />
+              <Compass size={13} className="text-cyan-600 dark:text-cyan-400 dark:text-cyan-600 dark:text-cyan-400" />
               <span className="hidden sm:inline">Guide</span>
             </button>
 
@@ -861,7 +856,7 @@ export default function Layout() {
               type="button"
               onClick={() => setCommandPaletteOpen(true)}
               className={clsx(
-                "inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all border shadow-2xs cursor-pointer",
+                "inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg text-sm font-medium transition-all border shadow-2xs cursor-pointer",
                 isDark
                   ? "bg-slate-800/70 hover:bg-slate-800 text-slate-200 border-white/10 hover:border-slate-600"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-200 hover:border-slate-300"
@@ -870,7 +865,7 @@ export default function Layout() {
               <Search size={13} className={isDark ? "text-slate-400" : "text-slate-600"} />
               <span className="hidden sm:inline">Search Database</span>
               <kbd className={clsx(
-                "text-[9px] sm:text-[10px] font-mono font-semibold px-1 sm:px-1.5 py-0.2 rounded border",
+                "text-sm sm:text-sm font-mono font-semibold px-1 sm:px-1.5 py-0.2 rounded border",
                 isDark ? "bg-slate-900 text-slate-300 border-slate-700" : "bg-white text-slate-700 border-slate-200"
               )}>⌘K</kbd>
             </button>
@@ -902,9 +897,9 @@ export default function Layout() {
 
         {/* Global Executive Footer */}
         <footer className={clsx(
-          "border-t px-6 py-2.5 text-[11px] flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0 transition-colors duration-150 select-none",
+          "border-t px-6 py-2.5 text-sm flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0 transition-colors duration-150 select-none",
           isDark
-            ? "bg-[#0b101c] border-white/[0.06] text-slate-400"
+            ? "bg-[#0b101c] border-transparent text-slate-400"
             : "bg-white border-slate-200 text-slate-600 shadow-2xs"
         )}>
           <div className="flex items-center gap-3 flex-wrap">
@@ -912,9 +907,9 @@ export default function Layout() {
               type="button"
               onClick={() => setSignatureModalOpen(true)}
               className={clsx(
-                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium transition-all border cursor-pointer group",
+                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-sm font-medium transition-all border cursor-pointer group",
                 isDark
-                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-300 border-white/[0.08]"
+                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-300 border-transparent"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200"
               )}
               title="Published by Clean Energy Research, LLC · Sourced from Public Open Records (Click to view provenance & citation)"
@@ -928,9 +923,9 @@ export default function Layout() {
               target="_blank"
               rel="noopener noreferrer"
               className={clsx(
-                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10.5px] font-medium transition-all border group cursor-pointer",
+                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-sm font-medium transition-all border group cursor-pointer",
                 isDark
-                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-300 hover:text-white border-white/[0.06] hover:border-cyan-500/30"
+                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-300 hover:text-white border-transparent hover:border-cyan-500/30"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 border-slate-200 hover:border-cyan-500/30"
               )}
               title="AIxEnergy (aixenergy.io)"
@@ -943,9 +938,9 @@ export default function Layout() {
               type="button"
               onClick={() => setLegalModalOpen(true)}
               className={clsx(
-                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10.5px] font-medium transition-all border cursor-pointer",
+                "inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-sm font-medium transition-all border cursor-pointer",
                 isDark
-                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-400 hover:text-slate-300 border-white/[0.06]"
+                  ? "bg-white/[0.02] hover:bg-white/[0.06] text-slate-400 hover:text-slate-300 border-transparent"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-600 border-slate-200"
               )}
               title="Public Records Provenance, Ethics, and Non-Affiliation Notice"
@@ -956,12 +951,12 @@ export default function Layout() {
 
             <span className={clsx(isDark ? "text-white/10" : "text-slate-300", "hidden sm:inline")}>|</span>
 
-            <span className="hidden lg:inline text-[10.5px] font-mono text-slate-400">
+            <span className="hidden lg:inline text-sm font-mono text-slate-400">
               56,413 Awards · $104.16B Capital · 140+ Authorities · Open Public Records
             </span>
           </div>
 
-          <div className="flex items-center gap-2 font-mono text-[10px] text-slate-400">
+          <div className="flex items-center gap-2 font-mono text-sm text-slate-400">
             <span>Energy Innovation Intelligence Terminal</span>
             <span>·</span>
             <span>v3.5</span>
