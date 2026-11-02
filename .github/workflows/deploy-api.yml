@@ -4,6 +4,12 @@ name: Deploy API container
 # Run this after Worker secrets exist, and before relying on the new API URL.
 on:
   workflow_dispatch:
+  # workflow_dispatch is not available to this agent token. A push that edits
+  # this file deploys the API once. Other commits on main do not rebuild the image.
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/deploy-api.yml"
 
 permissions:
   contents: read
