@@ -1,0 +1,43 @@
+name: Deploy API container
+
+# Manual. Merging to main deploys the Pages frontend only.
+# Run this after Worker secrets exist, and before relying on the new API URL.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-api:
+    name: Deploy energy-innovation-api Worker and container
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: workers/energy-innovation-api
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: workers/energy-innovation-api/package-lock.json
+
+      - name: Install Worker dependencies
+        run: npm ci
+
+      - name: Show Docker
+        working-directory: .
+        run: docker version
+
+      - name: Deploy Worker and container image
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: workers/energy-innovation-api
+          command: deploy

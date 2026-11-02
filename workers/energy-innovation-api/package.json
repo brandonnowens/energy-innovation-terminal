@@ -1,0 +1,17 @@
+{
+  "name": "energy-innovation-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Cloudflare Worker that serves the Energy Innovation Terminal API from a scale-to-zero container.",
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "dependencies": {
+    "@cloudflare/containers": "0.3.7"
+  },
+  "devDependencies": {
+    "wrangler": "4.156.2"
+  }
+}

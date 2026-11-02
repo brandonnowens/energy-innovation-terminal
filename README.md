@@ -181,9 +181,15 @@ docker compose logs -f app
 
 The terminal interface will be accessible immediately at **http://localhost:8000**.
 
-### 2. Single-Container Cloud Deployment (Google Cloud Run, AWS App Runner, Fly.io, Render)
+### 2. Production (Cloudflare Pages + API container + GitHub Actions)
 
-The multi-stage `Dockerfile` compiles the React frontend assets into `frontend/dist` and packages the FastAPI production server to serve both the high-performance async API and the SPA frontend from a single lightweight container.
+The live split is documented in [CUTOVER.md](CUTOVER.md).
+
+- **Frontend:** Cloudflare Pages project `energy-innovation-terminal` (`terminal.aixenergy.io`), workflow `.github/workflows/deploy.yml`.
+- **API:** Cloudflare Worker `energy-innovation-api` proxies to one FastAPI container built from `Dockerfile.api`. Default URL: `https://energy-innovation-api.bowens-b7b.workers.dev`.
+- **Daily update:** `.github/workflows/daily-update.yml` runs `python -m app.cron.daily_routine` at 06:00 UTC. The API process does not run that job unless `ENABLE_BACKGROUND_SCHEDULERS=true`.
+
+`Dockerfile` still builds a single container that serves the SPA and the API together for local or other hosts:
 
 ```bash
 # Build the production image
@@ -216,6 +222,8 @@ docker run -d -p 8000:8000 \
 | :--- | :--- | :--- |
 | `DATABASE_URL` | `postgresql+psycopg2://postgres:postgres@127.0.0.1:5432/nyserda_innovation` | Primary PostgreSQL database connection string |
 | `ENVIRONMENT` | `production` | Runtime mode (`development`, `staging`, `production`) |
+| `ENABLE_BACKGROUND_SCHEDULERS` | `false` | In-process daily and hourly jobs. Production refresh is GitHub Actions. |
+| `SKIP_STARTUP_WARM` | `false` | Skip loading the opportunity corpus during API startup. The container sets `true`. |
 | `LOG_LEVEL` | `INFO` | Logging level (`DEBUG`, `INFO`, `WARNING`, `ERROR`) |
 | `CORS_ORIGINS` | `*` | Allowed CORS origins (comma-separated list or `*`) |
 | `JWT_SECRET_KEY` | `energysignal-jwt-secret-key-2026-secure-token` | Cryptographic secret for signing JWT auth tokens |
