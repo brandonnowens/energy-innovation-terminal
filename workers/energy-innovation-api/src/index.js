@@ -49,6 +49,17 @@ function containerEnv(env) {
   return envVars;
 }
 
+async function secretFingerprint(envVars) {
+  const material = SECRET_KEYS.map((key) => `${key}=${envVars[key] ?? ""}`).join("\n");
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(material),
+  );
+  return [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
 function allowedOrigin(request) {
   const origin = request.headers.get("Origin");
   if (origin && ALLOWED_ORIGINS.has(origin)) return origin;
@@ -81,8 +92,33 @@ export class EnergyApiContainer extends Container {
     this.envVars = containerEnv(env);
   }
 
+  // Secrets are fixed on a running container process. When Worker secrets change,
+  // stop that process so the next start receives the new values.
+  async recycleContainerIfSecretsChanged() {
+    this.envVars = containerEnv(this.env);
+    const next = await secretFingerprint(this.envVars);
+    const previous = await this.ctx.storage.get("secret-fingerprint");
+    const container = this.ctx.container;
+    if (container?.running && previous !== next) {
+      try {
+        await this.destroy();
+      } catch {
+        await this.stop("SIGKILL");
+      }
+      for (let attempt = 0; attempt < 40 && container.running; attempt++) {
+        await scheduler.wait(250);
+      }
+      if (container.running) {
+        throw new Error("Container did not stop after the Worker secrets changed");
+      }
+    }
+    return next;
+  }
+
   async fetch(request) {
+    let fingerprint;
     try {
+      fingerprint = await this.recycleContainerIfSecretsChanged();
       await this.startAndWaitForPorts({
         ports: [PORT],
         startOptions: {
@@ -94,6 +130,7 @@ export class EnergyApiContainer extends Container {
           portReadyTimeoutMS: 120_000,
         },
       });
+      await this.ctx.storage.put("secret-fingerprint", fingerprint);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       return Response.json(
