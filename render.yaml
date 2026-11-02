@@ -1,3 +1,8 @@
+# Legacy Render blueprint. Production no longer uses these services.
+# The daily job is .github/workflows/daily-update.yml.
+# The API is the energy-innovation-api Cloudflare Worker (see CUTOVER.md).
+# Leave this file in place until those Render services are deleted by hand.
+# Removing the service entries and syncing the blueprint can delete them.
 services:
   # ─────────────────────────────────────────────────────────────
   # 1. Primary API & Intelligence Web Service

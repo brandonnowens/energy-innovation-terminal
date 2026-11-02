@@ -35,7 +35,7 @@ export function ApiDocsModal({ isOpen, onClose }: ApiDocsModalProps) {
     setTimeout(() => setCopiedKey(null), 2000);
   };
 
-  const API_HOST = API_BASE_URL || 'https://energy-innovation-api.onrender.com';
+  const API_HOST = API_BASE_URL || 'https://energy-innovation-api.bowens-b7b.workers.dev';
 
   const AGENT_TOOLS = [
     { name: 'match_opportunities', desc: 'Deterministic 7-dimension eligibility & scoring match against 5,740+ solicitations.' },

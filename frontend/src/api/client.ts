@@ -4,7 +4,7 @@ export { tracker };
 
 export const API_BASE_URL = (
   import.meta.env.VITE_API_URL || 
-  (import.meta.env.DEV ? '' : 'https://energy-innovation-api.onrender.com')
+  (import.meta.env.DEV ? '' : 'https://energy-innovation-api.bowens-b7b.workers.dev')
 ).replace(/\/+$/, '');
 
 export const sanitizeNyserdaInObject = (obj: any): any => {
@@ -73,7 +73,7 @@ export const apiFetch = async (input: RequestInfo | URL, init?: RequestInit): Pr
         const req = input instanceof Request ? new Request(target, { ...effectiveInit, body: input.body }) : target;
         const res = await fetch(req, effectiveInit);
 
-        // If Render backend is sleeping or spinning up, status is 502/503/504
+        // The API container sleeps when idle. 502/503/504 means it is still starting.
         if (isRetryableMethod && (res.status === 502 || res.status === 503 || res.status === 504) && attempt < maxRetries - 1) {
           const delay = Math.min(1000 * Math.pow(1.5, attempt), 6000);
           await new Promise(resolve => setTimeout(resolve, delay));

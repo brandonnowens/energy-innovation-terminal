@@ -26,10 +26,7 @@ for p in _CANDIDATE_DIST_PATHS:
 async def lifespan(app: FastAPI):
     """Modern asynchronous application lifecycle manager."""
     # ── Startup Phase ──
-    from app.database import init_db, init_fts, SessionLocal, engine
-    from app.services.news_service import start_daily_news_scheduler
-    from app.engine.analyzer import get_cached_opportunities
-    from app.services.ingestion.orchestrator import start_scheduler
+    from app.database import init_db, init_fts, engine
 
     try:
         init_db()
@@ -37,18 +34,25 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         print(f"[Lifespan Startup Warning] DB/FTS Init: {e}")
 
-    try:
-        import gc
-        with SessionLocal() as db:
-            get_cached_opportunities(db)
-        from app.engine.daily_digest import warm_digest_cache
-        warm_digest_cache()
-        gc.collect()
-    except Exception as e:
-        print(f"[Lifespan Startup Warning] Opportunity & Digest Cache Warm: {e}")
+    if getattr(settings, "skip_startup_warm", False):
+        print("[Lifespan] Startup cache warm skipped (SKIP_STARTUP_WARM=true).")
+    else:
+        try:
+            import gc
+            from app.database import SessionLocal
+            from app.engine.analyzer import get_cached_opportunities
+            with SessionLocal() as db:
+                get_cached_opportunities(db)
+            from app.engine.daily_digest import warm_digest_cache
+            warm_digest_cache()
+            gc.collect()
+        except Exception as e:
+            print(f"[Lifespan Startup Warning] Opportunity & Digest Cache Warm: {e}")
 
-    # Background automated data schedulers
-    if getattr(settings, "enable_background_schedulers", True):
+    # Background automated data schedulers. Production refresh is the GitHub
+    # Actions daily-update workflow; this in-process loop stays off unless
+    # ENABLE_BACKGROUND_SCHEDULERS=true.
+    if getattr(settings, "enable_background_schedulers", False):
         try:
             from app.cron.in_app_scheduler import start_daily_automation_scheduler
             start_daily_automation_scheduler(target_hour_utc=6)
@@ -57,12 +61,14 @@ async def lifespan(app: FastAPI):
             print(f"[Lifespan Startup Warning] Daily Automation Scheduler: {e}")
 
         try:
+            from app.services.news_service import start_daily_news_scheduler
             start_daily_news_scheduler()
             print("[Lifespan] Daily News Scheduler started.")
         except Exception as e:
             print(f"[Lifespan Startup Warning] News Scheduler: {e}")
 
         try:
+            from app.services.ingestion.orchestrator import start_scheduler
             start_scheduler(60)
             print("[Lifespan] Ingestion Pipeline Scheduler started (60m).")
         except Exception as e:

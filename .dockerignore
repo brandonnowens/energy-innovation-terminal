@@ -23,6 +23,9 @@ node_modules
 frontend/node_modules
 frontend/dist
 
+# Local databases and caches. The image creates /app/backend/data at build time.
+backend/data
+
 # Scratch & Test Dumps
 scratch
 scratch.py

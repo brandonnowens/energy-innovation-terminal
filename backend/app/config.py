@@ -33,8 +33,14 @@ class Settings(BaseSettings):
     db_pool_recycle: int = 300
     db_ssl_mode: str = "require"  # disable, allow, prefer, require, verify-ca, verify-full
 
-    # Background automated data pipelines & schedulers (enabled by default)
-    enable_background_schedulers: bool = True
+    # Daily ingestion runs in GitHub Actions (.github/workflows/daily-update.yml).
+    # The API process leaves this off so it does not run the same job a second time.
+    enable_background_schedulers: bool = False
+
+    # Skip the in-memory opportunity and digest warm during process start.
+    # The API container sets SKIP_STARTUP_WARM=true so the port opens without
+    # loading the full corpus into memory.
+    skip_startup_warm: bool = False
 
     # CORS configuration for cloud hosting
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,https://terminal.aixenergy.io,https://aixenergy.io,https://energy-innovation-terminal.bowens-b7b.workers.dev,*"

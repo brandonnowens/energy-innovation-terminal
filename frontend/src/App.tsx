@@ -63,7 +63,7 @@ function PageLoadingFallback() {
 }
 
 function App() {
-  // Keep-alive heartbeat to prevent cloud backend container from sleeping
+  // Ping while a tab is visible so the scale-to-zero API container stays warm.
   React.useEffect(() => {
     const pingBackend = () => {
       if (document.visibilityState === 'visible') {
